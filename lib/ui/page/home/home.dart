@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
               ),
               children: [
                 UnDraw(
-                  illustration: UnDrawIllustration.faq,
+                  illustration: UnDrawIllustration.questions,
                   color: color.primary,
                   width: 200,
                 ),
