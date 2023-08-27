@@ -3,6 +3,7 @@ import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:undraw/undraw.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({
@@ -56,11 +57,56 @@ class ChatPage extends StatelessWidget {
                   future: braingain.chat(req),
                   builder: (context, snap) {
                     if (snap.hasError) {
-                      return Text('Error: ${snap.error}');
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          UnDraw(
+                            illustration: UnDrawIllustration.warning,
+                            color: color.error,
+                            height: 200,
+                            width: 200,
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            width: 200,
+                            child: Text(
+                              'Error: ${snap.error}',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      );
                     }
 
                     if (!snap.hasData) {
-                      return const CircularProgressIndicator();
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          UnDraw(
+                            illustration: UnDrawIllustration.typewriter,
+                            color: color.secondary,
+                            height: 200,
+                            width: 200,
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            alignment: Alignment.center,
+                            height: 50,
+                            width: 50,
+                            child: const LinearProgressIndicator(),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            width: 200,
+                            child: const Text(
+                              'Generating response',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      );
                     }
 
                     final completion = snap.data!;
