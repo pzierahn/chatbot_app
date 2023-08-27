@@ -1,9 +1,8 @@
-import 'dart:collection';
-
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:undraw/undraw.dart';
 
@@ -121,13 +120,27 @@ class ChatPage extends StatelessWidget {
 
                     return Column(
                       children: [
-                        MarkdownBody(data: completion.completion),
+                        MarkdownBody(
+                          data: completion.completion,
+                          selectable: true,
+                        ),
                         const Divider(),
                         for (var source in sources.entries)
                           ListTile(
                             title: Text(source.key),
                             subtitle: Text('${source.value}'),
-                          )
+                          ),
+                        ListTile(
+                          trailing: TextButton.icon(
+                            label: const Text('Copy'),
+                            icon: const Icon(Icons.copy),
+                            onPressed: () {
+                              Clipboard.setData(ClipboardData(
+                                text: completion.completion,
+                              ));
+                            },
+                          ),
+                        )
                       ],
                     );
                   },
