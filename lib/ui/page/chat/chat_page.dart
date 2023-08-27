@@ -1,3 +1,5 @@
+import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -22,6 +24,9 @@ class ChatPage extends StatelessWidget {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
+    final req = Prompt();
+    req.prompt = prompt;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Chat"),
@@ -35,7 +40,7 @@ class ChatPage extends StatelessWidget {
               vertical: 16,
             ),
             child: Text(
-              'Explain the Practical Byzantine Fault Tolerance (PBFT) algorithm in detail',
+              prompt,
               style: text.titleMedium,
             ),
           ),
@@ -44,10 +49,25 @@ class ChatPage extends StatelessWidget {
               horizontal: 8,
               vertical: 8,
             ),
-            child: const Card(
+            child: Card(
               child: Padding(
-                padding: EdgeInsets.all(16),
-                child: MarkdownBody(data: ""),
+                padding: const EdgeInsets.all(16),
+                child: FutureBuilder<ChatCompletion>(
+                  future: braingain.chat(req),
+                  builder: (context, snap) {
+                    if (snap.hasError) {
+                      return Text('Error: ${snap.error}');
+                    }
+
+                    if (!snap.hasData) {
+                      return const CircularProgressIndicator();
+                    }
+
+                    final completion = snap.data!;
+
+                    return MarkdownBody(data: completion.completion);
+                  },
+                ),
               ),
             ),
           ),
