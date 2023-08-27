@@ -82,6 +82,7 @@ class _HomeState extends State<Home> {
               child: TextField(
                 cursorWidth: 1.0,
                 controller: _textController,
+                autocorrect: true,
                 onSubmitted: (prompt) => ChatPage.open(context, prompt),
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
