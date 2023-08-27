@@ -62,8 +62,7 @@ class _HomeState extends State<Home> {
                         titleTextStyle: text.bodySmall?.merge(TextStyle(
                           color: color.outline,
                         )),
-                        // iconColor: color.outline,
-                        // leading: const Icon(Icons.history),
+                        onTap: () => ChatPage.open(context, question),
                         title: Text(
                           question,
                           maxLines: 1,
