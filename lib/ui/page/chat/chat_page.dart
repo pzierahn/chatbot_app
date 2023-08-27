@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
@@ -111,7 +113,23 @@ class ChatPage extends StatelessWidget {
 
                     final completion = snap.data!;
 
-                    return MarkdownBody(data: completion.completion);
+                    final sources = <String, List<int>>{};
+                    for (var source in completion.sources) {
+                      sources.putIfAbsent(source.filename, () => []);
+                      sources[source.filename]?.add(source.page);
+                    }
+
+                    return Column(
+                      children: [
+                        MarkdownBody(data: completion.completion),
+                        const Divider(),
+                        for (var source in sources.entries)
+                          ListTile(
+                            title: Text(source.key),
+                            subtitle: Text('${source.value}'),
+                          )
+                      ],
+                    );
                   },
                 ),
               ),
