@@ -47,9 +47,9 @@ class _HomeState extends State<Home> {
               ),
               children: [
                 UnDraw(
-                  illustration: UnDrawIllustration.questions,
+                  illustration: UnDrawIllustration.chat,
                   color: color.primary,
-                  width: 200,
+                  width: 350,
                 ),
                 for (var question in _questions)
                   Center(
@@ -62,7 +62,6 @@ class _HomeState extends State<Home> {
                         titleTextStyle: text.bodySmall?.merge(TextStyle(
                           color: color.outline,
                         )),
-                        onTap: () => ChatPage.open(context, question),
                         title: Text(
                           question,
                           maxLines: 1,
@@ -74,48 +73,12 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-          Center(
-            child: Container(
-              padding: const EdgeInsets.all(16),
-              alignment: Alignment.center,
-              constraints: const BoxConstraints(maxWidth: 600),
-              child: TextField(
-                cursorWidth: 1.0,
-                controller: _textController,
-                autocorrect: true,
-                onSubmitted: (prompt) => ChatPage.open(context, prompt),
-                decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: color.primary,
-                      width: 2.0,
-                    ),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: color.outline,
-                      width: 1.0,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  hintText: 'Write prompt',
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 16,
-                  ),
-                  suffixIcon: IconButton(
-                    onPressed: () => ChatPage.open(
-                      context,
-                      _textController.text,
-                    ),
-                    icon: const Icon(Icons.send),
-                  ),
-                ),
-              ),
-            ),
-          ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        icon: const Icon(Icons.chat),
+        label: const Text('Start'),
+        onPressed: () => ChatPage.open(context),
       ),
     );
   }

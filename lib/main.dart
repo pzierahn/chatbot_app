@@ -5,6 +5,12 @@ void main() {
   runApp(const MyApp());
 }
 
+final _borderRadius = BorderRadius.circular(8);
+
+final _roundedShape = RoundedRectangleBorder(
+  borderRadius: _borderRadius,
+);
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -15,6 +21,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.blueAccent,
+        ),
+        chipTheme: ChipThemeData(
+          side: const BorderSide(color: Colors.transparent),
+          shape: _roundedShape,
         ),
         useMaterial3: true,
       ),
