@@ -27,6 +27,7 @@ class ChatBody extends StatelessWidget {
     return ListView(
       children: [
         Container(
+          width: double.infinity,
           padding: const EdgeInsets.symmetric(
             horizontal: 16,
             vertical: 8,
@@ -41,7 +42,10 @@ class ChatBody extends StatelessWidget {
             horizontal: 16,
             vertical: 8,
           ),
-          child: MarkdownBody(data: _response),
+          child: const MarkdownBody(
+            data: _response,
+            selectable: true,
+          ),
         ),
       ],
     );

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 const _sources = [
   "DeSys_05_Mutual_Exclusion.pdf",
-  "DeSys_07_Current_Research_Consensus_and_Variants.pdf",
-  "DeSys_11_Payment_Channel_Networks.pdf",
+  // "DeSys_07_Current_Research_Consensus_and_Variants.pdf",
+  // "DeSys_11_Payment_Channel_Networks.pdf",
 ];
 
 class ChatField extends StatelessWidget {
