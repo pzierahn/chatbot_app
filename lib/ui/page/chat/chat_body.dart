@@ -16,6 +16,12 @@ However, token-ring algorithms may face certain challenges that could affect liv
 
 To address these challenges and ensure liveness, token-ring algorithms may require additional mechanisms. For example, a leader election protocol can be used to select a new process as the token holder in the event of a failure or loss. Periodic checks and regeneration of the token can also prevent indefinite unavailability of the shared resource. By incorporating such mechanisms, token-ring algorithms can provide liveness guarantees and ensure that all processes have the opportunity to access the shared resource.''';
 
+const _sources = [
+  "DeSys_05_Mutual_Exclusion.pdf",
+// "DeSys_07_Current_Research_Consensus_and_Variants.pdf",
+// "DeSys_11_Payment_Channel_Networks.pdf",
+];
+
 class ChatBody extends StatelessWidget {
   const ChatBody({super.key});
 
@@ -27,24 +33,78 @@ class ChatBody extends StatelessWidget {
     return ListView(
       children: [
         Container(
-          width: double.infinity,
+          alignment: Alignment.centerRight,
           padding: const EdgeInsets.symmetric(
             horizontal: 16,
             vertical: 8,
           ),
-          child: Text(
-            _prompt,
-            style: text.titleMedium,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: color.primaryContainer,
+            ),
+            constraints: const BoxConstraints(
+              maxWidth: 600,
+            ),
+            child: Text(
+              _prompt,
+              style: text.titleMedium,
+            ),
           ),
         ),
         Container(
+          alignment: Alignment.centerLeft,
           padding: const EdgeInsets.symmetric(
             horizontal: 16,
             vertical: 8,
           ),
-          child: const MarkdownBody(
-            data: _response,
-            selectable: true,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: color.outline,
+                width: 0.5,
+              ),
+              // color: color.surfaceVariant,
+            ),
+            constraints: const BoxConstraints(
+              maxWidth: 600,
+            ),
+            child: Column(
+              children: [
+                MarkdownBody(
+                  data: _response,
+                  styleSheet: MarkdownStyleSheet(
+                    p: TextStyle(
+                      color: color.onSurfaceVariant,
+                    ),
+                  ),
+                  selectable: true,
+                ),
+                const Divider(height: 32),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    alignment: WrapAlignment.start,
+                    children: _sources
+                        .map(
+                          (source) => ActionChip(
+                            label: Text(source),
+                            labelStyle: text.bodySmall,
+                            tooltip: "Pages: 1, 3, 4, 5, 6",
+                            onPressed: () {},
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],
