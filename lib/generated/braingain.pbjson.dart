@@ -13,6 +13,31 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use documentIdDescriptor instead')
+const DocumentId$json = {
+  '1': 'DocumentId',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `DocumentId`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List documentIdDescriptor = $convert.base64Decode(
+    'CgpEb2N1bWVudElkEg4KAmlkGAEgASgJUgJpZA==');
+
+@$core.Deprecated('Use documentDescriptor instead')
+const Document$json = {
+  '1': 'Document',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'filename', '3': 2, '4': 1, '5': 9, '10': 'filename'},
+  ],
+};
+
+/// Descriptor for `Document`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List documentDescriptor = $convert.base64Decode(
+    'CghEb2N1bWVudBIOCgJpZBgBIAEoCVICaWQSGgoIZmlsZW5hbWUYAiABKAlSCGZpbGVuYW1l');
+
 @$core.Deprecated('Use promptDescriptor instead')
 const Prompt$json = {
   '1': 'Prompt',

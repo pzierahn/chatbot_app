@@ -25,6 +25,10 @@ class BraingainClient extends $grpc.Client {
       '/endpoint.braingain.v1.Braingain/Chat',
       ($0.Prompt value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.ChatCompletion.fromBuffer(value));
+  static final _$getDocument = $grpc.ClientMethod<$0.DocumentId, $0.Document>(
+      '/endpoint.braingain.v1.Braingain/GetDocument',
+      ($0.DocumentId value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Document.fromBuffer(value));
 
   BraingainClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -34,6 +38,10 @@ class BraingainClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$0.ChatCompletion> chat($0.Prompt request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$chat, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.Document> getDocument($0.DocumentId request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getDocument, request, options: options);
   }
 }
 
@@ -49,11 +57,23 @@ abstract class BraingainServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Prompt.fromBuffer(value),
         ($0.ChatCompletion value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.DocumentId, $0.Document>(
+        'GetDocument',
+        getDocument_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.DocumentId.fromBuffer(value),
+        ($0.Document value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.ChatCompletion> chat_Pre($grpc.ServiceCall call, $async.Future<$0.Prompt> request) async {
     return chat(call, await request);
   }
 
+  $async.Future<$0.Document> getDocument_Pre($grpc.ServiceCall call, $async.Future<$0.DocumentId> request) async {
+    return getDocument(call, await request);
+  }
+
   $async.Future<$0.ChatCompletion> chat($grpc.ServiceCall call, $0.Prompt request);
+  $async.Future<$0.Document> getDocument($grpc.ServiceCall call, $0.DocumentId request);
 }
