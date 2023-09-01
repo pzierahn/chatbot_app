@@ -7,8 +7,12 @@ const _sources = [
 ];
 
 class ChatField extends StatelessWidget {
-  ChatField({super.key});
+  ChatField({
+    super.key,
+    this.onSubmitted,
+  });
 
+  final ValueChanged<String>? onSubmitted;
   final _textController = TextEditingController();
 
   @override
@@ -44,21 +48,13 @@ class ChatField extends StatelessWidget {
                     ),
                   )
                   .toList(),
-              // children: [
-              //   Chip(
-              //     label: const Text('Source1.pdf'),
-              //     labelStyle: TextStyle(
-              //       color: color.onSecondaryContainer,
-              //     ),
-              //     backgroundColor: color.secondaryContainer,
-              //   ),
-              // ],
             ),
           ),
           TextField(
             cursorWidth: 1.0,
             controller: _textController,
             autocorrect: true,
+            onSubmitted: onSubmitted,
             decoration: InputDecoration(
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
@@ -80,7 +76,7 @@ class ChatField extends StatelessWidget {
                 vertical: 16,
               ),
               suffixIcon: IconButton(
-                onPressed: () {},
+                onPressed: () => onSubmitted?.call(_textController.text),
                 icon: const Icon(Icons.send),
               ),
               prefixIcon: IconButton(

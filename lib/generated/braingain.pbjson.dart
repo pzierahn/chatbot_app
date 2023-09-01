@@ -44,13 +44,15 @@ final $typed_data.Uint8List sourceDescriptor = $convert.base64Decode(
 const ChatCompletion$json = {
   '1': 'ChatCompletion',
   '2': [
-    {'1': 'completion', '3': 1, '4': 1, '5': 9, '10': 'completion'},
-    {'1': 'sources', '3': 2, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.Source', '10': 'sources'},
+    {'1': 'prompt', '3': 1, '4': 1, '5': 9, '10': 'prompt'},
+    {'1': 'completion', '3': 2, '4': 1, '5': 9, '10': 'completion'},
+    {'1': 'sources', '3': 3, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.Source', '10': 'sources'},
   ],
 };
 
 /// Descriptor for `ChatCompletion`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List chatCompletionDescriptor = $convert.base64Decode(
-    'Cg5DaGF0Q29tcGxldGlvbhIeCgpjb21wbGV0aW9uGAEgASgJUgpjb21wbGV0aW9uEjcKB3NvdX'
-    'JjZXMYAiADKAsyHS5lbmRwb2ludC5icmFpbmdhaW4udjEuU291cmNlUgdzb3VyY2Vz');
+    'Cg5DaGF0Q29tcGxldGlvbhIWCgZwcm9tcHQYASABKAlSBnByb21wdBIeCgpjb21wbGV0aW9uGA'
+    'IgASgJUgpjb21wbGV0aW9uEjcKB3NvdXJjZXMYAyADKAsyHS5lbmRwb2ludC5icmFpbmdhaW4u'
+    'djEuU291cmNlUgdzb3VyY2Vz');
 

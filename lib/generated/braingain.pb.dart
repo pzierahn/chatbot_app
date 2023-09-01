@@ -124,8 +124,9 @@ class ChatCompletion extends $pb.GeneratedMessage {
   factory ChatCompletion.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatCompletion', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'completion')
-    ..pc<Source>(2, _omitFieldNames ? '' : 'sources', $pb.PbFieldType.PM, subBuilder: Source.create)
+    ..aOS(1, _omitFieldNames ? '' : 'prompt')
+    ..aOS(2, _omitFieldNames ? '' : 'completion')
+    ..pc<Source>(3, _omitFieldNames ? '' : 'sources', $pb.PbFieldType.PM, subBuilder: Source.create)
     ..hasRequiredFields = false
   ;
 
@@ -151,16 +152,25 @@ class ChatCompletion extends $pb.GeneratedMessage {
   static ChatCompletion? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get completion => $_getSZ(0);
+  $core.String get prompt => $_getSZ(0);
   @$pb.TagNumber(1)
-  set completion($core.String v) { $_setString(0, v); }
+  set prompt($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasCompletion() => $_has(0);
+  $core.bool hasPrompt() => $_has(0);
   @$pb.TagNumber(1)
-  void clearCompletion() => clearField(1);
+  void clearPrompt() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<Source> get sources => $_getList(1);
+  $core.String get completion => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set completion($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasCompletion() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCompletion() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<Source> get sources => $_getList(2);
 }
 
 
