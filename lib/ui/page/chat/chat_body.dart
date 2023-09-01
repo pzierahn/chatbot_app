@@ -1,4 +1,5 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/service/braingain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
@@ -62,7 +63,11 @@ class ChatBody extends StatelessWidget {
                             labelStyle: TextStyle(
                               color: color.onSecondaryContainer,
                             ),
-                            label: Text(source.id),
+                            label: FutureBuilder<Document>(
+                                future: braingain
+                                    .getDocument(DocumentId()..id = source.id),
+                                builder: (context, snap) =>
+                                    Text(snap.data?.filename ?? "Loading...")),
                             onPressed: () {},
                           ))
                       .toList(),
