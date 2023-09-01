@@ -208,6 +208,112 @@ class MethodOptions_IdempotencyLevel extends $pb.ProtobufEnum {
   const MethodOptions_IdempotencyLevel._($core.int v, $core.String n) : super(v, n);
 }
 
+class FeatureSet_FieldPresence extends $pb.ProtobufEnum {
+  static const FeatureSet_FieldPresence FIELD_PRESENCE_UNKNOWN = FeatureSet_FieldPresence._(0, _omitEnumNames ? '' : 'FIELD_PRESENCE_UNKNOWN');
+  static const FeatureSet_FieldPresence EXPLICIT = FeatureSet_FieldPresence._(1, _omitEnumNames ? '' : 'EXPLICIT');
+  static const FeatureSet_FieldPresence IMPLICIT = FeatureSet_FieldPresence._(2, _omitEnumNames ? '' : 'IMPLICIT');
+  static const FeatureSet_FieldPresence LEGACY_REQUIRED = FeatureSet_FieldPresence._(3, _omitEnumNames ? '' : 'LEGACY_REQUIRED');
+
+  static const $core.List<FeatureSet_FieldPresence> values = <FeatureSet_FieldPresence> [
+    FIELD_PRESENCE_UNKNOWN,
+    EXPLICIT,
+    IMPLICIT,
+    LEGACY_REQUIRED,
+  ];
+
+  static final $core.Map<$core.int, FeatureSet_FieldPresence> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static FeatureSet_FieldPresence? valueOf($core.int value) => _byValue[value];
+
+  const FeatureSet_FieldPresence._($core.int v, $core.String n) : super(v, n);
+}
+
+class FeatureSet_EnumType extends $pb.ProtobufEnum {
+  static const FeatureSet_EnumType ENUM_TYPE_UNKNOWN = FeatureSet_EnumType._(0, _omitEnumNames ? '' : 'ENUM_TYPE_UNKNOWN');
+  static const FeatureSet_EnumType OPEN = FeatureSet_EnumType._(1, _omitEnumNames ? '' : 'OPEN');
+  static const FeatureSet_EnumType CLOSED = FeatureSet_EnumType._(2, _omitEnumNames ? '' : 'CLOSED');
+
+  static const $core.List<FeatureSet_EnumType> values = <FeatureSet_EnumType> [
+    ENUM_TYPE_UNKNOWN,
+    OPEN,
+    CLOSED,
+  ];
+
+  static final $core.Map<$core.int, FeatureSet_EnumType> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static FeatureSet_EnumType? valueOf($core.int value) => _byValue[value];
+
+  const FeatureSet_EnumType._($core.int v, $core.String n) : super(v, n);
+}
+
+class FeatureSet_RepeatedFieldEncoding extends $pb.ProtobufEnum {
+  static const FeatureSet_RepeatedFieldEncoding REPEATED_FIELD_ENCODING_UNKNOWN = FeatureSet_RepeatedFieldEncoding._(0, _omitEnumNames ? '' : 'REPEATED_FIELD_ENCODING_UNKNOWN');
+  static const FeatureSet_RepeatedFieldEncoding PACKED = FeatureSet_RepeatedFieldEncoding._(1, _omitEnumNames ? '' : 'PACKED');
+  static const FeatureSet_RepeatedFieldEncoding EXPANDED = FeatureSet_RepeatedFieldEncoding._(2, _omitEnumNames ? '' : 'EXPANDED');
+
+  static const $core.List<FeatureSet_RepeatedFieldEncoding> values = <FeatureSet_RepeatedFieldEncoding> [
+    REPEATED_FIELD_ENCODING_UNKNOWN,
+    PACKED,
+    EXPANDED,
+  ];
+
+  static final $core.Map<$core.int, FeatureSet_RepeatedFieldEncoding> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static FeatureSet_RepeatedFieldEncoding? valueOf($core.int value) => _byValue[value];
+
+  const FeatureSet_RepeatedFieldEncoding._($core.int v, $core.String n) : super(v, n);
+}
+
+class FeatureSet_StringFieldValidation extends $pb.ProtobufEnum {
+  static const FeatureSet_StringFieldValidation STRING_FIELD_VALIDATION_UNKNOWN = FeatureSet_StringFieldValidation._(0, _omitEnumNames ? '' : 'STRING_FIELD_VALIDATION_UNKNOWN');
+  static const FeatureSet_StringFieldValidation MANDATORY = FeatureSet_StringFieldValidation._(1, _omitEnumNames ? '' : 'MANDATORY');
+  static const FeatureSet_StringFieldValidation HINT = FeatureSet_StringFieldValidation._(2, _omitEnumNames ? '' : 'HINT');
+  static const FeatureSet_StringFieldValidation NONE = FeatureSet_StringFieldValidation._(3, _omitEnumNames ? '' : 'NONE');
+
+  static const $core.List<FeatureSet_StringFieldValidation> values = <FeatureSet_StringFieldValidation> [
+    STRING_FIELD_VALIDATION_UNKNOWN,
+    MANDATORY,
+    HINT,
+    NONE,
+  ];
+
+  static final $core.Map<$core.int, FeatureSet_StringFieldValidation> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static FeatureSet_StringFieldValidation? valueOf($core.int value) => _byValue[value];
+
+  const FeatureSet_StringFieldValidation._($core.int v, $core.String n) : super(v, n);
+}
+
+class FeatureSet_MessageEncoding extends $pb.ProtobufEnum {
+  static const FeatureSet_MessageEncoding MESSAGE_ENCODING_UNKNOWN = FeatureSet_MessageEncoding._(0, _omitEnumNames ? '' : 'MESSAGE_ENCODING_UNKNOWN');
+  static const FeatureSet_MessageEncoding LENGTH_PREFIXED = FeatureSet_MessageEncoding._(1, _omitEnumNames ? '' : 'LENGTH_PREFIXED');
+  static const FeatureSet_MessageEncoding DELIMITED = FeatureSet_MessageEncoding._(2, _omitEnumNames ? '' : 'DELIMITED');
+
+  static const $core.List<FeatureSet_MessageEncoding> values = <FeatureSet_MessageEncoding> [
+    MESSAGE_ENCODING_UNKNOWN,
+    LENGTH_PREFIXED,
+    DELIMITED,
+  ];
+
+  static final $core.Map<$core.int, FeatureSet_MessageEncoding> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static FeatureSet_MessageEncoding? valueOf($core.int value) => _byValue[value];
+
+  const FeatureSet_MessageEncoding._($core.int v, $core.String n) : super(v, n);
+}
+
+class FeatureSet_JsonFormat extends $pb.ProtobufEnum {
+  static const FeatureSet_JsonFormat JSON_FORMAT_UNKNOWN = FeatureSet_JsonFormat._(0, _omitEnumNames ? '' : 'JSON_FORMAT_UNKNOWN');
+  static const FeatureSet_JsonFormat ALLOW = FeatureSet_JsonFormat._(1, _omitEnumNames ? '' : 'ALLOW');
+  static const FeatureSet_JsonFormat LEGACY_BEST_EFFORT = FeatureSet_JsonFormat._(2, _omitEnumNames ? '' : 'LEGACY_BEST_EFFORT');
+
+  static const $core.List<FeatureSet_JsonFormat> values = <FeatureSet_JsonFormat> [
+    JSON_FORMAT_UNKNOWN,
+    ALLOW,
+    LEGACY_BEST_EFFORT,
+  ];
+
+  static final $core.Map<$core.int, FeatureSet_JsonFormat> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static FeatureSet_JsonFormat? valueOf($core.int value) => _byValue[value];
+
+  const FeatureSet_JsonFormat._($core.int v, $core.String n) : super(v, n);
+}
+
 class GeneratedCodeInfo_Annotation_Semantic extends $pb.ProtobufEnum {
   static const GeneratedCodeInfo_Annotation_Semantic NONE = GeneratedCodeInfo_Annotation_Semantic._(0, _omitEnumNames ? '' : 'NONE');
   static const GeneratedCodeInfo_Annotation_Semantic SET = GeneratedCodeInfo_Annotation_Semantic._(1, _omitEnumNames ? '' : 'SET');

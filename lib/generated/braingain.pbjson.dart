@@ -30,16 +30,15 @@ const Source$json = {
   '1': 'Source',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'filename', '3': 2, '4': 1, '5': 9, '10': 'filename'},
-    {'1': 'page', '3': 3, '4': 1, '5': 5, '10': 'page'},
-    {'1': 'score', '3': 4, '4': 1, '5': 2, '10': 'score'},
+    {'1': 'page', '3': 2, '4': 1, '5': 5, '10': 'page'},
+    {'1': 'score', '3': 3, '4': 1, '5': 2, '10': 'score'},
   ],
 };
 
 /// Descriptor for `Source`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sourceDescriptor = $convert.base64Decode(
-    'CgZTb3VyY2USDgoCaWQYASABKAlSAmlkEhoKCGZpbGVuYW1lGAIgASgJUghmaWxlbmFtZRISCg'
-    'RwYWdlGAMgASgFUgRwYWdlEhQKBXNjb3JlGAQgASgCUgVzY29yZQ==');
+    'CgZTb3VyY2USDgoCaWQYASABKAlSAmlkEhIKBHBhZ2UYAiABKAVSBHBhZ2USFAoFc2NvcmUYAy'
+    'ABKAJSBXNjb3Jl');
 
 @$core.Deprecated('Use chatCompletionDescriptor instead')
 const ChatCompletion$json = {

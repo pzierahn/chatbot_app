@@ -63,9 +63,8 @@ class Source extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Source', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'filename')
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'page', $pb.PbFieldType.O3)
-    ..a<$core.double>(4, _omitFieldNames ? '' : 'score', $pb.PbFieldType.OF)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'page', $pb.PbFieldType.O3)
+    ..a<$core.double>(3, _omitFieldNames ? '' : 'score', $pb.PbFieldType.OF)
     ..hasRequiredFields = false
   ;
 
@@ -100,31 +99,22 @@ class Source extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get filename => $_getSZ(1);
+  $core.int get page => $_getIZ(1);
   @$pb.TagNumber(2)
-  set filename($core.String v) { $_setString(1, v); }
+  set page($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasFilename() => $_has(1);
+  $core.bool hasPage() => $_has(1);
   @$pb.TagNumber(2)
-  void clearFilename() => clearField(2);
+  void clearPage() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.int get page => $_getIZ(2);
+  $core.double get score => $_getN(2);
   @$pb.TagNumber(3)
-  set page($core.int v) { $_setSignedInt32(2, v); }
+  set score($core.double v) { $_setFloat(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasPage() => $_has(2);
+  $core.bool hasScore() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPage() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.double get score => $_getN(3);
-  @$pb.TagNumber(4)
-  set score($core.double v) { $_setFloat(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasScore() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearScore() => clearField(4);
+  void clearScore() => clearField(3);
 }
 
 class ChatCompletion extends $pb.GeneratedMessage {
