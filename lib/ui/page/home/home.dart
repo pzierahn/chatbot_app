@@ -23,8 +23,6 @@ const _questions = [
 ];
 
 class _HomeState extends State<Home> {
-  final _textController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
