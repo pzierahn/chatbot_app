@@ -24,32 +24,32 @@ class ChatField extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       child: Column(
         children: [
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.only(bottom: 8),
-            child: Wrap(
-              alignment: WrapAlignment.start,
-              spacing: 8,
-              runSpacing: 8,
-              children: _sources
-                  .map(
-                    (source) => Chip(
-                      label: Text(
-                        source,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      labelStyle: TextStyle(
-                        color: color.onSecondaryContainer,
-                        fontSize: 10,
-                      ),
-                      onDeleted: () {},
-                      deleteIcon: const Icon(Icons.cancel, size: 10),
-                      backgroundColor: color.secondaryContainer,
-                    ),
-                  )
-                  .toList(),
-            ),
-          ),
+          // Container(
+          //   width: double.infinity,
+          //   padding: const EdgeInsets.only(bottom: 8),
+          //   child: Wrap(
+          //     alignment: WrapAlignment.start,
+          //     spacing: 8,
+          //     runSpacing: 8,
+          //     children: _sources
+          //         .map(
+          //           (source) => Chip(
+          //             label: Text(
+          //               source,
+          //               overflow: TextOverflow.ellipsis,
+          //             ),
+          //             labelStyle: TextStyle(
+          //               color: color.onSecondaryContainer,
+          //               fontSize: 10,
+          //             ),
+          //             onDeleted: () {},
+          //             deleteIcon: const Icon(Icons.cancel, size: 10),
+          //             backgroundColor: color.secondaryContainer,
+          //           ),
+          //         )
+          //         .toList(),
+          //   ),
+          // ),
           TextField(
             cursorWidth: 1.0,
             controller: _textController,

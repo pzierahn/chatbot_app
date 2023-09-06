@@ -16,6 +16,15 @@ class ChatBody extends StatelessWidget {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
+    final sourceIds = <String>{};
+    final pages = <String, List<int>>{};
+
+    for (var source in completion.sources) {
+      sourceIds.add(source.id);
+      pages.putIfAbsent(source.id, () => []);
+      pages[source.id]?.add(source.page);
+    }
+
     return Column(
       children: [
         Container(
@@ -24,11 +33,26 @@ class ChatBody extends StatelessWidget {
             horizontal: 16,
             vertical: 8,
           ),
-          color: color.surfaceVariant.withOpacity(0.5),
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                width: 0.5,
+                color: color.outline,
+              ),
+              bottom: BorderSide(
+                width: 0.5,
+                color: color.outline,
+              ),
+            ),
+            color: color.surfaceVariant.withOpacity(0.2),
+          ),
           child: SelectableText(
             completion.prompt,
-            style: text.headlineSmall?.merge(
-              TextStyle(color: color.onSurfaceVariant),
+            style: text.bodyMedium?.merge(
+              TextStyle(
+                color: color.onSurfaceVariant,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
@@ -47,6 +71,10 @@ class ChatBody extends StatelessWidget {
             ],
           ),
         ),
+        const Divider(
+          indent: 16,
+          endIndent: 16,
+        ),
         Container(
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.symmetric(
@@ -54,21 +82,20 @@ class ChatBody extends StatelessWidget {
             vertical: 8,
           ),
           child: (completion.sources.isNotEmpty)
-              ? Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: completion.sources
-                      .map((source) => ActionChip(
-                            backgroundColor: color.secondaryContainer,
-                            labelStyle: TextStyle(
-                              color: color.onSecondaryContainer,
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: sourceIds
+                      .map((source) => FutureBuilder<Document>(
+                            future: braingain
+                                .getDocument(DocumentId()..id = source),
+                            builder: (context, snap) => Text(
+                              "${snap.data?.filename}: ${pages[source]}",
+                              style: text.bodySmall?.merge(
+                                TextStyle(
+                                  color: color.outline,
+                                ),
+                              ),
                             ),
-                            label: FutureBuilder<Document>(
-                                future: braingain
-                                    .getDocument(DocumentId()..id = source.id),
-                                builder: (context, snap) =>
-                                    Text(snap.data?.filename ?? "Loading...")),
-                            onPressed: () {},
                           ))
                       .toList(),
                 )
