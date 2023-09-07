@@ -70,7 +70,7 @@ class _DocumentsState extends State<Documents> {
                         icon: const Icon(Icons.more_vert, size: 16),
                         itemBuilder: (context) => const [
                           PopupMenuItem(
-                            value: 'download',
+                            value: 'pages',
                             child: Row(
                               children: [
                                 Icon(Icons.find_in_page, size: 16),
@@ -86,6 +86,16 @@ class _DocumentsState extends State<Documents> {
                                 Icon(Icons.file_open, size: 16),
                                 SizedBox(width: 16),
                                 Text('View'),
+                              ],
+                            ),
+                          ),
+                          PopupMenuItem(
+                            value: 'rename',
+                            child: Row(
+                              children: [
+                                Icon(Icons.edit, size: 16),
+                                SizedBox(width: 16),
+                                Text('Rename'),
                               ],
                             ),
                           ),
