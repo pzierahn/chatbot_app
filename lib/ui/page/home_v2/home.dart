@@ -34,11 +34,11 @@ class _HomeState extends State<Home> {
             // color: color.surfaceVariant,
             child: Documents(),
           ),
-          const VerticalDivider(width: 16),
+          const VerticalDivider(width: 0),
           Expanded(
             child: Chat(),
           ),
-          const VerticalDivider(width: 16),
+          const VerticalDivider(width: 0),
           Container(
             width: 300,
             padding: const EdgeInsets.all(16),

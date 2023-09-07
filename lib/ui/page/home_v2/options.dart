@@ -10,13 +10,13 @@ class Options extends StatefulWidget {
 }
 
 class _OptionsState extends State<Options> {
-  int _maxTokens = 200;
+  int _maxTokens = 1024;
   double _temperature = 0.0;
   int _limit = 10;
   double _threshold = 0.8;
 
   final _textTemp = TextEditingController(text: '0.00');
-  final _textTokens = TextEditingController(text: '200');
+  final _textTokens = TextEditingController(text: '1024');
   final _textLimit = TextEditingController(text: '10');
   final _textThreshold = TextEditingController(text: '0.80');
 
