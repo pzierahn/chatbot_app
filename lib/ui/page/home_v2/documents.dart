@@ -126,8 +126,8 @@ class _DocumentsState extends State<Documents> {
         ListTile(
           leading: const Icon(Icons.upload_file, size: 16),
           titleTextStyle: text.bodySmall,
-          title: const Text('Add Document'),
-          onTap: () => print('Add Document'),
+          title: const Text('Add document'),
+          onTap: () => print('Add document'),
         ),
       ],
     );
