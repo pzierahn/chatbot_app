@@ -142,7 +142,7 @@ class ChatFragment extends StatelessWidget {
                               ),
                         backgroundColor: color.surfaceVariant.withOpacity(0.25),
                         label: Text(
-                          'Source',
+                          'Documents',
                           style: text.bodySmall,
                         ),
                         labelStyle: TextStyle(
