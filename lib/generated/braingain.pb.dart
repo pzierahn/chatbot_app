@@ -13,6 +13,48 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+class DocumentQuery extends $pb.GeneratedMessage {
+  factory DocumentQuery() => create();
+  DocumentQuery._() : super();
+  factory DocumentQuery.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DocumentQuery.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentQuery', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'query')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DocumentQuery clone() => DocumentQuery()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DocumentQuery copyWith(void Function(DocumentQuery) updates) => super.copyWith((message) => updates(message as DocumentQuery)) as DocumentQuery;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static DocumentQuery create() => DocumentQuery._();
+  DocumentQuery createEmptyInstance() => create();
+  static $pb.PbList<DocumentQuery> createRepeated() => $pb.PbList<DocumentQuery>();
+  @$core.pragma('dart2js:noInline')
+  static DocumentQuery getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DocumentQuery>(create);
+  static DocumentQuery? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get query => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set query($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasQuery() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearQuery() => clearField(1);
+}
+
 class Documents_Document extends $pb.GeneratedMessage {
   factory Documents_Document() => create();
   Documents_Document._() : super();

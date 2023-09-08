@@ -13,6 +13,18 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use documentQueryDescriptor instead')
+const DocumentQuery$json = {
+  '1': 'DocumentQuery',
+  '2': [
+    {'1': 'query', '3': 1, '4': 1, '5': 9, '10': 'query'},
+  ],
+};
+
+/// Descriptor for `DocumentQuery`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List documentQueryDescriptor = $convert.base64Decode(
+    'Cg1Eb2N1bWVudFF1ZXJ5EhQKBXF1ZXJ5GAEgASgJUgVxdWVyeQ==');
+
 @$core.Deprecated('Use documentsDescriptor instead')
 const Documents$json = {
   '1': 'Documents',

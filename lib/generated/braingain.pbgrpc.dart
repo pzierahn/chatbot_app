@@ -30,6 +30,10 @@ class BraingainClient extends $grpc.Client {
       '/endpoint.braingain.v1.Braingain/ListDocuments',
       ($1.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Documents.fromBuffer(value));
+  static final _$findDocuments = $grpc.ClientMethod<$0.DocumentQuery, $0.Documents>(
+      '/endpoint.braingain.v1.Braingain/FindDocuments',
+      ($0.DocumentQuery value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Documents.fromBuffer(value));
 
   BraingainClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -43,6 +47,10 @@ class BraingainClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$0.Documents> listDocuments($1.Empty request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listDocuments, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.Documents> findDocuments($0.DocumentQuery request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$findDocuments, request, options: options);
   }
 }
 
@@ -65,6 +73,13 @@ abstract class BraingainServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
         ($0.Documents value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.DocumentQuery, $0.Documents>(
+        'FindDocuments',
+        findDocuments_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.DocumentQuery.fromBuffer(value),
+        ($0.Documents value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.Completion> chat_Pre($grpc.ServiceCall call, $async.Future<$0.Prompt> request) async {
@@ -75,6 +90,11 @@ abstract class BraingainServiceBase extends $grpc.Service {
     return listDocuments(call, await request);
   }
 
+  $async.Future<$0.Documents> findDocuments_Pre($grpc.ServiceCall call, $async.Future<$0.DocumentQuery> request) async {
+    return findDocuments(call, await request);
+  }
+
   $async.Future<$0.Completion> chat($grpc.ServiceCall call, $0.Prompt request);
   $async.Future<$0.Documents> listDocuments($grpc.ServiceCall call, $1.Empty request);
+  $async.Future<$0.Documents> findDocuments($grpc.ServiceCall call, $0.DocumentQuery request);
 }
