@@ -32,9 +32,7 @@ class _SelectDocumentsDialogState extends State<SelectDocumentsDialog> {
     return AlertDialog(
       title: TextField(
         onChanged: (value) {
-          setState(() {
-            _query = value;
-          });
+          setState(() => _query = value);
         },
         decoration: const InputDecoration(
           hintText: 'Search',
