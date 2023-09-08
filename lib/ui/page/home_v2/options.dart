@@ -22,10 +22,10 @@ class _OptionsState extends State<Options> {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         ListTile(
           contentPadding: EdgeInsets.zero,
@@ -171,4 +171,36 @@ class _OptionsState extends State<Options> {
       ],
     );
   }
+}
+
+Future<Object?> showOptions(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text("Search"),
+        content: SizedBox(
+          width: 300,
+          height: 400,
+          child: SingleChildScrollView(
+            child: Options(),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("Cancel"),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("Save"),
+          ),
+        ],
+      );
+    },
+  );
 }

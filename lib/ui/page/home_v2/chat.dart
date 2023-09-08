@@ -23,7 +23,7 @@ class _ChatState extends State<Chat> {
 
     final children = <Widget>[];
     for (int index = 0; index <= _prompts.length; index++) {
-      children.add(ChatFragment(
+      final fragment = ChatFragment(
         prompt: index < _prompts.length ? _prompts[index] : null,
         completion: index < _completions.length ? _completions[index] : null,
         onPromptChanged: (value) {
@@ -35,7 +35,19 @@ class _ChatState extends State<Chat> {
             _completions.add(braingain.chat(req));
           });
         },
-      ));
+      );
+
+      children.add(
+        Align(
+          child: Container(
+            alignment: Alignment.center,
+            constraints: const BoxConstraints(
+              maxWidth: 800,
+            ),
+            child: fragment,
+          ),
+        ),
+      );
     }
 
     return ListView(

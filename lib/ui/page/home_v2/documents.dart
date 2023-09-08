@@ -36,100 +36,136 @@ class _DocumentsState extends State<Documents> {
     final text = Theme.of(context).textTheme;
 
     return Column(
-      children: [
-        const ListTile(
-          leading: Icon(Icons.search, size: 16),
-          title: TextField(
-            decoration: InputDecoration.collapsed(
-              hintText: 'Search',
-            ),
-          ),
-        ),
-        Expanded(
-          child: ListView(
-            children: _docs
-                .map((doc) => ListTile(
-                      leading: _selected.contains(doc)
-                          ? Icon(
-                              Icons.check_circle,
-                              size: 16,
-                              color: color.primary,
-                            )
-                          : const Icon(Icons.description, size: 16),
-                      title: Text(
-                        doc,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+      children: _docs
+          .map((doc) => ListTile(
+                leading: _selected.contains(doc)
+                    ? Icon(
+                        Icons.check_circle,
+                        size: 16,
+                        color: color.primary,
+                      )
+                    : const Icon(Icons.description, size: 16),
+                title: Text(
+                  doc,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: text.bodySmall?.merge(TextStyle(
+                    color: _selected.contains(doc)
+                        ? color.primary
+                        : color.onSurface,
+                  )),
+                ),
+                subtitle: _selected.contains(doc)
+                    ? TextField(
+                        controller: TextEditingController(text: '1-14'),
+                        decoration: const InputDecoration.collapsed(
+                          hintText: 'Pages',
+                        ),
                         style: text.bodySmall?.merge(TextStyle(
-                          color: _selected.contains(doc)
-                              ? color.primary
-                              : color.onSurface,
+                          color: color.outline,
                         )),
-                      ),
-                      trailing: PopupMenuButton(
-                        icon: const Icon(Icons.more_vert, size: 16),
-                        itemBuilder: (context) => const [
-                          PopupMenuItem(
-                            value: 'pages',
-                            child: Row(
-                              children: [
-                                Icon(Icons.find_in_page, size: 16),
-                                SizedBox(width: 16),
-                                Text('Pages'),
-                              ],
-                            ),
-                          ),
-                          PopupMenuItem(
-                            value: 'download',
-                            child: Row(
-                              children: [
-                                Icon(Icons.file_open, size: 16),
-                                SizedBox(width: 16),
-                                Text('View'),
-                              ],
-                            ),
-                          ),
-                          PopupMenuItem(
-                            value: 'rename',
-                            child: Row(
-                              children: [
-                                Icon(Icons.edit, size: 16),
-                                SizedBox(width: 16),
-                                Text('Rename'),
-                              ],
-                            ),
-                          ),
-                          PopupMenuItem(
-                            value: 'delete',
-                            child: Row(
-                              children: [
-                                Icon(Icons.delete, size: 16),
-                                SizedBox(width: 16),
-                                Text('Delete'),
-                              ],
-                            ),
-                          ),
+                      )
+                    : null,
+                // subtitle: _selected.contains(doc) ? Text(
+                //   '1-14',
+                //   maxLines: 1,
+                //   overflow: TextOverflow.ellipsis,
+                //   style: text.bodySmall?.merge(TextStyle(
+                //     color: color.outline,
+                //   )),
+                // ) : null,
+                trailing: PopupMenuButton(
+                  icon: const Icon(Icons.more_vert, size: 16),
+                  itemBuilder: (context) => const [
+                    PopupMenuItem(
+                      value: 'pages',
+                      child: Row(
+                        children: [
+                          Icon(Icons.find_in_page, size: 16),
+                          SizedBox(width: 16),
+                          Text('Pages'),
                         ],
-                        onSelected: (value) => print(value),
                       ),
-                      onTap: () => setState(() {
-                        if (_selected.contains(doc)) {
-                          _selected.remove(doc);
-                        } else {
-                          _selected.add(doc);
-                        }
-                      }),
-                    ))
-                .toList(),
-          ),
-        ),
-        ListTile(
-          leading: const Icon(Icons.upload_file, size: 16),
-          titleTextStyle: text.bodySmall,
-          title: const Text('Add document'),
-          onTap: () => print('Add document'),
-        ),
-      ],
+                    ),
+                    PopupMenuItem(
+                      value: 'download',
+                      child: Row(
+                        children: [
+                          Icon(Icons.file_open, size: 16),
+                          SizedBox(width: 16),
+                          Text('View'),
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: 'rename',
+                      child: Row(
+                        children: [
+                          Icon(Icons.edit, size: 16),
+                          SizedBox(width: 16),
+                          Text('Rename'),
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: 'delete',
+                      child: Row(
+                        children: [
+                          Icon(Icons.delete, size: 16),
+                          SizedBox(width: 16),
+                          Text('Delete'),
+                        ],
+                      ),
+                    ),
+                  ],
+                  onSelected: (value) => print(value),
+                ),
+                onTap: () => setState(() {
+                  if (_selected.contains(doc)) {
+                    _selected.remove(doc);
+                  } else {
+                    _selected.add(doc);
+                  }
+                }),
+              ))
+          .toList(),
     );
   }
+}
+
+Future<Object?> showDocumentSelectors(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const TextField(
+          decoration: InputDecoration(
+            hintText: 'Search',
+            border: InputBorder.none,
+            prefixIcon: Icon(Icons.search),
+          ),
+        ),
+        content: const SizedBox(
+          height: 300,
+          child: SingleChildScrollView(
+            child: Documents(),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("Cancel"),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("Add"),
+          ),
+        ],
+      );
+    },
+  );
 }

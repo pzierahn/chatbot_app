@@ -1,11 +1,13 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/ui/page/home_v2/documents.dart';
+import 'package:braingain_app/ui/page/home_v2/options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:undraw/undraw.dart';
 
 class ChatFragment extends StatelessWidget {
-  const ChatFragment({
+  ChatFragment({
     super.key,
     this.prompt,
     this.completion,
@@ -16,12 +18,14 @@ class ChatFragment extends StatelessWidget {
   final Future<ChatCompletion>? completion;
   final ValueChanged<String> onPromptChanged;
 
+  final _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
-    final textStyles = text.headlineMedium?.merge(const TextStyle(
+    final textStyles = text.titleLarge?.merge(GoogleFonts.robotoSerif(
       fontWeight: FontWeight.w600,
     ));
 
@@ -30,69 +34,189 @@ class ChatFragment extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          prompt == null
-              ? TextField(
-                  style: textStyles,
-                  onSubmitted: (value) {
-                    onPromptChanged(value);
-                  },
-                  decoration: InputDecoration.collapsed(
-                    hintText: 'Type a question',
-                    hintStyle: textStyles,
-                  ),
-                )
-              : Text(
-                  prompt ?? '',
-                  style: textStyles,
-                  textAlign: TextAlign.start,
-                ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16),
-            child: FutureBuilder<ChatCompletion>(
-              future: completion,
-              builder: (context, snap) {
-                if (completion == null) {
-                  return SizedBox(
-                    height: 300,
-                    child: UnDraw(
-                      illustration: UnDrawIllustration.questions,
-                      color: color.secondary,
-                    ),
-                  );
-                }
-
-                if (snap.hasError) {
-                  debugPrint(snap.error.toString());
-
-                  return SizedBox(
-                    height: 300,
-                    child: UnDraw(
-                      illustration: UnDrawIllustration.warning,
-                      color: color.error,
-                    ),
-                  );
-                }
-
-                if (snap.hasData) {
-                  return MarkdownBody(
-                    data: snap.data!.completion,
-                  );
-                }
-
-                return const SizedBox(
-                  height: 300,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              // color: color.surfaceVariant,
+              border: Border.all(
+                color: color.outlineVariant,
+                width: 1.0,
+              ),
+              color: color.surface,
+            ),
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                prompt == null
+                    ? Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              controller: _controller,
+                              maxLines: null,
+                              style: textStyles,
+                              onSubmitted: (value) {
+                                onPromptChanged(value);
+                              },
+                              decoration: InputDecoration.collapsed(
+                                hintText: 'Type a prompt',
+                                hintStyle: textStyles,
+                                // prefixIcon: const Icon(Icons.search),
+                                // prefixIconConstraints: const BoxConstraints(
+                                //   minWidth: 16 * 4,
+                                // ),
+                                // border: OutlineInputBorder(
+                                //   borderRadius: BorderRadius.circular(16),
+                                // ),
+                                // focusedBorder: OutlineInputBorder(
+                                //   borderRadius: BorderRadius.circular(16),
+                                //   borderSide: BorderSide(
+                                //     color: color.primary,
+                                //     width: 2.0,
+                                //   ),
+                                // ),
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              if (_controller.text.isNotEmpty) {
+                                onPromptChanged(_controller.text);
+                              }
+                            },
+                            color: color.primary,
+                            tooltip: 'Submit',
+                            icon: const Icon(Icons.send),
+                          ),
+                        ],
+                      )
+                    : SelectableText(
+                        prompt ?? '',
+                        style: textStyles,
+                        textAlign: TextAlign.start,
+                      ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
                     children: [
-                      CircularProgressIndicator(),
-                      SizedBox(height: 16),
-                      Text(
-                        'Thinking...',
+                      ActionChip(
+                        avatar: Icon(
+                          Icons.tune_outlined,
+                          size: 16,
+                          color: color.onSurfaceVariant,
+                        ),
+                        backgroundColor: color.surfaceVariant.withOpacity(0.25),
+                        label: Text(
+                          'Parameters',
+                          style: text.bodySmall,
+                        ),
+                        labelStyle: TextStyle(
+                          color: color.onSurfaceVariant,
+                        ),
+                        onPressed: () {
+                          showOptions(context);
+                        },
+                        side: BorderSide(
+                          color: color.outlineVariant,
+                          width: 1.0,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      ActionChip(
+                        avatar: prompt == null
+                            ? Icon(
+                                Icons.add,
+                                size: 16,
+                                color: color.onSurfaceVariant,
+                              )
+                            : Icon(
+                                Icons.description_outlined,
+                                size: 16,
+                                color: color.onSurfaceVariant,
+                              ),
+                        backgroundColor: color.surfaceVariant.withOpacity(0.25),
+                        label: Text(
+                          'Source',
+                          style: text.bodySmall,
+                        ),
+                        labelStyle: TextStyle(
+                          color: color.onSurfaceVariant,
+                        ),
+                        onPressed: () {
+                          showDocumentSelectors(context);
+                        },
+                        side: BorderSide(
+                          color: color.outlineVariant,
+                          width: 1.0,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
                       ),
                     ],
                   ),
-                );
-              },
+                ),
+                Padding(
+                  padding: completion != null
+                      ? const EdgeInsets.only(top: 16)
+                      : EdgeInsets.zero,
+                  child: FutureBuilder<ChatCompletion>(
+                    future: completion,
+                    builder: (context, snap) {
+                      if (completion == null) {
+                        return const SizedBox();
+                      }
+
+                      if (snap.hasError) {
+                        debugPrint(snap.error.toString());
+
+                        return SizedBox(
+                          height: 300,
+                          child: UnDraw(
+                            illustration: UnDrawIllustration.warning,
+                            color: color.error,
+                          ),
+                        );
+                      }
+
+                      if (snap.hasData) {
+                        return MarkdownBody(
+                          data: snap.data!.completion,
+                        );
+                      }
+
+                      return SizedBox(
+                        height: 400,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            UnDraw(
+                              width: 200,
+                              illustration: UnDrawIllustration.in_thought,
+                              color: color.primary,
+                            ),
+                            const SizedBox(height: 16),
+                            const SizedBox(
+                              width: 200,
+                              child: LinearProgressIndicator(),
+                            ),
+                            const SizedBox(height: 16),
+                            const Text(
+                              'Thinking...',
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
           ),
         ],

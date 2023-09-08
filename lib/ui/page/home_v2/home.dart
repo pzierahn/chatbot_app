@@ -25,28 +25,23 @@ class _HomeState extends State<Home> {
           "Braingain",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-      ),
-      body: Row(
-        children: [
-          const SizedBox(
-            width: 300,
-            // padding: const EdgeInsets.all(16),
-            // color: color.surfaceVariant,
-            child: Documents(),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.chat,
+              color: color.primary,
+            ),
+            tooltip: 'Chat',
           ),
-          const VerticalDivider(width: 0),
-          Expanded(
-            child: Chat(),
-          ),
-          const VerticalDivider(width: 0),
-          Container(
-            width: 300,
-            padding: const EdgeInsets.all(16),
-            // color: color.surfaceVariant,
-            child: const Options(),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.description_outlined),
+            tooltip: 'Documents',
           ),
         ],
       ),
+      body: const Chat(),
     );
   }
 }
