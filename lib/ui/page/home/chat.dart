@@ -1,6 +1,6 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
-import 'package:braingain_app/ui/page/home/chat_body.dart';
+import 'package:braingain_app/ui/page/home/chat_fragment.dart';
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {
@@ -18,9 +18,6 @@ class _ChatState extends State<Chat> {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme;
-    final text = Theme.of(context).textTheme;
-
     final children = <Widget>[];
     for (int index = 0; index <= _prompts.length; index++) {
       final fragment = ChatFragment(
