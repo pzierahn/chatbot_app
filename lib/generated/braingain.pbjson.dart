@@ -13,71 +13,105 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
-@$core.Deprecated('Use documentIdDescriptor instead')
-const DocumentId$json = {
-  '1': 'DocumentId',
+@$core.Deprecated('Use documentsDescriptor instead')
+const Documents$json = {
+  '1': 'Documents',
   '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.Documents.Document', '10': 'items'},
   ],
+  '3': [Documents_Document$json],
 };
 
-/// Descriptor for `DocumentId`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List documentIdDescriptor = $convert.base64Decode(
-    'CgpEb2N1bWVudElkEg4KAmlkGAEgASgJUgJpZA==');
-
-@$core.Deprecated('Use documentDescriptor instead')
-const Document$json = {
+@$core.Deprecated('Use documentsDescriptor instead')
+const Documents_Document$json = {
   '1': 'Document',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     {'1': 'filename', '3': 2, '4': 1, '5': 9, '10': 'filename'},
+    {'1': 'pages', '3': 3, '4': 1, '5': 13, '10': 'pages'},
   ],
 };
 
-/// Descriptor for `Document`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List documentDescriptor = $convert.base64Decode(
-    'CghEb2N1bWVudBIOCgJpZBgBIAEoCVICaWQSGgoIZmlsZW5hbWUYAiABKAlSCGZpbGVuYW1l');
+/// Descriptor for `Documents`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List documentsDescriptor = $convert.base64Decode(
+    'CglEb2N1bWVudHMSPwoFaXRlbXMYASADKAsyKS5lbmRwb2ludC5icmFpbmdhaW4udjEuRG9jdW'
+    '1lbnRzLkRvY3VtZW50UgVpdGVtcxpMCghEb2N1bWVudBIOCgJpZBgBIAEoCVICaWQSGgoIZmls'
+    'ZW5hbWUYAiABKAlSCGZpbGVuYW1lEhQKBXBhZ2VzGAMgASgNUgVwYWdlcw==');
+
+@$core.Deprecated('Use promptOptionsDescriptor instead')
+const PromptOptions$json = {
+  '1': 'PromptOptions',
+  '2': [
+    {'1': 'model', '3': 1, '4': 1, '5': 9, '10': 'model'},
+    {'1': 'temperature', '3': 2, '4': 1, '5': 2, '10': 'temperature'},
+    {'1': 'max_tokens', '3': 3, '4': 1, '5': 13, '10': 'maxTokens'},
+    {'1': 'threshold', '3': 4, '4': 1, '5': 2, '10': 'threshold'},
+    {'1': 'limit', '3': 5, '4': 1, '5': 13, '10': 'limit'},
+  ],
+};
+
+/// Descriptor for `PromptOptions`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List promptOptionsDescriptor = $convert.base64Decode(
+    'Cg1Qcm9tcHRPcHRpb25zEhQKBW1vZGVsGAEgASgJUgVtb2RlbBIgCgt0ZW1wZXJhdHVyZRgCIA'
+    'EoAlILdGVtcGVyYXR1cmUSHQoKbWF4X3Rva2VucxgDIAEoDVIJbWF4VG9rZW5zEhwKCXRocmVz'
+    'aG9sZBgEIAEoAlIJdGhyZXNob2xkEhQKBWxpbWl0GAUgASgNUgVsaW1pdA==');
 
 @$core.Deprecated('Use promptDescriptor instead')
 const Prompt$json = {
   '1': 'Prompt',
   '2': [
     {'1': 'prompt', '3': 1, '4': 1, '5': 9, '10': 'prompt'},
+    {'1': 'options', '3': 2, '4': 1, '5': 11, '6': '.endpoint.braingain.v1.PromptOptions', '10': 'options'},
+    {'1': 'documents', '3': 3, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.Prompt.Document', '10': 'documents'},
+  ],
+  '3': [Prompt_Document$json],
+};
+
+@$core.Deprecated('Use promptDescriptor instead')
+const Prompt_Document$json = {
+  '1': 'Document',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'filename', '3': 2, '4': 1, '5': 9, '10': 'filename'},
+    {'1': 'pages', '3': 3, '4': 3, '5': 13, '10': 'pages'},
   ],
 };
 
 /// Descriptor for `Prompt`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List promptDescriptor = $convert.base64Decode(
-    'CgZQcm9tcHQSFgoGcHJvbXB0GAEgASgJUgZwcm9tcHQ=');
+    'CgZQcm9tcHQSFgoGcHJvbXB0GAEgASgJUgZwcm9tcHQSPgoHb3B0aW9ucxgCIAEoCzIkLmVuZH'
+    'BvaW50LmJyYWluZ2Fpbi52MS5Qcm9tcHRPcHRpb25zUgdvcHRpb25zEkQKCWRvY3VtZW50cxgD'
+    'IAMoCzImLmVuZHBvaW50LmJyYWluZ2Fpbi52MS5Qcm9tcHQuRG9jdW1lbnRSCWRvY3VtZW50cx'
+    'pMCghEb2N1bWVudBIOCgJpZBgBIAEoCVICaWQSGgoIZmlsZW5hbWUYAiABKAlSCGZpbGVuYW1l'
+    'EhQKBXBhZ2VzGAMgAygNUgVwYWdlcw==');
 
-@$core.Deprecated('Use sourceDescriptor instead')
-const Source$json = {
-  '1': 'Source',
+@$core.Deprecated('Use completionDescriptor instead')
+const Completion$json = {
+  '1': 'Completion',
+  '2': [
+    {'1': 'prompt', '3': 1, '4': 1, '5': 11, '6': '.endpoint.braingain.v1.Prompt', '10': 'prompt'},
+    {'1': 'text', '3': 2, '4': 1, '5': 9, '10': 'text'},
+    {'1': 'documents', '3': 3, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.Completion.Document', '10': 'documents'},
+  ],
+  '3': [Completion_Document$json],
+};
+
+@$core.Deprecated('Use completionDescriptor instead')
+const Completion_Document$json = {
+  '1': 'Document',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'page', '3': 2, '4': 1, '5': 5, '10': 'page'},
-    {'1': 'score', '3': 3, '4': 1, '5': 2, '10': 'score'},
+    {'1': 'filename', '3': 2, '4': 1, '5': 9, '10': 'filename'},
+    {'1': 'pages', '3': 3, '4': 3, '5': 13, '10': 'pages'},
+    {'1': 'scores', '3': 4, '4': 3, '5': 2, '10': 'scores'},
   ],
 };
 
-/// Descriptor for `Source`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List sourceDescriptor = $convert.base64Decode(
-    'CgZTb3VyY2USDgoCaWQYASABKAlSAmlkEhIKBHBhZ2UYAiABKAVSBHBhZ2USFAoFc2NvcmUYAy'
-    'ABKAJSBXNjb3Jl');
-
-@$core.Deprecated('Use chatCompletionDescriptor instead')
-const ChatCompletion$json = {
-  '1': 'ChatCompletion',
-  '2': [
-    {'1': 'prompt', '3': 1, '4': 1, '5': 9, '10': 'prompt'},
-    {'1': 'completion', '3': 2, '4': 1, '5': 9, '10': 'completion'},
-    {'1': 'sources', '3': 3, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.Source', '10': 'sources'},
-  ],
-};
-
-/// Descriptor for `ChatCompletion`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List chatCompletionDescriptor = $convert.base64Decode(
-    'Cg5DaGF0Q29tcGxldGlvbhIWCgZwcm9tcHQYASABKAlSBnByb21wdBIeCgpjb21wbGV0aW9uGA'
-    'IgASgJUgpjb21wbGV0aW9uEjcKB3NvdXJjZXMYAyADKAsyHS5lbmRwb2ludC5icmFpbmdhaW4u'
-    'djEuU291cmNlUgdzb3VyY2Vz');
+/// Descriptor for `Completion`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List completionDescriptor = $convert.base64Decode(
+    'CgpDb21wbGV0aW9uEjUKBnByb21wdBgBIAEoCzIdLmVuZHBvaW50LmJyYWluZ2Fpbi52MS5Qcm'
+    '9tcHRSBnByb21wdBISCgR0ZXh0GAIgASgJUgR0ZXh0EkgKCWRvY3VtZW50cxgDIAMoCzIqLmVu'
+    'ZHBvaW50LmJyYWluZ2Fpbi52MS5Db21wbGV0aW9uLkRvY3VtZW50Uglkb2N1bWVudHMaZAoIRG'
+    '9jdW1lbnQSDgoCaWQYASABKAlSAmlkEhoKCGZpbGVuYW1lGAIgASgJUghmaWxlbmFtZRIUCgVw'
+    'YWdlcxgDIAMoDVIFcGFnZXMSFgoGc2NvcmVzGAQgAygCUgZzY29yZXM=');
 

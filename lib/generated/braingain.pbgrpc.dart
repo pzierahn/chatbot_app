@@ -16,19 +16,20 @@ import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'braingain.pb.dart' as $0;
+import 'google/protobuf/empty.pb.dart' as $1;
 
 export 'braingain.pb.dart';
 
 @$pb.GrpcServiceName('endpoint.braingain.v1.Braingain')
 class BraingainClient extends $grpc.Client {
-  static final _$chat = $grpc.ClientMethod<$0.Prompt, $0.ChatCompletion>(
+  static final _$chat = $grpc.ClientMethod<$0.Prompt, $0.Completion>(
       '/endpoint.braingain.v1.Braingain/Chat',
       ($0.Prompt value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.ChatCompletion.fromBuffer(value));
-  static final _$getDocument = $grpc.ClientMethod<$0.DocumentId, $0.Document>(
-      '/endpoint.braingain.v1.Braingain/GetDocument',
-      ($0.DocumentId value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.Document.fromBuffer(value));
+      ($core.List<$core.int> value) => $0.Completion.fromBuffer(value));
+  static final _$listDocuments = $grpc.ClientMethod<$1.Empty, $0.Documents>(
+      '/endpoint.braingain.v1.Braingain/ListDocuments',
+      ($1.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Documents.fromBuffer(value));
 
   BraingainClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -36,12 +37,12 @@ class BraingainClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$0.ChatCompletion> chat($0.Prompt request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$0.Completion> chat($0.Prompt request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$chat, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.Document> getDocument($0.DocumentId request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$getDocument, request, options: options);
+  $grpc.ResponseFuture<$0.Documents> listDocuments($1.Empty request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$listDocuments, request, options: options);
   }
 }
 
@@ -50,30 +51,30 @@ abstract class BraingainServiceBase extends $grpc.Service {
   $core.String get $name => 'endpoint.braingain.v1.Braingain';
 
   BraingainServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.Prompt, $0.ChatCompletion>(
+    $addMethod($grpc.ServiceMethod<$0.Prompt, $0.Completion>(
         'Chat',
         chat_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.Prompt.fromBuffer(value),
-        ($0.ChatCompletion value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.DocumentId, $0.Document>(
-        'GetDocument',
-        getDocument_Pre,
+        ($0.Completion value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.Empty, $0.Documents>(
+        'ListDocuments',
+        listDocuments_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.DocumentId.fromBuffer(value),
-        ($0.Document value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
+        ($0.Documents value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.ChatCompletion> chat_Pre($grpc.ServiceCall call, $async.Future<$0.Prompt> request) async {
+  $async.Future<$0.Completion> chat_Pre($grpc.ServiceCall call, $async.Future<$0.Prompt> request) async {
     return chat(call, await request);
   }
 
-  $async.Future<$0.Document> getDocument_Pre($grpc.ServiceCall call, $async.Future<$0.DocumentId> request) async {
-    return getDocument(call, await request);
+  $async.Future<$0.Documents> listDocuments_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
+    return listDocuments(call, await request);
   }
 
-  $async.Future<$0.ChatCompletion> chat($grpc.ServiceCall call, $0.Prompt request);
-  $async.Future<$0.Document> getDocument($grpc.ServiceCall call, $0.DocumentId request);
+  $async.Future<$0.Completion> chat($grpc.ServiceCall call, $0.Prompt request);
+  $async.Future<$0.Documents> listDocuments($grpc.ServiceCall call, $1.Empty request);
 }

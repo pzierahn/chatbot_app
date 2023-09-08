@@ -13,57 +13,16 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class DocumentId extends $pb.GeneratedMessage {
-  factory DocumentId() => create();
-  DocumentId._() : super();
-  factory DocumentId.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory DocumentId.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class Documents_Document extends $pb.GeneratedMessage {
+  factory Documents_Document() => create();
+  Documents_Document._() : super();
+  factory Documents_Document.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Documents_Document.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentId', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  DocumentId clone() => DocumentId()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  DocumentId copyWith(void Function(DocumentId) updates) => super.copyWith((message) => updates(message as DocumentId)) as DocumentId;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static DocumentId create() => DocumentId._();
-  DocumentId createEmptyInstance() => create();
-  static $pb.PbList<DocumentId> createRepeated() => $pb.PbList<DocumentId>();
-  @$core.pragma('dart2js:noInline')
-  static DocumentId getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DocumentId>(create);
-  static DocumentId? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
-}
-
-class Document extends $pb.GeneratedMessage {
-  factory Document() => create();
-  Document._() : super();
-  factory Document.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Document.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Documents.Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'filename')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'pages', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
 
@@ -71,22 +30,22 @@ class Document extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  Document clone() => Document()..mergeFromMessage(this);
+  Documents_Document clone() => Documents_Document()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Document copyWith(void Function(Document) updates) => super.copyWith((message) => updates(message as Document)) as Document;
+  Documents_Document copyWith(void Function(Documents_Document) updates) => super.copyWith((message) => updates(message as Documents_Document)) as Documents_Document;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Document create() => Document._();
-  Document createEmptyInstance() => create();
-  static $pb.PbList<Document> createRepeated() => $pb.PbList<Document>();
+  static Documents_Document create() => Documents_Document._();
+  Documents_Document createEmptyInstance() => create();
+  static $pb.PbList<Documents_Document> createRepeated() => $pb.PbList<Documents_Document>();
   @$core.pragma('dart2js:noInline')
-  static Document getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Document>(create);
-  static Document? _defaultInstance;
+  static Documents_Document getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Documents_Document>(create);
+  static Documents_Document? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
@@ -105,6 +64,189 @@ class Document extends $pb.GeneratedMessage {
   $core.bool hasFilename() => $_has(1);
   @$pb.TagNumber(2)
   void clearFilename() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get pages => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set pages($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasPages() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearPages() => clearField(3);
+}
+
+class Documents extends $pb.GeneratedMessage {
+  factory Documents() => create();
+  Documents._() : super();
+  factory Documents.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Documents.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Documents', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+    ..pc<Documents_Document>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Documents_Document.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Documents clone() => Documents()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Documents copyWith(void Function(Documents) updates) => super.copyWith((message) => updates(message as Documents)) as Documents;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Documents create() => Documents._();
+  Documents createEmptyInstance() => create();
+  static $pb.PbList<Documents> createRepeated() => $pb.PbList<Documents>();
+  @$core.pragma('dart2js:noInline')
+  static Documents getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Documents>(create);
+  static Documents? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<Documents_Document> get items => $_getList(0);
+}
+
+class PromptOptions extends $pb.GeneratedMessage {
+  factory PromptOptions() => create();
+  PromptOptions._() : super();
+  factory PromptOptions.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PromptOptions.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PromptOptions', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'model')
+    ..a<$core.double>(2, _omitFieldNames ? '' : 'temperature', $pb.PbFieldType.OF)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'maxTokens', $pb.PbFieldType.OU3)
+    ..a<$core.double>(4, _omitFieldNames ? '' : 'threshold', $pb.PbFieldType.OF)
+    ..a<$core.int>(5, _omitFieldNames ? '' : 'limit', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  PromptOptions clone() => PromptOptions()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  PromptOptions copyWith(void Function(PromptOptions) updates) => super.copyWith((message) => updates(message as PromptOptions)) as PromptOptions;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static PromptOptions create() => PromptOptions._();
+  PromptOptions createEmptyInstance() => create();
+  static $pb.PbList<PromptOptions> createRepeated() => $pb.PbList<PromptOptions>();
+  @$core.pragma('dart2js:noInline')
+  static PromptOptions getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PromptOptions>(create);
+  static PromptOptions? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get model => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set model($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasModel() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearModel() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.double get temperature => $_getN(1);
+  @$pb.TagNumber(2)
+  set temperature($core.double v) { $_setFloat(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasTemperature() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTemperature() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get maxTokens => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set maxTokens($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasMaxTokens() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearMaxTokens() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.double get threshold => $_getN(3);
+  @$pb.TagNumber(4)
+  set threshold($core.double v) { $_setFloat(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasThreshold() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearThreshold() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.int get limit => $_getIZ(4);
+  @$pb.TagNumber(5)
+  set limit($core.int v) { $_setUnsignedInt32(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasLimit() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearLimit() => clearField(5);
+}
+
+class Prompt_Document extends $pb.GeneratedMessage {
+  factory Prompt_Document() => create();
+  Prompt_Document._() : super();
+  factory Prompt_Document.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Prompt_Document.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Prompt.Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'filename')
+    ..p<$core.int>(3, _omitFieldNames ? '' : 'pages', $pb.PbFieldType.KU3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Prompt_Document clone() => Prompt_Document()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Prompt_Document copyWith(void Function(Prompt_Document) updates) => super.copyWith((message) => updates(message as Prompt_Document)) as Prompt_Document;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Prompt_Document create() => Prompt_Document._();
+  Prompt_Document createEmptyInstance() => create();
+  static $pb.PbList<Prompt_Document> createRepeated() => $pb.PbList<Prompt_Document>();
+  @$core.pragma('dart2js:noInline')
+  static Prompt_Document getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Prompt_Document>(create);
+  static Prompt_Document? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get filename => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set filename($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasFilename() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFilename() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.int> get pages => $_getList(2);
 }
 
 class Prompt extends $pb.GeneratedMessage {
@@ -115,6 +257,8 @@ class Prompt extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Prompt', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'prompt')
+    ..aOM<PromptOptions>(2, _omitFieldNames ? '' : 'options', subBuilder: PromptOptions.create)
+    ..pc<Prompt_Document>(3, _omitFieldNames ? '' : 'documents', $pb.PbFieldType.PM, subBuilder: Prompt_Document.create)
     ..hasRequiredFields = false
   ;
 
@@ -147,18 +291,33 @@ class Prompt extends $pb.GeneratedMessage {
   $core.bool hasPrompt() => $_has(0);
   @$pb.TagNumber(1)
   void clearPrompt() => clearField(1);
+
+  @$pb.TagNumber(2)
+  PromptOptions get options => $_getN(1);
+  @$pb.TagNumber(2)
+  set options(PromptOptions v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasOptions() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearOptions() => clearField(2);
+  @$pb.TagNumber(2)
+  PromptOptions ensureOptions() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $core.List<Prompt_Document> get documents => $_getList(2);
 }
 
-class Source extends $pb.GeneratedMessage {
-  factory Source() => create();
-  Source._() : super();
-  factory Source.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Source.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class Completion_Document extends $pb.GeneratedMessage {
+  factory Completion_Document() => create();
+  Completion_Document._() : super();
+  factory Completion_Document.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Completion_Document.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Source', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Completion.Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'page', $pb.PbFieldType.O3)
-    ..a<$core.double>(3, _omitFieldNames ? '' : 'score', $pb.PbFieldType.OF)
+    ..aOS(2, _omitFieldNames ? '' : 'filename')
+    ..p<$core.int>(3, _omitFieldNames ? '' : 'pages', $pb.PbFieldType.KU3)
+    ..p<$core.double>(4, _omitFieldNames ? '' : 'scores', $pb.PbFieldType.KF)
     ..hasRequiredFields = false
   ;
 
@@ -166,22 +325,22 @@ class Source extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  Source clone() => Source()..mergeFromMessage(this);
+  Completion_Document clone() => Completion_Document()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Source copyWith(void Function(Source) updates) => super.copyWith((message) => updates(message as Source)) as Source;
+  Completion_Document copyWith(void Function(Completion_Document) updates) => super.copyWith((message) => updates(message as Completion_Document)) as Completion_Document;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Source create() => Source._();
-  Source createEmptyInstance() => create();
-  static $pb.PbList<Source> createRepeated() => $pb.PbList<Source>();
+  static Completion_Document create() => Completion_Document._();
+  Completion_Document createEmptyInstance() => create();
+  static $pb.PbList<Completion_Document> createRepeated() => $pb.PbList<Completion_Document>();
   @$core.pragma('dart2js:noInline')
-  static Source getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Source>(create);
-  static Source? _defaultInstance;
+  static Completion_Document getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Completion_Document>(create);
+  static Completion_Document? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
@@ -193,34 +352,31 @@ class Source extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.int get page => $_getIZ(1);
+  $core.String get filename => $_getSZ(1);
   @$pb.TagNumber(2)
-  set page($core.int v) { $_setSignedInt32(1, v); }
+  set filename($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasPage() => $_has(1);
+  $core.bool hasFilename() => $_has(1);
   @$pb.TagNumber(2)
-  void clearPage() => clearField(2);
+  void clearFilename() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.double get score => $_getN(2);
-  @$pb.TagNumber(3)
-  set score($core.double v) { $_setFloat(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasScore() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearScore() => clearField(3);
+  $core.List<$core.int> get pages => $_getList(2);
+
+  @$pb.TagNumber(4)
+  $core.List<$core.double> get scores => $_getList(3);
 }
 
-class ChatCompletion extends $pb.GeneratedMessage {
-  factory ChatCompletion() => create();
-  ChatCompletion._() : super();
-  factory ChatCompletion.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ChatCompletion.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class Completion extends $pb.GeneratedMessage {
+  factory Completion() => create();
+  Completion._() : super();
+  factory Completion.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Completion.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatCompletion', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'prompt')
-    ..aOS(2, _omitFieldNames ? '' : 'completion')
-    ..pc<Source>(3, _omitFieldNames ? '' : 'sources', $pb.PbFieldType.PM, subBuilder: Source.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Completion', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+    ..aOM<Prompt>(1, _omitFieldNames ? '' : 'prompt', subBuilder: Prompt.create)
+    ..aOS(2, _omitFieldNames ? '' : 'text')
+    ..pc<Completion_Document>(3, _omitFieldNames ? '' : 'documents', $pb.PbFieldType.PM, subBuilder: Completion_Document.create)
     ..hasRequiredFields = false
   ;
 
@@ -228,43 +384,45 @@ class ChatCompletion extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ChatCompletion clone() => ChatCompletion()..mergeFromMessage(this);
+  Completion clone() => Completion()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ChatCompletion copyWith(void Function(ChatCompletion) updates) => super.copyWith((message) => updates(message as ChatCompletion)) as ChatCompletion;
+  Completion copyWith(void Function(Completion) updates) => super.copyWith((message) => updates(message as Completion)) as Completion;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ChatCompletion create() => ChatCompletion._();
-  ChatCompletion createEmptyInstance() => create();
-  static $pb.PbList<ChatCompletion> createRepeated() => $pb.PbList<ChatCompletion>();
+  static Completion create() => Completion._();
+  Completion createEmptyInstance() => create();
+  static $pb.PbList<Completion> createRepeated() => $pb.PbList<Completion>();
   @$core.pragma('dart2js:noInline')
-  static ChatCompletion getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ChatCompletion>(create);
-  static ChatCompletion? _defaultInstance;
+  static Completion getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Completion>(create);
+  static Completion? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get prompt => $_getSZ(0);
+  Prompt get prompt => $_getN(0);
   @$pb.TagNumber(1)
-  set prompt($core.String v) { $_setString(0, v); }
+  set prompt(Prompt v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasPrompt() => $_has(0);
   @$pb.TagNumber(1)
   void clearPrompt() => clearField(1);
+  @$pb.TagNumber(1)
+  Prompt ensurePrompt() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $core.String get completion => $_getSZ(1);
+  $core.String get text => $_getSZ(1);
   @$pb.TagNumber(2)
-  set completion($core.String v) { $_setString(1, v); }
+  set text($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasCompletion() => $_has(1);
+  $core.bool hasText() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCompletion() => clearField(2);
+  void clearText() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.List<Source> get sources => $_getList(2);
+  $core.List<Completion_Document> get documents => $_getList(2);
 }
 
 
