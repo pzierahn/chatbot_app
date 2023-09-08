@@ -149,7 +149,7 @@ class ChatFragment extends StatelessWidget {
                           color: color.onSurfaceVariant,
                         ),
                         onPressed: () {
-                          showDocumentSelectors(context);
+                          SelectDocumentsDialog.show(context);
                         },
                         side: BorderSide(
                           color: color.outlineVariant,
