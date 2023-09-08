@@ -1,6 +1,6 @@
-import 'package:braingain_app/ui/page/home_v2/chat.dart';
-import 'package:braingain_app/ui/page/home_v2/documents.dart';
-import 'package:braingain_app/ui/page/home_v2/options.dart';
+import 'package:braingain_app/ui/page/home/chat.dart';
+import 'package:braingain_app/ui/page/home/documents.dart';
+import 'package:braingain_app/ui/page/home/options.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
-import 'package:braingain_app/ui/page/home_v2/chat_body.dart';
+import 'package:braingain_app/ui/page/home/chat_body.dart';
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:braingain_app/ui/page/home_v2/home.dart';
+import 'package:braingain_app/ui/page/home/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
