@@ -14,7 +14,7 @@ class Chat extends StatefulWidget {
 
 class _ChatState extends State<Chat> {
   final _prompts = <String>[];
-  final _completions = <Future<ChatCompletion>>[];
+  final _completions = <Future<Completion>>[];
 
   @override
   Widget build(BuildContext context) {

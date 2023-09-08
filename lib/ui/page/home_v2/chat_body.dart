@@ -15,7 +15,7 @@ class ChatFragment extends StatelessWidget {
   });
 
   final String? prompt;
-  final Future<ChatCompletion>? completion;
+  final Future<Completion>? completion;
   final ValueChanged<String> onPromptChanged;
 
   final _controller = TextEditingController();
@@ -166,7 +166,7 @@ class ChatFragment extends StatelessWidget {
                   padding: completion != null
                       ? const EdgeInsets.only(top: 16)
                       : EdgeInsets.zero,
-                  child: FutureBuilder<ChatCompletion>(
+                  child: FutureBuilder<Completion>(
                     future: completion,
                     builder: (context, snap) {
                       if (completion == null) {
@@ -187,7 +187,7 @@ class ChatFragment extends StatelessWidget {
 
                       if (snap.hasData) {
                         return MarkdownBody(
-                          data: snap.data!.completion,
+                          data: snap.data!.text,
                         );
                       }
 
