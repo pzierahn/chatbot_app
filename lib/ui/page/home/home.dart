@@ -1,6 +1,4 @@
 import 'package:braingain_app/ui/page/home/chat.dart';
-import 'package:braingain_app/ui/page/home/documents.dart';
-import 'package:braingain_app/ui/page/home/options.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -16,13 +14,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
-    final text = Theme.of(context).textTheme;
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
         title: const Text(
-          "Braingain",
+          'Braingain',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         actions: [
