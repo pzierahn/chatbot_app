@@ -23,6 +23,7 @@ class SelectDocumentsDialog extends StatefulWidget {
 
 class _SelectDocumentsDialogState extends State<SelectDocumentsDialog> {
   String _query = '';
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +62,11 @@ class _SelectDocumentsDialogState extends State<SelectDocumentsDialog> {
                 );
               }
 
-              return _DocumentsBody(
-                documents: snap.data!,
+              return Form(
+                key: _formKey,
+                child: _DocumentsBody(
+                  documents: snap.data!,
+                ),
               );
             },
           ),
@@ -77,7 +81,9 @@ class _SelectDocumentsDialogState extends State<SelectDocumentsDialog> {
         ),
         TextButton(
           onPressed: () {
-            Navigator.pop(context);
+            if (_formKey.currentState!.validate()) {
+              Navigator.pop(context);
+            }
           },
           child: const Text('Submit'),
         ),
@@ -126,7 +132,7 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
                   )),
                 ),
                 subtitle: _selected.contains(doc.id)
-                    ? TextField(
+                    ? TextFormField(
                         controller:
                             TextEditingController(text: '1-${doc.pages}'),
                         decoration: const InputDecoration.collapsed(
@@ -135,6 +141,19 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
                         style: text.bodySmall?.merge(TextStyle(
                           color: color.outline,
                         )),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter page numbers';
+                          }
+
+                          final reg =
+                              RegExp(r'^\d+(-\d+)?,?( *\d+(-\d+)?,?)*$');
+                          if (!reg.hasMatch(value)) {
+                            return 'Please enter page numbers correctly';
+                          }
+
+                          return null;
+                        },
                       )
                     : Text(
                         'Pages: ${doc.pages}',
