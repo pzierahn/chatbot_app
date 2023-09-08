@@ -63,20 +63,6 @@ class ChatFragment extends StatelessWidget {
                               decoration: InputDecoration.collapsed(
                                 hintText: 'Type a prompt',
                                 hintStyle: textStyles,
-                                // prefixIcon: const Icon(Icons.search),
-                                // prefixIconConstraints: const BoxConstraints(
-                                //   minWidth: 16 * 4,
-                                // ),
-                                // border: OutlineInputBorder(
-                                //   borderRadius: BorderRadius.circular(16),
-                                // ),
-                                // focusedBorder: OutlineInputBorder(
-                                //   borderRadius: BorderRadius.circular(16),
-                                //   borderSide: BorderSide(
-                                //     color: color.primary,
-                                //     width: 2.0,
-                                //   ),
-                                // ),
                               ),
                             ),
                           ),
