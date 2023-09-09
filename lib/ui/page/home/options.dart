@@ -179,7 +179,7 @@ Future<Object?> showOptions(BuildContext context) {
     builder: (context) {
       return AlertDialog(
         title: const Text("Search"),
-        content: SizedBox(
+        content: const SizedBox(
           width: 300,
           height: 400,
           child: SingleChildScrollView(

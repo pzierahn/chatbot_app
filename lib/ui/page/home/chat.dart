@@ -19,6 +19,7 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     final children = <Widget>[];
+
     for (int index = 0; index <= _prompts.length; index++) {
       final fragment = ChatFragment(
         prompt: index < _prompts.length ? _prompts[index] : null,
