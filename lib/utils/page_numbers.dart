@@ -1,3 +1,5 @@
+import 'package:braingain_app/generated/braingain.pb.dart';
+
 List<int> parsePageList(String text) {
   final pages = text.split(',');
   final pageSet = <int>{};
@@ -49,4 +51,16 @@ String formatPageList(List<int> pages) {
   }
 
   return pageRanges.join(', ');
+}
+
+List<Prompt_Document> formatDocuments(Map<String, List<int>> selected) {
+  final docs = <Prompt_Document>[];
+
+  for (final entry in selected.entries) {
+    docs.add(Prompt_Document()
+      ..id = entry.key
+      ..pages.addAll(entry.value));
+  }
+
+  return docs;
 }

@@ -119,7 +119,11 @@ class PromptInput extends StatelessWidget {
                   color: color.onSurfaceVariant,
                 ),
                 onPressed: () async {
-                  SelectDocumentsDialog.show(context);
+                  final docs = await SelectDocumentsDialog.show(context);
+                  if (docs != null) {
+                    prompt.documents.clear();
+                    prompt.documents.addAll(docs);
+                  }
                 },
                 side: BorderSide(
                   color: color.outlineVariant,

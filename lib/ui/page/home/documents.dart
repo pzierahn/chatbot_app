@@ -9,8 +9,8 @@ class SelectDocumentsDialog extends StatefulWidget {
     super.key,
   });
 
-  static Future<Object?> show(BuildContext context) {
-    return showDialog(
+  static Future<List<Prompt_Document>?> show(BuildContext context) {
+    return showDialog<List<Prompt_Document>?>(
       context: context,
       builder: (context) {
         return const SelectDocumentsDialog();
@@ -91,7 +91,7 @@ class _SelectDocumentsDialogState extends State<SelectDocumentsDialog> {
         TextButton(
           onPressed: () {
             if (_formKey.currentState!.validate()) {
-              Navigator.pop(context);
+              Navigator.pop(context, formatDocuments(_selectedDocs));
             }
           },
           child: const Text('Submit'),
