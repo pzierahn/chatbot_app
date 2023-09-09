@@ -7,14 +7,14 @@ import 'package:google_fonts/google_fonts.dart';
 class PromptInput extends StatelessWidget {
   PromptInput({
     super.key,
-    this.prompt,
+    Prompt? prompt,
     this.completion,
-    required this.onPromptChanged,
-  });
+    required this.onPromptSubmit,
+  }) : prompt = prompt ?? Prompt();
 
-  final String? prompt;
+  final Prompt prompt;
   final Completion? completion;
-  final ValueChanged<String> onPromptChanged;
+  final ValueChanged<Prompt> onPromptSubmit;
 
   final _controller = TextEditingController();
 
@@ -30,7 +30,7 @@ class PromptInput extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        prompt == null
+        prompt.prompt.isEmpty
             ? Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -40,7 +40,8 @@ class PromptInput extends StatelessWidget {
                       maxLines: null,
                       style: textStyles,
                       onSubmitted: (value) {
-                        onPromptChanged(value);
+                        prompt.prompt = value;
+                        onPromptSubmit(prompt);
                       },
                       decoration: InputDecoration.collapsed(
                         hintText: 'Type a prompt',
@@ -51,7 +52,8 @@ class PromptInput extends StatelessWidget {
                   IconButton(
                     onPressed: () {
                       if (_controller.text.isNotEmpty) {
-                        onPromptChanged(_controller.text);
+                        prompt.prompt = _controller.text;
+                        onPromptSubmit(prompt);
                       }
                     },
                     color: color.primary,
@@ -61,7 +63,7 @@ class PromptInput extends StatelessWidget {
                 ],
               )
             : SelectableText(
-                prompt ?? '',
+                prompt.prompt,
                 style: textStyles,
                 textAlign: TextAlign.start,
               ),
@@ -97,7 +99,7 @@ class PromptInput extends StatelessWidget {
                 ),
               ),
               ActionChip(
-                avatar: prompt == null
+                avatar: prompt.documents.isEmpty
                     ? Icon(
                         Icons.add,
                         size: 16,
@@ -116,7 +118,7 @@ class PromptInput extends StatelessWidget {
                 labelStyle: TextStyle(
                   color: color.onSurfaceVariant,
                 ),
-                onPressed: () {
+                onPressed: () async {
                   SelectDocumentsDialog.show(context);
                 },
                 side: BorderSide(

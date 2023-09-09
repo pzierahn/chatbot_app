@@ -13,7 +13,7 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
-  final _prompts = <String>[];
+  final _prompts = <Prompt>[];
   final _completions = <Future<Completion>>[];
 
   @override
@@ -24,13 +24,10 @@ class _ChatState extends State<Chat> {
       final fragment = ChatFragment(
         prompt: index < _prompts.length ? _prompts[index] : null,
         completion: index < _completions.length ? _completions[index] : null,
-        onPromptChanged: (value) {
-          final req = Prompt();
-          req.prompt = value;
-
+        onPromptSubmit: (prompt) {
           setState(() {
-            _prompts.add(value);
-            _completions.add(braingain.chat(req));
+            _prompts.add(prompt);
+            _completions.add(braingain.chat(prompt));
           });
         },
       );

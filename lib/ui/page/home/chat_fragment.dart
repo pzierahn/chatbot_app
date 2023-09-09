@@ -9,12 +9,12 @@ class ChatFragment extends StatelessWidget {
     super.key,
     this.prompt,
     this.completion,
-    required this.onPromptChanged,
+    required this.onPromptSubmit,
   });
 
-  final String? prompt;
+  final Prompt? prompt;
   final Future<Completion>? completion;
-  final ValueChanged<String> onPromptChanged;
+  final ValueChanged<Prompt> onPromptSubmit;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,7 @@ class ChatFragment extends StatelessWidget {
             PromptInput(
               prompt: prompt,
               completion: snap.data,
-              onPromptChanged: onPromptChanged,
+              onPromptSubmit: onPromptSubmit,
             ),
             Padding(
               padding: completion != null
