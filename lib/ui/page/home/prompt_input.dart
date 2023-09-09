@@ -13,7 +13,7 @@ class PromptInput extends StatelessWidget {
   });
 
   final String? prompt;
-  final Future<Completion>? completion;
+  final Completion? completion;
   final ValueChanged<String> onPromptChanged;
 
   final _controller = TextEditingController();
