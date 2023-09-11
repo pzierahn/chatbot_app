@@ -50,11 +50,23 @@ class _SourcesDialogState extends State<SourcesDialog> {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
-              subtitle: Text(
-                formatPageList(source.pages),
-                style: text.bodySmall,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+              subtitle: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      source.pages.join('\n'),
+                      style: text.bodySmall,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      source.scores.join('\n'),
+                      style: text.bodySmall,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
               ),
             );
           },
