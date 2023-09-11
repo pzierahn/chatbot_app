@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 class CollectionPage extends StatefulWidget {
@@ -50,7 +51,19 @@ class _CollectionPageState extends State<CollectionPage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
-            onPressed: () {},
+            onPressed: () async {
+              final result = await FilePicker.platform.pickFiles(
+                type: FileType.custom,
+                allowMultiple: true,
+                allowedExtensions: ['pdf'],
+              );
+
+              if (result != null) {
+                for (final file in result.files) {
+                  print(file.name);
+                }
+              }
+            },
           ),
         ],
       ),

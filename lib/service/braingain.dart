@@ -9,4 +9,8 @@ final _channel = ClientChannel(
   ),
 );
 
-final braingain = BraingainClient(_channel);
+final braingain = BraingainClientWithToken(_channel);
+
+class BraingainClientWithToken extends BraingainClient {
+  BraingainClientWithToken(super.channel);
+}
