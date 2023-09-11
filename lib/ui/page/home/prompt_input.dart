@@ -29,6 +29,14 @@ class _PromptInputState extends State<PromptInput> {
   void initState() {
     super.initState();
     _controller.text = prompt.prompt;
+
+    // Set default options
+    widget.prompt.options = PromptOptions()
+      ..model = 'gpt-3.5-turbo-16k'
+      ..temperature = 0.0
+      ..maxTokens = 1024
+      ..limit = 10
+      ..threshold = 0.8;
   }
 
   @override

@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 class ParameterButton extends StatelessWidget {
   const ParameterButton({
     super.key,
-    this.options,
+    required this.options,
     this.onChanged,
   });
 
-  final PromptOptions? options;
+  final PromptOptions options;
   final ValueChanged<PromptOptions>? onChanged;
 
   @override
@@ -24,7 +24,7 @@ class ParameterButton extends StatelessWidget {
       ),
       onPressed: onChanged != null
           ? () async {
-              final opts = await ParameterDialog.show(context);
+              final opts = await ParameterDialog.show(context, options);
               if (opts != null) {
                 onChanged?.call(opts);
               }

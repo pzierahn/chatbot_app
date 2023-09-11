@@ -4,22 +4,25 @@ import 'package:flutter/material.dart';
 class ParameterDialog extends StatefulWidget {
   const ParameterDialog({
     super.key,
-    this.options,
+    required this.options,
   });
 
-  final PromptOptions? options;
+  final PromptOptions options;
 
-  static Future<PromptOptions?> show(BuildContext context) {
+  static Future<PromptOptions?> show(
+    BuildContext context,
+    PromptOptions options,
+  ) {
     return showDialog<PromptOptions?>(
       context: context,
       builder: (context) {
         return AlertDialog(
           title: const Text('Search'),
-          content: const SizedBox(
+          content: SizedBox(
             width: 300,
             height: 400,
             child: SingleChildScrollView(
-              child: ParameterDialog(),
+              child: ParameterDialog(options: options),
             ),
           ),
           actions: [
@@ -46,7 +49,7 @@ class ParameterDialog extends StatefulWidget {
 }
 
 class _PromptOptionsState extends State<ParameterDialog> {
-  late PromptOptions options;
+  PromptOptions get options => widget.options;
 
   late TextEditingController _textTemp;
   late TextEditingController _textTokens;
@@ -56,17 +59,6 @@ class _PromptOptionsState extends State<ParameterDialog> {
   @override
   void initState() {
     super.initState();
-
-    if (widget.options != null) {
-      options = widget.options!;
-    } else {
-      // Set default values
-      options = PromptOptions()
-        ..temperature = 0.0
-        ..maxTokens = 1024
-        ..limit = 10
-        ..threshold = 0.8;
-    }
 
     _textTemp = TextEditingController(
       text: options.temperature.toStringAsFixed(2),

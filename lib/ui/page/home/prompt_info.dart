@@ -37,7 +37,9 @@ class PromptInfo extends StatelessWidget {
             spacing: 8,
             runSpacing: 8,
             children: [
-              const ParameterButton(),
+              ParameterButton(
+                options: completion.prompt.options,
+              ),
               ActionChip(
                 avatar: Icon(
                   Icons.description_outlined,
