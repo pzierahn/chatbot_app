@@ -64,3 +64,13 @@ List<Prompt_Document> formatDocuments(Map<String, List<int>> selected) {
 
   return docs;
 }
+
+Map<String, List<int>> parseDocuments(List<Prompt_Document> docs) {
+  final selected = <String, List<int>>{};
+
+  for (final doc in docs) {
+    selected[doc.id] = doc.pages;
+  }
+
+  return selected;
+}

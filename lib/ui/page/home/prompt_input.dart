@@ -1,6 +1,7 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/ui/page/home/documents.dart';
 import 'package:braingain_app/ui/page/home/options.dart';
+import 'package:braingain_app/ui/page/home/sources.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -119,7 +120,20 @@ class PromptInput extends StatelessWidget {
                   color: color.onSurfaceVariant,
                 ),
                 onPressed: () async {
-                  final docs = await SelectDocumentsDialog.show(context);
+                  if (completion != null) {
+                    SourcesDialog.show(
+                      context,
+                      completion!.documents,
+                    );
+
+                    return;
+                  }
+
+                  final docs = await SelectDocumentsDialog.show(
+                    context,
+                    prompt.documents,
+                  );
+
                   if (docs != null) {
                     prompt.documents.clear();
                     prompt.documents.addAll(docs);

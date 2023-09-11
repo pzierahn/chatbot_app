@@ -1,101 +1,59 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
-import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
-import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/utils/page_numbers.dart';
 import 'package:flutter/material.dart';
 
-class SelectDocumentsDialog extends StatefulWidget {
-  const SelectDocumentsDialog({
+class SourcesDialog extends StatefulWidget {
+  const SourcesDialog({
     super.key,
-    this.preSelected,
+    required this.sources,
   });
 
-  final Map<String, List<int>>? preSelected;
+  final List<Completion_Document> sources;
 
-  static Future<List<Prompt_Document>?> show(
-    BuildContext context, [
-    List<Prompt_Document>? documents,
-  ]) {
-    return showDialog<List<Prompt_Document>?>(
+  static Future<void> show(
+    BuildContext context,
+    List<Completion_Document> documents,
+  ) {
+    return showDialog(
       context: context,
-      builder: (context) {
-        return SelectDocumentsDialog(
-          preSelected: parseDocuments(documents ?? []),
-        );
-      },
+      builder: (context) => SourcesDialog(sources: documents),
     );
   }
 
   @override
-  State createState() => _SelectDocumentsDialogState();
+  State createState() => _SourcesDialogState();
 }
 
-class _SelectDocumentsDialogState extends State<SelectDocumentsDialog> {
-  String _query = '';
-  final _formKey = GlobalKey<FormState>();
-
-  Map<String, List<int>> _selectedDocs = <String, List<int>>{};
-
-  @override
-  void initState() {
-    super.initState();
-
-    if (widget.preSelected != null) {
-      _selectedDocs = widget.preSelected!;
-    }
-  }
-
+class _SourcesDialogState extends State<SourcesDialog> {
   @override
   Widget build(BuildContext context) {
-    final request = DocumentQuery();
-    request.query = _query;
+    final text = Theme.of(context).textTheme;
 
     return AlertDialog(
-      title: TextField(
-        onChanged: (value) {
-          setState(() => _query = value);
-        },
-        decoration: const InputDecoration(
-          hintText: 'Search',
-          border: InputBorder.none,
-          prefixIcon: Icon(Icons.search),
-        ),
-      ),
+      title: const Text('Sources'),
       content: SizedBox(
         height: 400,
         width: 400,
-        child: SingleChildScrollView(
-          child: FutureBuilder<Documents>(
-            future: _query.isEmpty
-                ? braingain.listDocuments(Empty())
-                : braingain.findDocuments(request),
-            builder: (context, snap) {
-              if (snap.hasError) {
-                return const Center(
-                  child: Text('Error'),
-                );
-              }
+        child: ListView.builder(
+          itemCount: widget.sources.length,
+          itemBuilder: (context, index) {
+            final source = widget.sources[index];
 
-              if (!snap.hasData) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-
-              return Form(
-                key: _formKey,
-                child: _DocumentsBody(
-                  documents: snap.data!,
-                  selected: _selectedDocs,
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedDocs = value;
-                    });
-                  },
-                ),
-              );
-            },
-          ),
+            return ListTile(
+              leading: const Icon(
+                Icons.description,
+                size: 16,
+              ),
+              title: Text(
+                source.filename,
+                style: text.bodySmall,
+              ),
+              subtitle: Text(
+                formatPageList(source.pages),
+                style: text.bodySmall,
+              ),
+            );
+          },
         ),
       ),
       actions: [
@@ -103,15 +61,7 @@ class _SelectDocumentsDialogState extends State<SelectDocumentsDialog> {
           onPressed: () {
             Navigator.pop(context);
           },
-          child: const Text('Cancel'),
-        ),
-        TextButton(
-          onPressed: () {
-            if (_formKey.currentState!.validate()) {
-              Navigator.pop(context, formatDocuments(_selectedDocs));
-            }
-          },
-          child: const Text('Submit'),
+          child: const Text('Close'),
         ),
       ],
     );
