@@ -4,8 +4,8 @@ import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/utils/page_numbers.dart';
 import 'package:flutter/material.dart';
 
-class SelectDocumentsDialog extends StatefulWidget {
-  const SelectDocumentsDialog({
+class SelectDocsDialog extends StatefulWidget {
+  const SelectDocsDialog({
     super.key,
     this.preSelected,
   });
@@ -19,7 +19,7 @@ class SelectDocumentsDialog extends StatefulWidget {
     return showDialog<List<Prompt_Document>?>(
       context: context,
       builder: (context) {
-        return SelectDocumentsDialog(
+        return SelectDocsDialog(
           preSelected: parseDocuments(documents ?? []),
         );
       },
@@ -27,10 +27,10 @@ class SelectDocumentsDialog extends StatefulWidget {
   }
 
   @override
-  State createState() => _SelectDocumentsDialogState();
+  State createState() => _SelectDocsDialogState();
 }
 
-class _SelectDocumentsDialogState extends State<SelectDocumentsDialog> {
+class _SelectDocsDialogState extends State<SelectDocsDialog> {
   String _query = '';
   final _formKey = GlobalKey<FormState>();
 

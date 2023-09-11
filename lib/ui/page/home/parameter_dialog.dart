@@ -1,24 +1,86 @@
+import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:flutter/material.dart';
 
-class Options extends StatefulWidget {
-  const Options({
+class ParameterDialog extends StatefulWidget {
+  const ParameterDialog({
     super.key,
+    this.options,
   });
 
+  final PromptOptions? options;
+
+  static Future<PromptOptions?> show(BuildContext context) {
+    return showDialog<PromptOptions?>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Search'),
+          content: const SizedBox(
+            width: 300,
+            height: 400,
+            child: SingleChildScrollView(
+              child: ParameterDialog(),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Submit'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
-  State<Options> createState() => _OptionsState();
+  State<ParameterDialog> createState() => _PromptOptionsState();
 }
 
-class _OptionsState extends State<Options> {
-  int _maxTokens = 1024;
-  double _temperature = 0.0;
-  int _limit = 10;
-  double _threshold = 0.8;
+class _PromptOptionsState extends State<ParameterDialog> {
+  late PromptOptions options;
 
-  final _textTemp = TextEditingController(text: '0.00');
-  final _textTokens = TextEditingController(text: '1024');
-  final _textLimit = TextEditingController(text: '10');
-  final _textThreshold = TextEditingController(text: '0.80');
+  late TextEditingController _textTemp;
+  late TextEditingController _textTokens;
+  late TextEditingController _textLimit;
+  late TextEditingController _textThreshold;
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.options != null) {
+      options = widget.options!;
+    } else {
+      // Set default values
+      options = PromptOptions()
+        ..temperature = 0.0
+        ..maxTokens = 1024
+        ..limit = 10
+        ..threshold = 0.8;
+    }
+
+    _textTemp = TextEditingController(
+      text: options.temperature.toStringAsFixed(2),
+    );
+    _textTokens = TextEditingController(
+      text: options.maxTokens.toString(),
+    );
+    _textLimit = TextEditingController(
+      text: options.limit.toString(),
+    );
+    _textThreshold = TextEditingController(
+      text: options.threshold.toStringAsFixed(2),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +120,7 @@ class _OptionsState extends State<Options> {
                   controller: _textTemp,
                   textAlign: TextAlign.end,
                   onSubmitted: (val) {
-                    setState(() => _temperature = double.parse(val));
+                    setState(() => options.temperature = double.parse(val));
                   },
                   decoration: const InputDecoration.collapsed(
                     hintText: '0.00',
@@ -68,11 +130,11 @@ class _OptionsState extends State<Options> {
             ],
           ),
           subtitle: Slider(
-            value: _temperature,
+            value: options.temperature,
             divisions: 20,
             onChanged: (val) {
               _textTemp.text = val.toStringAsFixed(2);
-              setState(() => _temperature = val);
+              setState(() => options.temperature = val);
             },
           ),
         ),
@@ -88,7 +150,7 @@ class _OptionsState extends State<Options> {
                   controller: _textTokens,
                   textAlign: TextAlign.end,
                   onSubmitted: (val) {
-                    setState(() => _maxTokens = int.parse(val));
+                    setState(() => options.maxTokens = int.parse(val));
                   },
                   decoration: const InputDecoration.collapsed(
                     hintText: '0',
@@ -98,12 +160,12 @@ class _OptionsState extends State<Options> {
             ],
           ),
           subtitle: Slider(
-            value: _maxTokens.toDouble(),
+            value: options.maxTokens.toDouble(),
             min: 1,
             max: 1024,
             onChanged: (val) {
               _textTokens.text = val.toInt().toString();
-              setState(() => _maxTokens = val.toInt());
+              setState(() => options.maxTokens = val.toInt());
             },
           ),
         ),
@@ -119,7 +181,7 @@ class _OptionsState extends State<Options> {
                   controller: _textLimit,
                   textAlign: TextAlign.end,
                   onSubmitted: (val) {
-                    setState(() => _limit = int.parse(val));
+                    setState(() => options.limit = int.parse(val));
                   },
                   decoration: const InputDecoration.collapsed(
                     hintText: '0',
@@ -129,12 +191,12 @@ class _OptionsState extends State<Options> {
             ],
           ),
           subtitle: Slider(
-            value: _limit.toDouble(),
+            value: options.limit.toDouble(),
             min: 0,
             max: 30,
             onChanged: (val) {
               _textLimit.text = val.toInt().toString();
-              setState(() => _limit = val.toInt());
+              setState(() => options.limit = val.toInt());
             },
           ),
         ),
@@ -150,7 +212,7 @@ class _OptionsState extends State<Options> {
                   controller: _textThreshold,
                   textAlign: TextAlign.end,
                   onSubmitted: (val) {
-                    setState(() => _threshold = double.parse(val));
+                    setState(() => options.threshold = double.parse(val));
                   },
                   decoration: const InputDecoration.collapsed(
                     hintText: '0.00',
@@ -160,47 +222,15 @@ class _OptionsState extends State<Options> {
             ],
           ),
           subtitle: Slider(
-            value: _threshold,
+            value: options.threshold,
             divisions: 100,
             onChanged: (val) {
               _textThreshold.text = val.toStringAsFixed(2);
-              setState(() => _threshold = val);
+              setState(() => options.threshold = val);
             },
           ),
         ),
       ],
     );
   }
-}
-
-Future<Object?> showOptions(BuildContext context) {
-  return showDialog(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: const Text("Search"),
-        content: const SizedBox(
-          width: 300,
-          height: 400,
-          child: SingleChildScrollView(
-            child: Options(),
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text("Cancel"),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text("Save"),
-          ),
-        ],
-      );
-    },
-  );
 }

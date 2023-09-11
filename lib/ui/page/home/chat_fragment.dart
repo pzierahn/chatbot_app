@@ -1,5 +1,8 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/ui/page/home/prompt_info.dart';
 import 'package:braingain_app/ui/page/home/prompt_input.dart';
+import 'package:braingain_app/ui/widget/illustration.dart';
+import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:undraw/undraw.dart';
@@ -20,70 +23,72 @@ class ChatFragment extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
 
-    final fut = FutureBuilder<Completion>(
+    if (prompt == null) {
+      return _ChatFrame(
+        child: PromptInput(
+          prompt: prompt,
+          onPromptSubmit: onPromptSubmit,
+        ),
+      );
+    }
+
+    return FutureBuilder<Completion>(
       future: completion,
       builder: (context, snap) {
+        Widget promptWidget;
         Widget body;
 
-        if (completion == null) {
-          body = const SizedBox();
-        } else if (snap.hasError) {
-          debugPrint(snap.error.toString());
-
-          body = SizedBox(
-            height: 300,
-            child: UnDraw(
-              illustration: UnDrawIllustration.warning,
-              color: color.error,
-            ),
+        if (snap.hasError) {
+          promptWidget = PromptInput(prompt: prompt!);
+          body = TextIllustration(
+            illustration: UnDrawIllustration.warning,
+            text: ErrorUtils.toText(snap.error),
+            color: color.error,
           );
         } else if (snap.hasData) {
+          promptWidget = PromptInfo(
+            prompt: prompt!,
+            completion: snap.data!,
+          );
           body = MarkdownBody(
             data: snap.data!.text,
           );
         } else {
-          body = SizedBox(
-            height: 400,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                UnDraw(
-                  width: 200,
-                  illustration: UnDrawIllustration.in_thought,
-                  color: color.primary,
-                ),
-                const SizedBox(height: 16),
-                const SizedBox(
-                  width: 200,
-                  child: LinearProgressIndicator(),
-                ),
-                const SizedBox(height: 16),
-                const Text(
-                  'Thinking...',
-                ),
-              ],
-            ),
+          promptWidget = PromptInput(prompt: prompt!);
+          body = TextIllustration(
+            illustration: UnDrawIllustration.in_thought,
+            color: color.primary,
+            text: 'Thinking...',
           );
         }
 
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            PromptInput(
-              prompt: prompt,
-              completion: snap.data,
-              onPromptSubmit: onPromptSubmit,
-            ),
-            Padding(
-              padding: completion != null
-                  ? const EdgeInsets.only(top: 16)
-                  : EdgeInsets.zero,
-              child: body,
-            ),
-          ],
+        return _ChatFrame(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              promptWidget,
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: body,
+              ),
+            ],
+          ),
         );
       },
     );
+  }
+}
+
+class _ChatFrame extends StatelessWidget {
+  const _ChatFrame({
+    required this.child,
+  });
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme;
 
     return Container(
       decoration: BoxDecoration(
@@ -96,7 +101,7 @@ class ChatFragment extends StatelessWidget {
       ),
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(16),
-      child: fut,
+      child: child,
     );
   }
 }
