@@ -34,7 +34,7 @@ class ParameterDialog extends StatefulWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(context, options);
               },
               child: const Text('Submit'),
             ),

@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PromptInput extends StatefulWidget {
-  PromptInput({
+  const PromptInput({
     super.key,
-    Prompt? prompt,
+    this.prompt,
     this.onPromptSubmit,
-  }) : prompt = prompt ?? Prompt();
+  });
 
-  final Prompt prompt;
+  final Prompt? prompt;
   final ValueChanged<Prompt>? onPromptSubmit;
 
   @override
@@ -19,7 +19,7 @@ class PromptInput extends StatefulWidget {
 }
 
 class _PromptInputState extends State<PromptInput> {
-  Prompt get prompt => widget.prompt;
+  late Prompt prompt;
 
   ValueChanged<Prompt>? get onPromptSubmit => widget.onPromptSubmit;
 
@@ -28,15 +28,21 @@ class _PromptInputState extends State<PromptInput> {
   @override
   void initState() {
     super.initState();
-    _controller.text = prompt.prompt;
+    if (widget.prompt != null) {
+      prompt = widget.prompt!;
+    } else {
+      prompt = Prompt();
 
-    // Set default options
-    widget.prompt.options = PromptOptions()
-      ..model = 'gpt-3.5-turbo-16k'
-      ..temperature = 0.0
-      ..maxTokens = 1024
-      ..limit = 10
-      ..threshold = 0.8;
+      // Set default options
+      prompt.options = PromptOptions()
+        ..model = 'gpt-3.5-turbo-16k'
+        ..temperature = 0.0
+        ..maxTokens = 1024
+        ..limit = 10
+        ..threshold = 0.8;
+    }
+
+    _controller.text = prompt.prompt;
   }
 
   @override
