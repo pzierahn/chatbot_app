@@ -47,10 +47,14 @@ class _SourcesDialogState extends State<SourcesDialog> {
               title: Text(
                 source.filename,
                 style: text.bodySmall,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
               subtitle: Text(
                 formatPageList(source.pages),
                 style: text.bodySmall,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             );
           },
