@@ -99,54 +99,75 @@ class PromptInput extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                 ),
               ),
-              ActionChip(
-                avatar: prompt.documents.isEmpty
-                    ? Icon(
-                        Icons.add,
-                        size: 16,
-                        color: color.onSurfaceVariant,
-                      )
-                    : Icon(
-                        Icons.description_outlined,
-                        size: 16,
-                        color: color.onSurfaceVariant,
-                      ),
-                backgroundColor: color.surfaceVariant.withOpacity(0.25),
-                label: Text(
-                  'Documents',
-                  style: text.bodySmall,
+              if (completion == null)
+                ActionChip(
+                  avatar: prompt.documents.isEmpty
+                      ? Icon(
+                          Icons.add,
+                          size: 16,
+                          color: color.onSurfaceVariant,
+                        )
+                      : Icon(
+                          Icons.description_outlined,
+                          size: 16,
+                          color: color.onSurfaceVariant,
+                        ),
+                  backgroundColor: color.surfaceVariant.withOpacity(0.25),
+                  label: Text(
+                    'Documents',
+                    style: text.bodySmall,
+                  ),
+                  labelStyle: TextStyle(
+                    color: color.onSurfaceVariant,
+                  ),
+                  onPressed: () async {
+                    final docs = await SelectDocumentsDialog.show(
+                      context,
+                      prompt.documents,
+                    );
+
+                    if (docs != null) {
+                      prompt.documents.clear();
+                      prompt.documents.addAll(docs);
+                    }
+                  },
+                  side: BorderSide(
+                    color: color.outlineVariant,
+                    width: 1.0,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                 ),
-                labelStyle: TextStyle(
-                  color: color.onSurfaceVariant,
-                ),
-                onPressed: () async {
-                  if (completion != null) {
+              if (completion != null)
+                ActionChip(
+                  avatar: Icon(
+                    Icons.description_outlined,
+                    size: 16,
+                    color: color.onSurfaceVariant,
+                  ),
+                  backgroundColor: color.surfaceVariant.withOpacity(0.25),
+                  label: Text(
+                    'Sources',
+                    style: text.bodySmall,
+                  ),
+                  labelStyle: TextStyle(
+                    color: color.onSurfaceVariant,
+                  ),
+                  onPressed: () async {
                     SourcesDialog.show(
                       context,
                       completion!.documents,
                     );
-
-                    return;
-                  }
-
-                  final docs = await SelectDocumentsDialog.show(
-                    context,
-                    prompt.documents,
-                  );
-
-                  if (docs != null) {
-                    prompt.documents.clear();
-                    prompt.documents.addAll(docs);
-                  }
-                },
-                side: BorderSide(
-                  color: color.outlineVariant,
-                  width: 1.0,
+                  },
+                  side: BorderSide(
+                    color: color.outlineVariant,
+                    width: 1.0,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                 ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
             ],
           ),
         ),
