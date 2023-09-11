@@ -39,7 +39,7 @@ class _PromptInputState extends State<PromptInput> {
         ..temperature = 0.0
         ..maxTokens = 1024
         ..limit = 10
-        ..threshold = 0.8;
+        ..threshold = 0.6;
     }
 
     _controller.text = prompt.prompt;
