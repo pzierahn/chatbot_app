@@ -13,6 +13,61 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use indexProgressDescriptor instead')
+const IndexProgress$json = {
+  '1': 'IndexProgress',
+  '2': [
+    {'1': 'totalPages', '3': 1, '4': 1, '5': 13, '10': 'totalPages'},
+    {'1': 'processedPages', '3': 2, '4': 1, '5': 13, '10': 'processedPages'},
+  ],
+};
+
+/// Descriptor for `IndexProgress`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List indexProgressDescriptor = $convert.base64Decode(
+    'Cg1JbmRleFByb2dyZXNzEh4KCnRvdGFsUGFnZXMYASABKA1SCnRvdGFsUGFnZXMSJgoOcHJvY2'
+    'Vzc2VkUGFnZXMYAiABKA1SDnByb2Nlc3NlZFBhZ2Vz');
+
+@$core.Deprecated('Use storageRefDescriptor instead')
+const StorageRef$json = {
+  '1': 'StorageRef',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'filename', '3': 2, '4': 1, '5': 9, '10': 'filename'},
+    {'1': 'path', '3': 3, '4': 1, '5': 9, '10': 'path'},
+    {'1': 'collection', '3': 4, '4': 1, '5': 9, '10': 'collection'},
+  ],
+};
+
+/// Descriptor for `StorageRef`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List storageRefDescriptor = $convert.base64Decode(
+    'CgpTdG9yYWdlUmVmEg4KAmlkGAEgASgJUgJpZBIaCghmaWxlbmFtZRgCIAEoCVIIZmlsZW5hbW'
+    'USEgoEcGF0aBgDIAEoCVIEcGF0aBIeCgpjb2xsZWN0aW9uGAQgASgJUgpjb2xsZWN0aW9u');
+
+@$core.Deprecated('Use collectionsDescriptor instead')
+const Collections$json = {
+  '1': 'Collections',
+  '2': [
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.Collections.Collection', '10': 'items'},
+  ],
+  '3': [Collections_Collection$json],
+};
+
+@$core.Deprecated('Use collectionsDescriptor instead')
+const Collections_Collection$json = {
+  '1': 'Collection',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
+    {'1': 'documents', '3': 3, '4': 1, '5': 13, '10': 'documents'},
+  ],
+};
+
+/// Descriptor for `Collections`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List collectionsDescriptor = $convert.base64Decode(
+    'CgtDb2xsZWN0aW9ucxJDCgVpdGVtcxgBIAMoCzItLmVuZHBvaW50LmJyYWluZ2Fpbi52MS5Db2'
+    'xsZWN0aW9ucy5Db2xsZWN0aW9uUgVpdGVtcxpOCgpDb2xsZWN0aW9uEg4KAmlkGAEgASgJUgJp'
+    'ZBISCgRuYW1lGAIgASgJUgRuYW1lEhwKCWRvY3VtZW50cxgDIAEoDVIJZG9jdW1lbnRz');
+
 @$core.Deprecated('Use documentQueryDescriptor instead')
 const DocumentQuery$json = {
   '1': 'DocumentQuery',

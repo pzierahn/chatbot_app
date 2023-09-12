@@ -13,6 +13,228 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+class IndexProgress extends $pb.GeneratedMessage {
+  factory IndexProgress() => create();
+  IndexProgress._() : super();
+  factory IndexProgress.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory IndexProgress.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'IndexProgress', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'totalPages', $pb.PbFieldType.OU3, protoName: 'totalPages')
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'processedPages', $pb.PbFieldType.OU3, protoName: 'processedPages')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  IndexProgress clone() => IndexProgress()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  IndexProgress copyWith(void Function(IndexProgress) updates) => super.copyWith((message) => updates(message as IndexProgress)) as IndexProgress;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static IndexProgress create() => IndexProgress._();
+  IndexProgress createEmptyInstance() => create();
+  static $pb.PbList<IndexProgress> createRepeated() => $pb.PbList<IndexProgress>();
+  @$core.pragma('dart2js:noInline')
+  static IndexProgress getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IndexProgress>(create);
+  static IndexProgress? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get totalPages => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set totalPages($core.int v) { $_setUnsignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasTotalPages() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTotalPages() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.int get processedPages => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set processedPages($core.int v) { $_setUnsignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasProcessedPages() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearProcessedPages() => clearField(2);
+}
+
+class StorageRef extends $pb.GeneratedMessage {
+  factory StorageRef() => create();
+  StorageRef._() : super();
+  factory StorageRef.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory StorageRef.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'StorageRef', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'filename')
+    ..aOS(3, _omitFieldNames ? '' : 'path')
+    ..aOS(4, _omitFieldNames ? '' : 'collection')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  StorageRef clone() => StorageRef()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  StorageRef copyWith(void Function(StorageRef) updates) => super.copyWith((message) => updates(message as StorageRef)) as StorageRef;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static StorageRef create() => StorageRef._();
+  StorageRef createEmptyInstance() => create();
+  static $pb.PbList<StorageRef> createRepeated() => $pb.PbList<StorageRef>();
+  @$core.pragma('dart2js:noInline')
+  static StorageRef getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<StorageRef>(create);
+  static StorageRef? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get filename => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set filename($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasFilename() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFilename() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get path => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set path($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasPath() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearPath() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get collection => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set collection($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasCollection() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearCollection() => clearField(4);
+}
+
+class Collections_Collection extends $pb.GeneratedMessage {
+  factory Collections_Collection() => create();
+  Collections_Collection._() : super();
+  factory Collections_Collection.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Collections_Collection.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Collections.Collection', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'name')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'documents', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Collections_Collection clone() => Collections_Collection()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Collections_Collection copyWith(void Function(Collections_Collection) updates) => super.copyWith((message) => updates(message as Collections_Collection)) as Collections_Collection;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Collections_Collection create() => Collections_Collection._();
+  Collections_Collection createEmptyInstance() => create();
+  static $pb.PbList<Collections_Collection> createRepeated() => $pb.PbList<Collections_Collection>();
+  @$core.pragma('dart2js:noInline')
+  static Collections_Collection getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Collections_Collection>(create);
+  static Collections_Collection? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get name => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set name($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearName() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get documents => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set documents($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasDocuments() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDocuments() => clearField(3);
+}
+
+class Collections extends $pb.GeneratedMessage {
+  factory Collections() => create();
+  Collections._() : super();
+  factory Collections.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Collections.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Collections', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+    ..pc<Collections_Collection>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Collections_Collection.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Collections clone() => Collections()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Collections copyWith(void Function(Collections) updates) => super.copyWith((message) => updates(message as Collections)) as Collections;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Collections create() => Collections._();
+  Collections createEmptyInstance() => create();
+  static $pb.PbList<Collections> createRepeated() => $pb.PbList<Collections>();
+  @$core.pragma('dart2js:noInline')
+  static Collections getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Collections>(create);
+  static Collections? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<Collections_Collection> get items => $_getList(0);
+}
+
 class DocumentQuery extends $pb.GeneratedMessage {
   factory DocumentQuery() => create();
   DocumentQuery._() : super();
