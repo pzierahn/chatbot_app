@@ -68,8 +68,8 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
             future: braingain.getDocuments(request),
             builder: (context, snap) {
               if (snap.hasError) {
-                return const Center(
-                  child: Text('Error'),
+                return Center(
+                  child: Text('Error: ${snap.error}'),
                 );
               }
 
