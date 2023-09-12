@@ -13,6 +13,18 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use previewDescriptor instead')
+const Preview$json = {
+  '1': 'Preview',
+  '2': [
+    {'1': 'image', '3': 1, '4': 1, '5': 12, '10': 'image'},
+  ],
+};
+
+/// Descriptor for `Preview`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List previewDescriptor = $convert.base64Decode(
+    'CgdQcmV2aWV3EhQKBWltYWdlGAEgASgMUgVpbWFnZQ==');
+
 @$core.Deprecated('Use indexProgressDescriptor instead')
 const IndexProgress$json = {
   '1': 'IndexProgress',

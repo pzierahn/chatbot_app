@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
@@ -64,7 +66,21 @@ class _CollectionPageState extends State<CollectionPage> {
               children: snap.data!.items
                   .map(
                     (doc) => ListTile(
-                        leading: const Icon(Icons.description_outlined),
+                        leading: FutureBuilder<Preview>(
+                          future: braingain.getDocumentPreview(
+                            StorageRef()
+                              ..id = doc.id
+                              ..collection = widget.collection.id,
+                          ),
+                          builder: (context, snap) {
+                            if (!snap.hasData) {
+                              return const Icon(Icons.description_outlined);
+                            }
+
+                            final bytes = snap.data!.image;
+                            return Image.memory(Uint8List.fromList(bytes));
+                          },
+                        ),
                         title: Text(doc.filename),
                         subtitle: Text('Pages ${doc.pages}'),
                         trailing: IconButton(

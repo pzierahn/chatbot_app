@@ -34,6 +34,10 @@ class BraingainClient extends $grpc.Client {
       '/endpoint.braingain.v1.Braingain/DeleteDocument',
       ($0.StorageRef value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
+  static final _$getDocumentPreview = $grpc.ClientMethod<$0.StorageRef, $0.Preview>(
+      '/endpoint.braingain.v1.Braingain/GetDocumentPreview',
+      ($0.StorageRef value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Preview.fromBuffer(value));
   static final _$getCollections = $grpc.ClientMethod<$1.Empty, $0.Collections>(
       '/endpoint.braingain.v1.Braingain/GetCollections',
       ($1.Empty value) => value.writeToBuffer(),
@@ -59,6 +63,10 @@ class BraingainClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$1.Empty> deleteDocument($0.StorageRef request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deleteDocument, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.Preview> getDocumentPreview($0.StorageRef request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getDocumentPreview, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.Collections> getCollections($1.Empty request, {$grpc.CallOptions? options}) {
@@ -96,6 +104,13 @@ abstract class BraingainServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.StorageRef.fromBuffer(value),
         ($1.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.StorageRef, $0.Preview>(
+        'GetDocumentPreview',
+        getDocumentPreview_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.StorageRef.fromBuffer(value),
+        ($0.Preview value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.Empty, $0.Collections>(
         'GetCollections',
         getCollections_Pre,
@@ -124,6 +139,10 @@ abstract class BraingainServiceBase extends $grpc.Service {
     return deleteDocument(call, await request);
   }
 
+  $async.Future<$0.Preview> getDocumentPreview_Pre($grpc.ServiceCall call, $async.Future<$0.StorageRef> request) async {
+    return getDocumentPreview(call, await request);
+  }
+
   $async.Future<$0.Collections> getCollections_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
     return getCollections(call, await request);
   }
@@ -135,6 +154,7 @@ abstract class BraingainServiceBase extends $grpc.Service {
   $async.Future<$0.Completion> chat($grpc.ServiceCall call, $0.Prompt request);
   $async.Future<$0.Documents> getDocuments($grpc.ServiceCall call, $0.DocumentQuery request);
   $async.Future<$1.Empty> deleteDocument($grpc.ServiceCall call, $0.StorageRef request);
+  $async.Future<$0.Preview> getDocumentPreview($grpc.ServiceCall call, $0.StorageRef request);
   $async.Future<$0.Collections> getCollections($grpc.ServiceCall call, $1.Empty request);
   $async.Stream<$0.IndexProgress> indexDocument($grpc.ServiceCall call, $0.StorageRef request);
 }
