@@ -35,7 +35,7 @@ class _CollectionsPageState extends State<CollectionsPage> {
         title: const Text('Collections'),
       ),
       body: FutureBuilder<Collections>(
-        future: braingain.listCollections(Empty()),
+        future: braingain.getCollections(Empty()),
         builder: (context, snap) {
           if (snap.hasError) {
             return Center(
