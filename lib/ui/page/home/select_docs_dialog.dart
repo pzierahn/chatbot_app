@@ -66,9 +66,7 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
         width: 400,
         child: SingleChildScrollView(
           child: FutureBuilder<Documents>(
-            future: _query.isEmpty
-                ? braingain.listDocuments(Empty())
-                : braingain.findDocuments(request),
+            future: braingain.findDocuments(request),
             builder: (context, snap) {
               if (snap.hasError) {
                 return const Center(

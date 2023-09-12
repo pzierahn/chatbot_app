@@ -16,7 +16,6 @@ import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'braingain.pb.dart' as $0;
-import 'google/protobuf/empty.pb.dart' as $1;
 
 export 'braingain.pb.dart';
 
@@ -26,10 +25,6 @@ class BraingainClient extends $grpc.Client {
       '/endpoint.braingain.v1.Braingain/Chat',
       ($0.Prompt value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Completion.fromBuffer(value));
-  static final _$listDocuments = $grpc.ClientMethod<$1.Empty, $0.Documents>(
-      '/endpoint.braingain.v1.Braingain/ListDocuments',
-      ($1.Empty value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.Documents.fromBuffer(value));
   static final _$findDocuments = $grpc.ClientMethod<$0.DocumentQuery, $0.Documents>(
       '/endpoint.braingain.v1.Braingain/FindDocuments',
       ($0.DocumentQuery value) => value.writeToBuffer(),
@@ -43,10 +38,6 @@ class BraingainClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$0.Completion> chat($0.Prompt request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$chat, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$0.Documents> listDocuments($1.Empty request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$listDocuments, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.Documents> findDocuments($0.DocumentQuery request, {$grpc.CallOptions? options}) {
@@ -66,13 +57,6 @@ abstract class BraingainServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Prompt.fromBuffer(value),
         ($0.Completion value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.Empty, $0.Documents>(
-        'ListDocuments',
-        listDocuments_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
-        ($0.Documents value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.DocumentQuery, $0.Documents>(
         'FindDocuments',
         findDocuments_Pre,
@@ -86,15 +70,10 @@ abstract class BraingainServiceBase extends $grpc.Service {
     return chat(call, await request);
   }
 
-  $async.Future<$0.Documents> listDocuments_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
-    return listDocuments(call, await request);
-  }
-
   $async.Future<$0.Documents> findDocuments_Pre($grpc.ServiceCall call, $async.Future<$0.DocumentQuery> request) async {
     return findDocuments(call, await request);
   }
 
   $async.Future<$0.Completion> chat($grpc.ServiceCall call, $0.Prompt request);
-  $async.Future<$0.Documents> listDocuments($grpc.ServiceCall call, $1.Empty request);
   $async.Future<$0.Documents> findDocuments($grpc.ServiceCall call, $0.DocumentQuery request);
 }
