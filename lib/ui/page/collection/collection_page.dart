@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/service/storage.dart';
@@ -12,15 +10,18 @@ import 'package:grpc/grpc.dart';
 class CollectionPage extends StatefulWidget {
   const CollectionPage({
     super.key,
-    this.collection = "b452f76d-c1e4-4cdb-979f-08a4521d3372",
+    required this.collection,
   });
 
-  final String collection;
+  final Collections_Collection collection;
 
-  static Future<void> open(BuildContext context) async {
+  static Future<void> open(
+      BuildContext context, Collections_Collection col) async {
     await Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => const CollectionPage(),
+        builder: (context) => CollectionPage(
+          collection: col,
+        ),
       ),
     );
   }
@@ -47,7 +48,7 @@ class _CollectionPageState extends State<CollectionPage> {
 
     for (final file in result.files) {
       final ref = StorageUtils.createRef(
-        collection: widget.collection,
+        collection: widget.collection.id,
         file: file,
       );
 

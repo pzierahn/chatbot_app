@@ -74,7 +74,7 @@ class _CollectionsPageState extends State<CollectionsPage> {
                         ),
                       ),
                       onTap: () {
-                        CollectionPage.open(context);
+                        CollectionPage.open(context, collection);
                       },
                       trailing: PopupMenuButton(
                         itemBuilder: (context) => const [
