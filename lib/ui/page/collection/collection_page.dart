@@ -66,34 +66,32 @@ class _CollectionPageState extends State<CollectionPage> {
               children: snap.data!.items
                   .map(
                     (doc) => ListTile(
-                        leading: FutureBuilder<Preview>(
-                          future: braingain.getDocumentPreview(
-                            StorageRef()
-                              ..id = doc.id
-                              ..collection = widget.collection.id,
-                          ),
-                          builder: (context, snap) {
-                            if (!snap.hasData) {
-                              return const Icon(Icons.description_outlined);
-                            }
-
-                            final bytes = snap.data!.image;
-                            return Image.memory(Uint8List.fromList(bytes));
-                          },
+                      trailing: FutureBuilder<Preview>(
+                        future: braingain.getDocumentPreview(
+                          StorageRef()
+                            ..id = doc.id
+                            ..collection = widget.collection.id,
                         ),
-                        title: Text(doc.filename),
-                        subtitle: Text('Pages ${doc.pages}'),
-                        trailing: IconButton(
-                          icon: const Icon(Icons.delete),
-                          onPressed: () async {
-                            final ref = StorageRef()
-                              ..collection = widget.collection.id
-                              ..id = doc.id;
+                        builder: (context, snap) {
+                          if (!snap.hasData) {
+                            return const Icon(Icons.description_outlined);
+                          }
 
-                            await braingain.deleteDocument(ref);
-                            setState(() {});
-                          },
-                        )),
+                          final bytes = snap.data!.image;
+                          return Image.memory(Uint8List.fromList(bytes));
+                        },
+                      ),
+                      title: Text(doc.filename),
+                      subtitle: Text('Pages ${doc.pages}'),
+                      onLongPress: () async {
+                        final ref = StorageRef()
+                          ..collection = widget.collection.id
+                          ..id = doc.id;
+
+                        await braingain.deleteDocument(ref);
+                        setState(() {});
+                      },
+                    ),
                   )
                   .toList());
         },
