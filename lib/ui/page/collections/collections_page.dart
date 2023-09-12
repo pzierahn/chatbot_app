@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
@@ -68,7 +66,7 @@ class _CollectionsPageState extends State<CollectionsPage> {
                         overflow: TextOverflow.ellipsis,
                       ),
                       subtitle: Text(
-                        '${Random().nextInt(100)} Documents',
+                        '${collection.documents} Documents',
                         style: text.bodySmall?.merge(
                           TextStyle(
                             color: color.secondary,
