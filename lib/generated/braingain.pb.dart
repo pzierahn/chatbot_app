@@ -243,6 +243,7 @@ class DocumentQuery extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentQuery', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'query')
+    ..aOS(2, _omitFieldNames ? '' : 'collection')
     ..hasRequiredFields = false
   ;
 
@@ -275,6 +276,15 @@ class DocumentQuery extends $pb.GeneratedMessage {
   $core.bool hasQuery() => $_has(0);
   @$pb.TagNumber(1)
   void clearQuery() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get collection => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set collection($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasCollection() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCollection() => clearField(2);
 }
 
 class Documents_Document extends $pb.GeneratedMessage {

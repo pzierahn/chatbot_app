@@ -1,5 +1,4 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
-import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/utils/page_numbers.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +65,7 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
         width: 400,
         child: SingleChildScrollView(
           child: FutureBuilder<Documents>(
-            future: braingain.findDocuments(request),
+            future: braingain.getDocuments(request),
             builder: (context, snap) {
               if (snap.hasError) {
                 return const Center(

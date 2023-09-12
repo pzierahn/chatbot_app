@@ -73,12 +73,14 @@ const DocumentQuery$json = {
   '1': 'DocumentQuery',
   '2': [
     {'1': 'query', '3': 1, '4': 1, '5': 9, '10': 'query'},
+    {'1': 'collection', '3': 2, '4': 1, '5': 9, '10': 'collection'},
   ],
 };
 
 /// Descriptor for `DocumentQuery`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List documentQueryDescriptor = $convert.base64Decode(
-    'Cg1Eb2N1bWVudFF1ZXJ5EhQKBXF1ZXJ5GAEgASgJUgVxdWVyeQ==');
+    'Cg1Eb2N1bWVudFF1ZXJ5EhQKBXF1ZXJ5GAEgASgJUgVxdWVyeRIeCgpjb2xsZWN0aW9uGAIgAS'
+    'gJUgpjb2xsZWN0aW9u');
 
 @$core.Deprecated('Use documentsDescriptor instead')
 const Documents$json = {
