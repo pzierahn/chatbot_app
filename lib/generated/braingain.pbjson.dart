@@ -32,16 +32,16 @@ const StorageRef$json = {
   '1': 'StorageRef',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'filename', '3': 2, '4': 1, '5': 9, '10': 'filename'},
-    {'1': 'path', '3': 3, '4': 1, '5': 9, '10': 'path'},
-    {'1': 'collection', '3': 4, '4': 1, '5': 9, '10': 'collection'},
+    {'1': 'collection', '3': 2, '4': 1, '5': 9, '10': 'collection'},
+    {'1': 'filename', '3': 3, '4': 1, '5': 9, '10': 'filename'},
+    {'1': 'path', '3': 4, '4': 1, '5': 9, '10': 'path'},
   ],
 };
 
 /// Descriptor for `StorageRef`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List storageRefDescriptor = $convert.base64Decode(
-    'CgpTdG9yYWdlUmVmEg4KAmlkGAEgASgJUgJpZBIaCghmaWxlbmFtZRgCIAEoCVIIZmlsZW5hbW'
-    'USEgoEcGF0aBgDIAEoCVIEcGF0aBIeCgpjb2xsZWN0aW9uGAQgASgJUgpjb2xsZWN0aW9u');
+    'CgpTdG9yYWdlUmVmEg4KAmlkGAEgASgJUgJpZBIeCgpjb2xsZWN0aW9uGAIgASgJUgpjb2xsZW'
+    'N0aW9uEhoKCGZpbGVuYW1lGAMgASgJUghmaWxlbmFtZRISCgRwYXRoGAQgASgJUgRwYXRo');
 
 @$core.Deprecated('Use collectionsDescriptor instead')
 const Collections$json = {

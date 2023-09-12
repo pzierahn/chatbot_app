@@ -64,10 +64,20 @@ class _CollectionPageState extends State<CollectionPage> {
               children: snap.data!.items
                   .map(
                     (doc) => ListTile(
-                      leading: const Icon(Icons.description_outlined),
-                      title: Text(doc.filename),
-                      subtitle: Text('Pages ${doc.pages}'),
-                    ),
+                        leading: const Icon(Icons.description_outlined),
+                        title: Text(doc.filename),
+                        subtitle: Text('Pages ${doc.pages}'),
+                        trailing: IconButton(
+                          icon: const Icon(Icons.delete),
+                          onPressed: () async {
+                            final ref = StorageRef()
+                              ..collection = widget.collection.id
+                              ..id = doc.id;
+
+                            await braingain.deleteDocument(ref);
+                            setState(() {});
+                          },
+                        )),
                   )
                   .toList());
         },

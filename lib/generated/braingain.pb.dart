@@ -73,9 +73,9 @@ class StorageRef extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'StorageRef', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'filename')
-    ..aOS(3, _omitFieldNames ? '' : 'path')
-    ..aOS(4, _omitFieldNames ? '' : 'collection')
+    ..aOS(2, _omitFieldNames ? '' : 'collection')
+    ..aOS(3, _omitFieldNames ? '' : 'filename')
+    ..aOS(4, _omitFieldNames ? '' : 'path')
     ..hasRequiredFields = false
   ;
 
@@ -110,31 +110,31 @@ class StorageRef extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get filename => $_getSZ(1);
+  $core.String get collection => $_getSZ(1);
   @$pb.TagNumber(2)
-  set filename($core.String v) { $_setString(1, v); }
+  set collection($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasFilename() => $_has(1);
+  $core.bool hasCollection() => $_has(1);
   @$pb.TagNumber(2)
-  void clearFilename() => clearField(2);
+  void clearCollection() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get path => $_getSZ(2);
+  $core.String get filename => $_getSZ(2);
   @$pb.TagNumber(3)
-  set path($core.String v) { $_setString(2, v); }
+  set filename($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasPath() => $_has(2);
+  $core.bool hasFilename() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPath() => clearField(3);
+  void clearFilename() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get collection => $_getSZ(3);
+  $core.String get path => $_getSZ(3);
   @$pb.TagNumber(4)
-  set collection($core.String v) { $_setString(3, v); }
+  set path($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasCollection() => $_has(3);
+  $core.bool hasPath() => $_has(3);
   @$pb.TagNumber(4)
-  void clearCollection() => clearField(4);
+  void clearPath() => clearField(4);
 }
 
 class Collections_Collection extends $pb.GeneratedMessage {
