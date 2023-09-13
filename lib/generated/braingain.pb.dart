@@ -13,48 +13,6 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class Preview extends $pb.GeneratedMessage {
-  factory Preview() => create();
-  Preview._() : super();
-  factory Preview.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Preview.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Preview', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, _omitFieldNames ? '' : 'image', $pb.PbFieldType.OY)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Preview clone() => Preview()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Preview copyWith(void Function(Preview) updates) => super.copyWith((message) => updates(message as Preview)) as Preview;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static Preview create() => Preview._();
-  Preview createEmptyInstance() => create();
-  static $pb.PbList<Preview> createRepeated() => $pb.PbList<Preview>();
-  @$core.pragma('dart2js:noInline')
-  static Preview getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Preview>(create);
-  static Preview? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.List<$core.int> get image => $_getN(0);
-  @$pb.TagNumber(1)
-  set image($core.List<$core.int> v) { $_setBytes(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasImage() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearImage() => clearField(1);
-}
-
 class IndexProgress extends $pb.GeneratedMessage {
   factory IndexProgress() => create();
   IndexProgress._() : super();
