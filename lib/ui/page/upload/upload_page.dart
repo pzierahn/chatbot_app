@@ -3,7 +3,6 @@ import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/service/storage.dart';
 import 'package:braingain_app/ui/page/upload/file_tile.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
-import 'package:braingain_app/utils/login.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc.dart';
@@ -82,12 +81,6 @@ class _UploadPageState extends State<UploadPage> {
       appBar: AppBar(
         title: const Text('Upload'),
         actions: [
-          IconButton(
-            onPressed: () {
-              signIn();
-            },
-            icon: const Icon(Icons.login),
-          ),
           IconButton(
             icon: const Icon(Icons.add),
             onPressed: _uploadFiles,

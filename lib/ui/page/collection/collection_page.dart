@@ -4,7 +4,6 @@ import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
-import 'package:braingain_app/utils/login.dart';
 import 'package:flutter/material.dart';
 
 class CollectionPage extends StatefulWidget {
@@ -37,12 +36,6 @@ class _CollectionPageState extends State<CollectionPage> {
       appBar: AppBar(
         title: Text(widget.collection.name),
         actions: [
-          IconButton(
-            onPressed: () {
-              signIn();
-            },
-            icon: const Icon(Icons.login),
-          ),
           IconButton(
             icon: const Icon(Icons.upload),
             onPressed: () {

@@ -1,11 +1,9 @@
 import 'dart:typed_data';
 
 import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/service/supabase.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uuid/uuid.dart';
-
-final supabase = Supabase.instance.client;
 
 class StorageUtils {
   static StorageRef createRef({
