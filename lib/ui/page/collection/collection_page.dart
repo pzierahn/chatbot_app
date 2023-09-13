@@ -60,14 +60,17 @@ class _CollectionPageState extends State<CollectionPage> {
                       leading: const Icon(Icons.description_outlined),
                       title: Text(doc.filename),
                       subtitle: Text('Pages ${doc.pages}'),
-                      onLongPress: () async {
-                        final ref = StorageRef()
-                          ..collection = widget.collection.id
-                          ..id = doc.id;
+                      trailing: IconButton(
+                        icon: const Icon(Icons.delete_outline),
+                        onPressed: () async {
+                          final ref = StorageRef()
+                            ..collection = widget.collection.id
+                            ..id = doc.id;
 
-                        await braingain.deleteDocument(ref);
-                        setState(() {});
-                      },
+                          await braingain.deleteDocument(ref);
+                          setState(() {});
+                        },
+                      ),
                     ),
                   )
                   .toList());
