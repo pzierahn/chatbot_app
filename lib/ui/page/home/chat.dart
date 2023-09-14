@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 class Chat extends StatefulWidget {
   const Chat({
     super.key,
+    required this.collection,
   });
+
+  final Collections_Collection collection;
 
   @override
   State<Chat> createState() => _ChatState();
@@ -26,6 +29,8 @@ class _ChatState extends State<Chat> {
         completion: index < _completions.length ? _completions[index] : null,
         onPromptSubmit: (prompt) {
           setState(() {
+            prompt.collection = widget.collection.id;
+
             _prompts.add(prompt);
             _completions.add(braingain.chat(prompt));
           });

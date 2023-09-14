@@ -6,74 +6,61 @@ import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/undraw.dart';
 
-class CollectionsPage extends StatefulWidget {
-  const CollectionsPage({
+class CollectionsBody extends StatefulWidget {
+  const CollectionsBody({
     super.key,
   });
 
-  static Future<void> open(BuildContext context) async {
-    await Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const CollectionsPage(),
-      ),
-    );
-  }
-
   @override
-  State<CollectionsPage> createState() => _CollectionsPageState();
+  State<CollectionsBody> createState() => _CollectionsBodyState();
 }
 
-class _CollectionsPageState extends State<CollectionsPage> {
+class _CollectionsBodyState extends State<CollectionsBody> {
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Collections'),
-      ),
-      body: FutureBuilder<Collections>(
-        future: braingain.getCollections(Empty()),
-        builder: (context, snap) {
-          if (snap.hasError) {
-            return Center(
-              child: Text(
-                snap.error.toString(),
-                style: text.bodySmall?.merge(TextStyle(
-                  color: color.error,
-                )),
-              ),
-            );
-          }
-
-          if (!snap.hasData) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-
-          final collections = snap.data!.items;
-
-          final children = <Widget>[
-            UnDraw(
-              width: 300,
-              illustration: UnDrawIllustration.education,
-              color: color.primary,
+    return FutureBuilder<Collections>(
+      future: braingain.getCollections(Empty()),
+      builder: (context, snap) {
+        if (snap.hasError) {
+          return Center(
+            child: Text(
+              snap.error.toString(),
+              style: text.bodySmall?.merge(TextStyle(
+                color: color.error,
+              )),
             ),
-          ];
-
-          for (var collection in collections) {
-            children.add(CollectionsTile(
-              collection: collection,
-            ));
-          }
-
-          return ConstrainedListView(
-            children: children,
           );
-        },
-      ),
+        }
+
+        if (!snap.hasData) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+
+        final collections = snap.data!.items;
+
+        final children = <Widget>[
+          UnDraw(
+            width: 300,
+            illustration: UnDrawIllustration.education,
+            color: color.primary,
+          ),
+        ];
+
+        for (var collection in collections) {
+          children.add(CollectionsTile(
+            collection: collection,
+          ));
+        }
+
+        return ConstrainedListView(
+          children: children,
+        );
+      },
     );
   }
 }
