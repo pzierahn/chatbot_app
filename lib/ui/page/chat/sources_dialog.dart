@@ -42,6 +42,14 @@ class _SourcesDialogState extends State<SourcesDialog> {
           itemBuilder: (context, index) {
             final source = widget.sources[index];
 
+            final mapping = <int, double>{};
+            for (int inx = 0; inx < source.pages.length; inx++) {
+              mapping[source.pages[inx]] = source.scores[inx];
+            }
+
+            final pages = source.pages;
+            pages.sort((a, b) => a.compareTo(b));
+
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 0),
               child: Column(
@@ -60,7 +68,7 @@ class _SourcesDialogState extends State<SourcesDialog> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'Page ${source.pages[inx]} --> ${(100 * source.scores[inx]).toStringAsFixed(0)}%',
+                          'Page ${pages[inx]} --> ${(100 * mapping[pages[inx]]!).toStringAsFixed(0)}%',
                           style: text.bodySmall,
                           textAlign: TextAlign.center,
                         ),
