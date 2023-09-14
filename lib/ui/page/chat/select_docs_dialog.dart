@@ -144,13 +144,18 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
     return Column(
       children: widget.documents.items
           .map((doc) => ListTile(
-                leading: widget.selected.containsKey(doc.id)
-                    ? Icon(
-                        Icons.check_circle,
-                        size: 16,
-                        color: color.primary,
-                      )
-                    : const Icon(Icons.description, size: 16),
+                leading: CircleAvatar(
+                  backgroundColor: widget.selected.containsKey(doc.id)
+                      ? color.primary.withOpacity(0.2)
+                      : color.surfaceVariant,
+                  foregroundColor: widget.selected.containsKey(doc.id)
+                      ? color.primary
+                      : color.onSurfaceVariant,
+                  radius: 16,
+                  child: widget.selected.containsKey(doc.id)
+                      ? const Icon(Icons.check, size: 16)
+                      : const Icon(Icons.description, size: 16),
+                ),
                 title: Text(
                   doc.filename,
                   maxLines: 1,
