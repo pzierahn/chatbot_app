@@ -20,7 +20,7 @@ class CollectionsTile extends StatelessWidget {
 
     final rand = Random(collection.id.hashCode);
     final colorScheme = ColorScheme.fromSeed(
-      seedColor: Color(rand.nextInt(0xFFFFFFFF) | 0xFF000000),
+      seedColor: Colors.primaries[rand.nextInt(Colors.accents.length)],
       brightness: Theme.of(context).brightness,
     );
 
