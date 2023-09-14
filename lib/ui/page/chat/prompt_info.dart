@@ -1,6 +1,6 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/ui/page/chat/parameter_button.dart';
-import 'package:braingain_app/ui/page/chat/sources_dialog.dart';
+import 'package:braingain_app/ui/page/chat/sources_button.dart';
 import 'package:flutter/material.dart';
 
 class PromptInfo extends StatelessWidget {
@@ -15,7 +15,6 @@ class PromptInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
     final textStyles = text.titleLarge?.merge(const TextStyle(
@@ -36,33 +35,8 @@ class PromptInfo extends StatelessWidget {
             spacing: 8,
             runSpacing: 8,
             children: [
-              ActionChip(
-                avatar: Icon(
-                  Icons.description_outlined,
-                  size: 16,
-                  color: color.onSurfaceVariant,
-                ),
-                backgroundColor: color.surfaceVariant.withOpacity(0.25),
-                label: Text(
-                  'Sources',
-                  style: text.bodySmall,
-                ),
-                labelStyle: TextStyle(
-                  color: color.onSurfaceVariant,
-                ),
-                onPressed: () {
-                  SourcesDialog.show(
-                    context,
-                    completion.documents,
-                  );
-                },
-                side: BorderSide(
-                  color: color.outlineVariant,
-                  width: 1.0,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
+              SourcesButton(
+                documents: completion.documents,
               ),
               ParameterButton(
                 options: completion.prompt.options,
