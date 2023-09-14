@@ -3,9 +3,11 @@ import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/service/storage.dart';
 import 'package:braingain_app/ui/page/upload/file_tile.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
+import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc.dart';
+import 'package:undraw/illustrations.g.dart';
 
 class UploadPage extends StatefulWidget {
   const UploadPage({
@@ -77,6 +79,31 @@ class _UploadPageState extends State<UploadPage> {
   Widget build(BuildContext context) {
     _queue.sort((a, b) => a.filename.compareTo(b.filename));
 
+    Widget body;
+    if (_queue.isNotEmpty) {
+      body = ConstrainedListView(
+          children: _queue
+              .map(
+                (ref) => FileUploadProgress(
+                  ref: ref,
+                  upload: _upload.containsKey(ref.id) ? _upload[ref.id] : null,
+                  progress: _progress[ref.id],
+                ),
+              )
+              .toList());
+    } else {
+      body = Center(
+        child: TextIllustration(
+          illustration: UnDrawIllustration.upload,
+          action: TextButton.icon(
+            onPressed: _uploadFiles,
+            icon: const Icon(Icons.upload_file),
+            label: const Text('Select files to upload'),
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Upload'),
@@ -87,16 +114,7 @@ class _UploadPageState extends State<UploadPage> {
           ),
         ],
       ),
-      body: ConstrainedListView(
-          children: _queue
-              .map(
-                (ref) => FileUploadProgress(
-                  ref: ref,
-                  upload: _upload.containsKey(ref.id) ? _upload[ref.id] : null,
-                  progress: _progress[ref.id],
-                ),
-              )
-              .toList()),
+      body: body,
     );
   }
 }
