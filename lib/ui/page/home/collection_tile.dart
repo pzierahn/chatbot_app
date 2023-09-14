@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
@@ -18,12 +16,6 @@ class CollectionsTile extends StatelessWidget {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
-    final rand = Random(collection.id.hashCode);
-    final colorScheme = ColorScheme.fromSeed(
-      seedColor: Colors.primaries[rand.nextInt(Colors.accents.length)],
-      brightness: Theme.of(context).brightness,
-    );
-
     final shape = RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8),
     );
@@ -41,8 +33,8 @@ class CollectionsTile extends StatelessWidget {
       ),
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor: colorScheme.primary.withOpacity(0.2),
-          foregroundColor: colorScheme.primary,
+          backgroundColor: color.primary.withOpacity(0.2),
+          foregroundColor: color.primary,
           radius: 16,
           child: const Icon(
             Icons.folder_outlined,
@@ -53,9 +45,7 @@ class CollectionsTile extends StatelessWidget {
           children: [
             Text(
               collection.name,
-              style: text.titleSmall?.merge(TextStyle(
-                color: colorScheme.primary,
-              )),
+              style: text.titleSmall,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -65,8 +55,7 @@ class CollectionsTile extends StatelessWidget {
                 CollectionPage.open(context, collection);
               },
               style: TextButton.styleFrom(
-                // backgroundColor: color.surfaceVariant,
-                foregroundColor: colorScheme.onSurface,
+                foregroundColor: color.onSurface,
               ),
               child: Text('${collection.documents} Documents'),
             ),
