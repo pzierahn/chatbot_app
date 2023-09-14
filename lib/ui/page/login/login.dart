@@ -52,7 +52,7 @@ Future<void> showLoginDialog(BuildContext context) async {
                     email: userController.text.trim(),
                     password: passwordController.text.trim(),
                   )
-                  .then((value) => debugPrint("value: $value"))
+                  .then((value) => debugPrint("value: ${value.user?.email}"))
                   .catchError((error) => debugPrint("error: $error"));
 
               Navigator.pop(context);
