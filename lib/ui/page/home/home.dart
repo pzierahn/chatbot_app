@@ -1,4 +1,5 @@
 import 'package:braingain_app/ui/page/home/collections_body.dart';
+import 'package:braingain_app/ui/page/login/login.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -19,6 +20,14 @@ class _HomeState extends State<Home> {
           'Braingain',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.login),
+            onPressed: () {
+              showLoginDialog(context);
+            },
+          ),
+        ],
       ),
       body: const CollectionsBody(),
     );
