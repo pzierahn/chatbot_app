@@ -1,6 +1,7 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/ui/page/chat/chat_fragment.dart';
+import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {
@@ -16,42 +17,46 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
-  final _prompts = <Prompt>[];
-  final _completions = <Future<Completion>>[];
+  final _status = <ChatFragmentStatus>[];
 
   @override
   Widget build(BuildContext context) {
     final children = <Widget>[];
 
-    for (int index = 0; index <= _prompts.length; index++) {
+    for (int index = 0; index < _status.length; index++) {
       final fragment = ChatFragment(
-        prompt: index < _prompts.length ? _prompts[index] : null,
-        completion: index < _completions.length ? _completions[index] : null,
+        status: _status[index],
         collection: widget.collection,
-        onPromptSubmit: (prompt) {
-          setState(() {
-            prompt.collection = widget.collection.id;
-
-            _prompts.add(prompt);
-            _completions.add(braingain.chat(prompt));
-          });
-        },
       );
 
-      children.add(
-        Align(
-          child: Container(
-            alignment: Alignment.center,
-            constraints: const BoxConstraints(
-              maxWidth: 800,
-            ),
-            child: fragment,
-          ),
-        ),
-      );
+      children.add(fragment);
     }
 
-    return ListView(
+    children.add(ChatInput(
+      onPromptSubmit: (prompt) {
+        setState(() {
+          prompt.collection = widget.collection.id;
+          final status = ChatFragmentStatus(prompt: prompt);
+          final index = _status.length;
+
+          setState(() {
+            _status.add(status);
+          });
+
+          braingain
+              .chat(prompt)
+              .then((response) => setState(() {
+                    _status[index].completion = response;
+                  }))
+              .catchError((error) => setState(() {
+                    _status[index].error = error.toString();
+                  }));
+        });
+      },
+      collection: widget.collection,
+    ));
+
+    return ConstrainedListView(
       children: children,
     );
   }

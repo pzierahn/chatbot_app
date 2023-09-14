@@ -7,84 +7,86 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:undraw/undraw.dart';
 
-class ChatFragment extends StatelessWidget {
-  const ChatFragment({
+class ChatInput extends StatelessWidget {
+  const ChatInput({
     super.key,
-    this.prompt,
-    this.completion,
     required this.onPromptSubmit,
     required this.collection,
   });
 
-  final Prompt? prompt;
-  final Future<Completion>? completion;
   final ValueChanged<Prompt> onPromptSubmit;
+  final Collections_Collection collection;
+
+  @override
+  Widget build(BuildContext context) {
+    return _ChatFrame(
+      child: PromptInput(
+        onPromptSubmit: onPromptSubmit,
+        collection: collection,
+      ),
+    );
+  }
+}
+
+class ChatFragment extends StatelessWidget {
+  const ChatFragment({
+    super.key,
+    required this.status,
+    required this.collection,
+  });
+
+  final ChatFragmentStatus status;
   final Collections_Collection collection;
 
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
 
-    if (prompt == null) {
-      return _ChatFrame(
-        child: PromptInput(
-          prompt: prompt,
-          onPromptSubmit: onPromptSubmit,
-          collection: collection,
-        ),
+    Widget promptWidget;
+    Widget body;
+
+    if (status.hasError) {
+      promptWidget = PromptInput(
+        prompt: status.prompt,
+        collection: collection,
+      );
+      body = TextIllustration(
+        illustration: UnDrawIllustration.warning,
+        text: ErrorUtils.toText(status.error),
+        color: color.error,
+      );
+    } else if (status.completion != null) {
+      promptWidget = PromptInfo(
+        prompt: status.prompt,
+        completion: status.completion!,
+      );
+      body = MarkdownBody(
+        data: status.completion!.text,
+        selectable: true,
+      );
+    } else {
+      promptWidget = PromptInput(
+        prompt: status.prompt,
+        collection: collection,
+      );
+      body = TextIllustration(
+        illustration: UnDrawIllustration.typewriter,
+        color: color.primary,
+        text: 'Thinking...',
       );
     }
 
-    return FutureBuilder<Completion>(
-      future: completion,
-      builder: (context, snap) {
-        Widget promptWidget;
-        Widget body;
-
-        if (snap.hasError) {
-          promptWidget = PromptInput(
-            prompt: prompt!,
-            collection: collection,
-          );
-          body = TextIllustration(
-            illustration: UnDrawIllustration.warning,
-            text: ErrorUtils.toText(snap.error),
-            color: color.error,
-          );
-        } else if (snap.hasData) {
-          promptWidget = PromptInfo(
-            prompt: prompt!,
-            completion: snap.data!,
-          );
-          body = MarkdownBody(
-            data: snap.data!.text,
-            selectable: true,
-          );
-        } else {
-          promptWidget = PromptInput(
-            prompt: prompt!,
-            collection: collection,
-          );
-          body = TextIllustration(
-            illustration: UnDrawIllustration.typewriter,
-            color: color.primary,
-            text: 'Thinking...',
-          );
-        }
-
-        return _ChatFrame(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              promptWidget,
-              Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: body,
-              ),
-            ],
+    return _ChatFrame(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          promptWidget,
+          Padding(
+            padding: const EdgeInsets.only(top: 16),
+            child: body,
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 }
@@ -114,4 +116,18 @@ class _ChatFrame extends StatelessWidget {
       child: child,
     );
   }
+}
+
+class ChatFragmentStatus {
+  ChatFragmentStatus({
+    required this.prompt,
+    this.completion,
+    this.error,
+  });
+
+  final Prompt prompt;
+  Completion? completion;
+  Object? error;
+
+  bool get hasError => error != null;
 }
