@@ -21,7 +21,7 @@ class SelectDocsButton extends StatelessWidget {
     return ActionChip(
       avatar: documents.isEmpty
           ? const Icon(Icons.add, size: 16)
-          : const Icon(Icons.description_outlined, size: 16),
+          : const Icon(Icons.task_outlined, size: 16),
       label: Text(
         'Documents',
         style: text.bodySmall,
