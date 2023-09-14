@@ -66,7 +66,7 @@ class ChatFragment extends StatelessWidget {
             collection: collection,
           );
           body = TextIllustration(
-            illustration: UnDrawIllustration.in_thought,
+            illustration: UnDrawIllustration.typewriter,
             color: color.primary,
             text: 'Thinking...',
           );
