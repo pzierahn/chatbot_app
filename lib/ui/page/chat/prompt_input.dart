@@ -52,54 +52,62 @@ class _PromptInputState extends State<PromptInput> {
     final text = Theme.of(context).textTheme;
 
     final textStyle = text.titleLarge?.merge(TextStyle(
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w500,
       color: onPromptSubmit != null ? color.onSurface : color.outline,
     ));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: TextField(
-                controller: _controller,
-                enabled: onPromptSubmit != null,
-                maxLines: null,
-                style: textStyle,
-                onSubmitted: onPromptSubmit != null
-                    ? (value) {
-                        prompt.prompt = value;
-                        onPromptSubmit?.call(prompt);
-                      }
-                    : null,
-                decoration: InputDecoration.collapsed(
-                  hintText: 'Type a prompt',
-                  hintStyle: textStyle,
-                ),
+        TextField(
+          controller: _controller,
+          enabled: onPromptSubmit != null,
+          maxLines: null,
+          style: textStyle,
+          onSubmitted: onPromptSubmit != null
+              ? (value) {
+                  prompt.prompt = value;
+                  onPromptSubmit?.call(prompt);
+                }
+              : null,
+          decoration: InputDecoration(
+            hintText: 'Type a prompt',
+            hintStyle: textStyle,
+            filled: true,
+            fillColor: color.surfaceVariant.withOpacity(0.2),
+            // label: Text(
+            //   'Prompt',
+            //   // style: textStyle,
+            //   style: TextStyle(
+            //     color: color.primary,
+            //   ),
+            // ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(
+                color: color.primary,
+                width: 1.0,
               ),
             ),
-            IconButton(
-              onPressed: onPromptSubmit != null
-                  ? () {
-                      if (_controller.text.isNotEmpty) {
-                        prompt.prompt = _controller.text;
-                        onPromptSubmit?.call(prompt);
-                      }
-                    }
-                  : null,
-              color: color.primary,
-              tooltip: 'Submit',
-              icon: const Icon(Icons.send),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(
+                color: color.outlineVariant,
+                width: 1.0,
+              ),
             ),
-          ],
+            disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(
+                color: color.outlineVariant,
+                width: 1.0,
+              ),
+            ),
+          ),
         ),
         Padding(
           padding: const EdgeInsets.only(top: 16),
-          child: Wrap(
-            spacing: 8,
-            runSpacing: 8,
+          child: Row(
             children: [
               SelectDocsButton(
                 documents: prompt.documents,
@@ -111,13 +119,27 @@ class _PromptInputState extends State<PromptInput> {
                         })
                     : null,
               ),
+              const SizedBox(width: 16),
               ParameterButton(
                 options: prompt.options,
                 onChanged: onPromptSubmit != null
                     ? (parameter) {
-                  prompt.options = parameter;
-                }
+                        prompt.options = parameter;
+                      }
                     : null,
+              ),
+              const Spacer(),
+              TextButton.icon(
+                onPressed: onPromptSubmit != null
+                    ? () {
+                        if (_controller.text.isNotEmpty) {
+                          prompt.prompt = _controller.text;
+                          onPromptSubmit?.call(prompt);
+                        }
+                      }
+                    : null,
+                label: const Text('Submit'),
+                icon: const Icon(Icons.send),
               ),
             ],
           ),

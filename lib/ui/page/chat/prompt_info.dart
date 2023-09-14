@@ -18,7 +18,7 @@ class PromptInfo extends StatelessWidget {
     final text = Theme.of(context).textTheme;
 
     final textStyles = text.titleLarge?.merge(const TextStyle(
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w500,
     ));
 
     return Column(
