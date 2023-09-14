@@ -1,5 +1,5 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
-import 'package:braingain_app/ui/page/home/chat.dart';
+import 'package:braingain_app/ui/page/chat/chat.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {

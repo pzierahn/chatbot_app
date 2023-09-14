@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
-import 'package:braingain_app/ui/page/home/chat_page.dart';
+import 'package:braingain_app/ui/page/chat/chat_page.dart';
 import 'package:flutter/material.dart';
 
 class CollectionsTile extends StatelessWidget {

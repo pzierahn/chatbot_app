@@ -1,5 +1,5 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
-import 'package:braingain_app/ui/page/home/parameter_dialog.dart';
+import 'package:braingain_app/ui/page/chat/parameter_dialog.dart';
 import 'package:flutter/material.dart';
 
 class ParameterButton extends StatelessWidget {

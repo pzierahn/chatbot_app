@@ -1,6 +1,6 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
-import 'package:braingain_app/ui/page/home/select_docs_button.dart';
-import 'package:braingain_app/ui/page/home/parameter_button.dart';
+import 'package:braingain_app/ui/page/chat/select_docs_button.dart';
+import 'package:braingain_app/ui/page/chat/parameter_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

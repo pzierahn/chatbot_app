@@ -1,6 +1,6 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
-import 'package:braingain_app/ui/page/home/prompt_info.dart';
-import 'package:braingain_app/ui/page/home/prompt_input.dart';
+import 'package:braingain_app/ui/page/chat/prompt_info.dart';
+import 'package:braingain_app/ui/page/chat/prompt_input.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
