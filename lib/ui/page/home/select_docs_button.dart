@@ -7,10 +7,12 @@ class SelectDocsButton extends StatelessWidget {
     super.key,
     this.documents = const [],
     this.onChanged,
+    required this.collection,
   });
 
   final List<Prompt_Document> documents;
   final ValueChanged<List<Prompt_Document>>? onChanged;
+  final Collections_Collection collection;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,11 @@ class SelectDocsButton extends StatelessWidget {
       ),
       onPressed: onChanged != null
           ? () async {
-              final docs = await SelectDocsDialog.show(context, documents);
+              final docs = await SelectDocsDialog.show(
+                context: context,
+                documents: documents,
+                collection: collection,
+              );
 
               if (docs != null) {
                 onChanged?.call(docs);

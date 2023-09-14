@@ -27,6 +27,7 @@ class _ChatState extends State<Chat> {
       final fragment = ChatFragment(
         prompt: index < _prompts.length ? _prompts[index] : null,
         completion: index < _completions.length ? _completions[index] : null,
+        collection: widget.collection,
         onPromptSubmit: (prompt) {
           setState(() {
             prompt.collection = widget.collection.id;

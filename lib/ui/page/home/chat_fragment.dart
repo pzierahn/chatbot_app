@@ -13,11 +13,13 @@ class ChatFragment extends StatelessWidget {
     this.prompt,
     this.completion,
     required this.onPromptSubmit,
+    required this.collection,
   });
 
   final Prompt? prompt;
   final Future<Completion>? completion;
   final ValueChanged<Prompt> onPromptSubmit;
+  final Collections_Collection collection;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class ChatFragment extends StatelessWidget {
         child: PromptInput(
           prompt: prompt,
           onPromptSubmit: onPromptSubmit,
+          collection: collection,
         ),
       );
     }
@@ -39,7 +42,10 @@ class ChatFragment extends StatelessWidget {
         Widget body;
 
         if (snap.hasError) {
-          promptWidget = PromptInput(prompt: prompt!);
+          promptWidget = PromptInput(
+            prompt: prompt!,
+            collection: collection,
+          );
           body = TextIllustration(
             illustration: UnDrawIllustration.warning,
             text: ErrorUtils.toText(snap.error),
@@ -55,7 +61,10 @@ class ChatFragment extends StatelessWidget {
             selectable: true,
           );
         } else {
-          promptWidget = PromptInput(prompt: prompt!);
+          promptWidget = PromptInput(
+            prompt: prompt!,
+            collection: collection,
+          );
           body = TextIllustration(
             illustration: UnDrawIllustration.in_thought,
             color: color.primary,

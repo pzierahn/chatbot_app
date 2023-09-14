@@ -7,19 +7,23 @@ class SelectDocsDialog extends StatefulWidget {
   const SelectDocsDialog({
     super.key,
     this.preSelected,
+    required this.collection,
   });
 
   final Map<String, List<int>>? preSelected;
+  final Collections_Collection collection;
 
-  static Future<List<Prompt_Document>?> show(
-    BuildContext context, [
+  static Future<List<Prompt_Document>?> show({
+    required BuildContext context,
+    required Collections_Collection collection,
     List<Prompt_Document>? documents,
-  ]) {
+  }) {
     return showDialog<List<Prompt_Document>?>(
       context: context,
       builder: (context) {
         return SelectDocsDialog(
           preSelected: parseDocuments(documents ?? []),
+          collection: collection,
         );
       },
     );
@@ -46,8 +50,9 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final request = DocumentQuery();
-    request.query = _query;
+    final request = DocumentQuery()
+      ..query = _query
+      ..collection = widget.collection.id;
 
     return AlertDialog(
       title: TextField(

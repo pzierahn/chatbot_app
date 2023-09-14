@@ -9,10 +9,12 @@ class PromptInput extends StatefulWidget {
     super.key,
     this.prompt,
     this.onPromptSubmit,
+    required this.collection,
   });
 
   final Prompt? prompt;
   final ValueChanged<Prompt>? onPromptSubmit;
+  final Collections_Collection collection;
 
   @override
   State createState() => _PromptInputState();
@@ -110,6 +112,7 @@ class _PromptInputState extends State<PromptInput> {
               ),
               SelectDocsButton(
                 documents: prompt.documents,
+                collection: widget.collection,
                 onChanged: onPromptSubmit != null
                     ? (docs) => setState(() {
                           prompt.documents.clear();
