@@ -15,9 +15,7 @@ class SourcesButton extends StatelessWidget {
     final text = Theme.of(context).textTheme;
 
     return ActionChip(
-      avatar: documents.isEmpty
-          ? const Icon(Icons.add, size: 16)
-          : const Icon(Icons.description_outlined, size: 16),
+      avatar: const Icon(Icons.find_in_page_outlined, size: 16),
       label: Text(
         'Sources',
         style: text.bodySmall,
