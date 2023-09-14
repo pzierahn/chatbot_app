@@ -48,7 +48,7 @@ class FileUploadProgress extends StatelessWidget {
       );
     } else if (progress == 1) {
       leading = Icon(
-        Icons.done,
+        Icons.check_circle,
         color: color.primary,
       );
     } else {
