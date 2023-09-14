@@ -6,7 +6,6 @@ import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:grpc/grpc.dart';
 import 'package:undraw/illustrations.g.dart';
 
 class UploadPage extends StatefulWidget {
@@ -34,8 +33,7 @@ class UploadPage extends StatefulWidget {
 
 class _UploadPageState extends State<UploadPage> {
   final _queue = <StorageRef>[];
-  final _upload = <String, Future<StorageRef>>{};
-  final _progress = <String, ResponseStream<IndexProgress>>{};
+  final _status = <String, DocumentStatus>{};
 
   Future<void> _uploadFiles() async {
     final result = await FilePicker.platform.pickFiles(
@@ -57,19 +55,51 @@ class _UploadPageState extends State<UploadPage> {
 
       debugPrint('file: ${file.name} ${file.bytes?.length}');
 
-      final upload = StorageUtils.upload(ref, file.bytes!);
       setState(() {
         _queue.add(ref);
-        _upload[ref.id] = upload;
+        _status[ref.id] = DocumentStatus(
+          ref: ref,
+          uploaded: false,
+        );
       });
 
-      upload.then((value) {
+      StorageUtils.upload(ref, file.bytes!).then((value) {
         debugPrint('uploaded: ${value.filename}');
 
         setState(() {
-          _queue.add(ref);
-          _upload.remove(ref.id);
-          _progress[ref.id] = braingain.indexDocument(ref);
+          _status[ref.id] = DocumentStatus(
+            ref: ref,
+            uploaded: true,
+          );
+        });
+
+        braingain.indexDocument(ref).listen(
+            (progress) => setState(() {
+                  _status[ref.id] = DocumentStatus(
+                    ref: ref,
+                    uploaded: true,
+                    progress: progress,
+                  );
+                }), onError: (error) {
+          debugPrint('error: $error');
+
+          setState(() {
+            _status[ref.id] = DocumentStatus(
+              ref: ref,
+              uploaded: true,
+              error: error,
+            );
+          });
+        });
+      }).catchError((error) {
+        debugPrint('error: $error');
+
+        setState(() {
+          _status[ref.id] = DocumentStatus(
+            ref: ref,
+            uploaded: false,
+            error: error,
+          );
         });
       });
     }
@@ -86,8 +116,7 @@ class _UploadPageState extends State<UploadPage> {
               .map(
                 (ref) => FileUploadProgress(
                   ref: ref,
-                  upload: _upload.containsKey(ref.id) ? _upload[ref.id] : null,
-                  progress: _progress[ref.id],
+                  status: _status[ref.id] ?? DocumentStatus(ref: ref),
                 ),
               )
               .toList());
