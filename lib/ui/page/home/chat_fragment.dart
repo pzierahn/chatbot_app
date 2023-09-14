@@ -52,6 +52,7 @@ class ChatFragment extends StatelessWidget {
           );
           body = MarkdownBody(
             data: snap.data!.text,
+            selectable: true,
           );
         } else {
           promptWidget = PromptInput(prompt: prompt!);
