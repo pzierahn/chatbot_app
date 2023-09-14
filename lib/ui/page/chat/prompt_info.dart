@@ -2,7 +2,6 @@ import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/ui/page/chat/parameter_button.dart';
 import 'package:braingain_app/ui/page/chat/sources_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class PromptInfo extends StatelessWidget {
   const PromptInfo({
@@ -19,7 +18,7 @@ class PromptInfo extends StatelessWidget {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
-    final textStyles = text.titleLarge?.merge(GoogleFonts.robotoSerif(
+    final textStyles = text.titleLarge?.merge(const TextStyle(
       fontWeight: FontWeight.w600,
     ));
 
