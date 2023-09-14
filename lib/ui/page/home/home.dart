@@ -1,4 +1,4 @@
-import 'package:braingain_app/ui/page/collections/collections_page.dart';
+import 'package:braingain_app/ui/page/home/collections_body.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
