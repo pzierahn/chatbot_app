@@ -37,8 +37,9 @@ class _SourcesDialogState extends State<SourcesDialog> {
       content: SizedBox(
         height: 400,
         width: 400,
-        child: ListView.builder(
+        child: ListView.separated(
           itemCount: sources.length,
+          separatorBuilder: (context, index) => const Divider(height: 32),
           itemBuilder: (context, index) {
             final source = widget.sources[index];
 
@@ -74,7 +75,6 @@ class _SourcesDialogState extends State<SourcesDialog> {
                         ),
                       ],
                     ),
-                  const Divider(height: 32),
                 ],
               ),
             );
