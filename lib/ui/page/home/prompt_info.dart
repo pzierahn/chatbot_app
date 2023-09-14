@@ -37,9 +37,6 @@ class PromptInfo extends StatelessWidget {
             spacing: 8,
             runSpacing: 8,
             children: [
-              ParameterButton(
-                options: completion.prompt.options,
-              ),
               ActionChip(
                 avatar: Icon(
                   Icons.description_outlined,
@@ -67,6 +64,9 @@ class PromptInfo extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
+              ),
+              ParameterButton(
+                options: completion.prompt.options,
               ),
             ],
           ),

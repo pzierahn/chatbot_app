@@ -102,14 +102,6 @@ class _PromptInputState extends State<PromptInput> {
             spacing: 8,
             runSpacing: 8,
             children: [
-              ParameterButton(
-                options: prompt.options,
-                onChanged: onPromptSubmit != null
-                    ? (parameter) {
-                        prompt.options = parameter;
-                      }
-                    : null,
-              ),
               SelectDocsButton(
                 documents: prompt.documents,
                 collection: widget.collection,
@@ -118,6 +110,14 @@ class _PromptInputState extends State<PromptInput> {
                           prompt.documents.clear();
                           prompt.documents.addAll(docs);
                         })
+                    : null,
+              ),
+              ParameterButton(
+                options: prompt.options,
+                onChanged: onPromptSubmit != null
+                    ? (parameter) {
+                  prompt.options = parameter;
+                }
                     : null,
               ),
             ],
