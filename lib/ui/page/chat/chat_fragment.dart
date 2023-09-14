@@ -102,7 +102,7 @@ class _ChatFrame extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(8),
         border: Border.all(
           color: color.outlineVariant,
           width: 1.0,

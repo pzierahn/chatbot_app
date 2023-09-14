@@ -2,7 +2,6 @@ import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/ui/page/chat/select_docs_button.dart';
 import 'package:braingain_app/ui/page/chat/parameter_button.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class PromptInput extends StatefulWidget {
   const PromptInput({
@@ -52,7 +51,7 @@ class _PromptInputState extends State<PromptInput> {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
-    final textStyle = text.titleLarge?.merge(GoogleFonts.robotoSerif(
+    final textStyle = text.titleLarge?.merge(TextStyle(
       fontWeight: FontWeight.w600,
       color: onPromptSubmit != null ? color.onSurface : color.outline,
     ));
