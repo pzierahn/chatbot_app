@@ -45,8 +45,6 @@ class FileUploadProgress extends StatelessWidget {
             body = Text(
               ErrorUtils.toText(future.error),
               style: TextStyle(color: color.error),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
             );
           } else {
             body = const Text('Uploading...');
