@@ -130,8 +130,9 @@ const Prompt$json = {
   '1': 'Prompt',
   '2': [
     {'1': 'prompt', '3': 1, '4': 1, '5': 9, '10': 'prompt'},
-    {'1': 'options', '3': 2, '4': 1, '5': 11, '6': '.endpoint.braingain.v1.PromptOptions', '10': 'options'},
-    {'1': 'documents', '3': 3, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.Prompt.Document', '10': 'documents'},
+    {'1': 'collection', '3': 2, '4': 1, '5': 9, '10': 'collection'},
+    {'1': 'options', '3': 3, '4': 1, '5': 11, '6': '.endpoint.braingain.v1.PromptOptions', '10': 'options'},
+    {'1': 'documents', '3': 4, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.Prompt.Document', '10': 'documents'},
   ],
   '3': [Prompt_Document$json],
 };
@@ -148,11 +149,11 @@ const Prompt_Document$json = {
 
 /// Descriptor for `Prompt`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List promptDescriptor = $convert.base64Decode(
-    'CgZQcm9tcHQSFgoGcHJvbXB0GAEgASgJUgZwcm9tcHQSPgoHb3B0aW9ucxgCIAEoCzIkLmVuZH'
-    'BvaW50LmJyYWluZ2Fpbi52MS5Qcm9tcHRPcHRpb25zUgdvcHRpb25zEkQKCWRvY3VtZW50cxgD'
-    'IAMoCzImLmVuZHBvaW50LmJyYWluZ2Fpbi52MS5Qcm9tcHQuRG9jdW1lbnRSCWRvY3VtZW50cx'
-    'pMCghEb2N1bWVudBIOCgJpZBgBIAEoCVICaWQSGgoIZmlsZW5hbWUYAiABKAlSCGZpbGVuYW1l'
-    'EhQKBXBhZ2VzGAMgAygNUgVwYWdlcw==');
+    'CgZQcm9tcHQSFgoGcHJvbXB0GAEgASgJUgZwcm9tcHQSHgoKY29sbGVjdGlvbhgCIAEoCVIKY2'
+    '9sbGVjdGlvbhI+CgdvcHRpb25zGAMgASgLMiQuZW5kcG9pbnQuYnJhaW5nYWluLnYxLlByb21w'
+    'dE9wdGlvbnNSB29wdGlvbnMSRAoJZG9jdW1lbnRzGAQgAygLMiYuZW5kcG9pbnQuYnJhaW5nYW'
+    'luLnYxLlByb21wdC5Eb2N1bWVudFIJZG9jdW1lbnRzGkwKCERvY3VtZW50Eg4KAmlkGAEgASgJ'
+    'UgJpZBIaCghmaWxlbmFtZRgCIAEoCVIIZmlsZW5hbWUSFAoFcGFnZXMYAyADKA1SBXBhZ2Vz');
 
 @$core.Deprecated('Use completionDescriptor instead')
 const Completion$json = {

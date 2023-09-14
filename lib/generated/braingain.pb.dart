@@ -531,8 +531,9 @@ class Prompt extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Prompt', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'prompt')
-    ..aOM<PromptOptions>(2, _omitFieldNames ? '' : 'options', subBuilder: PromptOptions.create)
-    ..pc<Prompt_Document>(3, _omitFieldNames ? '' : 'documents', $pb.PbFieldType.PM, subBuilder: Prompt_Document.create)
+    ..aOS(2, _omitFieldNames ? '' : 'collection')
+    ..aOM<PromptOptions>(3, _omitFieldNames ? '' : 'options', subBuilder: PromptOptions.create)
+    ..pc<Prompt_Document>(4, _omitFieldNames ? '' : 'documents', $pb.PbFieldType.PM, subBuilder: Prompt_Document.create)
     ..hasRequiredFields = false
   ;
 
@@ -567,18 +568,27 @@ class Prompt extends $pb.GeneratedMessage {
   void clearPrompt() => clearField(1);
 
   @$pb.TagNumber(2)
-  PromptOptions get options => $_getN(1);
+  $core.String get collection => $_getSZ(1);
   @$pb.TagNumber(2)
-  set options(PromptOptions v) { setField(2, v); }
+  set collection($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasOptions() => $_has(1);
+  $core.bool hasCollection() => $_has(1);
   @$pb.TagNumber(2)
-  void clearOptions() => clearField(2);
-  @$pb.TagNumber(2)
-  PromptOptions ensureOptions() => $_ensure(1);
+  void clearCollection() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.List<Prompt_Document> get documents => $_getList(2);
+  PromptOptions get options => $_getN(2);
+  @$pb.TagNumber(3)
+  set options(PromptOptions v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasOptions() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearOptions() => clearField(3);
+  @$pb.TagNumber(3)
+  PromptOptions ensureOptions() => $_ensure(2);
+
+  @$pb.TagNumber(4)
+  $core.List<Prompt_Document> get documents => $_getList(3);
 }
 
 class Completion_Document extends $pb.GeneratedMessage {
