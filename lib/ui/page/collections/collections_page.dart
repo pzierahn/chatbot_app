@@ -1,9 +1,10 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
-import 'package:braingain_app/ui/page/collection/collection_page.dart';
+import 'package:braingain_app/ui/page/collections/collection_tile.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:undraw/undraw.dart';
 
 class CollectionsPage extends StatefulWidget {
   const CollectionsPage({
@@ -54,40 +55,22 @@ class _CollectionsPageState extends State<CollectionsPage> {
 
           final collections = snap.data!.items;
 
+          final children = <Widget>[
+            UnDraw(
+              width: 300,
+              illustration: UnDrawIllustration.education,
+              color: color.primary,
+            ),
+          ];
+
+          for (var collection in collections) {
+            children.add(CollectionsTile(
+              collection: collection,
+            ));
+          }
+
           return ConstrainedListView(
-            children: collections
-                .map(
-                  (collection) => ListTile(
-                      leading: const Icon(Icons.book_outlined),
-                      title: Text(
-                        collection.name,
-                        style: text.titleMedium,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      subtitle: Text(
-                        '${collection.documents} Documents',
-                        style: text.bodySmall?.merge(
-                          TextStyle(
-                            color: color.secondary,
-                          ),
-                        ),
-                      ),
-                      onTap: () {
-                        CollectionPage.open(context, collection);
-                      },
-                      trailing: PopupMenuButton(
-                        itemBuilder: (context) => const [
-                          PopupMenuItem(
-                            child: Text('Edit'),
-                          ),
-                          PopupMenuItem(
-                            child: Text('Delete'),
-                          ),
-                        ],
-                      )),
-                )
-                .toList(),
+            children: children,
           );
         },
       ),

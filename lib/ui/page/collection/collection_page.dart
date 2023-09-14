@@ -12,9 +12,11 @@ class CollectionPage extends StatefulWidget {
 
   final Collections_Collection collection;
 
-  static Future<void> open(
-      BuildContext context, Collections_Collection col) async {
-    await Navigator.of(context).push(
+  static Future<Object?> open(
+    BuildContext context,
+    Collections_Collection col,
+  ) async {
+    return Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => CollectionPage(
           collection: col,
