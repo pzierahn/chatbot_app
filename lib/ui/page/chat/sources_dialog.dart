@@ -29,43 +29,44 @@ class _SourcesDialogState extends State<SourcesDialog> {
   Widget build(BuildContext context) {
     final text = Theme.of(context).textTheme;
 
+    final sources = widget.sources;
+    sources.sort((a, b) => a.filename.compareTo(b.filename));
+
     return AlertDialog(
       title: const Text('Sources'),
       content: SizedBox(
         height: 400,
         width: 400,
         child: ListView.builder(
-          itemCount: widget.sources.length,
+          itemCount: sources.length,
           itemBuilder: (context, index) {
             final source = widget.sources[index];
 
-            return ListTile(
-              leading: const Icon(
-                Icons.description,
-                size: 16,
-              ),
-              title: Text(
-                source.filename,
-                style: text.bodySmall,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              subtitle: Row(
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: Text(
-                      source.pages.join('\n'),
-                      style: text.bodySmall,
-                      textAlign: TextAlign.center,
-                    ),
+                  Text(
+                    source.filename,
+                    style: text.titleSmall?.merge(TextStyle(
+                      color: Theme.of(context).colorScheme.tertiary,
+                    )),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  Expanded(
-                    child: Text(
-                      source.scores.join('\n'),
-                      style: text.bodySmall,
-                      textAlign: TextAlign.center,
+                  for (int inx = 0; inx < source.pages.length; inx++)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Page ${source.pages[inx]} --> ${(100 * source.scores[inx]).toStringAsFixed(0)}%',
+                          style: text.bodySmall,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
-                  ),
+                  const Divider(height: 32),
                 ],
               ),
             );
