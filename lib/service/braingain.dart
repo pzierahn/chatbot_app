@@ -17,7 +17,9 @@ final braingain = BraingainClientWithToken(_channel);
 class BraingainClientWithToken extends BraingainClient {
   BraingainClientWithToken(super.channel);
 
-  CallOptions? _authOptions(CallOptions? options, String? token) {
+  CallOptions? _mergeAuth(CallOptions? options) {
+    final token = supabase.auth.currentSession?.accessToken;
+
     if (token == null) {
       return options;
     }
@@ -30,14 +32,46 @@ class BraingainClientWithToken extends BraingainClient {
   }
 
   @override
-  ResponseFuture<Collections> getCollections(
-    Empty request, {
-    CallOptions? options,
-  }) {
-    final token = supabase.auth.currentSession?.accessToken;
+  ResponseFuture<Completion> chat(Prompt request, {CallOptions? options}) {
+    return super.chat(
+      request,
+      options: _mergeAuth(options),
+    );
+  }
+
+  @override
+  ResponseFuture<Documents> getDocuments(DocumentQuery request,
+      {CallOptions? options}) {
+    return super.getDocuments(
+      request,
+      options: _mergeAuth(options),
+    );
+  }
+
+  @override
+  ResponseFuture<Empty> deleteDocument(StorageRef request,
+      {CallOptions? options}) {
+    return super.deleteDocument(
+      request,
+      options: _mergeAuth(options),
+    );
+  }
+
+  @override
+  ResponseFuture<Collections> getCollections(Empty request,
+      {CallOptions? options}) {
     return super.getCollections(
       request,
-      options: _authOptions(options, token),
+      options: _mergeAuth(options),
+    );
+  }
+
+  @override
+  ResponseStream<IndexProgress> indexDocument(StorageRef request,
+      {CallOptions? options}) {
+    return super.indexDocument(
+      request,
+      options: _mergeAuth(options),
     );
   }
 }
