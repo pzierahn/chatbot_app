@@ -45,7 +45,13 @@ class _SourcesDialogState extends State<SourcesDialog> {
 
             final mapping = <int, double>{};
             for (int inx = 0; inx < source.pages.length; inx++) {
-              mapping[source.pages[inx]] = source.scores[inx];
+              final page = source.pages[inx];
+              if (source.scores.length <= inx) {
+                mapping[page] = 0;
+                continue;
+              }
+
+              mapping[page] = source.scores[inx];
             }
 
             final pages = source.pages;
