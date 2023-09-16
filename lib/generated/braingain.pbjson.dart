@@ -43,6 +43,19 @@ final $typed_data.Uint8List storageRefDescriptor = $convert.base64Decode(
     'CgpTdG9yYWdlUmVmEg4KAmlkGAEgASgJUgJpZBIeCgpjb2xsZWN0aW9uGAIgASgJUgpjb2xsZW'
     'N0aW9uEhoKCGZpbGVuYW1lGAMgASgJUghmaWxlbmFtZRISCgRwYXRoGAQgASgJUgRwYXRo');
 
+@$core.Deprecated('Use collectionDescriptor instead')
+const Collection$json = {
+  '1': 'Collection',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
+  ],
+};
+
+/// Descriptor for `Collection`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List collectionDescriptor = $convert.base64Decode(
+    'CgpDb2xsZWN0aW9uEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1l');
+
 @$core.Deprecated('Use collectionsDescriptor instead')
 const Collections$json = {
   '1': 'Collections',
