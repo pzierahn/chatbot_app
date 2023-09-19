@@ -1,7 +1,7 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
-import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
+import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/home/collection_edit_dialog.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
@@ -82,36 +82,17 @@ class CollectionsTile extends StatelessWidget {
             size: 20,
           ),
         ),
-        title: Row(
-          children: [
-            Text(
-              collection.name,
-              style: text.titleSmall,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const Spacer(),
-            if (collection.documents > 0)
-              TextButton(
-                onPressed: () {
-                  CollectionPage.open(context, collection);
-                },
-                style: TextButton.styleFrom(
-                  foregroundColor: color.onSurface,
-                ),
-                child: Text('${collection.documents} Documents'),
-              ),
-            if (collection.documents == 0)
-              TextButton(
-                onPressed: () {
-                  UploadPage.open(context, collection);
-                },
-                style: TextButton.styleFrom(
-                  foregroundColor: color.onSurface,
-                ),
-                child: const Text('Upload Documents'),
-              ),
-          ],
+        title: Text(
+          collection.name,
+          style: text.titleSmall,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        subtitle: Text(
+          '${collection.documents} Document${collection.documents == 1 ? '' : 's'}',
+          style: text.bodySmall?.merge(TextStyle(
+            color: color.outline,
+          )),
         ),
         onTap: () {
           ChatPage.open(context, collection);
@@ -120,22 +101,43 @@ class CollectionsTile extends StatelessWidget {
         trailing: PopupMenuButton(
           onSelected: (item) async {
             if (item == 0) {
-              _editCollection(context);
+              UploadPage.open(context, collection);
               return;
             }
 
             if (item == 1) {
+              CollectionPage.open(context, collection);
+              return;
+            }
+
+            if (item == 2) {
+              _editCollection(context);
+              return;
+            }
+
+            if (item == 3) {
               _onDeleteCollection(context);
               return;
             }
           },
-          itemBuilder: (context) => const <PopupMenuEntry<int>>[
-            PopupMenuItem<int>(
-              value: 0,
+          itemBuilder: (context) => <PopupMenuEntry<int>>[
+            if (collection.documents == 0)
+              const PopupMenuItem<int>(
+                value: 0,
+                child: Text('Upload Documents'),
+              ),
+            if (collection.documents > 0)
+              const PopupMenuItem<int>(
+                value: 1,
+                child: Text('View Documents'),
+              ),
+            const PopupMenuDivider(),
+            const PopupMenuItem<int>(
+              value: 2,
               child: Text('Edit'),
             ),
-            PopupMenuItem<int>(
-              value: 1,
+            const PopupMenuItem<int>(
+              value: 3,
               child: Text('Delete'),
             ),
           ],
