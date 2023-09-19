@@ -68,36 +68,34 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
       content: SizedBox(
         height: 400,
         width: 400,
-        child: SingleChildScrollView(
-          child: FutureBuilder<Documents>(
-            future: braingain.filterDocuments(request),
-            builder: (context, snap) {
-              if (snap.hasError) {
-                return Center(
-                  child: Text('Error: ${snap.error}'),
-                );
-              }
-
-              if (!snap.hasData) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-
-              return Form(
-                key: _formKey,
-                child: _DocumentsBody(
-                  documents: snap.data!,
-                  selected: _selectedDocs,
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedDocs = value;
-                    });
-                  },
-                ),
+        child: FutureBuilder<Documents>(
+          future: braingain.filterDocuments(request),
+          builder: (context, snap) {
+            if (snap.hasError) {
+              return Center(
+                child: Text('Error: ${snap.error}'),
               );
-            },
-          ),
+            }
+
+            if (!snap.hasData) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            return Form(
+              key: _formKey,
+              child: _DocumentsBody(
+                documents: snap.data!,
+                selected: _selectedDocs,
+                onChanged: (value) {
+                  setState(() {
+                    _selectedDocs = value;
+                  });
+                },
+              ),
+            );
+          },
         ),
       ),
       actions: [
@@ -141,79 +139,86 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
-    return Column(
-      children: widget.documents.items
-          .map((doc) => ListTile(
-                leading: CircleAvatar(
-                  backgroundColor: widget.selected.containsKey(doc.id)
-                      ? color.primary.withOpacity(0.2)
-                      : color.surfaceVariant,
-                  foregroundColor: widget.selected.containsKey(doc.id)
-                      ? color.primary
-                      : color.onSurfaceVariant,
-                  radius: 16,
-                  child: widget.selected.containsKey(doc.id)
-                      ? const Icon(Icons.check, size: 16)
-                      : const Icon(Icons.description, size: 16),
-                ),
-                title: Text(
-                  doc.filename,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+    if (widget.documents.items.isEmpty) {
+      return const Center(
+        child: Text('No documents found'),
+      );
+    }
+
+    return ListView.builder(
+      itemCount: widget.documents.items.length,
+      itemBuilder: (context, index) {
+        final doc = widget.documents.items[index];
+        return ListTile(
+          leading: CircleAvatar(
+            backgroundColor: widget.selected.containsKey(doc.id)
+                ? color.primary.withOpacity(0.2)
+                : color.surfaceVariant,
+            foregroundColor: widget.selected.containsKey(doc.id)
+                ? color.primary
+                : color.onSurfaceVariant,
+            radius: 16,
+            child: widget.selected.containsKey(doc.id)
+                ? const Icon(Icons.check, size: 16)
+                : const Icon(Icons.description, size: 16),
+          ),
+          title: Text(
+            doc.filename,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: text.bodySmall?.merge(TextStyle(
+              color: widget.selected.containsKey(doc.id)
+                  ? color.primary
+                  : color.onSurface,
+            )),
+          ),
+          subtitle: widget.selected.containsKey(doc.id)
+              ? TextFormField(
+                  controller: TextEditingController(
+                    text: formatPageList(widget.selected[doc.id]!),
+                  ),
+                  decoration: const InputDecoration.collapsed(
+                    hintText: 'Pages',
+                  ),
                   style: text.bodySmall?.merge(TextStyle(
-                    color: widget.selected.containsKey(doc.id)
-                        ? color.primary
-                        : color.onSurface,
+                    color: color.outline,
+                  )),
+                  onFieldSubmitted: (text) {
+                    widget.selected[doc.id] = parsePageList(text);
+                    widget.onChanged(widget.selected);
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter page numbers';
+                    }
+
+                    final reg = RegExp(r'^\d+(-\d+)?,?( *\d+(-\d+)?,?)*$');
+                    if (!reg.hasMatch(value)) {
+                      return 'Please enter page numbers correctly';
+                    }
+
+                    return null;
+                  },
+                )
+              : Text(
+                  'Pages: ${doc.pages}',
+                  style: text.bodySmall?.merge(TextStyle(
+                    color: color.outline,
                   )),
                 ),
-                subtitle: widget.selected.containsKey(doc.id)
-                    ? TextFormField(
-                        controller: TextEditingController(
-                          text: formatPageList(widget.selected[doc.id]!),
-                        ),
-                        decoration: const InputDecoration.collapsed(
-                          hintText: 'Pages',
-                        ),
-                        style: text.bodySmall?.merge(TextStyle(
-                          color: color.outline,
-                        )),
-                        onFieldSubmitted: (text) {
-                          widget.selected[doc.id] = parsePageList(text);
-                          widget.onChanged(widget.selected);
-                        },
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter page numbers';
-                          }
+          onTap: () {
+            if (widget.selected.containsKey(doc.id)) {
+              widget.selected.remove(doc.id);
+            } else {
+              widget.selected[doc.id] = [
+                for (int i = 1; i <= doc.pages; i++) i
+              ];
+            }
 
-                          final reg =
-                              RegExp(r'^\d+(-\d+)?,?( *\d+(-\d+)?,?)*$');
-                          if (!reg.hasMatch(value)) {
-                            return 'Please enter page numbers correctly';
-                          }
-
-                          return null;
-                        },
-                      )
-                    : Text(
-                        'Pages: ${doc.pages}',
-                        style: text.bodySmall?.merge(TextStyle(
-                          color: color.outline,
-                        )),
-                      ),
-                onTap: () {
-                  if (widget.selected.containsKey(doc.id)) {
-                    widget.selected.remove(doc.id);
-                  } else {
-                    widget.selected[doc.id] = [
-                      for (int i = 1; i <= doc.pages; i++) i
-                    ];
-                  }
-
-                  widget.onChanged(widget.selected);
-                },
-              ))
-          .toList(),
+            widget.onChanged(widget.selected);
+          },
+        );
+      },
     );
   }
 }
