@@ -49,7 +49,7 @@ class _ChatState extends State<Chat> {
                     _status[index].completion = response;
                   }))
               .catchError((error) => setState(() {
-                    _status[index].error = error.toString();
+                    _status[index].error = error;
                   }));
         });
       },
