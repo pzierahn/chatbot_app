@@ -46,6 +46,10 @@ class BraingainClient extends $grpc.Client {
       '/endpoint.braingain.v1.Braingain/UpdateCollection',
       ($0.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
+  static final _$deleteCollection = $grpc.ClientMethod<$0.Collection, $1.Empty>(
+      '/endpoint.braingain.v1.Braingain/DeleteCollection',
+      ($0.Collection value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
   static final _$indexDocument = $grpc.ClientMethod<$0.StorageRef, $0.IndexProgress>(
       '/endpoint.braingain.v1.Braingain/IndexDocument',
       ($0.StorageRef value) => value.writeToBuffer(),
@@ -79,6 +83,10 @@ class BraingainClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$1.Empty> updateCollection($0.Collection request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$updateCollection, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.Empty> deleteCollection($0.Collection request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$deleteCollection, request, options: options);
   }
 
   $grpc.ResponseStream<$0.IndexProgress> indexDocument($0.StorageRef request, {$grpc.CallOptions? options}) {
@@ -133,6 +141,13 @@ abstract class BraingainServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Collection.fromBuffer(value),
         ($1.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Collection, $1.Empty>(
+        'DeleteCollection',
+        deleteCollection_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Collection.fromBuffer(value),
+        ($1.Empty value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.StorageRef, $0.IndexProgress>(
         'IndexDocument',
         indexDocument_Pre,
@@ -166,6 +181,10 @@ abstract class BraingainServiceBase extends $grpc.Service {
     return updateCollection(call, await request);
   }
 
+  $async.Future<$1.Empty> deleteCollection_Pre($grpc.ServiceCall call, $async.Future<$0.Collection> request) async {
+    return deleteCollection(call, await request);
+  }
+
   $async.Stream<$0.IndexProgress> indexDocument_Pre($grpc.ServiceCall call, $async.Future<$0.StorageRef> request) async* {
     yield* indexDocument(call, await request);
   }
@@ -176,5 +195,6 @@ abstract class BraingainServiceBase extends $grpc.Service {
   $async.Future<$0.Collections> getCollections($grpc.ServiceCall call, $1.Empty request);
   $async.Future<$1.Empty> createCollection($grpc.ServiceCall call, $0.Collection request);
   $async.Future<$1.Empty> updateCollection($grpc.ServiceCall call, $0.Collection request);
+  $async.Future<$1.Empty> deleteCollection($grpc.ServiceCall call, $0.Collection request);
   $async.Stream<$0.IndexProgress> indexDocument($grpc.ServiceCall call, $0.StorageRef request);
 }
