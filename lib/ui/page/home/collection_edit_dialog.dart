@@ -56,6 +56,7 @@ class _EditCollectionDialogState extends State<EditCollectionDialog> {
         key: _formKey,
         child: TextFormField(
           controller: _controller,
+          autofocus: true,
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter a name';
