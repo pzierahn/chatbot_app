@@ -1,7 +1,9 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
+import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
+import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/illustrations.g.dart';
@@ -97,8 +99,25 @@ class _CollectionPageState extends State<CollectionPage> {
                             ..collection = widget.collection.id
                             ..id = doc.id;
 
-                          await braingain.deleteDocument(ref);
-                          setState(() {});
+                          final delete = await ConfirmDialog.show(
+                            context,
+                            title: 'Delete ${doc.filename}?',
+                            content: 'This action cannot be undone.',
+                          );
+
+                          if (delete == null || !delete) {
+                            return;
+                          }
+
+                          braingain.deleteDocument(ref).then((_) {
+                            SimpleSnackBar.show(
+                              context,
+                              'Deleted ${doc.filename}',
+                            );
+                            setState(() {});
+                          }).catchError((error) {
+                            ErrorSnackBar.show(context, error);
+                          });
                         },
                       ),
                     ),
