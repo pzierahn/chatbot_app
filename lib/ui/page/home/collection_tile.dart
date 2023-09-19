@@ -35,7 +35,7 @@ class CollectionsTile extends StatelessWidget {
     );
   }
 
-  Future<void> _editCollection(BuildContext context) async {
+  Future<void> _onEditCollection(BuildContext context) async {
     final name = await EditCollectionDialog.show(
       context,
       collection.name,
@@ -111,7 +111,7 @@ class CollectionsTile extends StatelessWidget {
             }
 
             if (item == 2) {
-              _editCollection(context);
+              _onEditCollection(context);
               return;
             }
 
