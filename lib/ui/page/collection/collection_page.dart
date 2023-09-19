@@ -85,7 +85,7 @@ class _CollectionPageState extends State<CollectionPage> {
                         foregroundColor: color.primary,
                         child: const Icon(Icons.description_outlined),
                       ),
-                      title: Text(doc.filename),
+                      title: SelectableText(doc.filename),
                       subtitle: Text(
                         'Pages ${doc.pages}',
                         style: text.bodySmall?.merge(TextStyle(
