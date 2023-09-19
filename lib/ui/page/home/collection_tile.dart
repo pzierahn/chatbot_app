@@ -3,6 +3,7 @@ import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
 import 'package:braingain_app/ui/page/home/collection_edit_dialog.dart';
+import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -73,6 +74,21 @@ class CollectionsTile extends StatelessWidget {
         trailing: PopupMenuButton(
           onSelected: (item) async {
             if (item == 1) {
+              ConfirmDialog.show(
+                context,
+                title: 'Delete collection',
+                content: 'Are you sure you want to delete this collection?',
+                onConfirm: () async {
+                  final delete = Collection()
+                    ..id = collection.id
+                    ..name = collection.name;
+                  await braingain.deleteCollection(delete).catchError(
+                        (error) => ErrorSnackBar.show(context, error),
+                      );
+                  onUpdate?.call();
+                },
+              );
+
               // TODO: Delete collection
               // await braingain.deleteCollection(collection);
               onUpdate?.call();
