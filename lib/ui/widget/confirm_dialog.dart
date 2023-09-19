@@ -8,6 +8,24 @@ class ConfirmDialog extends StatelessWidget {
     this.onConfirm,
   });
 
+  static Future<bool?> show(
+    BuildContext context, {
+    required String title,
+    String? content,
+    VoidCallback? onConfirm,
+  }) {
+    return showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return ConfirmDialog(
+          title: title,
+          content: content,
+          onConfirm: onConfirm,
+        );
+      },
+    );
+  }
+
   final String title;
   final String? content;
   final VoidCallback? onConfirm;
@@ -21,13 +39,13 @@ class ConfirmDialog extends StatelessWidget {
         TextButton(
           child: const Text('Cancel'),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context).pop(false);
           },
         ),
         TextButton(
           child: const Text('Confirm'),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context).pop(true);
             onConfirm?.call();
           },
         ),
