@@ -13,10 +13,10 @@ packages:
     dependency: transitive
     description:
       name: archive
-      sha256: "49b1fad315e57ab0bbc15bcbb874e83116a1d78f77ebd500a4af6c9407d6b28e"
+      sha256: e0902a06f0e00414e4e3438a084580161279f137aeb862274710f29ec10cf01e
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.8"
+    version: "3.3.9"
   args:
     dependency: transitive
     description:
@@ -138,10 +138,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_markdown
-      sha256: d4a1cb250c4e059586af0235f32e02882860a508e189b61f2b31b8810c1e1330
+      sha256: a10979814c5f4ddbe2b6143fba25d927599e21e3ba65b3862995960606fae78f
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.17+2"
+    version: "0.6.17+3"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -180,10 +180,10 @@ packages:
     dependency: "direct main"
     description:
       name: google_fonts
-      sha256: e20ff62b158b96f392bfc8afe29dee1503c94fbea2cbe8186fd59b756b8ae982
+      sha256: "0833bfcc1c32560ee51d381fcf1d6d6b35921e89afe852c12f83dc8c00b2e6bc"
       url: "https://pub.dev"
     source: hosted
-    version: "5.1.0"
+    version: "6.0.0"
   googleapis_auth:
     dependency: transitive
     description:
@@ -196,10 +196,10 @@ packages:
     dependency: transitive
     description:
       name: gotrue
-      sha256: af61c5c6a2374d9032b7e4b388de0bb0442f4bedc56372d5382c1ef61c85f1f3
+      sha256: "3d15ee24bd05c6b4e5587f6dba727a7c031e5513424aa2ab4fb35b42f8c45ba7"
       url: "https://pub.dev"
     source: hosted
-    version: "1.12.1"
+    version: "1.12.2"
   grpc:
     dependency: "direct main"
     description:
@@ -412,10 +412,10 @@ packages:
     dependency: transitive
     description:
       name: postgrest
-      sha256: d6cc0f60c7dc761f84d1c6d11d9e02b3ad90399bd84639a28c1c024adbaa9bde
+      sha256: "87e35d3a59e327188321befbfbfcc5a7a2e71f0d0a13d975cbc7d169387ec712"
       url: "https://pub.dev"
     source: hosted
-    version: "1.5.0"
+    version: "1.5.1"
   protobuf:
     dependency: transitive
     description:
@@ -428,10 +428,10 @@ packages:
     dependency: transitive
     description:
       name: realtime_client
-      sha256: b4b7bb293417dafc73943ed639209b2dcb796db8495e56bba29a4e26fadef5cd
+      sha256: e84e328dbca6830dec6c4b168ba452ea8c667f5bf45039505b3c8acb5e2c9d82
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.1"
+    version: "1.2.2"
   retry:
     dependency: transitive
     description:
@@ -585,18 +585,18 @@ packages:
     dependency: transitive
     description:
       name: supabase
-      sha256: "4bfa8f673b39c036ed82829a2ddc462dcacfc36fe168b680664ab954c7d91ccd"
+      sha256: "0b4625845558b42639a3cd13b0d3ea69132e6228bdbf484f38ef4c71363f82b1"
       url: "https://pub.dev"
     source: hosted
-    version: "1.11.3"
+    version: "1.11.5"
   supabase_flutter:
     dependency: "direct main"
     description:
       name: supabase_flutter
-      sha256: "9ed8299c665467588d2415a38d8a4c924c3bc864fbeaf857e352f9011af35f05"
+      sha256: cbc955e44f5feaa2958793f0df1fe055ea7a5ca003184a51172492bcdde8a724
       url: "https://pub.dev"
     source: hosted
-    version: "1.10.16"
+    version: "1.10.18"
   term_glyph:
     dependency: transitive
     description:
@@ -770,10 +770,10 @@ packages:
     dependency: transitive
     description:
       name: webview_flutter_android
-      sha256: "9427774649fd3c8b7ff53523051395d13aed2ca355822b822e6493d79f5fc05a"
+      sha256: ddc167c6676f57c8b367d19fcbee267d6dc6adf81bd6c3cb87981d30746e0a6d
       url: "https://pub.dev"
     source: hosted
-    version: "3.10.0"
+    version: "3.10.1"
   webview_flutter_platform_interface:
     dependency: transitive
     description:
@@ -794,10 +794,10 @@ packages:
     dependency: transitive
     description:
       name: win32
-      sha256: "9e82a402b7f3d518fb9c02d0e9ae45952df31b9bf34d77baf19da2de03fc2aaa"
+      sha256: c97defd418eef4ec88c0d1652cdce84b9f7b63dd7198e266d06ac1710d527067
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.7"
+    version: "5.0.8"
   xdg_directories:
     dependency: transitive
     description:
