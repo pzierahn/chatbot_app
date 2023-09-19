@@ -55,6 +55,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
         for (var collection in collections) {
           children.add(CollectionsTile(
             collection: collection,
+            onUpdate: () => setState(() {}),
           ));
         }
 
@@ -86,7 +87,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
                 overflow: TextOverflow.ellipsis,
               ),
               onTap: () async {
-                final name = await showCollectionNameDialog(context);
+                final name = await EditCollectionDialog.show(context);
                 if (name == null) {
                   return;
                 }

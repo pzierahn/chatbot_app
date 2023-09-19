@@ -1,15 +1,20 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
+import 'package:braingain_app/ui/page/home/collection_name_dialog.dart';
+import 'package:braingain_app/ui/widget/error.dart';
 import 'package:flutter/material.dart';
 
 class CollectionsTile extends StatelessWidget {
   const CollectionsTile({
     super.key,
     required this.collection,
+    this.onUpdate,
   });
 
   final Collections_Collection collection;
+  final VoidCallback? onUpdate;
 
   @override
   Widget build(BuildContext context) {
@@ -66,11 +71,39 @@ class CollectionsTile extends StatelessWidget {
         },
         shape: shape,
         trailing: PopupMenuButton(
-          itemBuilder: (context) => const [
-            PopupMenuItem(
+          onSelected: (item) async {
+            if (item == 1) {
+              // TODO: Delete collection
+              // await braingain.deleteCollection(collection);
+              onUpdate?.call();
+              return;
+            }
+
+            final name = await EditCollectionDialog.show(
+              context,
+              collection.name,
+            );
+            if (name == null) {
+              return;
+            }
+
+            await braingain
+                .updateCollection(
+                  Collection()
+                    ..id = collection.id
+                    ..name = name,
+                )
+                .catchError((error) => ErrorSnackBar.show(context, error));
+
+            onUpdate?.call();
+          },
+          itemBuilder: (context) => const <PopupMenuEntry<int>>[
+            PopupMenuItem<int>(
+              value: 0,
               child: Text('Edit'),
             ),
-            PopupMenuItem(
+            PopupMenuItem<int>(
+              value: 1,
               child: Text('Delete'),
             ),
           ],

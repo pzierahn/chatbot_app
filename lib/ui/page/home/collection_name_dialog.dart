@@ -1,22 +1,36 @@
 import 'package:flutter/material.dart';
 
-Future<String?> showCollectionNameDialog(BuildContext context) {
-  return showDialog<String>(
-    context: context,
-    builder: (context) => const _CollectionNameDialog(),
-  );
-}
+class EditCollectionDialog extends StatefulWidget {
+  const EditCollectionDialog({
+    super.key,
+    this.name,
+  });
 
-class _CollectionNameDialog extends StatefulWidget {
-  const _CollectionNameDialog();
+  final String? name;
+
+  static Future<String?> show(
+    BuildContext context, [
+    String? name,
+  ]) {
+    return showDialog<String>(
+      context: context,
+      builder: (context) => EditCollectionDialog(name: name),
+    );
+  }
 
   @override
-  State<_CollectionNameDialog> createState() => _CollectionNameDialogState();
+  State<EditCollectionDialog> createState() => _EditCollectionDialogState();
 }
 
-class _CollectionNameDialogState extends State<_CollectionNameDialog> {
+class _EditCollectionDialogState extends State<EditCollectionDialog> {
   final _formKey = GlobalKey<FormState>();
   final _controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.text = widget.name ?? '';
+  }
 
   @override
   void dispose() {
@@ -35,7 +49,9 @@ class _CollectionNameDialogState extends State<_CollectionNameDialog> {
     final color = Theme.of(context).colorScheme;
 
     return AlertDialog(
-      title: const Text('Create Collection'),
+      title: Text(
+        widget.name == null ? 'Create Collection' : 'Edit Collection',
+      ),
       content: Form(
         key: _formKey,
         child: TextFormField(
@@ -65,7 +81,7 @@ class _CollectionNameDialogState extends State<_CollectionNameDialog> {
         ),
         TextButton(
           onPressed: _onPressed,
-          child: const Text('Create'),
+          child: Text(widget.name == null ? 'Create' : 'Update'),
         ),
       ],
     );
