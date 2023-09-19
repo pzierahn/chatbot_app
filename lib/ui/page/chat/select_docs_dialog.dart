@@ -50,7 +50,7 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final request = DocumentQuery()
+    final request = DocumentFilter()
       ..query = _query
       ..collection = widget.collection.id;
 
@@ -70,7 +70,7 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
         width: 400,
         child: SingleChildScrollView(
           child: FutureBuilder<Documents>(
-            future: braingain.getDocuments(request),
+            future: braingain.filterDocuments(request),
             builder: (context, snap) {
               if (snap.hasError) {
                 return Center(

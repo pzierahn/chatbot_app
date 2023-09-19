@@ -287,13 +287,13 @@ class Collections extends $pb.GeneratedMessage {
   $core.List<Collections_Collection> get items => $_getList(0);
 }
 
-class DocumentQuery extends $pb.GeneratedMessage {
-  factory DocumentQuery() => create();
-  DocumentQuery._() : super();
-  factory DocumentQuery.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory DocumentQuery.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class DocumentFilter extends $pb.GeneratedMessage {
+  factory DocumentFilter() => create();
+  DocumentFilter._() : super();
+  factory DocumentFilter.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DocumentFilter.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentQuery', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentFilter', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'query')
     ..aOS(2, _omitFieldNames ? '' : 'collection')
     ..hasRequiredFields = false
@@ -303,22 +303,22 @@ class DocumentQuery extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  DocumentQuery clone() => DocumentQuery()..mergeFromMessage(this);
+  DocumentFilter clone() => DocumentFilter()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  DocumentQuery copyWith(void Function(DocumentQuery) updates) => super.copyWith((message) => updates(message as DocumentQuery)) as DocumentQuery;
+  DocumentFilter copyWith(void Function(DocumentFilter) updates) => super.copyWith((message) => updates(message as DocumentFilter)) as DocumentFilter;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static DocumentQuery create() => DocumentQuery._();
-  DocumentQuery createEmptyInstance() => create();
-  static $pb.PbList<DocumentQuery> createRepeated() => $pb.PbList<DocumentQuery>();
+  static DocumentFilter create() => DocumentFilter._();
+  DocumentFilter createEmptyInstance() => create();
+  static $pb.PbList<DocumentFilter> createRepeated() => $pb.PbList<DocumentFilter>();
   @$core.pragma('dart2js:noInline')
-  static DocumentQuery getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DocumentQuery>(create);
-  static DocumentQuery? _defaultInstance;
+  static DocumentFilter getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DocumentFilter>(create);
+  static DocumentFilter? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get query => $_getSZ(0);

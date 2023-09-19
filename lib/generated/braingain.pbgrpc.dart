@@ -26,9 +26,9 @@ class BraingainClient extends $grpc.Client {
       '/endpoint.braingain.v1.Braingain/Chat',
       ($0.Prompt value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Completion.fromBuffer(value));
-  static final _$getDocuments = $grpc.ClientMethod<$0.DocumentQuery, $0.Documents>(
-      '/endpoint.braingain.v1.Braingain/GetDocuments',
-      ($0.DocumentQuery value) => value.writeToBuffer(),
+  static final _$filterDocuments = $grpc.ClientMethod<$0.DocumentFilter, $0.Documents>(
+      '/endpoint.braingain.v1.Braingain/FilterDocuments',
+      ($0.DocumentFilter value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Documents.fromBuffer(value));
   static final _$deleteDocument = $grpc.ClientMethod<$0.StorageRef, $1.Empty>(
       '/endpoint.braingain.v1.Braingain/DeleteDocument',
@@ -57,8 +57,8 @@ class BraingainClient extends $grpc.Client {
     return $createUnaryCall(_$chat, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.Documents> getDocuments($0.DocumentQuery request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$getDocuments, request, options: options);
+  $grpc.ResponseFuture<$0.Documents> filterDocuments($0.DocumentFilter request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$filterDocuments, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.Empty> deleteDocument($0.StorageRef request, {$grpc.CallOptions? options}) {
@@ -90,12 +90,12 @@ abstract class BraingainServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Prompt.fromBuffer(value),
         ($0.Completion value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.DocumentQuery, $0.Documents>(
-        'GetDocuments',
-        getDocuments_Pre,
+    $addMethod($grpc.ServiceMethod<$0.DocumentFilter, $0.Documents>(
+        'FilterDocuments',
+        filterDocuments_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.DocumentQuery.fromBuffer(value),
+        ($core.List<$core.int> value) => $0.DocumentFilter.fromBuffer(value),
         ($0.Documents value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.StorageRef, $1.Empty>(
         'DeleteDocument',
@@ -131,8 +131,8 @@ abstract class BraingainServiceBase extends $grpc.Service {
     return chat(call, await request);
   }
 
-  $async.Future<$0.Documents> getDocuments_Pre($grpc.ServiceCall call, $async.Future<$0.DocumentQuery> request) async {
-    return getDocuments(call, await request);
+  $async.Future<$0.Documents> filterDocuments_Pre($grpc.ServiceCall call, $async.Future<$0.DocumentFilter> request) async {
+    return filterDocuments(call, await request);
   }
 
   $async.Future<$1.Empty> deleteDocument_Pre($grpc.ServiceCall call, $async.Future<$0.StorageRef> request) async {
@@ -152,7 +152,7 @@ abstract class BraingainServiceBase extends $grpc.Service {
   }
 
   $async.Future<$0.Completion> chat($grpc.ServiceCall call, $0.Prompt request);
-  $async.Future<$0.Documents> getDocuments($grpc.ServiceCall call, $0.DocumentQuery request);
+  $async.Future<$0.Documents> filterDocuments($grpc.ServiceCall call, $0.DocumentFilter request);
   $async.Future<$1.Empty> deleteDocument($grpc.ServiceCall call, $0.StorageRef request);
   $async.Future<$0.Collections> getCollections($grpc.ServiceCall call, $1.Empty request);
   $async.Future<$1.Empty> createCollection($grpc.ServiceCall call, $0.Collection request);

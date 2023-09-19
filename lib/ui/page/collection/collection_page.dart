@@ -48,8 +48,8 @@ class _CollectionPageState extends State<CollectionPage> {
         ],
       ),
       body: FutureBuilder<Documents>(
-        future: braingain.getDocuments(
-          DocumentQuery()..collection = widget.collection.id,
+        future: braingain.filterDocuments(
+          DocumentFilter()..collection = widget.collection.id,
         ),
         builder: (context, snap) {
           if (!snap.hasData) {

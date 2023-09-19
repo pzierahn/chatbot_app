@@ -40,9 +40,9 @@ class BraingainClientWithToken extends BraingainClient {
   }
 
   @override
-  ResponseFuture<Documents> getDocuments(DocumentQuery request,
+  ResponseFuture<Documents> filterDocuments(DocumentFilter request,
       {CallOptions? options}) {
-    return super.getDocuments(
+    return super.filterDocuments(
       request,
       options: _mergeAuth(options),
     );
