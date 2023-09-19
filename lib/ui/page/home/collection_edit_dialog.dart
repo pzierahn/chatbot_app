@@ -62,6 +62,7 @@ class _EditCollectionDialogState extends State<EditCollectionDialog> {
             }
             return null;
           },
+          onFieldSubmitted: (_) => _onPressed(),
           decoration: InputDecoration(
             hintText: 'Name',
             border: OutlineInputBorder(
