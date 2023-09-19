@@ -2,7 +2,7 @@ import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
-import 'package:braingain_app/ui/page/home/collection_name_dialog.dart';
+import 'package:braingain_app/ui/page/home/collection_edit_dialog.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:flutter/material.dart';
 
