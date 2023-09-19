@@ -76,6 +76,15 @@ class BraingainClientWithToken extends BraingainClient {
   }
 
   @override
+  ResponseFuture<Empty> deleteCollection(Collection request,
+      {CallOptions? options}) {
+    return super.deleteCollection(
+      request,
+      options: _mergeAuth(options),
+    );
+  }
+
+  @override
   ResponseFuture<Empty> updateCollection(Collection request,
       {CallOptions? options}) {
     return super.updateCollection(
