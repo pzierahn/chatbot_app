@@ -63,13 +63,12 @@ class _SourcesDialogState extends State<SourcesDialog> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                SelectableText(
                   source.filename,
                   style: text.titleSmall?.merge(TextStyle(
                     color: Theme.of(context).colorScheme.tertiary,
                   )),
                   maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                 ),
                 for (int inx = 0; inx < source.pages.length; inx++)
                   Row(
