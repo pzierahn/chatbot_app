@@ -1,6 +1,7 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
+import 'package:braingain_app/ui/page/home/collection_name_dialog.dart';
 import 'package:braingain_app/ui/page/home/collection_tile.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
@@ -56,6 +57,49 @@ class _CollectionsBodyState extends State<CollectionsBody> {
             collection: collection,
           ));
         }
+
+        children.add(Container(
+            margin: const EdgeInsets.all(8),
+            // padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: color.surfaceVariant.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: color.outlineVariant,
+                width: 1,
+              ),
+            ),
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundColor: color.surfaceVariant,
+                foregroundColor: color.onSurfaceVariant,
+                radius: 16,
+                child: const Icon(
+                  Icons.add,
+                  size: 20,
+                ),
+              ),
+              title: Text(
+                'Create new collection',
+                style: text.titleSmall,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              onTap: () async {
+                final name = await showCollectionNameDialog(context);
+                if (name == null) {
+                  return;
+                }
+
+                await braingain.createCollection(
+                  Collection()..name = name,
+                );
+                setState(() {});
+              },
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            )));
 
         return ConstrainedListView(
           children: children,

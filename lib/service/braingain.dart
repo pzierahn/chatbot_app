@@ -67,6 +67,15 @@ class BraingainClientWithToken extends BraingainClient {
   }
 
   @override
+  ResponseFuture<Empty> createCollection(Collection request,
+      {CallOptions? options}) {
+    return super.createCollection(
+      request,
+      options: _mergeAuth(options),
+    );
+  }
+
+  @override
   ResponseStream<IndexProgress> indexDocument(StorageRef request,
       {CallOptions? options}) {
     return super.indexDocument(
