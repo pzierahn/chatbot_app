@@ -1,6 +1,8 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:braingain_app/utils/page_numbers.dart';
 import 'package:flutter/material.dart';
+import 'package:undraw/illustrations.g.dart';
 
 class SourcesDialog extends StatefulWidget {
   const SourcesDialog({
@@ -27,65 +29,80 @@ class SourcesDialog extends StatefulWidget {
 class _SourcesDialogState extends State<SourcesDialog> {
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
     final sources = widget.sources;
     sources.sort((a, b) => a.filename.compareTo(b.filename));
+
+    Widget body;
+
+    if (sources.isNotEmpty) {
+      body = ListView.separated(
+        itemCount: sources.length,
+        separatorBuilder: (context, index) => const Divider(height: 32),
+        itemBuilder: (context, index) {
+          final source = widget.sources[index];
+
+          final mapping = <int, double>{};
+          for (int inx = 0; inx < source.pages.length; inx++) {
+            final page = source.pages[inx];
+            if (source.scores.length <= inx) {
+              mapping[page] = 0;
+              continue;
+            }
+
+            mapping[page] = source.scores[inx];
+          }
+
+          final pages = source.pages;
+          pages.sort((a, b) => a.compareTo(b));
+
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  source.filename,
+                  style: text.titleSmall?.merge(TextStyle(
+                    color: Theme.of(context).colorScheme.tertiary,
+                  )),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                for (int inx = 0; inx < source.pages.length; inx++)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Page ${pages[inx]} --> ${(100 * mapping[pages[inx]]!).toStringAsFixed(0)}%',
+                        style: text.bodySmall,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+              ],
+            ),
+          );
+        },
+      );
+    } else {
+      body = Center(
+        child: TextIllustration(
+          illustration: UnDrawIllustration.notify,
+          color: color.error,
+          text: 'No documents found',
+        ),
+      );
+    }
 
     return AlertDialog(
       title: const Text('Sources'),
       content: SizedBox(
         height: 400,
         width: 400,
-        child: ListView.separated(
-          itemCount: sources.length,
-          separatorBuilder: (context, index) => const Divider(height: 32),
-          itemBuilder: (context, index) {
-            final source = widget.sources[index];
-
-            final mapping = <int, double>{};
-            for (int inx = 0; inx < source.pages.length; inx++) {
-              final page = source.pages[inx];
-              if (source.scores.length <= inx) {
-                mapping[page] = 0;
-                continue;
-              }
-
-              mapping[page] = source.scores[inx];
-            }
-
-            final pages = source.pages;
-            pages.sort((a, b) => a.compareTo(b));
-
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    source.filename,
-                    style: text.titleSmall?.merge(TextStyle(
-                      color: Theme.of(context).colorScheme.tertiary,
-                    )),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  for (int inx = 0; inx < source.pages.length; inx++)
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Page ${pages[inx]} --> ${(100 * mapping[pages[inx]]!).toStringAsFixed(0)}%',
-                          style: text.bodySmall,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                ],
-              ),
-            );
-          },
-        ),
+        child: body,
       ),
       actions: [
         TextButton(
