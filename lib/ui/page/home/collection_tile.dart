@@ -17,6 +17,40 @@ class CollectionsTile extends StatelessWidget {
   final Collections_Collection collection;
   final VoidCallback? onUpdate;
 
+  Future<void> _onDeleteCollection(BuildContext context) {
+    return ConfirmDialog.show(
+      context,
+      title: 'Delete collection',
+      content: 'Are you sure you want to delete this collection?',
+      onConfirm: () async {
+        final delete = Collection()
+          ..id = collection.id
+          ..name = collection.name;
+        await braingain.deleteCollection(delete).catchError(
+              (error) => ErrorSnackBar.show(context, error),
+            );
+        onUpdate?.call();
+      },
+    );
+  }
+
+  Future<void> _editCollection(BuildContext context) async {
+    final name = await EditCollectionDialog.show(
+      context,
+      collection.name,
+    );
+    if (name == null) {
+      return;
+    }
+
+    braingain
+        .updateCollection(Collection()
+          ..id = collection.id
+          ..name = name)
+        .then((_) => onUpdate?.call())
+        .catchError((error) => ErrorSnackBar.show(context, error));
+  }
+
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
@@ -73,45 +107,15 @@ class CollectionsTile extends StatelessWidget {
         shape: shape,
         trailing: PopupMenuButton(
           onSelected: (item) async {
+            if (item == 0) {
+              _editCollection(context);
+              return;
+            }
+
             if (item == 1) {
-              ConfirmDialog.show(
-                context,
-                title: 'Delete collection',
-                content: 'Are you sure you want to delete this collection?',
-                onConfirm: () async {
-                  final delete = Collection()
-                    ..id = collection.id
-                    ..name = collection.name;
-                  await braingain.deleteCollection(delete).catchError(
-                        (error) => ErrorSnackBar.show(context, error),
-                      );
-                  onUpdate?.call();
-                },
-              );
-
-              // TODO: Delete collection
-              // await braingain.deleteCollection(collection);
-              onUpdate?.call();
+              _onDeleteCollection(context);
               return;
             }
-
-            final name = await EditCollectionDialog.show(
-              context,
-              collection.name,
-            );
-            if (name == null) {
-              return;
-            }
-
-            await braingain
-                .updateCollection(
-                  Collection()
-                    ..id = collection.id
-                    ..name = name,
-                )
-                .catchError((error) => ErrorSnackBar.show(context, error));
-
-            onUpdate?.call();
           },
           itemBuilder: (context) => const <PopupMenuEntry<int>>[
             PopupMenuItem<int>(
