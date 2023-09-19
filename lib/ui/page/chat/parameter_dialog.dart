@@ -85,15 +85,19 @@ class _PromptOptionsState extends State<ParameterDialog> {
           contentPadding: EdgeInsets.zero,
           title: const Text('Model'),
           subtitle: DropdownButton<String>(
-            value: 'gpt-3.5-turbo',
-            onChanged: (val) {},
+            value: options.model,
+            onChanged: (val) {
+              if (val != null) {
+                setState(() => options.model = val);
+              }
+            },
             style: text.bodySmall,
             items: const [
-              DropdownMenuItem(
-                value: 'gpt-3.5-turbo',
-                child: Text('gpt-3.5-turbo'),
+              DropdownMenuItem<String>(
+                value: 'gpt-3.5-turbo-16k',
+                child: Text('gpt-3.5-turbo-16k'),
               ),
-              DropdownMenuItem(
+              DropdownMenuItem<String>(
                 value: 'gpt-4',
                 child: Text('gpt-4'),
               ),
