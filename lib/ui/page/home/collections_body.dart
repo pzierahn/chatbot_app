@@ -81,7 +81,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
                 ),
               ),
               title: Text(
-                'Create new collection',
+                'Create Collection',
                 style: text.titleSmall,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
