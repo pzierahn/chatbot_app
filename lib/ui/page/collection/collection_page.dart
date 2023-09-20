@@ -131,8 +131,8 @@ class _CollectionPageState extends State<CollectionPage> {
                   .map(
                     (doc) => ListTile(
                       leading: CircleAvatar(
-                        backgroundColor: color.primary.withOpacity(0.2),
-                        foregroundColor: color.primary,
+                        backgroundColor: color.primaryContainer,
+                        foregroundColor: color.onPrimaryContainer,
                         child: const Icon(Icons.description_outlined),
                       ),
                       title: SelectableText(doc.filename),

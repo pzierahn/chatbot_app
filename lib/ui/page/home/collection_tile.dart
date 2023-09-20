@@ -74,8 +74,8 @@ class CollectionsTile extends StatelessWidget {
       ),
       child: ListTile(
         leading: CircleAvatar(
-          backgroundColor: color.primary.withOpacity(0.2),
-          foregroundColor: color.primary,
+          backgroundColor: color.primaryContainer,
+          foregroundColor: color.onPrimaryContainer,
           radius: 16,
           child: const Icon(
             Icons.folder_outlined,
