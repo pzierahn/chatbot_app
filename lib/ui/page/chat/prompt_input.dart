@@ -75,13 +75,6 @@ class _PromptInputState extends State<PromptInput> {
             hintStyle: textStyle,
             filled: true,
             fillColor: color.surfaceVariant.withOpacity(0.2),
-            // label: Text(
-            //   'Prompt',
-            //   // style: textStyle,
-            //   style: TextStyle(
-            //     color: color.primary,
-            //   ),
-            // ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
