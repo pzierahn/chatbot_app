@@ -1,5 +1,5 @@
-import 'package:braingain_app/service/supabase.dart';
 import 'package:braingain_app/ui/page/home/collections_body.dart';
+import 'package:braingain_app/ui/page/settings/settings_page.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -24,10 +24,8 @@ class _HomeState extends State<Home> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              supabase.auth.signOut();
-            },
+            icon: const Icon(Icons.settings_outlined),
+            onPressed: () => SettingsPage.open(context),
           ),
         ],
       ),
