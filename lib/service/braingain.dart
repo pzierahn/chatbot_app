@@ -128,4 +128,13 @@ class BraingainClientWithToken extends BraingainClient {
       options: _mergeAuth(options),
     );
   }
+
+  @override
+  ResponseFuture<ModelUsages> getModelUsages(Empty request,
+      {CallOptions? options}) {
+    return super.getModelUsages(
+      request,
+      options: _mergeAuth(options),
+    );
+  }
 }
