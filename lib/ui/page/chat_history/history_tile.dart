@@ -13,6 +13,7 @@ class ChatHistoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
+    final text = Theme.of(context).textTheme;
 
     return FutureBuilder<Completion>(
         future: braingain.getChatMessage(MessageID()..id = chatId),
@@ -22,29 +23,41 @@ class ChatHistoryTile extends StatelessWidget {
               leading: const Icon(Icons.error_outline),
               title: Text(
                 snapshot.error.toString(),
-                style: TextStyle(color: color.error),
+                style: text.titleMedium?.merge(TextStyle(color: color.error)),
               ),
             );
           }
 
           if (!snapshot.hasData) {
-            return const ListTile(
-              leading: CircularProgressIndicator(),
-              title: Text('Loading...'),
+            return ListTile(
+              trailing: const CircularProgressIndicator(),
+              title: Text(
+                'Loading...',
+                style: text.titleMedium,
+              ),
+              subtitle: Text(
+                chatId,
+                style: text.bodySmall?.merge(TextStyle(
+                  color: color.outline,
+                )),
+              ),
             );
           }
 
           final message = snapshot.data!;
-          final time = message.timestamp.toDateTime();
+          final date = message.timestamp.toDateTime(toLocal: true);
 
           return ListTile(
-            leading: const Icon(Icons.history_outlined),
-            trailing: Text(time.toLocal().toString()),
-            title: Text(message.prompt.prompt),
+            title: SelectableText(
+              message.prompt.prompt,
+              style: text.titleMedium,
+            ),
+            // minLeadingWidth: 40,
             subtitle: Text(
-              message.text,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+              date.toString(),
+              style: text.bodySmall?.merge(TextStyle(
+                color: color.outline,
+              )),
             ),
           );
         });
