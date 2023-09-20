@@ -4,6 +4,7 @@ import 'package:braingain_app/service/braingain.dart';
 import 'package:braingain_app/ui/page/home/collection_edit_dialog.dart';
 import 'package:braingain_app/ui/page/home/collection_tile.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
+import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/undraw.dart';
 
@@ -92,10 +93,10 @@ class _CollectionsBodyState extends State<CollectionsBody> {
                   return;
                 }
 
-                await braingain.createCollection(
-                  Collection()..name = name,
-                );
-                setState(() {});
+                braingain
+                    .createCollection(Collection()..name = name)
+                    .then((_) => setState(() {}))
+                    .catchError((error) => ErrorSnackBar.show(context, error));
               },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
