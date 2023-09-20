@@ -37,6 +37,55 @@ class CollectionPage extends StatefulWidget {
 class _CollectionPageState extends State<CollectionPage> {
   void _onUpload() => UploadPage.open(context, widget.collection);
 
+  Future<void> _onEditDocument(Documents_Document doc) async {
+    final ref = StorageRef()
+      ..collection = widget.collection.id
+      ..filename = doc.filename
+      ..id = doc.id;
+
+    final filename = await EditDocumentDialog.show(context, ref);
+    if (filename == null || filename.isEmpty) {
+      return;
+    }
+
+    ref.filename = filename;
+
+    braingain.updateDocument(ref).then((_) {
+      SimpleSnackBar.show(
+        context,
+        'Updated ${doc.filename}',
+      );
+      setState(() {});
+    }).catchError((error) {
+      ErrorSnackBar.show(context, error);
+    });
+  }
+
+  Future<void> _onDelete(Documents_Document doc) async {
+    final ref = StorageRef()
+      ..collection = widget.collection.id
+      ..id = doc.id;
+
+    final delete = await ConfirmDialog.show(
+      context,
+      title: 'Delete ${doc.filename}?',
+      content: 'This action cannot be undone',
+    );
+    if (delete == null || !delete) {
+      return;
+    }
+
+    braingain.deleteDocument(ref).then((_) {
+      SimpleSnackBar.show(
+        context,
+        'Deleted ${doc.filename}',
+      );
+      setState(() {});
+    }).catchError((error) {
+      ErrorSnackBar.show(context, error);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
@@ -93,66 +142,27 @@ class _CollectionPageState extends State<CollectionPage> {
                           color: color.outline,
                         )),
                       ),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.edit_outlined),
-                            onPressed: () async {
-                              final ref = StorageRef()
-                                ..collection = widget.collection.id
-                                ..filename = doc.filename
-                                ..id = doc.id;
-
-                              final filename =
-                                  await EditDocumentDialog.show(context, ref);
-
-                              if (filename == null || filename.isEmpty) {
-                                return;
-                              }
-
-                              ref.filename = filename;
-
-                              braingain.updateDocument(ref).then((_) {
-                                SimpleSnackBar.show(
-                                  context,
-                                  'Updated ${doc.filename}',
-                                );
-                                setState(() {});
-                              }).catchError((error) {
-                                ErrorSnackBar.show(context, error);
-                              });
-                            },
+                      trailing: PopupMenuButton(
+                        itemBuilder: (context) => const [
+                          PopupMenuItem(
+                            value: 'edit',
+                            child: Text('Edit'),
                           ),
-                          IconButton(
-                            icon: const Icon(Icons.delete_outline),
-                            onPressed: () async {
-                              final ref = StorageRef()
-                                ..collection = widget.collection.id
-                                ..id = doc.id;
-
-                              final delete = await ConfirmDialog.show(
-                                context,
-                                title: 'Delete ${doc.filename}?',
-                                content: 'This action cannot be undone.',
-                              );
-
-                              if (delete == null || !delete) {
-                                return;
-                              }
-
-                              braingain.deleteDocument(ref).then((_) {
-                                SimpleSnackBar.show(
-                                  context,
-                                  'Deleted ${doc.filename}',
-                                );
-                                setState(() {});
-                              }).catchError((error) {
-                                ErrorSnackBar.show(context, error);
-                              });
-                            },
+                          PopupMenuItem(
+                            value: 'delete',
+                            child: Text('Delete'),
                           ),
                         ],
+                        onSelected: (value) {
+                          switch (value) {
+                            case 'edit':
+                              _onEditDocument(doc);
+                              break;
+                            case 'delete':
+                              _onDelete(doc);
+                              break;
+                          }
+                        },
                       ),
                     ),
                   )
