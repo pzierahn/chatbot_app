@@ -40,6 +40,24 @@ class BraingainClientWithToken extends BraingainClient {
   }
 
   @override
+  ResponseFuture<ChatMessages> getChatHistory(Collection request,
+      {CallOptions? options}) {
+    return super.getChatHistory(
+      request,
+      options: _mergeAuth(options),
+    );
+  }
+
+  @override
+  ResponseFuture<Completion> getChatMessage(MessageID request,
+      {CallOptions? options}) {
+    return super.getChatMessage(
+      request,
+      options: _mergeAuth(options),
+    );
+  }
+
+  @override
   ResponseFuture<Documents> filterDocuments(DocumentFilter request,
       {CallOptions? options}) {
     return super.filterDocuments(
