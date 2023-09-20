@@ -1,6 +1,9 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
+import 'package:braingain_app/ui/page/chat/prompt_info.dart';
+import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
 class ChatHistoryTile extends StatelessWidget {
   const ChatHistoryTile({
@@ -9,6 +12,33 @@ class ChatHistoryTile extends StatelessWidget {
   });
 
   final String chatId;
+
+  void _onViewChat(BuildContext context, ChatMessage message) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => Scaffold(
+          appBar: AppBar(
+            title: const Text('Chat'),
+          ),
+          body: ConstrainedListView(
+            children: [
+              PromptInfo(
+                prompt: message.prompt,
+                completion: message,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: MarkdownBody(
+                  data: message.text,
+                  selectable: true,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,18 +78,18 @@ class ChatHistoryTile extends StatelessWidget {
           final date = message.timestamp.toDateTime(toLocal: true);
 
           return ListTile(
-            title: SelectableText(
-              message.prompt.prompt,
-              style: text.titleMedium,
-            ),
-            // minLeadingWidth: 40,
-            subtitle: Text(
-              date.toString(),
-              style: text.bodySmall?.merge(TextStyle(
-                color: color.outline,
-              )),
-            ),
-          );
+              title: SelectableText(
+                message.prompt.prompt,
+                style: text.titleMedium,
+              ),
+              // minLeadingWidth: 40,
+              subtitle: Text(
+                date.toString(),
+                style: text.bodySmall?.merge(TextStyle(
+                  color: color.outline,
+                )),
+              ),
+              onTap: () => _onViewChat(context, message));
         });
   }
 }
