@@ -28,9 +28,9 @@ class ChatHistoryTile extends StatelessWidget {
           }
 
           if (!snapshot.hasData) {
-            return ListTile(
-              leading: const CircularProgressIndicator(),
-              title: Text(snapshot.error.toString()),
+            return const ListTile(
+              leading: CircularProgressIndicator(),
+              title: Text('Loading...'),
             );
           }
 
