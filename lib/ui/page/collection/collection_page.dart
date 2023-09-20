@@ -1,5 +1,6 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
+import 'package:braingain_app/ui/page/collection/document_edit_dialog.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
@@ -92,33 +93,66 @@ class _CollectionPageState extends State<CollectionPage> {
                           color: color.outline,
                         )),
                       ),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.delete_outline),
-                        onPressed: () async {
-                          final ref = StorageRef()
-                            ..collection = widget.collection.id
-                            ..id = doc.id;
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.edit_outlined),
+                            onPressed: () async {
+                              final ref = StorageRef()
+                                ..collection = widget.collection.id
+                                ..filename = doc.filename
+                                ..id = doc.id;
 
-                          final delete = await ConfirmDialog.show(
-                            context,
-                            title: 'Delete ${doc.filename}?',
-                            content: 'This action cannot be undone.',
-                          );
+                              final filename =
+                                  await EditDocumentDialog.show(context, ref);
 
-                          if (delete == null || !delete) {
-                            return;
-                          }
+                              if (filename == null || filename.isEmpty) {
+                                return;
+                              }
 
-                          braingain.deleteDocument(ref).then((_) {
-                            SimpleSnackBar.show(
-                              context,
-                              'Deleted ${doc.filename}',
-                            );
-                            setState(() {});
-                          }).catchError((error) {
-                            ErrorSnackBar.show(context, error);
-                          });
-                        },
+                              ref.filename = filename;
+
+                              braingain.updateDocument(ref).then((_) {
+                                SimpleSnackBar.show(
+                                  context,
+                                  'Updated ${doc.filename}',
+                                );
+                                setState(() {});
+                              }).catchError((error) {
+                                ErrorSnackBar.show(context, error);
+                              });
+                            },
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.delete_outline),
+                            onPressed: () async {
+                              final ref = StorageRef()
+                                ..collection = widget.collection.id
+                                ..id = doc.id;
+
+                              final delete = await ConfirmDialog.show(
+                                context,
+                                title: 'Delete ${doc.filename}?',
+                                content: 'This action cannot be undone.',
+                              );
+
+                              if (delete == null || !delete) {
+                                return;
+                              }
+
+                              braingain.deleteDocument(ref).then((_) {
+                                SimpleSnackBar.show(
+                                  context,
+                                  'Deleted ${doc.filename}',
+                                );
+                                setState(() {});
+                              }).catchError((error) {
+                                ErrorSnackBar.show(context, error);
+                              });
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   )
