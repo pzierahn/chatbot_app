@@ -38,8 +38,8 @@ class _CollectionPageState extends State<CollectionPage> {
   void _onUpload() => UploadPage.open(context, widget.collection);
 
   Future<void> _onEditDocument(Documents_Document doc) async {
-    final ref = StorageRef()
-      ..collection = widget.collection.id
+    final ref = Document()
+      ..collectionId = widget.collection.id
       ..filename = doc.filename
       ..id = doc.id;
 
@@ -62,8 +62,8 @@ class _CollectionPageState extends State<CollectionPage> {
   }
 
   Future<void> _onDelete(Documents_Document doc) async {
-    final ref = StorageRef()
-      ..collection = widget.collection.id
+    final ref = Document()
+      ..collectionId = widget.collection.id
       ..id = doc.id;
 
     final delete = await ConfirmDialog.show(

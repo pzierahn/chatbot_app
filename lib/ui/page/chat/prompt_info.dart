@@ -11,7 +11,7 @@ class PromptInfo extends StatelessWidget {
   });
 
   final Prompt prompt;
-  final Completion completion;
+  final ChatMessage completion;
 
   @override
   Widget build(BuildContext context) {

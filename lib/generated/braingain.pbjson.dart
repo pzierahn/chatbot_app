@@ -27,21 +27,21 @@ final $typed_data.Uint8List indexProgressDescriptor = $convert.base64Decode(
     'Cg1JbmRleFByb2dyZXNzEh4KCnRvdGFsUGFnZXMYASABKA1SCnRvdGFsUGFnZXMSJgoOcHJvY2'
     'Vzc2VkUGFnZXMYAiABKA1SDnByb2Nlc3NlZFBhZ2Vz');
 
-@$core.Deprecated('Use storageRefDescriptor instead')
-const StorageRef$json = {
-  '1': 'StorageRef',
+@$core.Deprecated('Use documentDescriptor instead')
+const Document$json = {
+  '1': 'Document',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'collection', '3': 2, '4': 1, '5': 9, '10': 'collection'},
+    {'1': 'collection_id', '3': 2, '4': 1, '5': 9, '10': 'collectionId'},
     {'1': 'filename', '3': 3, '4': 1, '5': 9, '10': 'filename'},
     {'1': 'path', '3': 4, '4': 1, '5': 9, '10': 'path'},
   ],
 };
 
-/// Descriptor for `StorageRef`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List storageRefDescriptor = $convert.base64Decode(
-    'CgpTdG9yYWdlUmVmEg4KAmlkGAEgASgJUgJpZBIeCgpjb2xsZWN0aW9uGAIgASgJUgpjb2xsZW'
-    'N0aW9uEhoKCGZpbGVuYW1lGAMgASgJUghmaWxlbmFtZRISCgRwYXRoGAQgASgJUgRwYXRo');
+/// Descriptor for `Document`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List documentDescriptor = $convert.base64Decode(
+    'CghEb2N1bWVudBIOCgJpZBgBIAEoCVICaWQSIwoNY29sbGVjdGlvbl9pZBgCIAEoCVIMY29sbG'
+    'VjdGlvbklkEhoKCGZpbGVuYW1lGAMgASgJUghmaWxlbmFtZRISCgRwYXRoGAQgASgJUgRwYXRo');
 
 @$core.Deprecated('Use collectionDescriptor instead')
 const Collection$json = {
@@ -168,23 +168,23 @@ final $typed_data.Uint8List promptDescriptor = $convert.base64Decode(
     'luLnYxLlByb21wdC5Eb2N1bWVudFIJZG9jdW1lbnRzGkwKCERvY3VtZW50Eg4KAmlkGAEgASgJ'
     'UgJpZBIaCghmaWxlbmFtZRgCIAEoCVIIZmlsZW5hbWUSFAoFcGFnZXMYAyADKA1SBXBhZ2Vz');
 
-@$core.Deprecated('Use completionDescriptor instead')
-const Completion$json = {
-  '1': 'Completion',
+@$core.Deprecated('Use chatMessageDescriptor instead')
+const ChatMessage$json = {
+  '1': 'ChatMessage',
   '2': [
     {'1': 'prompt', '3': 1, '4': 1, '5': 11, '6': '.endpoint.braingain.v1.Prompt', '10': 'prompt'},
     {'1': 'text', '3': 2, '4': 1, '5': 9, '10': 'text'},
-    {'1': 'documents', '3': 3, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.Completion.Document', '10': 'documents'},
+    {'1': 'documents', '3': 3, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.ChatMessage.Document', '10': 'documents'},
     {'1': 'timestamp', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '9': 0, '10': 'timestamp', '17': true},
   ],
-  '3': [Completion_Document$json],
+  '3': [ChatMessage_Document$json],
   '8': [
     {'1': '_timestamp'},
   ],
 };
 
-@$core.Deprecated('Use completionDescriptor instead')
-const Completion_Document$json = {
+@$core.Deprecated('Use chatMessageDescriptor instead')
+const ChatMessage_Document$json = {
   '1': 'Document',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
@@ -194,15 +194,15 @@ const Completion_Document$json = {
   ],
 };
 
-/// Descriptor for `Completion`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List completionDescriptor = $convert.base64Decode(
-    'CgpDb21wbGV0aW9uEjUKBnByb21wdBgBIAEoCzIdLmVuZHBvaW50LmJyYWluZ2Fpbi52MS5Qcm'
-    '9tcHRSBnByb21wdBISCgR0ZXh0GAIgASgJUgR0ZXh0EkgKCWRvY3VtZW50cxgDIAMoCzIqLmVu'
-    'ZHBvaW50LmJyYWluZ2Fpbi52MS5Db21wbGV0aW9uLkRvY3VtZW50Uglkb2N1bWVudHMSPQoJdG'
-    'ltZXN0YW1wGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEgAUgl0aW1lc3RhbXCI'
-    'AQEaZAoIRG9jdW1lbnQSDgoCaWQYASABKAlSAmlkEhoKCGZpbGVuYW1lGAIgASgJUghmaWxlbm'
-    'FtZRIUCgVwYWdlcxgDIAMoDVIFcGFnZXMSFgoGc2NvcmVzGAQgAygCUgZzY29yZXNCDAoKX3Rp'
-    'bWVzdGFtcA==');
+/// Descriptor for `ChatMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List chatMessageDescriptor = $convert.base64Decode(
+    'CgtDaGF0TWVzc2FnZRI1CgZwcm9tcHQYASABKAsyHS5lbmRwb2ludC5icmFpbmdhaW4udjEuUH'
+    'JvbXB0UgZwcm9tcHQSEgoEdGV4dBgCIAEoCVIEdGV4dBJJCglkb2N1bWVudHMYAyADKAsyKy5l'
+    'bmRwb2ludC5icmFpbmdhaW4udjEuQ2hhdE1lc3NhZ2UuRG9jdW1lbnRSCWRvY3VtZW50cxI9Cg'
+    'l0aW1lc3RhbXAYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wSABSCXRpbWVzdGFt'
+    'cIgBARpkCghEb2N1bWVudBIOCgJpZBgBIAEoCVICaWQSGgoIZmlsZW5hbWUYAiABKAlSCGZpbG'
+    'VuYW1lEhQKBXBhZ2VzGAMgAygNUgVwYWdlcxIWCgZzY29yZXMYBCADKAJSBnNjb3Jlc0IMCgpf'
+    'dGltZXN0YW1w');
 
 @$core.Deprecated('Use messageIDDescriptor instead')
 const MessageID$json = {

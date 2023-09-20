@@ -67,15 +67,15 @@ class IndexProgress extends $pb.GeneratedMessage {
   void clearProcessedPages() => clearField(2);
 }
 
-class StorageRef extends $pb.GeneratedMessage {
-  factory StorageRef() => create();
-  StorageRef._() : super();
-  factory StorageRef.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory StorageRef.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class Document extends $pb.GeneratedMessage {
+  factory Document() => create();
+  Document._() : super();
+  factory Document.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Document.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'StorageRef', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'collection')
+    ..aOS(2, _omitFieldNames ? '' : 'collectionId')
     ..aOS(3, _omitFieldNames ? '' : 'filename')
     ..aOS(4, _omitFieldNames ? '' : 'path')
     ..hasRequiredFields = false
@@ -85,22 +85,22 @@ class StorageRef extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  StorageRef clone() => StorageRef()..mergeFromMessage(this);
+  Document clone() => Document()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  StorageRef copyWith(void Function(StorageRef) updates) => super.copyWith((message) => updates(message as StorageRef)) as StorageRef;
+  Document copyWith(void Function(Document) updates) => super.copyWith((message) => updates(message as Document)) as Document;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static StorageRef create() => StorageRef._();
-  StorageRef createEmptyInstance() => create();
-  static $pb.PbList<StorageRef> createRepeated() => $pb.PbList<StorageRef>();
+  static Document create() => Document._();
+  Document createEmptyInstance() => create();
+  static $pb.PbList<Document> createRepeated() => $pb.PbList<Document>();
   @$core.pragma('dart2js:noInline')
-  static StorageRef getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<StorageRef>(create);
-  static StorageRef? _defaultInstance;
+  static Document getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Document>(create);
+  static Document? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
@@ -112,13 +112,13 @@ class StorageRef extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get collection => $_getSZ(1);
+  $core.String get collectionId => $_getSZ(1);
   @$pb.TagNumber(2)
-  set collection($core.String v) { $_setString(1, v); }
+  set collectionId($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasCollection() => $_has(1);
+  $core.bool hasCollectionId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCollection() => clearField(2);
+  void clearCollectionId() => clearField(2);
 
   @$pb.TagNumber(3)
   $core.String get filename => $_getSZ(2);
@@ -645,13 +645,13 @@ class Prompt extends $pb.GeneratedMessage {
   $core.List<Prompt_Document> get documents => $_getList(3);
 }
 
-class Completion_Document extends $pb.GeneratedMessage {
-  factory Completion_Document() => create();
-  Completion_Document._() : super();
-  factory Completion_Document.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Completion_Document.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class ChatMessage_Document extends $pb.GeneratedMessage {
+  factory ChatMessage_Document() => create();
+  ChatMessage_Document._() : super();
+  factory ChatMessage_Document.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ChatMessage_Document.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Completion.Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatMessage.Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'filename')
     ..p<$core.int>(3, _omitFieldNames ? '' : 'pages', $pb.PbFieldType.KU3)
@@ -663,22 +663,22 @@ class Completion_Document extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  Completion_Document clone() => Completion_Document()..mergeFromMessage(this);
+  ChatMessage_Document clone() => ChatMessage_Document()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Completion_Document copyWith(void Function(Completion_Document) updates) => super.copyWith((message) => updates(message as Completion_Document)) as Completion_Document;
+  ChatMessage_Document copyWith(void Function(ChatMessage_Document) updates) => super.copyWith((message) => updates(message as ChatMessage_Document)) as ChatMessage_Document;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Completion_Document create() => Completion_Document._();
-  Completion_Document createEmptyInstance() => create();
-  static $pb.PbList<Completion_Document> createRepeated() => $pb.PbList<Completion_Document>();
+  static ChatMessage_Document create() => ChatMessage_Document._();
+  ChatMessage_Document createEmptyInstance() => create();
+  static $pb.PbList<ChatMessage_Document> createRepeated() => $pb.PbList<ChatMessage_Document>();
   @$core.pragma('dart2js:noInline')
-  static Completion_Document getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Completion_Document>(create);
-  static Completion_Document? _defaultInstance;
+  static ChatMessage_Document getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ChatMessage_Document>(create);
+  static ChatMessage_Document? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
@@ -705,16 +705,16 @@ class Completion_Document extends $pb.GeneratedMessage {
   $core.List<$core.double> get scores => $_getList(3);
 }
 
-class Completion extends $pb.GeneratedMessage {
-  factory Completion() => create();
-  Completion._() : super();
-  factory Completion.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Completion.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class ChatMessage extends $pb.GeneratedMessage {
+  factory ChatMessage() => create();
+  ChatMessage._() : super();
+  factory ChatMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ChatMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Completion', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
     ..aOM<Prompt>(1, _omitFieldNames ? '' : 'prompt', subBuilder: Prompt.create)
     ..aOS(2, _omitFieldNames ? '' : 'text')
-    ..pc<Completion_Document>(3, _omitFieldNames ? '' : 'documents', $pb.PbFieldType.PM, subBuilder: Completion_Document.create)
+    ..pc<ChatMessage_Document>(3, _omitFieldNames ? '' : 'documents', $pb.PbFieldType.PM, subBuilder: ChatMessage_Document.create)
     ..aOM<$2.Timestamp>(4, _omitFieldNames ? '' : 'timestamp', subBuilder: $2.Timestamp.create)
     ..hasRequiredFields = false
   ;
@@ -723,22 +723,22 @@ class Completion extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  Completion clone() => Completion()..mergeFromMessage(this);
+  ChatMessage clone() => ChatMessage()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Completion copyWith(void Function(Completion) updates) => super.copyWith((message) => updates(message as Completion)) as Completion;
+  ChatMessage copyWith(void Function(ChatMessage) updates) => super.copyWith((message) => updates(message as ChatMessage)) as ChatMessage;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Completion create() => Completion._();
-  Completion createEmptyInstance() => create();
-  static $pb.PbList<Completion> createRepeated() => $pb.PbList<Completion>();
+  static ChatMessage create() => ChatMessage._();
+  ChatMessage createEmptyInstance() => create();
+  static $pb.PbList<ChatMessage> createRepeated() => $pb.PbList<ChatMessage>();
   @$core.pragma('dart2js:noInline')
-  static Completion getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Completion>(create);
-  static Completion? _defaultInstance;
+  static ChatMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ChatMessage>(create);
+  static ChatMessage? _defaultInstance;
 
   @$pb.TagNumber(1)
   Prompt get prompt => $_getN(0);
@@ -761,7 +761,7 @@ class Completion extends $pb.GeneratedMessage {
   void clearText() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.List<Completion_Document> get documents => $_getList(2);
+  $core.List<ChatMessage_Document> get documents => $_getList(2);
 
   @$pb.TagNumber(4)
   $2.Timestamp get timestamp => $_getN(3);

@@ -12,7 +12,9 @@ final _channel = GrpcOrGrpcWebClientChannel.toSeparateEndpoints(
   grpcWebTransportSecure: false,
 );
 
-final braingain = BraingainClientWithToken(_channel);
+final braingain = BraingainClient(
+  _channel,
+);
 
 class BraingainClientWithToken extends BraingainClient {
   BraingainClientWithToken(super.channel);
@@ -32,7 +34,7 @@ class BraingainClientWithToken extends BraingainClient {
   }
 
   @override
-  ResponseFuture<Completion> chat(Prompt request, {CallOptions? options}) {
+  ResponseFuture<ChatMessage> chat(Prompt request, {CallOptions? options}) {
     return super.chat(
       request,
       options: _mergeAuth(options),
@@ -40,16 +42,16 @@ class BraingainClientWithToken extends BraingainClient {
   }
 
   @override
-  ResponseFuture<ChatMessages> getChatHistory(Collection request,
+  ResponseFuture<ChatMessages> getChatMessages(Collection request,
       {CallOptions? options}) {
-    return super.getChatHistory(
+    return super.getChatMessages(
       request,
       options: _mergeAuth(options),
     );
   }
 
   @override
-  ResponseFuture<Completion> getChatMessage(MessageID request,
+  ResponseFuture<ChatMessage> getChatMessage(MessageID request,
       {CallOptions? options}) {
     return super.getChatMessage(
       request,
@@ -67,7 +69,7 @@ class BraingainClientWithToken extends BraingainClient {
   }
 
   @override
-  ResponseFuture<Empty> deleteDocument(StorageRef request,
+  ResponseFuture<Empty> deleteDocument(Document request,
       {CallOptions? options}) {
     return super.deleteDocument(
       request,
@@ -76,7 +78,7 @@ class BraingainClientWithToken extends BraingainClient {
   }
 
   @override
-  ResponseFuture<Empty> updateDocument(StorageRef request,
+  ResponseFuture<Empty> updateDocument(Document request,
       {CallOptions? options}) {
     return super.updateDocument(
       request,
@@ -121,7 +123,7 @@ class BraingainClientWithToken extends BraingainClient {
   }
 
   @override
-  ResponseStream<IndexProgress> indexDocument(StorageRef request,
+  ResponseStream<IndexProgress> indexDocument(Document request,
       {CallOptions? options}) {
     return super.indexDocument(
       request,

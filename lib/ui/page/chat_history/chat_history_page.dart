@@ -28,7 +28,7 @@ class ChatHistoryPage extends StatelessWidget {
         title: Text('History ${collection.name}'),
       ),
       body: FutureBuilder<ChatMessages>(
-          future: braingain.getChatHistory(Collection()..id = collection.id),
+          future: braingain.getChatMessages(Collection()..id = collection.id),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Center(

@@ -7,11 +7,11 @@ class EditDocumentDialog extends StatefulWidget {
     required this.ref,
   });
 
-  final StorageRef ref;
+  final Document ref;
 
   static Future<String?> show(
     BuildContext context,
-    StorageRef ref,
+    Document ref,
   ) {
     return showDialog<String>(
       context: context,

@@ -11,7 +11,7 @@ class DocumentStatus {
   });
 
   final Object? error;
-  final StorageRef ref;
+  final Document ref;
   final bool uploaded;
   final IndexProgress? progress;
 
@@ -25,7 +25,7 @@ class FileUploadProgress extends StatelessWidget {
     required this.status,
   });
 
-  final StorageRef ref;
+  final Document ref;
 
   final DocumentStatus status;
 

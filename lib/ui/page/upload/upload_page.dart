@@ -32,7 +32,7 @@ class UploadPage extends StatefulWidget {
 }
 
 class _UploadPageState extends State<UploadPage> {
-  final _queue = <StorageRef>[];
+  final _queue = <Document>[];
   final _status = <String, DocumentStatus>{};
 
   Future<void> _uploadFiles() async {
@@ -48,7 +48,7 @@ class _UploadPageState extends State<UploadPage> {
     }
 
     for (final file in result.files) {
-      final ref = StorageUtils.createRef(
+      final ref = StorageUtils.create(
         collection: widget.collection.id,
         file: file,
       );

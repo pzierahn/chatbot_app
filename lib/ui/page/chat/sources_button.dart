@@ -8,7 +8,7 @@ class SourcesButton extends StatelessWidget {
     this.documents = const [],
   });
 
-  final List<Completion_Document> documents;
+  final List<ChatMessage_Document> documents;
 
   @override
   Widget build(BuildContext context) {

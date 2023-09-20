@@ -10,11 +10,11 @@ class SourcesDialog extends StatefulWidget {
     required this.sources,
   });
 
-  final List<Completion_Document> sources;
+  final List<ChatMessage_Document> sources;
 
   static Future<void> show(
     BuildContext context,
-    List<Completion_Document> documents,
+    List<ChatMessage_Document> documents,
   ) {
     return showDialog(
       context: context,

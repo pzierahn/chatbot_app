@@ -6,7 +6,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:uuid/uuid.dart';
 
 class StorageUtils {
-  static StorageRef createRef({
+  static Document create({
     required String collection,
     required PlatformFile file,
   }) {
@@ -15,24 +15,21 @@ class StorageUtils {
         "$collection/"
         "$docId.pdf";
 
-    return StorageRef()
+    return Document()
       ..id = docId
       ..filename = file.name
       ..path = filePath
-      ..collection = collection;
+      ..collectionId = collection;
   }
 
-  static Future<StorageRef> upload(
-    StorageRef ref,
+  static Future<Document> upload(
+    Document doc,
     Uint8List bytes,
   ) async {
     final bucket = supabase.storage.from('documents');
 
-    await bucket.uploadBinary(
-      ref.path,
-      bytes,
-    );
+    await bucket.uploadBinary(doc.path, bytes);
 
-    return ref;
+    return doc;
   }
 }

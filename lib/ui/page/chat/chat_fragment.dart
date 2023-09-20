@@ -126,7 +126,7 @@ class ChatFragmentStatus {
   });
 
   final Prompt prompt;
-  Completion? completion;
+  ChatMessage? completion;
   Object? error;
 
   bool get hasError => error != null;
