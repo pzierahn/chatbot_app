@@ -1,5 +1,6 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/ui/page/chat/chat.dart';
+import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +27,13 @@ class ChatPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(collection.name),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.history_outlined),
+            tooltip: 'Chat History',
+            onPressed: () {
+              ChatHistoryPage.open(context, collection);
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.description_outlined),
             tooltip: 'Documents',
