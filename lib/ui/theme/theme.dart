@@ -12,10 +12,10 @@ final _colorsDark = ColorScheme.fromSeed(
   seedColor: _colorSeed,
 );
 
-final _borderRadius = BorderRadius.circular(8);
+final borderRadius = BorderRadius.circular(8);
 
 final _roundedShape = RoundedRectangleBorder(
-  borderRadius: _borderRadius,
+  borderRadius: borderRadius,
 );
 
 final lightTheme = ThemeData(
