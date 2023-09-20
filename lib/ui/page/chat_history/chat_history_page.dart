@@ -1,5 +1,6 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/braingain.dart';
+import 'package:braingain_app/ui/page/chat_history/history_tile.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class ChatHistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(collection.name),
+        title: Text('History ${collection.name}'),
       ),
       body: FutureBuilder<ChatMessages>(
           future: braingain.getChatHistory(Collection()..id = collection.id),
@@ -45,9 +46,7 @@ class ChatHistoryPage extends StatelessWidget {
               itemCount: snapshot.data!.ids.length,
               itemBuilder: (context, index) {
                 final id = snapshot.data!.ids[index];
-                return ListTile(
-                  title: Text(id),
-                );
+                return ChatHistoryTile(chatId: id);
               },
             );
           }),
