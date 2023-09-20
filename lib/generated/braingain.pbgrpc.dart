@@ -66,6 +66,10 @@ class BraingainClient extends $grpc.Client {
       '/endpoint.braingain.v1.Braingain/DeleteCollection',
       ($0.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
+  static final _$getModelUsages = $grpc.ClientMethod<$1.Empty, $0.ModelUsages>(
+      '/endpoint.braingain.v1.Braingain/GetModelUsages',
+      ($1.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.ModelUsages.fromBuffer(value));
 
   BraingainClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -115,6 +119,10 @@ class BraingainClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$1.Empty> deleteCollection($0.Collection request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deleteCollection, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.ModelUsages> getModelUsages($1.Empty request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getModelUsages, request, options: options);
   }
 }
 
@@ -200,6 +208,13 @@ abstract class BraingainServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Collection.fromBuffer(value),
         ($1.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.Empty, $0.ModelUsages>(
+        'GetModelUsages',
+        getModelUsages_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
+        ($0.ModelUsages value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.ChatMessage> chat_Pre($grpc.ServiceCall call, $async.Future<$0.Prompt> request) async {
@@ -246,6 +261,10 @@ abstract class BraingainServiceBase extends $grpc.Service {
     return deleteCollection(call, await request);
   }
 
+  $async.Future<$0.ModelUsages> getModelUsages_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
+    return getModelUsages(call, await request);
+  }
+
   $async.Future<$0.ChatMessage> chat($grpc.ServiceCall call, $0.Prompt request);
   $async.Future<$0.ChatMessages> getChatMessages($grpc.ServiceCall call, $0.Collection request);
   $async.Future<$0.ChatMessage> getChatMessage($grpc.ServiceCall call, $0.MessageID request);
@@ -257,4 +276,5 @@ abstract class BraingainServiceBase extends $grpc.Service {
   $async.Future<$1.Empty> createCollection($grpc.ServiceCall call, $0.Collection request);
   $async.Future<$1.Empty> updateCollection($grpc.ServiceCall call, $0.Collection request);
   $async.Future<$1.Empty> deleteCollection($grpc.ServiceCall call, $0.Collection request);
+  $async.Future<$0.ModelUsages> getModelUsages($grpc.ServiceCall call, $1.Empty request);
 }

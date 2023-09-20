@@ -13,6 +13,31 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use modelUsagesDescriptor instead')
+const ModelUsages$json = {
+  '1': 'ModelUsages',
+  '2': [
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.ModelUsages.Usage', '10': 'items'},
+  ],
+  '3': [ModelUsages_Usage$json],
+};
+
+@$core.Deprecated('Use modelUsagesDescriptor instead')
+const ModelUsages_Usage$json = {
+  '1': 'Usage',
+  '2': [
+    {'1': 'model', '3': 1, '4': 1, '5': 9, '10': 'model'},
+    {'1': 'input', '3': 2, '4': 1, '5': 13, '10': 'input'},
+    {'1': 'output', '3': 3, '4': 1, '5': 13, '10': 'output'},
+  ],
+};
+
+/// Descriptor for `ModelUsages`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List modelUsagesDescriptor = $convert.base64Decode(
+    'CgtNb2RlbFVzYWdlcxI+CgVpdGVtcxgBIAMoCzIoLmVuZHBvaW50LmJyYWluZ2Fpbi52MS5Nb2'
+    'RlbFVzYWdlcy5Vc2FnZVIFaXRlbXMaSwoFVXNhZ2USFAoFbW9kZWwYASABKAlSBW1vZGVsEhQK'
+    'BWlucHV0GAIgASgNUgVpbnB1dBIWCgZvdXRwdXQYAyABKA1SBm91dHB1dA==');
+
 @$core.Deprecated('Use indexProgressDescriptor instead')
 const IndexProgress$json = {
   '1': 'IndexProgress',
