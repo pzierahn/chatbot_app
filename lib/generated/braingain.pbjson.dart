@@ -175,8 +175,12 @@ const Completion$json = {
     {'1': 'prompt', '3': 1, '4': 1, '5': 11, '6': '.endpoint.braingain.v1.Prompt', '10': 'prompt'},
     {'1': 'text', '3': 2, '4': 1, '5': 9, '10': 'text'},
     {'1': 'documents', '3': 3, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.Completion.Document', '10': 'documents'},
+    {'1': 'timestamp', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '9': 0, '10': 'timestamp', '17': true},
   ],
   '3': [Completion_Document$json],
+  '8': [
+    {'1': '_timestamp'},
+  ],
 };
 
 @$core.Deprecated('Use completionDescriptor instead')
@@ -194,7 +198,33 @@ const Completion_Document$json = {
 final $typed_data.Uint8List completionDescriptor = $convert.base64Decode(
     'CgpDb21wbGV0aW9uEjUKBnByb21wdBgBIAEoCzIdLmVuZHBvaW50LmJyYWluZ2Fpbi52MS5Qcm'
     '9tcHRSBnByb21wdBISCgR0ZXh0GAIgASgJUgR0ZXh0EkgKCWRvY3VtZW50cxgDIAMoCzIqLmVu'
-    'ZHBvaW50LmJyYWluZ2Fpbi52MS5Db21wbGV0aW9uLkRvY3VtZW50Uglkb2N1bWVudHMaZAoIRG'
-    '9jdW1lbnQSDgoCaWQYASABKAlSAmlkEhoKCGZpbGVuYW1lGAIgASgJUghmaWxlbmFtZRIUCgVw'
-    'YWdlcxgDIAMoDVIFcGFnZXMSFgoGc2NvcmVzGAQgAygCUgZzY29yZXM=');
+    'ZHBvaW50LmJyYWluZ2Fpbi52MS5Db21wbGV0aW9uLkRvY3VtZW50Uglkb2N1bWVudHMSPQoJdG'
+    'ltZXN0YW1wGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEgAUgl0aW1lc3RhbXCI'
+    'AQEaZAoIRG9jdW1lbnQSDgoCaWQYASABKAlSAmlkEhoKCGZpbGVuYW1lGAIgASgJUghmaWxlbm'
+    'FtZRIUCgVwYWdlcxgDIAMoDVIFcGFnZXMSFgoGc2NvcmVzGAQgAygCUgZzY29yZXNCDAoKX3Rp'
+    'bWVzdGFtcA==');
+
+@$core.Deprecated('Use messageIDDescriptor instead')
+const MessageID$json = {
+  '1': 'MessageID',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `MessageID`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List messageIDDescriptor = $convert.base64Decode(
+    'CglNZXNzYWdlSUQSDgoCaWQYASABKAlSAmlk');
+
+@$core.Deprecated('Use chatMessagesDescriptor instead')
+const ChatMessages$json = {
+  '1': 'ChatMessages',
+  '2': [
+    {'1': 'ids', '3': 1, '4': 3, '5': 9, '10': 'ids'},
+  ],
+};
+
+/// Descriptor for `ChatMessages`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List chatMessagesDescriptor = $convert.base64Decode(
+    'CgxDaGF0TWVzc2FnZXMSEAoDaWRzGAEgAygJUgNpZHM=');
 

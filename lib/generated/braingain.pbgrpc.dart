@@ -26,6 +26,14 @@ class BraingainClient extends $grpc.Client {
       '/endpoint.braingain.v1.Braingain/Chat',
       ($0.Prompt value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Completion.fromBuffer(value));
+  static final _$getChatHistory = $grpc.ClientMethod<$0.Collection, $0.ChatMessages>(
+      '/endpoint.braingain.v1.Braingain/GetChatHistory',
+      ($0.Collection value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.ChatMessages.fromBuffer(value));
+  static final _$getChatMessage = $grpc.ClientMethod<$0.MessageID, $0.Completion>(
+      '/endpoint.braingain.v1.Braingain/GetChatMessage',
+      ($0.MessageID value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Completion.fromBuffer(value));
   static final _$filterDocuments = $grpc.ClientMethod<$0.DocumentFilter, $0.Documents>(
       '/endpoint.braingain.v1.Braingain/FilterDocuments',
       ($0.DocumentFilter value) => value.writeToBuffer(),
@@ -67,6 +75,14 @@ class BraingainClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$0.Completion> chat($0.Prompt request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$chat, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.ChatMessages> getChatHistory($0.Collection request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getChatHistory, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.Completion> getChatMessage($0.MessageID request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getChatMessage, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.Documents> filterDocuments($0.DocumentFilter request, {$grpc.CallOptions? options}) {
@@ -113,6 +129,20 @@ abstract class BraingainServiceBase extends $grpc.Service {
         false,
         false,
         ($core.List<$core.int> value) => $0.Prompt.fromBuffer(value),
+        ($0.Completion value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Collection, $0.ChatMessages>(
+        'GetChatHistory',
+        getChatHistory_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Collection.fromBuffer(value),
+        ($0.ChatMessages value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.MessageID, $0.Completion>(
+        'GetChatMessage',
+        getChatMessage_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.MessageID.fromBuffer(value),
         ($0.Completion value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.DocumentFilter, $0.Documents>(
         'FilterDocuments',
@@ -176,6 +206,14 @@ abstract class BraingainServiceBase extends $grpc.Service {
     return chat(call, await request);
   }
 
+  $async.Future<$0.ChatMessages> getChatHistory_Pre($grpc.ServiceCall call, $async.Future<$0.Collection> request) async {
+    return getChatHistory(call, await request);
+  }
+
+  $async.Future<$0.Completion> getChatMessage_Pre($grpc.ServiceCall call, $async.Future<$0.MessageID> request) async {
+    return getChatMessage(call, await request);
+  }
+
   $async.Future<$0.Documents> filterDocuments_Pre($grpc.ServiceCall call, $async.Future<$0.DocumentFilter> request) async {
     return filterDocuments(call, await request);
   }
@@ -209,6 +247,8 @@ abstract class BraingainServiceBase extends $grpc.Service {
   }
 
   $async.Future<$0.Completion> chat($grpc.ServiceCall call, $0.Prompt request);
+  $async.Future<$0.ChatMessages> getChatHistory($grpc.ServiceCall call, $0.Collection request);
+  $async.Future<$0.Completion> getChatMessage($grpc.ServiceCall call, $0.MessageID request);
   $async.Future<$0.Documents> filterDocuments($grpc.ServiceCall call, $0.DocumentFilter request);
   $async.Future<$1.Empty> deleteDocument($grpc.ServiceCall call, $0.StorageRef request);
   $async.Future<$1.Empty> updateDocument($grpc.ServiceCall call, $0.StorageRef request);

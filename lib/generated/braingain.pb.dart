@@ -13,6 +13,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'google/protobuf/timestamp.pb.dart' as $2;
+
 class IndexProgress extends $pb.GeneratedMessage {
   factory IndexProgress() => create();
   IndexProgress._() : super();
@@ -713,6 +715,7 @@ class Completion extends $pb.GeneratedMessage {
     ..aOM<Prompt>(1, _omitFieldNames ? '' : 'prompt', subBuilder: Prompt.create)
     ..aOS(2, _omitFieldNames ? '' : 'text')
     ..pc<Completion_Document>(3, _omitFieldNames ? '' : 'documents', $pb.PbFieldType.PM, subBuilder: Completion_Document.create)
+    ..aOM<$2.Timestamp>(4, _omitFieldNames ? '' : 'timestamp', subBuilder: $2.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -759,6 +762,95 @@ class Completion extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(3)
   $core.List<Completion_Document> get documents => $_getList(2);
+
+  @$pb.TagNumber(4)
+  $2.Timestamp get timestamp => $_getN(3);
+  @$pb.TagNumber(4)
+  set timestamp($2.Timestamp v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasTimestamp() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTimestamp() => clearField(4);
+  @$pb.TagNumber(4)
+  $2.Timestamp ensureTimestamp() => $_ensure(3);
+}
+
+class MessageID extends $pb.GeneratedMessage {
+  factory MessageID() => create();
+  MessageID._() : super();
+  factory MessageID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MessageID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageID', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MessageID clone() => MessageID()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MessageID copyWith(void Function(MessageID) updates) => super.copyWith((message) => updates(message as MessageID)) as MessageID;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static MessageID create() => MessageID._();
+  MessageID createEmptyInstance() => create();
+  static $pb.PbList<MessageID> createRepeated() => $pb.PbList<MessageID>();
+  @$core.pragma('dart2js:noInline')
+  static MessageID getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MessageID>(create);
+  static MessageID? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+}
+
+class ChatMessages extends $pb.GeneratedMessage {
+  factory ChatMessages() => create();
+  ChatMessages._() : super();
+  factory ChatMessages.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ChatMessages.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatMessages', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.braingain.v1'), createEmptyInstance: create)
+    ..pPS(1, _omitFieldNames ? '' : 'ids')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ChatMessages clone() => ChatMessages()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ChatMessages copyWith(void Function(ChatMessages) updates) => super.copyWith((message) => updates(message as ChatMessages)) as ChatMessages;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ChatMessages create() => ChatMessages._();
+  ChatMessages createEmptyInstance() => create();
+  static $pb.PbList<ChatMessages> createRepeated() => $pb.PbList<ChatMessages>();
+  @$core.pragma('dart2js:noInline')
+  static ChatMessages getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ChatMessages>(create);
+  static ChatMessages? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.String> get ids => $_getList(0);
 }
 
 
