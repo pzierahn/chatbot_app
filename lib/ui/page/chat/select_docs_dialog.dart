@@ -69,7 +69,7 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
         height: 400,
         width: 400,
         child: FutureBuilder<Documents>(
-          future: braingain.filterDocuments(request),
+          future: braingain.listDocuments(request),
           builder: (context, snap) {
             if (snap.hasError) {
               return Center(
