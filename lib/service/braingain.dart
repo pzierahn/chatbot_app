@@ -12,7 +12,7 @@ final _channel = GrpcOrGrpcWebClientChannel.toSeparateEndpoints(
   grpcWebTransportSecure: false,
 );
 
-final braingain = BraingainClient(_channel, interceptors: [
+final braingain = BrainboostClient(_channel, interceptors: [
   _AuthenticationInterceptor(),
 ]);
 
