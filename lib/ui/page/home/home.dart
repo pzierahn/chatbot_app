@@ -24,8 +24,8 @@ class _HomeState extends State<Home> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.settings_outlined),
-            tooltip: 'Settings',
+            icon: const Icon(Icons.account_circle),
+            tooltip: 'Account',
             onPressed: () => SettingsPage.open(context),
           ),
         ],
