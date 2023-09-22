@@ -40,6 +40,11 @@ final lightTheme = ThemeData(
       shape: MaterialStateProperty.all(_roundedShape),
     ),
   ),
+  filledButtonTheme: FilledButtonThemeData(
+    style: ButtonStyle(
+      shape: MaterialStateProperty.all(_roundedShape),
+    ),
+  ),
 );
 
 final darkTheme = ThemeData(
@@ -60,6 +65,11 @@ final darkTheme = ThemeData(
   ),
   useMaterial3: true,
   textButtonTheme: TextButtonThemeData(
+    style: ButtonStyle(
+      shape: MaterialStateProperty.all(_roundedShape),
+    ),
+  ),
+  filledButtonTheme: FilledButtonThemeData(
     style: ButtonStyle(
       shape: MaterialStateProperty.all(_roundedShape),
     ),
