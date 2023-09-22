@@ -81,6 +81,8 @@ class ChatHistoryTile extends StatelessWidget {
             title: Text(
               message.prompt.prompt,
               style: text.titleMedium,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
             // minLeadingWidth: 40,
             subtitle: Text(
