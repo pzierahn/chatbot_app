@@ -2,27 +2,35 @@ import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/ui/page/chat/chat.dart';
 import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
+import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({
-    super.key,
-    required this.collection,
-  });
+  const ChatPage({super.key});
 
-  final Collections_Collection collection;
+  static const route = 'chat';
 
-  static Future<void> open(
-      BuildContext context, Collections_Collection collection) async {
-    await Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => ChatPage(collection: collection),
-      ),
-    );
-  }
+  static Future<Object?> open(
+    BuildContext context,
+    Collections_Collection collection,
+  ) =>
+      Navigator.of(context).pushNamed(
+        route,
+        arguments: collection,
+      );
 
   @override
   Widget build(BuildContext context) {
+    final collection =
+        ModalRoute.of(context)?.settings.arguments as Collections_Collection?;
+
+    if (collection == null) {
+      return const ErrorScaffold(
+        title: 'Chat',
+        error: 'No collection found',
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(collection.name),

@@ -15,7 +15,9 @@ class ChatHistoryPage extends StatelessWidget {
   final Collections_Collection collection;
 
   static Future<void> open(
-      BuildContext context, Collections_Collection collection) async {
+    BuildContext context,
+    Collections_Collection collection,
+  ) async {
     await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => ChatHistoryPage(collection: collection),
