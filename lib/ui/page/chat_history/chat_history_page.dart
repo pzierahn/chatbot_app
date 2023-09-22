@@ -16,10 +16,7 @@ class ChatHistoryPage extends StatelessWidget {
     BuildContext context,
     Collections_Collection collection,
   ) =>
-      Navigator.of(context).pushNamed(
-        route,
-        arguments: collection,
-      );
+      Navigator.of(context).pushNamed(route, arguments: collection);
 
   @override
   Widget build(BuildContext context) {
