@@ -6,34 +6,50 @@ import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
+import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:flutter/material.dart';
 
-class CollectionPage extends StatefulWidget {
-  const CollectionPage({
-    super.key,
+class CollectionPage extends StatelessWidget {
+  const CollectionPage({super.key});
+
+  static const route = 'documents';
+
+  static Future<Object?> open(
+    BuildContext context,
+    Collections_Collection collection,
+  ) =>
+      Navigator.of(context).pushNamed(route, arguments: collection);
+
+  @override
+  Widget build(BuildContext context) {
+    final collection =
+        ModalRoute.of(context)?.settings.arguments as Collections_Collection?;
+
+    if (collection == null) {
+      return const ErrorScaffold(
+        title: 'Chat History',
+        error: 'No collection found',
+      );
+    }
+
+    return _CollectionPage(
+      collection: collection,
+    );
+  }
+}
+
+class _CollectionPage extends StatefulWidget {
+  const _CollectionPage({
     required this.collection,
   });
 
   final Collections_Collection collection;
 
-  static Future<Object?> open(
-    BuildContext context,
-    Collections_Collection col,
-  ) async {
-    return Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => CollectionPage(
-          collection: col,
-        ),
-      ),
-    );
-  }
-
   @override
-  State<CollectionPage> createState() => _CollectionPageState();
+  State createState() => _CollectionPageState();
 }
 
-class _CollectionPageState extends State<CollectionPage> {
+class _CollectionPageState extends State<_CollectionPage> {
   void _onUpload() => UploadPage.open(context, widget.collection);
 
   Future<void> _onEditDocument(Documents_Document doc) async {

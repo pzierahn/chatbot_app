@@ -1,6 +1,7 @@
 import 'package:braingain_app/service/supabase.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
 import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
+import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/home/home.dart';
 import 'package:braingain_app/ui/page/login/login_page.dart';
 import 'package:braingain_app/ui/page/settings/settings_page.dart';
@@ -71,6 +72,7 @@ class _AppState extends State<App> {
         SettingsPage.route: (context) => const SettingsPage(),
         ChatPage.route: (context) => const ChatPage(),
         ChatHistoryPage.route: (context) => const ChatHistoryPage(),
+        CollectionPage.route: (context) => const CollectionPage(),
       },
     );
   }
