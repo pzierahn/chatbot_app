@@ -89,9 +89,9 @@ class _SourcesDialogState extends State<SourcesDialog> {
     } else {
       body = Center(
         child: TextIllustration(
-          illustration: UnDrawIllustration.notify,
-          color: color.error,
-          text: 'No documents found',
+          illustration: UnDrawIllustration.empty,
+          color: color.primary,
+          text: 'No documents found for prompt',
         ),
       );
     }

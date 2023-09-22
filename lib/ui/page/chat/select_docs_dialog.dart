@@ -1,7 +1,10 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
+import 'package:braingain_app/ui/page/upload/upload_page.dart';
+import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:braingain_app/utils/page_numbers.dart';
 import 'package:flutter/material.dart';
+import 'package:undraw/undraw.dart';
 
 class SelectDocsDialog extends StatefulWidget {
   const SelectDocsDialog({
@@ -88,6 +91,7 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
               child: _DocumentsBody(
                 documents: snap.data!,
                 selected: _selectedDocs,
+                collection: widget.collection,
                 onChanged: (value) {
                   setState(() {
                     _selectedDocs = value;
@@ -123,11 +127,13 @@ class _DocumentsBody extends StatefulWidget {
     required this.documents,
     required this.selected,
     required this.onChanged,
+    required this.collection,
   });
 
   final Documents documents;
   final Map<String, List<int>> selected;
   final ValueChanged<Map<String, List<int>>> onChanged;
+  final Collections_Collection collection;
 
   @override
   State<_DocumentsBody> createState() => _DocumentsBodyState();
@@ -140,8 +146,19 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
     final text = Theme.of(context).textTheme;
 
     if (widget.documents.items.isEmpty) {
-      return const Center(
-        child: Text('No documents found'),
+      return Center(
+        child: TextIllustration(
+            illustration: UnDrawIllustration.empty,
+            color: color.primary,
+            text: 'No documents in collections',
+            action: FilledButton.icon(
+              onPressed: () {
+                Navigator.pop(context);
+                UploadPage.open(context, widget.collection);
+              },
+              label: const Text('Upload'),
+              icon: const Icon(Icons.upload_file),
+            )),
       );
     }
 
