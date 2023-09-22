@@ -40,7 +40,7 @@ class ConstrainedListViewBuilder extends StatelessWidget {
     this.maxWidth = 800,
     this.shrinkWrap = false,
     this.primary,
-    this.padding = const EdgeInsets.symmetric(horizontal: 8),
+    this.padding,
   });
 
   final int itemCount;
