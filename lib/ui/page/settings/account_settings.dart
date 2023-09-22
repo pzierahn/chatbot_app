@@ -19,11 +19,11 @@ class AccountSettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
+    final color = Theme.of(context).colorScheme;
 
     return OutlinedCard(
-      // padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -38,28 +38,17 @@ class AccountSettings extends StatelessWidget {
           ),
           // Divider(),
           ListTile(
-            leading: CircleAvatar(
-              backgroundColor: color.primaryContainer,
-              foregroundColor: color.onPrimaryContainer,
-              child: const Icon(Icons.person_outline),
-            ),
-            minLeadingWidth: 40,
             title: Text('User ID', style: text.titleMedium),
             subtitle: SelectableText(
               supabase.auth.currentUser?.id ?? 'Not logged in',
+              style: text.bodySmall?.merge(
+                TextStyle(color: color.outline),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton.icon(
-                  onPressed: () => _onLogout(context),
-                  icon: const Icon(Icons.logout),
-                  label: const Text('Logout'),
-                ),
-              ],
+            trailing: FilledButton.icon(
+              onPressed: () => _onLogout(context),
+              icon: const Icon(Icons.logout),
+              label: const Text('Logout'),
             ),
           ),
         ],

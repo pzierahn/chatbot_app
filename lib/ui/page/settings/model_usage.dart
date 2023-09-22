@@ -6,9 +6,7 @@ import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
 
 class ModelUsage extends StatelessWidget {
-  const ModelUsage({
-    super.key,
-  });
+  const ModelUsage({super.key});
 
   double _calculateCost(ModelUsages_Usage usage) {
     double inputCost = 0;
@@ -31,6 +29,7 @@ class ModelUsage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final text = Theme.of(context).textTheme;
+    final color = Theme.of(context).colorScheme;
 
     return OutlinedCard(
       child: Column(
@@ -39,7 +38,7 @@ class ModelUsage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16),
             child: Text(
-              'Model Usage',
+              'Usage',
               style: text.titleLarge?.merge(const TextStyle(
                 fontWeight: FontWeight.bold,
               )),
@@ -66,15 +65,18 @@ class ModelUsage extends StatelessWidget {
                 children: models
                     .map(
                       (usage) => ListTile(
-                          minLeadingWidth: 40,
-                          title: Text(usage.model, style: text.titleMedium),
-                          subtitle: Text(
-                            'Input: ${usage.input}\nOutput: ${usage.output}',
-                            style: text.bodySmall,
+                        minLeadingWidth: 40,
+                        title: Text(usage.model, style: text.titleMedium),
+                        subtitle: Text(
+                          'Input: ${usage.input}\nOutput: ${usage.output}',
+                          style: text.bodySmall?.merge(
+                            TextStyle(color: color.outline),
                           ),
-                          trailing: Text(
-                            '\$${_calculateCost(usage).toStringAsFixed(2)}',
-                          )),
+                        ),
+                        trailing: Text(
+                          '\$${_calculateCost(usage).toStringAsFixed(2)}',
+                        ),
+                      ),
                     )
                     .toList(),
               );
