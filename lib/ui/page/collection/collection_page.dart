@@ -50,7 +50,7 @@ class _CollectionPageState extends State<CollectionPage> {
 
     ref.filename = filename;
 
-    braingain.updateDocument(ref).then((_) {
+    brainboost.updateDocument(ref).then((_) {
       SimpleSnackBar.show(
         context,
         'Updated ${doc.filename}',
@@ -75,7 +75,7 @@ class _CollectionPageState extends State<CollectionPage> {
       return;
     }
 
-    braingain.deleteDocument(ref).then((_) {
+    brainboost.deleteDocument(ref).then((_) {
       SimpleSnackBar.show(
         context,
         'Deleted ${doc.filename}',
@@ -102,7 +102,7 @@ class _CollectionPageState extends State<CollectionPage> {
         ],
       ),
       body: FutureBuilder<Documents>(
-        future: braingain.listDocuments(
+        future: brainboost.listDocuments(
           DocumentFilter()..collection = widget.collection.id,
         ),
         builder: (context, snap) {

@@ -27,7 +27,7 @@ class CollectionsTile extends StatelessWidget {
         final delete = Collection()
           ..id = collection.id
           ..name = collection.name;
-        await braingain.deleteCollection(delete).catchError(
+        await brainboost.deleteCollection(delete).catchError(
               (error) => ErrorSnackBar.show(context, error),
             );
         onUpdate?.call();
@@ -44,7 +44,7 @@ class CollectionsTile extends StatelessWidget {
       return;
     }
 
-    braingain
+    brainboost
         .updateCollection(Collection()
           ..id = collection.id
           ..name = name)

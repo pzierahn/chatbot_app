@@ -46,7 +46,7 @@ class ModelUsage extends StatelessWidget {
             ),
           ),
           FutureBuilder<ModelUsages>(
-            future: braingain.getModelUsages(Empty()),
+            future: brainboost.getModelUsages(Empty()),
             builder: (context, snap) {
               if (snap.hasError) {
                 return Center(

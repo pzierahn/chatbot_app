@@ -43,7 +43,7 @@ class _ChatState extends State<Chat> {
             _status.add(status);
           });
 
-          braingain
+          brainboost
               .chat(prompt)
               .then((response) => setState(() {
                     _status[index].completion = response;

@@ -73,7 +73,7 @@ class _UploadPageState extends State<UploadPage> {
           );
         });
 
-        braingain.indexDocument(ref).listen(
+        brainboost.indexDocument(ref).listen(
             (progress) => setState(() {
                   _status[ref.id] = DocumentStatus(
                     ref: ref,

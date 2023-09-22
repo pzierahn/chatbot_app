@@ -46,7 +46,7 @@ class ChatHistoryTile extends StatelessWidget {
     final text = Theme.of(context).textTheme;
 
     return FutureBuilder<ChatMessage>(
-        future: braingain.getChatMessage(MessageID()..id = chatId),
+        future: brainboost.getChatMessage(MessageID()..id = chatId),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return ListTile(
