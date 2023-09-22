@@ -5,6 +5,7 @@ import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/home/home.dart';
 import 'package:braingain_app/ui/page/login/login_page.dart';
 import 'package:braingain_app/ui/page/settings/settings_page.dart';
+import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -73,6 +74,7 @@ class _AppState extends State<App> {
         ChatPage.route: (context) => const ChatPage(),
         ChatHistoryPage.route: (context) => const ChatHistoryPage(),
         CollectionPage.route: (context) => const CollectionPage(),
+        UploadPage.route: (context) => const UploadPage(),
       },
     );
   }
