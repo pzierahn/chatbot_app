@@ -75,6 +75,17 @@ class _PromptInputState extends State<PromptInput> {
             hintStyle: textStyle,
             filled: true,
             fillColor: color.surfaceVariant.withOpacity(0.2),
+            suffix: TextButton(
+              onPressed: onPromptSubmit != null
+                  ? () {
+                      if (_controller.text.isNotEmpty) {
+                        prompt.prompt = _controller.text;
+                        onPromptSubmit?.call(prompt);
+                      }
+                    }
+                  : null,
+              child: const Text('Submit'),
+            ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
@@ -100,7 +111,9 @@ class _PromptInputState extends State<PromptInput> {
         ),
         Padding(
           padding: const EdgeInsets.only(top: 16),
-          child: Row(
+          child: Wrap(
+            spacing: 16,
+            runSpacing: 16,
             children: [
               SelectDocsButton(
                 documents: prompt.documents,
@@ -112,7 +125,6 @@ class _PromptInputState extends State<PromptInput> {
                         })
                     : null,
               ),
-              const SizedBox(width: 16),
               ParameterButton(
                 options: prompt.options,
                 onChanged: onPromptSubmit != null
@@ -120,19 +132,6 @@ class _PromptInputState extends State<PromptInput> {
                         prompt.options = parameter;
                       }
                     : null,
-              ),
-              const Spacer(),
-              TextButton.icon(
-                onPressed: onPromptSubmit != null
-                    ? () {
-                        if (_controller.text.isNotEmpty) {
-                          prompt.prompt = _controller.text;
-                          onPromptSubmit?.call(prompt);
-                        }
-                      }
-                    : null,
-                label: const Text('Submit'),
-                icon: const Icon(Icons.send),
               ),
             ],
           ),
