@@ -1,6 +1,6 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
-import 'package:braingain_app/service/braingain.dart';
+import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/home/collection_edit_dialog.dart';
 import 'package:braingain_app/ui/page/home/collection_tile.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
@@ -25,7 +25,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
     final text = Theme.of(context).textTheme;
 
     return FutureBuilder<Collections>(
-      future: braingain.getCollections(Empty()),
+      future: brainboost.getCollections(Empty()),
       builder: (context, snap) {
         if (snap.hasError) {
           return ErrorBody(
@@ -44,7 +44,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
         final children = <Widget>[
           UnDraw(
             width: 300,
-            illustration: UnDrawIllustration.education,
+            illustration: UnDrawIllustration.begin_chat,
             color: color.primary,
           ),
         ];
@@ -89,7 +89,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
                   return;
                 }
 
-                braingain
+                brainboost
                     .createCollection(Collection()..name = name)
                     .then((_) => setState(() {}))
                     .catchError((error) => ErrorSnackBar.show(context, error));

@@ -32,8 +32,8 @@ class PromptInfo extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 16),
           child: Wrap(
-            spacing: 8,
-            runSpacing: 8,
+            spacing: 16,
+            runSpacing: 16,
             children: [
               SourcesButton(
                 documents: completion.documents,

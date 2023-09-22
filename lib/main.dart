@@ -1,7 +1,11 @@
 import 'package:braingain_app/service/supabase.dart';
+import 'package:braingain_app/ui/page/chat/chat_page.dart';
+import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
+import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/home/home.dart';
 import 'package:braingain_app/ui/page/login/login_page.dart';
 import 'package:braingain_app/ui/page/settings/settings_page.dart';
+import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -55,7 +59,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Braingain',
+      title: 'Brainboost',
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,
@@ -67,6 +71,10 @@ class _AppState extends State<App> {
         Home.route: (context) => const Home(),
         LoginPage.route: (context) => const LoginPage(),
         SettingsPage.route: (context) => const SettingsPage(),
+        ChatPage.route: (context) => const ChatPage(),
+        ChatHistoryPage.route: (context) => const ChatHistoryPage(),
+        CollectionPage.route: (context) => const CollectionPage(),
+        UploadPage.route: (context) => const UploadPage(),
       },
     );
   }

@@ -19,13 +19,13 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Braingain',
+          'Brainboost',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.settings_outlined),
-            tooltip: 'Settings',
+            icon: const Icon(Icons.account_circle),
+            tooltip: 'Account',
             onPressed: () => SettingsPage.open(context),
           ),
         ],

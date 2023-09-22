@@ -1,5 +1,5 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
-import 'package:braingain_app/service/braingain.dart';
+import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/chat_fragment.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +43,7 @@ class _ChatState extends State<Chat> {
             _status.add(status);
           });
 
-          braingain
+          brainboost
               .chat(prompt)
               .then((response) => setState(() {
                     _status[index].completion = response;

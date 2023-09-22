@@ -1,5 +1,5 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
-import 'package:braingain_app/service/braingain.dart';
+import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/prompt_info.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class ChatHistoryTile extends StatelessWidget {
                 completion: message,
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 8),
+                padding: const EdgeInsets.only(top: 16),
                 child: MarkdownBody(
                   data: message.text,
                   selectable: true,
@@ -46,7 +46,7 @@ class ChatHistoryTile extends StatelessWidget {
     final text = Theme.of(context).textTheme;
 
     return FutureBuilder<ChatMessage>(
-        future: braingain.getChatMessage(MessageID()..id = chatId),
+        future: brainboost.getChatMessage(MessageID()..id = chatId),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return ListTile(
@@ -78,18 +78,21 @@ class ChatHistoryTile extends StatelessWidget {
           final date = message.timestamp.toDateTime(toLocal: true);
 
           return ListTile(
-              title: SelectableText(
-                message.prompt.prompt,
-                style: text.titleMedium,
-              ),
-              // minLeadingWidth: 40,
-              subtitle: Text(
-                date.toString(),
-                style: text.bodySmall?.merge(TextStyle(
-                  color: color.outline,
-                )),
-              ),
-              onTap: () => _onViewChat(context, message));
+            title: Text(
+              message.prompt.prompt,
+              style: text.titleMedium,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            // minLeadingWidth: 40,
+            subtitle: Text(
+              date.toString(),
+              style: text.bodySmall?.merge(TextStyle(
+                color: color.outline,
+              )),
+            ),
+            onTap: () => _onViewChat(context, message),
+          );
         });
   }
 }

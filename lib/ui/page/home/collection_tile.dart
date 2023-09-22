@@ -1,5 +1,5 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
-import 'package:braingain_app/service/braingain.dart';
+import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/home/collection_edit_dialog.dart';
@@ -27,7 +27,7 @@ class CollectionsTile extends StatelessWidget {
         final delete = Collection()
           ..id = collection.id
           ..name = collection.name;
-        await braingain.deleteCollection(delete).catchError(
+        await brainboost.deleteCollection(delete).catchError(
               (error) => ErrorSnackBar.show(context, error),
             );
         onUpdate?.call();
@@ -44,7 +44,7 @@ class CollectionsTile extends StatelessWidget {
       return;
     }
 
-    braingain
+    brainboost
         .updateCollection(Collection()
           ..id = collection.id
           ..name = name)

@@ -17,7 +17,7 @@ class ParameterDialog extends StatefulWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Search'),
+          title: const Text('Parameters'),
           content: SizedBox(
             width: 300,
             height: 400,
@@ -78,11 +78,13 @@ class _PromptOptionsState extends State<ParameterDialog> {
   Widget build(BuildContext context) {
     final text = Theme.of(context).textTheme;
 
+    const contentPadding = EdgeInsets.symmetric(vertical: 8);
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         ListTile(
-          contentPadding: EdgeInsets.zero,
+          contentPadding: contentPadding,
           title: const Text('Model'),
           subtitle: DropdownButton<String>(
             value: options.model,
@@ -105,7 +107,7 @@ class _PromptOptionsState extends State<ParameterDialog> {
           ),
         ),
         ListTile(
-          contentPadding: EdgeInsets.zero,
+          contentPadding: contentPadding,
           title: Row(
             children: [
               const Text('Temperature'),
@@ -135,7 +137,7 @@ class _PromptOptionsState extends State<ParameterDialog> {
           ),
         ),
         ListTile(
-          contentPadding: EdgeInsets.zero,
+          contentPadding: contentPadding,
           title: Row(
             children: [
               const Text('Max Tokens'),
@@ -166,7 +168,7 @@ class _PromptOptionsState extends State<ParameterDialog> {
           ),
         ),
         ListTile(
-          contentPadding: EdgeInsets.zero,
+          contentPadding: contentPadding,
           title: Row(
             children: [
               const Text('Limit'),
@@ -197,7 +199,7 @@ class _PromptOptionsState extends State<ParameterDialog> {
           ),
         ),
         ListTile(
-          contentPadding: EdgeInsets.zero,
+          contentPadding: contentPadding,
           title: Row(
             children: [
               const Text('Threshold'),
@@ -219,7 +221,6 @@ class _PromptOptionsState extends State<ParameterDialog> {
           ),
           subtitle: Slider(
             value: options.threshold,
-            divisions: 100,
             onChanged: (val) {
               _textThreshold.text = val.toStringAsFixed(2);
               setState(() => options.threshold = val);

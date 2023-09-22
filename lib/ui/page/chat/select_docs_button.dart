@@ -22,10 +22,7 @@ class SelectDocsButton extends StatelessWidget {
       avatar: documents.isEmpty
           ? const Icon(Icons.add, size: 16)
           : const Icon(Icons.task_outlined, size: 16),
-      label: Text(
-        'Documents',
-        style: text.bodySmall,
-      ),
+      label: Text('Documents', style: text.bodySmall),
       onPressed: onChanged != null
           ? () async {
               final docs = await SelectDocsDialog.show(

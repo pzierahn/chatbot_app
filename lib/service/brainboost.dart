@@ -21,7 +21,7 @@ final _channel = kDebugMode
         grpcWebTransportSecure: true,
       );
 
-final braingain = BrainboostClient(_channel, interceptors: [
+final brainboost = BrainboostClient(_channel, interceptors: [
   _AuthenticationInterceptor(),
 ]);
 
