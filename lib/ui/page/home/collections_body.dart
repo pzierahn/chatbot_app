@@ -5,6 +5,7 @@ import 'package:braingain_app/ui/page/home/collection_edit_dialog.dart';
 import 'package:braingain_app/ui/page/home/collection_tile.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
+import 'package:braingain_app/ui/widget/error_body.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/undraw.dart';
 
@@ -27,13 +28,8 @@ class _CollectionsBodyState extends State<CollectionsBody> {
       future: braingain.getCollections(Empty()),
       builder: (context, snap) {
         if (snap.hasError) {
-          return Center(
-            child: Text(
-              snap.error.toString(),
-              style: text.bodySmall?.merge(TextStyle(
-                color: color.error,
-              )),
-            ),
+          return ErrorBody(
+            error: snap.error,
           );
         }
 
