@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Braingain',
+          'Brainboost',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         actions: [
