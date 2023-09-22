@@ -7,12 +7,15 @@ class ConstrainedListView extends StatelessWidget {
     this.maxWidth = 800,
     this.shrinkWrap = false,
     this.primary,
+    this.padding,
   });
 
   final List<Widget> children;
   final double maxWidth;
   final bool shrinkWrap;
   final bool? primary;
+
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +27,7 @@ class ConstrainedListView extends StatelessWidget {
       maxWidth: maxWidth,
       shrinkWrap: shrinkWrap,
       primary: primary,
+      padding: padding,
     );
   }
 }
@@ -36,6 +40,7 @@ class ConstrainedListViewBuilder extends StatelessWidget {
     this.maxWidth = 800,
     this.shrinkWrap = false,
     this.primary,
+    this.padding = const EdgeInsets.symmetric(horizontal: 8),
   });
 
   final int itemCount;
@@ -44,23 +49,28 @@ class ConstrainedListViewBuilder extends StatelessWidget {
   final bool shrinkWrap;
   final bool? primary;
 
+  final EdgeInsets? padding;
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: shrinkWrap,
-      primary: primary,
-      itemCount: itemCount,
-      itemBuilder: (context, index) {
-        return Center(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            constraints: BoxConstraints(
-              maxWidth: maxWidth,
+    return Padding(
+      padding: padding ?? EdgeInsets.zero,
+      child: ListView.builder(
+        shrinkWrap: shrinkWrap,
+        primary: primary,
+        itemCount: itemCount,
+        itemBuilder: (context, index) {
+          return Center(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              constraints: BoxConstraints(
+                maxWidth: maxWidth,
+              ),
+              child: itemBuilder(context, index),
             ),
-            child: itemBuilder(context, index),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
