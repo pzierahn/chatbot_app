@@ -44,7 +44,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
         final children = <Widget>[
           UnDraw(
             width: 300,
-            illustration: UnDrawIllustration.education,
+            illustration: UnDrawIllustration.begin_chat,
             color: color.primary,
           ),
         ];
