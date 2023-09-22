@@ -1,13 +1,12 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/collection/document_edit_dialog.dart';
+import 'package:braingain_app/ui/page/upload/upload_body.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
-import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:flutter/material.dart';
-import 'package:undraw/illustrations.g.dart';
 
 class CollectionPage extends StatefulWidget {
   const CollectionPage({
@@ -113,16 +112,8 @@ class _CollectionPageState extends State<CollectionPage> {
           }
 
           if (snap.data!.items.isEmpty) {
-            return Center(
-              child: TextIllustration(
-                width: 300,
-                illustration: UnDrawIllustration.empty,
-                action: TextButton.icon(
-                  onPressed: _onUpload,
-                  icon: const Icon(Icons.upload),
-                  label: const Text('Upload Document'),
-                ),
-              ),
+            return UploadBody(
+              collection: widget.collection,
             );
           }
 
