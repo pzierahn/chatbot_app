@@ -1,5 +1,5 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
-import 'package:braingain_app/service/braingain.dart';
+import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/utils/page_numbers.dart';
 import 'package:flutter/material.dart';
 

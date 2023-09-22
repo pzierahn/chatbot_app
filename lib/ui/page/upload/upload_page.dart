@@ -1,5 +1,5 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
-import 'package:braingain_app/service/braingain.dart';
+import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/service/storage.dart';
 import 'package:braingain_app/ui/page/upload/file_tile.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';

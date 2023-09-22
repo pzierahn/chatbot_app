@@ -1,5 +1,5 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
-import 'package:braingain_app/service/braingain.dart';
+import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/collection/document_edit_dialog.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';

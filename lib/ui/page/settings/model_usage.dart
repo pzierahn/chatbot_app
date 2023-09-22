@@ -1,6 +1,6 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pbserver.dart';
-import 'package:braingain_app/service/braingain.dart';
+import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/widget/outlined_card.dart';
 import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
