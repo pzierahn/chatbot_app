@@ -27,7 +27,7 @@ class ChatHistoryTile extends StatelessWidget {
                 completion: message,
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 8),
+                padding: const EdgeInsets.only(top: 16),
                 child: MarkdownBody(
                   data: message.text,
                   selectable: true,
