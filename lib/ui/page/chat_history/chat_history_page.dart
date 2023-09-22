@@ -2,7 +2,9 @@ import 'package:braingain_app/generated/braingain.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat_history/history_tile.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
+import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:flutter/material.dart';
+import 'package:undraw/illustrations.g.dart';
 
 class ChatHistoryPage extends StatelessWidget {
   const ChatHistoryPage({
@@ -39,6 +41,15 @@ class ChatHistoryPage extends StatelessWidget {
             if (!snapshot.hasData) {
               return const Center(
                 child: CircularProgressIndicator(),
+              );
+            }
+
+            if (snapshot.data!.ids.isEmpty) {
+              return const Center(
+                child: TextIllustration(
+                  illustration: UnDrawIllustration.waiting_for_you,
+                  text: 'No history yet',
+                ),
               );
             }
 
