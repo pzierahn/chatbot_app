@@ -20,58 +20,58 @@ import 'google/protobuf/empty.pb.dart' as $1;
 
 export 'braingain.pb.dart';
 
-@$pb.GrpcServiceName('endpoint.braingain.v1.Braingain')
-class BraingainClient extends $grpc.Client {
+@$pb.GrpcServiceName('endpoint.brainboost.v1.Brainboost')
+class BrainboostClient extends $grpc.Client {
   static final _$chat = $grpc.ClientMethod<$0.Prompt, $0.ChatMessage>(
-      '/endpoint.braingain.v1.Braingain/Chat',
+      '/endpoint.brainboost.v1.Brainboost/Chat',
       ($0.Prompt value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.ChatMessage.fromBuffer(value));
   static final _$getChatMessages = $grpc.ClientMethod<$0.Collection, $0.ChatMessages>(
-      '/endpoint.braingain.v1.Braingain/GetChatMessages',
+      '/endpoint.brainboost.v1.Brainboost/GetChatMessages',
       ($0.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.ChatMessages.fromBuffer(value));
   static final _$getChatMessage = $grpc.ClientMethod<$0.MessageID, $0.ChatMessage>(
-      '/endpoint.braingain.v1.Braingain/GetChatMessage',
+      '/endpoint.brainboost.v1.Brainboost/GetChatMessage',
       ($0.MessageID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.ChatMessage.fromBuffer(value));
   static final _$listDocuments = $grpc.ClientMethod<$0.DocumentFilter, $0.Documents>(
-      '/endpoint.braingain.v1.Braingain/ListDocuments',
+      '/endpoint.brainboost.v1.Brainboost/ListDocuments',
       ($0.DocumentFilter value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Documents.fromBuffer(value));
   static final _$indexDocument = $grpc.ClientMethod<$0.Document, $0.IndexProgress>(
-      '/endpoint.braingain.v1.Braingain/IndexDocument',
+      '/endpoint.brainboost.v1.Brainboost/IndexDocument',
       ($0.Document value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.IndexProgress.fromBuffer(value));
   static final _$deleteDocument = $grpc.ClientMethod<$0.Document, $1.Empty>(
-      '/endpoint.braingain.v1.Braingain/DeleteDocument',
+      '/endpoint.brainboost.v1.Brainboost/DeleteDocument',
       ($0.Document value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
   static final _$updateDocument = $grpc.ClientMethod<$0.Document, $1.Empty>(
-      '/endpoint.braingain.v1.Braingain/UpdateDocument',
+      '/endpoint.brainboost.v1.Brainboost/UpdateDocument',
       ($0.Document value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
   static final _$getCollections = $grpc.ClientMethod<$1.Empty, $0.Collections>(
-      '/endpoint.braingain.v1.Braingain/GetCollections',
+      '/endpoint.brainboost.v1.Brainboost/GetCollections',
       ($1.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Collections.fromBuffer(value));
   static final _$createCollection = $grpc.ClientMethod<$0.Collection, $1.Empty>(
-      '/endpoint.braingain.v1.Braingain/CreateCollection',
+      '/endpoint.brainboost.v1.Brainboost/CreateCollection',
       ($0.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
   static final _$updateCollection = $grpc.ClientMethod<$0.Collection, $1.Empty>(
-      '/endpoint.braingain.v1.Braingain/UpdateCollection',
+      '/endpoint.brainboost.v1.Brainboost/UpdateCollection',
       ($0.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
   static final _$deleteCollection = $grpc.ClientMethod<$0.Collection, $1.Empty>(
-      '/endpoint.braingain.v1.Braingain/DeleteCollection',
+      '/endpoint.brainboost.v1.Brainboost/DeleteCollection',
       ($0.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
   static final _$getModelUsages = $grpc.ClientMethod<$1.Empty, $0.ModelUsages>(
-      '/endpoint.braingain.v1.Braingain/GetModelUsages',
+      '/endpoint.brainboost.v1.Brainboost/GetModelUsages',
       ($1.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.ModelUsages.fromBuffer(value));
 
-  BraingainClient($grpc.ClientChannel channel,
+  BrainboostClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options,
@@ -126,11 +126,11 @@ class BraingainClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('endpoint.braingain.v1.Braingain')
-abstract class BraingainServiceBase extends $grpc.Service {
-  $core.String get $name => 'endpoint.braingain.v1.Braingain';
+@$pb.GrpcServiceName('endpoint.brainboost.v1.Brainboost')
+abstract class BrainboostServiceBase extends $grpc.Service {
+  $core.String get $name => 'endpoint.brainboost.v1.Brainboost';
 
-  BraingainServiceBase() {
+  BrainboostServiceBase() {
     $addMethod($grpc.ServiceMethod<$0.Prompt, $0.ChatMessage>(
         'Chat',
         chat_Pre,

@@ -9,22 +9,21 @@ class TextIllustration extends StatelessWidget {
     this.color,
     this.text,
     this.action,
+    this.textStyle,
   });
 
   final UnDrawIllustration illustration;
   final double width;
   final Color? color;
   final String? text;
+  final TextStyle? textStyle;
   final Widget? action;
 
   @override
   Widget build(BuildContext context) {
     final children = <Widget>[
       UnDraw(
-        color: color ?? Theme
-            .of(context)
-            .colorScheme
-            .secondary,
+        color: color ?? Theme.of(context).colorScheme.secondary,
         illustration: illustration,
         width: width,
       ),
@@ -36,10 +35,7 @@ class TextIllustration extends StatelessWidget {
         width: width,
         child: Text(
           text!,
-          style: Theme
-              .of(context)
-              .textTheme
-              .bodySmall,
+          style: textStyle ?? Theme.of(context).textTheme.bodySmall,
           textAlign: TextAlign.center,
         ),
       ));

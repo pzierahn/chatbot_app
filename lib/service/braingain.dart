@@ -1,18 +1,27 @@
 import 'package:braingain_app/generated/braingain.pbgrpc.dart';
 import 'package:braingain_app/service/supabase.dart';
+import 'package:flutter/foundation.dart';
 import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
 
-final _channel = GrpcOrGrpcWebClientChannel.toSeparateEndpoints(
-  grpcHost: 'localhost',
-  grpcPort: 9055,
-  grpcTransportSecure: false,
-  grpcWebHost: 'localhost',
-  grpcWebPort: 8080,
-  grpcWebTransportSecure: false,
-);
+final _channel = kDebugMode
+    ? GrpcOrGrpcWebClientChannel.grpc(
+        'localhost',
+        port: 9055,
+        options: const ChannelOptions(
+          credentials: ChannelCredentials.insecure(),
+        ),
+      )
+    : GrpcOrGrpcWebClientChannel.toSeparateEndpoints(
+        grpcHost: 'brainboost-service-2qkjmuus4a-ey.a.run.app',
+        grpcPort: 443,
+        grpcTransportSecure: true,
+        grpcWebHost: 'brainboost-gateway-2qkjmuus4a-ey.a.run.app',
+        grpcWebPort: 443,
+        grpcWebTransportSecure: true,
+      );
 
-final braingain = BraingainClient(_channel, interceptors: [
+final braingain = BrainboostClient(_channel, interceptors: [
   _AuthenticationInterceptor(),
 ]);
 

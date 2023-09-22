@@ -17,7 +17,7 @@ import 'dart:typed_data' as $typed_data;
 const ModelUsages$json = {
   '1': 'ModelUsages',
   '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.ModelUsages.Usage', '10': 'items'},
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.v1.ModelUsages.Usage', '10': 'items'},
   ],
   '3': [ModelUsages_Usage$json],
 };
@@ -34,9 +34,9 @@ const ModelUsages_Usage$json = {
 
 /// Descriptor for `ModelUsages`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List modelUsagesDescriptor = $convert.base64Decode(
-    'CgtNb2RlbFVzYWdlcxI+CgVpdGVtcxgBIAMoCzIoLmVuZHBvaW50LmJyYWluZ2Fpbi52MS5Nb2'
-    'RlbFVzYWdlcy5Vc2FnZVIFaXRlbXMaSwoFVXNhZ2USFAoFbW9kZWwYASABKAlSBW1vZGVsEhQK'
-    'BWlucHV0GAIgASgNUgVpbnB1dBIWCgZvdXRwdXQYAyABKA1SBm91dHB1dA==');
+    'CgtNb2RlbFVzYWdlcxI/CgVpdGVtcxgBIAMoCzIpLmVuZHBvaW50LmJyYWluYm9vc3QudjEuTW'
+    '9kZWxVc2FnZXMuVXNhZ2VSBWl0ZW1zGksKBVVzYWdlEhQKBW1vZGVsGAEgASgJUgVtb2RlbBIU'
+    'CgVpbnB1dBgCIAEoDVIFaW5wdXQSFgoGb3V0cHV0GAMgASgNUgZvdXRwdXQ=');
 
 @$core.Deprecated('Use indexProgressDescriptor instead')
 const IndexProgress$json = {
@@ -85,7 +85,7 @@ final $typed_data.Uint8List collectionDescriptor = $convert.base64Decode(
 const Collections$json = {
   '1': 'Collections',
   '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.Collections.Collection', '10': 'items'},
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.v1.Collections.Collection', '10': 'items'},
   ],
   '3': [Collections_Collection$json],
 };
@@ -102,9 +102,9 @@ const Collections_Collection$json = {
 
 /// Descriptor for `Collections`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List collectionsDescriptor = $convert.base64Decode(
-    'CgtDb2xsZWN0aW9ucxJDCgVpdGVtcxgBIAMoCzItLmVuZHBvaW50LmJyYWluZ2Fpbi52MS5Db2'
-    'xsZWN0aW9ucy5Db2xsZWN0aW9uUgVpdGVtcxpOCgpDb2xsZWN0aW9uEg4KAmlkGAEgASgJUgJp'
-    'ZBISCgRuYW1lGAIgASgJUgRuYW1lEhwKCWRvY3VtZW50cxgDIAEoDVIJZG9jdW1lbnRz');
+    'CgtDb2xsZWN0aW9ucxJECgVpdGVtcxgBIAMoCzIuLmVuZHBvaW50LmJyYWluYm9vc3QudjEuQ2'
+    '9sbGVjdGlvbnMuQ29sbGVjdGlvblIFaXRlbXMaTgoKQ29sbGVjdGlvbhIOCgJpZBgBIAEoCVIC'
+    'aWQSEgoEbmFtZRgCIAEoCVIEbmFtZRIcCglkb2N1bWVudHMYAyABKA1SCWRvY3VtZW50cw==');
 
 @$core.Deprecated('Use documentFilterDescriptor instead')
 const DocumentFilter$json = {
@@ -124,7 +124,7 @@ final $typed_data.Uint8List documentFilterDescriptor = $convert.base64Decode(
 const Documents$json = {
   '1': 'Documents',
   '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.Documents.Document', '10': 'items'},
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.v1.Documents.Document', '10': 'items'},
   ],
   '3': [Documents_Document$json],
 };
@@ -141,9 +141,9 @@ const Documents_Document$json = {
 
 /// Descriptor for `Documents`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List documentsDescriptor = $convert.base64Decode(
-    'CglEb2N1bWVudHMSPwoFaXRlbXMYASADKAsyKS5lbmRwb2ludC5icmFpbmdhaW4udjEuRG9jdW'
-    '1lbnRzLkRvY3VtZW50UgVpdGVtcxpMCghEb2N1bWVudBIOCgJpZBgBIAEoCVICaWQSGgoIZmls'
-    'ZW5hbWUYAiABKAlSCGZpbGVuYW1lEhQKBXBhZ2VzGAMgASgNUgVwYWdlcw==');
+    'CglEb2N1bWVudHMSQAoFaXRlbXMYASADKAsyKi5lbmRwb2ludC5icmFpbmJvb3N0LnYxLkRvY3'
+    'VtZW50cy5Eb2N1bWVudFIFaXRlbXMaTAoIRG9jdW1lbnQSDgoCaWQYASABKAlSAmlkEhoKCGZp'
+    'bGVuYW1lGAIgASgJUghmaWxlbmFtZRIUCgVwYWdlcxgDIAEoDVIFcGFnZXM=');
 
 @$core.Deprecated('Use promptOptionsDescriptor instead')
 const PromptOptions$json = {
@@ -169,8 +169,8 @@ const Prompt$json = {
   '2': [
     {'1': 'prompt', '3': 1, '4': 1, '5': 9, '10': 'prompt'},
     {'1': 'collection', '3': 2, '4': 1, '5': 9, '10': 'collection'},
-    {'1': 'options', '3': 3, '4': 1, '5': 11, '6': '.endpoint.braingain.v1.PromptOptions', '10': 'options'},
-    {'1': 'documents', '3': 4, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.Prompt.Document', '10': 'documents'},
+    {'1': 'options', '3': 3, '4': 1, '5': 11, '6': '.endpoint.brainboost.v1.PromptOptions', '10': 'options'},
+    {'1': 'documents', '3': 4, '4': 3, '5': 11, '6': '.endpoint.brainboost.v1.Prompt.Document', '10': 'documents'},
   ],
   '3': [Prompt_Document$json],
 };
@@ -188,18 +188,19 @@ const Prompt_Document$json = {
 /// Descriptor for `Prompt`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List promptDescriptor = $convert.base64Decode(
     'CgZQcm9tcHQSFgoGcHJvbXB0GAEgASgJUgZwcm9tcHQSHgoKY29sbGVjdGlvbhgCIAEoCVIKY2'
-    '9sbGVjdGlvbhI+CgdvcHRpb25zGAMgASgLMiQuZW5kcG9pbnQuYnJhaW5nYWluLnYxLlByb21w'
-    'dE9wdGlvbnNSB29wdGlvbnMSRAoJZG9jdW1lbnRzGAQgAygLMiYuZW5kcG9pbnQuYnJhaW5nYW'
-    'luLnYxLlByb21wdC5Eb2N1bWVudFIJZG9jdW1lbnRzGkwKCERvY3VtZW50Eg4KAmlkGAEgASgJ'
-    'UgJpZBIaCghmaWxlbmFtZRgCIAEoCVIIZmlsZW5hbWUSFAoFcGFnZXMYAyADKA1SBXBhZ2Vz');
+    '9sbGVjdGlvbhI/CgdvcHRpb25zGAMgASgLMiUuZW5kcG9pbnQuYnJhaW5ib29zdC52MS5Qcm9t'
+    'cHRPcHRpb25zUgdvcHRpb25zEkUKCWRvY3VtZW50cxgEIAMoCzInLmVuZHBvaW50LmJyYWluYm'
+    '9vc3QudjEuUHJvbXB0LkRvY3VtZW50Uglkb2N1bWVudHMaTAoIRG9jdW1lbnQSDgoCaWQYASAB'
+    'KAlSAmlkEhoKCGZpbGVuYW1lGAIgASgJUghmaWxlbmFtZRIUCgVwYWdlcxgDIAMoDVIFcGFnZX'
+    'M=');
 
 @$core.Deprecated('Use chatMessageDescriptor instead')
 const ChatMessage$json = {
   '1': 'ChatMessage',
   '2': [
-    {'1': 'prompt', '3': 1, '4': 1, '5': 11, '6': '.endpoint.braingain.v1.Prompt', '10': 'prompt'},
+    {'1': 'prompt', '3': 1, '4': 1, '5': 11, '6': '.endpoint.brainboost.v1.Prompt', '10': 'prompt'},
     {'1': 'text', '3': 2, '4': 1, '5': 9, '10': 'text'},
-    {'1': 'documents', '3': 3, '4': 3, '5': 11, '6': '.endpoint.braingain.v1.ChatMessage.Document', '10': 'documents'},
+    {'1': 'documents', '3': 3, '4': 3, '5': 11, '6': '.endpoint.brainboost.v1.ChatMessage.Document', '10': 'documents'},
     {'1': 'timestamp', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '9': 0, '10': 'timestamp', '17': true},
   ],
   '3': [ChatMessage_Document$json],
@@ -221,13 +222,13 @@ const ChatMessage_Document$json = {
 
 /// Descriptor for `ChatMessage`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List chatMessageDescriptor = $convert.base64Decode(
-    'CgtDaGF0TWVzc2FnZRI1CgZwcm9tcHQYASABKAsyHS5lbmRwb2ludC5icmFpbmdhaW4udjEuUH'
-    'JvbXB0UgZwcm9tcHQSEgoEdGV4dBgCIAEoCVIEdGV4dBJJCglkb2N1bWVudHMYAyADKAsyKy5l'
-    'bmRwb2ludC5icmFpbmdhaW4udjEuQ2hhdE1lc3NhZ2UuRG9jdW1lbnRSCWRvY3VtZW50cxI9Cg'
-    'l0aW1lc3RhbXAYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wSABSCXRpbWVzdGFt'
-    'cIgBARpkCghEb2N1bWVudBIOCgJpZBgBIAEoCVICaWQSGgoIZmlsZW5hbWUYAiABKAlSCGZpbG'
-    'VuYW1lEhQKBXBhZ2VzGAMgAygNUgVwYWdlcxIWCgZzY29yZXMYBCADKAJSBnNjb3Jlc0IMCgpf'
-    'dGltZXN0YW1w');
+    'CgtDaGF0TWVzc2FnZRI2CgZwcm9tcHQYASABKAsyHi5lbmRwb2ludC5icmFpbmJvb3N0LnYxLl'
+    'Byb21wdFIGcHJvbXB0EhIKBHRleHQYAiABKAlSBHRleHQSSgoJZG9jdW1lbnRzGAMgAygLMiwu'
+    'ZW5kcG9pbnQuYnJhaW5ib29zdC52MS5DaGF0TWVzc2FnZS5Eb2N1bWVudFIJZG9jdW1lbnRzEj'
+    '0KCXRpbWVzdGFtcBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAFIJdGltZXN0'
+    'YW1wiAEBGmQKCERvY3VtZW50Eg4KAmlkGAEgASgJUgJpZBIaCghmaWxlbmFtZRgCIAEoCVIIZm'
+    'lsZW5hbWUSFAoFcGFnZXMYAyADKA1SBXBhZ2VzEhYKBnNjb3JlcxgEIAMoAlIGc2NvcmVzQgwK'
+    'Cl90aW1lc3RhbXA=');
 
 @$core.Deprecated('Use messageIDDescriptor instead')
 const MessageID$json = {
