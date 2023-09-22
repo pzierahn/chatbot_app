@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
 
-final _channel = (kDebugMode)
+final _channel = kDebugMode
     ? GrpcOrGrpcWebClientChannel.grpc(
         'localhost',
         port: 9055,
