@@ -51,8 +51,8 @@ class _PromptInputState extends State<PromptInput> {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
-    final textStyle = text.titleLarge?.merge(TextStyle(
-      fontWeight: FontWeight.w500,
+    final textStyle = text.titleMedium?.merge(TextStyle(
+      fontWeight: FontWeight.w400,
       color: onPromptSubmit != null ? color.onSurface : color.outline,
     ));
 
@@ -71,6 +71,7 @@ class _PromptInputState extends State<PromptInput> {
                 }
               : null,
           decoration: InputDecoration(
+            labelText: 'Prompt',
             hintText: 'Type a prompt',
             hintStyle: textStyle,
             filled: true,
@@ -89,7 +90,7 @@ class _PromptInputState extends State<PromptInput> {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
-                color: color.primary,
+                color: color.secondary,
                 width: 1.0,
               ),
             ),
