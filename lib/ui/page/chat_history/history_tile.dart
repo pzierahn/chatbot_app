@@ -78,18 +78,19 @@ class ChatHistoryTile extends StatelessWidget {
           final date = message.timestamp.toDateTime(toLocal: true);
 
           return ListTile(
-              title: SelectableText(
-                message.prompt.prompt,
-                style: text.titleMedium,
-              ),
-              // minLeadingWidth: 40,
-              subtitle: Text(
-                date.toString(),
-                style: text.bodySmall?.merge(TextStyle(
-                  color: color.outline,
-                )),
-              ),
-              onTap: () => _onViewChat(context, message));
+            title: Text(
+              message.prompt.prompt,
+              style: text.titleMedium,
+            ),
+            // minLeadingWidth: 40,
+            subtitle: Text(
+              date.toString(),
+              style: text.bodySmall?.merge(TextStyle(
+                color: color.outline,
+              )),
+            ),
+            onTap: () => _onViewChat(context, message),
+          );
         });
   }
 }
