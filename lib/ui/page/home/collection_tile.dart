@@ -3,7 +3,6 @@ import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/home/collection_edit_dialog.dart';
-import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:flutter/material.dart';
@@ -101,11 +100,6 @@ class CollectionsTile extends StatelessWidget {
         trailing: PopupMenuButton(
           onSelected: (item) async {
             if (item == 0) {
-              UploadPage.open(context, collection);
-              return;
-            }
-
-            if (item == 1) {
               CollectionPage.open(context, collection);
               return;
             }
@@ -121,16 +115,10 @@ class CollectionsTile extends StatelessWidget {
             }
           },
           itemBuilder: (context) => <PopupMenuEntry<int>>[
-            if (collection.documents == 0)
-              const PopupMenuItem<int>(
-                value: 0,
-                child: Text('Upload Documents'),
-              ),
-            if (collection.documents > 0)
-              const PopupMenuItem<int>(
-                value: 1,
-                child: Text('View Documents'),
-              ),
+            const PopupMenuItem<int>(
+              value: 0,
+              child: Text('Documents'),
+            ),
             const PopupMenuDivider(),
             const PopupMenuItem<int>(
               value: 2,
