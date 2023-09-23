@@ -1,4 +1,5 @@
 import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/ui/page/chat/generating_fragment.dart';
 import 'package:braingain_app/ui/page/chat/prompt_info.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
@@ -69,11 +70,7 @@ class ChatFragment extends StatelessWidget {
         prompt: status.prompt,
         collection: collection,
       );
-      body = TextIllustration(
-        illustration: UnDrawIllustration.typewriter,
-        color: color.primary,
-        text: 'Thinking...',
-      );
+      body = const GeneratingFragment();
     }
 
     return _ChatFrame(
