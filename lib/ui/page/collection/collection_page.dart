@@ -1,4 +1,5 @@
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/collections.pb.dart';
+import 'package:braingain_app/generated/documents.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/collection/document_edit_dialog.dart';
 import 'package:braingain_app/ui/page/upload/upload_body.dart';
@@ -65,7 +66,7 @@ class _CollectionPageState extends State<_CollectionPage> {
 
     ref.filename = filename;
 
-    brainboost.updateDocument(ref).then((_) {
+    documents.update(ref).then((_) {
       SimpleSnackBar.show(
         context,
         'Updated ${doc.filename}',
@@ -90,7 +91,7 @@ class _CollectionPageState extends State<_CollectionPage> {
       return;
     }
 
-    brainboost.deleteDocument(ref).then((_) {
+    documents.delete(ref).then((_) {
       SimpleSnackBar.show(
         context,
         'Deleted ${doc.filename}',
@@ -117,8 +118,8 @@ class _CollectionPageState extends State<_CollectionPage> {
         ],
       ),
       body: FutureBuilder<Documents>(
-        future: brainboost.listDocuments(
-          DocumentFilter()..collection = widget.collection.id,
+        future: documents.list(
+          DocumentFilter()..collectionID = widget.collection.id,
         ),
         builder: (context, snap) {
           if (!snap.hasData) {

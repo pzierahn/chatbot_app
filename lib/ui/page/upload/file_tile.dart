@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/documents.pb.dart';
 import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,7 @@
-import 'package:braingain_app/generated/braingain.pbgrpc.dart';
+import 'package:braingain_app/generated/account.pbgrpc.dart';
+import 'package:braingain_app/generated/chat.pbgrpc.dart';
+import 'package:braingain_app/generated/collections.pbgrpc.dart';
+import 'package:braingain_app/generated/documents.pbgrpc.dart';
 import 'package:braingain_app/service/supabase.dart';
 import 'package:flutter/foundation.dart';
 import 'package:grpc/grpc.dart';
@@ -21,7 +24,19 @@ final _channel = kDebugMode
         grpcWebTransportSecure: true,
       );
 
-final brainboost = BrainboostClient(_channel, interceptors: [
+final collections = CollectionServiceClient(_channel, interceptors: [
+  _AuthenticationInterceptor(),
+]);
+
+final documents = DocumentServiceClient(_channel, interceptors: [
+  _AuthenticationInterceptor(),
+]);
+
+final account = AccountServiceClient(_channel, interceptors: [
+  _AuthenticationInterceptor(),
+]);
+
+final chat = ChatServiceClient(_channel, interceptors: [
   _AuthenticationInterceptor(),
 ]);
 

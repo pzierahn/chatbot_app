@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/collections.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/chat_fragment.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
@@ -35,7 +35,7 @@ class _ChatState extends State<Chat> {
     children.add(ChatInput(
       onPromptSubmit: (prompt) {
         setState(() {
-          prompt.collection = widget.collection.id;
+          prompt.collectionID = widget.collection.id;
           final status = ChatFragmentStatus(prompt: prompt);
           final index = _status.length;
 
@@ -43,7 +43,7 @@ class _ChatState extends State<Chat> {
             _status.add(status);
           });
 
-          brainboost
+          chat
               .chat(prompt)
               .then((response) => setState(() {
                     _status[index].completion = response;

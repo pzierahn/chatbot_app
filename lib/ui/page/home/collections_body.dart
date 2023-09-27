@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/collections.pb.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/home/collection_edit_dialog.dart';
@@ -25,7 +25,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
     final text = Theme.of(context).textTheme;
 
     return FutureBuilder<Collections>(
-      future: brainboost.getCollections(Empty()),
+      future: collections.getAll(Empty()),
       builder: (context, snap) {
         if (snap.hasError) {
           return ErrorBody(
@@ -39,7 +39,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
           );
         }
 
-        final collections = snap.data!.items;
+        final items = snap.data!.items;
 
         final children = <Widget>[
           UnDraw(
@@ -49,7 +49,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
           ),
         ];
 
-        for (var collection in collections) {
+        for (var collection in items) {
           children.add(CollectionsTile(
             collection: collection,
             onUpdate: () => setState(() {}),
@@ -89,8 +89,8 @@ class _CollectionsBodyState extends State<CollectionsBody> {
                   return;
                 }
 
-                brainboost
-                    .createCollection(Collection()..name = name)
+                collections
+                    .create(Collection()..name = name)
                     .then((_) => setState(() {}))
                     .catchError((error) => ErrorSnackBar.show(context, error));
               },
