@@ -1,17 +1,11 @@
-# braingain_app
+# Brainboost
 
-"A new Flutter project."
+## Create new release
 
-## Getting Started
+```bash
+# Update version in pubspec.yaml
 
-This project is a starting point for a Flutter application.
+git tag -a 1.0.1 -m "First version" 541b59c
+git push origin 1.0.1
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# braingain_app
+```
