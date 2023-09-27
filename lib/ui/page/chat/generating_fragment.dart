@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -12,7 +11,6 @@ class GeneratingFragment extends StatefulWidget {
 }
 
 class _GeneratingFragmentState extends State<GeneratingFragment> {
-  late Timer _periodicTimer;
   late UnDrawIllustration _illustration;
 
   @override
@@ -28,19 +26,6 @@ class _GeneratingFragmentState extends State<GeneratingFragment> {
     ];
 
     _illustration = illustrations[Random().nextInt(illustrations.length - 1)];
-
-    const duration = Duration(milliseconds: 500);
-    _periodicTimer = Timer.periodic(duration, (timer) {
-      if (mounted) {
-        setState(() {});
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _periodicTimer.cancel();
-    super.dispose();
   }
 
   @override
