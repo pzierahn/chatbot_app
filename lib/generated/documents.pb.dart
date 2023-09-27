@@ -21,7 +21,7 @@ class SearchQuery extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SearchQuery', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'query')
-    ..aOS(2, _omitFieldNames ? '' : 'collectionID', protoName: 'collectionID')
+    ..aOS(2, _omitFieldNames ? '' : 'collectionId')
     ..a<$core.double>(3, _omitFieldNames ? '' : 'threshold', $pb.PbFieldType.OF)
     ..a<$core.int>(4, _omitFieldNames ? '' : 'limit', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
@@ -58,13 +58,13 @@ class SearchQuery extends $pb.GeneratedMessage {
   void clearQuery() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get collectionID => $_getSZ(1);
+  $core.String get collectionId => $_getSZ(1);
   @$pb.TagNumber(2)
-  set collectionID($core.String v) { $_setString(1, v); }
+  set collectionId($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasCollectionID() => $_has(1);
+  $core.bool hasCollectionId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCollectionID() => clearField(2);
+  void clearCollectionId() => clearField(2);
 
   @$pb.TagNumber(3)
   $core.double get threshold => $_getN(2);
@@ -93,7 +93,7 @@ class SearchResults_Document extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SearchResults.Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'documentID', protoName: 'documentID')
+    ..aOS(2, _omitFieldNames ? '' : 'documentId')
     ..aOS(3, _omitFieldNames ? '' : 'filename')
     ..aOS(4, _omitFieldNames ? '' : 'content')
     ..a<$core.int>(5, _omitFieldNames ? '' : 'page', $pb.PbFieldType.OU3)
@@ -132,13 +132,13 @@ class SearchResults_Document extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get documentID => $_getSZ(1);
+  $core.String get documentId => $_getSZ(1);
   @$pb.TagNumber(2)
-  set documentID($core.String v) { $_setString(1, v); }
+  set documentId($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasDocumentID() => $_has(1);
+  $core.bool hasDocumentId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearDocumentID() => clearField(2);
+  void clearDocumentId() => clearField(2);
 
   @$pb.TagNumber(3)
   $core.String get filename => $_getSZ(2);
@@ -345,7 +345,7 @@ class DocumentFilter extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentFilter', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'query')
-    ..aOS(2, _omitFieldNames ? '' : 'collectionID', protoName: 'collectionID')
+    ..aOS(2, _omitFieldNames ? '' : 'collectionId')
     ..hasRequiredFields = false
   ;
 
@@ -380,13 +380,13 @@ class DocumentFilter extends $pb.GeneratedMessage {
   void clearQuery() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get collectionID => $_getSZ(1);
+  $core.String get collectionId => $_getSZ(1);
   @$pb.TagNumber(2)
-  set collectionID($core.String v) { $_setString(1, v); }
+  set collectionId($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasCollectionID() => $_has(1);
+  $core.bool hasCollectionId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCollectionID() => clearField(2);
+  void clearCollectionId() => clearField(2);
 }
 
 class Documents_Document extends $pb.GeneratedMessage {

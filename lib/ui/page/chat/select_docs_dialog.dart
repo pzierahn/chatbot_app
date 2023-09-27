@@ -57,7 +57,7 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
   Widget build(BuildContext context) {
     final request = DocumentFilter()
       ..query = _query
-      ..collectionID = widget.collection.id;
+      ..collectionId = widget.collection.id;
 
     return AlertDialog(
       title: TextField(

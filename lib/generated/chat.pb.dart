@@ -79,7 +79,7 @@ class Prompt extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Prompt', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'prompt')
-    ..aOS(2, _omitFieldNames ? '' : 'collectionID', protoName: 'collectionID')
+    ..aOS(2, _omitFieldNames ? '' : 'collectionId')
     ..aOM<PromptOptions>(3, _omitFieldNames ? '' : 'options', subBuilder: PromptOptions.create)
     ..pc<Prompt_Document>(4, _omitFieldNames ? '' : 'documents', $pb.PbFieldType.PM, subBuilder: Prompt_Document.create)
     ..hasRequiredFields = false
@@ -116,13 +116,13 @@ class Prompt extends $pb.GeneratedMessage {
   void clearPrompt() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get collectionID => $_getSZ(1);
+  $core.String get collectionId => $_getSZ(1);
   @$pb.TagNumber(2)
-  set collectionID($core.String v) { $_setString(1, v); }
+  set collectionId($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasCollectionID() => $_has(1);
+  $core.bool hasCollectionId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCollectionID() => clearField(2);
+  void clearCollectionId() => clearField(2);
 
   @$pb.TagNumber(3)
   PromptOptions get options => $_getN(2);
@@ -289,7 +289,7 @@ class ChatMessage extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'collectionId', protoName: 'collectionId')
+    ..aOS(2, _omitFieldNames ? '' : 'collectionId')
     ..aOM<Prompt>(3, _omitFieldNames ? '' : 'prompt', subBuilder: Prompt.create)
     ..aOS(4, _omitFieldNames ? '' : 'text')
     ..pc<ChatMessage_Document>(5, _omitFieldNames ? '' : 'documents', $pb.PbFieldType.PM, subBuilder: ChatMessage_Document.create)

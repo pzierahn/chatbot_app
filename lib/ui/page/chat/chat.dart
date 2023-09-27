@@ -35,7 +35,7 @@ class _ChatState extends State<Chat> {
     children.add(ChatInput(
       onPromptSubmit: (prompt) {
         setState(() {
-          prompt.collectionID = widget.collection.id;
+          prompt.collectionId = widget.collection.id;
           final status = ChatFragmentStatus(prompt: prompt);
           final index = _status.length;
 

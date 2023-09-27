@@ -18,7 +18,7 @@ const SearchQuery$json = {
   '1': 'SearchQuery',
   '2': [
     {'1': 'query', '3': 1, '4': 1, '5': 9, '10': 'query'},
-    {'1': 'collectionID', '3': 2, '4': 1, '5': 9, '10': 'collectionID'},
+    {'1': 'collection_id', '3': 2, '4': 1, '5': 9, '10': 'collectionId'},
     {'1': 'threshold', '3': 3, '4': 1, '5': 2, '10': 'threshold'},
     {'1': 'limit', '3': 4, '4': 1, '5': 13, '10': 'limit'},
   ],
@@ -26,9 +26,9 @@ const SearchQuery$json = {
 
 /// Descriptor for `SearchQuery`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List searchQueryDescriptor = $convert.base64Decode(
-    'CgtTZWFyY2hRdWVyeRIUCgVxdWVyeRgBIAEoCVIFcXVlcnkSIgoMY29sbGVjdGlvbklEGAIgAS'
-    'gJUgxjb2xsZWN0aW9uSUQSHAoJdGhyZXNob2xkGAMgASgCUgl0aHJlc2hvbGQSFAoFbGltaXQY'
-    'BCABKA1SBWxpbWl0');
+    'CgtTZWFyY2hRdWVyeRIUCgVxdWVyeRgBIAEoCVIFcXVlcnkSIwoNY29sbGVjdGlvbl9pZBgCIA'
+    'EoCVIMY29sbGVjdGlvbklkEhwKCXRocmVzaG9sZBgDIAEoAlIJdGhyZXNob2xkEhQKBWxpbWl0'
+    'GAQgASgNUgVsaW1pdA==');
 
 @$core.Deprecated('Use searchResultsDescriptor instead')
 const SearchResults$json = {
@@ -44,7 +44,7 @@ const SearchResults_Document$json = {
   '1': 'Document',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'documentID', '3': 2, '4': 1, '5': 9, '10': 'documentID'},
+    {'1': 'document_id', '3': 2, '4': 1, '5': 9, '10': 'documentId'},
     {'1': 'filename', '3': 3, '4': 1, '5': 9, '10': 'filename'},
     {'1': 'content', '3': 4, '4': 1, '5': 9, '10': 'content'},
     {'1': 'page', '3': 5, '4': 1, '5': 13, '10': 'page'},
@@ -55,10 +55,10 @@ const SearchResults_Document$json = {
 /// Descriptor for `SearchResults`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List searchResultsDescriptor = $convert.base64Decode(
     'Cg1TZWFyY2hSZXN1bHRzEk4KBWl0ZW1zGAEgAygLMjguZW5kcG9pbnQuYnJhaW5ib29zdC5kb2'
-    'N1bWVudHMudjEuU2VhcmNoUmVzdWx0cy5Eb2N1bWVudFIFaXRlbXMamgEKCERvY3VtZW50Eg4K'
-    'AmlkGAEgASgJUgJpZBIeCgpkb2N1bWVudElEGAIgASgJUgpkb2N1bWVudElEEhoKCGZpbGVuYW'
-    '1lGAMgASgJUghmaWxlbmFtZRIYCgdjb250ZW50GAQgASgJUgdjb250ZW50EhIKBHBhZ2UYBSAB'
-    'KA1SBHBhZ2USFAoFc2NvcmUYBiABKAJSBXNjb3Jl');
+    'N1bWVudHMudjEuU2VhcmNoUmVzdWx0cy5Eb2N1bWVudFIFaXRlbXMamwEKCERvY3VtZW50Eg4K'
+    'AmlkGAEgASgJUgJpZBIfCgtkb2N1bWVudF9pZBgCIAEoCVIKZG9jdW1lbnRJZBIaCghmaWxlbm'
+    'FtZRgDIAEoCVIIZmlsZW5hbWUSGAoHY29udGVudBgEIAEoCVIHY29udGVudBISCgRwYWdlGAUg'
+    'ASgNUgRwYWdlEhQKBXNjb3JlGAYgASgCUgVzY29yZQ==');
 
 @$core.Deprecated('Use indexProgressDescriptor instead')
 const IndexProgress$json = {
@@ -95,14 +95,14 @@ const DocumentFilter$json = {
   '1': 'DocumentFilter',
   '2': [
     {'1': 'query', '3': 1, '4': 1, '5': 9, '10': 'query'},
-    {'1': 'collectionID', '3': 2, '4': 1, '5': 9, '10': 'collectionID'},
+    {'1': 'collection_id', '3': 2, '4': 1, '5': 9, '10': 'collectionId'},
   ],
 };
 
 /// Descriptor for `DocumentFilter`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List documentFilterDescriptor = $convert.base64Decode(
-    'Cg5Eb2N1bWVudEZpbHRlchIUCgVxdWVyeRgBIAEoCVIFcXVlcnkSIgoMY29sbGVjdGlvbklEGA'
-    'IgASgJUgxjb2xsZWN0aW9uSUQ=');
+    'Cg5Eb2N1bWVudEZpbHRlchIUCgVxdWVyeRgBIAEoCVIFcXVlcnkSIwoNY29sbGVjdGlvbl9pZB'
+    'gCIAEoCVIMY29sbGVjdGlvbklk');
 
 @$core.Deprecated('Use documentsDescriptor instead')
 const Documents$json = {

@@ -119,7 +119,7 @@ class _CollectionPageState extends State<_CollectionPage> {
       ),
       body: FutureBuilder<Documents>(
         future: documents.list(
-          DocumentFilter()..collectionID = widget.collection.id,
+          DocumentFilter()..collectionId = widget.collection.id,
         ),
         builder: (context, snap) {
           if (!snap.hasData) {
