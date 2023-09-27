@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/collections.pb.dart';
 import 'package:braingain_app/ui/page/upload/upload_body.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: braingain.proto
+//  source: account.proto
 //
 // @dart = 2.12
 

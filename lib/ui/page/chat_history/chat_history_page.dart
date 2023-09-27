@@ -1,4 +1,5 @@
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/chat.pb.dart';
+import 'package:braingain_app/generated/collections.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat_history/history_tile.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
@@ -35,7 +36,7 @@ class ChatHistoryPage extends StatelessWidget {
         title: Text('History: ${collection.name}'),
       ),
       body: FutureBuilder<ChatMessages>(
-          future: brainboost.getChatMessages(Collection()..id = collection.id),
+          future: chat.getChatMessages(Collection()..id = collection.id),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Center(

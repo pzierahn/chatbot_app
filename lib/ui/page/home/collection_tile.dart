@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/collections.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
@@ -26,7 +26,7 @@ class CollectionsTile extends StatelessWidget {
         final delete = Collection()
           ..id = collection.id
           ..name = collection.name;
-        await brainboost.deleteCollection(delete).catchError(
+        await collections.delete(delete).catchError(
               (error) => ErrorSnackBar.show(context, error),
             );
         onUpdate?.call();
@@ -43,8 +43,8 @@ class CollectionsTile extends StatelessWidget {
       return;
     }
 
-    brainboost
-        .updateCollection(Collection()
+    collections
+        .update(Collection()
           ..id = collection.id
           ..name = name)
         .then((_) => onUpdate?.call())
@@ -88,7 +88,7 @@ class CollectionsTile extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         subtitle: Text(
-          '${collection.documents} Document${collection.documents == 1 ? '' : 's'}',
+          '${collection.documentCount} Document${collection.documentCount == 1 ? '' : 's'}',
           style: text.bodySmall?.merge(TextStyle(
             color: color.outline,
           )),

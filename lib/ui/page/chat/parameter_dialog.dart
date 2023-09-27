@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/chat.pb.dart';
 import 'package:flutter/material.dart';
 
 class ParameterDialog extends StatefulWidget {

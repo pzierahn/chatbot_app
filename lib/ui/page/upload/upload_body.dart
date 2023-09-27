@@ -1,4 +1,5 @@
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/collections.pb.dart';
+import 'package:braingain_app/generated/documents.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/service/storage.dart';
 import 'package:braingain_app/ui/page/upload/file_tile.dart';
@@ -62,7 +63,7 @@ class _UploadBodyState extends State<UploadBody> {
           );
         });
 
-        brainboost.indexDocument(ref).listen(
+        documents.index(ref).listen(
             (progress) => setState(() {
                   _status[ref.id] = DocumentStatus(
                     ref: ref,

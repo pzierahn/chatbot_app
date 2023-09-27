@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/documents.pb.dart';
 import 'package:braingain_app/service/supabase.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:uuid/uuid.dart';

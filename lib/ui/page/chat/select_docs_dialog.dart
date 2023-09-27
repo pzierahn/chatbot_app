@@ -1,4 +1,6 @@
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/chat.pb.dart';
+import 'package:braingain_app/generated/collections.pb.dart';
+import 'package:braingain_app/generated/documents.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
@@ -55,7 +57,7 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
   Widget build(BuildContext context) {
     final request = DocumentFilter()
       ..query = _query
-      ..collection = widget.collection.id;
+      ..collectionID = widget.collection.id;
 
     return AlertDialog(
       title: TextField(
@@ -72,7 +74,7 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
         height: 400,
         width: 400,
         child: FutureBuilder<Documents>(
-          future: brainboost.listDocuments(request),
+          future: documents.list(request),
           builder: (context, snap) {
             if (snap.hasError) {
               return Center(

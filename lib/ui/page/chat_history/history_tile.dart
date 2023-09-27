@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/chat.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/prompt_info.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
@@ -46,7 +46,7 @@ class ChatHistoryTile extends StatelessWidget {
     final text = Theme.of(context).textTheme;
 
     return FutureBuilder<ChatMessage>(
-        future: brainboost.getChatMessage(MessageID()..id = chatId),
+        future: chat.getChatMessage(MessageID()..id = chatId),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return ListTile(

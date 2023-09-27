@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/account.pb.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pbserver.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/widget/outlined_card.dart';
@@ -45,7 +45,7 @@ class ModelUsage extends StatelessWidget {
             ),
           ),
           FutureBuilder<ModelUsages>(
-            future: brainboost.getModelUsages(Empty()),
+            future: account.getModelUsages(Empty()),
             builder: (context, snap) {
               if (snap.hasError) {
                 return Center(

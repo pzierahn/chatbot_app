@@ -1,4 +1,5 @@
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/chat.pb.dart';
+import 'package:braingain_app/generated/collections.pb.dart';
 import 'package:braingain_app/ui/page/chat/generating_fragment.dart';
 import 'package:braingain_app/ui/page/chat/prompt_info.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';

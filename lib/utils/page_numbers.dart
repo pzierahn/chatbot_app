@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/braingain.pb.dart';
+import 'package:braingain_app/generated/chat.pb.dart';
 
 List<int> parsePageList(String text) {
   final pages = text.split(',');
