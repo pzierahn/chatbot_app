@@ -29,7 +29,7 @@ class _GeneratingFragmentState extends State<GeneratingFragment> {
 
     _illustration = illustrations[Random().nextInt(illustrations.length - 1)];
 
-    const duration = Duration(milliseconds: 200);
+    const duration = Duration(milliseconds: 500);
     _periodicTimer = Timer.periodic(duration, (timer) {
       if (mounted) {
         setState(() {});
