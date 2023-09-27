@@ -55,16 +55,12 @@ class _GeneratingFragmentState extends State<GeneratingFragment> {
           width: 300,
         ),
         const SizedBox(height: 16),
-        Text(
-          'Generating response...',
-          style: TextStyle(
-            letterSpacing: Random().nextDouble() * 5,
-            fontWeight: FontWeight
-                .values[Random().nextInt(FontWeight.values.length - 2) + 2],
-            fontStyle:
-                FontStyle.values[Random().nextInt(FontStyle.values.length)],
-          ),
+        const SizedBox(
+          width: 200,
+          child: LinearProgressIndicator(),
         ),
+        const SizedBox(height: 16),
+        const Text('Generating response...'),
       ],
     );
   }
