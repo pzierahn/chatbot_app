@@ -54,7 +54,7 @@ class ChatPage extends StatelessWidget {
             icon: const Icon(Icons.upload_file_outlined),
             tooltip: 'Upload Documents',
             onPressed: () {
-              UploadPage.open(context, collection);
+              UploadPage.openWithDialog(context, collection);
             },
           ),
         ],
