@@ -147,9 +147,10 @@ class _CollectionPageState extends State<_CollectionPage> {
                         foregroundColor: color.onPrimaryContainer,
                         child: const Icon(Icons.description_outlined),
                       ),
-                      title: SelectableText(
+                      title: Text(
                         doc.filename,
                         maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       subtitle: Text(
                         'Pages ${doc.pages}',
