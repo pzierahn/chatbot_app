@@ -24,7 +24,7 @@ class SelectDocsTile extends StatelessWidget {
 
     if (documents.isEmpty) {
       subtitle =
-          'If no documents are added, documents from the collection will selected automatically';
+          'If no documents are selected, they will be selected automatically';
     } else {
       subtitle = documents.map((doc) => doc.filename).join(', ');
     }
@@ -32,11 +32,11 @@ class SelectDocsTile extends StatelessWidget {
     return ListTile(
       leading: documents.isEmpty
           ? Icon(
-              Icons.description_outlined,
+              Icons.auto_fix_high_outlined,
               color: color.onSurface,
             )
           : Icon(
-              Icons.task_outlined,
+              Icons.description_outlined,
               color: color.onSurface,
             ),
       title: Text(
