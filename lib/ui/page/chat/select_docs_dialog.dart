@@ -144,6 +144,20 @@ class _DocumentsBody extends StatefulWidget {
 }
 
 class _DocumentsBodyState extends State<_DocumentsBody> {
+  void _onSelect(Documents_Document doc) {
+    if (widget.selected.containsKey(doc.id)) {
+      widget.selected.remove(doc.id);
+    } else {
+      widget.selected[doc.id] = Prompt_Document()
+        ..id = doc.id
+        ..filename = doc.filename
+        ..pages.clear()
+        ..pages.addAll([for (int i = 1; i <= doc.pages; i++) i]);
+    }
+
+    widget.onChanged(widget.selected);
+  }
+
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
@@ -171,23 +185,18 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
       itemBuilder: (context, index) {
         final doc = widget.documents.items[index];
         return ListTile(
-          leading: CircleAvatar(
-            backgroundColor: widget.selected.containsKey(doc.id)
-                ? color.primary.withOpacity(0.2)
-                : color.surfaceVariant,
-            foregroundColor: widget.selected.containsKey(doc.id)
-                ? color.primary
-                : color.onSurfaceVariant,
-            radius: 16,
-            child: widget.selected.containsKey(doc.id)
-                ? const Icon(Icons.check, size: 16)
-                : const Icon(Icons.description, size: 16),
-          ),
+          leading: widget.selected.containsKey(doc.id)
+              ? Icon(
+                  Icons.task_outlined,
+                  size: 16,
+                  color: color.primary,
+                )
+              : const Icon(Icons.description_outlined, size: 16),
           title: Text(
             doc.filename,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: text.bodySmall?.merge(TextStyle(
+            style: text.bodyMedium?.merge(TextStyle(
               color: widget.selected.containsKey(doc.id)
                   ? color.primary
                   : color.onSurface,
@@ -228,19 +237,7 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
                     color: color.outline,
                   )),
                 ),
-          onTap: () {
-            if (widget.selected.containsKey(doc.id)) {
-              widget.selected.remove(doc.id);
-            } else {
-              widget.selected[doc.id] = Prompt_Document()
-                ..id = doc.id
-                ..filename = doc.filename
-                ..pages.clear()
-                ..pages.addAll([for (int i = 1; i <= doc.pages; i++) i]);
-            }
-
-            widget.onChanged(widget.selected);
-          },
+          onTap: () => _onSelect(doc),
         );
       },
     );
