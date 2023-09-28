@@ -112,7 +112,8 @@ class _CollectionPageState extends State<_CollectionPage> {
         title: Text(widget.collection.name),
         actions: [
           IconButton(
-            icon: const Icon(Icons.upload),
+            icon: const Icon(Icons.upload_file_outlined),
+            tooltip: 'Upload Documents',
             onPressed: _onUpload,
           ),
         ],
