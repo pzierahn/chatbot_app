@@ -20,7 +20,7 @@ class ChatInput extends StatefulWidget {
 }
 
 class _ChatInputState extends State<ChatInput> {
-  Prompt? prompt;
+  late Prompt prompt;
 
   @override
   void initState() {
@@ -28,7 +28,7 @@ class _ChatInputState extends State<ChatInput> {
     prompt = Prompt();
 
     // Set default options
-    prompt?.options = PromptOptions()
+    prompt.options = PromptOptions()
       ..model = 'gpt-3.5-turbo-16k'
       ..temperature = 0.0
       ..maxTokens = 1024
@@ -42,15 +42,16 @@ class _ChatInputState extends State<ChatInput> {
       title: PromptInput(
         onPromptSubmit: (text) {
           setState(() {
-            prompt?.prompt = text;
+            prompt.prompt = text;
           });
 
-          widget.onPromptSubmit.call(prompt!);
+          widget.onPromptSubmit.call(prompt);
         },
         collection: widget.collection,
       ),
       divider: const Divider(height: 1),
       body: PromptButtons(
+        prompt: prompt,
         collection: widget.collection,
         onPromptChanged: (update) {
           setState(() {

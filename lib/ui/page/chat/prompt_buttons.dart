@@ -8,12 +8,12 @@ import 'package:flutter/material.dart';
 class PromptButtons extends StatefulWidget {
   const PromptButtons({
     super.key,
-    this.prompt,
+    required this.prompt,
     this.onPromptChanged,
     required this.collection,
   });
 
-  final Prompt? prompt;
+  final Prompt prompt;
   final ValueChanged<Prompt>? onPromptChanged;
   final Collections_Collection collection;
 
@@ -22,27 +22,9 @@ class PromptButtons extends StatefulWidget {
 }
 
 class _PromptButtonsState extends State<PromptButtons> {
-  late Prompt prompt;
-
   ValueChanged<Prompt>? get onPromptChanged => widget.onPromptChanged;
 
-  @override
-  void initState() {
-    super.initState();
-    if (widget.prompt != null) {
-      prompt = widget.prompt!;
-    } else {
-      prompt = Prompt();
-
-      // Set default options
-      prompt.options = PromptOptions()
-        ..model = 'gpt-3.5-turbo-16k'
-        ..temperature = 0.0
-        ..maxTokens = 1024
-        ..limit = 10
-        ..threshold = 0.6;
-    }
-  }
+  Prompt get prompt => widget.prompt;
 
   void _onSelectDocuments(List<Prompt_Document> docs) {
     setState(() {
