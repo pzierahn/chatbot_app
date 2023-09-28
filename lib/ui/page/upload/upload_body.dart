@@ -3,7 +3,9 @@ import 'package:braingain_app/generated/documents.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/service/storage.dart';
 import 'package:braingain_app/ui/page/upload/file_tile.dart';
+import 'package:braingain_app/ui/page/upload/upload_dialog.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
+import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -25,74 +27,67 @@ class _UploadBodyState extends State<UploadBody> {
   final _queue = <Document>[];
   final _status = <String, DocumentStatus>{};
 
-  Future<void> _uploadFiles() async {
-    final result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowMultiple: true,
-      allowedExtensions: ['pdf'],
-      withData: true,
+  void _processFiles(List<PlatformFile> files) {
+    for (final file in files) {
+      _processFile(file);
+    }
+  }
+
+  void _processFile(PlatformFile file) {
+    final ref = StorageUtils.create(
+      collection: widget.collection.id,
+      file: file,
     );
 
-    if (result == null) {
-      return;
-    }
-
-    for (final file in result.files) {
-      final ref = StorageUtils.create(
-        collection: widget.collection.id,
-        file: file,
+    setState(() {
+      _queue.add(ref);
+      _status[ref.id] = DocumentStatus(
+        ref: ref,
+        uploaded: false,
       );
+    });
 
-      debugPrint('file: ${file.name} ${file.bytes?.length}');
-
+    StorageUtils.upload(ref, file.bytes!).then((value) {
       setState(() {
-        _queue.add(ref);
         _status[ref.id] = DocumentStatus(
           ref: ref,
-          uploaded: false,
+          uploaded: true,
         );
       });
 
-      StorageUtils.upload(ref, file.bytes!).then((value) {
-        debugPrint('uploaded: ${value.filename}');
-
-        setState(() {
-          _status[ref.id] = DocumentStatus(
-            ref: ref,
-            uploaded: true,
-          );
-        });
-
-        documents.index(ref).listen(
-            (progress) => setState(() {
-                  _status[ref.id] = DocumentStatus(
-                    ref: ref,
-                    uploaded: true,
-                    progress: progress,
-                  );
-                }), onError: (error) {
-          debugPrint('error: $error');
-
-          setState(() {
-            _status[ref.id] = DocumentStatus(
-              ref: ref,
-              uploaded: true,
-              error: error,
-            );
-          });
-        });
-      }).catchError((error) {
+      documents.index(ref).listen(
+          (progress) => setState(() {
+                _status[ref.id] = DocumentStatus(
+                  ref: ref,
+                  uploaded: true,
+                  progress: progress,
+                );
+              }), onError: (error) {
         debugPrint('error: $error');
 
         setState(() {
           _status[ref.id] = DocumentStatus(
             ref: ref,
-            uploaded: false,
+            uploaded: true,
             error: error,
           );
         });
       });
-    }
+    }).catchError((error) {
+      setState(() {
+        _status[ref.id] = DocumentStatus(
+          ref: ref,
+          uploaded: false,
+          error: error,
+        );
+      });
+    });
+  }
+
+  void _uploadFiles() {
+    showUploadDialog()
+        .then((files) => _processFiles(files))
+        .catchError((error) => ErrorSnackBar.show(context, error));
   }
 
   @override
@@ -101,14 +96,13 @@ class _UploadBodyState extends State<UploadBody> {
 
     if (_queue.isNotEmpty) {
       return ConstrainedListView(
-          children: _queue
-              .map(
-                (ref) => FileUploadProgress(
+        children: _queue
+            .map((ref) => FileUploadProgress(
                   ref: ref,
                   status: _status[ref.id] ?? DocumentStatus(ref: ref),
-                ),
-              )
-              .toList());
+                ))
+            .toList(),
+      );
     }
 
     return Center(
