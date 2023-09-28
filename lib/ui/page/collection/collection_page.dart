@@ -51,7 +51,10 @@ class _CollectionPage extends StatefulWidget {
 }
 
 class _CollectionPageState extends State<_CollectionPage> {
-  void _onUpload() => UploadPage.open(context, widget.collection);
+  void _onUpload() {
+    UploadPage.openWithDialog(context, widget.collection)
+        .then((_) => setState(() {}));
+  }
 
   Future<void> _onEditDocument(Documents_Document doc) async {
     final ref = Document()

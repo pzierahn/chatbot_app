@@ -15,9 +15,11 @@ class UploadBody extends StatefulWidget {
   const UploadBody({
     super.key,
     required this.collection,
+    this.files,
   });
 
   final Collections_Collection collection;
+  final List<PlatformFile>? files;
 
   @override
   State<UploadBody> createState() => _UploadBodyState();
@@ -26,6 +28,15 @@ class UploadBody extends StatefulWidget {
 class _UploadBodyState extends State<UploadBody> {
   final _queue = <Document>[];
   final _status = <String, DocumentStatus>{};
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.files != null) {
+      _processFiles(widget.files!);
+    }
+  }
 
   void _processFiles(List<PlatformFile> files) {
     for (final file in files) {
