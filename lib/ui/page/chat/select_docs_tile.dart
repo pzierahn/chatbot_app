@@ -24,7 +24,7 @@ class SelectDocsTile extends StatelessWidget {
 
     if (documents.isEmpty) {
       subtitle =
-          'If no documents are selected, they will be selected automatically';
+          'If no documents are selected, the AI will use the entire collection.';
     } else {
       subtitle = documents.map((doc) => doc.filename).join(', ');
     }
@@ -50,6 +50,8 @@ class SelectDocsTile extends StatelessWidget {
         style: text.bodySmall?.merge(TextStyle(
           color: color.outline,
         )),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
