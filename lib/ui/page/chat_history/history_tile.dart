@@ -1,6 +1,5 @@
 import 'package:braingain_app/generated/chat.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
-import 'package:braingain_app/ui/page/chat/prompt_info.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -22,9 +21,12 @@ class ChatHistoryTile extends StatelessWidget {
           ),
           body: ConstrainedListView(
             children: [
-              PromptInfo(
-                prompt: message.prompt,
-                completion: message,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: SelectableText(
+                  message.prompt.prompt,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 16),
