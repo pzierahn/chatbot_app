@@ -2,6 +2,7 @@ import 'package:braingain_app/generated/collections.pb.dart';
 import 'package:braingain_app/ui/page/chat/chat.dart';
 import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
+import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:flutter/material.dart';
 
@@ -47,6 +48,13 @@ class ChatPage extends StatelessWidget {
             tooltip: 'Documents',
             onPressed: () {
               CollectionPage.open(context, collection);
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.upload_file_outlined),
+            tooltip: 'Upload Documents',
+            onPressed: () {
+              UploadPage.open(context, collection);
             },
           ),
         ],
