@@ -71,7 +71,7 @@ class _PromptInputState extends State<PromptInput> {
               Icon(
                 Icons.keyboard_return,
                 size: text.bodySmall?.fontSize,
-                color: color.surfaceVariant,
+                color: color.outline,
               ),
             ],
           ),
