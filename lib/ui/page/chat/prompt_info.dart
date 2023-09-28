@@ -1,6 +1,4 @@
 import 'package:braingain_app/generated/chat.pb.dart';
-import 'package:braingain_app/ui/page/chat/parameter_button.dart';
-import 'package:braingain_app/ui/page/chat/sources_button.dart';
 import 'package:flutter/material.dart';
 
 class PromptInfo extends StatelessWidget {
@@ -21,30 +19,13 @@ class PromptInfo extends StatelessWidget {
       fontWeight: FontWeight.w500,
     ));
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        SelectableText(
-          prompt.prompt,
-          style: textStyles,
-          textAlign: TextAlign.start,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 16),
-          child: Wrap(
-            spacing: 16,
-            runSpacing: 16,
-            children: [
-              SourcesButton(
-                documents: completion.documents,
-              ),
-              ParameterButton(
-                options: completion.prompt.options,
-              ),
-            ],
-          ),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 16),
+      child: SelectableText(
+        prompt.prompt,
+        style: textStyles,
+        textAlign: TextAlign.start,
+      ),
     );
   }
 }

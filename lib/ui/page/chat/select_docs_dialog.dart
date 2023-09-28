@@ -15,7 +15,7 @@ class SelectDocsDialog extends StatefulWidget {
     required this.collection,
   });
 
-  final Map<String, List<int>>? preSelected;
+  final List<Prompt_Document>? preSelected;
   final Collections_Collection collection;
 
   static Future<List<Prompt_Document>?> show({
@@ -27,7 +27,7 @@ class SelectDocsDialog extends StatefulWidget {
       context: context,
       builder: (context) {
         return SelectDocsDialog(
-          preSelected: parseDocuments(documents ?? []),
+          preSelected: documents ?? <Prompt_Document>[],
           collection: collection,
         );
       },
@@ -42,14 +42,16 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
   String _query = '';
   final _formKey = GlobalKey<FormState>();
 
-  Map<String, List<int>> _selectedDocs = <String, List<int>>{};
+  Map<String, Prompt_Document> _selectedDocs = <String, Prompt_Document>{};
 
   @override
   void initState() {
     super.initState();
 
     if (widget.preSelected != null) {
-      _selectedDocs = widget.preSelected!;
+      _selectedDocs = Map.fromEntries(
+        widget.preSelected!.map((doc) => MapEntry(doc.id, doc)),
+      );
     }
   }
 
@@ -114,7 +116,7 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
         TextButton(
           onPressed: () {
             if (_formKey.currentState!.validate()) {
-              Navigator.pop(context, formatDocuments(_selectedDocs));
+              Navigator.pop(context, _selectedDocs.values.toList());
             }
           },
           child: const Text('Submit'),
@@ -133,8 +135,8 @@ class _DocumentsBody extends StatefulWidget {
   });
 
   final Documents documents;
-  final Map<String, List<int>> selected;
-  final ValueChanged<Map<String, List<int>>> onChanged;
+  final Map<String, Prompt_Document> selected;
+  final ValueChanged<Map<String, Prompt_Document>> onChanged;
   final Collections_Collection collection;
 
   @override
@@ -194,7 +196,7 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
           subtitle: widget.selected.containsKey(doc.id)
               ? TextFormField(
                   controller: TextEditingController(
-                    text: formatPageList(widget.selected[doc.id]!),
+                    text: formatPageList(widget.selected[doc.id]!.pages),
                   ),
                   decoration: const InputDecoration.collapsed(
                     hintText: 'Pages',
@@ -203,7 +205,8 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
                     color: color.outline,
                   )),
                   onFieldSubmitted: (text) {
-                    widget.selected[doc.id] = parsePageList(text);
+                    widget.selected[doc.id]?.pages.clear();
+                    widget.selected[doc.id]?.pages.addAll(parsePageList(text));
                     widget.onChanged(widget.selected);
                   },
                   validator: (value) {
@@ -229,9 +232,11 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
             if (widget.selected.containsKey(doc.id)) {
               widget.selected.remove(doc.id);
             } else {
-              widget.selected[doc.id] = [
-                for (int i = 1; i <= doc.pages; i++) i
-              ];
+              widget.selected[doc.id] = Prompt_Document()
+                ..id = doc.id
+                ..filename = doc.filename
+                ..pages.clear()
+                ..pages.addAll([for (int i = 1; i <= doc.pages; i++) i]);
             }
 
             widget.onChanged(widget.selected);

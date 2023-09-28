@@ -76,36 +76,11 @@ class _PromptOptionsState extends State<ParameterDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final text = Theme.of(context).textTheme;
-
     const contentPadding = EdgeInsets.symmetric(vertical: 8);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        ListTile(
-          contentPadding: contentPadding,
-          title: const Text('Model'),
-          subtitle: DropdownButton<String>(
-            value: options.model,
-            onChanged: (val) {
-              if (val != null) {
-                setState(() => options.model = val);
-              }
-            },
-            style: text.bodySmall,
-            items: const [
-              DropdownMenuItem<String>(
-                value: 'gpt-3.5-turbo-16k',
-                child: Text('gpt-3.5-turbo-16k'),
-              ),
-              DropdownMenuItem<String>(
-                value: 'gpt-4',
-                child: Text('gpt-4'),
-              ),
-            ],
-          ),
-        ),
         ListTile(
           contentPadding: contentPadding,
           title: Row(

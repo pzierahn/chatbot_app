@@ -1,34 +1,15 @@
 import 'package:braingain_app/generated/chat.pb.dart';
 import 'package:braingain_app/generated/collections.pb.dart';
+import 'package:braingain_app/ui/page/chat/chat_frame.dart';
 import 'package:braingain_app/ui/page/chat/generating_fragment.dart';
 import 'package:braingain_app/ui/page/chat/prompt_info.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
+import 'package:braingain_app/ui/page/chat/footer_actions.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:undraw/undraw.dart';
-
-class ChatInput extends StatelessWidget {
-  const ChatInput({
-    super.key,
-    required this.onPromptSubmit,
-    required this.collection,
-  });
-
-  final ValueChanged<Prompt> onPromptSubmit;
-  final Collections_Collection collection;
-
-  @override
-  Widget build(BuildContext context) {
-    return _ChatFrame(
-      child: PromptInput(
-        onPromptSubmit: onPromptSubmit,
-        collection: collection,
-      ),
-    );
-  }
-}
 
 class ChatFragment extends StatelessWidget {
   const ChatFragment({
@@ -45,11 +26,13 @@ class ChatFragment extends StatelessWidget {
     final color = Theme.of(context).colorScheme;
 
     Widget promptWidget;
+    Widget? divider = const Divider(height: 1);
     Widget body;
+    Widget? footer;
 
     if (status.hasError) {
       promptWidget = PromptInput(
-        prompt: status.prompt,
+        prompt: status.prompt.prompt,
         collection: collection,
       );
       body = TextIllustration(
@@ -66,52 +49,26 @@ class ChatFragment extends StatelessWidget {
         data: status.completion!.text,
         selectable: true,
       );
+
+      divider = null;
+
+      footer = FooterActions(
+        message: status.completion!,
+      );
     } else {
       promptWidget = PromptInput(
-        prompt: status.prompt,
+        prompt: status.prompt.prompt,
         collection: collection,
       );
+      divider = const LinearProgressIndicator(minHeight: 2);
       body = const GeneratingFragment();
     }
 
-    return _ChatFrame(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          promptWidget,
-          Padding(
-            padding: const EdgeInsets.only(top: 16),
-            child: body,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ChatFrame extends StatelessWidget {
-  const _ChatFrame({
-    required this.child,
-  });
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme;
-
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: color.outlineVariant,
-          width: 1.0,
-        ),
-        color: color.surface,
-      ),
-      margin: const EdgeInsets.all(16),
-      padding: const EdgeInsets.all(16),
-      child: child,
+    return ChatFrame(
+      title: promptWidget,
+      divider: divider,
+      body: body,
+      footer: footer,
     );
   }
 }

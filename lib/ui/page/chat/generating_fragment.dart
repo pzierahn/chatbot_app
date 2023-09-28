@@ -40,11 +40,6 @@ class _GeneratingFragmentState extends State<GeneratingFragment> {
           width: 300,
         ),
         const SizedBox(height: 16),
-        const SizedBox(
-          width: 200,
-          child: LinearProgressIndicator(),
-        ),
-        const SizedBox(height: 16),
         const Text('Generating response...'),
       ],
     );
