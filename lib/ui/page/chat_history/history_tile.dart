@@ -60,7 +60,6 @@ class ChatHistoryTile extends StatelessWidget {
 
           if (!snapshot.hasData) {
             return ListTile(
-              trailing: const CircularProgressIndicator(),
               title: Text(
                 'Loading...',
                 style: text.titleMedium,
