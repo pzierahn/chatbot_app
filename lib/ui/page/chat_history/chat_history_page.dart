@@ -3,6 +3,7 @@ import 'package:braingain_app/generated/collections.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat_history/history_tile.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
+import 'package:braingain_app/ui/widget/error_body.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:flutter/material.dart';
@@ -39,8 +40,8 @@ class ChatHistoryPage extends StatelessWidget {
           future: chat.getChatMessages(Collection()..id = collection.id),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return Center(
-                child: Text(snapshot.error.toString()),
+              return ErrorBody(
+                error: snapshot.error,
               );
             }
 
