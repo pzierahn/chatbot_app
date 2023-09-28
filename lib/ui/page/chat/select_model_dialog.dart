@@ -15,9 +15,7 @@ class SelectModelDialog extends StatefulWidget {
     return showDialog<String>(
       context: context,
       builder: (context) {
-        return SelectModelDialog(
-          model: model,
-        );
+        return SelectModelDialog(model: model);
       },
     );
   }
@@ -70,7 +68,7 @@ class _SelectModelDialogState extends State<SelectModelDialog> {
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.pop(context, _selectedModel);
+            Navigator.pop(context);
           },
           child: const Text('Cancel'),
         ),
