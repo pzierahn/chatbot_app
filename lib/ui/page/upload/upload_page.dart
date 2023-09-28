@@ -21,7 +21,7 @@ class UploadPage extends StatelessWidget {
 
     if (collection == null) {
       return const ErrorScaffold(
-        title: 'Chat History',
+        title: 'Upload',
         error: 'No collection found',
       );
     }
