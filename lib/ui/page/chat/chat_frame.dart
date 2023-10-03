@@ -21,7 +21,6 @@ class ChatFrame extends StatelessWidget {
     return Card(
       color: color.surface,
       elevation: 0,
-      surfaceTintColor: color.surfaceVariant,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
         side: BorderSide(
