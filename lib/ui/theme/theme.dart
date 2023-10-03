@@ -25,6 +25,10 @@ final _roundedShape = RoundedRectangleBorder(
 
 final lightTheme = ThemeData(
   colorScheme: _colorsLight,
+  appBarTheme: AppBarTheme(
+    scrolledUnderElevation: 1,
+    shadowColor: _colorsLight.onSurface,
+  ),
   chipTheme: ChipThemeData(
     side: BorderSide(
       color: _colorsLight.outlineVariant,
@@ -57,6 +61,10 @@ final lightTheme = ThemeData(
 
 final darkTheme = ThemeData(
   colorScheme: _colorsDark,
+  appBarTheme: AppBarTheme(
+    scrolledUnderElevation: 1,
+    shadowColor: _colorsDark.onSurface,
+  ),
   chipTheme: ChipThemeData(
     side: BorderSide(
       color: _colorsDark.outlineVariant,
