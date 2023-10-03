@@ -8,18 +8,21 @@ class ConstrainedListView extends StatelessWidget {
     this.shrinkWrap = false,
     this.primary,
     this.padding,
+    this.divider,
   });
 
   final List<Widget> children;
   final double maxWidth;
   final bool shrinkWrap;
   final bool? primary;
+  final Widget? divider;
 
   final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedListViewBuilder(
+      divider: divider,
       itemCount: children.length,
       itemBuilder: (context, index) {
         return children[index];
@@ -41,6 +44,7 @@ class ConstrainedListViewBuilder extends StatelessWidget {
     this.shrinkWrap = false,
     this.primary,
     this.padding,
+    this.divider,
   });
 
   final int itemCount;
@@ -48,6 +52,7 @@ class ConstrainedListViewBuilder extends StatelessWidget {
   final double maxWidth;
   final bool shrinkWrap;
   final bool? primary;
+  final Widget? divider;
 
   final EdgeInsets? padding;
 
@@ -55,22 +60,50 @@ class ConstrainedListViewBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: padding ?? EdgeInsets.zero,
-      child: ListView.builder(
-        shrinkWrap: shrinkWrap,
-        primary: primary,
-        itemCount: itemCount,
-        itemBuilder: (context, index) {
-          return Center(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              constraints: BoxConstraints(
-                maxWidth: maxWidth,
-              ),
-              child: itemBuilder(context, index),
+      child: divider == null
+          ? ListView.builder(
+              shrinkWrap: shrinkWrap,
+              primary: primary,
+              itemCount: itemCount,
+              itemBuilder: (context, index) {
+                return Center(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    constraints: BoxConstraints(
+                      maxWidth: maxWidth,
+                    ),
+                    child: itemBuilder(context, index),
+                  ),
+                );
+              },
+            )
+          : ListView.separated(
+              shrinkWrap: shrinkWrap,
+              primary: primary,
+              itemBuilder: (context, index) {
+                return Center(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    constraints: BoxConstraints(
+                      maxWidth: maxWidth,
+                    ),
+                    child: itemBuilder(context, index),
+                  ),
+                );
+              },
+              separatorBuilder: (context, index) {
+                return Center(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    constraints: BoxConstraints(
+                      maxWidth: maxWidth,
+                    ),
+                    child: divider,
+                  ),
+                );
+              },
+              itemCount: itemCount,
             ),
-          );
-        },
-      ),
     );
   }
 }
