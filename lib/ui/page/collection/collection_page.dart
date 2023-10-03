@@ -142,10 +142,9 @@ class _CollectionPageState extends State<_CollectionPage> {
               children: snap.data!.items
                   .map(
                     (doc) => ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: color.primaryContainer,
-                        foregroundColor: color.onPrimaryContainer,
-                        child: const Icon(Icons.description_outlined),
+                      leading: Icon(
+                        Icons.description_outlined,
+                        color: color.primary,
                       ),
                       title: Text(
                         doc.filename,
