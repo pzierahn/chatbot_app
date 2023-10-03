@@ -67,6 +67,7 @@ class SelectDocsTile extends StatelessWidget {
           onChanged(docs);
         }
       },
+      hoverColor: color.primaryContainer,
     );
   }
 }

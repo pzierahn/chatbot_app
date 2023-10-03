@@ -96,6 +96,7 @@ class _PromptButtonsState extends State<PromptButtons> {
             borderRadius: BorderRadius.circular(8),
           ),
           onTap: _onSelectModel,
+          hoverColor: color.primaryContainer,
         ),
         ListTile(
           leading: Icon(
@@ -118,6 +119,7 @@ class _PromptButtonsState extends State<PromptButtons> {
             borderRadius: BorderRadius.circular(8),
           ),
           onTap: _onShowParameter,
+          hoverColor: color.primaryContainer,
         ),
       ],
     );
