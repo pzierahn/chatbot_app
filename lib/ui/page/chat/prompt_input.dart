@@ -1,4 +1,5 @@
 import 'package:braingain_app/generated/collections.pb.dart';
+import 'package:braingain_app/utils/breakpoint_m3.dart';
 import 'package:flutter/material.dart';
 
 class PromptInput extends StatefulWidget {
@@ -33,11 +34,40 @@ class _PromptInputState extends State<PromptInput> {
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
+    final breakpoint = Breakpoint.fromMediaQuery(context);
 
     final textStyle = text.titleMedium?.merge(TextStyle(
       fontWeight: FontWeight.w500,
       color: onPromptSubmit != null ? color.onSurface : color.outline,
     ));
+
+    Widget suffix;
+    if (breakpoint.window > WindowClass.compact) {
+      suffix = Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            'Enter to submit',
+            style: text.bodySmall?.merge(TextStyle(
+              color: color.outline,
+            )),
+          ),
+          const SizedBox(width: 4),
+          Icon(
+            Icons.keyboard_return,
+            size: text.bodySmall?.fontSize,
+            color: color.outline,
+          ),
+        ],
+      );
+    } else {
+      suffix = Icon(
+        Icons.keyboard_return,
+        size: text.bodySmall?.fontSize,
+        color: color.outline,
+      );
+    }
 
     return Form(
       key: _formKey,
@@ -57,24 +87,7 @@ class _PromptInputState extends State<PromptInput> {
         decoration: InputDecoration(
           hintText: 'Type a question or prompt...',
           hintStyle: textStyle,
-          suffix: Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Enter to submit',
-                style: text.bodySmall?.merge(TextStyle(
-                  color: color.outline,
-                )),
-              ),
-              const SizedBox(width: 4),
-              Icon(
-                Icons.keyboard_return,
-                size: text.bodySmall?.fontSize,
-                color: color.outline,
-              ),
-            ],
-          ),
+          suffix: suffix,
           border: InputBorder.none,
         ),
         onFieldSubmitted: onPromptSubmit != null
