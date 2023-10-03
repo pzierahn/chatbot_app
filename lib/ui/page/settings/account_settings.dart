@@ -45,7 +45,7 @@ class AccountSettings extends StatelessWidget {
                 TextStyle(color: color.outline),
               ),
             ),
-            trailing: FilledButton.icon(
+            trailing: TextButton.icon(
               onPressed: () => _onLogout(context),
               icon: const Icon(Icons.logout),
               label: const Text('Logout'),
