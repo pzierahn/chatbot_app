@@ -57,6 +57,11 @@ final lightTheme = ThemeData(
   listTileTheme: ListTileThemeData(
     shape: _roundedShape,
   ),
+  iconButtonTheme: IconButtonThemeData(
+    style: IconButton.styleFrom(
+      hoverColor: _colorsLight.primaryContainer,
+    ),
+  ),
 );
 
 final darkTheme = ThemeData(
@@ -92,5 +97,10 @@ final darkTheme = ThemeData(
   ),
   listTileTheme: ListTileThemeData(
     shape: _roundedShape,
+  ),
+  iconButtonTheme: IconButtonThemeData(
+    style: IconButton.styleFrom(
+      hoverColor: _colorsDark.primaryContainer,
+    ),
   ),
 );
