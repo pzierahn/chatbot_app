@@ -20,7 +20,6 @@ class OutlinedCard extends StatelessWidget {
       margin: margin,
       padding: padding,
       decoration: BoxDecoration(
-        color: color.surfaceVariant.withOpacity(0.2),
         borderRadius: borderRadius,
         border: Border.all(
           color: color.outlineVariant,
