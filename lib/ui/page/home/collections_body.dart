@@ -43,7 +43,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
 
         final children = <Widget>[
           UnDraw(
-            width: 300,
+            width: 200,
             illustration: UnDrawIllustration.begin_chat,
             color: color.primary,
           ),
@@ -56,48 +56,41 @@ class _CollectionsBodyState extends State<CollectionsBody> {
           ));
         }
 
-        children.add(Container(
-            margin: const EdgeInsets.all(8),
-            // padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: color.surfaceVariant.withOpacity(0.2),
+        children.add(Padding(
+          padding: const EdgeInsets.all(8),
+          child: ListTile(
+            leading: Icon(
+              Icons.add,
+              size: 20,
+              color: color.primary,
+            ),
+            title: Text(
+              'Create Collection',
+              style: text.titleSmall,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            onTap: () async {
+              final name = await EditCollectionDialog.show(context);
+              if (name == null) {
+                return;
+              }
+
+              collections
+                  .create(Collection()..name = name)
+                  .then((_) => setState(() {}))
+                  .catchError((error) => ErrorSnackBar.show(context, error));
+            },
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(
+              side: BorderSide(
                 color: color.outlineVariant,
                 width: 1,
               ),
             ),
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundColor: color.surfaceVariant,
-                foregroundColor: color.onSurfaceVariant,
-                radius: 16,
-                child: const Icon(
-                  Icons.add,
-                  size: 20,
-                ),
-              ),
-              title: Text(
-                'Create Collection',
-                style: text.titleSmall,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              onTap: () async {
-                final name = await EditCollectionDialog.show(context);
-                if (name == null) {
-                  return;
-                }
-
-                collections
-                    .create(Collection()..name = name)
-                    .then((_) => setState(() {}))
-                    .catchError((error) => ErrorSnackBar.show(context, error));
-              },
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            )));
+            hoverColor: color.primaryContainer,
+          ),
+        ));
 
         return ConstrainedListView(
           children: children,

@@ -62,9 +62,8 @@ class CollectionsTile extends StatelessWidget {
 
     return Container(
       margin: const EdgeInsets.all(8),
-      // padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: color.surfaceVariant.withOpacity(0.2),
+        // color: color.surfaceVariant.withOpacity(0.2),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
           color: color.outlineVariant,
@@ -72,20 +71,21 @@ class CollectionsTile extends StatelessWidget {
         ),
       ),
       child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: color.primaryContainer,
-          foregroundColor: color.onPrimaryContainer,
-          radius: 16,
-          child: const Icon(
-            Icons.folder_outlined,
-            size: 20,
-          ),
+        leading: Icon(
+          Icons.folder_outlined,
+          size: 20,
+          color: color.primary,
         ),
         title: Text(
           collection.name,
           style: text.titleSmall,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
+        ),
+        hoverColor: color.primaryContainer,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 8,
         ),
         subtitle: Text(
           '${collection.documentCount} Document${collection.documentCount == 1 ? '' : 's'}',
