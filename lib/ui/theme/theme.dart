@@ -5,6 +5,11 @@ const _colorSeed = Colors.blue;
 final _colorsLight = ColorScheme.fromSeed(
   brightness: Brightness.light,
   seedColor: _colorSeed,
+  background: Colors.white,
+  surface: Colors.white,
+  onBackground: Colors.black,
+  onSurface: Colors.black,
+  surfaceTint: Colors.white,
 );
 
 final _colorsDark = ColorScheme.fromSeed(
@@ -45,6 +50,9 @@ final lightTheme = ThemeData(
       shape: MaterialStateProperty.all(_roundedShape),
     ),
   ),
+  listTileTheme: ListTileThemeData(
+    shape: _roundedShape,
+  ),
 );
 
 final darkTheme = ThemeData(
@@ -73,5 +81,8 @@ final darkTheme = ThemeData(
     style: ButtonStyle(
       shape: MaterialStateProperty.all(_roundedShape),
     ),
+  ),
+  listTileTheme: ListTileThemeData(
+    shape: _roundedShape,
   ),
 );
