@@ -19,7 +19,7 @@ class ParameterDialog extends StatefulWidget {
         return AlertDialog(
           title: const Text('Parameters'),
           content: SizedBox(
-            width: 300,
+            width: 400,
             height: 400,
             child: SingleChildScrollView(
               child: ParameterDialog(options: options),
