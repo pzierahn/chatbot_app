@@ -40,7 +40,8 @@ Use Cases:
 Brainboost empowers individuals and organizations to enhance accessibility to the wealth of
 knowledge contained within PDF documents. By leveraging the capabilities of OpenAI's language model,
 it brings an unprecedented level of ease, efficiency, and inclusivity to the process of extracting
-valuable insights from these files. Start your journey to accessible knowledge with PDFMaster today!
+valuable insights from these files. Start your journey to accessible knowledge with Brainboost
+today!
 
 ## Project structure
 
