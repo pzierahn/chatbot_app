@@ -1,15 +1,13 @@
 import 'package:braingain_app/generated/chat.pb.dart';
 import 'package:braingain_app/generated/collections.pb.dart';
+import 'package:braingain_app/ui/page/chat/chat_fragment_error.dart';
 import 'package:braingain_app/ui/page/chat/chat_frame.dart';
 import 'package:braingain_app/ui/page/chat/generating_fragment.dart';
 import 'package:braingain_app/ui/page/chat/prompt_info.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
 import 'package:braingain_app/ui/page/chat/footer_actions.dart';
-import 'package:braingain_app/ui/widget/illustration.dart';
-import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:undraw/undraw.dart';
 
 class ChatFragment extends StatelessWidget {
   const ChatFragment({
@@ -23,8 +21,6 @@ class ChatFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme;
-
     Widget promptWidget;
     Widget? divider = const Divider(height: 1);
     Widget body;
@@ -35,11 +31,7 @@ class ChatFragment extends StatelessWidget {
         prompt: status.prompt.prompt,
         collection: collection,
       );
-      body = TextIllustration(
-        illustration: UnDrawIllustration.warning,
-        text: ErrorUtils.toText(status.error),
-        color: color.error,
-      );
+      body = ChatFragmentError(error: status.error);
     } else if (status.completion != null) {
       promptWidget = PromptInfo(
         prompt: status.prompt,
