@@ -38,3 +38,29 @@ final $typed_data.Uint8List modelUsagesDescriptor = $convert.base64Decode(
     'VudC52MS5Nb2RlbFVzYWdlcy5Vc2FnZVIFaXRlbXMaSwoFVXNhZ2USFAoFbW9kZWwYASABKAlS'
     'BW1vZGVsEhQKBWlucHV0GAIgASgNUgVpbnB1dBIWCgZvdXRwdXQYAyABKA1SBm91dHB1dA==');
 
+@$core.Deprecated('Use paymentsDescriptor instead')
+const Payments$json = {
+  '1': 'Payments',
+  '2': [
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.account.v1.Payments.Payment', '10': 'items'},
+  ],
+  '3': [Payments_Payment$json],
+};
+
+@$core.Deprecated('Use paymentsDescriptor instead')
+const Payments_Payment$json = {
+  '1': 'Payment',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'date', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'date'},
+    {'1': 'amount', '3': 3, '4': 1, '5': 13, '10': 'amount'},
+  ],
+};
+
+/// Descriptor for `Payments`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List paymentsDescriptor = $convert.base64Decode(
+    'CghQYXltZW50cxJGCgVpdGVtcxgBIAMoCzIwLmVuZHBvaW50LmJyYWluYm9vc3QuYWNjb3VudC'
+    '52MS5QYXltZW50cy5QYXltZW50UgVpdGVtcxphCgdQYXltZW50Eg4KAmlkGAEgASgJUgJpZBIu'
+    'CgRkYXRlGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIEZGF0ZRIWCgZhbW91bn'
+    'QYAyABKA1SBmFtb3VudA==');
+

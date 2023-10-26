@@ -13,6 +13,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'google/protobuf/timestamp.pb.dart' as $5;
+
 class ModelUsages_Usage extends $pb.GeneratedMessage {
   factory ModelUsages_Usage() => create();
   ModelUsages_Usage._() : super();
@@ -109,6 +111,106 @@ class ModelUsages extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(1)
   $core.List<ModelUsages_Usage> get items => $_getList(0);
+}
+
+class Payments_Payment extends $pb.GeneratedMessage {
+  factory Payments_Payment() => create();
+  Payments_Payment._() : super();
+  factory Payments_Payment.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Payments_Payment.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Payments.Payment', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.account.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOM<$5.Timestamp>(2, _omitFieldNames ? '' : 'date', subBuilder: $5.Timestamp.create)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Payments_Payment clone() => Payments_Payment()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Payments_Payment copyWith(void Function(Payments_Payment) updates) => super.copyWith((message) => updates(message as Payments_Payment)) as Payments_Payment;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Payments_Payment create() => Payments_Payment._();
+  Payments_Payment createEmptyInstance() => create();
+  static $pb.PbList<Payments_Payment> createRepeated() => $pb.PbList<Payments_Payment>();
+  @$core.pragma('dart2js:noInline')
+  static Payments_Payment getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Payments_Payment>(create);
+  static Payments_Payment? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $5.Timestamp get date => $_getN(1);
+  @$pb.TagNumber(2)
+  set date($5.Timestamp v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasDate() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDate() => clearField(2);
+  @$pb.TagNumber(2)
+  $5.Timestamp ensureDate() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $core.int get amount => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set amount($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasAmount() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearAmount() => clearField(3);
+}
+
+class Payments extends $pb.GeneratedMessage {
+  factory Payments() => create();
+  Payments._() : super();
+  factory Payments.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Payments.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Payments', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.account.v1'), createEmptyInstance: create)
+    ..pc<Payments_Payment>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Payments_Payment.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Payments clone() => Payments()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Payments copyWith(void Function(Payments) updates) => super.copyWith((message) => updates(message as Payments)) as Payments;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Payments create() => Payments._();
+  Payments createEmptyInstance() => create();
+  static $pb.PbList<Payments> createRepeated() => $pb.PbList<Payments>();
+  @$core.pragma('dart2js:noInline')
+  static Payments getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Payments>(create);
+  static Payments? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<Payments_Payment> get items => $_getList(0);
 }
 
 

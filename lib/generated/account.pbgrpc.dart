@@ -26,6 +26,10 @@ class AccountServiceClient extends $grpc.Client {
       '/endpoint.brainboost.account.v1.AccountService/GetModelUsages',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.ModelUsages.fromBuffer(value));
+  static final _$getPayments = $grpc.ClientMethod<$0.Empty, $1.Payments>(
+      '/endpoint.brainboost.account.v1.AccountService/GetPayments',
+      ($0.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $1.Payments.fromBuffer(value));
 
   AccountServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -35,6 +39,10 @@ class AccountServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$1.ModelUsages> getModelUsages($0.Empty request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getModelUsages, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.Payments> getPayments($0.Empty request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getPayments, request, options: options);
   }
 }
 
@@ -50,11 +58,23 @@ abstract class AccountServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($1.ModelUsages value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Empty, $1.Payments>(
+        'GetPayments',
+        getPayments_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($1.Payments value) => value.writeToBuffer()));
   }
 
   $async.Future<$1.ModelUsages> getModelUsages_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
     return getModelUsages(call, await request);
   }
 
+  $async.Future<$1.Payments> getPayments_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return getPayments(call, await request);
+  }
+
   $async.Future<$1.ModelUsages> getModelUsages($grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$1.Payments> getPayments($grpc.ServiceCall call, $0.Empty request);
 }
