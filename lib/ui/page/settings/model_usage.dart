@@ -3,28 +3,11 @@ import 'package:braingain_app/generated/google/protobuf/empty.pbserver.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/widget/outlined_card.dart';
 import 'package:braingain_app/utils/error.dart';
+import 'package:braingain_app/utils/money.dart';
 import 'package:flutter/material.dart';
 
 class ModelUsage extends StatelessWidget {
   const ModelUsage({super.key});
-
-  double _calculateCost(ModelUsages_Usage usage) {
-    double inputCost = 0;
-    double outputCost = 0;
-
-    if (usage.model.startsWith('gpt-4')) {
-      inputCost = 0.03;
-      outputCost = 0.06;
-    } else if (usage.model.startsWith('gpt-3.5-turbo-16k')) {
-      inputCost = 0.003;
-      outputCost = 0.004;
-    } else if (usage.model.startsWith('text-embedding-ada')) {
-      inputCost = 0.0001;
-      outputCost = 0.0;
-    }
-
-    return ((usage.input * inputCost) + (usage.output * outputCost)) / 1000;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +56,7 @@ class ModelUsage extends StatelessWidget {
                             TextStyle(color: color.outline),
                           ),
                         ),
-                        trailing: Text(
-                          '\$${_calculateCost(usage).toStringAsFixed(2)}',
-                        ),
+                        trailing: Text(MoneyUtils.format(usage.costs)),
                       ),
                     )
                     .toList(),
