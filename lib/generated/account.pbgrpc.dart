@@ -22,14 +22,18 @@ export 'account.pb.dart';
 
 @$pb.GrpcServiceName('endpoint.brainboost.account.v1.AccountService')
 class AccountServiceClient extends $grpc.Client {
-  static final _$getModelUsages = $grpc.ClientMethod<$0.Empty, $1.ModelUsages>(
-      '/endpoint.brainboost.account.v1.AccountService/GetModelUsages',
+  static final _$getCosts = $grpc.ClientMethod<$0.Empty, $1.Costs>(
+      '/endpoint.brainboost.account.v1.AccountService/GetCosts',
       ($0.Empty value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $1.ModelUsages.fromBuffer(value));
+      ($core.List<$core.int> value) => $1.Costs.fromBuffer(value));
   static final _$getPayments = $grpc.ClientMethod<$0.Empty, $1.Payments>(
       '/endpoint.brainboost.account.v1.AccountService/GetPayments',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Payments.fromBuffer(value));
+  static final _$getBalanceSheet = $grpc.ClientMethod<$0.Empty, $1.BalanceSheet>(
+      '/endpoint.brainboost.account.v1.AccountService/GetBalanceSheet',
+      ($0.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $1.BalanceSheet.fromBuffer(value));
 
   AccountServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -37,12 +41,16 @@ class AccountServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$1.ModelUsages> getModelUsages($0.Empty request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$getModelUsages, request, options: options);
+  $grpc.ResponseFuture<$1.Costs> getCosts($0.Empty request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getCosts, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.Payments> getPayments($0.Empty request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getPayments, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.BalanceSheet> getBalanceSheet($0.Empty request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getBalanceSheet, request, options: options);
   }
 }
 
@@ -51,13 +59,13 @@ abstract class AccountServiceBase extends $grpc.Service {
   $core.String get $name => 'endpoint.brainboost.account.v1.AccountService';
 
   AccountServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.Empty, $1.ModelUsages>(
-        'GetModelUsages',
-        getModelUsages_Pre,
+    $addMethod($grpc.ServiceMethod<$0.Empty, $1.Costs>(
+        'GetCosts',
+        getCosts_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
-        ($1.ModelUsages value) => value.writeToBuffer()));
+        ($1.Costs value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.Empty, $1.Payments>(
         'GetPayments',
         getPayments_Pre,
@@ -65,16 +73,28 @@ abstract class AccountServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($1.Payments value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.Empty, $1.BalanceSheet>(
+        'GetBalanceSheet',
+        getBalanceSheet_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
+        ($1.BalanceSheet value) => value.writeToBuffer()));
   }
 
-  $async.Future<$1.ModelUsages> getModelUsages_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
-    return getModelUsages(call, await request);
+  $async.Future<$1.Costs> getCosts_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return getCosts(call, await request);
   }
 
   $async.Future<$1.Payments> getPayments_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
     return getPayments(call, await request);
   }
 
-  $async.Future<$1.ModelUsages> getModelUsages($grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$1.BalanceSheet> getBalanceSheet_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return getBalanceSheet(call, await request);
+  }
+
+  $async.Future<$1.Costs> getCosts($grpc.ServiceCall call, $0.Empty request);
   $async.Future<$1.Payments> getPayments($grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$1.BalanceSheet> getBalanceSheet($grpc.ServiceCall call, $0.Empty request);
 }

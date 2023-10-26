@@ -15,13 +15,63 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'google/protobuf/timestamp.pb.dart' as $5;
 
-class ModelUsages_Usage extends $pb.GeneratedMessage {
-  factory ModelUsages_Usage() => create();
-  ModelUsages_Usage._() : super();
-  factory ModelUsages_Usage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ModelUsages_Usage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class BalanceSheet extends $pb.GeneratedMessage {
+  factory BalanceSheet() => create();
+  BalanceSheet._() : super();
+  factory BalanceSheet.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BalanceSheet.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ModelUsages.Usage', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.account.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BalanceSheet', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.account.v1'), createEmptyInstance: create)
+    ..pc<Payment>(1, _omitFieldNames ? '' : 'payments', $pb.PbFieldType.PM, subBuilder: Payment.create)
+    ..pc<ModelCosts>(2, _omitFieldNames ? '' : 'costs', $pb.PbFieldType.PM, subBuilder: ModelCosts.create)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'balance', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  BalanceSheet clone() => BalanceSheet()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  BalanceSheet copyWith(void Function(BalanceSheet) updates) => super.copyWith((message) => updates(message as BalanceSheet)) as BalanceSheet;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static BalanceSheet create() => BalanceSheet._();
+  BalanceSheet createEmptyInstance() => create();
+  static $pb.PbList<BalanceSheet> createRepeated() => $pb.PbList<BalanceSheet>();
+  @$core.pragma('dart2js:noInline')
+  static BalanceSheet getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BalanceSheet>(create);
+  static BalanceSheet? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<Payment> get payments => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.List<ModelCosts> get costs => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $core.int get balance => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set balance($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasBalance() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearBalance() => clearField(3);
+}
+
+class ModelCosts extends $pb.GeneratedMessage {
+  factory ModelCosts() => create();
+  ModelCosts._() : super();
+  factory ModelCosts.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ModelCosts.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ModelCosts', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.account.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'model')
     ..a<$core.int>(2, _omitFieldNames ? '' : 'input', $pb.PbFieldType.OU3)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'output', $pb.PbFieldType.OU3)
@@ -33,22 +83,22 @@ class ModelUsages_Usage extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ModelUsages_Usage clone() => ModelUsages_Usage()..mergeFromMessage(this);
+  ModelCosts clone() => ModelCosts()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ModelUsages_Usage copyWith(void Function(ModelUsages_Usage) updates) => super.copyWith((message) => updates(message as ModelUsages_Usage)) as ModelUsages_Usage;
+  ModelCosts copyWith(void Function(ModelCosts) updates) => super.copyWith((message) => updates(message as ModelCosts)) as ModelCosts;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ModelUsages_Usage create() => ModelUsages_Usage._();
-  ModelUsages_Usage createEmptyInstance() => create();
-  static $pb.PbList<ModelUsages_Usage> createRepeated() => $pb.PbList<ModelUsages_Usage>();
+  static ModelCosts create() => ModelCosts._();
+  ModelCosts createEmptyInstance() => create();
+  static $pb.PbList<ModelCosts> createRepeated() => $pb.PbList<ModelCosts>();
   @$core.pragma('dart2js:noInline')
-  static ModelUsages_Usage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ModelUsages_Usage>(create);
-  static ModelUsages_Usage? _defaultInstance;
+  static ModelCosts getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ModelCosts>(create);
+  static ModelCosts? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get model => $_getSZ(0);
@@ -87,14 +137,14 @@ class ModelUsages_Usage extends $pb.GeneratedMessage {
   void clearCosts() => clearField(4);
 }
 
-class ModelUsages extends $pb.GeneratedMessage {
-  factory ModelUsages() => create();
-  ModelUsages._() : super();
-  factory ModelUsages.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ModelUsages.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class Costs extends $pb.GeneratedMessage {
+  factory Costs() => create();
+  Costs._() : super();
+  factory Costs.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Costs.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ModelUsages', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.account.v1'), createEmptyInstance: create)
-    ..pc<ModelUsages_Usage>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: ModelUsages_Usage.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Costs', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.account.v1'), createEmptyInstance: create)
+    ..pc<ModelCosts>(1, _omitFieldNames ? '' : 'models', $pb.PbFieldType.PM, subBuilder: ModelCosts.create)
     ..hasRequiredFields = false
   ;
 
@@ -102,34 +152,34 @@ class ModelUsages extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ModelUsages clone() => ModelUsages()..mergeFromMessage(this);
+  Costs clone() => Costs()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ModelUsages copyWith(void Function(ModelUsages) updates) => super.copyWith((message) => updates(message as ModelUsages)) as ModelUsages;
+  Costs copyWith(void Function(Costs) updates) => super.copyWith((message) => updates(message as Costs)) as Costs;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ModelUsages create() => ModelUsages._();
-  ModelUsages createEmptyInstance() => create();
-  static $pb.PbList<ModelUsages> createRepeated() => $pb.PbList<ModelUsages>();
+  static Costs create() => Costs._();
+  Costs createEmptyInstance() => create();
+  static $pb.PbList<Costs> createRepeated() => $pb.PbList<Costs>();
   @$core.pragma('dart2js:noInline')
-  static ModelUsages getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ModelUsages>(create);
-  static ModelUsages? _defaultInstance;
+  static Costs getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Costs>(create);
+  static Costs? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<ModelUsages_Usage> get items => $_getList(0);
+  $core.List<ModelCosts> get models => $_getList(0);
 }
 
-class Payments_Payment extends $pb.GeneratedMessage {
-  factory Payments_Payment() => create();
-  Payments_Payment._() : super();
-  factory Payments_Payment.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Payments_Payment.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class Payment extends $pb.GeneratedMessage {
+  factory Payment() => create();
+  Payment._() : super();
+  factory Payment.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Payment.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Payments.Payment', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.account.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Payment', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.account.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOM<$5.Timestamp>(2, _omitFieldNames ? '' : 'date', subBuilder: $5.Timestamp.create)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU3)
@@ -140,22 +190,22 @@ class Payments_Payment extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  Payments_Payment clone() => Payments_Payment()..mergeFromMessage(this);
+  Payment clone() => Payment()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Payments_Payment copyWith(void Function(Payments_Payment) updates) => super.copyWith((message) => updates(message as Payments_Payment)) as Payments_Payment;
+  Payment copyWith(void Function(Payment) updates) => super.copyWith((message) => updates(message as Payment)) as Payment;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Payments_Payment create() => Payments_Payment._();
-  Payments_Payment createEmptyInstance() => create();
-  static $pb.PbList<Payments_Payment> createRepeated() => $pb.PbList<Payments_Payment>();
+  static Payment create() => Payment._();
+  Payment createEmptyInstance() => create();
+  static $pb.PbList<Payment> createRepeated() => $pb.PbList<Payment>();
   @$core.pragma('dart2js:noInline')
-  static Payments_Payment getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Payments_Payment>(create);
-  static Payments_Payment? _defaultInstance;
+  static Payment getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Payment>(create);
+  static Payment? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
@@ -194,7 +244,7 @@ class Payments extends $pb.GeneratedMessage {
   factory Payments.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Payments', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.account.v1'), createEmptyInstance: create)
-    ..pc<Payments_Payment>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Payments_Payment.create)
+    ..pc<Payment>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Payment.create)
     ..hasRequiredFields = false
   ;
 
@@ -220,7 +270,7 @@ class Payments extends $pb.GeneratedMessage {
   static Payments? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<Payments_Payment> get items => $_getList(0);
+  $core.List<Payment> get items => $_getList(0);
 }
 
 

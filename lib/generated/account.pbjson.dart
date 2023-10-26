@@ -13,18 +13,26 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
-@$core.Deprecated('Use modelUsagesDescriptor instead')
-const ModelUsages$json = {
-  '1': 'ModelUsages',
+@$core.Deprecated('Use balanceSheetDescriptor instead')
+const BalanceSheet$json = {
+  '1': 'BalanceSheet',
   '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.account.v1.ModelUsages.Usage', '10': 'items'},
+    {'1': 'payments', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.account.v1.Payment', '10': 'payments'},
+    {'1': 'costs', '3': 2, '4': 3, '5': 11, '6': '.endpoint.brainboost.account.v1.ModelCosts', '10': 'costs'},
+    {'1': 'balance', '3': 3, '4': 1, '5': 13, '10': 'balance'},
   ],
-  '3': [ModelUsages_Usage$json],
 };
 
-@$core.Deprecated('Use modelUsagesDescriptor instead')
-const ModelUsages_Usage$json = {
-  '1': 'Usage',
+/// Descriptor for `BalanceSheet`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List balanceSheetDescriptor = $convert.base64Decode(
+    'CgxCYWxhbmNlU2hlZXQSQwoIcGF5bWVudHMYASADKAsyJy5lbmRwb2ludC5icmFpbmJvb3N0Lm'
+    'FjY291bnQudjEuUGF5bWVudFIIcGF5bWVudHMSQAoFY29zdHMYAiADKAsyKi5lbmRwb2ludC5i'
+    'cmFpbmJvb3N0LmFjY291bnQudjEuTW9kZWxDb3N0c1IFY29zdHMSGAoHYmFsYW5jZRgDIAEoDV'
+    'IHYmFsYW5jZQ==');
+
+@$core.Deprecated('Use modelCostsDescriptor instead')
+const ModelCosts$json = {
+  '1': 'ModelCosts',
   '2': [
     {'1': 'model', '3': 1, '4': 1, '5': 9, '10': 'model'},
     {'1': 'input', '3': 2, '4': 1, '5': 13, '10': 'input'},
@@ -33,24 +41,26 @@ const ModelUsages_Usage$json = {
   ],
 };
 
-/// Descriptor for `ModelUsages`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List modelUsagesDescriptor = $convert.base64Decode(
-    'CgtNb2RlbFVzYWdlcxJHCgVpdGVtcxgBIAMoCzIxLmVuZHBvaW50LmJyYWluYm9vc3QuYWNjb3'
-    'VudC52MS5Nb2RlbFVzYWdlcy5Vc2FnZVIFaXRlbXMaYQoFVXNhZ2USFAoFbW9kZWwYASABKAlS'
-    'BW1vZGVsEhQKBWlucHV0GAIgASgNUgVpbnB1dBIWCgZvdXRwdXQYAyABKA1SBm91dHB1dBIUCg'
-    'Vjb3N0cxgEIAEoDVIFY29zdHM=');
+/// Descriptor for `ModelCosts`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List modelCostsDescriptor = $convert.base64Decode(
+    'CgpNb2RlbENvc3RzEhQKBW1vZGVsGAEgASgJUgVtb2RlbBIUCgVpbnB1dBgCIAEoDVIFaW5wdX'
+    'QSFgoGb3V0cHV0GAMgASgNUgZvdXRwdXQSFAoFY29zdHMYBCABKA1SBWNvc3Rz');
 
-@$core.Deprecated('Use paymentsDescriptor instead')
-const Payments$json = {
-  '1': 'Payments',
+@$core.Deprecated('Use costsDescriptor instead')
+const Costs$json = {
+  '1': 'Costs',
   '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.account.v1.Payments.Payment', '10': 'items'},
+    {'1': 'models', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.account.v1.ModelCosts', '10': 'models'},
   ],
-  '3': [Payments_Payment$json],
 };
 
-@$core.Deprecated('Use paymentsDescriptor instead')
-const Payments_Payment$json = {
+/// Descriptor for `Costs`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List costsDescriptor = $convert.base64Decode(
+    'CgVDb3N0cxJCCgZtb2RlbHMYASADKAsyKi5lbmRwb2ludC5icmFpbmJvb3N0LmFjY291bnQudj'
+    'EuTW9kZWxDb3N0c1IGbW9kZWxz');
+
+@$core.Deprecated('Use paymentDescriptor instead')
+const Payment$json = {
   '1': 'Payment',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
@@ -59,10 +69,21 @@ const Payments_Payment$json = {
   ],
 };
 
+/// Descriptor for `Payment`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List paymentDescriptor = $convert.base64Decode(
+    'CgdQYXltZW50Eg4KAmlkGAEgASgJUgJpZBIuCgRkYXRlGAIgASgLMhouZ29vZ2xlLnByb3RvYn'
+    'VmLlRpbWVzdGFtcFIEZGF0ZRIWCgZhbW91bnQYAyABKA1SBmFtb3VudA==');
+
+@$core.Deprecated('Use paymentsDescriptor instead')
+const Payments$json = {
+  '1': 'Payments',
+  '2': [
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.account.v1.Payment', '10': 'items'},
+  ],
+};
+
 /// Descriptor for `Payments`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List paymentsDescriptor = $convert.base64Decode(
-    'CghQYXltZW50cxJGCgVpdGVtcxgBIAMoCzIwLmVuZHBvaW50LmJyYWluYm9vc3QuYWNjb3VudC'
-    '52MS5QYXltZW50cy5QYXltZW50UgVpdGVtcxphCgdQYXltZW50Eg4KAmlkGAEgASgJUgJpZBIu'
-    'CgRkYXRlGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIEZGF0ZRIWCgZhbW91bn'
-    'QYAyABKA1SBmFtb3VudA==');
+    'CghQYXltZW50cxI9CgVpdGVtcxgBIAMoCzInLmVuZHBvaW50LmJyYWluYm9vc3QuYWNjb3VudC'
+    '52MS5QYXltZW50UgVpdGVtcw==');
 

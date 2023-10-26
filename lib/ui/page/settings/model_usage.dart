@@ -27,8 +27,8 @@ class ModelUsage extends StatelessWidget {
               )),
             ),
           ),
-          FutureBuilder<ModelUsages>(
-            future: account.getModelUsages(Empty()),
+          FutureBuilder<Costs>(
+            future: account.getCosts(Empty()),
             builder: (context, snap) {
               if (snap.hasError) {
                 return Center(
@@ -42,7 +42,7 @@ class ModelUsage extends StatelessWidget {
                 );
               }
 
-              final models = snap.data!.items;
+              final models = snap.data!.models;
 
               return Column(
                 children: models
