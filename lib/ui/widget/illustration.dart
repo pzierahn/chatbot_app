@@ -6,6 +6,7 @@ class TextIllustration extends StatelessWidget {
     super.key,
     required this.illustration,
     this.width = 200,
+    this.height,
     this.color,
     this.text,
     this.action,
@@ -13,7 +14,8 @@ class TextIllustration extends StatelessWidget {
   });
 
   final UnDrawIllustration illustration;
-  final double width;
+  final double? width;
+  final double? height;
   final Color? color;
   final String? text;
   final TextStyle? textStyle;
@@ -26,6 +28,7 @@ class TextIllustration extends StatelessWidget {
         color: color ?? Theme.of(context).colorScheme.secondary,
         illustration: illustration,
         width: width,
+        height: height,
       ),
     ];
 
