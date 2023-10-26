@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:grpc/grpc.dart';
 
+const _noFoundingCode = 17;
+
 class ErrorUtils {
   static String toText(Object? error) {
     if (error is SocketException) {
@@ -13,5 +15,13 @@ class ErrorUtils {
     }
 
     return "${error ?? "Unknown Error"}";
+  }
+
+  static isNoFounding(Object? error) {
+    if (error is GrpcError) {
+      return error.code == _noFoundingCode;
+    }
+
+    return false;
   }
 }
