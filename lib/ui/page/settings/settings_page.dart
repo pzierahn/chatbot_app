@@ -1,6 +1,5 @@
 import 'package:braingain_app/ui/page/settings/account_settings.dart';
-import 'package:braingain_app/ui/page/settings/model_usage.dart';
-import 'package:braingain_app/ui/page/settings/payments_view.dart';
+import 'package:braingain_app/ui/page/settings/balance.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
 
@@ -29,8 +28,7 @@ class _SettingsPageState extends State<SettingsPage> {
       body: const ConstrainedListView(
         children: [
           AccountSettings(),
-          PaymentsView(),
-          ModelUsage(),
+          BalanceView(),
         ],
       ),
     );
