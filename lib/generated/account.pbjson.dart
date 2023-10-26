@@ -29,14 +29,16 @@ const ModelUsages_Usage$json = {
     {'1': 'model', '3': 1, '4': 1, '5': 9, '10': 'model'},
     {'1': 'input', '3': 2, '4': 1, '5': 13, '10': 'input'},
     {'1': 'output', '3': 3, '4': 1, '5': 13, '10': 'output'},
+    {'1': 'costs', '3': 4, '4': 1, '5': 13, '10': 'costs'},
   ],
 };
 
 /// Descriptor for `ModelUsages`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List modelUsagesDescriptor = $convert.base64Decode(
     'CgtNb2RlbFVzYWdlcxJHCgVpdGVtcxgBIAMoCzIxLmVuZHBvaW50LmJyYWluYm9vc3QuYWNjb3'
-    'VudC52MS5Nb2RlbFVzYWdlcy5Vc2FnZVIFaXRlbXMaSwoFVXNhZ2USFAoFbW9kZWwYASABKAlS'
-    'BW1vZGVsEhQKBWlucHV0GAIgASgNUgVpbnB1dBIWCgZvdXRwdXQYAyABKA1SBm91dHB1dA==');
+    'VudC52MS5Nb2RlbFVzYWdlcy5Vc2FnZVIFaXRlbXMaYQoFVXNhZ2USFAoFbW9kZWwYASABKAlS'
+    'BW1vZGVsEhQKBWlucHV0GAIgASgNUgVpbnB1dBIWCgZvdXRwdXQYAyABKA1SBm91dHB1dBIUCg'
+    'Vjb3N0cxgEIAEoDVIFY29zdHM=');
 
 @$core.Deprecated('Use paymentsDescriptor instead')
 const Payments$json = {

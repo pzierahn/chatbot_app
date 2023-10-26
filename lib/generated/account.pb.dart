@@ -25,6 +25,7 @@ class ModelUsages_Usage extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'model')
     ..a<$core.int>(2, _omitFieldNames ? '' : 'input', $pb.PbFieldType.OU3)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'output', $pb.PbFieldType.OU3)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'costs', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
 
@@ -75,6 +76,15 @@ class ModelUsages_Usage extends $pb.GeneratedMessage {
   $core.bool hasOutput() => $_has(2);
   @$pb.TagNumber(3)
   void clearOutput() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.int get costs => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set costs($core.int v) { $_setUnsignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasCosts() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearCosts() => clearField(4);
 }
 
 class ModelUsages extends $pb.GeneratedMessage {
