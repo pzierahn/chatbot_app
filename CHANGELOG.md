@@ -10,3 +10,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added a waring message if no documents are uploaded to a collection
+- Added a payments overview in user settings
