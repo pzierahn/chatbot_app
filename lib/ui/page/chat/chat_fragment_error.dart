@@ -15,7 +15,7 @@ class ChatFragmentError extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
 
-    if (ErrorUtils.isNoFounding(error)) {
+    if (ErrorUtils.isNoFunding(error)) {
       return TextIllustration(
         width: 200,
         height: 200,
