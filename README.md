@@ -86,3 +86,5 @@ Prepare a new release by following these steps:
     2. Click on `This branch is ..., X commits behind main`
     3. Click on `Create pull request`
     4. Click on `Merge pull request`
+
+After the release is merged into the `stable` branch, the new release will be automatically deployed by using Google Cloud Run.
