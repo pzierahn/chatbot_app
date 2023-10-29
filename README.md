@@ -60,7 +60,6 @@ today!
 │   │   └── widgets      # Widgets and dialogs that are shared across pages
 │   └── utils            # Helper functions that are used across components
 ├── macos                # MacOS specific files
-├── terms_and_conditions # Terms and conditions of the app
 ├── pubspec.yaml         # Project configuration
 
 ```
@@ -87,41 +86,3 @@ Prepare a new release by following these steps:
     2. Click on `This branch is ..., X commits behind main`
     3. Click on `Create pull request`
     4. Click on `Merge pull request`
-
-### Upload a new Android release to the Play Store
-
-```shell
-# Pull the latest changes of the release branch
-git pull origin release
-
-# Make sure you are on the release branch
-git checkout release
-
-# Reset the branch to the latest commit
-git reset --hard
-
-# Clean up the build files
-flutter clean
-
-# Build the app bundle
-flutter build appbundle
-
-# Upload the generated app bundle to the Play Console
-# 1. Go to https://play.google.com/console/
-# 2. Select fuks app
-# 3. Go to Release > App bundle explorer
-# 4. Click on "Upload new version"
-# 5. Select the generated app bundle
-
-# Clean up the build files
-flutter clean
-
-# Go back to main branch after the release is done
-git checkout main
-
-```
-
-### Upload a new iOS release to the App Store
-
-A new release is automatically created when the `main` and `stable` branches are merged. XCode
-Cloud will automatically create a new release and upload the app to the App Store.
