@@ -2,6 +2,7 @@ import 'package:braingain_app/generated/collections.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/chat_fragment.dart';
 import 'package:braingain_app/ui/page/chat/chat_fragment_input.dart';
+import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
 
@@ -53,12 +54,12 @@ class _ChatState extends State<Chat> {
             color: Colors.orange,
           ),
           trailing: TextButton.icon(
-            onPressed: () {},
+            onPressed: () => UploadPage.openWithDialog(
+              context,
+              widget.collection,
+            ),
             icon: const Icon(Icons.upload_file),
-            label: Text('Upload'),
-            // style: TextButton.styleFrom(
-            //   foregroundColor: Colors.orange
-            // ),
+            label: const Text('Upload'),
           ),
         ),
       );
