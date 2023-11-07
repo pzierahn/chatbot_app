@@ -43,6 +43,16 @@ class _SelectModelDialogState extends State<SelectModelDialog> {
           mainAxisSize: MainAxisSize.min,
           children: [
             RadioListTile<String>(
+              value: 'gpt-4-1106-preview',
+              title: const Text('GPT-4 Turbo'),
+              groupValue: _selectedModel,
+              onChanged: (value) {
+                setState(() {
+                  _selectedModel = value!;
+                });
+              },
+            ),
+            RadioListTile<String>(
               value: 'gpt-3.5-turbo-16k',
               title: const Text('GPT-3.5 Turbo'),
               groupValue: _selectedModel,

@@ -29,7 +29,7 @@ class _ChatInputState extends State<ChatInput> {
 
     // Set default options
     prompt.options = PromptOptions()
-      ..model = 'gpt-3.5-turbo-16k'
+      ..model = 'gpt-4-1106-preview'
       ..temperature = 0.0
       ..maxTokens = 1024
       ..limit = 15
