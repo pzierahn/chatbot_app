@@ -6,6 +6,14 @@ import 'package:braingain_app/service/supabase.dart';
 import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
 
+// final _channel = ClientChannel(
+//   'localhost',
+//   port: 9055,
+//   options: const ChannelOptions(
+//     credentials: ChannelCredentials.insecure(),
+//   ),
+// );
+
 final _channel = GrpcOrGrpcWebClientChannel.toSeparateEndpoints(
   grpcHost: 'brainboost-service-2qkjmuus4a-ey.a.run.app',
   grpcPort: 443,
