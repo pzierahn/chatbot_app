@@ -3,26 +3,17 @@ import 'package:braingain_app/generated/chat.pbgrpc.dart';
 import 'package:braingain_app/generated/collections.pbgrpc.dart';
 import 'package:braingain_app/generated/documents.pbgrpc.dart';
 import 'package:braingain_app/service/supabase.dart';
-import 'package:flutter/foundation.dart';
 import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
 
-final _channel = kDebugMode
-    ? GrpcOrGrpcWebClientChannel.grpc(
-        'localhost',
-        port: 9055,
-        options: const ChannelOptions(
-          credentials: ChannelCredentials.insecure(),
-        ),
-      )
-    : GrpcOrGrpcWebClientChannel.toSeparateEndpoints(
-        grpcHost: 'brainboost-service-2qkjmuus4a-ey.a.run.app',
-        grpcPort: 443,
-        grpcTransportSecure: true,
-        grpcWebHost: 'brainboost-gateway-2qkjmuus4a-ey.a.run.app',
-        grpcWebPort: 443,
-        grpcWebTransportSecure: true,
-      );
+final _channel = GrpcOrGrpcWebClientChannel.toSeparateEndpoints(
+  grpcHost: 'brainboost-service-2qkjmuus4a-ey.a.run.app',
+  grpcPort: 443,
+  grpcTransportSecure: true,
+  grpcWebHost: 'brainboost-gateway-2qkjmuus4a-ey.a.run.app',
+  grpcWebPort: 443,
+  grpcWebTransportSecure: true,
+);
 
 final collections = CollectionServiceClient(_channel, interceptors: [
   _AuthenticationInterceptor(),
