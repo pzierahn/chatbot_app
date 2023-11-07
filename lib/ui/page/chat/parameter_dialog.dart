@@ -166,7 +166,7 @@ class _PromptOptionsState extends State<ParameterDialog> {
           subtitle: Slider(
             value: options.limit.toDouble(),
             min: 0,
-            max: 30,
+            max: 100,
             onChanged: (val) {
               _textLimit.text = val.toInt().toString();
               setState(() => options.limit = val.toInt());
