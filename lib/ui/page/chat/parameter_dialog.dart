@@ -53,7 +53,6 @@ class _PromptOptionsState extends State<ParameterDialog> {
 
   late TextEditingController _textTemp;
   late TextEditingController _textLimit;
-  late TextEditingController _textThreshold;
 
   @override
   void initState() {
@@ -64,9 +63,6 @@ class _PromptOptionsState extends State<ParameterDialog> {
     );
     _textLimit = TextEditingController(
       text: options.limit.toString(),
-    );
-    _textThreshold = TextEditingController(
-      text: options.threshold.toStringAsFixed(2),
     );
   }
 
@@ -135,35 +131,6 @@ class _PromptOptionsState extends State<ParameterDialog> {
             onChanged: (val) {
               _textLimit.text = val.toInt().toString();
               setState(() => options.limit = val.toInt());
-            },
-          ),
-        ),
-        ListTile(
-          contentPadding: contentPadding,
-          title: Row(
-            children: [
-              const Text('Threshold'),
-              const Spacer(),
-              SizedBox(
-                width: 50,
-                child: TextField(
-                  controller: _textThreshold,
-                  textAlign: TextAlign.end,
-                  onSubmitted: (val) {
-                    setState(() => options.threshold = double.parse(val));
-                  },
-                  decoration: const InputDecoration.collapsed(
-                    hintText: '0.00',
-                  ),
-                ),
-              ),
-            ],
-          ),
-          subtitle: Slider(
-            value: options.threshold,
-            onChanged: (val) {
-              _textThreshold.text = val.toStringAsFixed(2);
-              setState(() => options.threshold = val);
             },
           ),
         ),
