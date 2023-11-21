@@ -77,7 +77,7 @@ class _PromptOptionsState extends State<ParameterDialog> {
           contentPadding: contentPadding,
           title: Row(
             children: [
-              const Text('Temperature'),
+              const Text('Creativity'),
               const Spacer(),
               SizedBox(
                 width: 50,
@@ -107,7 +107,7 @@ class _PromptOptionsState extends State<ParameterDialog> {
           contentPadding: contentPadding,
           title: Row(
             children: [
-              const Text('Limit'),
+              const Text('Max Input Pages'),
               const Spacer(),
               SizedBox(
                 width: 50,
