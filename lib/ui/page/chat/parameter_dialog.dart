@@ -52,7 +52,6 @@ class _PromptOptionsState extends State<ParameterDialog> {
   PromptOptions get options => widget.options;
 
   late TextEditingController _textTemp;
-  late TextEditingController _textTokens;
   late TextEditingController _textLimit;
   late TextEditingController _textThreshold;
 
@@ -62,9 +61,6 @@ class _PromptOptionsState extends State<ParameterDialog> {
 
     _textTemp = TextEditingController(
       text: options.temperature.toStringAsFixed(2),
-    );
-    _textTokens = TextEditingController(
-      text: options.maxTokens.toString(),
     );
     _textLimit = TextEditingController(
       text: options.limit.toString(),
@@ -108,37 +104,6 @@ class _PromptOptionsState extends State<ParameterDialog> {
             onChanged: (val) {
               _textTemp.text = val.toStringAsFixed(2);
               setState(() => options.temperature = val);
-            },
-          ),
-        ),
-        ListTile(
-          contentPadding: contentPadding,
-          title: Row(
-            children: [
-              const Text('Max Tokens'),
-              const Spacer(),
-              SizedBox(
-                width: 50,
-                child: TextField(
-                  controller: _textTokens,
-                  textAlign: TextAlign.end,
-                  onSubmitted: (val) {
-                    setState(() => options.maxTokens = int.parse(val));
-                  },
-                  decoration: const InputDecoration.collapsed(
-                    hintText: '0',
-                  ),
-                ),
-              ),
-            ],
-          ),
-          subtitle: Slider(
-            value: options.maxTokens.toDouble(),
-            min: 1,
-            max: 1024,
-            onChanged: (val) {
-              _textTokens.text = val.toInt().toString();
-              setState(() => options.maxTokens = val.toInt());
             },
           ),
         ),
