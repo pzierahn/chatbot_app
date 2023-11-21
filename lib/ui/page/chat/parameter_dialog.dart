@@ -20,7 +20,7 @@ class ParameterDialog extends StatefulWidget {
           title: const Text('Parameters'),
           content: SizedBox(
             width: 400,
-            height: 400,
+            // height: 400,
             child: SingleChildScrollView(
               child: ParameterDialog(options: options),
             ),
@@ -107,7 +107,7 @@ class _PromptOptionsState extends State<ParameterDialog> {
           contentPadding: contentPadding,
           title: Row(
             children: [
-              const Text('Max Input Pages'),
+              const Text('Input Pages'),
               const Spacer(),
               SizedBox(
                 width: 50,
