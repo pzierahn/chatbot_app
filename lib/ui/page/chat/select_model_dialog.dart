@@ -62,16 +62,6 @@ class _SelectModelDialogState extends State<SelectModelDialog> {
                 });
               },
             ),
-            RadioListTile<String>(
-              value: 'gpt-4',
-              title: const Text('GPT-4'),
-              groupValue: _selectedModel,
-              onChanged: (value) {
-                setState(() {
-                  _selectedModel = value!;
-                });
-              },
-            ),
           ],
         ),
       ),
