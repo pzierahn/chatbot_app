@@ -73,16 +73,13 @@ class DocumentServiceClientAuth {
     return _service.list(request, options: options);
   }
 
-  Stream<IndexProgress> index(Document request, {CallOptions? options}) async* {
+  Future<Stream<IndexProgress>> index(Document request,
+      {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    while (true) {
-      yield await _service
-          .index(
-            request,
-            options: options,
-          )
-          .first;
-    }
+    return _service.index(
+      request,
+      options: options,
+    );
   }
 
   Future<Empty> delete(Document request, {CallOptions? options}) async {
