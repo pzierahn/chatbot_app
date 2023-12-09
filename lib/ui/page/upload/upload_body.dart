@@ -48,8 +48,6 @@ class _UploadBodyState extends State<UploadBody> {
   }
 
   void _processFile(PlatformFile file) {
-    print("file: $file");
-
     final job = StorageUtils.createTask(
       collectionId: widget.collection.id,
       file: file,
@@ -62,10 +60,7 @@ class _UploadBodyState extends State<UploadBody> {
       );
     });
 
-    print("put file: ${file.path!} --> ${job.ref.fullPath}");
-
     job.ref.putFile(File(file.path!)).then((event) {
-      print("event: ${event.state}");
       if (event.state != TaskState.success) {
         throw Exception("Upload failed");
       }
@@ -94,6 +89,7 @@ class _UploadBodyState extends State<UploadBody> {
             }),
           )
               .onError((error) {
+            debugPrint(error.toString());
             setState(() {
               _status[doc.id] = DocumentStatus(
                 uploaded: true,
@@ -103,6 +99,7 @@ class _UploadBodyState extends State<UploadBody> {
           });
         },
       ).catchError((error) {
+        debugPrint(error.toString());
         setState(() {
           _status[doc.id] = DocumentStatus(
             uploaded: true,
@@ -111,6 +108,7 @@ class _UploadBodyState extends State<UploadBody> {
         });
       });
     }).catchError((error) {
+      debugPrint(error.toString());
       setState(() {
         _status[job.docId] = DocumentStatus(
           uploaded: false,
