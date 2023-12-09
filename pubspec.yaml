@@ -29,6 +29,8 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   file_picker: ^6.0.0
+  firebase_auth: ^4.15.2
+  firebase_core: ^2.24.2
   flutter:
     sdk: flutter
 
