@@ -1,6 +1,6 @@
-import 'package:braingain_app/service/supabase.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/ui/widget/outlined_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AccountSettings extends StatelessWidget {
@@ -13,7 +13,7 @@ class AccountSettings extends StatelessWidget {
       context,
       title: 'Logout',
       content: 'Are you sure?',
-      onConfirm: () => supabase.auth.signOut(),
+      onConfirm: () => FirebaseAuth.instance.signOut(),
     );
   }
 
@@ -40,7 +40,7 @@ class AccountSettings extends StatelessWidget {
           ListTile(
             title: Text('User ID', style: text.titleMedium),
             subtitle: SelectableText(
-              supabase.auth.currentUser?.id ?? 'Not logged in',
+              FirebaseAuth.instance.currentUser?.uid ?? 'Not logged in',
               style: text.bodySmall?.merge(
                 TextStyle(color: color.outline),
               ),
