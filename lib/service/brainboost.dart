@@ -28,7 +28,7 @@ final collections = CollectionServiceClientAuth();
 
 final documents = DocumentServiceClientAuth();
 
-final account = AccountServiceClient(_channel);
+final account = AccountServiceClientAuth();
 
 final chat = ChatServiceClientAuth();
 
