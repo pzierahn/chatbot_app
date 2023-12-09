@@ -82,15 +82,27 @@ class _UploadBodyState extends State<UploadBody> {
         ..filename = job.file.name
         ..path = job.ref.fullPath;
 
-      documents.index(doc).listen(
-          (progress) => setState(() {
-                _status[doc.id] = DocumentStatus(
-                  uploaded: true,
-                  progress: progress,
-                );
-              }), onError: (error) {
-        debugPrint('error: $error');
-
+      documents.index(doc).then(
+        (stream) {
+          stream
+              .listen(
+            (progress) => setState(() {
+              _status[doc.id] = DocumentStatus(
+                uploaded: true,
+                progress: progress,
+              );
+            }),
+          )
+              .onError((error) {
+            setState(() {
+              _status[doc.id] = DocumentStatus(
+                uploaded: true,
+                error: error,
+              );
+            });
+          });
+        },
+      ).catchError((error) {
         setState(() {
           _status[doc.id] = DocumentStatus(
             uploaded: true,
@@ -98,7 +110,7 @@ class _UploadBodyState extends State<UploadBody> {
           );
         });
       });
-    }, onError: (error) {
+    }).catchError((error) {
       setState(() {
         _status[job.docId] = DocumentStatus(
           uploaded: false,
