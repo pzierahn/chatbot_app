@@ -1,35 +1,48 @@
-import 'dart:typed_data';
+import 'dart:io';
 
 import 'package:braingain_app/generated/documents.pb.dart';
-import 'package:braingain_app/service/supabase.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:uuid/uuid.dart';
 
+class UploadJob {
+  UploadJob({
+    required this.docId,
+    required this.collectionId,
+    required this.file,
+    required this.ref,
+  });
+
+  final String docId;
+  final String collectionId;
+  final PlatformFile file;
+  final Reference ref;
+}
+
 class StorageUtils {
-  static Document create({
-    required String collection,
+  static UploadJob createTask({
+    required String collectionId,
     required PlatformFile file,
   }) {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId == null) {
+      throw Exception("User not logged in");
+    }
+
     final docId = const Uuid().v4().toString();
-    final filePath = "${supabase.auth.currentUser?.id ?? ""}/"
-        "$collection/"
-        "$docId.pdf";
+    Reference ref = FirebaseStorage.instance
+        .ref()
+        .child('documents')
+        .child(userId)
+        .child(collectionId)
+        .child('$docId.pdf');
 
-    return Document()
-      ..id = docId
-      ..filename = file.name
-      ..path = filePath
-      ..collectionId = collection;
-  }
-
-  static Future<Document> upload(
-    Document doc,
-    Uint8List bytes,
-  ) async {
-    final bucket = supabase.storage.from('documents');
-
-    await bucket.uploadBinary(doc.path, bytes);
-
-    return doc;
+    return UploadJob(
+      docId: docId,
+      collectionId: collectionId,
+      file: file,
+      ref: ref,
+    );
   }
 }
