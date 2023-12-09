@@ -7,10 +7,19 @@ import 'package:braingain_app/ui/page/login/login_page.dart';
 import 'package:braingain_app/ui/page/settings/settings_page.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/theme/theme.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'firebase_options.dart';
+
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   await Supabase.initialize(
     url: 'https://uzadryogjxumttxxirry.supabase.co',
     anonKey:
@@ -33,23 +42,19 @@ class _AppState extends State<App> {
 
   @override
   void initState() {
-    supabase.auth.onAuthStateChange.listen((event) {
-      debugPrint('Auth event ${event.event.name}');
-      switch (event.event) {
-        case AuthChangeEvent.signedIn:
-          _navigatorKey.currentState?.pushNamedAndRemoveUntil(
-            Home.route,
-            (route) => false,
-          );
-          break;
-        case AuthChangeEvent.signedOut:
-          _navigatorKey.currentState?.pushNamedAndRemoveUntil(
-            LoginPage.route,
-            (route) => false,
-          );
-          break;
-        default:
-          break;
+    FirebaseAuth.instance.authStateChanges().listen((user) {
+      debugPrint("authStateChanges: ${user?.uid}");
+
+      if (user == null) {
+        _navigatorKey.currentState?.pushNamedAndRemoveUntil(
+          LoginPage.route,
+          (route) => false,
+        );
+      } else {
+        _navigatorKey.currentState?.pushNamedAndRemoveUntil(
+          Home.route,
+          (route) => false,
+        );
       }
     });
 
