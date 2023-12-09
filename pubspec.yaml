@@ -38,7 +38,6 @@ dependencies:
   flutter_markdown: ^0.6.17+1
   google_fonts: ^6.0.0
   grpc: ^3.2.3
-  supabase_flutter: ^1.10.16
   undraw:
     git:
       url: https://github.com/pzierahn/undraw.git
