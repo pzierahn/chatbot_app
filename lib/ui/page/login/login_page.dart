@@ -1,5 +1,5 @@
-import 'package:braingain_app/service/supabase.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/undraw.dart';
 
@@ -87,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
             onPressed: () async {
               final email = userController.text;
               final password = passwordController.text;
-              await supabase.auth.signInWithPassword(
+              await FirebaseAuth.instance.signInWithEmailAndPassword(
                 email: email,
                 password: password,
               );
