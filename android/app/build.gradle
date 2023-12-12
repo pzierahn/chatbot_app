@@ -12,6 +12,12 @@ if (localPropertiesFile.exists()) {
     }
 }
 
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
     flutterVersionCode = '1'
@@ -49,6 +55,15 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+    }
+
+    signingConfigs {
+        debug {
+            keyAlias keystoreProperties['debugKeyAlias']
+            keyPassword keystoreProperties['debugStorePassword']
+            storeFile keystoreProperties['debugStoreFile'] ? rootProject.file(keystoreProperties['debugStoreFile']) : null
+            storePassword keystoreProperties['debugKeyPassword']
+        }
     }
 
     buildTypes {
