@@ -1,4 +1,5 @@
 import 'package:braingain_app/generated/collections.pb.dart';
+import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
@@ -27,8 +28,12 @@ class CollectionsTile extends StatelessWidget {
           ..id = collection.id
           ..name = collection.name;
         await collections.delete(delete).catchError(
-              (error) => ErrorSnackBar.show(context, error),
-            );
+          (error) {
+            debugPrint('Error deleting collection: $error');
+            ErrorSnackBar.show(context, error);
+            return Empty();
+          },
+        );
         onUpdate?.call();
       },
     );

@@ -5,7 +5,7 @@ Future<List<PlatformFile>> showUploadDialog() async {
     type: FileType.custom,
     allowMultiple: true,
     allowedExtensions: ['pdf'],
-    withData: true,
+    withData: false,
   );
 
   if (result != null) {

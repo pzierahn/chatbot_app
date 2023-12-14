@@ -5,13 +5,11 @@ import 'package:flutter/material.dart';
 class DocumentStatus {
   DocumentStatus({
     this.error,
-    required this.ref,
     this.uploaded = false,
     this.progress,
   });
 
   final Object? error;
-  final Document ref;
   final bool uploaded;
   final IndexProgress? progress;
 
@@ -21,11 +19,11 @@ class DocumentStatus {
 class FileUploadProgress extends StatelessWidget {
   const FileUploadProgress({
     super.key,
-    required this.ref,
+    required this.filename,
     required this.status,
   });
 
-  final Document ref;
+  final String filename;
 
   final DocumentStatus status;
 
@@ -84,7 +82,7 @@ class FileUploadProgress extends StatelessWidget {
 
     return ListTile(
       leading: leading,
-      title: Text(ref.filename),
+      title: Text(filename),
       subtitle: body,
       minLeadingWidth: 32,
     );
