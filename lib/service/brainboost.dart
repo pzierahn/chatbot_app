@@ -19,7 +19,7 @@ final _channel = GrpcOrGrpcWebClientChannel.toSeparateEndpoints(
   grpcHost: 'brainboost-services-2qkjmuus4a-ey.a.run.app',
   grpcPort: 443,
   grpcTransportSecure: true,
-  grpcWebHost: 'brainboost-gateway-v2-2qkjmuus4a-ey.a.run.app',
+  grpcWebHost: 'brainboost-gateway-2qkjmuus4a-ey.a.run.app',
   grpcWebPort: 443,
   grpcWebTransportSecure: true,
 );
