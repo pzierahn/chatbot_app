@@ -110,7 +110,7 @@ class _PromptButtonsState extends State<PromptButtons> {
             )),
           ),
           subtitle: Text(
-            'Set temperature, max tokens, limit, and threshold',
+            'Set creativity and number of pages',
             style: text.bodySmall?.merge(TextStyle(
               color: color.outline,
             )),
