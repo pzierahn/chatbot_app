@@ -48,7 +48,7 @@ class SelectDocsTile extends StatelessWidget {
       subtitle: Text(
         subtitle,
         style: text.bodySmall?.merge(TextStyle(
-          color: color.outline,
+          color: documents.isEmpty ? color.outline : color.primary,
         )),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
