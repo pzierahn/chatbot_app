@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:braingain_app/generated/collections.pb.dart';
 import 'package:braingain_app/generated/documents.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
@@ -60,7 +58,7 @@ class _UploadBodyState extends State<UploadBody> {
       );
     });
 
-    job.ref.putFile(File(file.path!)).then((event) {
+    job.ref.putData(file.bytes!).then((event) {
       if (event.state != TaskState.success) {
         throw Exception("Upload failed");
       }
