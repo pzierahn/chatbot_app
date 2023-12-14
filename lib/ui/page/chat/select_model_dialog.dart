@@ -45,6 +45,7 @@ class _SelectModelDialogState extends State<SelectModelDialog> {
             RadioListTile<String>(
               value: 'gpt-4-1106-preview',
               title: const Text('GPT-4 Turbo'),
+              subtitle: const Text('Bigger context window, more expensive'),
               groupValue: _selectedModel,
               onChanged: (value) {
                 setState(() {
@@ -55,6 +56,7 @@ class _SelectModelDialogState extends State<SelectModelDialog> {
             RadioListTile<String>(
               value: 'gpt-3.5-turbo-16k',
               title: const Text('GPT-3.5 Turbo'),
+              subtitle: const Text('Smaller context window, cheaper'),
               groupValue: _selectedModel,
               onChanged: (value) {
                 setState(() {
