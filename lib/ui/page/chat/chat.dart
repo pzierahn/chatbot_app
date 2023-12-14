@@ -46,7 +46,7 @@ class _ChatState extends State<Chat> {
             style: textTheme.titleMedium,
           ),
           subtitle: Text(
-            'If no documents are uploaded, the chatbot will not be able to answer questions.',
+            'If no documents are uploaded, the chatbot will not be able to answer questions',
             style: textTheme.bodySmall,
           ),
           leading: const Icon(

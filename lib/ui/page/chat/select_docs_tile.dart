@@ -24,7 +24,7 @@ class SelectDocsTile extends StatelessWidget {
 
     if (documents.isEmpty) {
       subtitle =
-          'If no documents are selected, the AI will use the entire collection.';
+          'If no documents are selected, the AI will use the entire collection';
     } else {
       subtitle = documents.map((doc) => doc.filename).join(', ');
     }
