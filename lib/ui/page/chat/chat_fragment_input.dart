@@ -25,15 +25,15 @@ class _ChatInputState extends State<ChatInput> {
   @override
   void initState() {
     super.initState();
-    prompt = Prompt();
-
-    // Set default options
-    prompt.options = PromptOptions()
-      ..model = 'gpt-4-1106-preview'
-      ..temperature = 0.0
-      ..maxTokens = 1024
+    prompt = Prompt()
       ..limit = 15
       ..threshold = 0.6;
+
+    // Set default options
+    prompt.modelOptions = ModelOptions()
+      ..model = 'gpt-4-1106-preview'
+      ..temperature = 0.0
+      ..maxTokens = 1024;
   }
 
   @override

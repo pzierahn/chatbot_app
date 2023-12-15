@@ -21,10 +21,9 @@ class Prompt_Document extends $pb.GeneratedMessage {
   factory Prompt_Document.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Prompt_Document.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Prompt.Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Prompt.Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'filename')
-    ..p<$core.int>(3, _omitFieldNames ? '' : 'pages', $pb.PbFieldType.KU3)
+    ..p<$core.int>(2, _omitFieldNames ? '' : 'pages', $pb.PbFieldType.KU3)
     ..hasRequiredFields = false
   ;
 
@@ -59,16 +58,7 @@ class Prompt_Document extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get filename => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set filename($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasFilename() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearFilename() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.List<$core.int> get pages => $_getList(2);
+  $core.List<$core.int> get pages => $_getList(1);
 }
 
 class Prompt extends $pb.GeneratedMessage {
@@ -77,11 +67,13 @@ class Prompt extends $pb.GeneratedMessage {
   factory Prompt.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Prompt.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Prompt', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Prompt', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'prompt')
     ..aOS(2, _omitFieldNames ? '' : 'collectionId')
-    ..aOM<PromptOptions>(3, _omitFieldNames ? '' : 'options', subBuilder: PromptOptions.create)
-    ..pc<Prompt_Document>(4, _omitFieldNames ? '' : 'documents', $pb.PbFieldType.PM, subBuilder: Prompt_Document.create)
+    ..aOM<ModelOptions>(3, _omitFieldNames ? '' : 'modelOptions', subBuilder: ModelOptions.create)
+    ..a<$core.double>(4, _omitFieldNames ? '' : 'threshold', $pb.PbFieldType.OF)
+    ..a<$core.int>(5, _omitFieldNames ? '' : 'limit', $pb.PbFieldType.OU3)
+    ..pc<Prompt_Document>(6, _omitFieldNames ? '' : 'documents', $pb.PbFieldType.PM, subBuilder: Prompt_Document.create)
     ..hasRequiredFields = false
   ;
 
@@ -125,82 +117,15 @@ class Prompt extends $pb.GeneratedMessage {
   void clearCollectionId() => clearField(2);
 
   @$pb.TagNumber(3)
-  PromptOptions get options => $_getN(2);
+  ModelOptions get modelOptions => $_getN(2);
   @$pb.TagNumber(3)
-  set options(PromptOptions v) { setField(3, v); }
+  set modelOptions(ModelOptions v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasOptions() => $_has(2);
+  $core.bool hasModelOptions() => $_has(2);
   @$pb.TagNumber(3)
-  void clearOptions() => clearField(3);
+  void clearModelOptions() => clearField(3);
   @$pb.TagNumber(3)
-  PromptOptions ensureOptions() => $_ensure(2);
-
-  @$pb.TagNumber(4)
-  $core.List<Prompt_Document> get documents => $_getList(3);
-}
-
-class PromptOptions extends $pb.GeneratedMessage {
-  factory PromptOptions() => create();
-  PromptOptions._() : super();
-  factory PromptOptions.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PromptOptions.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PromptOptions', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v1'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'model')
-    ..a<$core.double>(2, _omitFieldNames ? '' : 'temperature', $pb.PbFieldType.OF)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'maxTokens', $pb.PbFieldType.OU3)
-    ..a<$core.double>(4, _omitFieldNames ? '' : 'threshold', $pb.PbFieldType.OF)
-    ..a<$core.int>(5, _omitFieldNames ? '' : 'limit', $pb.PbFieldType.OU3)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  PromptOptions clone() => PromptOptions()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  PromptOptions copyWith(void Function(PromptOptions) updates) => super.copyWith((message) => updates(message as PromptOptions)) as PromptOptions;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static PromptOptions create() => PromptOptions._();
-  PromptOptions createEmptyInstance() => create();
-  static $pb.PbList<PromptOptions> createRepeated() => $pb.PbList<PromptOptions>();
-  @$core.pragma('dart2js:noInline')
-  static PromptOptions getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PromptOptions>(create);
-  static PromptOptions? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get model => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set model($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasModel() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearModel() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.double get temperature => $_getN(1);
-  @$pb.TagNumber(2)
-  set temperature($core.double v) { $_setFloat(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasTemperature() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearTemperature() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.int get maxTokens => $_getIZ(2);
-  @$pb.TagNumber(3)
-  set maxTokens($core.int v) { $_setUnsignedInt32(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasMaxTokens() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearMaxTokens() => clearField(3);
+  ModelOptions ensureModelOptions() => $_ensure(2);
 
   @$pb.TagNumber(4)
   $core.double get threshold => $_getN(3);
@@ -219,19 +144,21 @@ class PromptOptions extends $pb.GeneratedMessage {
   $core.bool hasLimit() => $_has(4);
   @$pb.TagNumber(5)
   void clearLimit() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.List<Prompt_Document> get documents => $_getList(5);
 }
 
-class ChatMessage_Document extends $pb.GeneratedMessage {
-  factory ChatMessage_Document() => create();
-  ChatMessage_Document._() : super();
-  factory ChatMessage_Document.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ChatMessage_Document.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class ModelOptions extends $pb.GeneratedMessage {
+  factory ModelOptions() => create();
+  ModelOptions._() : super();
+  factory ModelOptions.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ModelOptions.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatMessage.Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v1'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'filename')
-    ..p<$core.int>(3, _omitFieldNames ? '' : 'pages', $pb.PbFieldType.KU3)
-    ..p<$core.double>(4, _omitFieldNames ? '' : 'scores', $pb.PbFieldType.KF)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ModelOptions', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v2'), createEmptyInstance: create)
+    ..aOS(4, _omitFieldNames ? '' : 'model')
+    ..a<$core.double>(5, _omitFieldNames ? '' : 'temperature', $pb.PbFieldType.OF)
+    ..a<$core.int>(6, _omitFieldNames ? '' : 'maxTokens', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
 
@@ -239,46 +166,49 @@ class ChatMessage_Document extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ChatMessage_Document clone() => ChatMessage_Document()..mergeFromMessage(this);
+  ModelOptions clone() => ModelOptions()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ChatMessage_Document copyWith(void Function(ChatMessage_Document) updates) => super.copyWith((message) => updates(message as ChatMessage_Document)) as ChatMessage_Document;
+  ModelOptions copyWith(void Function(ModelOptions) updates) => super.copyWith((message) => updates(message as ModelOptions)) as ModelOptions;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ChatMessage_Document create() => ChatMessage_Document._();
-  ChatMessage_Document createEmptyInstance() => create();
-  static $pb.PbList<ChatMessage_Document> createRepeated() => $pb.PbList<ChatMessage_Document>();
+  static ModelOptions create() => ModelOptions._();
+  ModelOptions createEmptyInstance() => create();
+  static $pb.PbList<ModelOptions> createRepeated() => $pb.PbList<ModelOptions>();
   @$core.pragma('dart2js:noInline')
-  static ChatMessage_Document getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ChatMessage_Document>(create);
-  static ChatMessage_Document? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get filename => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set filename($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasFilename() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearFilename() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.List<$core.int> get pages => $_getList(2);
+  static ModelOptions getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ModelOptions>(create);
+  static ModelOptions? _defaultInstance;
 
   @$pb.TagNumber(4)
-  $core.List<$core.double> get scores => $_getList(3);
+  $core.String get model => $_getSZ(0);
+  @$pb.TagNumber(4)
+  set model($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasModel() => $_has(0);
+  @$pb.TagNumber(4)
+  void clearModel() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.double get temperature => $_getN(1);
+  @$pb.TagNumber(5)
+  set temperature($core.double v) { $_setFloat(1, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasTemperature() => $_has(1);
+  @$pb.TagNumber(5)
+  void clearTemperature() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.int get maxTokens => $_getIZ(2);
+  @$pb.TagNumber(6)
+  set maxTokens($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasMaxTokens() => $_has(2);
+  @$pb.TagNumber(6)
+  void clearMaxTokens() => clearField(6);
 }
 
 class ChatMessage extends $pb.GeneratedMessage {
@@ -287,13 +217,15 @@ class ChatMessage extends $pb.GeneratedMessage {
   factory ChatMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ChatMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'collectionId')
-    ..aOM<Prompt>(3, _omitFieldNames ? '' : 'prompt', subBuilder: Prompt.create)
+    ..aOS(3, _omitFieldNames ? '' : 'prompt')
     ..aOS(4, _omitFieldNames ? '' : 'text')
-    ..pc<ChatMessage_Document>(5, _omitFieldNames ? '' : 'documents', $pb.PbFieldType.PM, subBuilder: ChatMessage_Document.create)
+    ..aOM<ModelOptions>(5, _omitFieldNames ? '' : 'modelOptions', subBuilder: ModelOptions.create)
     ..aOM<$5.Timestamp>(6, _omitFieldNames ? '' : 'timestamp', subBuilder: $5.Timestamp.create)
+    ..pPS(7, _omitFieldNames ? '' : 'references')
+    ..m<$core.String, $core.double>(8, _omitFieldNames ? '' : 'scores', entryClassName: 'ChatMessage.ScoresEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OF, packageName: const $pb.PackageName('endpoint.brainboost.chat.v2'))
     ..hasRequiredFields = false
   ;
 
@@ -337,15 +269,13 @@ class ChatMessage extends $pb.GeneratedMessage {
   void clearCollectionId() => clearField(2);
 
   @$pb.TagNumber(3)
-  Prompt get prompt => $_getN(2);
+  $core.String get prompt => $_getSZ(2);
   @$pb.TagNumber(3)
-  set prompt(Prompt v) { setField(3, v); }
+  set prompt($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
   $core.bool hasPrompt() => $_has(2);
   @$pb.TagNumber(3)
   void clearPrompt() => clearField(3);
-  @$pb.TagNumber(3)
-  Prompt ensurePrompt() => $_ensure(2);
 
   @$pb.TagNumber(4)
   $core.String get text => $_getSZ(3);
@@ -357,7 +287,15 @@ class ChatMessage extends $pb.GeneratedMessage {
   void clearText() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.List<ChatMessage_Document> get documents => $_getList(4);
+  ModelOptions get modelOptions => $_getN(4);
+  @$pb.TagNumber(5)
+  set modelOptions(ModelOptions v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasModelOptions() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearModelOptions() => clearField(5);
+  @$pb.TagNumber(5)
+  ModelOptions ensureModelOptions() => $_ensure(4);
 
   @$pb.TagNumber(6)
   $5.Timestamp get timestamp => $_getN(5);
@@ -369,6 +307,12 @@ class ChatMessage extends $pb.GeneratedMessage {
   void clearTimestamp() => clearField(6);
   @$pb.TagNumber(6)
   $5.Timestamp ensureTimestamp() => $_ensure(5);
+
+  @$pb.TagNumber(7)
+  $core.List<$core.String> get references => $_getList(6);
+
+  @$pb.TagNumber(8)
+  $core.Map<$core.String, $core.double> get scores => $_getMap(7);
 }
 
 class MessageID extends $pb.GeneratedMessage {
@@ -377,7 +321,7 @@ class MessageID extends $pb.GeneratedMessage {
   factory MessageID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory MessageID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageID', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageID', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..hasRequiredFields = false
   ;
@@ -419,7 +363,7 @@ class ChatMessages extends $pb.GeneratedMessage {
   factory ChatMessages.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ChatMessages.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatMessages', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChatMessages', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v2'), createEmptyInstance: create)
     ..pPS(1, _omitFieldNames ? '' : 'ids')
     ..hasRequiredFields = false
   ;

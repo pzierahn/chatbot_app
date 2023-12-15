@@ -13,6 +13,47 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use chunkIDsDescriptor instead')
+const ChunkIDs$json = {
+  '1': 'ChunkIDs',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `ChunkIDs`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List chunkIDsDescriptor = $convert.base64Decode(
+    'CghDaHVua0lEcxIOCgJpZBgBIAEoCVICaWQ=');
+
+@$core.Deprecated('Use chunkDescriptor instead')
+const Chunk$json = {
+  '1': 'Chunk',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'document_id', '3': 2, '4': 1, '5': 9, '10': 'documentId'},
+    {'1': 'filename', '3': 3, '4': 1, '5': 9, '10': 'filename'},
+    {'1': 'page', '3': 4, '4': 1, '5': 13, '10': 'page'},
+  ],
+};
+
+/// Descriptor for `Chunk`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List chunkDescriptor = $convert.base64Decode(
+    'CgVDaHVuaxIOCgJpZBgBIAEoCVICaWQSHwoLZG9jdW1lbnRfaWQYAiABKAlSCmRvY3VtZW50SW'
+    'QSGgoIZmlsZW5hbWUYAyABKAlSCGZpbGVuYW1lEhIKBHBhZ2UYBCABKA1SBHBhZ2U=');
+
+@$core.Deprecated('Use chunksDescriptor instead')
+const Chunks$json = {
+  '1': 'Chunks',
+  '2': [
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.documents.v1.Chunk', '10': 'items'},
+  ],
+};
+
+/// Descriptor for `Chunks`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List chunksDescriptor = $convert.base64Decode(
+    'CgZDaHVua3MSPQoFaXRlbXMYASADKAsyJy5lbmRwb2ludC5icmFpbmJvb3N0LmRvY3VtZW50cy'
+    '52MS5DaHVua1IFaXRlbXM=');
+
 @$core.Deprecated('Use searchQueryDescriptor instead')
 const SearchQuery$json = {
   '1': 'SearchQuery',

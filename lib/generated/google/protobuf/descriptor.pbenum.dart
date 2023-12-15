@@ -13,6 +13,35 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+class Edition extends $pb.ProtobufEnum {
+  static const Edition EDITION_UNKNOWN = Edition._(0, _omitEnumNames ? '' : 'EDITION_UNKNOWN');
+  static const Edition EDITION_PROTO2 = Edition._(998, _omitEnumNames ? '' : 'EDITION_PROTO2');
+  static const Edition EDITION_PROTO3 = Edition._(999, _omitEnumNames ? '' : 'EDITION_PROTO3');
+  static const Edition EDITION_2023 = Edition._(1000, _omitEnumNames ? '' : 'EDITION_2023');
+  static const Edition EDITION_1_TEST_ONLY = Edition._(1, _omitEnumNames ? '' : 'EDITION_1_TEST_ONLY');
+  static const Edition EDITION_2_TEST_ONLY = Edition._(2, _omitEnumNames ? '' : 'EDITION_2_TEST_ONLY');
+  static const Edition EDITION_99997_TEST_ONLY = Edition._(99997, _omitEnumNames ? '' : 'EDITION_99997_TEST_ONLY');
+  static const Edition EDITION_99998_TEST_ONLY = Edition._(99998, _omitEnumNames ? '' : 'EDITION_99998_TEST_ONLY');
+  static const Edition EDITION_99999_TEST_ONLY = Edition._(99999, _omitEnumNames ? '' : 'EDITION_99999_TEST_ONLY');
+
+  static const $core.List<Edition> values = <Edition> [
+    EDITION_UNKNOWN,
+    EDITION_PROTO2,
+    EDITION_PROTO3,
+    EDITION_2023,
+    EDITION_1_TEST_ONLY,
+    EDITION_2_TEST_ONLY,
+    EDITION_99997_TEST_ONLY,
+    EDITION_99998_TEST_ONLY,
+    EDITION_99999_TEST_ONLY,
+  ];
+
+  static final $core.Map<$core.int, Edition> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static Edition? valueOf($core.int value) => _byValue[value];
+
+  const Edition._($core.int v, $core.String n) : super(v, n);
+}
+
 class ExtensionRangeOptions_VerificationState extends $pb.ProtobufEnum {
   static const ExtensionRangeOptions_VerificationState DECLARATION = ExtensionRangeOptions_VerificationState._(0, _omitEnumNames ? '' : 'DECLARATION');
   static const ExtensionRangeOptions_VerificationState UNVERIFIED = ExtensionRangeOptions_VerificationState._(1, _omitEnumNames ? '' : 'UNVERIFIED');
@@ -77,13 +106,13 @@ class FieldDescriptorProto_Type extends $pb.ProtobufEnum {
 
 class FieldDescriptorProto_Label extends $pb.ProtobufEnum {
   static const FieldDescriptorProto_Label LABEL_OPTIONAL = FieldDescriptorProto_Label._(1, _omitEnumNames ? '' : 'LABEL_OPTIONAL');
-  static const FieldDescriptorProto_Label LABEL_REQUIRED = FieldDescriptorProto_Label._(2, _omitEnumNames ? '' : 'LABEL_REQUIRED');
   static const FieldDescriptorProto_Label LABEL_REPEATED = FieldDescriptorProto_Label._(3, _omitEnumNames ? '' : 'LABEL_REPEATED');
+  static const FieldDescriptorProto_Label LABEL_REQUIRED = FieldDescriptorProto_Label._(2, _omitEnumNames ? '' : 'LABEL_REQUIRED');
 
   static const $core.List<FieldDescriptorProto_Label> values = <FieldDescriptorProto_Label> [
     LABEL_OPTIONAL,
-    LABEL_REQUIRED,
     LABEL_REPEATED,
+    LABEL_REQUIRED,
   ];
 
   static final $core.Map<$core.int, FieldDescriptorProto_Label> _byValue = $pb.ProtobufEnum.initByValue(values);
@@ -261,23 +290,21 @@ class FeatureSet_RepeatedFieldEncoding extends $pb.ProtobufEnum {
   const FeatureSet_RepeatedFieldEncoding._($core.int v, $core.String n) : super(v, n);
 }
 
-class FeatureSet_StringFieldValidation extends $pb.ProtobufEnum {
-  static const FeatureSet_StringFieldValidation STRING_FIELD_VALIDATION_UNKNOWN = FeatureSet_StringFieldValidation._(0, _omitEnumNames ? '' : 'STRING_FIELD_VALIDATION_UNKNOWN');
-  static const FeatureSet_StringFieldValidation MANDATORY = FeatureSet_StringFieldValidation._(1, _omitEnumNames ? '' : 'MANDATORY');
-  static const FeatureSet_StringFieldValidation HINT = FeatureSet_StringFieldValidation._(2, _omitEnumNames ? '' : 'HINT');
-  static const FeatureSet_StringFieldValidation NONE = FeatureSet_StringFieldValidation._(3, _omitEnumNames ? '' : 'NONE');
+class FeatureSet_Utf8Validation extends $pb.ProtobufEnum {
+  static const FeatureSet_Utf8Validation UTF8_VALIDATION_UNKNOWN = FeatureSet_Utf8Validation._(0, _omitEnumNames ? '' : 'UTF8_VALIDATION_UNKNOWN');
+  static const FeatureSet_Utf8Validation NONE = FeatureSet_Utf8Validation._(1, _omitEnumNames ? '' : 'NONE');
+  static const FeatureSet_Utf8Validation VERIFY = FeatureSet_Utf8Validation._(2, _omitEnumNames ? '' : 'VERIFY');
 
-  static const $core.List<FeatureSet_StringFieldValidation> values = <FeatureSet_StringFieldValidation> [
-    STRING_FIELD_VALIDATION_UNKNOWN,
-    MANDATORY,
-    HINT,
+  static const $core.List<FeatureSet_Utf8Validation> values = <FeatureSet_Utf8Validation> [
+    UTF8_VALIDATION_UNKNOWN,
     NONE,
+    VERIFY,
   ];
 
-  static final $core.Map<$core.int, FeatureSet_StringFieldValidation> _byValue = $pb.ProtobufEnum.initByValue(values);
-  static FeatureSet_StringFieldValidation? valueOf($core.int value) => _byValue[value];
+  static final $core.Map<$core.int, FeatureSet_Utf8Validation> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static FeatureSet_Utf8Validation? valueOf($core.int value) => _byValue[value];
 
-  const FeatureSet_StringFieldValidation._($core.int v, $core.String n) : super(v, n);
+  const FeatureSet_Utf8Validation._($core.int v, $core.String n) : super(v, n);
 }
 
 class FeatureSet_MessageEncoding extends $pb.ProtobufEnum {

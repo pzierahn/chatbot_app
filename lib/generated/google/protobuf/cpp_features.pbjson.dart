@@ -23,6 +23,6 @@ const CppFeatures$json = {
 
 /// Descriptor for `CppFeatures`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List cppFeaturesDescriptor = $convert.base64Decode(
-    'CgtDcHBGZWF0dXJlcxJHChJsZWdhY3lfY2xvc2VkX2VudW0YASABKAhCGYgBAZgBBJgBAaIBDQ'
-    'oEMjAyMxIFZmFsc2VSEGxlZ2FjeUNsb3NlZEVudW0=');
+    'CgtDcHBGZWF0dXJlcxJQChJsZWdhY3lfY2xvc2VkX2VudW0YASABKAhCIogBAZgBBJgBAaIBCR'
+    'IEdHJ1ZRjmB6IBChIFZmFsc2UY5wdSEGxlZ2FjeUNsb3NlZEVudW0=');
 
