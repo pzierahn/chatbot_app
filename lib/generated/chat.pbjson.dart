@@ -71,22 +71,11 @@ const ChatMessage$json = {
     {'1': 'model_options', '3': 5, '4': 1, '5': 11, '6': '.endpoint.brainboost.chat.v2.ModelOptions', '10': 'modelOptions'},
     {'1': 'timestamp', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '9': 0, '10': 'timestamp', '17': true},
     {'1': 'references', '3': 7, '4': 3, '5': 9, '10': 'references'},
-    {'1': 'scores', '3': 8, '4': 3, '5': 11, '6': '.endpoint.brainboost.chat.v2.ChatMessage.ScoresEntry', '10': 'scores'},
+    {'1': 'scores', '3': 8, '4': 3, '5': 2, '10': 'scores'},
   ],
-  '3': [ChatMessage_ScoresEntry$json],
   '8': [
     {'1': '_timestamp'},
   ],
-};
-
-@$core.Deprecated('Use chatMessageDescriptor instead')
-const ChatMessage_ScoresEntry$json = {
-  '1': 'ScoresEntry',
-  '2': [
-    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    {'1': 'value', '3': 2, '4': 1, '5': 2, '10': 'value'},
-  ],
-  '7': {'7': true},
 };
 
 /// Descriptor for `ChatMessage`. Decode as a `google.protobuf.DescriptorProto`.
@@ -96,9 +85,7 @@ final $typed_data.Uint8List chatMessageDescriptor = $convert.base64Decode(
     'TgoNbW9kZWxfb3B0aW9ucxgFIAEoCzIpLmVuZHBvaW50LmJyYWluYm9vc3QuY2hhdC52Mi5Nb2'
     'RlbE9wdGlvbnNSDG1vZGVsT3B0aW9ucxI9Cgl0aW1lc3RhbXAYBiABKAsyGi5nb29nbGUucHJv'
     'dG9idWYuVGltZXN0YW1wSABSCXRpbWVzdGFtcIgBARIeCgpyZWZlcmVuY2VzGAcgAygJUgpyZW'
-    'ZlcmVuY2VzEkwKBnNjb3JlcxgIIAMoCzI0LmVuZHBvaW50LmJyYWluYm9vc3QuY2hhdC52Mi5D'
-    'aGF0TWVzc2FnZS5TY29yZXNFbnRyeVIGc2NvcmVzGjkKC1Njb3Jlc0VudHJ5EhAKA2tleRgBIA'
-    'EoCVIDa2V5EhQKBXZhbHVlGAIgASgCUgV2YWx1ZToCOAFCDAoKX3RpbWVzdGFtcA==');
+    'ZlcmVuY2VzEhYKBnNjb3JlcxgIIAMoAlIGc2NvcmVzQgwKCl90aW1lc3RhbXA=');
 
 @$core.Deprecated('Use messageIDDescriptor instead')
 const MessageID$json = {

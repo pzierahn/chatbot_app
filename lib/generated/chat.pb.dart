@@ -225,7 +225,7 @@ class ChatMessage extends $pb.GeneratedMessage {
     ..aOM<ModelOptions>(5, _omitFieldNames ? '' : 'modelOptions', subBuilder: ModelOptions.create)
     ..aOM<$5.Timestamp>(6, _omitFieldNames ? '' : 'timestamp', subBuilder: $5.Timestamp.create)
     ..pPS(7, _omitFieldNames ? '' : 'references')
-    ..m<$core.String, $core.double>(8, _omitFieldNames ? '' : 'scores', entryClassName: 'ChatMessage.ScoresEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OF, packageName: const $pb.PackageName('endpoint.brainboost.chat.v2'))
+    ..p<$core.double>(8, _omitFieldNames ? '' : 'scores', $pb.PbFieldType.KF)
     ..hasRequiredFields = false
   ;
 
@@ -312,7 +312,7 @@ class ChatMessage extends $pb.GeneratedMessage {
   $core.List<$core.String> get references => $_getList(6);
 
   @$pb.TagNumber(8)
-  $core.Map<$core.String, $core.double> get scores => $_getMap(7);
+  $core.List<$core.double> get scores => $_getList(7);
 }
 
 class MessageID extends $pb.GeneratedMessage {
