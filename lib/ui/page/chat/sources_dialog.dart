@@ -8,11 +8,11 @@ class SourcesDialog extends StatefulWidget {
   const SourcesDialog({
     super.key,
     required this.references,
-    this.scores = const {},
+    this.scores = const [],
   });
 
   final List<String> references;
-  final Map<String, double> scores;
+  final List<double> scores;
 
   @override
   State createState() => _SourcesDialogState();
@@ -51,25 +51,38 @@ class _SourcesDialogState extends State<SourcesDialog> {
           }
 
           final references = snap.data!.items;
+          references.sort((a, b) => a.page.compareTo(b.page));
+          references.sort((a, b) => a.filename.compareTo(b.filename));
 
-          final files = references.map((e) => e.filename).toSet().toList();
-          files.sort();
-
-          final filePages = <String, List<int>>{};
-
-          for (final ref in references) {
-            final file = ref.filename;
-            filePages.putIfAbsent(file, () => []);
-            filePages[file]?.add(ref.page);
+          final scores = <String, double>{};
+          if (widget.scores.length == widget.references.length) {
+            for (int inx = 0; inx < widget.references.length; inx++) {
+              scores[widget.references[inx]] = widget.scores[inx];
+            }
           }
 
+          final filePages = <String, List<int>>{};
+          final refIds = <String, List<String>>{};
+          final filenames = <String, String>{};
+
+          for (final ref in references) {
+            final id = ref.documentId;
+            filePages.putIfAbsent(id, () => []);
+            filePages[id]?.add(ref.page);
+            refIds.putIfAbsent(id, () => []);
+            refIds[id]?.add(ref.id);
+            filenames[id] = ref.filename;
+          }
+
+          final fileIDs = filePages.keys.toList();
+
           return ListView.separated(
-            itemCount: files.length,
+            itemCount: fileIDs.length,
             separatorBuilder: (context, index) => const Divider(height: 32),
             itemBuilder: (context, index) {
-              final file = files[index];
-              final pages = filePages[file] ?? [];
-              pages.sort();
+              final docId = fileIDs[index];
+              final pages = filePages[docId] ?? [];
+              final ids = refIds[docId] ?? [];
 
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 0),
@@ -77,7 +90,7 @@ class _SourcesDialogState extends State<SourcesDialog> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SelectableText(
-                      file,
+                      filenames[docId] ?? '',
                       style: text.titleSmall,
                       maxLines: 1,
                     ),
@@ -85,16 +98,25 @@ class _SourcesDialogState extends State<SourcesDialog> {
                     Wrap(
                       spacing: 8,
                       runSpacing: 8,
-                      children: pages
-                          .map(
-                            (e) => Chip(
-                              label: Text(
-                                'Page $e',
-                                style: text.caption,
-                              ),
+                      children: [
+                        for (int inx = 0; inx < pages.length; inx++)
+                          Chip(
+                            avatar: scores.containsKey(ids[inx])
+                                ? Text(
+                                    ((scores[ids[inx]] ?? 0) * 100)
+                                        .toStringAsFixed(0),
+                                    style: text.bodySmall?.copyWith(
+                                      color: color.primary,
+                                      fontSize: 8,
+                                    ),
+                                  )
+                                : null,
+                            label: Text(
+                              'Page ${pages[inx]}',
+                              style: text.bodySmall,
                             ),
                           )
-                          .toList(),
+                      ],
                     ),
                   ],
                 ),
