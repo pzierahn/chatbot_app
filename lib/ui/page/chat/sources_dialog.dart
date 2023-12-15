@@ -1,4 +1,3 @@
-import 'package:braingain_app/generated/chat.pb.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/illustrations.g.dart';
@@ -6,20 +5,12 @@ import 'package:undraw/illustrations.g.dart';
 class SourcesDialog extends StatefulWidget {
   const SourcesDialog({
     super.key,
-    required this.sources,
+    required this.references,
+    this.scores = const {},
   });
 
-  final List<ChatMessage_Document> sources;
-
-  static Future<void> show(
-    BuildContext context,
-    List<ChatMessage_Document> documents,
-  ) {
-    return showDialog(
-      context: context,
-      builder: (context) => SourcesDialog(sources: documents),
-    );
-  }
+  final List<String> references;
+  final Map<String, double> scores;
 
   @override
   State createState() => _SourcesDialogState();
@@ -31,8 +22,9 @@ class _SourcesDialogState extends State<SourcesDialog> {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
-    final sources = widget.sources;
-    sources.sort((a, b) => a.filename.compareTo(b.filename));
+    final sources = widget.references;
+
+    // TODO: Fetch document names from server
 
     Widget body;
 
@@ -41,21 +33,7 @@ class _SourcesDialogState extends State<SourcesDialog> {
         itemCount: sources.length,
         separatorBuilder: (context, index) => const Divider(height: 32),
         itemBuilder: (context, index) {
-          final source = widget.sources[index];
-
-          final mapping = <int, double>{};
-          for (int inx = 0; inx < source.pages.length; inx++) {
-            final page = source.pages[inx];
-            if (source.scores.length <= inx) {
-              mapping[page] = 0;
-              continue;
-            }
-
-            mapping[page] = source.scores[inx];
-          }
-
-          final pages = source.pages;
-          pages.sort((a, b) => a.compareTo(b));
+          final source = widget.references[index];
 
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 0),
@@ -63,23 +41,10 @@ class _SourcesDialogState extends State<SourcesDialog> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SelectableText(
-                  source.filename,
-                  style: text.titleSmall?.merge(TextStyle(
-                    color: Theme.of(context).colorScheme.tertiary,
-                  )),
+                  source,
+                  style: text.titleSmall,
                   maxLines: 1,
                 ),
-                for (int inx = 0; inx < source.pages.length; inx++)
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Page ${pages[inx]} --> ${(100 * mapping[pages[inx]]!).toStringAsFixed(0)}%',
-                        style: text.bodySmall,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
               ],
             ),
           );

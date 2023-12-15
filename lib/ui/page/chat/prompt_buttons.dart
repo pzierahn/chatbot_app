@@ -36,12 +36,8 @@ class _PromptButtonsState extends State<PromptButtons> {
   }
 
   void _onShowParameter() {
-    ParameterDialog.show(context, prompt.options).then((value) {
+    ParameterDialog.show(context, prompt).then((value) {
       if (value != null) {
-        setState(() {
-          prompt.options = value;
-        });
-
         onPromptChanged?.call(prompt);
       }
     });
@@ -50,12 +46,12 @@ class _PromptButtonsState extends State<PromptButtons> {
   void _onSelectModel() async {
     final model = await SelectModelDialog.show(
       context: context,
-      model: prompt.options.model,
+      model: prompt.modelOptions.model,
     );
 
     if (model != null) {
       setState(() {
-        prompt.options.model = model;
+        prompt.modelOptions.model = model;
       });
 
       onPromptChanged?.call(prompt);
@@ -87,7 +83,7 @@ class _PromptButtonsState extends State<PromptButtons> {
             )),
           ),
           subtitle: Text(
-            prompt.options.model,
+            prompt.modelOptions.model,
             style: text.bodySmall?.merge(TextStyle(
               color: color.outline,
             )),

@@ -150,7 +150,6 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
     } else {
       widget.selected[doc.id] = Prompt_Document()
         ..id = doc.id
-        ..filename = doc.filename
         ..pages.clear()
         ..pages.addAll([for (int i = 1; i <= doc.pages; i++) i]);
     }

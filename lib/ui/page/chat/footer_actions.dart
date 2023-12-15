@@ -11,6 +11,16 @@ class FooterActions extends StatelessWidget {
 
   final ChatMessage message;
 
+  void _showSources(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => SourcesDialog(
+        references: message.references,
+        scores: message.scores,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
@@ -28,10 +38,7 @@ class FooterActions extends StatelessWidget {
             foregroundColor: color.onSurface,
           ),
           label: const Text('Sources'),
-          onPressed: () => SourcesDialog.show(
-            context,
-            message.documents,
-          ),
+          onPressed: () => _showSources(context),
         ),
         TextButton.icon(
           icon: const Icon(Icons.copy, size: iconSize),

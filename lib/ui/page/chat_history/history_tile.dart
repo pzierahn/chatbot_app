@@ -24,7 +24,7 @@ class ChatHistoryTile extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: SelectableText(
-                  message.prompt.prompt,
+                  message.prompt,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),
@@ -80,7 +80,7 @@ class ChatHistoryTile extends StatelessWidget {
 
           return ListTile(
             title: Text(
-              message.prompt.prompt,
+              message.prompt,
               style: text.titleMedium,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
