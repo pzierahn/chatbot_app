@@ -13,21 +13,21 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
-@$core.Deprecated('Use chunkIDsDescriptor instead')
-const ChunkIDs$json = {
-  '1': 'ChunkIDs',
+@$core.Deprecated('Use referenceIDsDescriptor instead')
+const ReferenceIDs$json = {
+  '1': 'ReferenceIDs',
   '2': [
     {'1': 'items', '3': 1, '4': 3, '5': 9, '10': 'items'},
   ],
 };
 
-/// Descriptor for `ChunkIDs`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List chunkIDsDescriptor = $convert.base64Decode(
-    'CghDaHVua0lEcxIUCgVpdGVtcxgBIAMoCVIFaXRlbXM=');
+/// Descriptor for `ReferenceIDs`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List referenceIDsDescriptor = $convert.base64Decode(
+    'CgxSZWZlcmVuY2VJRHMSFAoFaXRlbXMYASADKAlSBWl0ZW1z');
 
-@$core.Deprecated('Use chunkDescriptor instead')
-const Chunk$json = {
-  '1': 'Chunk',
+@$core.Deprecated('Use referenceDescriptor instead')
+const Reference$json = {
+  '1': 'Reference',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     {'1': 'document_id', '3': 2, '4': 1, '5': 9, '10': 'documentId'},
@@ -36,23 +36,23 @@ const Chunk$json = {
   ],
 };
 
-/// Descriptor for `Chunk`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List chunkDescriptor = $convert.base64Decode(
-    'CgVDaHVuaxIOCgJpZBgBIAEoCVICaWQSHwoLZG9jdW1lbnRfaWQYAiABKAlSCmRvY3VtZW50SW'
-    'QSGgoIZmlsZW5hbWUYAyABKAlSCGZpbGVuYW1lEhIKBHBhZ2UYBCABKA1SBHBhZ2U=');
+/// Descriptor for `Reference`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List referenceDescriptor = $convert.base64Decode(
+    'CglSZWZlcmVuY2USDgoCaWQYASABKAlSAmlkEh8KC2RvY3VtZW50X2lkGAIgASgJUgpkb2N1bW'
+    'VudElkEhoKCGZpbGVuYW1lGAMgASgJUghmaWxlbmFtZRISCgRwYWdlGAQgASgNUgRwYWdl');
 
-@$core.Deprecated('Use chunksDescriptor instead')
-const Chunks$json = {
-  '1': 'Chunks',
+@$core.Deprecated('Use referencesDescriptor instead')
+const References$json = {
+  '1': 'References',
   '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.documents.v1.Chunk', '10': 'items'},
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.documents.v1.Reference', '10': 'items'},
   ],
 };
 
-/// Descriptor for `Chunks`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List chunksDescriptor = $convert.base64Decode(
-    'CgZDaHVua3MSPQoFaXRlbXMYASADKAsyJy5lbmRwb2ludC5icmFpbmJvb3N0LmRvY3VtZW50cy'
-    '52MS5DaHVua1IFaXRlbXM=');
+/// Descriptor for `References`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List referencesDescriptor = $convert.base64Decode(
+    'CgpSZWZlcmVuY2VzEkEKBWl0ZW1zGAEgAygLMisuZW5kcG9pbnQuYnJhaW5ib29zdC5kb2N1bW'
+    'VudHMudjEuUmVmZXJlbmNlUgVpdGVtcw==');
 
 @$core.Deprecated('Use searchQueryDescriptor instead')
 const SearchQuery$json = {

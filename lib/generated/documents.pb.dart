@@ -13,13 +13,13 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class ChunkIDs extends $pb.GeneratedMessage {
-  factory ChunkIDs() => create();
-  ChunkIDs._() : super();
-  factory ChunkIDs.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ChunkIDs.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class ReferenceIDs extends $pb.GeneratedMessage {
+  factory ReferenceIDs() => create();
+  ReferenceIDs._() : super();
+  factory ReferenceIDs.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReferenceIDs.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChunkIDs', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ReferenceIDs', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v1'), createEmptyInstance: create)
     ..pPS(1, _omitFieldNames ? '' : 'items')
     ..hasRequiredFields = false
   ;
@@ -28,34 +28,34 @@ class ChunkIDs extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ChunkIDs clone() => ChunkIDs()..mergeFromMessage(this);
+  ReferenceIDs clone() => ReferenceIDs()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ChunkIDs copyWith(void Function(ChunkIDs) updates) => super.copyWith((message) => updates(message as ChunkIDs)) as ChunkIDs;
+  ReferenceIDs copyWith(void Function(ReferenceIDs) updates) => super.copyWith((message) => updates(message as ReferenceIDs)) as ReferenceIDs;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ChunkIDs create() => ChunkIDs._();
-  ChunkIDs createEmptyInstance() => create();
-  static $pb.PbList<ChunkIDs> createRepeated() => $pb.PbList<ChunkIDs>();
+  static ReferenceIDs create() => ReferenceIDs._();
+  ReferenceIDs createEmptyInstance() => create();
+  static $pb.PbList<ReferenceIDs> createRepeated() => $pb.PbList<ReferenceIDs>();
   @$core.pragma('dart2js:noInline')
-  static ChunkIDs getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ChunkIDs>(create);
-  static ChunkIDs? _defaultInstance;
+  static ReferenceIDs getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReferenceIDs>(create);
+  static ReferenceIDs? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.List<$core.String> get items => $_getList(0);
 }
 
-class Chunk extends $pb.GeneratedMessage {
-  factory Chunk() => create();
-  Chunk._() : super();
-  factory Chunk.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Chunk.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class Reference extends $pb.GeneratedMessage {
+  factory Reference() => create();
+  Reference._() : super();
+  factory Reference.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Reference.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Chunk', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Reference', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'documentId')
     ..aOS(3, _omitFieldNames ? '' : 'filename')
@@ -67,22 +67,22 @@ class Chunk extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  Chunk clone() => Chunk()..mergeFromMessage(this);
+  Reference clone() => Reference()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Chunk copyWith(void Function(Chunk) updates) => super.copyWith((message) => updates(message as Chunk)) as Chunk;
+  Reference copyWith(void Function(Reference) updates) => super.copyWith((message) => updates(message as Reference)) as Reference;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Chunk create() => Chunk._();
-  Chunk createEmptyInstance() => create();
-  static $pb.PbList<Chunk> createRepeated() => $pb.PbList<Chunk>();
+  static Reference create() => Reference._();
+  Reference createEmptyInstance() => create();
+  static $pb.PbList<Reference> createRepeated() => $pb.PbList<Reference>();
   @$core.pragma('dart2js:noInline')
-  static Chunk getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Chunk>(create);
-  static Chunk? _defaultInstance;
+  static Reference getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Reference>(create);
+  static Reference? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
@@ -121,14 +121,14 @@ class Chunk extends $pb.GeneratedMessage {
   void clearPage() => clearField(4);
 }
 
-class Chunks extends $pb.GeneratedMessage {
-  factory Chunks() => create();
-  Chunks._() : super();
-  factory Chunks.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Chunks.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+class References extends $pb.GeneratedMessage {
+  factory References() => create();
+  References._() : super();
+  factory References.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory References.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Chunks', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v1'), createEmptyInstance: create)
-    ..pc<Chunk>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Chunk.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'References', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v1'), createEmptyInstance: create)
+    ..pc<Reference>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Reference.create)
     ..hasRequiredFields = false
   ;
 
@@ -136,25 +136,25 @@ class Chunks extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  Chunks clone() => Chunks()..mergeFromMessage(this);
+  References clone() => References()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Chunks copyWith(void Function(Chunks) updates) => super.copyWith((message) => updates(message as Chunks)) as Chunks;
+  References copyWith(void Function(References) updates) => super.copyWith((message) => updates(message as References)) as References;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Chunks create() => Chunks._();
-  Chunks createEmptyInstance() => create();
-  static $pb.PbList<Chunks> createRepeated() => $pb.PbList<Chunks>();
+  static References create() => References._();
+  References createEmptyInstance() => create();
+  static $pb.PbList<References> createRepeated() => $pb.PbList<References>();
   @$core.pragma('dart2js:noInline')
-  static Chunks getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Chunks>(create);
-  static Chunks? _defaultInstance;
+  static References getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<References>(create);
+  static References? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<Chunk> get items => $_getList(0);
+  $core.List<Reference> get items => $_getList(0);
 }
 
 class SearchQuery extends $pb.GeneratedMessage {

@@ -42,10 +42,10 @@ class DocumentServiceClient extends $grpc.Client {
       '/endpoint.brainboost.documents.v1.DocumentService/Search',
       ($4.SearchQuery value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.SearchResults.fromBuffer(value));
-  static final _$getChunks = $grpc.ClientMethod<$4.ChunkIDs, $4.Chunks>(
-      '/endpoint.brainboost.documents.v1.DocumentService/GetChunks',
-      ($4.ChunkIDs value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $4.Chunks.fromBuffer(value));
+  static final _$getReferences = $grpc.ClientMethod<$4.ReferenceIDs, $4.References>(
+      '/endpoint.brainboost.documents.v1.DocumentService/GetReferences',
+      ($4.ReferenceIDs value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.References.fromBuffer(value));
 
   DocumentServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -73,8 +73,8 @@ class DocumentServiceClient extends $grpc.Client {
     return $createUnaryCall(_$search, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.Chunks> getChunks($4.ChunkIDs request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$getChunks, request, options: options);
+  $grpc.ResponseFuture<$4.References> getReferences($4.ReferenceIDs request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getReferences, request, options: options);
   }
 }
 
@@ -118,13 +118,13 @@ abstract class DocumentServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $4.SearchQuery.fromBuffer(value),
         ($4.SearchResults value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.ChunkIDs, $4.Chunks>(
-        'GetChunks',
-        getChunks_Pre,
+    $addMethod($grpc.ServiceMethod<$4.ReferenceIDs, $4.References>(
+        'GetReferences',
+        getReferences_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $4.ChunkIDs.fromBuffer(value),
-        ($4.Chunks value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $4.ReferenceIDs.fromBuffer(value),
+        ($4.References value) => value.writeToBuffer()));
   }
 
   $async.Future<$4.Documents> list_Pre($grpc.ServiceCall call, $async.Future<$4.DocumentFilter> request) async {
@@ -147,8 +147,8 @@ abstract class DocumentServiceBase extends $grpc.Service {
     return search(call, await request);
   }
 
-  $async.Future<$4.Chunks> getChunks_Pre($grpc.ServiceCall call, $async.Future<$4.ChunkIDs> request) async {
-    return getChunks(call, await request);
+  $async.Future<$4.References> getReferences_Pre($grpc.ServiceCall call, $async.Future<$4.ReferenceIDs> request) async {
+    return getReferences(call, await request);
   }
 
   $async.Future<$4.Documents> list($grpc.ServiceCall call, $4.DocumentFilter request);
@@ -156,5 +156,5 @@ abstract class DocumentServiceBase extends $grpc.Service {
   $async.Future<$0.Empty> delete($grpc.ServiceCall call, $4.Document request);
   $async.Future<$0.Empty> update($grpc.ServiceCall call, $4.Document request);
   $async.Future<$4.SearchResults> search($grpc.ServiceCall call, $4.SearchQuery request);
-  $async.Future<$4.Chunks> getChunks($grpc.ServiceCall call, $4.ChunkIDs request);
+  $async.Future<$4.References> getReferences($grpc.ServiceCall call, $4.ReferenceIDs request);
 }
