@@ -17,13 +17,13 @@ import 'dart:typed_data' as $typed_data;
 const ChunkIDs$json = {
   '1': 'ChunkIDs',
   '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'items', '3': 1, '4': 3, '5': 9, '10': 'items'},
   ],
 };
 
 /// Descriptor for `ChunkIDs`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List chunkIDsDescriptor = $convert.base64Decode(
-    'CghDaHVua0lEcxIOCgJpZBgBIAEoCVICaWQ=');
+    'CghDaHVua0lEcxIUCgVpdGVtcxgBIAMoCVIFaXRlbXM=');
 
 @$core.Deprecated('Use chunkDescriptor instead')
 const Chunk$json = {

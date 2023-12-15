@@ -20,7 +20,7 @@ class ChunkIDs extends $pb.GeneratedMessage {
   factory ChunkIDs.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ChunkIDs', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v1'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..pPS(1, _omitFieldNames ? '' : 'items')
     ..hasRequiredFields = false
   ;
 
@@ -46,13 +46,7 @@ class ChunkIDs extends $pb.GeneratedMessage {
   static ChunkIDs? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
+  $core.List<$core.String> get items => $_getList(0);
 }
 
 class Chunk extends $pb.GeneratedMessage {
