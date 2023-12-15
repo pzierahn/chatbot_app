@@ -91,31 +91,29 @@ class _SourcesDialogState extends State<SourcesDialog> {
                   children: [
                     SelectableText(
                       filenames[docId] ?? '',
-                      style: text.titleSmall,
+                      style: text.titleMedium,
                       maxLines: 1,
                     ),
                     const SizedBox(height: 8),
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         for (int inx = 0; inx < pages.length; inx++)
-                          Chip(
-                            avatar: scores.containsKey(ids[inx])
-                                ? Text(
-                                    ((scores[ids[inx]] ?? 0) * 100)
-                                        .toStringAsFixed(0),
-                                    style: text.bodySmall?.copyWith(
-                                      color: color.primary,
-                                      fontSize: 8,
-                                    ),
-                                  )
-                                : null,
-                            label: Text(
+                          ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            leading: const Icon(Icons.find_in_page_outlined),
+                            title: Text(
                               'Page ${pages[inx]}',
-                              style: text.bodySmall,
+                              style: text.bodyMedium,
                             ),
-                          )
+                            subtitle: scores.containsKey(ids[inx])
+                                ? Text(
+                                    'Score: ${((scores[ids[inx]] ?? 0) * 100).toStringAsFixed(0)}%',
+                                    style: text.bodySmall?.copyWith(
+                                      color: color.outline,
+                                    ))
+                                : null,
+                          ),
                       ],
                     ),
                   ],
