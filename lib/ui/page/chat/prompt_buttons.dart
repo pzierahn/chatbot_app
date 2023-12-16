@@ -1,6 +1,7 @@
 import 'package:braingain_app/generated/chat.pb.dart';
 import 'package:braingain_app/generated/collections.pb.dart';
 import 'package:braingain_app/ui/page/chat/parameter_dialog.dart';
+import 'package:braingain_app/ui/page/chat/select_docs_dialog.dart';
 import 'package:braingain_app/ui/page/chat/select_docs_tile.dart';
 import 'package:braingain_app/ui/page/chat/select_model_dialog.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +27,13 @@ class _PromptButtonsState extends State<PromptButtons> {
 
   Prompt get prompt => widget.prompt;
 
-  void _onSelectDocuments(List<Prompt_Document> docs) {
+  DocumentSelection _docs = DocumentSelection();
+
+  void _onSelectDocuments(DocumentSelection docs) {
     setState(() {
       prompt.documents.clear();
-      prompt.documents.addAll(docs);
+      prompt.documents.addAll(docs.getDocuments());
+      _docs = docs;
     });
 
     onPromptChanged?.call(prompt);
@@ -68,7 +72,7 @@ class _PromptButtonsState extends State<PromptButtons> {
       children: [
         SelectDocsTile(
           collection: widget.collection,
-          documents: prompt.documents,
+          documents: _docs,
           onChanged: _onSelectDocuments,
         ),
         ListTile(
