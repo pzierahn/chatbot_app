@@ -106,7 +106,7 @@ class _SourcesDialogState extends State<SourcesDialog> {
                               'Page ${pages[inx]}',
                               style: text.bodyMedium,
                             ),
-                            subtitle: scores.containsKey(ids[inx])
+                            trailing: scores.containsKey(ids[inx])
                                 ? Text(
                                     'Score: ${((scores[ids[inx]] ?? 0) * 100).toStringAsFixed(0)}%',
                                     style: text.bodySmall?.copyWith(
