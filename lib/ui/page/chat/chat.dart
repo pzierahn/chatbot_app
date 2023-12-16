@@ -78,7 +78,7 @@ class _ChatState extends State<Chat> {
 
     children.add(ChatInput(
       onPromptSubmit: (prompt) {
-        print('ChatInput: onPromptSubmit ${prompt.options}');
+        print('ChatInput: onPromptSubmit ${prompt.modelOptions}');
         setState(() {
           prompt.collectionId = widget.collection.id;
           final status = ChatFragmentStatus(prompt: prompt);

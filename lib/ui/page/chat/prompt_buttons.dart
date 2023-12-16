@@ -1,6 +1,7 @@
 import 'package:braingain_app/generated/chat.pb.dart';
 import 'package:braingain_app/generated/collections.pb.dart';
 import 'package:braingain_app/ui/page/chat/parameter_dialog.dart';
+import 'package:braingain_app/ui/page/chat/select_docs_dialog.dart';
 import 'package:braingain_app/ui/page/chat/select_docs_tile.dart';
 import 'package:braingain_app/ui/page/chat/select_model_dialog.dart';
 import 'package:flutter/material.dart';
@@ -26,22 +27,21 @@ class _PromptButtonsState extends State<PromptButtons> {
 
   Prompt get prompt => widget.prompt;
 
-  void _onSelectDocuments(List<Prompt_Document> docs) {
+  DocumentSelection _docs = DocumentSelection();
+
+  void _onSelectDocuments(DocumentSelection docs) {
     setState(() {
       prompt.documents.clear();
-      prompt.documents.addAll(docs);
+      prompt.documents.addAll(docs.getDocuments());
+      _docs = docs;
     });
 
     onPromptChanged?.call(prompt);
   }
 
   void _onShowParameter() {
-    ParameterDialog.show(context, prompt.options).then((value) {
+    ParameterDialog.show(context, prompt).then((value) {
       if (value != null) {
-        setState(() {
-          prompt.options = value;
-        });
-
         onPromptChanged?.call(prompt);
       }
     });
@@ -50,12 +50,12 @@ class _PromptButtonsState extends State<PromptButtons> {
   void _onSelectModel() async {
     final model = await SelectModelDialog.show(
       context: context,
-      model: prompt.options.model,
+      model: prompt.modelOptions.model,
     );
 
     if (model != null) {
       setState(() {
-        prompt.options.model = model;
+        prompt.modelOptions.model = model;
       });
 
       onPromptChanged?.call(prompt);
@@ -72,7 +72,7 @@ class _PromptButtonsState extends State<PromptButtons> {
       children: [
         SelectDocsTile(
           collection: widget.collection,
-          documents: prompt.documents,
+          documents: _docs,
           onChanged: _onSelectDocuments,
         ),
         ListTile(
@@ -87,7 +87,7 @@ class _PromptButtonsState extends State<PromptButtons> {
             )),
           ),
           subtitle: Text(
-            prompt.options.model,
+            prompt.modelOptions.model,
             style: text.bodySmall?.merge(TextStyle(
               color: color.outline,
             )),

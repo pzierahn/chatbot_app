@@ -97,6 +97,12 @@ class DocumentServiceClientAuth {
     options = await _mergeAuth(options);
     return _service.search(request, options: options);
   }
+
+  Future<References> getReferences(ReferenceIDs request,
+      {CallOptions? options}) async {
+    options = await _mergeAuth(options);
+    return _service.getReferences(request, options: options);
+  }
 }
 
 class AccountServiceClientAuth {

@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 class ParameterDialog extends StatefulWidget {
   const ParameterDialog({
     super.key,
-    required this.options,
+    required this.prompt,
   });
 
-  final PromptOptions options;
+  final Prompt prompt;
 
-  static Future<PromptOptions?> show(
+  static Future<Prompt?> show(
     BuildContext context,
-    PromptOptions options,
+    Prompt prompt,
   ) {
-    return showDialog<PromptOptions?>(
+    return showDialog<Prompt?>(
       context: context,
       builder: (context) {
         return AlertDialog(
@@ -22,7 +22,7 @@ class ParameterDialog extends StatefulWidget {
             width: 400,
             // height: 400,
             child: SingleChildScrollView(
-              child: ParameterDialog(options: options),
+              child: ParameterDialog(prompt: prompt),
             ),
           ),
           actions: [
@@ -34,7 +34,7 @@ class ParameterDialog extends StatefulWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.pop(context, options);
+                Navigator.pop(context, prompt);
               },
               child: const Text('Submit'),
             ),
@@ -49,7 +49,9 @@ class ParameterDialog extends StatefulWidget {
 }
 
 class _PromptOptionsState extends State<ParameterDialog> {
-  PromptOptions get options => widget.options;
+  Prompt get prompt => widget.prompt;
+
+  ModelOptions get options => prompt.modelOptions;
 
   late TextEditingController _textTemp;
   late TextEditingController _textLimit;
@@ -59,10 +61,10 @@ class _PromptOptionsState extends State<ParameterDialog> {
     super.initState();
 
     _textTemp = TextEditingController(
-      text: options.temperature.toStringAsFixed(2),
+      text: prompt.modelOptions.temperature.toStringAsFixed(2),
     );
     _textLimit = TextEditingController(
-      text: options.limit.toString(),
+      text: prompt.limit.toString(),
     );
   }
 
@@ -115,7 +117,7 @@ class _PromptOptionsState extends State<ParameterDialog> {
                   controller: _textLimit,
                   textAlign: TextAlign.end,
                   onSubmitted: (val) {
-                    setState(() => options.limit = int.parse(val));
+                    setState(() => prompt.limit = int.parse(val));
                   },
                   decoration: const InputDecoration.collapsed(
                     hintText: '0',
@@ -125,12 +127,12 @@ class _PromptOptionsState extends State<ParameterDialog> {
             ],
           ),
           subtitle: Slider(
-            value: options.limit.toDouble(),
+            value: prompt.limit.toDouble(),
             min: 0,
             max: 100,
             onChanged: (val) {
               _textLimit.text = val.toInt().toString();
-              setState(() => options.limit = val.toInt());
+              setState(() => prompt.limit = val.toInt());
             },
           ),
         ),

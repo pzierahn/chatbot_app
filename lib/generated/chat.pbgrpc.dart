@@ -20,18 +20,18 @@ import 'collections.pb.dart' as $2;
 
 export 'chat.pb.dart';
 
-@$pb.GrpcServiceName('endpoint.brainboost.chat.v1.ChatService')
+@$pb.GrpcServiceName('endpoint.brainboost.chat.v2.ChatService')
 class ChatServiceClient extends $grpc.Client {
   static final _$chat = $grpc.ClientMethod<$3.Prompt, $3.ChatMessage>(
-      '/endpoint.brainboost.chat.v1.ChatService/Chat',
+      '/endpoint.brainboost.chat.v2.ChatService/Chat',
       ($3.Prompt value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.ChatMessage.fromBuffer(value));
   static final _$getChatMessages = $grpc.ClientMethod<$2.Collection, $3.ChatMessages>(
-      '/endpoint.brainboost.chat.v1.ChatService/GetChatMessages',
+      '/endpoint.brainboost.chat.v2.ChatService/GetChatMessages',
       ($2.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.ChatMessages.fromBuffer(value));
   static final _$getChatMessage = $grpc.ClientMethod<$3.MessageID, $3.ChatMessage>(
-      '/endpoint.brainboost.chat.v1.ChatService/GetChatMessage',
+      '/endpoint.brainboost.chat.v2.ChatService/GetChatMessage',
       ($3.MessageID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.ChatMessage.fromBuffer(value));
 
@@ -54,9 +54,9 @@ class ChatServiceClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('endpoint.brainboost.chat.v1.ChatService')
+@$pb.GrpcServiceName('endpoint.brainboost.chat.v2.ChatService')
 abstract class ChatServiceBase extends $grpc.Service {
-  $core.String get $name => 'endpoint.brainboost.chat.v1.ChatService';
+  $core.String get $name => 'endpoint.brainboost.chat.v2.ChatService';
 
   ChatServiceBase() {
     $addMethod($grpc.ServiceMethod<$3.Prompt, $3.ChatMessage>(

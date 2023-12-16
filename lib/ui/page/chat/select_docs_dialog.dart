@@ -8,6 +8,45 @@ import 'package:braingain_app/utils/page_numbers.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/undraw.dart';
 
+class DocumentSelection {
+  final Map<String, Prompt_Document> documents = {};
+  final Map<String, String> names = {};
+
+  bool contains(String docId) => documents.containsKey(docId);
+
+  bool isEmpty() => documents.isEmpty;
+
+  void remove(String docId) {
+    documents.remove(docId);
+    names.remove(docId);
+  }
+
+  void add(Documents_Document doc) {
+    documents[doc.id] = Prompt_Document()
+      ..id = doc.id
+      ..pages.clear()
+      ..pages.addAll([for (int i = 1; i <= doc.pages; i++) i]);
+    names[doc.id] = doc.filename;
+  }
+
+  List<int> getPages(String docId) {
+    return documents[docId]?.pages ?? [];
+  }
+
+  void setPages(String docId, List<int> pages) {
+    documents[docId]?.pages.clear();
+    documents[docId]?.pages.addAll(pages);
+  }
+
+  List<String> getNames() {
+    return names.values.toList();
+  }
+
+  List<Prompt_Document> getDocuments() {
+    return documents.values.toList();
+  }
+}
+
 class SelectDocsDialog extends StatefulWidget {
   const SelectDocsDialog({
     super.key,
@@ -15,19 +54,19 @@ class SelectDocsDialog extends StatefulWidget {
     required this.collection,
   });
 
-  final List<Prompt_Document>? preSelected;
+  final DocumentSelection? preSelected;
   final Collections_Collection collection;
 
-  static Future<List<Prompt_Document>?> show({
+  static Future<DocumentSelection?> show({
     required BuildContext context,
     required Collections_Collection collection,
-    List<Prompt_Document>? documents,
+    DocumentSelection? documents,
   }) {
-    return showDialog<List<Prompt_Document>?>(
+    return showDialog<DocumentSelection?>(
       context: context,
       builder: (context) {
         return SelectDocsDialog(
-          preSelected: documents ?? <Prompt_Document>[],
+          preSelected: documents ?? DocumentSelection(),
           collection: collection,
         );
       },
@@ -42,16 +81,14 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
   String _query = '';
   final _formKey = GlobalKey<FormState>();
 
-  Map<String, Prompt_Document> _selectedDocs = <String, Prompt_Document>{};
+  DocumentSelection _selectedDocs = DocumentSelection();
 
   @override
   void initState() {
     super.initState();
 
     if (widget.preSelected != null) {
-      _selectedDocs = Map.fromEntries(
-        widget.preSelected!.map((doc) => MapEntry(doc.id, doc)),
-      );
+      _selectedDocs = widget.preSelected!;
     }
   }
 
@@ -116,7 +153,7 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
         TextButton(
           onPressed: () {
             if (_formKey.currentState!.validate()) {
-              Navigator.pop(context, _selectedDocs.values.toList());
+              Navigator.pop(context, _selectedDocs);
             }
           },
           child: const Text('Submit'),
@@ -135,8 +172,8 @@ class _DocumentsBody extends StatefulWidget {
   });
 
   final Documents documents;
-  final Map<String, Prompt_Document> selected;
-  final ValueChanged<Map<String, Prompt_Document>> onChanged;
+  final DocumentSelection selected;
+  final ValueChanged<DocumentSelection> onChanged;
   final Collections_Collection collection;
 
   @override
@@ -145,14 +182,10 @@ class _DocumentsBody extends StatefulWidget {
 
 class _DocumentsBodyState extends State<_DocumentsBody> {
   void _onSelect(Documents_Document doc) {
-    if (widget.selected.containsKey(doc.id)) {
+    if (widget.selected.contains(doc.id)) {
       widget.selected.remove(doc.id);
     } else {
-      widget.selected[doc.id] = Prompt_Document()
-        ..id = doc.id
-        ..filename = doc.filename
-        ..pages.clear()
-        ..pages.addAll([for (int i = 1; i <= doc.pages; i++) i]);
+      widget.selected.add(doc);
     }
 
     widget.onChanged(widget.selected);
@@ -185,7 +218,7 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
       itemBuilder: (context, index) {
         final doc = widget.documents.items[index];
         return ListTile(
-          leading: widget.selected.containsKey(doc.id)
+          leading: widget.selected.contains(doc.id)
               ? Icon(
                   Icons.task_outlined,
                   size: 16,
@@ -197,15 +230,15 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: text.bodyMedium?.merge(TextStyle(
-              color: widget.selected.containsKey(doc.id)
+              color: widget.selected.contains(doc.id)
                   ? color.primary
                   : color.onSurface,
             )),
           ),
-          subtitle: widget.selected.containsKey(doc.id)
+          subtitle: widget.selected.contains(doc.id)
               ? TextFormField(
                   controller: TextEditingController(
-                    text: formatPageList(widget.selected[doc.id]!.pages),
+                    text: formatPageList(widget.selected.getPages(doc.id)),
                   ),
                   decoration: const InputDecoration.collapsed(
                     hintText: 'Pages',
@@ -214,8 +247,8 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
                     color: color.outline,
                   )),
                   onFieldSubmitted: (text) {
-                    widget.selected[doc.id]?.pages.clear();
-                    widget.selected[doc.id]?.pages.addAll(parsePageList(text));
+                    final pages = parsePageList(text);
+                    widget.selected.setPages(doc.id, pages);
                     widget.onChanged(widget.selected);
                   },
                   validator: (value) {

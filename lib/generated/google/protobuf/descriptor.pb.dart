@@ -72,7 +72,7 @@ class FileDescriptorProto extends $pb.GeneratedMessage {
     ..p<$core.int>(10, _omitFieldNames ? '' : 'publicDependency', $pb.PbFieldType.P3)
     ..p<$core.int>(11, _omitFieldNames ? '' : 'weakDependency', $pb.PbFieldType.P3)
     ..aOS(12, _omitFieldNames ? '' : 'syntax')
-    ..aOS(13, _omitFieldNames ? '' : 'edition')
+    ..e<Edition>(14, _omitFieldNames ? '' : 'edition', $pb.PbFieldType.OE, defaultOrMaker: Edition.EDITION_UNKNOWN, valueOf: Edition.valueOf, enumValues: Edition.values)
   ;
 
   @$core.Deprecated(
@@ -166,14 +166,14 @@ class FileDescriptorProto extends $pb.GeneratedMessage {
   @$pb.TagNumber(12)
   void clearSyntax() => clearField(12);
 
-  @$pb.TagNumber(13)
-  $core.String get edition => $_getSZ(12);
-  @$pb.TagNumber(13)
-  set edition($core.String v) { $_setString(12, v); }
-  @$pb.TagNumber(13)
+  @$pb.TagNumber(14)
+  Edition get edition => $_getN(12);
+  @$pb.TagNumber(14)
+  set edition(Edition v) { setField(14, v); }
+  @$pb.TagNumber(14)
   $core.bool hasEdition() => $_has(12);
-  @$pb.TagNumber(13)
-  void clearEdition() => clearField(13);
+  @$pb.TagNumber(14)
+  void clearEdition() => clearField(14);
 }
 
 class DescriptorProto_ExtensionRange extends $pb.GeneratedMessage {
@@ -1407,8 +1407,8 @@ class FieldOptions_EditionDefault extends $pb.GeneratedMessage {
   factory FieldOptions_EditionDefault.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FieldOptions.EditionDefault', package: const $pb.PackageName(_omitMessageNames ? '' : 'google.protobuf'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'edition')
     ..aOS(2, _omitFieldNames ? '' : 'value')
+    ..e<Edition>(3, _omitFieldNames ? '' : 'edition', $pb.PbFieldType.OE, defaultOrMaker: Edition.EDITION_UNKNOWN, valueOf: Edition.valueOf, enumValues: Edition.values)
     ..hasRequiredFields = false
   ;
 
@@ -1433,23 +1433,23 @@ class FieldOptions_EditionDefault extends $pb.GeneratedMessage {
   static FieldOptions_EditionDefault getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FieldOptions_EditionDefault>(create);
   static FieldOptions_EditionDefault? _defaultInstance;
 
-  @$pb.TagNumber(1)
-  $core.String get edition => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set edition($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasEdition() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearEdition() => clearField(1);
-
   @$pb.TagNumber(2)
-  $core.String get value => $_getSZ(1);
+  $core.String get value => $_getSZ(0);
   @$pb.TagNumber(2)
-  set value($core.String v) { $_setString(1, v); }
+  set value($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(2)
-  $core.bool hasValue() => $_has(1);
+  $core.bool hasValue() => $_has(0);
   @$pb.TagNumber(2)
   void clearValue() => clearField(2);
+
+  @$pb.TagNumber(3)
+  Edition get edition => $_getN(1);
+  @$pb.TagNumber(3)
+  set edition(Edition v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasEdition() => $_has(1);
+  @$pb.TagNumber(3)
+  void clearEdition() => clearField(3);
 }
 
 class FieldOptions extends $pb.GeneratedMessage {
@@ -2078,10 +2078,9 @@ class FeatureSet extends $pb.GeneratedMessage {
     ..e<FeatureSet_FieldPresence>(1, _omitFieldNames ? '' : 'fieldPresence', $pb.PbFieldType.OE, defaultOrMaker: FeatureSet_FieldPresence.FIELD_PRESENCE_UNKNOWN, valueOf: FeatureSet_FieldPresence.valueOf, enumValues: FeatureSet_FieldPresence.values)
     ..e<FeatureSet_EnumType>(2, _omitFieldNames ? '' : 'enumType', $pb.PbFieldType.OE, defaultOrMaker: FeatureSet_EnumType.ENUM_TYPE_UNKNOWN, valueOf: FeatureSet_EnumType.valueOf, enumValues: FeatureSet_EnumType.values)
     ..e<FeatureSet_RepeatedFieldEncoding>(3, _omitFieldNames ? '' : 'repeatedFieldEncoding', $pb.PbFieldType.OE, defaultOrMaker: FeatureSet_RepeatedFieldEncoding.REPEATED_FIELD_ENCODING_UNKNOWN, valueOf: FeatureSet_RepeatedFieldEncoding.valueOf, enumValues: FeatureSet_RepeatedFieldEncoding.values)
-    ..e<FeatureSet_StringFieldValidation>(4, _omitFieldNames ? '' : 'stringFieldValidation', $pb.PbFieldType.OE, defaultOrMaker: FeatureSet_StringFieldValidation.STRING_FIELD_VALIDATION_UNKNOWN, valueOf: FeatureSet_StringFieldValidation.valueOf, enumValues: FeatureSet_StringFieldValidation.values)
+    ..e<FeatureSet_Utf8Validation>(4, _omitFieldNames ? '' : 'utf8Validation', $pb.PbFieldType.OE, defaultOrMaker: FeatureSet_Utf8Validation.UTF8_VALIDATION_UNKNOWN, valueOf: FeatureSet_Utf8Validation.valueOf, enumValues: FeatureSet_Utf8Validation.values)
     ..e<FeatureSet_MessageEncoding>(5, _omitFieldNames ? '' : 'messageEncoding', $pb.PbFieldType.OE, defaultOrMaker: FeatureSet_MessageEncoding.MESSAGE_ENCODING_UNKNOWN, valueOf: FeatureSet_MessageEncoding.valueOf, enumValues: FeatureSet_MessageEncoding.values)
     ..e<FeatureSet_JsonFormat>(6, _omitFieldNames ? '' : 'jsonFormat', $pb.PbFieldType.OE, defaultOrMaker: FeatureSet_JsonFormat.JSON_FORMAT_UNKNOWN, valueOf: FeatureSet_JsonFormat.valueOf, enumValues: FeatureSet_JsonFormat.values)
-    ..aOM<FeatureSet>(999, _omitFieldNames ? '' : 'rawFeatures', subBuilder: FeatureSet.create)
     ..hasExtensions = true
   ;
 
@@ -2134,13 +2133,13 @@ class FeatureSet extends $pb.GeneratedMessage {
   void clearRepeatedFieldEncoding() => clearField(3);
 
   @$pb.TagNumber(4)
-  FeatureSet_StringFieldValidation get stringFieldValidation => $_getN(3);
+  FeatureSet_Utf8Validation get utf8Validation => $_getN(3);
   @$pb.TagNumber(4)
-  set stringFieldValidation(FeatureSet_StringFieldValidation v) { setField(4, v); }
+  set utf8Validation(FeatureSet_Utf8Validation v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasStringFieldValidation() => $_has(3);
+  $core.bool hasUtf8Validation() => $_has(3);
   @$pb.TagNumber(4)
-  void clearStringFieldValidation() => clearField(4);
+  void clearUtf8Validation() => clearField(4);
 
   @$pb.TagNumber(5)
   FeatureSet_MessageEncoding get messageEncoding => $_getN(4);
@@ -2159,17 +2158,114 @@ class FeatureSet extends $pb.GeneratedMessage {
   $core.bool hasJsonFormat() => $_has(5);
   @$pb.TagNumber(6)
   void clearJsonFormat() => clearField(6);
+}
 
-  @$pb.TagNumber(999)
-  FeatureSet get rawFeatures => $_getN(6);
-  @$pb.TagNumber(999)
-  set rawFeatures(FeatureSet v) { setField(999, v); }
-  @$pb.TagNumber(999)
-  $core.bool hasRawFeatures() => $_has(6);
-  @$pb.TagNumber(999)
-  void clearRawFeatures() => clearField(999);
-  @$pb.TagNumber(999)
-  FeatureSet ensureRawFeatures() => $_ensure(6);
+class FeatureSetDefaults_FeatureSetEditionDefault extends $pb.GeneratedMessage {
+  factory FeatureSetDefaults_FeatureSetEditionDefault() => create();
+  FeatureSetDefaults_FeatureSetEditionDefault._() : super();
+  factory FeatureSetDefaults_FeatureSetEditionDefault.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FeatureSetDefaults_FeatureSetEditionDefault.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FeatureSetDefaults.FeatureSetEditionDefault', package: const $pb.PackageName(_omitMessageNames ? '' : 'google.protobuf'), createEmptyInstance: create)
+    ..aOM<FeatureSet>(2, _omitFieldNames ? '' : 'features', subBuilder: FeatureSet.create)
+    ..e<Edition>(3, _omitFieldNames ? '' : 'edition', $pb.PbFieldType.OE, defaultOrMaker: Edition.EDITION_UNKNOWN, valueOf: Edition.valueOf, enumValues: Edition.values)
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  FeatureSetDefaults_FeatureSetEditionDefault clone() => FeatureSetDefaults_FeatureSetEditionDefault()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  FeatureSetDefaults_FeatureSetEditionDefault copyWith(void Function(FeatureSetDefaults_FeatureSetEditionDefault) updates) => super.copyWith((message) => updates(message as FeatureSetDefaults_FeatureSetEditionDefault)) as FeatureSetDefaults_FeatureSetEditionDefault;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static FeatureSetDefaults_FeatureSetEditionDefault create() => FeatureSetDefaults_FeatureSetEditionDefault._();
+  FeatureSetDefaults_FeatureSetEditionDefault createEmptyInstance() => create();
+  static $pb.PbList<FeatureSetDefaults_FeatureSetEditionDefault> createRepeated() => $pb.PbList<FeatureSetDefaults_FeatureSetEditionDefault>();
+  @$core.pragma('dart2js:noInline')
+  static FeatureSetDefaults_FeatureSetEditionDefault getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FeatureSetDefaults_FeatureSetEditionDefault>(create);
+  static FeatureSetDefaults_FeatureSetEditionDefault? _defaultInstance;
+
+  @$pb.TagNumber(2)
+  FeatureSet get features => $_getN(0);
+  @$pb.TagNumber(2)
+  set features(FeatureSet v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasFeatures() => $_has(0);
+  @$pb.TagNumber(2)
+  void clearFeatures() => clearField(2);
+  @$pb.TagNumber(2)
+  FeatureSet ensureFeatures() => $_ensure(0);
+
+  @$pb.TagNumber(3)
+  Edition get edition => $_getN(1);
+  @$pb.TagNumber(3)
+  set edition(Edition v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasEdition() => $_has(1);
+  @$pb.TagNumber(3)
+  void clearEdition() => clearField(3);
+}
+
+class FeatureSetDefaults extends $pb.GeneratedMessage {
+  factory FeatureSetDefaults() => create();
+  FeatureSetDefaults._() : super();
+  factory FeatureSetDefaults.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FeatureSetDefaults.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FeatureSetDefaults', package: const $pb.PackageName(_omitMessageNames ? '' : 'google.protobuf'), createEmptyInstance: create)
+    ..pc<FeatureSetDefaults_FeatureSetEditionDefault>(1, _omitFieldNames ? '' : 'defaults', $pb.PbFieldType.PM, subBuilder: FeatureSetDefaults_FeatureSetEditionDefault.create)
+    ..e<Edition>(4, _omitFieldNames ? '' : 'minimumEdition', $pb.PbFieldType.OE, defaultOrMaker: Edition.EDITION_UNKNOWN, valueOf: Edition.valueOf, enumValues: Edition.values)
+    ..e<Edition>(5, _omitFieldNames ? '' : 'maximumEdition', $pb.PbFieldType.OE, defaultOrMaker: Edition.EDITION_UNKNOWN, valueOf: Edition.valueOf, enumValues: Edition.values)
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  FeatureSetDefaults clone() => FeatureSetDefaults()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  FeatureSetDefaults copyWith(void Function(FeatureSetDefaults) updates) => super.copyWith((message) => updates(message as FeatureSetDefaults)) as FeatureSetDefaults;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static FeatureSetDefaults create() => FeatureSetDefaults._();
+  FeatureSetDefaults createEmptyInstance() => create();
+  static $pb.PbList<FeatureSetDefaults> createRepeated() => $pb.PbList<FeatureSetDefaults>();
+  @$core.pragma('dart2js:noInline')
+  static FeatureSetDefaults getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FeatureSetDefaults>(create);
+  static FeatureSetDefaults? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<FeatureSetDefaults_FeatureSetEditionDefault> get defaults => $_getList(0);
+
+  @$pb.TagNumber(4)
+  Edition get minimumEdition => $_getN(1);
+  @$pb.TagNumber(4)
+  set minimumEdition(Edition v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasMinimumEdition() => $_has(1);
+  @$pb.TagNumber(4)
+  void clearMinimumEdition() => clearField(4);
+
+  @$pb.TagNumber(5)
+  Edition get maximumEdition => $_getN(2);
+  @$pb.TagNumber(5)
+  set maximumEdition(Edition v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasMaximumEdition() => $_has(2);
+  @$pb.TagNumber(5)
+  void clearMaximumEdition() => clearField(5);
 }
 
 class SourceCodeInfo_Location extends $pb.GeneratedMessage {

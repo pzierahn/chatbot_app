@@ -13,6 +13,150 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+class ReferenceIDs extends $pb.GeneratedMessage {
+  factory ReferenceIDs() => create();
+  ReferenceIDs._() : super();
+  factory ReferenceIDs.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ReferenceIDs.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ReferenceIDs', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v1'), createEmptyInstance: create)
+    ..pPS(1, _omitFieldNames ? '' : 'items')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ReferenceIDs clone() => ReferenceIDs()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ReferenceIDs copyWith(void Function(ReferenceIDs) updates) => super.copyWith((message) => updates(message as ReferenceIDs)) as ReferenceIDs;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static ReferenceIDs create() => ReferenceIDs._();
+  ReferenceIDs createEmptyInstance() => create();
+  static $pb.PbList<ReferenceIDs> createRepeated() => $pb.PbList<ReferenceIDs>();
+  @$core.pragma('dart2js:noInline')
+  static ReferenceIDs getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReferenceIDs>(create);
+  static ReferenceIDs? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.String> get items => $_getList(0);
+}
+
+class Reference extends $pb.GeneratedMessage {
+  factory Reference() => create();
+  Reference._() : super();
+  factory Reference.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Reference.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Reference', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'documentId')
+    ..aOS(3, _omitFieldNames ? '' : 'filename')
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'page', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Reference clone() => Reference()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Reference copyWith(void Function(Reference) updates) => super.copyWith((message) => updates(message as Reference)) as Reference;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Reference create() => Reference._();
+  Reference createEmptyInstance() => create();
+  static $pb.PbList<Reference> createRepeated() => $pb.PbList<Reference>();
+  @$core.pragma('dart2js:noInline')
+  static Reference getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Reference>(create);
+  static Reference? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get documentId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set documentId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasDocumentId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDocumentId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get filename => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set filename($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasFilename() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearFilename() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.int get page => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set page($core.int v) { $_setUnsignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasPage() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearPage() => clearField(4);
+}
+
+class References extends $pb.GeneratedMessage {
+  factory References() => create();
+  References._() : super();
+  factory References.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory References.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'References', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v1'), createEmptyInstance: create)
+    ..pc<Reference>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Reference.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  References clone() => References()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  References copyWith(void Function(References) updates) => super.copyWith((message) => updates(message as References)) as References;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static References create() => References._();
+  References createEmptyInstance() => create();
+  static $pb.PbList<References> createRepeated() => $pb.PbList<References>();
+  @$core.pragma('dart2js:noInline')
+  static References getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<References>(create);
+  static References? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<Reference> get items => $_getList(0);
+}
+
 class SearchQuery extends $pb.GeneratedMessage {
   factory SearchQuery() => create();
   SearchQuery._() : super();

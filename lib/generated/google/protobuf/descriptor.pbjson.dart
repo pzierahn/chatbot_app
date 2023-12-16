@@ -13,6 +13,30 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use editionDescriptor instead')
+const Edition$json = {
+  '1': 'Edition',
+  '2': [
+    {'1': 'EDITION_UNKNOWN', '2': 0},
+    {'1': 'EDITION_PROTO2', '2': 998},
+    {'1': 'EDITION_PROTO3', '2': 999},
+    {'1': 'EDITION_2023', '2': 1000},
+    {'1': 'EDITION_1_TEST_ONLY', '2': 1},
+    {'1': 'EDITION_2_TEST_ONLY', '2': 2},
+    {'1': 'EDITION_99997_TEST_ONLY', '2': 99997},
+    {'1': 'EDITION_99998_TEST_ONLY', '2': 99998},
+    {'1': 'EDITION_99999_TEST_ONLY', '2': 99999},
+  ],
+};
+
+/// Descriptor for `Edition`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List editionDescriptor = $convert.base64Decode(
+    'CgdFZGl0aW9uEhMKD0VESVRJT05fVU5LTk9XThAAEhMKDkVESVRJT05fUFJPVE8yEOYHEhMKDk'
+    'VESVRJT05fUFJPVE8zEOcHEhEKDEVESVRJT05fMjAyMxDoBxIXChNFRElUSU9OXzFfVEVTVF9P'
+    'TkxZEAESFwoTRURJVElPTl8yX1RFU1RfT05MWRACEh0KF0VESVRJT05fOTk5OTdfVEVTVF9PTk'
+    'xZEJ2NBhIdChdFRElUSU9OXzk5OTk4X1RFU1RfT05MWRCejQYSHQoXRURJVElPTl85OTk5OV9U'
+    'RVNUX09OTFkQn40G');
+
 @$core.Deprecated('Use fileDescriptorSetDescriptor instead')
 const FileDescriptorSet$json = {
   '1': 'FileDescriptorSet',
@@ -42,7 +66,7 @@ const FileDescriptorProto$json = {
     {'1': 'options', '3': 8, '4': 1, '5': 11, '6': '.google.protobuf.FileOptions', '10': 'options'},
     {'1': 'source_code_info', '3': 9, '4': 1, '5': 11, '6': '.google.protobuf.SourceCodeInfo', '10': 'sourceCodeInfo'},
     {'1': 'syntax', '3': 12, '4': 1, '5': 9, '10': 'syntax'},
-    {'1': 'edition', '3': 13, '4': 1, '5': 9, '10': 'edition'},
+    {'1': 'edition', '3': 14, '4': 1, '5': 14, '6': '.google.protobuf.Edition', '10': 'edition'},
   ],
 };
 
@@ -59,7 +83,7 @@ final $typed_data.Uint8List fileDescriptorProtoDescriptor = $convert.base64Decod
     'dG9SCWV4dGVuc2lvbhI2CgdvcHRpb25zGAggASgLMhwuZ29vZ2xlLnByb3RvYnVmLkZpbGVPcH'
     'Rpb25zUgdvcHRpb25zEkkKEHNvdXJjZV9jb2RlX2luZm8YCSABKAsyHy5nb29nbGUucHJvdG9i'
     'dWYuU291cmNlQ29kZUluZm9SDnNvdXJjZUNvZGVJbmZvEhYKBnN5bnRheBgMIAEoCVIGc3ludG'
-    'F4EhgKB2VkaXRpb24YDSABKAlSB2VkaXRpb24=');
+    'F4EjIKB2VkaXRpb24YDiABKA4yGC5nb29nbGUucHJvdG9idWYuRWRpdGlvblIHZWRpdGlvbg==');
 
 @$core.Deprecated('Use descriptorProtoDescriptor instead')
 const DescriptorProto$json = {
@@ -219,8 +243,8 @@ const FieldDescriptorProto_Label$json = {
   '1': 'Label',
   '2': [
     {'1': 'LABEL_OPTIONAL', '2': 1},
-    {'1': 'LABEL_REQUIRED', '2': 2},
     {'1': 'LABEL_REPEATED', '2': 3},
+    {'1': 'LABEL_REQUIRED', '2': 2},
   ],
 };
 
@@ -240,8 +264,8 @@ final $typed_data.Uint8List fieldDescriptorProtoDescriptor = $convert.base64Deco
     'IOCgpUWVBFX0dST1VQEAoSEAoMVFlQRV9NRVNTQUdFEAsSDgoKVFlQRV9CWVRFUxAMEg8KC1RZ'
     'UEVfVUlOVDMyEA0SDQoJVFlQRV9FTlVNEA4SEQoNVFlQRV9TRklYRUQzMhAPEhEKDVRZUEVfU0'
     'ZJWEVENjQQEBIPCgtUWVBFX1NJTlQzMhAREg8KC1RZUEVfU0lOVDY0EBIiQwoFTGFiZWwSEgoO'
-    'TEFCRUxfT1BUSU9OQUwQARISCg5MQUJFTF9SRVFVSVJFRBACEhIKDkxBQkVMX1JFUEVBVEVEEA'
-    'M=');
+    'TEFCRUxfT1BUSU9OQUwQARISCg5MQUJFTF9SRVBFQVRFRBADEhIKDkxBQkVMX1JFUVVJUkVEEA'
+    'I=');
 
 @$core.Deprecated('Use oneofDescriptorProtoDescriptor instead')
 const OneofDescriptorProto$json = {
@@ -499,7 +523,7 @@ const FieldOptions$json = {
 const FieldOptions_EditionDefault$json = {
   '1': 'EditionDefault',
   '2': [
-    {'1': 'edition', '3': 1, '4': 1, '5': 9, '10': 'edition'},
+    {'1': 'edition', '3': 3, '4': 1, '5': 14, '6': '.google.protobuf.Edition', '10': 'edition'},
     {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
   ],
 };
@@ -566,17 +590,17 @@ final $typed_data.Uint8List fieldOptionsDescriptor = $convert.base64Decode(
     'Zi5GaWVsZE9wdGlvbnMuRWRpdGlvbkRlZmF1bHRSD2VkaXRpb25EZWZhdWx0cxI3CghmZWF0dX'
     'JlcxgVIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GZWF0dXJlU2V0UghmZWF0dXJlcxJYChR1bmlu'
     'dGVycHJldGVkX29wdGlvbhjnByADKAsyJC5nb29nbGUucHJvdG9idWYuVW5pbnRlcnByZXRlZE'
-    '9wdGlvblITdW5pbnRlcnByZXRlZE9wdGlvbhpACg5FZGl0aW9uRGVmYXVsdBIYCgdlZGl0aW9u'
-    'GAEgASgJUgdlZGl0aW9uEhQKBXZhbHVlGAIgASgJUgV2YWx1ZSIvCgVDVHlwZRIKCgZTVFJJTk'
-    'cQABIICgRDT1JEEAESEAoMU1RSSU5HX1BJRUNFEAIiNQoGSlNUeXBlEg0KCUpTX05PUk1BTBAA'
-    'Eg0KCUpTX1NUUklORxABEg0KCUpTX05VTUJFUhACIlUKD09wdGlvblJldGVudGlvbhIVChFSRV'
-    'RFTlRJT05fVU5LTk9XThAAEhUKEVJFVEVOVElPTl9SVU5USU1FEAESFAoQUkVURU5USU9OX1NP'
-    'VVJDRRACIowCChBPcHRpb25UYXJnZXRUeXBlEhcKE1RBUkdFVF9UWVBFX1VOS05PV04QABIUCh'
-    'BUQVJHRVRfVFlQRV9GSUxFEAESHwobVEFSR0VUX1RZUEVfRVhURU5TSU9OX1JBTkdFEAISFwoT'
-    'VEFSR0VUX1RZUEVfTUVTU0FHRRADEhUKEVRBUkdFVF9UWVBFX0ZJRUxEEAQSFQoRVEFSR0VUX1'
-    'RZUEVfT05FT0YQBRIUChBUQVJHRVRfVFlQRV9FTlVNEAYSGgoWVEFSR0VUX1RZUEVfRU5VTV9F'
-    'TlRSWRAHEhcKE1RBUkdFVF9UWVBFX1NFUlZJQ0UQCBIWChJUQVJHRVRfVFlQRV9NRVRIT0QQCS'
-    'oJCOgHEICAgIACSgQIBBAFSgQIEhAT');
+    '9wdGlvblITdW5pbnRlcnByZXRlZE9wdGlvbhpaCg5FZGl0aW9uRGVmYXVsdBIyCgdlZGl0aW9u'
+    'GAMgASgOMhguZ29vZ2xlLnByb3RvYnVmLkVkaXRpb25SB2VkaXRpb24SFAoFdmFsdWUYAiABKA'
+    'lSBXZhbHVlIi8KBUNUeXBlEgoKBlNUUklORxAAEggKBENPUkQQARIQCgxTVFJJTkdfUElFQ0UQ'
+    'AiI1CgZKU1R5cGUSDQoJSlNfTk9STUFMEAASDQoJSlNfU1RSSU5HEAESDQoJSlNfTlVNQkVSEA'
+    'IiVQoPT3B0aW9uUmV0ZW50aW9uEhUKEVJFVEVOVElPTl9VTktOT1dOEAASFQoRUkVURU5USU9O'
+    'X1JVTlRJTUUQARIUChBSRVRFTlRJT05fU09VUkNFEAIijAIKEE9wdGlvblRhcmdldFR5cGUSFw'
+    'oTVEFSR0VUX1RZUEVfVU5LTk9XThAAEhQKEFRBUkdFVF9UWVBFX0ZJTEUQARIfChtUQVJHRVRf'
+    'VFlQRV9FWFRFTlNJT05fUkFOR0UQAhIXChNUQVJHRVRfVFlQRV9NRVNTQUdFEAMSFQoRVEFSR0'
+    'VUX1RZUEVfRklFTEQQBBIVChFUQVJHRVRfVFlQRV9PTkVPRhAFEhQKEFRBUkdFVF9UWVBFX0VO'
+    'VU0QBhIaChZUQVJHRVRfVFlQRV9FTlVNX0VOVFJZEAcSFwoTVEFSR0VUX1RZUEVfU0VSVklDRR'
+    'AIEhYKElRBUkdFVF9UWVBFX01FVEhPRBAJKgkI6AcQgICAgAJKBAgEEAVKBAgSEBM=');
 
 @$core.Deprecated('Use oneofOptionsDescriptor instead')
 const OneofOptions$json = {
@@ -752,16 +776,18 @@ const FeatureSet$json = {
     {'1': 'field_presence', '3': 1, '4': 1, '5': 14, '6': '.google.protobuf.FeatureSet.FieldPresence', '8': {}, '10': 'fieldPresence'},
     {'1': 'enum_type', '3': 2, '4': 1, '5': 14, '6': '.google.protobuf.FeatureSet.EnumType', '8': {}, '10': 'enumType'},
     {'1': 'repeated_field_encoding', '3': 3, '4': 1, '5': 14, '6': '.google.protobuf.FeatureSet.RepeatedFieldEncoding', '8': {}, '10': 'repeatedFieldEncoding'},
-    {'1': 'string_field_validation', '3': 4, '4': 1, '5': 14, '6': '.google.protobuf.FeatureSet.StringFieldValidation', '8': {}, '10': 'stringFieldValidation'},
+    {'1': 'utf8_validation', '3': 4, '4': 1, '5': 14, '6': '.google.protobuf.FeatureSet.Utf8Validation', '8': {}, '10': 'utf8Validation'},
     {'1': 'message_encoding', '3': 5, '4': 1, '5': 14, '6': '.google.protobuf.FeatureSet.MessageEncoding', '8': {}, '10': 'messageEncoding'},
     {'1': 'json_format', '3': 6, '4': 1, '5': 14, '6': '.google.protobuf.FeatureSet.JsonFormat', '8': {}, '10': 'jsonFormat'},
-    {'1': 'raw_features', '3': 999, '4': 1, '5': 11, '6': '.google.protobuf.FeatureSet', '8': {}, '10': 'rawFeatures'},
   ],
-  '4': [FeatureSet_FieldPresence$json, FeatureSet_EnumType$json, FeatureSet_RepeatedFieldEncoding$json, FeatureSet_StringFieldValidation$json, FeatureSet_MessageEncoding$json, FeatureSet_JsonFormat$json],
+  '4': [FeatureSet_FieldPresence$json, FeatureSet_EnumType$json, FeatureSet_RepeatedFieldEncoding$json, FeatureSet_Utf8Validation$json, FeatureSet_MessageEncoding$json, FeatureSet_JsonFormat$json],
   '5': [
     {'1': 1000, '2': 1001},
     {'1': 1001, '2': 1002},
     {'1': 9995, '2': 10000},
+  ],
+  '9': [
+    {'1': 999, '2': 1000},
   ],
 };
 
@@ -797,13 +823,12 @@ const FeatureSet_RepeatedFieldEncoding$json = {
 };
 
 @$core.Deprecated('Use featureSetDescriptor instead')
-const FeatureSet_StringFieldValidation$json = {
-  '1': 'StringFieldValidation',
+const FeatureSet_Utf8Validation$json = {
+  '1': 'Utf8Validation',
   '2': [
-    {'1': 'STRING_FIELD_VALIDATION_UNKNOWN', '2': 0},
-    {'1': 'MANDATORY', '2': 1},
-    {'1': 'HINT', '2': 2},
-    {'1': 'NONE', '2': 3},
+    {'1': 'UTF8_VALIDATION_UNKNOWN', '2': 0},
+    {'1': 'NONE', '2': 1},
+    {'1': 'VERIFY', '2': 2},
   ],
 };
 
@@ -829,30 +854,60 @@ const FeatureSet_JsonFormat$json = {
 
 /// Descriptor for `FeatureSet`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List featureSetDescriptor = $convert.base64Decode(
-    'CgpGZWF0dXJlU2V0Em4KDmZpZWxkX3ByZXNlbmNlGAEgASgOMikuZ29vZ2xlLnByb3RvYnVmLk'
-    'ZlYXR1cmVTZXQuRmllbGRQcmVzZW5jZUIciAEBmAEEmAEBogEQCgQyMDIzEghFWFBMSUNJVFIN'
-    'ZmllbGRQcmVzZW5jZRJbCgllbnVtX3R5cGUYAiABKA4yJC5nb29nbGUucHJvdG9idWYuRmVhdH'
-    'VyZVNldC5FbnVtVHlwZUIYiAEBmAEGmAEBogEMCgQyMDIzEgRPUEVOUghlbnVtVHlwZRKFAQoX'
-    'cmVwZWF0ZWRfZmllbGRfZW5jb2RpbmcYAyABKA4yMS5nb29nbGUucHJvdG9idWYuRmVhdHVyZV'
-    'NldC5SZXBlYXRlZEZpZWxkRW5jb2RpbmdCGogBAZgBBJgBAaIBDgoEMjAyMxIGUEFDS0VEUhVy'
-    'ZXBlYXRlZEZpZWxkRW5jb2RpbmcSiAEKF3N0cmluZ19maWVsZF92YWxpZGF0aW9uGAQgASgOMj'
-    'EuZ29vZ2xlLnByb3RvYnVmLkZlYXR1cmVTZXQuU3RyaW5nRmllbGRWYWxpZGF0aW9uQh2IAQGY'
-    'AQSYAQGiAREKBDIwMjMSCU1BTkRBVE9SWVIVc3RyaW5nRmllbGRWYWxpZGF0aW9uEnsKEG1lc3'
-    'NhZ2VfZW5jb2RpbmcYBSABKA4yKy5nb29nbGUucHJvdG9idWYuRmVhdHVyZVNldC5NZXNzYWdl'
-    'RW5jb2RpbmdCI4gBAZgBBJgBAaIBFwoEMjAyMxIPTEVOR1RIX1BSRUZJWEVEUg9tZXNzYWdlRW'
-    '5jb2RpbmcSZQoLanNvbl9mb3JtYXQYBiABKA4yJi5nb29nbGUucHJvdG9idWYuRmVhdHVyZVNl'
-    'dC5Kc29uRm9ybWF0QhyIAQGYAQOYAQaYAQGiAQ0KBDIwMjMSBUFMTE9XUgpqc29uRm9ybWF0Ek'
-    'QKDHJhd19mZWF0dXJlcxjnByABKAsyGy5nb29nbGUucHJvdG9idWYuRmVhdHVyZVNldEIDmAEA'
-    'UgtyYXdGZWF0dXJlcyJcCg1GaWVsZFByZXNlbmNlEhoKFkZJRUxEX1BSRVNFTkNFX1VOS05PV0'
-    '4QABIMCghFWFBMSUNJVBABEgwKCElNUExJQ0lUEAISEwoPTEVHQUNZX1JFUVVJUkVEEAMiNwoI'
-    'RW51bVR5cGUSFQoRRU5VTV9UWVBFX1VOS05PV04QABIICgRPUEVOEAESCgoGQ0xPU0VEEAIiVg'
-    'oVUmVwZWF0ZWRGaWVsZEVuY29kaW5nEiMKH1JFUEVBVEVEX0ZJRUxEX0VOQ09ESU5HX1VOS05P'
-    'V04QABIKCgZQQUNLRUQQARIMCghFWFBBTkRFRBACIl8KFVN0cmluZ0ZpZWxkVmFsaWRhdGlvbh'
-    'IjCh9TVFJJTkdfRklFTERfVkFMSURBVElPTl9VTktOT1dOEAASDQoJTUFOREFUT1JZEAESCAoE'
-    'SElOVBACEggKBE5PTkUQAyJTCg9NZXNzYWdlRW5jb2RpbmcSHAoYTUVTU0FHRV9FTkNPRElOR1'
-    '9VTktOT1dOEAASEwoPTEVOR1RIX1BSRUZJWEVEEAESDQoJREVMSU1JVEVEEAIiSAoKSnNvbkZv'
-    'cm1hdBIXChNKU09OX0ZPUk1BVF9VTktOT1dOEAASCQoFQUxMT1cQARIWChJMRUdBQ1lfQkVTVF'
-    '9FRkZPUlQQAioGCOgHEOkHKgYI6QcQ6gcqBgiLThCQTg==');
+    'CgpGZWF0dXJlU2V0EosBCg5maWVsZF9wcmVzZW5jZRgBIAEoDjIpLmdvb2dsZS5wcm90b2J1Zi'
+    '5GZWF0dXJlU2V0LkZpZWxkUHJlc2VuY2VCOYgBAZgBBJgBAaIBDRIIRVhQTElDSVQY5geiAQ0S'
+    'CElNUExJQ0lUGOcHogENEghFWFBMSUNJVBjoB1INZmllbGRQcmVzZW5jZRJmCgllbnVtX3R5cG'
+    'UYAiABKA4yJC5nb29nbGUucHJvdG9idWYuRmVhdHVyZVNldC5FbnVtVHlwZUIjiAEBmAEGmAEB'
+    'ogELEgZDTE9TRUQY5geiAQkSBE9QRU4Y5wdSCGVudW1UeXBlEpIBChdyZXBlYXRlZF9maWVsZF'
+    '9lbmNvZGluZxgDIAEoDjIxLmdvb2dsZS5wcm90b2J1Zi5GZWF0dXJlU2V0LlJlcGVhdGVkRmll'
+    'bGRFbmNvZGluZ0IniAEBmAEEmAEBogENEghFWFBBTkRFRBjmB6IBCxIGUEFDS0VEGOcHUhVyZX'
+    'BlYXRlZEZpZWxkRW5jb2RpbmcSeAoPdXRmOF92YWxpZGF0aW9uGAQgASgOMiouZ29vZ2xlLnBy'
+    'b3RvYnVmLkZlYXR1cmVTZXQuVXRmOFZhbGlkYXRpb25CI4gBAZgBBJgBAaIBCRIETk9ORRjmB6'
+    'IBCxIGVkVSSUZZGOcHUg51dGY4VmFsaWRhdGlvbhJ4ChBtZXNzYWdlX2VuY29kaW5nGAUgASgO'
+    'MisuZ29vZ2xlLnByb3RvYnVmLkZlYXR1cmVTZXQuTWVzc2FnZUVuY29kaW5nQiCIAQGYAQSYAQ'
+    'GiARQSD0xFTkdUSF9QUkVGSVhFRBjmB1IPbWVzc2FnZUVuY29kaW5nEnwKC2pzb25fZm9ybWF0'
+    'GAYgASgOMiYuZ29vZ2xlLnByb3RvYnVmLkZlYXR1cmVTZXQuSnNvbkZvcm1hdEIziAEBmAEDmA'
+    'EGmAEBogEXEhJMRUdBQ1lfQkVTVF9FRkZPUlQY5geiAQoSBUFMTE9XGOcHUgpqc29uRm9ybWF0'
+    'IlwKDUZpZWxkUHJlc2VuY2USGgoWRklFTERfUFJFU0VOQ0VfVU5LTk9XThAAEgwKCEVYUExJQ0'
+    'lUEAESDAoISU1QTElDSVQQAhITCg9MRUdBQ1lfUkVRVUlSRUQQAyI3CghFbnVtVHlwZRIVChFF'
+    'TlVNX1RZUEVfVU5LTk9XThAAEggKBE9QRU4QARIKCgZDTE9TRUQQAiJWChVSZXBlYXRlZEZpZW'
+    'xkRW5jb2RpbmcSIwofUkVQRUFURURfRklFTERfRU5DT0RJTkdfVU5LTk9XThAAEgoKBlBBQ0tF'
+    'RBABEgwKCEVYUEFOREVEEAIiQwoOVXRmOFZhbGlkYXRpb24SGwoXVVRGOF9WQUxJREFUSU9OX1'
+    'VOS05PV04QABIICgROT05FEAESCgoGVkVSSUZZEAIiUwoPTWVzc2FnZUVuY29kaW5nEhwKGE1F'
+    'U1NBR0VfRU5DT0RJTkdfVU5LTk9XThAAEhMKD0xFTkdUSF9QUkVGSVhFRBABEg0KCURFTElNSV'
+    'RFRBACIkgKCkpzb25Gb3JtYXQSFwoTSlNPTl9GT1JNQVRfVU5LTk9XThAAEgkKBUFMTE9XEAES'
+    'FgoSTEVHQUNZX0JFU1RfRUZGT1JUEAIqBgjoBxDpByoGCOkHEOoHKgYIi04QkE5KBgjnBxDoBw'
+    '==');
+
+@$core.Deprecated('Use featureSetDefaultsDescriptor instead')
+const FeatureSetDefaults$json = {
+  '1': 'FeatureSetDefaults',
+  '2': [
+    {'1': 'defaults', '3': 1, '4': 3, '5': 11, '6': '.google.protobuf.FeatureSetDefaults.FeatureSetEditionDefault', '10': 'defaults'},
+    {'1': 'minimum_edition', '3': 4, '4': 1, '5': 14, '6': '.google.protobuf.Edition', '10': 'minimumEdition'},
+    {'1': 'maximum_edition', '3': 5, '4': 1, '5': 14, '6': '.google.protobuf.Edition', '10': 'maximumEdition'},
+  ],
+  '3': [FeatureSetDefaults_FeatureSetEditionDefault$json],
+};
+
+@$core.Deprecated('Use featureSetDefaultsDescriptor instead')
+const FeatureSetDefaults_FeatureSetEditionDefault$json = {
+  '1': 'FeatureSetEditionDefault',
+  '2': [
+    {'1': 'edition', '3': 3, '4': 1, '5': 14, '6': '.google.protobuf.Edition', '10': 'edition'},
+    {'1': 'features', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.FeatureSet', '10': 'features'},
+  ],
+};
+
+/// Descriptor for `FeatureSetDefaults`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List featureSetDefaultsDescriptor = $convert.base64Decode(
+    'ChJGZWF0dXJlU2V0RGVmYXVsdHMSWAoIZGVmYXVsdHMYASADKAsyPC5nb29nbGUucHJvdG9idW'
+    'YuRmVhdHVyZVNldERlZmF1bHRzLkZlYXR1cmVTZXRFZGl0aW9uRGVmYXVsdFIIZGVmYXVsdHMS'
+    'QQoPbWluaW11bV9lZGl0aW9uGAQgASgOMhguZ29vZ2xlLnByb3RvYnVmLkVkaXRpb25SDm1pbm'
+    'ltdW1FZGl0aW9uEkEKD21heGltdW1fZWRpdGlvbhgFIAEoDjIYLmdvb2dsZS5wcm90b2J1Zi5F'
+    'ZGl0aW9uUg5tYXhpbXVtRWRpdGlvbhqHAQoYRmVhdHVyZVNldEVkaXRpb25EZWZhdWx0EjIKB2'
+    'VkaXRpb24YAyABKA4yGC5nb29nbGUucHJvdG9idWYuRWRpdGlvblIHZWRpdGlvbhI3CghmZWF0'
+    'dXJlcxgCIAEoCzIbLmdvb2dsZS5wcm90b2J1Zi5GZWF0dXJlU2V0UghmZWF0dXJlcw==');
 
 @$core.Deprecated('Use sourceCodeInfoDescriptor instead')
 const SourceCodeInfo$json = {

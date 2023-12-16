@@ -1,4 +1,3 @@
-import 'package:braingain_app/generated/chat.pb.dart';
 import 'package:braingain_app/generated/collections.pb.dart';
 import 'package:braingain_app/ui/page/chat/select_docs_dialog.dart';
 import 'package:flutter/material.dart';
@@ -6,13 +5,13 @@ import 'package:flutter/material.dart';
 class SelectDocsTile extends StatelessWidget {
   const SelectDocsTile({
     super.key,
-    this.documents = const [],
+    required this.documents,
     required this.onChanged,
     required this.collection,
   });
 
-  final List<Prompt_Document> documents;
-  final ValueChanged<List<Prompt_Document>> onChanged;
+  final DocumentSelection documents;
+  final ValueChanged<DocumentSelection> onChanged;
   final Collections_Collection collection;
 
   @override
@@ -22,15 +21,15 @@ class SelectDocsTile extends StatelessWidget {
 
     String subtitle;
 
-    if (documents.isEmpty) {
+    if (documents.isEmpty()) {
       subtitle =
           'If no documents are selected, the AI will use the entire collection';
     } else {
-      subtitle = documents.map((doc) => doc.filename).join(', ');
+      subtitle = documents.getNames().join(', ');
     }
 
     return ListTile(
-      leading: documents.isEmpty
+      leading: documents.isEmpty()
           ? Icon(
               Icons.auto_fix_high_outlined,
               color: color.onSurface,
@@ -48,7 +47,7 @@ class SelectDocsTile extends StatelessWidget {
       subtitle: Text(
         subtitle,
         style: text.bodySmall?.merge(TextStyle(
-          color: documents.isEmpty ? color.outline : color.primary,
+          color: documents.isEmpty() ? color.outline : color.primary,
         )),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
