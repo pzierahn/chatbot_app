@@ -79,12 +79,7 @@ Prepare a new release by following these steps:
     4. Update MacOS dependencies: `cd macos && pod update && cd ..`
 6. Push all changes to `main` branch with `git push`
 7. Create a new git tag:
-    1. `git tag -a vX.X.X -m "Release vX.X.X"`
+    1. `git tag vX.X.X`
     2. `git push origin vX.X.X`
-8. Merge `main` branch into `stable` branch on GitHub:
-    1. Go to https://github.com/pzierahn/brainboost_app/tree/stable
-    2. Click on `This branch is ..., X commits behind main`
-    3. Click on `Create pull request`
-    4. Click on `Merge pull request`
 
 After the release is merged into the `stable` branch, the new release will be automatically deployed by using Google Cloud Run.
