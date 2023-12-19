@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SelectModelDialog extends StatefulWidget {
+class SelectModelDialog extends StatelessWidget {
   const SelectModelDialog({
     super.key,
     required this.model,
@@ -20,17 +20,8 @@ class SelectModelDialog extends StatefulWidget {
     );
   }
 
-  @override
-  State createState() => _SelectModelDialogState();
-}
-
-class _SelectModelDialogState extends State<SelectModelDialog> {
-  late String _selectedModel;
-
-  @override
-  void initState() {
-    super.initState();
-    _selectedModel = widget.model;
+  void _onModelChanged(BuildContext context, String? value) {
+    Navigator.pop(context, value);
   }
 
   @override
@@ -46,51 +37,28 @@ class _SelectModelDialogState extends State<SelectModelDialog> {
               value: 'gpt-4-1106-preview',
               title: const Text('GPT-4 Turbo'),
               subtitle: const Text('Bigger context window and more expensive'),
-              groupValue: _selectedModel,
-              onChanged: (value) {
-                setState(() {
-                  _selectedModel = value!;
-                });
-              },
+              groupValue: model,
+              onChanged: (value) => _onModelChanged(context, value),
             ),
             RadioListTile<String>(
               value: 'gpt-3.5-turbo-16k',
               title: const Text('GPT-3.5 Turbo'),
               subtitle: const Text('Smaller context window but cheaper'),
-              groupValue: _selectedModel,
-              onChanged: (value) {
-                setState(() {
-                  _selectedModel = value!;
-                });
-              },
+              groupValue: model,
+              onChanged: (value) => _onModelChanged(context, value),
             ),
             RadioListTile<String>(
               value: 'gemini-pro',
               title: const Text('Gemini Pro'),
-              groupValue: _selectedModel,
+              subtitle: const Text('New Google model'),
+              groupValue: model,
               onChanged: (value) {
-                setState(() {
-                  _selectedModel = value!;
-                });
+                Navigator.pop(context, value);
               },
             ),
           ],
         ),
       ),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Cancel'),
-        ),
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context, _selectedModel);
-          },
-          child: const Text('Submit'),
-        ),
-      ],
     );
   }
 }
