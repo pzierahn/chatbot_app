@@ -103,7 +103,7 @@ class _SourcesDialogState extends State<SourcesDialog> {
                             contentPadding: EdgeInsets.zero,
                             leading: const Icon(Icons.find_in_page_outlined),
                             title: Text(
-                              'Page ${pages[inx]}',
+                              'Page ${pages[inx] + 1}',
                               style: text.bodyMedium,
                             ),
                             trailing: scores.containsKey(ids[inx])
