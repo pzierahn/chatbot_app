@@ -7,10 +7,10 @@ List<int> parsePageList(String text) {
   for (final page in pages) {
     final range = page.split('-');
     if (range.length == 1) {
-      pageSet.add(int.parse(range[0]));
+      pageSet.add(int.parse(range[0]) - 1);
     } else {
-      final start = int.parse(range[0]);
-      final end = int.parse(range[1]);
+      final start = int.parse(range[0]) - 1;
+      final end = int.parse(range[1]) - 1;
 
       for (int i = start; i <= end; i++) {
         pageSet.add(i);
@@ -34,9 +34,9 @@ String formatPageList(List<int> pages) {
       end = pageList[i];
     } else {
       if (start == end) {
-        pageRanges.add('$start');
+        pageRanges.add('${start + 1}');
       } else {
-        pageRanges.add('$start-$end');
+        pageRanges.add('${start + 1}-${end + 1}');
       }
 
       start = pageList[i];
@@ -45,9 +45,9 @@ String formatPageList(List<int> pages) {
   }
 
   if (start == end) {
-    pageRanges.add('$start');
+    pageRanges.add('${start + 1}');
   } else {
-    pageRanges.add('$start-$end');
+    pageRanges.add('${start + 1}-${end + 1}');
   }
 
   return pageRanges.join(', ');

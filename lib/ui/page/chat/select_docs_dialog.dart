@@ -25,7 +25,7 @@ class DocumentSelection {
     documents[doc.id] = Prompt_Document()
       ..id = doc.id
       ..pages.clear()
-      ..pages.addAll([for (int i = 1; i <= doc.pages; i++) i]);
+      ..pages.addAll([for (int i = 0; i < doc.pages; i++) i]);
     names[doc.id] = doc.filename;
   }
 
