@@ -50,7 +50,7 @@ class SelectModelDialog extends StatelessWidget {
             RadioListTile<String>(
               value: 'gemini-pro',
               title: const Text('Gemini Pro'),
-              subtitle: const Text('New Google model'),
+              subtitle: const Text('Google\'s model for text generation'),
               groupValue: model,
               onChanged: (value) {
                 Navigator.pop(context, value);
