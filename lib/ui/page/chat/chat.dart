@@ -75,20 +75,6 @@ class _ChatState extends State<Chat> {
         status: _status[index],
         collection: widget.collection,
         onDelete: () {
-          if (_status[index].completion == null) {
-            setState(() => _status.removeAt(index));
-            return;
-          }
-
-          chat
-              .deleteChatMessage(
-                MessageID()..id = _status[index].completion!.id,
-              )
-              .then((value) => null)
-              .catchError((error) {
-            ErrorSnackBar.show(context, error);
-          });
-
           setState(() => _status.removeAt(index));
         },
       );
