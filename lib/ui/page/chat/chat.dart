@@ -71,6 +71,9 @@ class _ChatState extends State<Chat> {
       final fragment = ChatFragment(
         status: _status[index],
         collection: widget.collection,
+        onDelete: () {
+          setState(() => _status.removeAt(index));
+        },
       );
 
       children.add(fragment);

@@ -14,10 +14,12 @@ class ChatFragment extends StatelessWidget {
     super.key,
     required this.status,
     required this.collection,
+    this.onDelete,
   });
 
   final ChatFragmentStatus status;
   final Collections_Collection collection;
+  final VoidCallback? onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,7 @@ class ChatFragment extends StatelessWidget {
 
       footer = FooterActions(
         message: status.completion!,
+        onDelete: onDelete,
       );
     } else {
       promptWidget = PromptInput(

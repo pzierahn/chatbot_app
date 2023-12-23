@@ -7,9 +7,11 @@ class FooterActions extends StatelessWidget {
   const FooterActions({
     super.key,
     required this.message,
+    this.onDelete,
   });
 
   final ChatMessage message;
+  final VoidCallback? onDelete;
 
   void _showSources(BuildContext context) {
     showDialog(
@@ -27,10 +29,7 @@ class FooterActions extends StatelessWidget {
 
     const iconSize = 16.0;
 
-    return Wrap(
-      spacing: 8,
-      runSpacing: 8,
-      alignment: WrapAlignment.end,
+    return Row(
       children: [
         TextButton.icon(
           icon: const Icon(Icons.description_outlined, size: iconSize),
@@ -58,6 +57,16 @@ class FooterActions extends StatelessWidget {
             );
           },
         ),
+        const Spacer(),
+        if (onDelete != null)
+          TextButton.icon(
+            icon: const Icon(Icons.delete_outline, size: iconSize),
+            style: TextButton.styleFrom(
+              foregroundColor: color.onSurface,
+            ),
+            label: const Text('Delete'),
+            onPressed: onDelete,
+          ),
       ],
     );
   }
