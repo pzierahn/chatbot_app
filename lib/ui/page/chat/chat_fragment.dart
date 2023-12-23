@@ -33,7 +33,10 @@ class ChatFragment extends StatelessWidget {
         prompt: status.prompt.prompt,
         collection: collection,
       );
-      body = ChatFragmentError(error: status.error);
+      body = ChatFragmentError(
+        error: status.error,
+        onDelete: onDelete,
+      );
     } else if (status.completion != null) {
       promptWidget = PromptInfo(
         prompt: status.prompt,

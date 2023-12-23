@@ -7,9 +7,11 @@ class ChatFragmentError extends StatelessWidget {
   const ChatFragmentError({
     super.key,
     this.error,
+    this.onDelete,
   });
 
   final Object? error;
+  final VoidCallback? onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class ChatFragmentError extends StatelessWidget {
         illustration: UnDrawIllustration.wallet,
         action: TextButton.icon(
           onPressed: () {},
-          icon: const Icon(Icons.credit_card),
+          icon: const Icon(Icons.credit_card_outlined),
           label: const Text('Add funds'),
         ),
         text: 'You have spend all your money',
@@ -33,6 +35,14 @@ class ChatFragmentError extends StatelessWidget {
       illustration: UnDrawIllustration.warning,
       text: ErrorUtils.toText(error),
       color: color.error,
+      action: TextButton.icon(
+        onPressed: onDelete,
+        icon: const Icon(Icons.delete_outline),
+        label: const Text('Remove'),
+        style: TextButton.styleFrom(
+          foregroundColor: color.error,
+        ),
+      ),
     );
   }
 }
