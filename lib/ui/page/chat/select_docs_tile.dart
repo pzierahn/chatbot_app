@@ -22,8 +22,7 @@ class SelectDocsTile extends StatelessWidget {
     String subtitle;
 
     if (documents.isEmpty()) {
-      subtitle =
-          'If no documents are selected, the AI will use the entire collection';
+      subtitle = 'The best matching documents will be selected automatically';
     } else {
       subtitle = documents.getNames().join(', ');
     }
