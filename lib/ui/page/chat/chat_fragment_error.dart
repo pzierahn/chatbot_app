@@ -23,7 +23,7 @@ class ChatFragmentError extends StatelessWidget {
         action: TextButton.icon(
           onPressed: () {},
           icon: const Icon(Icons.credit_card),
-          label: const Text('Add founds'),
+          label: const Text('Add funds'),
         ),
         text: 'You have spend all your money',
       );
