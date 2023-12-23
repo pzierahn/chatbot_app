@@ -34,6 +34,10 @@ class ChatServiceClient extends $grpc.Client {
       '/endpoint.brainboost.chat.v2.ChatService/GetChatMessage',
       ($3.MessageID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.ChatMessage.fromBuffer(value));
+  static final _$deleteChatMessage = $grpc.ClientMethod<$3.MessageID, $3.MessageID>(
+      '/endpoint.brainboost.chat.v2.ChatService/DeleteChatMessage',
+      ($3.MessageID value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $3.MessageID.fromBuffer(value));
 
   ChatServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -51,6 +55,10 @@ class ChatServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$3.ChatMessage> getChatMessage($3.MessageID request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getChatMessage, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$3.MessageID> deleteChatMessage($3.MessageID request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$deleteChatMessage, request, options: options);
   }
 }
 
@@ -80,6 +88,13 @@ abstract class ChatServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $3.MessageID.fromBuffer(value),
         ($3.ChatMessage value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.MessageID, $3.MessageID>(
+        'DeleteChatMessage',
+        deleteChatMessage_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $3.MessageID.fromBuffer(value),
+        ($3.MessageID value) => value.writeToBuffer()));
   }
 
   $async.Future<$3.ChatMessage> chat_Pre($grpc.ServiceCall call, $async.Future<$3.Prompt> request) async {
@@ -94,7 +109,12 @@ abstract class ChatServiceBase extends $grpc.Service {
     return getChatMessage(call, await request);
   }
 
+  $async.Future<$3.MessageID> deleteChatMessage_Pre($grpc.ServiceCall call, $async.Future<$3.MessageID> request) async {
+    return deleteChatMessage(call, await request);
+  }
+
   $async.Future<$3.ChatMessage> chat($grpc.ServiceCall call, $3.Prompt request);
   $async.Future<$3.ChatMessages> getChatMessages($grpc.ServiceCall call, $2.Collection request);
   $async.Future<$3.ChatMessage> getChatMessage($grpc.ServiceCall call, $3.MessageID request);
+  $async.Future<$3.MessageID> deleteChatMessage($grpc.ServiceCall call, $3.MessageID request);
 }

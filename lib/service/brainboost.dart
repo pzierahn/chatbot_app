@@ -144,4 +144,10 @@ class ChatServiceClientAuth {
     options = await _mergeAuth(options);
     return _service.getChatMessage(request, options: options);
   }
+
+  Future<MessageID> deleteChatMessage(MessageID request,
+      {CallOptions? options}) async {
+    options = await _mergeAuth(options);
+    return _service.deleteChatMessage(request, options: options);
+  }
 }
