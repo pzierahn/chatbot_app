@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/collections.pb.dart';
+import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/ui/page/chat/select_docs_dialog.dart';
 import 'package:flutter/material.dart';
 

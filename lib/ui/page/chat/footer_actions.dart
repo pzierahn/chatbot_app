@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/chat.pb.dart';
+import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/ui/page/chat/sources_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

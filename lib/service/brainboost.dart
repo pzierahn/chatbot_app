@@ -1,10 +1,9 @@
-import 'package:braingain_app/generated/account.pbgrpc.dart';
-import 'package:braingain_app/generated/chat.pbgrpc.dart';
-import 'package:braingain_app/generated/collections.pbgrpc.dart';
-import 'package:braingain_app/generated/documents.pbgrpc.dart';
+import 'package:braingain_app/generated/account_service.pbgrpc.dart';
+import 'package:braingain_app/generated/chat_service.pbgrpc.dart';
+import 'package:braingain_app/generated/collection_service.pbgrpc.dart';
+import 'package:braingain_app/generated/document_service.pbgrpc.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
 
 // final _channel = ClientChannel(

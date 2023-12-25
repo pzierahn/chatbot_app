@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: account.proto
+//  source: account_service.proto
 //
 // @dart = 2.12
 
@@ -15,10 +15,10 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'account.pb.dart' as $1;
+import 'account_service.pb.dart' as $1;
 import 'google/protobuf/empty.pb.dart' as $0;
 
-export 'account.pb.dart';
+export 'account_service.pb.dart';
 
 @$pb.GrpcServiceName('endpoint.brainboost.account.v1.AccountService')
 class AccountServiceClient extends $grpc.Client {

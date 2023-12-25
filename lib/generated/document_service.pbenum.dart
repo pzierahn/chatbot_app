@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: collections.proto
+//  source: document_service.proto
 //
 // @dart = 2.12
 

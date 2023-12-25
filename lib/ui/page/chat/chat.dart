@@ -1,12 +1,9 @@
-import 'package:braingain_app/generated/chat.pb.dart';
-import 'package:braingain_app/generated/collections.pb.dart';
+import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/chat_fragment.dart';
 import 'package:braingain_app/ui/page/chat/chat_fragment_input.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
-import 'package:braingain_app/ui/widget/error_bar.dart';
-import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
 
 class Chat extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/account.pb.dart';
+import 'package:braingain_app/generated/account_service.pb.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pbserver.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/widget/outlined_card.dart';

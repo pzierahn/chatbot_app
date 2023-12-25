@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/collections.pb.dart';
+import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/home/collection_edit_dialog.dart';

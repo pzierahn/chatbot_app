@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/collections.pb.dart';
+import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/ui/page/upload/upload_body.dart';
 import 'package:braingain_app/ui/page/upload/upload_dialog.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';

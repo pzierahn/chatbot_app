@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: chat.proto
+//  source: chat_service.proto
 //
 // @dart = 2.12
 
@@ -15,10 +15,10 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'chat.pb.dart' as $3;
-import 'collections.pb.dart' as $2;
+import 'chat_service.pb.dart' as $3;
+import 'collection_service.pb.dart' as $2;
 
-export 'chat.pb.dart';
+export 'chat_service.pb.dart';
 
 @$pb.GrpcServiceName('endpoint.brainboost.chat.v2.ChatService')
 class ChatServiceClient extends $grpc.Client {

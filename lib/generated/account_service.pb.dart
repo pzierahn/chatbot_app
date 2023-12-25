@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: account.proto
+//  source: account_service.proto
 //
 // @dart = 2.12
 

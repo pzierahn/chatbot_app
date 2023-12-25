@@ -1,6 +1,6 @@
-import 'package:braingain_app/generated/chat.pb.dart';
-import 'package:braingain_app/generated/collections.pb.dart';
-import 'package:braingain_app/generated/documents.pb.dart';
+import 'package:braingain_app/generated/chat_service.pb.dart';
+import 'package:braingain_app/generated/collection_service.pb.dart';
+import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';

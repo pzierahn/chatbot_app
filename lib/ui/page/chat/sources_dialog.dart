@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/documents.pbgrpc.dart';
+import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:flutter/material.dart';

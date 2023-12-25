@@ -1,5 +1,5 @@
-import 'package:braingain_app/generated/collections.pb.dart';
-import 'package:braingain_app/generated/documents.pb.dart';
+import 'package:braingain_app/generated/collection_service.pb.dart';
+import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/service/storage.dart';
 import 'package:braingain_app/ui/page/upload/file_tile.dart';

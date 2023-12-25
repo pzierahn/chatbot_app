@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: collections.proto
+//  source: collection_service.proto
 //
 // @dart = 2.12
 
@@ -15,10 +15,10 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'collections.pb.dart' as $2;
+import 'collection_service.pb.dart' as $2;
 import 'google/protobuf/empty.pb.dart' as $0;
 
-export 'collections.pb.dart';
+export 'collection_service.pb.dart';
 
 @$pb.GrpcServiceName('endpoint.brainboost.collections.v1.CollectionService')
 class CollectionServiceClient extends $grpc.Client {

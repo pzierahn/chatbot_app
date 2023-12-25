@@ -1,5 +1,5 @@
-import 'package:braingain_app/generated/chat.pb.dart';
-import 'package:braingain_app/generated/collections.pb.dart';
+import 'package:braingain_app/generated/chat_service.pb.dart';
+import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat_history/history_tile.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';

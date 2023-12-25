@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: documents.proto
+//  source: document_service.proto
 //
 // @dart = 2.12
 
@@ -15,10 +15,10 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'documents.pb.dart' as $4;
+import 'document_service.pb.dart' as $4;
 import 'google/protobuf/empty.pb.dart' as $0;
 
-export 'documents.pb.dart';
+export 'document_service.pb.dart';
 
 @$pb.GrpcServiceName('endpoint.brainboost.documents.v1.DocumentService')
 class DocumentServiceClient extends $grpc.Client {

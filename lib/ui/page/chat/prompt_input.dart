@@ -1,4 +1,4 @@
-import 'package:braingain_app/generated/collections.pb.dart';
+import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/utils/breakpoint_m3.dart';
 import 'package:flutter/material.dart';
 
