@@ -34,7 +34,7 @@ class SelectModelDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             RadioListTile<String>(
-              value: 'gpt-4-turbo-preview',
+              value: 'gpt-4-1106-preview',
               title: const Text('GPT-4 Turbo'),
               subtitle: const Text('Bigger context window and more expensive'),
               groupValue: model,
