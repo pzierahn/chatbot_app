@@ -26,8 +26,8 @@ class _ChatInputState extends State<ChatInput> {
   void initState() {
     super.initState();
     prompt = Prompt()
-      ..limit = 15
-      ..threshold = 0.6;
+      ..limit = 10
+      ..threshold = 0.2;
 
     // Set default options
     prompt.modelOptions = ModelOptions()
