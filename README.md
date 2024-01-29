@@ -43,6 +43,10 @@ it brings an unprecedented level of ease, efficiency, and inclusivity to the pro
 valuable insights from these files. Start your journey to accessible knowledge with Brainboost
 today!
 
+## Demo video
+
+[![Chatbot Demo](https://img.youtube.com/vi/e8Glsvh2dHo/0.jpg)](https://youtu.be/e8Glsvh2dHo)
+
 ## Project structure
 
 ```bash
@@ -82,4 +86,5 @@ Prepare a new release by following these steps:
     1. `git tag vX.X.X`
     2. `git push origin vX.X.X`
 
-After the release is merged into the `stable` branch, the new release will be automatically deployed by using Google Cloud Run.
+After the release is merged into the `stable` branch, the new release will be automatically deployed
+by using Google Cloud Run.
