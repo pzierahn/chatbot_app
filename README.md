@@ -45,6 +45,8 @@ today!
 
 ## Demo video
 
+The [demo video](https://youtu.be/e8Glsvh2dHo) shows the basic functionality of the app:
+
 [![Chatbot Demo](https://img.youtube.com/vi/e8Glsvh2dHo/0.jpg)](https://youtu.be/e8Glsvh2dHo)
 
 ## Project structure
