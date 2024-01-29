@@ -49,7 +49,7 @@ The [demo video](https://youtu.be/e8Glsvh2dHo) shows the basic functionality of 
 
 [![Chatbot Demo](https://img.youtube.com/vi/e8Glsvh2dHo/0.jpg)](https://youtu.be/e8Glsvh2dHo)
 
-## Project structure
+## Additional Details and Setup Instructions
 
 ```bash
 .
@@ -69,6 +69,60 @@ The [demo video](https://youtu.be/e8Glsvh2dHo) shows the basic functionality of 
 ├── pubspec.yaml         # Project configuration
 
 ```
+
+### Project Requirements:
+
+This project is developed using **Flutter**, a popular open-source framework by Google for building
+natively compiled applications for mobile, web, and desktop from a single codebase. To successfully
+run and build this project, developers must have a basic understanding of Flutter and the Dart
+programming language.
+
+### Google Firebase Integration:
+
+**Brainboost** requires **Google Firebase** for its operation. Firebase provides a suite of cloud
+services designed to support applications, including realtime databases, authentication services,
+analytics, and more. To integrate Firebase into the Brainboost project, follow these setup
+instructions:
+
+1. Visit the Firebase official setup guide for Flutter
+   apps: [Firebase Setup Instructions](https://firebase.google.com/docs/flutter/setup).
+2. Follow the guided steps to create a Firebase project and connect it with your Brainboost
+   application.
+3. Once set up, download and integrate the `google-services.json` (for Android)
+   and `GoogleService-Info.plist` (for iOS) into your project as directed in the Firebase setup
+   guide. This will link your application with Firebase services.
+
+### Backend Services:
+
+The backend services for Brainboost are separately managed and can be found
+at [Brainboost Backend Services](https://github.com/pzierahn/chatbot_services). The backend is
+crucial for handling complex operations that are not feasible to run on the client-side, such as
+intensive computations, storing and managing databases, authentication, and more.
+
+**Changing the Backend Address:**
+
+- If you need to point your Brainboost application to a different backend address (for example, if
+  you're hosting your version of the backend), you must update the backend service URL.
+- This configuration is located in the file `lib/service/brainboost.dart`. Search for a variable or
+  method that specifies the backend URL and alter it to your new backend service address.
+
+### Getting Started with Flutter:
+
+Since Brainboost is written in Flutter, developers aiming to contribute or modify the project need
+to have Flutter installed on their development machines. Here’s a quick guide to get started:
+
+1. Download and install Flutter by following the official
+   guide: [Install Flutter](https://flutter.dev/docs/get-started/install).
+2. Ensure that your development environment is set up according to the guides for your target
+   platform (iOS, Android, Web, Desktop).
+3. Once Flutter is installed, you can clone the Brainboost repository to your local machine.
+4. Navigate to the project directory in your terminal, and run `flutter pub get` to install all the
+   dependencies.
+5. With the dependencies installed, you can now open the project in your preferred IDE or editor to
+   start development.
+
+By following these additional setup and project requirements, you will be well on your way to
+utilizing, modifying, or contributing to the Brainboost project.
 
 ### Prepare a new release
 
