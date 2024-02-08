@@ -2,6 +2,7 @@ import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
+import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/page/chat/thread_view.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
@@ -32,6 +33,8 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     final collection =
         ModalRoute.of(context)?.settings.arguments as Collections_Collection?;
 
@@ -75,22 +78,24 @@ class _ChatPageState extends State<ChatPage> {
       body: ConstrainedListView(
         children: [
           ...children,
-          ListTile(
-            title: PromptInput(
-              onPromptSubmit: (value) {
-                final opts = ModelOptions()..model = "gpt-3.5-turbo-16k";
+          ThreadContainer(
+            child: ListTile(
+              title: PromptInput(
+                onPromptSubmit: (value) {
+                  final opts = ModelOptions()..model = "gpt-3.5-turbo-16k";
 
-                final prompt = ThreadPrompt()
-                  ..prompt = value
-                  ..collectionId = collection.id
-                  ..modelOptions = opts
-                  ..threshold = 0.2
-                  ..limit = 3;
+                  final prompt = ThreadPrompt()
+                    ..prompt = value
+                    ..collectionId = collection.id
+                    ..modelOptions = opts
+                    ..threshold = 0.2
+                    ..limit = 3;
 
-                setState(() {
-                  _threads.add(chat.startThread(prompt));
-                });
-              },
+                  setState(() {
+                    _threads.add(chat.startThread(prompt));
+                  });
+                },
+              ),
             ),
           ),
         ],
