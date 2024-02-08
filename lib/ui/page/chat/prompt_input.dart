@@ -1,4 +1,3 @@
-import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/utils/breakpoint_m3.dart';
 import 'package:flutter/material.dart';
 
@@ -7,12 +6,10 @@ class PromptInput extends StatefulWidget {
     super.key,
     this.prompt,
     this.onPromptSubmit,
-    required this.collection,
   });
 
   final String? prompt;
   final ValueChanged<String>? onPromptSubmit;
-  final Collections_Collection collection;
 
   @override
   State createState() => _PromptInputState();

@@ -53,11 +53,11 @@ String formatPageList(List<int> pages) {
   return pageRanges.join(', ');
 }
 
-List<Prompt_Document> formatDocuments(Map<String, List<int>> selected) {
-  final docs = <Prompt_Document>[];
+List<ThreadPrompt_Document> formatDocuments(Map<String, List<int>> selected) {
+  final docs = <ThreadPrompt_Document>[];
 
   for (final entry in selected.entries) {
-    docs.add(Prompt_Document()
+    docs.add(ThreadPrompt_Document()
       ..id = entry.key
       ..pages.addAll(entry.value));
   }
@@ -65,7 +65,7 @@ List<Prompt_Document> formatDocuments(Map<String, List<int>> selected) {
   return docs;
 }
 
-Map<String, List<int>> parseDocuments(List<Prompt_Document> docs) {
+Map<String, List<int>> parseDocuments(List<ThreadPrompt_Document> docs) {
   final selected = <String, List<int>>{};
 
   for (final doc in docs) {
