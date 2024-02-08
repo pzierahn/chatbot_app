@@ -151,12 +151,12 @@ class ChatServiceClientAuth {
     return _service.getThread(request, options: options);
   }
 
-  Future<ThreadIDs> getThreads(
+  Future<ThreadIDs> listThreadIDs(
     Collection request, {
     CallOptions? options,
   }) async {
     options = await _mergeAuth(options);
-    return _service.getThreads(request, options: options);
+    return _service.listThreadIDs(request, options: options);
   }
 
   Future<Empty> deleteThread(
