@@ -127,26 +127,51 @@ class AccountServiceClientAuth {
 class ChatServiceClientAuth {
   final _service = ChatServiceClient(_channel);
 
-  Future<ChatMessage> chat(Prompt request, {CallOptions? options}) async {
+  Future<Thread> startThread(
+    ThreadPrompt request, {
+    CallOptions? options,
+  }) async {
     options = await _mergeAuth(options);
-    return _service.chat(request, options: options);
+    return _service.startThread(request, options: options);
   }
 
-  Future<ChatMessages> getChatMessages(Collection request,
-      {CallOptions? options}) async {
+  Future<Message> postMessage(
+    Prompt request, {
+    CallOptions? options,
+  }) async {
     options = await _mergeAuth(options);
-    return _service.getChatMessages(request, options: options);
+    return _service.postMessage(request, options: options);
   }
 
-  Future<ChatMessage> getChatMessage(MessageID request,
-      {CallOptions? options}) async {
+  Future<Thread> getThread(
+    ThreadID request, {
+    CallOptions? options,
+  }) async {
     options = await _mergeAuth(options);
-    return _service.getChatMessage(request, options: options);
+    return _service.getThread(request, options: options);
   }
 
-  Future<MessageID> deleteChatMessage(MessageID request,
-      {CallOptions? options}) async {
+  Future<ThreadIDs> getThreads(
+    Collection request, {
+    CallOptions? options,
+  }) async {
     options = await _mergeAuth(options);
-    return _service.deleteChatMessage(request, options: options);
+    return _service.getThreads(request, options: options);
+  }
+
+  Future<Empty> deleteThread(
+    ThreadID request, {
+    CallOptions? options,
+  }) async {
+    options = await _mergeAuth(options);
+    return _service.deleteThread(request, options: options);
+  }
+
+  Future<Empty> deleteMessageFromThread(
+    MessageID request, {
+    CallOptions? options,
+  }) async {
+    options = await _mergeAuth(options);
+    return _service.deleteMessageFromThread(request, options: options);
   }
 }
