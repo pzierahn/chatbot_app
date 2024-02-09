@@ -33,15 +33,21 @@ class _ThreadViewState extends State<ThreadView> {
 
     final children = <Widget>[];
 
-    for (Message message in (widget.thread.thread?.messages ?? [])) {
-      children.add(
-        _ChatFragment(
-          titleStyle: titleStyle,
-          message: message,
-          referenceIDs: widget.thread.thread?.referenceIDs,
-          referenceScores: widget.thread.thread?.referenceScores,
-        ),
-      );
+    if (widget.thread.hasData) {
+      final thread = widget.thread.thread;
+      final messages = thread?.messages ?? [];
+
+      for (var inx = 0; inx < messages.length; inx++) {
+        final message = messages[inx];
+        children.add(
+          _ChatFragment(
+            titleStyle: titleStyle,
+            message: message,
+            referenceIDs: (inx == 0) ? thread?.referenceIDs : null,
+            referenceScores: (inx == 0) ? thread?.referenceScores : null,
+          ),
+        );
+      }
     }
 
     if (widget.thread.isLoading && !thread.hasError) {
@@ -184,7 +190,7 @@ class _ChatFragment extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              if (referenceIDs != null && referenceIDs!.isNotEmpty)
+              if (referenceIDs != null)
                 IconButton(
                   tooltip: 'References',
                   icon: const Icon(Icons.attach_file_outlined),
