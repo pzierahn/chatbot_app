@@ -230,6 +230,7 @@ class _ThreadViewState extends State<ThreadView> {
                 );
               },
             ),
+          const SizedBox(height: 16),
           const Divider(height: 1),
           Padding(
             padding: const EdgeInsets.symmetric(
@@ -238,8 +239,10 @@ class _ThreadViewState extends State<ThreadView> {
             ),
             child: PromptInput(
               style: textTheme.titleMedium?.copyWith(
-                color: colors.primary,
+                color: colors.outline,
+                fontWeight: FontWeight.normal,
               ),
+              // prefixIcon: const Icon(Icons.reply_outlined),
               hintText: 'Type a follow-up question or prompt...',
               onPromptSubmit: (text) {
                 setState(() {
