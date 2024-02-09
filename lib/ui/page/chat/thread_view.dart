@@ -99,6 +99,8 @@ class _ThreadViewState extends State<ThreadView> {
       vertical: 8,
     );
 
+    const buttonPadding = EdgeInsets.all(16);
+
     return ThreadContainer(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,10 +131,7 @@ class _ThreadViewState extends State<ThreadView> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 16,
-                    horizontal: 16,
-                  ),
+                  padding: buttonPadding,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -204,10 +203,7 @@ class _ThreadViewState extends State<ThreadView> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 8,
-                        horizontal: 8,
-                      ),
+                      padding: buttonPadding,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
