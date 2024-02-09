@@ -64,43 +64,53 @@ class _ThreadViewState extends State<ThreadView> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     final textTheme = Theme.of(context).textTheme;
-    final titleStyle = textTheme.titleMedium;
+    final titleStyle = textTheme.headlineSmall;
 
     return ThreadContainer(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           for (var message in widget.thread.messages)
-            Column(
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ListTile(
-                  title: Text(
-                    message.prompt,
-                    style: titleStyle,
+                Expanded(
+                  child: ListTile(
+                    title: Text(
+                      message.prompt,
+                      style: titleStyle,
+                    ),
+                    subtitle: Text(message.completion),
                   ),
-                  subtitle: Text(message.completion),
                 ),
-                ListTile(
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8,
+                    horizontal: 8,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       IconButton(
                         tooltip: 'References',
                         icon: const Icon(Icons.attach_file_outlined),
                         onPressed: _showSources,
+                        color: colors.outline,
                       ),
-                      // const SizedBox(width: 8),
-                      // const Spacer(),
                       IconButton(
                         tooltip: 'Copy',
                         icon: const Icon(Icons.copy_outlined),
                         onPressed: () {},
+                        color: colors.outline,
                       ),
                       IconButton(
                         tooltip: 'Delete',
                         icon: const Icon(Icons.delete_outline),
                         onPressed: () {},
+                        color: colors.outline,
                       ),
                     ],
                   ),
@@ -124,29 +134,39 @@ class _ThreadViewState extends State<ThreadView> {
                   );
                 }
 
-                return Column(
+                final message = snapshot.data!;
+
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ListTile(
-                      title: Text(
-                        snapshot.data!.prompt,
-                        style: titleStyle,
+                    Expanded(
+                      child: ListTile(
+                        title: Text(
+                          message.prompt,
+                          style: titleStyle,
+                        ),
+                        subtitle: Text(message.completion),
                       ),
-                      subtitle: Text(snapshot.data!.completion),
                     ),
-                    ListTile(
-                      title: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 8,
+                        horizontal: 8,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           IconButton(
                             tooltip: 'Copy',
                             icon: const Icon(Icons.copy_outlined),
                             onPressed: () {},
+                            color: colors.outline,
                           ),
-                          // const Spacer(),
                           IconButton(
                             tooltip: 'Delete',
                             icon: const Icon(Icons.delete_outline),
                             onPressed: () {},
+                            color: colors.outline,
                           ),
                         ],
                       ),
