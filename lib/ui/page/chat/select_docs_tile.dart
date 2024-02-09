@@ -23,8 +23,7 @@ class SelectDocsTile extends StatelessWidget {
     Color subtitleColor;
 
     if (documents.isEmpty()) {
-      subtitle =
-          'If no documents are attached the best will be selected automatically';
+      subtitle = 'Documents are automatically selected based on the prompt';
       subtitleColor = color.outline;
     } else {
       subtitle = documents.getNames().join(', ');
