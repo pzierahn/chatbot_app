@@ -117,7 +117,7 @@ class _ChatBodyState extends State<ChatBody> {
         )
         .toList();
 
-    return ConstrainedListView(
+    return ConstrainedListViewStable(
       children: [
         ...children,
         ThreadContainer(
