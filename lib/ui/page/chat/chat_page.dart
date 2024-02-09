@@ -1,6 +1,7 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
+import 'package:braingain_app/ui/page/chat/prompt_buttons.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/page/chat/thread_view.dart';
@@ -8,6 +9,7 @@ import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
+import 'package:braingain_app/utils/llm_models.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatefulWidget {
@@ -29,12 +31,8 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  final _threads = <Future<Thread>>[];
-
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
-
     final collection =
         ModalRoute.of(context)?.settings.arguments as Collections_Collection?;
 
@@ -44,9 +42,6 @@ class _ChatPageState extends State<ChatPage> {
         error: 'Collection not found',
       );
     }
-
-    final children =
-        _threads.map((thread) => ThreadLoader(thread: thread)).toList();
 
     return Scaffold(
       appBar: AppBar(
@@ -75,31 +70,88 @@ class _ChatPageState extends State<ChatPage> {
           ),
         ],
       ),
-      body: ConstrainedListView(
-        children: [
-          ...children,
-          ThreadContainer(
-            child: ListTile(
-              title: PromptInput(
-                onPromptSubmit: (value) {
-                  final opts = ModelOptions()..model = "gpt-3.5-turbo-16k";
+      body: ChatBody(
+        collection: collection,
+      ),
+    );
+  }
+}
 
-                  final prompt = ThreadPrompt()
-                    ..prompt = value
-                    ..collectionId = collection.id
-                    ..modelOptions = opts
-                    ..threshold = 0.2
-                    ..limit = 3;
+class ChatBody extends StatefulWidget {
+  const ChatBody({
+    super.key,
+    required this.collection,
+  });
 
-                  setState(() {
-                    _threads.add(chat.startThread(prompt));
-                  });
+  final Collections_Collection collection;
+
+  @override
+  State<StatefulWidget> createState() => _ChatBodyState();
+}
+
+class _ChatBodyState extends State<ChatBody> {
+  final _threads = <Future<Thread>>[];
+
+  ThreadPrompt _prompt = ThreadPrompt();
+
+  @override
+  void initState() {
+    super.initState();
+
+    final opts = ModelOptions()
+      ..model = LLMModels.gpt3.model
+      ..maxTokens = 1024;
+
+    _prompt = ThreadPrompt()
+      ..collectionId = widget.collection.id
+      ..limit = 10
+      ..threshold = 0.25
+      ..modelOptions = opts;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final children =
+        _threads.map((thread) => ThreadLoader(thread: thread)).toList();
+
+    return ConstrainedListView(
+      children: [
+        ...children,
+        ThreadContainer(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 8,
+                ),
+                child: PromptInput(
+                  onPromptSubmit: (value) {
+                    if (value.isEmpty) {
+                      return;
+                    }
+
+                    setState(() {
+                      _threads.add(chat.startThread(
+                        _prompt..prompt = value,
+                      ));
+                    });
+                  },
+                ),
+              ),
+              const Divider(height: 1),
+              PromptButtons(
+                collection: widget.collection,
+                prompt: _prompt,
+                onPromptChanged: (prompt) {
+                  setState(() => _prompt = prompt);
                 },
               ),
-            ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

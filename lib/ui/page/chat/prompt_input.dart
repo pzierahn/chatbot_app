@@ -101,6 +101,7 @@ class _PromptInputState extends State<PromptInput> {
                     _controller.text.isNotEmpty;
                 if (valid) {
                   onPromptSubmit?.call(value);
+                  _controller.clear();
                 }
               }
             : null,

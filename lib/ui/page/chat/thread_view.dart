@@ -4,7 +4,10 @@ import 'package:braingain_app/ui/page/chat/prompt_input.dart';
 import 'package:braingain_app/ui/page/chat/sources_dialog.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/utils/error.dart';
+import 'package:braingain_app/utils/llm_models.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 
 class ThreadLoader extends StatelessWidget {
   const ThreadLoader({
@@ -20,14 +23,28 @@ class ThreadLoader extends StatelessWidget {
       future: thread,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(),
+          return ThreadContainer(
+            child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(16),
+              child: const ListTile(
+                leading: CircularProgressIndicator(),
+                title: Text('Loading...'),
+              ),
+            ),
           );
         }
 
         if (snapshot.hasError) {
-          return const Center(
-            child: Text('Error loading chat'),
+          return ThreadContainer(
+            child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(16),
+              child: ListTile(
+                title: const Text('Error'),
+                subtitle: Text(ErrorUtils.toText(snapshot.error)),
+              ),
+            ),
           );
         }
 
@@ -67,7 +84,20 @@ class _ThreadViewState extends State<ThreadView> {
     final colors = Theme.of(context).colorScheme;
 
     final textTheme = Theme.of(context).textTheme;
-    final titleStyle = textTheme.headlineSmall;
+    final titleStyle = textTheme.headlineSmall?.copyWith(
+      fontWeight: FontWeight.bold,
+    );
+
+    const titlePadding = EdgeInsets.only(
+      top: 16,
+      left: 24,
+      right: 24,
+    );
+
+    const bodyPadding = EdgeInsets.symmetric(
+      horizontal: 24,
+      vertical: 8,
+    );
 
     return ThreadContainer(
       child: Column(
@@ -78,18 +108,30 @@ class _ThreadViewState extends State<ThreadView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  child: ListTile(
-                    title: Text(
-                      message.prompt,
-                      style: titleStyle,
-                    ),
-                    subtitle: Text(message.completion),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: titlePadding,
+                        child: SelectableText(
+                          message.prompt,
+                          style: titleStyle,
+                        ),
+                      ),
+                      Padding(
+                        padding: bodyPadding,
+                        child: MarkdownBody(
+                          data: message.completion,
+                          selectable: true,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                    vertical: 8,
-                    horizontal: 8,
+                    vertical: 16,
+                    horizontal: 16,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -123,6 +165,7 @@ class _ThreadViewState extends State<ThreadView> {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const ListTile(
+                    leading: CircularProgressIndicator(),
                     title: Text('Loading...'),
                   );
                 }
@@ -140,12 +183,24 @@ class _ThreadViewState extends State<ThreadView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      child: ListTile(
-                        title: Text(
-                          message.prompt,
-                          style: titleStyle,
-                        ),
-                        subtitle: Text(message.completion),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: titlePadding,
+                            child: SelectableText(
+                              message.prompt,
+                              style: titleStyle,
+                            ),
+                          ),
+                          Padding(
+                            padding: bodyPadding,
+                            child: MarkdownBody(
+                              data: message.completion,
+                              selectable: true,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     Padding(
@@ -175,13 +230,20 @@ class _ThreadViewState extends State<ThreadView> {
                 );
               },
             ),
-          ListTile(
-            title: PromptInput(
-              style: titleStyle,
+          const Divider(height: 1),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24,
+              vertical: 4,
+            ),
+            child: PromptInput(
+              style: textTheme.titleMedium?.copyWith(
+                color: colors.primary,
+              ),
               hintText: 'Type a follow-up question or prompt...',
               onPromptSubmit: (text) {
                 setState(() {
-                  final model = ModelOptions()..model = "gpt-3.5-turbo-16k";
+                  final model = ModelOptions()..model = LLMModels.gpt3.model;
 
                   final prompt = Prompt()
                     ..threadID = widget.thread.id
