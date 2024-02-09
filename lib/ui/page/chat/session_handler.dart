@@ -23,23 +23,17 @@ class ThreadState {
   bool get hasData => thread != null;
 
   void setLoading(String prompt) {
-    debugPrint('Thread prompt: $prompt');
-
     error = null;
     pendingPrompt = prompt;
     onUpdate();
   }
 
   void setError(Error err) {
-    debugPrint('Error: $err');
-
     error = err;
     onUpdate();
   }
 
   void setData(Thread data) {
-    debugPrint('Thread loaded: ${data.id}');
-
     thread = data;
     error = null;
     pendingPrompt = null;

@@ -138,7 +138,6 @@ class _ChatBodyState extends State<ChatBody> {
                     final threadState = ThreadState.start(
                       prompt: _prompt..prompt = value,
                       notifier: () {
-                        debugPrint('ThreadState Notifier');
                         setState(() {});
                       },
                     );
