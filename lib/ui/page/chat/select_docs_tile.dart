@@ -20,11 +20,15 @@ class SelectDocsTile extends StatelessWidget {
     final color = Theme.of(context).colorScheme;
 
     String subtitle;
+    Color subtitleColor;
 
     if (documents.isEmpty()) {
-      subtitle = 'The best matching documents will be selected automatically';
+      subtitle =
+          'If no documents are attached the best will be selected automatically';
+      subtitleColor = color.outline;
     } else {
       subtitle = documents.getNames().join(', ');
+      subtitleColor = color.primary;
     }
 
     return ListTile(
@@ -45,9 +49,9 @@ class SelectDocsTile extends StatelessWidget {
       ),
       subtitle: Text(
         subtitle,
-        style: text.bodySmall?.merge(TextStyle(
-          color: documents.isEmpty() ? color.outline : color.primary,
-        )),
+        style: text.bodySmall?.copyWith(
+          color: subtitleColor,
+        ),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
