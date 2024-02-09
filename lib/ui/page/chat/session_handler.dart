@@ -14,6 +14,8 @@ class ThreadState {
   String? pendingPrompt;
   Error? error;
 
+  bool deleted = false;
+
   bool get isLoading => pendingPrompt != null;
 
   bool get hasError => error != null;
@@ -98,6 +100,40 @@ class ThreadState {
     }).catchError((error) {
       debugPrint('Error posting message: $error');
       setError(error);
+    });
+  }
+
+  void deleteThread() {
+    if (thread == null) {
+      throw StateError('Thread not started');
+    }
+
+    final threadId = ThreadID()..id = thread!.id;
+
+    chat.deleteThread(threadId).then((_) {
+      deleted = true;
+      onUpdate();
+    }).catchError((error) {
+      debugPrint('Error deleting thread: $error');
+      // TODO: Show snack-bar
+    });
+  }
+
+  void deleteMessageFromThread(String id) {
+    if (thread == null) {
+      throw StateError('Thread not started');
+    }
+
+    final messageId = MessageID()
+      ..id = id
+      ..threadId = thread!.id;
+
+    chat.deleteMessageFromThread(messageId).then((_) {
+      thread!.messages.removeWhere((element) => element.id == id);
+      onUpdate();
+    }).catchError((error) {
+      debugPrint('Error deleting message: $error');
+      // TODO: Show snack-bar
     });
   }
 }

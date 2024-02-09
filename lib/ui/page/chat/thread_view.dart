@@ -3,6 +3,7 @@ import 'package:braingain_app/ui/page/chat/prompt_input.dart';
 import 'package:braingain_app/ui/page/chat/session_handler.dart';
 import 'package:braingain_app/ui/page/chat/sources_dialog.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
+import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -24,6 +25,10 @@ class _ThreadViewState extends State<ThreadView> {
 
   @override
   Widget build(BuildContext context) {
+    if (thread.deleted) {
+      return const SizedBox();
+    }
+
     final colors = Theme.of(context).colorScheme;
 
     final textTheme = Theme.of(context).textTheme;
@@ -39,12 +44,27 @@ class _ThreadViewState extends State<ThreadView> {
 
       for (var inx = 0; inx < messages.length; inx++) {
         final message = messages[inx];
+
         children.add(
           _ChatFragment(
             titleStyle: titleStyle,
             message: message,
             referenceIDs: (inx == 0) ? thread?.referenceIDs : null,
             referenceScores: (inx == 0) ? thread?.referenceScores : null,
+            onDelete: () => ConfirmDialog.show(
+              context,
+              title: (inx == 0) ? 'Delete Thread?' : 'Delete Message?',
+              content: (inx == 0)
+                  ? 'Are you sure you want to delete this entire thread?'
+                  : 'Are you sure you want to delete this message?',
+              onConfirm: () {
+                if (inx == 0) {
+                  widget.thread.deleteThread();
+                } else {
+                  widget.thread.deleteMessageFromThread(message.id);
+                }
+              },
+            ),
           ),
         );
       }
@@ -123,12 +143,14 @@ class _ChatFragment extends StatelessWidget {
     this.referenceIDs,
     this.referenceScores,
     this.titleStyle,
+    this.onDelete,
   });
 
   final TextStyle? titleStyle;
   final Message message;
   final List<String>? referenceIDs;
   final List<double>? referenceScores;
+  final VoidCallback? onDelete;
 
   void _showSources(BuildContext context) {
     if (referenceIDs == null) {
@@ -206,7 +228,7 @@ class _ChatFragment extends StatelessWidget {
               IconButton(
                 tooltip: 'Delete',
                 icon: const Icon(Icons.delete_outline),
-                onPressed: () {},
+                onPressed: onDelete,
                 color: colors.outline,
               ),
             ],
