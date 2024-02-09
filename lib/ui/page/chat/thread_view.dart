@@ -1,57 +1,11 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
-import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
+import 'package:braingain_app/ui/page/chat/session_handler.dart';
 import 'package:braingain_app/ui/page/chat/sources_dialog.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/utils/error.dart';
-import 'package:braingain_app/utils/llm_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-
-class ThreadLoader extends StatelessWidget {
-  const ThreadLoader({
-    super.key,
-    required this.thread,
-  });
-
-  final Future<Thread> thread;
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<Thread>(
-      future: thread,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return ThreadContainer(
-            child: Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(16),
-              child: const ListTile(
-                leading: CircularProgressIndicator(),
-                title: Text('Loading...'),
-              ),
-            ),
-          );
-        }
-
-        if (snapshot.hasError) {
-          return ThreadContainer(
-            child: Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(16),
-              child: ListTile(
-                title: const Text('Error'),
-                subtitle: Text(ErrorUtils.toText(snapshot.error)),
-              ),
-            ),
-          );
-        }
-
-        return ThreadView(thread: snapshot.data!);
-      },
-    );
-  }
-}
 
 class ThreadView extends StatefulWidget {
   const ThreadView({
@@ -59,24 +13,14 @@ class ThreadView extends StatefulWidget {
     required this.thread,
   });
 
-  final Thread thread;
+  final ThreadState thread;
 
   @override
   State<StatefulWidget> createState() => _ThreadViewState();
 }
 
 class _ThreadViewState extends State<ThreadView> {
-  final _followUps = <Future<Message>>[];
-
-  void _showSources() {
-    showDialog(
-      context: context,
-      builder: (context) => SourcesDialog(
-        references: widget.thread.referenceIDs,
-        scores: widget.thread.referenceScores,
-      ),
-    );
-  }
+  ThreadState get thread => widget.thread;
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +30,117 @@ class _ThreadViewState extends State<ThreadView> {
     final titleStyle = textTheme.headlineSmall?.copyWith(
       fontWeight: FontWeight.bold,
     );
+
+    final children = <Widget>[];
+
+    for (Message message in (widget.thread.thread?.messages ?? [])) {
+      children.add(
+        _ChatFragment(
+          titleStyle: titleStyle,
+          message: message,
+          referenceIDs: widget.thread.thread?.referenceIDs,
+          referenceScores: widget.thread.thread?.referenceScores,
+        ),
+      );
+    }
+
+    if (widget.thread.isLoading && !thread.hasError) {
+      final loading = Padding(
+        padding: const EdgeInsets.only(left: 24, top: 16, right: 24),
+        child: ListTile(
+          contentPadding: const EdgeInsets.all(0),
+          trailing: const CircularProgressIndicator(),
+          title: Text(
+            widget.thread.pendingPrompt!,
+            style: titleStyle,
+          ),
+          subtitle: const Text('Generating...'),
+        ),
+      );
+      children.add(loading);
+    }
+
+    if (thread.hasError) {
+      final err = Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 24,
+          vertical: 16,
+        ),
+        child: ListTile(
+          contentPadding: const EdgeInsets.all(0),
+          title: Text(
+            'Error',
+            style: titleStyle?.copyWith(
+              color: colors.error,
+            ),
+          ),
+          subtitle: Text(ErrorUtils.toText(thread.error)),
+        ),
+      );
+      children.add(err);
+    }
+
+    children.addAll([
+      const SizedBox(height: 16),
+      const Divider(height: 1),
+      Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 24,
+          vertical: 4,
+        ),
+        child: PromptInput(
+          style: textTheme.titleMedium?.copyWith(
+            color: colors.outline,
+            fontWeight: FontWeight.normal,
+          ),
+          // prefixIcon: const Icon(Icons.reply_outlined),
+          hintText: 'Type a follow-up question or prompt...',
+          onPromptSubmit: (text) {
+            widget.thread.postMessage(text);
+          },
+        ),
+      ),
+    ]);
+
+    return ThreadContainer(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: children,
+      ),
+    );
+  }
+}
+
+class _ChatFragment extends StatelessWidget {
+  const _ChatFragment({
+    required this.message,
+    this.referenceIDs,
+    this.referenceScores,
+    this.titleStyle,
+  });
+
+  final TextStyle? titleStyle;
+  final Message message;
+  final List<String>? referenceIDs;
+  final List<double>? referenceScores;
+
+  void _showSources(BuildContext context) {
+    if (referenceIDs == null) {
+      return;
+    }
+
+    showDialog(
+      context: context,
+      builder: (context) => SourcesDialog(
+        references: referenceIDs!,
+        scores: referenceScores ?? const [],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
 
     const titlePadding = EdgeInsets.only(
       top: 16,
@@ -100,165 +155,58 @@ class _ThreadViewState extends State<ThreadView> {
 
     const buttonPadding = EdgeInsets.all(16);
 
-    return ThreadContainer(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          for (var message in widget.thread.messages)
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: titlePadding,
-                        child: SelectableText(
-                          message.prompt,
-                          style: titleStyle,
-                        ),
-                      ),
-                      Padding(
-                        padding: bodyPadding,
-                        child: MarkdownBody(
-                          data: message.completion,
-                          selectable: true,
-                        ),
-                      ),
-                    ],
-                  ),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: titlePadding,
+                child: SelectableText(
+                  message.prompt,
+                  style: titleStyle,
                 ),
-                Padding(
-                  padding: buttonPadding,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      IconButton(
-                        tooltip: 'References',
-                        icon: const Icon(Icons.attach_file_outlined),
-                        onPressed: _showSources,
-                        color: colors.outline,
-                      ),
-                      IconButton(
-                        tooltip: 'Copy',
-                        icon: const Icon(Icons.copy_outlined),
-                        onPressed: () {},
-                        color: colors.outline,
-                      ),
-                      IconButton(
-                        tooltip: 'Delete',
-                        icon: const Icon(Icons.delete_outline),
-                        onPressed: () {},
-                        color: colors.outline,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          for (var followUp in _followUps)
-            FutureBuilder<Message>(
-              future: followUp,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const ListTile(
-                    leading: CircularProgressIndicator(),
-                    title: Text('Loading...'),
-                  );
-                }
-
-                if (snapshot.hasError) {
-                  return ListTile(
-                    title: const Text('Error'),
-                    subtitle: Text(ErrorUtils.toText(snapshot.error)),
-                  );
-                }
-
-                final message = snapshot.data!;
-
-                return Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: titlePadding,
-                            child: SelectableText(
-                              message.prompt,
-                              style: titleStyle,
-                            ),
-                          ),
-                          Padding(
-                            padding: bodyPadding,
-                            child: MarkdownBody(
-                              data: message.completion,
-                              selectable: true,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: buttonPadding,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          IconButton(
-                            tooltip: 'Copy',
-                            icon: const Icon(Icons.copy_outlined),
-                            onPressed: () {},
-                            color: colors.outline,
-                          ),
-                          IconButton(
-                            tooltip: 'Delete',
-                            icon: const Icon(Icons.delete_outline),
-                            onPressed: () {},
-                            color: colors.outline,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                );
-              },
-            ),
-          const SizedBox(height: 16),
-          const Divider(height: 1),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24,
-              vertical: 4,
-            ),
-            child: PromptInput(
-              style: textTheme.titleMedium?.copyWith(
-                color: colors.outline,
-                fontWeight: FontWeight.normal,
               ),
-              // prefixIcon: const Icon(Icons.reply_outlined),
-              hintText: 'Type a follow-up question or prompt...',
-              onPromptSubmit: (text) {
-                setState(() {
-                  final model = ModelOptions()..model = LLMModels.gpt3.model;
-
-                  final prompt = Prompt()
-                    ..threadID = widget.thread.id
-                    ..prompt = text
-                    ..modelOptions = model;
-
-                  final question = chat.postMessage(prompt);
-
-                  setState(() {
-                    _followUps.add(question);
-                  });
-                });
-              },
-            ),
+              Padding(
+                padding: bodyPadding,
+                child: MarkdownBody(
+                  data: message.completion,
+                  selectable: true,
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+        Padding(
+          padding: buttonPadding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              if (referenceIDs != null && referenceIDs!.isNotEmpty)
+                IconButton(
+                  tooltip: 'References',
+                  icon: const Icon(Icons.attach_file_outlined),
+                  onPressed: () => _showSources(context),
+                  color: colors.outline,
+                ),
+              IconButton(
+                tooltip: 'Copy',
+                icon: const Icon(Icons.copy_outlined),
+                onPressed: () {},
+                color: colors.outline,
+              ),
+              IconButton(
+                tooltip: 'Delete',
+                icon: const Icon(Icons.delete_outline),
+                onPressed: () {},
+                color: colors.outline,
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

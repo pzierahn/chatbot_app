@@ -1,8 +1,8 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/generated/collection_service.pb.dart';
-import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/prompt_buttons.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
+import 'package:braingain_app/ui/page/chat/session_handler.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/page/chat/thread_view.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
@@ -90,7 +90,7 @@ class ChatBody extends StatefulWidget {
 }
 
 class _ChatBodyState extends State<ChatBody> {
-  final _threads = <Future<Thread>>[];
+  final _threads = <ThreadState>[];
 
   ThreadPrompt _prompt = ThreadPrompt();
 
@@ -111,8 +111,11 @@ class _ChatBodyState extends State<ChatBody> {
 
   @override
   Widget build(BuildContext context) {
-    final children =
-        _threads.map((thread) => ThreadLoader(thread: thread)).toList();
+    final children = _threads
+        .map(
+          (thread) => ThreadView(thread: thread),
+        )
+        .toList();
 
     return ConstrainedListView(
       children: [
@@ -132,10 +135,16 @@ class _ChatBodyState extends State<ChatBody> {
                       return;
                     }
 
+                    final threadState = ThreadState.start(
+                      prompt: _prompt..prompt = value,
+                      notifier: () {
+                        debugPrint('ThreadState Notifier');
+                        setState(() {});
+                      },
+                    );
+
                     setState(() {
-                      _threads.add(chat.startThread(
-                        _prompt..prompt = value,
-                      ));
+                      _threads.add(threadState);
                     });
                   },
                 ),
