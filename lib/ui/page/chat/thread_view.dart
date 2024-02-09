@@ -5,7 +5,6 @@ import 'package:braingain_app/ui/page/chat/sources_dialog.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/utils/error.dart';
 import 'package:braingain_app/utils/llm_models.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
