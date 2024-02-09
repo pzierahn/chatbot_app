@@ -82,6 +82,7 @@ class _PromptInputState extends State<PromptInput> {
         style: textStyle,
         minLines: 1,
         validator: (value) {
+          value = value?.trim();
           if (value == null || value.isEmpty) {
             return 'Please enter some text';
           }
@@ -100,7 +101,7 @@ class _PromptInputState extends State<PromptInput> {
                 final valid = _formKey.currentState!.validate() &&
                     _controller.text.isNotEmpty;
                 if (valid) {
-                  onPromptSubmit?.call(value);
+                  onPromptSubmit?.call(value.trim());
                   _controller.clear();
                 }
               }
