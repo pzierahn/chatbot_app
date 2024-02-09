@@ -38,7 +38,7 @@ class SelectDocsTile extends StatelessWidget {
               color: color.primary,
             ),
       title: Text(
-        'Select Documents',
+        'Attach Documents',
         style: text.bodyMedium?.merge(TextStyle(
           color: color.onSurface,
         )),
