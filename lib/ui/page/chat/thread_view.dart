@@ -6,6 +6,7 @@ import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 class ThreadView extends StatefulWidget {
@@ -166,6 +167,18 @@ class _ChatFragment extends StatelessWidget {
     );
   }
 
+  void _copyToClipboard(BuildContext context) {
+    Clipboard.setData(
+      ClipboardData(text: message.completion),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Copied to clipboard'),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
@@ -222,7 +235,7 @@ class _ChatFragment extends StatelessWidget {
               IconButton(
                 tooltip: 'Copy',
                 icon: const Icon(Icons.copy_outlined),
-                onPressed: () {},
+                onPressed: () => _copyToClipboard(context),
                 color: colors.outline,
               ),
               IconButton(
