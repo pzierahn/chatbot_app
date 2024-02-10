@@ -38,13 +38,15 @@ const ModelCosts$json = {
     {'1': 'input', '3': 2, '4': 1, '5': 13, '10': 'input'},
     {'1': 'output', '3': 3, '4': 1, '5': 13, '10': 'output'},
     {'1': 'costs', '3': 4, '4': 1, '5': 13, '10': 'costs'},
+    {'1': 'requests', '3': 5, '4': 1, '5': 13, '10': 'requests'},
   ],
 };
 
 /// Descriptor for `ModelCosts`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List modelCostsDescriptor = $convert.base64Decode(
     'CgpNb2RlbENvc3RzEhQKBW1vZGVsGAEgASgJUgVtb2RlbBIUCgVpbnB1dBgCIAEoDVIFaW5wdX'
-    'QSFgoGb3V0cHV0GAMgASgNUgZvdXRwdXQSFAoFY29zdHMYBCABKA1SBWNvc3Rz');
+    'QSFgoGb3V0cHV0GAMgASgNUgZvdXRwdXQSFAoFY29zdHMYBCABKA1SBWNvc3RzEhoKCHJlcXVl'
+    'c3RzGAUgASgNUghyZXF1ZXN0cw==');
 
 @$core.Deprecated('Use costsDescriptor instead')
 const Costs$json = {

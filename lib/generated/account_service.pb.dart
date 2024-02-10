@@ -76,6 +76,7 @@ class ModelCosts extends $pb.GeneratedMessage {
     ..a<$core.int>(2, _omitFieldNames ? '' : 'input', $pb.PbFieldType.OU3)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'output', $pb.PbFieldType.OU3)
     ..a<$core.int>(4, _omitFieldNames ? '' : 'costs', $pb.PbFieldType.OU3)
+    ..a<$core.int>(5, _omitFieldNames ? '' : 'requests', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
 
@@ -135,6 +136,15 @@ class ModelCosts extends $pb.GeneratedMessage {
   $core.bool hasCosts() => $_has(3);
   @$pb.TagNumber(4)
   void clearCosts() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.int get requests => $_getIZ(4);
+  @$pb.TagNumber(5)
+  set requests($core.int v) { $_setUnsignedInt32(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasRequests() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearRequests() => clearField(5);
 }
 
 class Costs extends $pb.GeneratedMessage {
