@@ -1,3 +1,4 @@
+import 'package:braingain_app/utils/llm_models.dart';
 import 'package:flutter/material.dart';
 
 class SelectModelDialog extends StatelessWidget {
@@ -31,33 +32,16 @@ class SelectModelDialog extends StatelessWidget {
       content: SizedBox(
         width: 400,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            RadioListTile<String>(
-              value: 'gpt-4-1106-preview',
-              title: const Text('GPT-4 Turbo'),
-              subtitle: const Text('Bigger context window and more expensive'),
-              groupValue: model,
-              onChanged: (value) => _onModelChanged(context, value),
-            ),
-            RadioListTile<String>(
-              value: 'gpt-3.5-turbo-16k',
-              title: const Text('GPT-3.5 Turbo'),
-              subtitle: const Text('Smaller context window but cheaper'),
-              groupValue: model,
-              onChanged: (value) => _onModelChanged(context, value),
-            ),
-            RadioListTile<String>(
-              value: 'gemini-pro',
-              title: const Text('Gemini Pro'),
-              subtitle: const Text('Google\'s model for text generation'),
-              groupValue: model,
-              onChanged: (value) {
-                Navigator.pop(context, value);
-              },
-            ),
-          ],
-        ),
+            mainAxisSize: MainAxisSize.min,
+            children: LLMModels.all.map((model) {
+              return RadioListTile<String>(
+                value: model.model,
+                title: Text(model.title),
+                subtitle: Text(model.provider),
+                groupValue: this.model,
+                onChanged: (value) => _onModelChanged(context, value),
+              );
+            }).toList()),
       ),
     );
   }

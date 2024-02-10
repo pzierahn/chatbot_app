@@ -36,8 +36,8 @@ class ChatHistoryPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('History: ${collection.name}'),
       ),
-      body: FutureBuilder<ChatMessages>(
-          future: chat.getChatMessages(Collection()..id = collection.id),
+      body: FutureBuilder<ThreadIDs>(
+          future: chat.listThreadIDs(Collection()..id = collection.id),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return ErrorBody(
@@ -64,7 +64,7 @@ class ChatHistoryPage extends StatelessWidget {
               itemCount: snapshot.data!.ids.length,
               itemBuilder: (context, index) {
                 final id = snapshot.data!.ids[index];
-                return ChatHistoryTile(chatId: id);
+                return ChatHistoryTile(threahId: id);
               },
             );
           }),

@@ -107,3 +107,48 @@ class ConstrainedListViewBuilder extends StatelessWidget {
     );
   }
 }
+
+class ConstrainedListViewStable extends StatelessWidget {
+  const ConstrainedListViewStable({
+    super.key,
+    required this.children,
+    this.maxWidth = 800,
+    this.shrinkWrap = false,
+    this.primary,
+    this.padding,
+    this.divider,
+  });
+
+  final List<Widget> children;
+  final double maxWidth;
+  final bool shrinkWrap;
+  final bool? primary;
+  final Widget? divider;
+
+  final EdgeInsets? padding;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: padding ?? EdgeInsets.zero,
+      child: SingleChildScrollView(
+        primary: primary,
+        child: Column(
+          children: children
+              .map(
+                (child) => Align(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    constraints: BoxConstraints(
+                      maxWidth: maxWidth,
+                    ),
+                    child: child,
+                  ),
+                ),
+              )
+              .toList(),
+        ),
+      ),
+    );
+  }
+}

@@ -1,12 +1,19 @@
+import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/generated/collection_service.pb.dart';
-import 'package:braingain_app/ui/page/chat/chat.dart';
+import 'package:braingain_app/ui/page/chat/prompt_buttons.dart';
+import 'package:braingain_app/ui/page/chat/prompt_input.dart';
+import 'package:braingain_app/ui/page/chat/session_handler.dart';
+import 'package:braingain_app/ui/page/chat/thread_container.dart';
+import 'package:braingain_app/ui/page/chat/thread_view.dart';
 import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
+import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
+import 'package:braingain_app/utils/llm_models.dart';
 import 'package:flutter/material.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
 
   static const route = 'chat';
@@ -21,6 +28,11 @@ class ChatPage extends StatelessWidget {
       );
 
   @override
+  State<StatefulWidget> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
+  @override
   Widget build(BuildContext context) {
     final collection =
         ModalRoute.of(context)?.settings.arguments as Collections_Collection?;
@@ -28,7 +40,7 @@ class ChatPage extends StatelessWidget {
     if (collection == null) {
       return const ErrorScaffold(
         title: 'Chat',
-        error: 'No collection found',
+        error: 'Collection not found',
       );
     }
 
@@ -59,9 +71,96 @@ class ChatPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Chat(
+      body: ChatBody(
         collection: collection,
       ),
+    );
+  }
+}
+
+class ChatBody extends StatefulWidget {
+  const ChatBody({
+    super.key,
+    required this.collection,
+  });
+
+  final Collections_Collection collection;
+
+  @override
+  State<StatefulWidget> createState() => _ChatBodyState();
+}
+
+class _ChatBodyState extends State<ChatBody> {
+  final _threads = <ThreadState>[];
+
+  ThreadPrompt _prompt = ThreadPrompt();
+
+  @override
+  void initState() {
+    super.initState();
+
+    final opts = ModelOptions()
+      ..model = LLMModels.gpt3.model
+      ..maxTokens = 1024;
+
+    _prompt = ThreadPrompt()
+      ..collectionId = widget.collection.id
+      ..limit = 10
+      ..threshold = 0.25
+      ..modelOptions = opts;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final children = _threads
+        .map(
+          (thread) => ThreadView(thread: thread),
+        )
+        .toList();
+
+    return ConstrainedListViewStable(
+      children: [
+        ...children,
+        ThreadContainer(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 8,
+                ),
+                child: PromptInput(
+                  onPromptSubmit: (value) {
+                    if (value.isEmpty) {
+                      return;
+                    }
+
+                    final threadState = ThreadState.start(
+                      prompt: _prompt..prompt = value,
+                      notifier: () {
+                        setState(() {});
+                      },
+                    );
+
+                    setState(() {
+                      _threads.add(threadState);
+                    });
+                  },
+                ),
+              ),
+              const Divider(height: 1),
+              PromptButtons(
+                collection: widget.collection,
+                prompt: _prompt,
+                onPromptChanged: (prompt) {
+                  setState(() => _prompt = prompt);
+                },
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

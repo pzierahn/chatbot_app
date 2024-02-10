@@ -69,9 +69,9 @@ class _AppState extends State<App> {
         LoginPage.route: (context) => const LoginPage(),
         SettingsPage.route: (context) => const SettingsPage(),
         ChatPage.route: (context) => const ChatPage(),
-        ChatHistoryPage.route: (context) => const ChatHistoryPage(),
         CollectionPage.route: (context) => const CollectionPage(),
         UploadPage.route: (context) => const UploadPage(),
+        ChatHistoryPage.route: (context) => const ChatHistoryPage(),
       },
     );
   }

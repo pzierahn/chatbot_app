@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:undraw/undraw.dart';
 
 class DocumentSelection {
-  final Map<String, Prompt_Document> documents = {};
+  final Map<String, ThreadPrompt_Document> documents = {};
   final Map<String, String> names = {};
 
   bool contains(String docId) => documents.containsKey(docId);
@@ -22,7 +22,7 @@ class DocumentSelection {
   }
 
   void add(Documents_Document doc) {
-    documents[doc.id] = Prompt_Document()
+    documents[doc.id] = ThreadPrompt_Document()
       ..id = doc.id
       ..pages.clear()
       ..pages.addAll([for (int i = 0; i < doc.pages; i++) i]);
@@ -42,7 +42,7 @@ class DocumentSelection {
     return names.values.toList();
   }
 
-  List<Prompt_Document> getDocuments() {
+  List<ThreadPrompt_Document> getDocuments() {
     return documents.values.toList();
   }
 }

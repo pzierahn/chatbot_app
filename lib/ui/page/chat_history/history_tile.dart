@@ -7,12 +7,12 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 class ChatHistoryTile extends StatelessWidget {
   const ChatHistoryTile({
     super.key,
-    required this.chatId,
+    required this.threahId,
   });
 
-  final String chatId;
+  final String threahId;
 
-  void _onViewChat(BuildContext context, ChatMessage message) {
+  void _onViewChat(BuildContext context, Thread thread) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => Scaffold(
@@ -20,22 +20,24 @@ class ChatHistoryTile extends StatelessWidget {
             title: const Text('Chat'),
           ),
           body: ConstrainedListView(
-            children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: SelectableText(
-                  message.prompt,
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: MarkdownBody(
-                  data: message.text,
-                  selectable: true,
-                ),
-              ),
-            ],
+            children: thread.messages.map((message) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SelectableText(
+                    message.prompt,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: MarkdownBody(
+                      data: message.completion,
+                      selectable: true,
+                    ),
+                  ),
+                ],
+              );
+            }).toList(),
           ),
         ),
       ),
@@ -47,8 +49,8 @@ class ChatHistoryTile extends StatelessWidget {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
-    return FutureBuilder<ChatMessage>(
-        future: chat.getChatMessage(MessageID()..id = chatId),
+    return FutureBuilder<Thread>(
+        future: chat.getThread(ThreadID()..id = threahId),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return ListTile(
@@ -67,7 +69,7 @@ class ChatHistoryTile extends StatelessWidget {
                 style: text.titleMedium,
               ),
               subtitle: Text(
-                chatId,
+                threahId,
                 style: text.bodySmall?.merge(TextStyle(
                   color: color.outline,
                 )),
@@ -75,7 +77,13 @@ class ChatHistoryTile extends StatelessWidget {
             );
           }
 
-          final message = snapshot.data!;
+          final thread = snapshot.data!;
+
+          if (thread.messages.isEmpty) {
+            return const SizedBox();
+          }
+
+          final message = thread.messages.first;
           final date = message.timestamp.toDateTime(toLocal: true);
 
           return ListTile(
@@ -88,11 +96,11 @@ class ChatHistoryTile extends StatelessWidget {
             // minLeadingWidth: 40,
             subtitle: Text(
               date.toString(),
-              style: text.bodySmall?.merge(TextStyle(
+              style: text.bodySmall?.copyWith(
                 color: color.outline,
-              )),
+              ),
             ),
-            onTap: () => _onViewChat(context, message),
+            onTap: () => _onViewChat(context, thread),
           );
         });
   }

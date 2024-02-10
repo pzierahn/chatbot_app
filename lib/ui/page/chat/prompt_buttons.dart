@@ -4,6 +4,7 @@ import 'package:braingain_app/ui/page/chat/parameter_dialog.dart';
 import 'package:braingain_app/ui/page/chat/select_docs_dialog.dart';
 import 'package:braingain_app/ui/page/chat/select_docs_tile.dart';
 import 'package:braingain_app/ui/page/chat/select_model_dialog.dart';
+import 'package:braingain_app/utils/llm_models.dart';
 import 'package:flutter/material.dart';
 
 class PromptButtons extends StatefulWidget {
@@ -14,8 +15,8 @@ class PromptButtons extends StatefulWidget {
     required this.collection,
   });
 
-  final Prompt prompt;
-  final ValueChanged<Prompt>? onPromptChanged;
+  final ThreadPrompt prompt;
+  final ValueChanged<ThreadPrompt>? onPromptChanged;
   final Collections_Collection collection;
 
   @override
@@ -23,9 +24,9 @@ class PromptButtons extends StatefulWidget {
 }
 
 class _PromptButtonsState extends State<PromptButtons> {
-  ValueChanged<Prompt>? get onPromptChanged => widget.onPromptChanged;
+  ValueChanged<ThreadPrompt>? get onPromptChanged => widget.onPromptChanged;
 
-  Prompt get prompt => widget.prompt;
+  ThreadPrompt get prompt => widget.prompt;
 
   DocumentSelection _docs = DocumentSelection();
 
@@ -67,61 +68,64 @@ class _PromptButtonsState extends State<PromptButtons> {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        SelectDocsTile(
-          collection: widget.collection,
-          documents: _docs,
-          onChanged: _onSelectDocuments,
-        ),
-        ListTile(
-          leading: Icon(
-            Icons.psychology_outlined,
-            color: color.onSurface,
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SelectDocsTile(
+            collection: widget.collection,
+            documents: _docs,
+            onChanged: _onSelectDocuments,
           ),
-          title: Text(
-            'Select Model',
-            style: text.bodyMedium?.merge(TextStyle(
+          ListTile(
+            leading: Icon(
+              Icons.psychology_outlined,
               color: color.onSurface,
-            )),
+            ),
+            title: Text(
+              'Select Model',
+              style: text.bodyMedium?.merge(TextStyle(
+                color: color.onSurface,
+              )),
+            ),
+            subtitle: Text(
+              LLMModels.fromModel(prompt.modelOptions.model).title,
+              style: text.bodySmall?.merge(TextStyle(
+                color: color.outline,
+              )),
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            onTap: _onSelectModel,
+            hoverColor: color.primaryContainer,
           ),
-          subtitle: Text(
-            prompt.modelOptions.model,
-            style: text.bodySmall?.merge(TextStyle(
-              color: color.outline,
-            )),
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-          onTap: _onSelectModel,
-          hoverColor: color.primaryContainer,
-        ),
-        ListTile(
-          leading: Icon(
-            Icons.tune_outlined,
-            color: color.onSurface,
-          ),
-          title: Text(
-            'Parameters',
-            style: text.bodyMedium?.merge(TextStyle(
+          ListTile(
+            leading: Icon(
+              Icons.tune_outlined,
               color: color.onSurface,
-            )),
+            ),
+            title: Text(
+              'Parameters',
+              style: text.bodyMedium?.merge(TextStyle(
+                color: color.onSurface,
+              )),
+            ),
+            subtitle: Text(
+              'Set creativity and document limits',
+              style: text.bodySmall?.merge(TextStyle(
+                color: color.outline,
+              )),
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            onTap: _onShowParameter,
+            hoverColor: color.primaryContainer,
           ),
-          subtitle: Text(
-            'Set creativity and number of pages',
-            style: text.bodySmall?.merge(TextStyle(
-              color: color.outline,
-            )),
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-          onTap: _onShowParameter,
-          hoverColor: color.primaryContainer,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

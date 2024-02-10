@@ -7,13 +7,13 @@ class ParameterDialog extends StatefulWidget {
     required this.prompt,
   });
 
-  final Prompt prompt;
+  final ThreadPrompt prompt;
 
-  static Future<Prompt?> show(
+  static Future<ThreadPrompt?> show(
     BuildContext context,
-    Prompt prompt,
+    ThreadPrompt prompt,
   ) {
-    return showDialog<Prompt?>(
+    return showDialog<ThreadPrompt?>(
       context: context,
       builder: (context) {
         return AlertDialog(
@@ -49,12 +49,13 @@ class ParameterDialog extends StatefulWidget {
 }
 
 class _PromptOptionsState extends State<ParameterDialog> {
-  Prompt get prompt => widget.prompt;
+  ThreadPrompt get prompt => widget.prompt;
 
   ModelOptions get options => prompt.modelOptions;
 
   late TextEditingController _textTemp;
   late TextEditingController _textLimit;
+  late TextEditingController _textThreshold;
 
   @override
   void initState() {
@@ -65,6 +66,9 @@ class _PromptOptionsState extends State<ParameterDialog> {
     );
     _textLimit = TextEditingController(
       text: prompt.limit.toString(),
+    );
+    _textThreshold = TextEditingController(
+      text: (prompt.threshold * 100).toStringAsFixed(0),
     );
   }
 
@@ -133,6 +137,37 @@ class _PromptOptionsState extends State<ParameterDialog> {
             onChanged: (val) {
               _textLimit.text = val.toInt().toString();
               setState(() => prompt.limit = val.toInt());
+            },
+          ),
+        ),
+        ListTile(
+          contentPadding: contentPadding,
+          title: Row(
+            children: [
+              const Text('Document Relevance'),
+              const Spacer(),
+              SizedBox(
+                width: 50,
+                child: TextField(
+                  controller: _textThreshold,
+                  textAlign: TextAlign.end,
+                  onSubmitted: (val) {
+                    setState(() => prompt.threshold = int.parse(val) / 100.0);
+                  },
+                  decoration: const InputDecoration.collapsed(
+                    hintText: '0',
+                  ),
+                ),
+              ),
+            ],
+          ),
+          subtitle: Slider(
+            value: (prompt.threshold * 100),
+            min: 0,
+            max: 100,
+            onChanged: (val) {
+              _textThreshold.text = val.toInt().toString();
+              setState(() => prompt.threshold = (val / 100));
             },
           ),
         ),

@@ -1,4 +1,3 @@
-import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/utils/breakpoint_m3.dart';
 import 'package:flutter/material.dart';
 
@@ -7,12 +6,16 @@ class PromptInput extends StatefulWidget {
     super.key,
     this.prompt,
     this.onPromptSubmit,
-    required this.collection,
+    this.style,
+    this.hintText,
+    this.prefixIcon,
   });
 
   final String? prompt;
   final ValueChanged<String>? onPromptSubmit;
-  final Collections_Collection collection;
+  final TextStyle? style;
+  final String? hintText;
+  final Widget? prefixIcon;
 
   @override
   State createState() => _PromptInputState();
@@ -36,10 +39,11 @@ class _PromptInputState extends State<PromptInput> {
     final text = Theme.of(context).textTheme;
     final breakpoint = Breakpoint.fromMediaQuery(context);
 
-    final textStyle = text.titleMedium?.merge(TextStyle(
-      fontWeight: FontWeight.w500,
-      color: onPromptSubmit != null ? color.onSurface : color.outline,
-    ));
+    final textStyle = widget.style ??
+        text.titleMedium?.merge(TextStyle(
+          fontWeight: FontWeight.w500,
+          color: onPromptSubmit != null ? color.onSurface : color.outline,
+        ));
 
     Widget suffix;
     if (breakpoint.window > WindowClass.compact) {
@@ -78,6 +82,7 @@ class _PromptInputState extends State<PromptInput> {
         style: textStyle,
         minLines: 1,
         validator: (value) {
+          value = value?.trim();
           if (value == null || value.isEmpty) {
             return 'Please enter some text';
           }
@@ -85,7 +90,8 @@ class _PromptInputState extends State<PromptInput> {
         },
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
-          hintText: 'Type a question or prompt...',
+          prefixIcon: widget.prefixIcon,
+          hintText: widget.hintText ?? 'Type a question or prompt...',
           hintStyle: textStyle,
           suffix: suffix,
           border: InputBorder.none,
@@ -95,7 +101,8 @@ class _PromptInputState extends State<PromptInput> {
                 final valid = _formKey.currentState!.validate() &&
                     _controller.text.isNotEmpty;
                 if (valid) {
-                  onPromptSubmit?.call(value);
+                  onPromptSubmit?.call(value.trim());
+                  _controller.clear();
                 }
               }
             : null,

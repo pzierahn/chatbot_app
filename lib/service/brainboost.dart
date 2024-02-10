@@ -4,24 +4,24 @@ import 'package:braingain_app/generated/collection_service.pbgrpc.dart';
 import 'package:braingain_app/generated/document_service.pbgrpc.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:grpc/grpc_or_grpcweb.dart';
+import 'package:grpc/grpc.dart';
 
-// final _channel = ClientChannel(
-//   'localhost',
-//   port: 9055,
-//   options: const ChannelOptions(
-//     credentials: ChannelCredentials.insecure(),
-//   ),
-// );
-
-final _channel = GrpcOrGrpcWebClientChannel.toSeparateEndpoints(
-  grpcHost: 'brainboost-services-2qkjmuus4a-ey.a.run.app',
-  grpcPort: 443,
-  grpcTransportSecure: true,
-  grpcWebHost: 'brainboost-gateway-2qkjmuus4a-ey.a.run.app',
-  grpcWebPort: 443,
-  grpcWebTransportSecure: true,
+final _channel = ClientChannel(
+  'localhost',
+  port: 8869,
+  options: const ChannelOptions(
+    credentials: ChannelCredentials.insecure(),
+  ),
 );
+
+// final _channel = GrpcOrGrpcWebClientChannel.toSeparateEndpoints(
+//   grpcHost: 'brainboost-services-2qkjmuus4a-ey.a.run.app',
+//   grpcPort: 443,
+//   grpcTransportSecure: true,
+//   grpcWebHost: 'brainboost-gateway-2qkjmuus4a-ey.a.run.app',
+//   grpcWebPort: 443,
+//   grpcWebTransportSecure: true,
+// );
 
 final collections = CollectionServiceClientAuth();
 
@@ -36,6 +36,7 @@ Future<CallOptions> _mergeAuth(CallOptions? options) async {
   return CallOptions(
     metadata: {
       "Authorization": "Bearer $token",
+      "User-ID": FirebaseAuth.instance.currentUser?.uid ?? "12345",
     },
   ).mergedWith(options);
 }
@@ -127,26 +128,51 @@ class AccountServiceClientAuth {
 class ChatServiceClientAuth {
   final _service = ChatServiceClient(_channel);
 
-  Future<ChatMessage> chat(Prompt request, {CallOptions? options}) async {
+  Future<Thread> startThread(
+    ThreadPrompt request, {
+    CallOptions? options,
+  }) async {
     options = await _mergeAuth(options);
-    return _service.chat(request, options: options);
+    return _service.startThread(request, options: options);
   }
 
-  Future<ChatMessages> getChatMessages(Collection request,
-      {CallOptions? options}) async {
+  Future<Message> postMessage(
+    Prompt request, {
+    CallOptions? options,
+  }) async {
     options = await _mergeAuth(options);
-    return _service.getChatMessages(request, options: options);
+    return _service.postMessage(request, options: options);
   }
 
-  Future<ChatMessage> getChatMessage(MessageID request,
-      {CallOptions? options}) async {
+  Future<Thread> getThread(
+    ThreadID request, {
+    CallOptions? options,
+  }) async {
     options = await _mergeAuth(options);
-    return _service.getChatMessage(request, options: options);
+    return _service.getThread(request, options: options);
   }
 
-  Future<MessageID> deleteChatMessage(MessageID request,
-      {CallOptions? options}) async {
+  Future<ThreadIDs> listThreadIDs(
+    Collection request, {
+    CallOptions? options,
+  }) async {
     options = await _mergeAuth(options);
-    return _service.deleteChatMessage(request, options: options);
+    return _service.listThreadIDs(request, options: options);
+  }
+
+  Future<Empty> deleteThread(
+    ThreadID request, {
+    CallOptions? options,
+  }) async {
+    options = await _mergeAuth(options);
+    return _service.deleteThread(request, options: options);
+  }
+
+  Future<Empty> deleteMessageFromThread(
+    MessageID request, {
+    CallOptions? options,
+  }) async {
+    options = await _mergeAuth(options);
+    return _service.deleteMessageFromThread(request, options: options);
   }
 }
