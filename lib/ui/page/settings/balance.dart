@@ -16,6 +16,7 @@ class BalanceView extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
 
     return OutlinedCard(
+
       child: FutureBuilder<BalanceSheet>(
         future: account.getBalanceSheet(Empty()),
         builder: (context, snap) {

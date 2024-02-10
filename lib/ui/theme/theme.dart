@@ -17,7 +17,7 @@ final _colorsDark = ColorScheme.fromSeed(
   seedColor: _colorSeed,
 );
 
-final borderRadius = BorderRadius.circular(8);
+final borderRadius = BorderRadius.circular(16);
 
 final _roundedShape = RoundedRectangleBorder(
   borderRadius: borderRadius,

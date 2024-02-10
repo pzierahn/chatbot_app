@@ -4,6 +4,7 @@ import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/home/collection_edit_dialog.dart';
+import 'package:braingain_app/ui/theme/theme.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:flutter/material.dart';
@@ -62,13 +63,13 @@ class CollectionsTile extends StatelessWidget {
     final text = Theme.of(context).textTheme;
 
     final shape = RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: borderRadius,
     );
 
     return Container(
       margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: borderRadius,
         border: Border.all(
           color: color.outlineVariant,
           width: 1,

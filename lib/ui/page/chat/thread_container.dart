@@ -1,3 +1,4 @@
+import 'package:braingain_app/ui/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class ThreadContainer extends StatelessWidget {
@@ -16,7 +17,7 @@ class ThreadContainer extends StatelessWidget {
       color: colors.surface,
       elevation: 0,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: borderRadius,
         side: BorderSide(
           color: colors.outlineVariant,
           width: 1.0,
