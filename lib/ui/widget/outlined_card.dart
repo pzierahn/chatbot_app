@@ -5,7 +5,7 @@ class OutlinedCard extends StatelessWidget {
   const OutlinedCard({
     super.key,
     required this.child,
-    this.margin = const EdgeInsets.all(16),
+    this.margin = const EdgeInsets.all(8),
     this.padding,
   });
 
