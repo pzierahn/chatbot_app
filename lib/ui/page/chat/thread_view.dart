@@ -1,7 +1,7 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
 import 'package:braingain_app/ui/page/chat/session_handler.dart';
-import 'package:braingain_app/ui/page/chat/sources_dialog.dart';
+import 'package:braingain_app/ui/widget/sources_dialog.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/utils/error.dart';

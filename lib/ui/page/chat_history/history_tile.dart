@@ -1,8 +1,7 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
-import 'package:braingain_app/ui/widget/constrained_list_view.dart';
+import 'package:braingain_app/ui/page/chat_history/thread_details.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 
 class ChatHistoryTile extends StatelessWidget {
   const ChatHistoryTile({
@@ -15,30 +14,8 @@ class ChatHistoryTile extends StatelessWidget {
   void _onViewChat(BuildContext context, Thread thread) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => Scaffold(
-          appBar: AppBar(
-            title: const Text('Chat'),
-          ),
-          body: ConstrainedListView(
-            children: thread.messages.map((message) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SelectableText(
-                    message.prompt,
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: MarkdownBody(
-                      data: message.completion,
-                      selectable: true,
-                    ),
-                  ),
-                ],
-              );
-            }).toList(),
-          ),
+        builder: (context) => ThreadDetails(
+          thread: thread,
         ),
       ),
     );
