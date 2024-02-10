@@ -68,8 +68,7 @@ class CollectionsTile extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        // color: color.surfaceVariant.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(
           color: color.outlineVariant,
           width: 1,

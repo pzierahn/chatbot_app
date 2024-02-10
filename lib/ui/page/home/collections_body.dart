@@ -82,7 +82,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
                   .catchError((error) => ErrorSnackBar.show(context, error));
             },
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(16),
               side: BorderSide(
                 color: color.outlineVariant,
                 width: 1,
