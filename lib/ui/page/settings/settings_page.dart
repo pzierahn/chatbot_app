@@ -3,7 +3,7 @@ import 'package:braingain_app/ui/page/settings/balance.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
 
-const _version = '3.2.3';
+const _version = '3.3.0';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({
