@@ -30,8 +30,8 @@ class LLMModels {
   );
 
   static const List<LLMModel> all = [
-    gpt3,
     gpt4,
+    gpt3,
     geminiPro,
   ];
 

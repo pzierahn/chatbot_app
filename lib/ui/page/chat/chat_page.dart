@@ -100,7 +100,7 @@ class _ChatBodyState extends State<ChatBody> {
     super.initState();
 
     final opts = ModelOptions()
-      ..model = LLMModels.gpt3.model
+      ..model = LLMModels.gpt4.model
       ..maxTokens = 1024;
 
     _prompt = ThreadPrompt()
