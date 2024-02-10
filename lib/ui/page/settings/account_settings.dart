@@ -19,7 +19,7 @@ class AccountSettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final text = Theme.of(context).textTheme;
+    final textTheme = Theme.of(context).textTheme;
     final color = Theme.of(context).colorScheme;
 
     return OutlinedCard(
@@ -31,7 +31,7 @@ class AccountSettings extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Text(
               'User Account',
-              style: text.titleLarge?.merge(const TextStyle(
+              style: textTheme.titleLarge?.merge(const TextStyle(
                 fontWeight: FontWeight.bold,
               )),
             ),
@@ -39,17 +39,23 @@ class AccountSettings extends StatelessWidget {
           const Divider(height: 2),
           ListTile(
             leading: const Icon(Icons.person),
-            title: Text('User ID', style: text.titleMedium),
+            title: Text(
+              'User ID',
+              style: textTheme.titleSmall,
+            ),
             subtitle: SelectableText(
               FirebaseAuth.instance.currentUser?.uid ?? 'Not logged in',
-              style: text.bodySmall?.merge(
+              style: textTheme.bodySmall?.merge(
                 TextStyle(color: color.outline),
               ),
             ),
           ),
           ListTile(
             leading: const Icon(Icons.logout),
-            title: Text('Logout', style: text.titleMedium),
+            title: Text(
+              'Logout',
+              style: textTheme.titleSmall,
+            ),
             onTap: () => _onLogout(context),
           ),
         ],
