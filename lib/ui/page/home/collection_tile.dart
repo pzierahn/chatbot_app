@@ -62,7 +62,7 @@ class CollectionsTile extends StatelessWidget {
     final text = Theme.of(context).textTheme;
 
     final shape = RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(16),
     );
 
     return Container(
