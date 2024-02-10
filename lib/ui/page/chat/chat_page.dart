@@ -5,6 +5,7 @@ import 'package:braingain_app/ui/page/chat/prompt_input.dart';
 import 'package:braingain_app/ui/page/chat/session_handler.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/page/chat/thread_view.dart';
+import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
 import 'package:braingain_app/ui/page/collection/collection_page.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
@@ -51,7 +52,7 @@ class _ChatPageState extends State<ChatPage> {
             icon: const Icon(Icons.history_outlined),
             tooltip: 'Chat History',
             onPressed: () {
-              // TODO: Open chat history
+              ChatHistoryPage.open(context, collection);
             },
           ),
           IconButton(
