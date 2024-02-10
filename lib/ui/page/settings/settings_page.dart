@@ -33,14 +33,12 @@ class _SettingsPageState extends State<SettingsPage> {
             BalanceView(),
           ],
         ),
-        bottomSheet: Container(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Version $_version',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
+        bottomSheet: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Version $_version',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodySmall,
           ),
         ));
   }

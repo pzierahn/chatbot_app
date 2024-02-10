@@ -12,7 +12,7 @@ class AccountSettings extends StatelessWidget {
     ConfirmDialog.show(
       context,
       title: 'Logout',
-      content: 'Are you sure?',
+      content: 'Are you sure you want to logout?',
       onConfirm: () => FirebaseAuth.instance.signOut(),
     );
   }
@@ -36,8 +36,9 @@ class AccountSettings extends StatelessWidget {
               )),
             ),
           ),
-          // Divider(),
+          const Divider(height: 2),
           ListTile(
+            leading: const Icon(Icons.person),
             title: Text('User ID', style: text.titleMedium),
             subtitle: SelectableText(
               FirebaseAuth.instance.currentUser?.uid ?? 'Not logged in',
@@ -45,11 +46,11 @@ class AccountSettings extends StatelessWidget {
                 TextStyle(color: color.outline),
               ),
             ),
-            trailing: TextButton.icon(
-              onPressed: () => _onLogout(context),
-              icon: const Icon(Icons.logout),
-              label: const Text('Logout'),
-            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.logout),
+            title: Text('Logout', style: text.titleMedium),
+            onTap: () => _onLogout(context),
           ),
         ],
       ),
