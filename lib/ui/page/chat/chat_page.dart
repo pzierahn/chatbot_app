@@ -1,5 +1,6 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/generated/collection_service.pb.dart';
+import 'package:braingain_app/ui/page/chat/document_warning.dart';
 import 'package:braingain_app/ui/page/chat/prompt_buttons.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
 import 'package:braingain_app/ui/page/chat/session_handler.dart';
@@ -20,7 +21,7 @@ class ChatPage extends StatefulWidget {
 
   static Future<Object?> open(
     BuildContext context,
-    Collections_Collection collection,
+    Collection collection,
   ) =>
       Navigator.of(context).pushNamed(
         route,
@@ -35,7 +36,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     final collection =
-        ModalRoute.of(context)?.settings.arguments as Collections_Collection?;
+        ModalRoute.of(context)?.settings.arguments as Collection?;
 
     if (collection == null) {
       return const ErrorScaffold(
@@ -84,7 +85,7 @@ class ChatBody extends StatefulWidget {
     required this.collection,
   });
 
-  final Collections_Collection collection;
+  final Collection collection;
 
   @override
   State<StatefulWidget> createState() => _ChatBodyState();
@@ -112,11 +113,15 @@ class _ChatBodyState extends State<ChatBody> {
 
   @override
   Widget build(BuildContext context) {
-    final children = _threads
-        .map(
-          (thread) => ThreadView(thread: thread),
-        )
-        .toList();
+    final children = [];
+
+    if (widget.collection.documentCount == 0) {
+      children.add(DocumentWarning(collection: widget.collection));
+    }
+
+    for (final thread in _threads) {
+      children.add(ThreadView(thread: thread));
+    }
 
     return ConstrainedListViewStable(
       children: [

@@ -5,9 +5,11 @@ class ThreadContainer extends StatelessWidget {
   const ThreadContainer({
     super.key,
     required this.child,
+    this.outlineColor,
   });
 
   final Widget child;
+  final Color? outlineColor;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class ThreadContainer extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: borderRadius,
         side: BorderSide(
-          color: colors.outlineVariant,
+          color: outlineColor ?? colors.outlineVariant,
           width: 1.0,
         ),
       ),

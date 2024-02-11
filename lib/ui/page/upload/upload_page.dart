@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class _UploadArguments {
   const _UploadArguments(this.collection, [this.files]);
 
-  final Collections_Collection collection;
+  final Collection collection;
   final List<PlatformFile>? files;
 }
 
@@ -20,7 +20,7 @@ class UploadPage extends StatelessWidget {
 
   static Future<Object?> open(
     BuildContext context,
-    Collections_Collection collection,
+    Collection collection,
   ) =>
       Navigator.of(context).pushNamed(
         route,
@@ -29,7 +29,7 @@ class UploadPage extends StatelessWidget {
 
   static Future<Object?> openWithDialog(
     BuildContext context,
-    Collections_Collection collection,
+    Collection collection,
   ) async {
     return showUploadDialog().then((files) {
       if (files.isEmpty) {

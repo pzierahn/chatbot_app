@@ -55,11 +55,11 @@ class SelectDocsDialog extends StatefulWidget {
   });
 
   final DocumentSelection? preSelected;
-  final Collections_Collection collection;
+  final Collection collection;
 
   static Future<DocumentSelection?> show({
     required BuildContext context,
-    required Collections_Collection collection,
+    required Collection collection,
     DocumentSelection? documents,
   }) {
     return showDialog<DocumentSelection?>(
@@ -174,7 +174,7 @@ class _DocumentsBody extends StatefulWidget {
   final Documents documents;
   final DocumentSelection selected;
   final ValueChanged<DocumentSelection> onChanged;
-  final Collections_Collection collection;
+  final Collection collection;
 
   @override
   State<_DocumentsBody> createState() => _DocumentsBodyState();

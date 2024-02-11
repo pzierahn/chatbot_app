@@ -16,14 +16,14 @@ class ChatHistoryPage extends StatelessWidget {
 
   static Future<Object?> open(
     BuildContext context,
-    Collections_Collection collection,
+    Collection collection,
   ) =>
       Navigator.of(context).pushNamed(route, arguments: collection);
 
   @override
   Widget build(BuildContext context) {
     final collection =
-        ModalRoute.of(context)?.settings.arguments as Collections_Collection?;
+        ModalRoute.of(context)?.settings.arguments as Collection?;
 
     if (collection == null) {
       return const ErrorScaffold(

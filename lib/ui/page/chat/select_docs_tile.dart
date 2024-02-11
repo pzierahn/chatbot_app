@@ -12,7 +12,7 @@ class SelectDocsTile extends StatelessWidget {
 
   final DocumentSelection documents;
   final ValueChanged<DocumentSelection> onChanged;
-  final Collections_Collection collection;
+  final Collection collection;
 
   @override
   Widget build(BuildContext context) {

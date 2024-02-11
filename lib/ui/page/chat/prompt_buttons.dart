@@ -17,7 +17,7 @@ class PromptButtons extends StatefulWidget {
 
   final ThreadPrompt prompt;
   final ValueChanged<ThreadPrompt>? onPromptChanged;
-  final Collections_Collection collection;
+  final Collection collection;
 
   @override
   State createState() => _PromptButtonsState();

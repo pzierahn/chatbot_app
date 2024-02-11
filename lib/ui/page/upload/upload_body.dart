@@ -19,7 +19,7 @@ class UploadBody extends StatefulWidget {
     this.files,
   });
 
-  final Collections_Collection collection;
+  final Collection collection;
   final List<PlatformFile>? files;
 
   @override

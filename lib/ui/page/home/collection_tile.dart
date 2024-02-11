@@ -16,7 +16,7 @@ class CollectionsTile extends StatelessWidget {
     this.onUpdate,
   });
 
-  final Collections_Collection collection;
+  final Collection collection;
   final VoidCallback? onUpdate;
 
   Future<void> _onDeleteCollection(BuildContext context) {
