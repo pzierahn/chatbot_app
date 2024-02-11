@@ -44,6 +44,11 @@ Future<CallOptions> _mergeAuth(CallOptions? options) async {
 class CollectionServiceClientAuth {
   final _service = CollectionServiceClient(_channel);
 
+  Future<Collection> get(CollectionID request, {CallOptions? options}) async {
+    options = await _mergeAuth(options);
+    return _service.get(request, options: options);
+  }
+
   Future<Collections> getAll(Empty request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
     return _service.getAll(request, options: options);

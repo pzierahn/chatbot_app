@@ -13,6 +13,48 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+class CollectionID extends $pb.GeneratedMessage {
+  factory CollectionID() => create();
+  CollectionID._() : super();
+  factory CollectionID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CollectionID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CollectionID', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.collections.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CollectionID clone() => CollectionID()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CollectionID copyWith(void Function(CollectionID) updates) => super.copyWith((message) => updates(message as CollectionID)) as CollectionID;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CollectionID create() => CollectionID._();
+  CollectionID createEmptyInstance() => create();
+  static $pb.PbList<CollectionID> createRepeated() => $pb.PbList<CollectionID>();
+  @$core.pragma('dart2js:noInline')
+  static CollectionID getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CollectionID>(create);
+  static CollectionID? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+}
+
 class Collection extends $pb.GeneratedMessage {
   factory Collection() => create();
   Collection._() : super();
@@ -22,6 +64,7 @@ class Collection extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Collection', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.collections.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'name')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'documentCount', $pb.PbFieldType.OU3, protoName: 'documentCount')
     ..hasRequiredFields = false
   ;
 
@@ -63,59 +106,6 @@ class Collection extends $pb.GeneratedMessage {
   $core.bool hasName() => $_has(1);
   @$pb.TagNumber(2)
   void clearName() => clearField(2);
-}
-
-class Collections_Collection extends $pb.GeneratedMessage {
-  factory Collections_Collection() => create();
-  Collections_Collection._() : super();
-  factory Collections_Collection.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Collections_Collection.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Collections.Collection', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.collections.v1'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'name')
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'documentCount', $pb.PbFieldType.OU3, protoName: 'documentCount')
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Collections_Collection clone() => Collections_Collection()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Collections_Collection copyWith(void Function(Collections_Collection) updates) => super.copyWith((message) => updates(message as Collections_Collection)) as Collections_Collection;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static Collections_Collection create() => Collections_Collection._();
-  Collections_Collection createEmptyInstance() => create();
-  static $pb.PbList<Collections_Collection> createRepeated() => $pb.PbList<Collections_Collection>();
-  @$core.pragma('dart2js:noInline')
-  static Collections_Collection getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Collections_Collection>(create);
-  static Collections_Collection? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get name => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set name($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasName() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearName() => clearField(2);
 
   @$pb.TagNumber(3)
   $core.int get documentCount => $_getIZ(2);
@@ -134,7 +124,7 @@ class Collections extends $pb.GeneratedMessage {
   factory Collections.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Collections', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.collections.v1'), createEmptyInstance: create)
-    ..pc<Collections_Collection>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Collections_Collection.create)
+    ..pc<Collection>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Collection.create)
     ..hasRequiredFields = false
   ;
 
@@ -160,7 +150,7 @@ class Collections extends $pb.GeneratedMessage {
   static Collections? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<Collections_Collection> get items => $_getList(0);
+  $core.List<Collection> get items => $_getList(0);
 }
 
 
