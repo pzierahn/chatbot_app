@@ -102,7 +102,7 @@ class _DocumentWarningState extends State<DocumentWarning> {
               trailing: TextButton(
                 child: const Text('Upload'),
                 onPressed: () {
-                  UploadPage.open(context, collection).then((value) {
+                  UploadPage.openWithDialog(context, collection).then((value) {
                     _updateCollection();
                   });
                 },

@@ -31,16 +31,19 @@ class UploadPage extends StatelessWidget {
     BuildContext context,
     Collection collection,
   ) async {
-    return showUploadDialog().then((files) {
+    try {
+      final files = await showUploadDialog();
       if (files.isEmpty) {
-        return;
+        return null;
       }
 
       final args = _UploadArguments(collection, files);
-      Navigator.of(context).pushNamed(route, arguments: args);
-    }).catchError((error) {
+      return Navigator.of(context).pushNamed(route, arguments: args);
+    } catch (error) {
       ErrorSnackBar.show(context, error);
-    });
+    }
+
+    return null;
   }
 
   @override
