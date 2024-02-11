@@ -73,7 +73,10 @@ class _ThreadViewState extends State<ThreadView> {
 
     if (widget.thread.isLoading && !thread.hasError) {
       final loading = Padding(
-        padding: const EdgeInsets.only(left: 24, top: 16, right: 24),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 24,
+          vertical: 16,
+        ),
         child: ListTile(
           contentPadding: const EdgeInsets.all(0),
           trailing: const CircularProgressIndicator(),
@@ -107,27 +110,29 @@ class _ThreadViewState extends State<ThreadView> {
       children.add(err);
     }
 
-    children.addAll([
-      const SizedBox(height: 16),
-      const Divider(height: 1),
-      Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 24,
-          vertical: 4,
-        ),
-        child: PromptInput(
-          style: textTheme.titleMedium?.copyWith(
-            color: colors.outline,
-            fontWeight: FontWeight.normal,
+    if (!widget.thread.isLoading) {
+      children.addAll([
+        const SizedBox(height: 16),
+        const Divider(height: 1),
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: 4,
           ),
-          // prefixIcon: const Icon(Icons.reply_outlined),
-          hintText: 'Type a follow-up question or prompt...',
-          onPromptSubmit: (text) {
-            widget.thread.postMessage(text);
-          },
+          child: PromptInput(
+            style: textTheme.titleMedium?.copyWith(
+              color: colors.outline,
+              fontWeight: FontWeight.normal,
+            ),
+            // prefixIcon: const Icon(Icons.reply_outlined),
+            hintText: 'Type a follow-up question or prompt...',
+            onPromptSubmit: (text) {
+              widget.thread.postMessage(text);
+            },
+          ),
         ),
-      ),
-    ]);
+      ]);
+    }
 
     return ThreadContainer(
       child: Column(
