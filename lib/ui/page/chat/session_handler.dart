@@ -12,7 +12,7 @@ class ThreadState {
   VoidCallback onUpdate = () {};
 
   String? pendingPrompt;
-  Error? error;
+  Object? error;
 
   bool deleted = false;
 
@@ -28,7 +28,7 @@ class ThreadState {
     onUpdate();
   }
 
-  void setError(Error err) {
+  void setError(Object err) {
     error = err;
     onUpdate();
   }
