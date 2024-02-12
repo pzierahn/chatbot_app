@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix a bug that prevented the showing of error messages in the chat
 
+### Added
+
+- Added support for AWS Bedrock models
+
 ## [3.5.0] - 2024-02-11
 
 ### Changed
