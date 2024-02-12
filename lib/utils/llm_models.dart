@@ -13,26 +13,40 @@ class LLMModel {
 class LLMModels {
   static const LLMModel gpt3 = LLMModel(
     title: 'GPT 3.5',
-    model: 'gpt-3.5-turbo-16k',
+    model: 'openai.gpt-3.5-turbo-16k',
     provider: 'OpenAI',
   );
 
   static const LLMModel gpt4 = LLMModel(
     title: 'GPT 4 Turbo',
-    model: 'gpt-4-turbo-preview',
+    model: 'openai.gpt-4-turbo-preview',
     provider: 'OpenAI',
   );
 
   static const LLMModel geminiPro = LLMModel(
     title: 'Genmini Pro',
-    model: 'gemini-pro',
+    model: 'google.gemini-pro',
     provider: 'Google',
+  );
+
+  static const LLMModel claudeV2 = LLMModel(
+    title: 'Claude',
+    model: 'anthropic.claude-v2',
+    provider: 'Anthropic',
+  );
+
+  static const LLMModel titanExpress = LLMModel(
+    title: 'Amazon Titan',
+    model: 'amazon.titan-text-express-v1',
+    provider: 'Amazon',
   );
 
   static const List<LLMModel> all = [
     gpt4,
     gpt3,
     geminiPro,
+    claudeV2,
+    titanExpress,
   ];
 
   static LLMModel fromModel(String model) {
