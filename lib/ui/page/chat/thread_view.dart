@@ -71,25 +71,6 @@ class _ThreadViewState extends State<ThreadView> {
       }
     }
 
-    if (widget.thread.isLoading && !thread.hasError) {
-      final loading = Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 24,
-          vertical: 16,
-        ),
-        child: ListTile(
-          contentPadding: const EdgeInsets.all(0),
-          trailing: const CircularProgressIndicator(),
-          title: Text(
-            widget.thread.pendingPrompt!,
-            style: titleStyle,
-          ),
-          subtitle: const Text('Generating...'),
-        ),
-      );
-      children.add(loading);
-    }
-
     if (thread.hasError) {
       final err = Padding(
         padding: const EdgeInsets.symmetric(
@@ -108,6 +89,25 @@ class _ThreadViewState extends State<ThreadView> {
         ),
       );
       children.add(err);
+    }
+
+    if (widget.thread.isLoading && !widget.thread.hasError) {
+      final loading = Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 24,
+          vertical: 16,
+        ),
+        child: ListTile(
+          contentPadding: const EdgeInsets.all(0),
+          trailing: const CircularProgressIndicator(),
+          title: Text(
+            widget.thread.pendingPrompt!,
+            style: titleStyle,
+          ),
+          subtitle: const Text('Generating...'),
+        ),
+      );
+      children.add(loading);
     }
 
     if (!widget.thread.isLoading) {
