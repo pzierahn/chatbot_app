@@ -85,7 +85,7 @@ class _ThreadViewState extends State<ThreadView> {
               color: colors.error,
             ),
           ),
-          subtitle: Text(ErrorUtils.toText(thread.error)),
+          subtitle: SelectableText(ErrorUtils.toText(thread.error)),
         ),
       );
       children.add(err);
