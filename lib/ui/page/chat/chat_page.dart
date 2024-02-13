@@ -106,7 +106,7 @@ class _ChatBodyState extends State<ChatBody> {
 
     _prompt = ThreadPrompt()
       ..collectionId = widget.collection.id
-      ..limit = 10
+      ..limit = 15
       ..threshold = 0.25
       ..modelOptions = opts;
   }
