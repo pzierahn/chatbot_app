@@ -46,7 +46,7 @@ class LLMModels {
     gpt3,
     geminiPro,
     claudeV2,
-    titanExpress,
+    // titanExpress,
   ];
 
   static LLMModel fromModel(String model) {
