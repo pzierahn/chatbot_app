@@ -150,6 +150,7 @@ class _ChatBodyState extends State<ChatBody> {
 
                     setState(() {
                       _threads.add(threadState);
+                      _prompt.documents.clear();
                     });
                   },
                 ),
