@@ -8,6 +8,8 @@ import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_markdown_latex/flutter_markdown_latex.dart';
+import 'package:markdown/markdown.dart' as md;
 
 class ThreadView extends StatefulWidget {
   const ThreadView({
@@ -187,6 +189,7 @@ class _ChatFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     const titlePadding = EdgeInsets.only(
       top: 16,
@@ -220,6 +223,15 @@ class _ChatFragment extends StatelessWidget {
                 child: MarkdownBody(
                   data: message.completion,
                   selectable: true,
+                  builders: {
+                    'latex': LatexElementBuilder(
+                      textStyle: textTheme.bodyMedium,
+                    ),
+                  },
+                  extensionSet: md.ExtensionSet(
+                    [LatexBlockSyntax()],
+                    [LatexInlineSyntax()],
+                  ),
                 ),
               ),
             ],
