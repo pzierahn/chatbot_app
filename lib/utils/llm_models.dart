@@ -31,7 +31,7 @@ class LLMModels {
 
   static const LLMModel claudeV2 = LLMModel(
     title: 'Claude',
-    model: 'anthropic.claude-v2',
+    model: 'anthropic.claude-v2:1',
     provider: 'Anthropic',
   );
 
