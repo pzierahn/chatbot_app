@@ -209,10 +209,11 @@ packages:
   flutter_markdown_latex:
     dependency: "direct main"
     description:
-      name: flutter_markdown_latex
-      sha256: "080729dd4984e294e4d2b12a346328faaea23b9f96c3d5cf85d2361ca844f978"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: "56bac074d12d35df508f09baebdd6f5f71b74c5b"
+      url: "https://github.com/pzierahn/flutter_markdown_latex"
+    source: git
     version: "0.2.0"
   flutter_math_fork:
     dependency: transitive
