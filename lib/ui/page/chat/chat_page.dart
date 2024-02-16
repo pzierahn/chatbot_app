@@ -13,6 +13,7 @@ import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:braingain_app/utils/llm_models.dart';
 import 'package:flutter/material.dart';
+import 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -140,9 +141,11 @@ class _ChatBodyState extends State<ChatBody> {
                     if (value.isEmpty) {
                       return;
                     }
+                    _prompt.prompt = value;
 
                     final threadState = ThreadState.start(
-                      prompt: _prompt..prompt = value,
+                      // Use deep copy to avoid race conditions with doc clearing
+                      prompt: _prompt.deepCopy(),
                       notifier: () {
                         setState(() {});
                       },

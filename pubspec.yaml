@@ -46,6 +46,7 @@ dependencies:
     git:
       url: https://github.com/pzierahn/flutter_markdown_latex
   uuid: ^4.0.0
+  protobuf: ^3.1.0
 
 dev_dependencies:
   flutter_test:
