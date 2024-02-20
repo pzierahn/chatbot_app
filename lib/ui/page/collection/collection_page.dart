@@ -7,6 +7,7 @@ import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
+import 'package:braingain_app/ui/widget/webpage_index_dialog.dart';
 import 'package:flutter/material.dart';
 
 class CollectionPage extends StatelessWidget {
@@ -53,6 +54,30 @@ class _CollectionPageState extends State<_CollectionPage> {
   void _onUpload() {
     UploadPage.openWithDialog(context, widget.collection)
         .then((_) => setState(() {}));
+  }
+
+  void _onIndexWebpage() {
+    WebpageIndexDialog.show(context).then((url) {
+      if (url == null || url.isEmpty) {
+        return;
+      }
+
+      final page = Webpage()..url = url;
+      final meta = DocumentMetadata()..web = page;
+
+      final request = IndexJob()
+        ..collectionId = widget.collection.id
+        ..document = meta;
+
+      documents.indexDocument(request).then((_) {
+        SimpleSnackBar.show(
+          context,
+          'Indexed $url',
+        );
+      }).catchError((error) {
+        ErrorSnackBar.show(context, error);
+      });
+    });
   }
 
   Future<void> _onEditDocument(String docId, String filename) async {
@@ -110,6 +135,11 @@ class _CollectionPageState extends State<_CollectionPage> {
       appBar: AppBar(
         title: Text(widget.collection.name),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.travel_explore_outlined),
+            tooltip: 'Index Web Page',
+            onPressed: _onIndexWebpage,
+          ),
           IconButton(
             icon: const Icon(Icons.upload_file_outlined),
             tooltip: 'Upload Documents',
