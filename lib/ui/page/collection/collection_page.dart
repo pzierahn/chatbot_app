@@ -1,7 +1,6 @@
 import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
-import 'package:braingain_app/ui/page/collection/document_edit_dialog.dart';
 import 'package:braingain_app/ui/page/upload/upload_body.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
@@ -56,48 +55,45 @@ class _CollectionPageState extends State<_CollectionPage> {
         .then((_) => setState(() {}));
   }
 
-  Future<void> _onEditDocument(Documents_Document doc) async {
-    final ref = Document()
-      ..collectionId = widget.collection.id
-      ..filename = doc.filename
-      ..id = doc.id;
-
-    final filename = await EditDocumentDialog.show(context, ref);
-    if (filename == null || filename.isEmpty) {
-      return;
-    }
-
-    ref.filename = filename;
-
-    documents.update(ref).then((_) {
-      SimpleSnackBar.show(
-        context,
-        'Updated ${doc.filename}',
-      );
-      setState(() {});
-    }).catchError((error) {
-      ErrorSnackBar.show(context, error);
-    });
+  Future<void> _onEditDocument(String docId, String filename) async {
+    // final ref = Document()
+    //   ..collectionId = widget.collection.id
+    //   ..filename = doc.filename
+    //   ..id = doc.id;
+    //
+    // final filename = await EditDocumentDialog.show(context, ref);
+    // if (filename == null || filename.isEmpty) {
+    //   return;
+    // }
+    //
+    // ref.filename = filename;
+    //
+    // documents.update(ref).then((_) {
+    //   SimpleSnackBar.show(
+    //     context,
+    //     'Updated ${doc.filename}',
+    //   );
+    //   setState(() {});
+    // }).catchError((error) {
+    //   ErrorSnackBar.show(context, error);
+    // });
   }
 
-  Future<void> _onDelete(Documents_Document doc) async {
-    final ref = Document()
-      ..collectionId = widget.collection.id
-      ..id = doc.id;
-
+  Future<void> _onDelete(String docId, String filename) async {
     final delete = await ConfirmDialog.show(
       context,
-      title: 'Delete ${doc.filename}?',
+      title: 'Delete $filename?',
       content: 'This action cannot be undone',
     );
     if (delete == null || !delete) {
       return;
     }
 
+    final ref = DocumentID()..id = docId;
     documents.delete(ref).then((_) {
       SimpleSnackBar.show(
         context,
-        'Deleted ${doc.filename}',
+        'Deleted $filename',
       );
       setState(() {});
     }).catchError((error) {
@@ -121,7 +117,7 @@ class _CollectionPageState extends State<_CollectionPage> {
           ),
         ],
       ),
-      body: FutureBuilder<Documents>(
+      body: FutureBuilder<DocumentList>(
         future: documents.list(
           DocumentFilter()..collectionId = widget.collection.id,
         ),
@@ -139,7 +135,7 @@ class _CollectionPageState extends State<_CollectionPage> {
           }
 
           return ConstrainedListView(
-              children: snap.data!.items
+              children: snap.data!.items.entries
                   .map(
                     (doc) => ListTile(
                       leading: Icon(
@@ -147,12 +143,12 @@ class _CollectionPageState extends State<_CollectionPage> {
                         color: color.primary,
                       ),
                       title: Text(
-                        doc.filename,
+                        doc.value,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                       subtitle: Text(
-                        'Pages ${doc.pages}',
+                        doc.key,
                         style: text.bodySmall?.merge(TextStyle(
                           color: color.outline,
                         )),
@@ -171,10 +167,10 @@ class _CollectionPageState extends State<_CollectionPage> {
                         onSelected: (value) {
                           switch (value) {
                             case 'edit':
-                              _onEditDocument(doc);
+                              _onEditDocument(doc.key, doc.value);
                               break;
                             case 'delete':
-                              _onDelete(doc);
+                              _onDelete(doc.key, doc.value);
                               break;
                           }
                         },

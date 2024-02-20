@@ -34,9 +34,10 @@ class FileUploadProgress extends StatelessWidget {
           color: color.outline,
         ));
 
-    final processed = status.progress?.processedPages ?? 0;
-    final total = status.progress?.totalPages ?? 0;
-    final progress = total != 0 ? (processed / total) : null;
+    // final processed = status.progress?.processedPages ?? 0;
+    // final total = status.progress?.totalPages ?? 0;
+    // final progress = total != 0 ? (processed / total) : null;
+    final progress = 0.0;
 
     Widget leading;
     if (status.hasError) {
@@ -75,7 +76,7 @@ class FileUploadProgress extends StatelessWidget {
       );
     } else {
       body = Text(
-        '$processed / $total',
+        status.progress?.status ?? '',
         style: style,
       );
     }

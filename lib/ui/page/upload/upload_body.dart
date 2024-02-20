@@ -69,34 +69,37 @@ class _UploadBodyState extends State<UploadBody> {
         );
       });
 
-      final doc = Document()
-        ..id = job.docId
-        ..collectionId = job.collectionId
+      final metaFile = File()
         ..filename = job.file.name
         ..path = job.ref.fullPath;
 
-      documents.index(doc).then(
-        (stream) {
-          stream
-              .listen(
-            (progress) => setState(() {
-              _status[doc.id] = DocumentStatus(
-                uploaded: true,
-                progress: progress,
-              );
-            }),
-          )
-              .onError((error) {
-            debugPrint(error.toString());
-            setState(() {
-              _status[doc.id] = DocumentStatus(
-                uploaded: true,
-                error: error,
-              );
-            });
+      final metadata = DocumentMetadata()..file = metaFile;
+
+      final doc = IndexJob()
+        ..id = job.docId
+        ..collectionId = job.collectionId
+        ..document = metadata;
+
+      documents.indexDocument(doc).then((stream) {
+        stream
+            .listen(
+          (progress) => setState(() {
+            _status[doc.id] = DocumentStatus(
+              uploaded: true,
+              progress: progress,
+            );
+          }),
+        )
+            .onError((error) {
+          debugPrint(error.toString());
+          setState(() {
+            _status[doc.id] = DocumentStatus(
+              uploaded: true,
+              error: error,
+            );
           });
-        },
-      ).catchError((error) {
+        });
+      }).catchError((error) {
         debugPrint(error.toString());
         setState(() {
           _status[doc.id] = DocumentStatus(

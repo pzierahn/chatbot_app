@@ -157,7 +157,7 @@ class _ChatFragment extends StatelessWidget {
   final TextStyle? titleStyle;
   final Message message;
   final List<String>? referenceIDs;
-  final List<double>? referenceScores;
+  final Map<String, double>? referenceScores;
   final VoidCallback? onDelete;
 
   void _showSources(BuildContext context) {
@@ -169,7 +169,7 @@ class _ChatFragment extends StatelessWidget {
       context: context,
       builder: (context) => SourcesDialog(
         references: referenceIDs!,
-        scores: referenceScores ?? const [],
+        scores: referenceScores ?? const {},
       ),
     );
   }

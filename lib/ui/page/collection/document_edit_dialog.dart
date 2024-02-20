@@ -1,21 +1,20 @@
-import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:flutter/material.dart';
 
 class EditDocumentDialog extends StatefulWidget {
   const EditDocumentDialog({
     super.key,
-    required this.ref,
+    required this.title,
   });
 
-  final Document ref;
+  final String title;
 
   static Future<String?> show(
     BuildContext context,
-    Document ref,
+    String title,
   ) {
     return showDialog<String>(
       context: context,
-      builder: (context) => EditDocumentDialog(ref: ref),
+      builder: (context) => EditDocumentDialog(title: title),
     );
   }
 
@@ -30,7 +29,7 @@ class _EditDocumentDialogState extends State<EditDocumentDialog> {
   @override
   void initState() {
     super.initState();
-    _controller.text = widget.ref.filename;
+    _controller.text = widget.title;
   }
 
   @override

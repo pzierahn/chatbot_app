@@ -1,49 +1,33 @@
-import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
-import 'package:braingain_app/utils/page_numbers.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/undraw.dart';
 
 class DocumentSelection {
-  final Map<String, ThreadPrompt_Document> documents = {};
   final Map<String, String> names = {};
 
-  bool contains(String docId) => documents.containsKey(docId);
+  bool contains(String docId) => names.containsKey(docId);
 
-  bool isEmpty() => documents.isEmpty;
+  bool isEmpty() => names.isEmpty;
 
   void remove(String docId) {
-    documents.remove(docId);
+    names.remove(docId);
     names.remove(docId);
   }
 
-  void add(Documents_Document doc) {
-    documents[doc.id] = ThreadPrompt_Document()
-      ..id = doc.id
-      ..pages.clear()
-      ..pages.addAll([for (int i = 0; i < doc.pages; i++) i]);
-    names[doc.id] = doc.filename;
-  }
-
-  List<int> getPages(String docId) {
-    return documents[docId]?.pages ?? [];
-  }
-
-  void setPages(String docId, List<int> pages) {
-    documents[docId]?.pages.clear();
-    documents[docId]?.pages.addAll(pages);
+  void add(String docId, String name) {
+    names[docId] = name;
   }
 
   List<String> getNames() {
     return names.values.toList();
   }
 
-  List<ThreadPrompt_Document> getDocuments() {
-    return documents.values.toList();
+  List<String> getDocuments() {
+    return names.keys.toList();
   }
 }
 
@@ -112,7 +96,7 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
       content: SizedBox(
         height: 400,
         width: 400,
-        child: FutureBuilder<Documents>(
+        child: FutureBuilder<DocumentList>(
           future: documents.list(request),
           builder: (context, snap) {
             if (snap.hasError) {
@@ -171,7 +155,7 @@ class _DocumentsBody extends StatefulWidget {
     required this.collection,
   });
 
-  final Documents documents;
+  final DocumentList documents;
   final DocumentSelection selected;
   final ValueChanged<DocumentSelection> onChanged;
   final Collection collection;
@@ -181,11 +165,11 @@ class _DocumentsBody extends StatefulWidget {
 }
 
 class _DocumentsBodyState extends State<_DocumentsBody> {
-  void _onSelect(Documents_Document doc) {
-    if (widget.selected.contains(doc.id)) {
-      widget.selected.remove(doc.id);
+  void _onSelect(String docId, String filename) {
+    if (widget.selected.contains(docId)) {
+      widget.selected.remove(docId);
     } else {
-      widget.selected.add(doc);
+      widget.selected.add(docId, filename);
     }
 
     widget.onChanged(widget.selected);
@@ -213,12 +197,18 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
       );
     }
 
+    final docIds = widget.documents.items.entries.toList();
+    docIds.sort((a, b) => a.value.compareTo(b.value));
+
     return ListView.builder(
-      itemCount: widget.documents.items.length,
+      itemCount: docIds.length,
       itemBuilder: (context, index) {
-        final doc = widget.documents.items[index];
+        final doc = docIds[index];
+        final docId = doc.key;
+        final filename = doc.value;
+
         return ListTile(
-          leading: widget.selected.contains(doc.id)
+          leading: widget.selected.contains(docId)
               ? Icon(
                   Icons.task_outlined,
                   size: 16,
@@ -226,51 +216,17 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
                 )
               : const Icon(Icons.description_outlined, size: 16),
           title: Text(
-            doc.filename,
+            filename,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: text.bodyMedium?.merge(TextStyle(
-              color: widget.selected.contains(doc.id)
+              color: widget.selected.contains(docId)
                   ? color.primary
                   : color.onSurface,
             )),
           ),
-          subtitle: widget.selected.contains(doc.id)
-              ? TextFormField(
-                  controller: TextEditingController(
-                    text: formatPageList(widget.selected.getPages(doc.id)),
-                  ),
-                  decoration: const InputDecoration.collapsed(
-                    hintText: 'Pages',
-                  ),
-                  style: text.bodySmall?.merge(TextStyle(
-                    color: color.outline,
-                  )),
-                  onFieldSubmitted: (text) {
-                    final pages = parsePageList(text);
-                    widget.selected.setPages(doc.id, pages);
-                    widget.onChanged(widget.selected);
-                  },
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter page numbers';
-                    }
-
-                    final reg = RegExp(r'^\d+(-\d+)?,?( *\d+(-\d+)?,?)*$');
-                    if (!reg.hasMatch(value)) {
-                      return 'Please enter page numbers correctly';
-                    }
-
-                    return null;
-                  },
-                )
-              : Text(
-                  'Pages: ${doc.pages}',
-                  style: text.bodySmall?.merge(TextStyle(
-                    color: color.outline,
-                  )),
-                ),
-          onTap: () => _onSelect(doc),
+          subtitle: Text(docId),
+          onTap: () => _onSelect(docId, filename),
         );
       },
     );
