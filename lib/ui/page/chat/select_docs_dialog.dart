@@ -225,7 +225,6 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
                   : color.onSurface,
             )),
           ),
-          subtitle: Text(docId),
           onTap: () => _onSelect(docId, filename),
         );
       },

@@ -177,12 +177,6 @@ class _CollectionPageState extends State<_CollectionPage> {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      subtitle: Text(
-                        doc.key,
-                        style: text.bodySmall?.merge(TextStyle(
-                          color: color.outline,
-                        )),
-                      ),
                       trailing: PopupMenuButton(
                         itemBuilder: (context) => const [
                           PopupMenuItem(
