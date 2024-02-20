@@ -26,8 +26,8 @@ class DocumentServiceClient extends $grpc.Client {
       '/endpoint.brainboost.documents.v2.DocumentService/List',
       ($4.DocumentFilter value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.DocumentList.fromBuffer(value));
-  static final _$get = $grpc.ClientMethod<$4.DocumentID, $4.Document>(
-      '/endpoint.brainboost.documents.v2.DocumentService/Get',
+  static final _$getDocument = $grpc.ClientMethod<$4.DocumentID, $4.Document>(
+      '/endpoint.brainboost.documents.v2.DocumentService/GetDocument',
       ($4.DocumentID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.Document.fromBuffer(value));
   static final _$delete = $grpc.ClientMethod<$4.DocumentID, $0.Empty>(
@@ -57,8 +57,8 @@ class DocumentServiceClient extends $grpc.Client {
     return $createUnaryCall(_$list, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.Document> get($4.DocumentID request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$get, request, options: options);
+  $grpc.ResponseFuture<$4.Document> getDocument($4.DocumentID request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getDocument, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.Empty> delete($4.DocumentID request, {$grpc.CallOptions? options}) {
@@ -91,8 +91,8 @@ abstract class DocumentServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) => $4.DocumentFilter.fromBuffer(value),
         ($4.DocumentList value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$4.DocumentID, $4.Document>(
-        'Get',
-        get_Pre,
+        'GetDocument',
+        getDocument_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $4.DocumentID.fromBuffer(value),
@@ -131,8 +131,8 @@ abstract class DocumentServiceBase extends $grpc.Service {
     return list(call, await request);
   }
 
-  $async.Future<$4.Document> get_Pre($grpc.ServiceCall call, $async.Future<$4.DocumentID> request) async {
-    return get(call, await request);
+  $async.Future<$4.Document> getDocument_Pre($grpc.ServiceCall call, $async.Future<$4.DocumentID> request) async {
+    return getDocument(call, await request);
   }
 
   $async.Future<$0.Empty> delete_Pre($grpc.ServiceCall call, $async.Future<$4.DocumentID> request) async {
@@ -152,7 +152,7 @@ abstract class DocumentServiceBase extends $grpc.Service {
   }
 
   $async.Future<$4.DocumentList> list($grpc.ServiceCall call, $4.DocumentFilter request);
-  $async.Future<$4.Document> get($grpc.ServiceCall call, $4.DocumentID request);
+  $async.Future<$4.Document> getDocument($grpc.ServiceCall call, $4.DocumentID request);
   $async.Future<$0.Empty> delete($grpc.ServiceCall call, $4.DocumentID request);
   $async.Stream<$4.IndexProgress> indexDocument($grpc.ServiceCall call, $4.IndexJob request);
   $async.Future<$4.SearchResults> search($grpc.ServiceCall call, $4.SearchQuery request);
