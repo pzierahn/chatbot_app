@@ -13,6 +13,43 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use documentIDDescriptor instead')
+const DocumentID$json = {
+  '1': 'DocumentID',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `DocumentID`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List documentIDDescriptor = $convert.base64Decode(
+    'CgpEb2N1bWVudElEEg4KAmlkGAEgASgJUgJpZA==');
+
+@$core.Deprecated('Use documentListDescriptor instead')
+const DocumentList$json = {
+  '1': 'DocumentList',
+  '2': [
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.documents.v2.DocumentList.ItemsEntry', '10': 'items'},
+  ],
+  '3': [DocumentList_ItemsEntry$json],
+};
+
+@$core.Deprecated('Use documentListDescriptor instead')
+const DocumentList_ItemsEntry$json = {
+  '1': 'ItemsEntry',
+  '2': [
+    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': {'7': true},
+};
+
+/// Descriptor for `DocumentList`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List documentListDescriptor = $convert.base64Decode(
+    'CgxEb2N1bWVudExpc3QSTwoFaXRlbXMYASADKAsyOS5lbmRwb2ludC5icmFpbmJvb3N0LmRvY3'
+    'VtZW50cy52Mi5Eb2N1bWVudExpc3QuSXRlbXNFbnRyeVIFaXRlbXMaOAoKSXRlbXNFbnRyeRIQ'
+    'CgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgB');
+
 @$core.Deprecated('Use referenceIDsDescriptor instead')
 const ReferenceIDs$json = {
   '1': 'ReferenceIDs',
@@ -25,34 +62,33 @@ const ReferenceIDs$json = {
 final $typed_data.Uint8List referenceIDsDescriptor = $convert.base64Decode(
     'CgxSZWZlcmVuY2VJRHMSFAoFaXRlbXMYASADKAlSBWl0ZW1z');
 
-@$core.Deprecated('Use referenceDescriptor instead')
-const Reference$json = {
-  '1': 'Reference',
+@$core.Deprecated('Use chunkDescriptor instead')
+const Chunk$json = {
+  '1': 'Chunk',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'document_id', '3': 2, '4': 1, '5': 9, '10': 'documentId'},
-    {'1': 'filename', '3': 3, '4': 1, '5': 9, '10': 'filename'},
-    {'1': 'page', '3': 4, '4': 1, '5': 13, '10': 'page'},
+    {'1': 'text', '3': 2, '4': 1, '5': 9, '10': 'text'},
+    {'1': 'index', '3': 3, '4': 1, '5': 13, '10': 'index'},
   ],
 };
 
-/// Descriptor for `Reference`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List referenceDescriptor = $convert.base64Decode(
-    'CglSZWZlcmVuY2USDgoCaWQYASABKAlSAmlkEh8KC2RvY3VtZW50X2lkGAIgASgJUgpkb2N1bW'
-    'VudElkEhoKCGZpbGVuYW1lGAMgASgJUghmaWxlbmFtZRISCgRwYWdlGAQgASgNUgRwYWdl');
+/// Descriptor for `Chunk`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List chunkDescriptor = $convert.base64Decode(
+    'CgVDaHVuaxIOCgJpZBgBIAEoCVICaWQSEgoEdGV4dBgCIAEoCVIEdGV4dBIUCgVpbmRleBgDIA'
+    'EoDVIFaW5kZXg=');
 
 @$core.Deprecated('Use referencesDescriptor instead')
 const References$json = {
   '1': 'References',
   '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.documents.v1.Reference', '10': 'items'},
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.documents.v2.Document', '10': 'items'},
   ],
 };
 
 /// Descriptor for `References`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List referencesDescriptor = $convert.base64Decode(
-    'CgpSZWZlcmVuY2VzEkEKBWl0ZW1zGAEgAygLMisuZW5kcG9pbnQuYnJhaW5ib29zdC5kb2N1bW'
-    'VudHMudjEuUmVmZXJlbmNlUgVpdGVtcw==');
+    'CgpSZWZlcmVuY2VzEkAKBWl0ZW1zGAEgAygLMiouZW5kcG9pbnQuYnJhaW5ib29zdC5kb2N1bW'
+    'VudHMudjIuRG9jdW1lbnRSBWl0ZW1z');
 
 @$core.Deprecated('Use searchQueryDescriptor instead')
 const SearchQuery$json = {
@@ -75,61 +111,43 @@ final $typed_data.Uint8List searchQueryDescriptor = $convert.base64Decode(
 const SearchResults$json = {
   '1': 'SearchResults',
   '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.documents.v1.SearchResults.Document', '10': 'items'},
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.documents.v2.Document', '10': 'items'},
+    {'1': 'scores', '3': 2, '4': 3, '5': 11, '6': '.endpoint.brainboost.documents.v2.SearchResults.ScoresEntry', '10': 'scores'},
   ],
-  '3': [SearchResults_Document$json],
+  '3': [SearchResults_ScoresEntry$json],
 };
 
 @$core.Deprecated('Use searchResultsDescriptor instead')
-const SearchResults_Document$json = {
-  '1': 'Document',
+const SearchResults_ScoresEntry$json = {
+  '1': 'ScoresEntry',
   '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'document_id', '3': 2, '4': 1, '5': 9, '10': 'documentId'},
-    {'1': 'filename', '3': 3, '4': 1, '5': 9, '10': 'filename'},
-    {'1': 'content', '3': 4, '4': 1, '5': 9, '10': 'content'},
-    {'1': 'page', '3': 5, '4': 1, '5': 13, '10': 'page'},
-    {'1': 'score', '3': 6, '4': 1, '5': 2, '10': 'score'},
+    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    {'1': 'value', '3': 2, '4': 1, '5': 2, '10': 'value'},
   ],
+  '7': {'7': true},
 };
 
 /// Descriptor for `SearchResults`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List searchResultsDescriptor = $convert.base64Decode(
-    'Cg1TZWFyY2hSZXN1bHRzEk4KBWl0ZW1zGAEgAygLMjguZW5kcG9pbnQuYnJhaW5ib29zdC5kb2'
-    'N1bWVudHMudjEuU2VhcmNoUmVzdWx0cy5Eb2N1bWVudFIFaXRlbXMamwEKCERvY3VtZW50Eg4K'
-    'AmlkGAEgASgJUgJpZBIfCgtkb2N1bWVudF9pZBgCIAEoCVIKZG9jdW1lbnRJZBIaCghmaWxlbm'
-    'FtZRgDIAEoCVIIZmlsZW5hbWUSGAoHY29udGVudBgEIAEoCVIHY29udGVudBISCgRwYWdlGAUg'
-    'ASgNUgRwYWdlEhQKBXNjb3JlGAYgASgCUgVzY29yZQ==');
+    'Cg1TZWFyY2hSZXN1bHRzEkAKBWl0ZW1zGAEgAygLMiouZW5kcG9pbnQuYnJhaW5ib29zdC5kb2'
+    'N1bWVudHMudjIuRG9jdW1lbnRSBWl0ZW1zElMKBnNjb3JlcxgCIAMoCzI7LmVuZHBvaW50LmJy'
+    'YWluYm9vc3QuZG9jdW1lbnRzLnYyLlNlYXJjaFJlc3VsdHMuU2NvcmVzRW50cnlSBnNjb3Jlcx'
+    'o5CgtTY29yZXNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoAlIFdmFsdWU6'
+    'AjgB');
 
 @$core.Deprecated('Use indexProgressDescriptor instead')
 const IndexProgress$json = {
   '1': 'IndexProgress',
   '2': [
-    {'1': 'totalPages', '3': 1, '4': 1, '5': 13, '10': 'totalPages'},
-    {'1': 'processedPages', '3': 2, '4': 1, '5': 13, '10': 'processedPages'},
+    {'1': 'status', '3': 1, '4': 1, '5': 9, '10': 'status'},
+    {'1': 'progress', '3': 2, '4': 1, '5': 2, '10': 'progress'},
   ],
 };
 
 /// Descriptor for `IndexProgress`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List indexProgressDescriptor = $convert.base64Decode(
-    'Cg1JbmRleFByb2dyZXNzEh4KCnRvdGFsUGFnZXMYASABKA1SCnRvdGFsUGFnZXMSJgoOcHJvY2'
-    'Vzc2VkUGFnZXMYAiABKA1SDnByb2Nlc3NlZFBhZ2Vz');
-
-@$core.Deprecated('Use documentDescriptor instead')
-const Document$json = {
-  '1': 'Document',
-  '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'collection_id', '3': 2, '4': 1, '5': 9, '10': 'collectionId'},
-    {'1': 'filename', '3': 3, '4': 1, '5': 9, '10': 'filename'},
-    {'1': 'path', '3': 4, '4': 1, '5': 9, '10': 'path'},
-  ],
-};
-
-/// Descriptor for `Document`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List documentDescriptor = $convert.base64Decode(
-    'CghEb2N1bWVudBIOCgJpZBgBIAEoCVICaWQSIwoNY29sbGVjdGlvbl9pZBgCIAEoCVIMY29sbG'
-    'VjdGlvbklkEhoKCGZpbGVuYW1lGAMgASgJUghmaWxlbmFtZRISCgRwYXRoGAQgASgJUgRwYXRo');
+    'Cg1JbmRleFByb2dyZXNzEhYKBnN0YXR1cxgBIAEoCVIGc3RhdHVzEhoKCHByb2dyZXNzGAIgAS'
+    'gCUghwcm9ncmVzcw==');
 
 @$core.Deprecated('Use documentFilterDescriptor instead')
 const DocumentFilter$json = {
@@ -145,28 +163,82 @@ final $typed_data.Uint8List documentFilterDescriptor = $convert.base64Decode(
     'Cg5Eb2N1bWVudEZpbHRlchIUCgVxdWVyeRgBIAEoCVIFcXVlcnkSIwoNY29sbGVjdGlvbl9pZB'
     'gCIAEoCVIMY29sbGVjdGlvbklk');
 
-@$core.Deprecated('Use documentsDescriptor instead')
-const Documents$json = {
-  '1': 'Documents',
+@$core.Deprecated('Use documentMetadataDescriptor instead')
+const DocumentMetadata$json = {
+  '1': 'DocumentMetadata',
   '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.documents.v1.Documents.Document', '10': 'items'},
+    {'1': 'file', '3': 1, '4': 1, '5': 11, '6': '.endpoint.brainboost.documents.v2.File', '9': 0, '10': 'file'},
+    {'1': 'web', '3': 2, '4': 1, '5': 11, '6': '.endpoint.brainboost.documents.v2.Webpage', '9': 0, '10': 'web'},
   ],
-  '3': [Documents_Document$json],
+  '8': [
+    {'1': 'data'},
+  ],
 };
 
-@$core.Deprecated('Use documentsDescriptor instead')
-const Documents_Document$json = {
+/// Descriptor for `DocumentMetadata`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List documentMetadataDescriptor = $convert.base64Decode(
+    'ChBEb2N1bWVudE1ldGFkYXRhEjwKBGZpbGUYASABKAsyJi5lbmRwb2ludC5icmFpbmJvb3N0Lm'
+    'RvY3VtZW50cy52Mi5GaWxlSABSBGZpbGUSPQoDd2ViGAIgASgLMikuZW5kcG9pbnQuYnJhaW5i'
+    'b29zdC5kb2N1bWVudHMudjIuV2VicGFnZUgAUgN3ZWJCBgoEZGF0YQ==');
+
+@$core.Deprecated('Use fileDescriptor instead')
+const File$json = {
+  '1': 'File',
+  '2': [
+    {'1': 'filename', '3': 1, '4': 1, '5': 9, '10': 'filename'},
+    {'1': 'path', '3': 2, '4': 1, '5': 9, '10': 'path'},
+  ],
+};
+
+/// Descriptor for `File`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List fileDescriptor = $convert.base64Decode(
+    'CgRGaWxlEhoKCGZpbGVuYW1lGAEgASgJUghmaWxlbmFtZRISCgRwYXRoGAIgASgJUgRwYXRo');
+
+@$core.Deprecated('Use webpageDescriptor instead')
+const Webpage$json = {
+  '1': 'Webpage',
+  '2': [
+    {'1': 'url', '3': 1, '4': 1, '5': 9, '10': 'url'},
+  ],
+};
+
+/// Descriptor for `Webpage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List webpageDescriptor = $convert.base64Decode(
+    'CgdXZWJwYWdlEhAKA3VybBgBIAEoCVIDdXJs');
+
+@$core.Deprecated('Use documentDescriptor instead')
+const Document$json = {
   '1': 'Document',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'filename', '3': 2, '4': 1, '5': 9, '10': 'filename'},
-    {'1': 'pages', '3': 3, '4': 1, '5': 13, '10': 'pages'},
+    {'1': 'collection_id', '3': 2, '4': 1, '5': 9, '10': 'collectionId'},
+    {'1': 'created_at', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    {'1': 'metadata', '3': 4, '4': 1, '5': 11, '6': '.endpoint.brainboost.documents.v2.DocumentMetadata', '10': 'metadata'},
+    {'1': 'chunks', '3': 5, '4': 3, '5': 11, '6': '.endpoint.brainboost.documents.v2.Chunk', '10': 'chunks'},
   ],
 };
 
-/// Descriptor for `Documents`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List documentsDescriptor = $convert.base64Decode(
-    'CglEb2N1bWVudHMSSgoFaXRlbXMYASADKAsyNC5lbmRwb2ludC5icmFpbmJvb3N0LmRvY3VtZW'
-    '50cy52MS5Eb2N1bWVudHMuRG9jdW1lbnRSBWl0ZW1zGkwKCERvY3VtZW50Eg4KAmlkGAEgASgJ'
-    'UgJpZBIaCghmaWxlbmFtZRgCIAEoCVIIZmlsZW5hbWUSFAoFcGFnZXMYAyABKA1SBXBhZ2Vz');
+/// Descriptor for `Document`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List documentDescriptor = $convert.base64Decode(
+    'CghEb2N1bWVudBIOCgJpZBgBIAEoCVICaWQSIwoNY29sbGVjdGlvbl9pZBgCIAEoCVIMY29sbG'
+    'VjdGlvbklkEjkKCmNyZWF0ZWRfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1w'
+    'UgljcmVhdGVkQXQSTgoIbWV0YWRhdGEYBCABKAsyMi5lbmRwb2ludC5icmFpbmJvb3N0LmRvY3'
+    'VtZW50cy52Mi5Eb2N1bWVudE1ldGFkYXRhUghtZXRhZGF0YRI/CgZjaHVua3MYBSADKAsyJy5l'
+    'bmRwb2ludC5icmFpbmJvb3N0LmRvY3VtZW50cy52Mi5DaHVua1IGY2h1bmtz');
+
+@$core.Deprecated('Use indexJobDescriptor instead')
+const IndexJob$json = {
+  '1': 'IndexJob',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'collection_id', '3': 2, '4': 1, '5': 9, '10': 'collectionId'},
+    {'1': 'document', '3': 3, '4': 1, '5': 11, '6': '.endpoint.brainboost.documents.v2.DocumentMetadata', '10': 'document'},
+  ],
+};
+
+/// Descriptor for `IndexJob`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List indexJobDescriptor = $convert.base64Decode(
+    'CghJbmRleEpvYhIOCgJpZBgBIAEoCVICaWQSIwoNY29sbGVjdGlvbl9pZBgCIAEoCVIMY29sbG'
+    'VjdGlvbklkEk4KCGRvY3VtZW50GAMgASgLMjIuZW5kcG9pbnQuYnJhaW5ib29zdC5kb2N1bWVu'
+    'dHMudjIuRG9jdW1lbnRNZXRhZGF0YVIIZG9jdW1lbnQ=');
 

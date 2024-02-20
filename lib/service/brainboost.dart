@@ -73,29 +73,30 @@ class CollectionServiceClientAuth {
 class DocumentServiceClientAuth {
   final _service = DocumentServiceClient(_channel);
 
-  Future<Documents> list(DocumentFilter request, {CallOptions? options}) async {
+  Future<DocumentList> list(DocumentFilter request,
+      {CallOptions? options}) async {
     options = await _mergeAuth(options);
     return _service.list(request, options: options);
   }
 
-  Future<Stream<IndexProgress>> index(Document request,
+  Future<Stream<IndexProgress>> indexDocument(IndexJob request,
       {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.index(
+    return _service.indexDocument(
       request,
       options: options,
     );
   }
 
-  Future<Empty> delete(Document request, {CallOptions? options}) async {
+  Future<Empty> delete(DocumentID request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
     return _service.delete(request, options: options);
   }
 
-  Future<Empty> update(Document request, {CallOptions? options}) async {
-    options = await _mergeAuth(options);
-    return _service.update(request, options: options);
-  }
+  // Future<Empty> update(Document request, {CallOptions? options}) async {
+  //   options = await _mergeAuth(options);
+  //   return _service.update(request, options: options);
+  // }
 
   Future<SearchResults> search(SearchQuery request,
       {CallOptions? options}) async {

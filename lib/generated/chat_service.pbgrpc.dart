@@ -21,30 +21,30 @@ import 'google/protobuf/empty.pb.dart' as $0;
 
 export 'chat_service.pb.dart';
 
-@$pb.GrpcServiceName('endpoint.brainboost.chat.v3.ChatService')
+@$pb.GrpcServiceName('endpoint.brainboost.chat.v4.ChatService')
 class ChatServiceClient extends $grpc.Client {
   static final _$startThread = $grpc.ClientMethod<$3.ThreadPrompt, $3.Thread>(
-      '/endpoint.brainboost.chat.v3.ChatService/StartThread',
+      '/endpoint.brainboost.chat.v4.ChatService/StartThread',
       ($3.ThreadPrompt value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.Thread.fromBuffer(value));
   static final _$postMessage = $grpc.ClientMethod<$3.Prompt, $3.Message>(
-      '/endpoint.brainboost.chat.v3.ChatService/PostMessage',
+      '/endpoint.brainboost.chat.v4.ChatService/PostMessage',
       ($3.Prompt value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.Message.fromBuffer(value));
   static final _$getThread = $grpc.ClientMethod<$3.ThreadID, $3.Thread>(
-      '/endpoint.brainboost.chat.v3.ChatService/GetThread',
+      '/endpoint.brainboost.chat.v4.ChatService/GetThread',
       ($3.ThreadID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.Thread.fromBuffer(value));
   static final _$listThreadIDs = $grpc.ClientMethod<$2.Collection, $3.ThreadIDs>(
-      '/endpoint.brainboost.chat.v3.ChatService/ListThreadIDs',
+      '/endpoint.brainboost.chat.v4.ChatService/ListThreadIDs',
       ($2.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.ThreadIDs.fromBuffer(value));
   static final _$deleteThread = $grpc.ClientMethod<$3.ThreadID, $0.Empty>(
-      '/endpoint.brainboost.chat.v3.ChatService/DeleteThread',
+      '/endpoint.brainboost.chat.v4.ChatService/DeleteThread',
       ($3.ThreadID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$deleteMessageFromThread = $grpc.ClientMethod<$3.MessageID, $0.Empty>(
-      '/endpoint.brainboost.chat.v3.ChatService/DeleteMessageFromThread',
+      '/endpoint.brainboost.chat.v4.ChatService/DeleteMessageFromThread',
       ($3.MessageID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
 
@@ -79,9 +79,9 @@ class ChatServiceClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('endpoint.brainboost.chat.v3.ChatService')
+@$pb.GrpcServiceName('endpoint.brainboost.chat.v4.ChatService')
 abstract class ChatServiceBase extends $grpc.Service {
-  $core.String get $name => 'endpoint.brainboost.chat.v3.ChatService';
+  $core.String get $name => 'endpoint.brainboost.chat.v4.ChatService';
 
   ChatServiceBase() {
     $addMethod($grpc.ServiceMethod<$3.ThreadPrompt, $3.Thread>(
