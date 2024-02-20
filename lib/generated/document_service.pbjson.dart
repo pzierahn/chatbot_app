@@ -199,12 +199,13 @@ const Webpage$json = {
   '1': 'Webpage',
   '2': [
     {'1': 'url', '3': 1, '4': 1, '5': 9, '10': 'url'},
+    {'1': 'title', '3': 2, '4': 1, '5': 9, '10': 'title'},
   ],
 };
 
 /// Descriptor for `Webpage`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List webpageDescriptor = $convert.base64Decode(
-    'CgdXZWJwYWdlEhAKA3VybBgBIAEoCVIDdXJs');
+    'CgdXZWJwYWdlEhAKA3VybBgBIAEoCVIDdXJsEhQKBXRpdGxlGAIgASgJUgV0aXRsZQ==');
 
 @$core.Deprecated('Use documentDescriptor instead')
 const Document$json = {
