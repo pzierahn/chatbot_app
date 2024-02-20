@@ -35,18 +35,10 @@ class _AppState extends State<App> {
   void initState() {
     FirebaseAuth.instance.authStateChanges().listen((user) {
       debugPrint("authStateChanges: ${user?.uid}");
-
-      if (user == null) {
-        _navigatorKey.currentState?.pushNamedAndRemoveUntil(
-          LoginPage.route,
-          (route) => false,
-        );
-      } else {
-        _navigatorKey.currentState?.pushNamedAndRemoveUntil(
-          Home.route,
-          (route) => false,
-        );
-      }
+      _navigatorKey.currentState?.pushNamedAndRemoveUntil(
+        (user == null) ? LoginPage.route : Home.route,
+        (route) => false,
+      );
     });
 
     super.initState();
