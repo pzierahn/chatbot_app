@@ -57,12 +57,11 @@ class _CollectionPageState extends State<_CollectionPage> {
   }
 
   void _onIndexWebpage() {
-    WebpageIndexDialog.show(context).then((url) {
-      if (url == null || url.isEmpty) {
+    WebpageIndexDialog.show(context).then((page) {
+      if (page == null) {
         return;
       }
 
-      final page = Webpage()..url = url;
       final meta = DocumentMetadata()..web = page;
 
       final request = IndexJob()
@@ -72,7 +71,7 @@ class _CollectionPageState extends State<_CollectionPage> {
       documents.indexDocument(request).then((_) {
         SimpleSnackBar.show(
           context,
-          'Indexed $url',
+          'Indexed ${page.title}',
         );
       }).catchError((error) {
         ErrorSnackBar.show(context, error);
