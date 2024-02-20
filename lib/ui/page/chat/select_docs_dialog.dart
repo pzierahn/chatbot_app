@@ -63,7 +63,6 @@ class SelectDocsDialog extends StatefulWidget {
 
 class _SelectDocsDialogState extends State<SelectDocsDialog> {
   String _query = '';
-  final _formKey = GlobalKey<FormState>();
 
   DocumentSelection _selectedDocs = DocumentSelection();
 
@@ -111,18 +110,15 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
               );
             }
 
-            return Form(
-              key: _formKey,
-              child: _DocumentsBody(
-                documents: snap.data!,
-                selected: _selectedDocs,
-                collection: widget.collection,
-                onChanged: (value) {
-                  setState(() {
-                    _selectedDocs = value;
-                  });
-                },
-              ),
+            return _DocumentsBody(
+              documents: snap.data!,
+              selected: _selectedDocs,
+              collection: widget.collection,
+              onChanged: (value) {
+                setState(() {
+                  _selectedDocs = value;
+                });
+              },
             );
           },
         ),
@@ -136,9 +132,7 @@ class _SelectDocsDialogState extends State<SelectDocsDialog> {
         ),
         TextButton(
           onPressed: () {
-            if (_formKey.currentState!.validate()) {
-              Navigator.pop(context, _selectedDocs);
-            }
+            Navigator.pop(context, _selectedDocs);
           },
           child: const Text('Submit'),
         ),
