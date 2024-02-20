@@ -7,7 +7,7 @@ import 'package:braingain_app/ui/page/chat/session_handler.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/page/chat/thread_view.dart';
 import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
-import 'package:braingain_app/ui/page/collection/collection_page.dart';
+import 'package:braingain_app/ui/page/documents/collection_page.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';

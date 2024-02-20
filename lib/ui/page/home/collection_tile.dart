@@ -2,7 +2,7 @@ import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
-import 'package:braingain_app/ui/page/collection/collection_page.dart';
+import 'package:braingain_app/ui/page/documents/collection_page.dart';
 import 'package:braingain_app/ui/page/home/collection_edit_dialog.dart';
 import 'package:braingain_app/ui/theme/theme.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';

@@ -1,6 +1,6 @@
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
 import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
-import 'package:braingain_app/ui/page/collection/collection_page.dart';
+import 'package:braingain_app/ui/page/documents/collection_page.dart';
 import 'package:braingain_app/ui/page/home/home.dart';
 import 'package:braingain_app/ui/page/login/login_page.dart';
 import 'package:braingain_app/ui/page/settings/settings_page.dart';
