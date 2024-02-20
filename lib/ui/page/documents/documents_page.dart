@@ -10,8 +10,8 @@ import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:braingain_app/ui/widget/webpage_index_dialog.dart';
 import 'package:flutter/material.dart';
 
-class CollectionPage extends StatelessWidget {
-  const CollectionPage({super.key});
+class DocumentsPage extends StatelessWidget {
+  const DocumentsPage({super.key});
 
   static const route = 'documents';
 
