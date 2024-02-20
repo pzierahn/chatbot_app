@@ -27,7 +27,7 @@ class CollectionPage extends StatelessWidget {
 
     if (collection == null) {
       return const ErrorScaffold(
-        title: 'Chat History',
+        title: 'Collection',
         error: 'No collection found',
       );
     }
