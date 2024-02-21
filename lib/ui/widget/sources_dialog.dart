@@ -1,6 +1,7 @@
 import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
+import 'package:braingain_app/utils/document.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/illustrations.g.dart';
 
@@ -60,13 +61,7 @@ class _SourcesDialogState extends State<SourcesDialog> {
 
               print('doc.metadata: ${doc.metadata}');
 
-              String title;
-
-              if (doc.metadata.file.filename.isNotEmpty) {
-                title = doc.metadata.file.filename;
-              } else {
-                title = doc.metadata.web.url;
-              }
+              String title = DocumentUtils.getTitle(doc.metadata);
 
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 0),
