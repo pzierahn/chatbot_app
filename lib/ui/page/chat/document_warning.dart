@@ -1,7 +1,7 @@
 import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
-import 'package:braingain_app/ui/page/upload/upload_page.dart';
+import 'package:braingain_app/ui/page/index/upload_page.dart';
 import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
 

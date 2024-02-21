@@ -4,7 +4,7 @@ import 'package:braingain_app/ui/page/documents/documents_page.dart';
 import 'package:braingain_app/ui/page/home/home.dart';
 import 'package:braingain_app/ui/page/login/login_page.dart';
 import 'package:braingain_app/ui/page/settings/settings_page.dart';
-import 'package:braingain_app/ui/page/upload/upload_page.dart';
+import 'package:braingain_app/ui/page/index/upload_page.dart';
 import 'package:braingain_app/ui/theme/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
