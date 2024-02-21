@@ -92,7 +92,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
 
               collections
                   .create(Collection()..name = name)
-                  .then((_) => setState(() {}))
+                  .then((_) => _update())
                   .catchError((error) => ErrorSnackBar.show(context, error));
             },
             shape: RoundedRectangleBorder(
