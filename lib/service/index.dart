@@ -18,10 +18,17 @@ class IndexService {
 
   static void addListener(IndexListener listener) {
     _listeners.add(listener);
+    listener.onStatusUpdate(_sortedList());
   }
 
   static void removeListener(IndexListener listener) {
     _listeners.remove(listener);
+  }
+
+  static List<IndexStatus> _sortedList() {
+    final list = _status.values.toList();
+    list.sort((a, b) => a.title.compareTo(b.title));
+    return list;
   }
 
   static void _updateStatus(IndexStatus status) {
@@ -33,9 +40,7 @@ class IndexService {
 
     _status[status.documentId] = status;
 
-    final list = _status.values.toList();
-    list.sort((a, b) => a.title.compareTo(b.title));
-
+    final list = _sortedList();
     for (final listener in _listeners) {
       listener.onStatusUpdate(list);
     }
