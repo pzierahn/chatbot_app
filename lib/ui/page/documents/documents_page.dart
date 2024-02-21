@@ -3,12 +3,15 @@ import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/index_button.dart';
 import 'package:braingain_app/ui/page/documents/document_edit_dialog.dart';
+import 'package:braingain_app/ui/page/index/index_dialog.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
+import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:braingain_app/utils/document.dart';
 import 'package:flutter/material.dart';
+import 'package:undraw/illustrations.g.dart';
 
 class DocumentsPage extends StatelessWidget {
   const DocumentsPage({super.key});
@@ -162,9 +165,18 @@ class _CollectionPageState extends State<_CollectionPage> {
 
           final items = snap.data?.items ?? <String, DocumentMetadata>{};
           if (items.isEmpty) {
-            // return IndexBody(
-            //   collection: widget.collection,
-            // );
+            return Center(
+              child: TextIllustration(
+                illustration: UnDrawIllustration.books,
+                text: 'No documents',
+                action: FilledButton(
+                  onPressed: () {
+                    showIndexDialog(context, widget.collection.id);
+                  },
+                  child: const Text('Add knowledge'),
+                ),
+              ),
+            );
           }
 
           final children = <Widget>[];
