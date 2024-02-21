@@ -51,7 +51,7 @@ class IndexDialog extends StatelessWidget {
               color: color.primary,
             ),
             title: const Text(
-              'Source Webpage',
+              'Add Webpage',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -80,7 +80,7 @@ class IndexDialog extends StatelessWidget {
               color: color.primary,
             ),
             title: const Text(
-              'Source PDFs',
+              'Add PDFs',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
