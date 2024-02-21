@@ -99,7 +99,7 @@ class CollectionsTile extends StatelessWidget {
           )),
         ),
         onTap: () {
-          ChatPage.open(context, collection);
+          ChatPage.open(context, collection).then((_) => onUpdate?.call());
         },
         shape: shape,
         trailing: PopupMenuButton(

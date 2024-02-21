@@ -19,13 +19,27 @@ class CollectionsBody extends StatefulWidget {
 }
 
 class _CollectionsBodyState extends State<CollectionsBody> {
+  late Future<Collections> _collections;
+
+  @override
+  void initState() {
+    super.initState();
+    _collections = collections.list(Empty());
+  }
+
+  void _update() {
+    setState(() {
+      _collections = collections.list(Empty());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
     return FutureBuilder<Collections>(
-      future: collections.list(Empty()),
+      future: _collections,
       builder: (context, snap) {
         if (snap.hasError) {
           return ErrorBody(
@@ -52,7 +66,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
         for (var collection in items) {
           children.add(CollectionsTile(
             collection: collection,
-            onUpdate: () => setState(() {}),
+            onUpdate: _update,
           ));
         }
 
