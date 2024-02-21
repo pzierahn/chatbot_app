@@ -1,12 +1,12 @@
 import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
+import 'package:braingain_app/ui/page/chat/index_button.dart';
 import 'package:braingain_app/ui/page/documents/document_edit_dialog.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
-import 'package:braingain_app/ui/widget/webpage_index_dialog.dart';
 import 'package:braingain_app/utils/document.dart';
 import 'package:flutter/material.dart';
 
@@ -61,34 +61,6 @@ class _CollectionPageState extends State<_CollectionPage> {
       child: Text('Delete'),
     ),
   ];
-
-  void _onUpload() {
-    // IndexPage.openWithDialog(context, widget.collection)
-    //     .then((_) => setState(() {}));
-  }
-
-  void _onIndexWebpage() {
-    WebpageIndexDialog.show(context).then((page) {
-      if (page == null) {
-        return;
-      }
-
-      final meta = DocumentMetadata()..web = page;
-
-      final request = IndexJob()
-        ..collectionId = widget.collection.id
-        ..document = meta;
-
-      documents.index(request).then((_) {
-        SimpleSnackBar.show(
-          context,
-          'Indexed ${page.title}',
-        );
-      }).catchError((error) {
-        ErrorSnackBar.show(context, error);
-      });
-    });
-  }
 
   Future<void> _onEditDocument(String docId, DocumentMetadata meta) async {
     final oldTitle = DocumentUtils.getTitle(meta);
@@ -174,16 +146,7 @@ class _CollectionPageState extends State<_CollectionPage> {
       appBar: AppBar(
         title: Text(widget.collection.name),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.travel_explore_outlined),
-            tooltip: 'Index Web Page',
-            onPressed: _onIndexWebpage,
-          ),
-          IconButton(
-            icon: const Icon(Icons.upload_file_outlined),
-            tooltip: 'Upload Documents',
-            onPressed: _onUpload,
-          ),
+          IndexButton(collectionId: widget.collection.id),
         ],
       ),
       body: FutureBuilder<DocumentList>(

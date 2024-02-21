@@ -1,6 +1,7 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/ui/page/chat/document_warning.dart';
+import 'package:braingain_app/ui/page/chat/index_button.dart';
 import 'package:braingain_app/ui/page/chat/prompt_buttons.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
 import 'package:braingain_app/ui/page/chat/session_handler.dart';
@@ -9,7 +10,6 @@ import 'package:braingain_app/ui/page/chat/thread_view.dart';
 import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
 import 'package:braingain_app/ui/page/documents/documents_page.dart';
 import 'package:braingain_app/ui/page/index/index_dialog.dart';
-import 'package:braingain_app/ui/page/index/index_page.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:braingain_app/utils/llm_models.dart';
@@ -65,20 +65,8 @@ class _ChatPageState extends State<ChatPage> {
               DocumentsPage.open(context, collection);
             },
           ),
-          IconButton(
-            icon: const Icon(Icons.inbox),
-            tooltip: 'Index',
-            onPressed: () {
-              IndexPage.open(context);
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.post_add_outlined),
-            tooltip: 'Add Knowledge',
-            onPressed: () {
-              // IndexPage.openWithDialog(context, collection);
-              showIndexDialog(context, collection.id);
-            },
+          IndexButton(
+            collectionId: collection.id,
           ),
         ],
       ),
