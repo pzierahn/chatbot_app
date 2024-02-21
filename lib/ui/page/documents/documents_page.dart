@@ -8,6 +8,7 @@ import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:braingain_app/ui/widget/webpage_index_dialog.dart';
+import 'package:braingain_app/utils/document.dart';
 import 'package:flutter/material.dart';
 
 class DocumentsPage extends StatelessWidget {
@@ -79,7 +80,7 @@ class _CollectionPageState extends State<_CollectionPage> {
     });
   }
 
-  Future<void> _onEditDocument(String docId, String filename) async {
+  Future<void> _onEditDocument(String docId, DocumentMetadata meta) async {
     // final ref = Document()
     //   ..collectionId = widget.collection.id
     //   ..filename = doc.filename
@@ -103,10 +104,10 @@ class _CollectionPageState extends State<_CollectionPage> {
     // });
   }
 
-  Future<void> _onDelete(String docId, String filename) async {
+  Future<void> _onDelete(String docId, DocumentMetadata meta) async {
     final delete = await ConfirmDialog.show(
       context,
-      title: 'Delete $filename?',
+      title: 'Delete ${DocumentUtils.getTitle(meta)}?',
       content: 'This action cannot be undone',
     );
     if (delete == null || !delete) {
@@ -117,7 +118,7 @@ class _CollectionPageState extends State<_CollectionPage> {
     documents.delete(ref).then((_) {
       SimpleSnackBar.show(
         context,
-        'Deleted $filename',
+        'Deleted ${DocumentUtils.getTitle(meta)}',
       );
       setState(() {});
     }).catchError((error) {
@@ -128,7 +129,6 @@ class _CollectionPageState extends State<_CollectionPage> {
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
-    final text = Theme.of(context).textTheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -166,13 +166,13 @@ class _CollectionPageState extends State<_CollectionPage> {
           return ConstrainedListView(
               children: snap.data!.items.entries
                   .map(
-                    (doc) => ListTile(
+                    (entry) => ListTile(
                       leading: Icon(
                         Icons.description_outlined,
                         color: color.primary,
                       ),
                       title: Text(
-                        doc.value,
+                        DocumentUtils.getTitle(entry.value),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -190,10 +190,10 @@ class _CollectionPageState extends State<_CollectionPage> {
                         onSelected: (value) {
                           switch (value) {
                             case 'edit':
-                              _onEditDocument(doc.key, doc.value);
+                              _onEditDocument(entry.key, entry.value);
                               break;
                             case 'delete':
-                              _onDelete(doc.key, doc.value);
+                              _onDelete(entry.key, entry.value);
                               break;
                           }
                         },

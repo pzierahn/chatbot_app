@@ -3,6 +3,7 @@ import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
+import 'package:braingain_app/utils/document.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/undraw.dart';
 
@@ -198,14 +199,18 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
     }
 
     final docIds = widget.documents.items.entries.toList();
-    docIds.sort((a, b) => a.value.compareTo(b.value));
+    docIds.sort((a, b) {
+      final title1 = DocumentUtils.getTitle(a.value);
+      final title2 = DocumentUtils.getTitle(b.value);
+      return title1.compareTo(title2);
+    });
 
     return ListView.builder(
       itemCount: docIds.length,
       itemBuilder: (context, index) {
         final doc = docIds[index];
         final docId = doc.key;
-        final filename = doc.value;
+        final meta = doc.value;
 
         return ListTile(
           leading: widget.selected.contains(docId)
@@ -216,7 +221,7 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
                 )
               : const Icon(Icons.description_outlined, size: 16),
           title: Text(
-            filename,
+            DocumentUtils.getTitle(meta),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: text.bodyMedium?.merge(TextStyle(
@@ -225,7 +230,7 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
                   : color.onSurface,
             )),
           ),
-          onTap: () => _onSelect(docId, filename),
+          onTap: () => _onSelect(docId, DocumentUtils.getTitle(meta)),
         );
       },
     );
