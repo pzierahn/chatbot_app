@@ -63,6 +63,7 @@ class IndexService {
     try {
       _updateStatus(IndexStatus(
         documentId: docId,
+        collectionId: collectionId,
         title: file.name,
         status: "Uploading",
       ));
@@ -70,6 +71,7 @@ class IndexService {
     } catch (err) {
       _updateStatus(IndexStatus(
         documentId: docId,
+        collectionId: collectionId,
         title: file.name,
         error: err,
       ));
@@ -78,6 +80,7 @@ class IndexService {
 
     _updateStatus(IndexStatus(
       documentId: docId,
+      collectionId: collectionId,
       title: file.name,
       status: "Uploaded",
     ));
@@ -98,6 +101,7 @@ class IndexService {
   static void _index(IndexJob job) async {
     _updateStatus(IndexStatus(
       documentId: job.id,
+      collectionId: job.collectionId,
       title: DocumentUtils.getTitle(job.document),
       status: "Starting indexing",
     ));
@@ -109,6 +113,7 @@ class IndexService {
     } catch (err) {
       _updateStatus(IndexStatus(
         documentId: job.id,
+        collectionId: job.collectionId,
         title: DocumentUtils.getTitle(job.document),
         error: err,
       ));
@@ -118,6 +123,7 @@ class IndexService {
     stream.listen((event) {
       _updateStatus(IndexStatus(
         documentId: job.id,
+        collectionId: job.collectionId,
         title: DocumentUtils.getTitle(job.document),
         status: event.status,
         success: event.progress == 1.0,
@@ -125,6 +131,7 @@ class IndexService {
     }, onError: (err) {
       _updateStatus(IndexStatus(
         documentId: job.id,
+        collectionId: job.collectionId,
         title: DocumentUtils.getTitle(job.document),
         error: err,
       ));
@@ -160,6 +167,7 @@ class IndexService {
 class IndexStatus {
   IndexStatus({
     required this.documentId,
+    required this.collectionId,
     required this.title,
     this.status = "",
     this.success = false,
@@ -167,6 +175,7 @@ class IndexStatus {
   });
 
   final String documentId;
+  final String collectionId;
   final String title;
   final String status;
   final bool success;
