@@ -31,7 +31,9 @@ class _DocumentWarningState extends State<DocumentWarning>
   @override
   void onStatusUpdate(List<IndexStatus> list) {
     setState(() {
-      _list = list;
+      _list = list
+          .where((element) => element.collectionId == widget.collection.id)
+          .toList();
     });
   }
 
@@ -46,8 +48,7 @@ class _DocumentWarningState extends State<DocumentWarning>
     final colors = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    // TODO: Fix this
-    if (widget.collection.documentCount == 0 || _list.isEmpty) {
+    if (_list.isEmpty) {
       return ThreadContainer(
         outlineColor: Colors.orange,
         child: ListTile(
