@@ -34,10 +34,7 @@ class FileUploadProgress extends StatelessWidget {
           color: color.outline,
         ));
 
-    // final processed = status.progress?.processedPages ?? 0;
-    // final total = status.progress?.totalPages ?? 0;
-    // final progress = total != 0 ? (processed / total) : null;
-    final progress = 0.0;
+    final progress = status.progress?.progress ?? 0.0;
 
     Widget leading;
     if (status.hasError) {
@@ -51,13 +48,10 @@ class FileUploadProgress extends StatelessWidget {
         color: color.primary,
       );
     } else {
-      leading = SizedBox(
+      leading = const SizedBox(
         width: 24,
         height: 24,
-        child: CircularProgressIndicator(
-          strokeWidth: 3,
-          value: progress,
-        ),
+        child: CircularProgressIndicator(strokeWidth: 3),
       );
     }
 
