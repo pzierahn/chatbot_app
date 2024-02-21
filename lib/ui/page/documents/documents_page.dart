@@ -53,6 +53,17 @@ class _CollectionPage extends StatefulWidget {
 }
 
 class _CollectionPageState extends State<_CollectionPage> {
+  static const _menuActions = [
+    PopupMenuItem(
+      value: 'edit',
+      child: Text('Edit'),
+    ),
+    PopupMenuItem(
+      value: 'delete',
+      child: Text('Delete'),
+    ),
+  ];
+
   void _onUpload() {
     UploadPage.openWithDialog(context, widget.collection)
         .then((_) => setState(() {}));
@@ -129,6 +140,34 @@ class _CollectionPageState extends State<_CollectionPage> {
     });
   }
 
+  void _onAction(String action, String docId, DocumentMetadata meta) {
+    switch (action) {
+      case 'delete':
+        _onDelete(docId, meta);
+        break;
+      case 'edit':
+        _onEditDocument(docId, meta);
+        break;
+    }
+  }
+
+  List<_Item> _sortDocuments(Map<String, DocumentMetadata> data) {
+    final list = data.entries
+        .map((entry) => _Item(
+              documentId: entry.key,
+              meta: entry.value,
+            ))
+        .toList();
+
+    list.sort((a, b) {
+      final aTitle = DocumentUtils.getTitle(a.meta);
+      final bTitle = DocumentUtils.getTitle(b.meta);
+      return aTitle.compareTo(bTitle);
+    });
+
+    return list;
+  }
+
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
@@ -160,52 +199,71 @@ class _CollectionPageState extends State<_CollectionPage> {
             );
           }
 
-          if (snap.data!.items.isEmpty) {
+          final items = snap.data?.items ?? <String, DocumentMetadata>{};
+          if (items.isEmpty) {
             return UploadBody(
               collection: widget.collection,
             );
           }
 
+          final children = <Widget>[];
+
+          for (final entry in _sortDocuments(items)) {
+            Widget? leading;
+            Widget? subtitle;
+
+            if (entry.meta.hasWeb()) {
+              leading = const Icon(Icons.public_outlined);
+              subtitle = Text(
+                entry.meta.web.url,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: color.outline,
+                ),
+              );
+            }
+
+            if (entry.meta.hasFile()) {
+              leading = const Icon(Icons.description_outlined);
+            }
+
+            final tile = ListTile(
+              leading: leading,
+              title: Text(
+                DocumentUtils.getTitle(entry.meta),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+              subtitle: subtitle,
+              trailing: PopupMenuButton(
+                itemBuilder: (context) => _menuActions,
+                onSelected: (action) => _onAction(
+                  action,
+                  entry.documentId,
+                  entry.meta,
+                ),
+              ),
+            );
+
+            children.add(tile);
+          }
+
           return ConstrainedListView(
-              children: snap.data!.items.entries
-                  .map(
-                    (entry) => ListTile(
-                      leading: Icon(
-                        Icons.description_outlined,
-                        color: color.primary,
-                      ),
-                      title: Text(
-                        DocumentUtils.getTitle(entry.value),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      trailing: PopupMenuButton(
-                        itemBuilder: (context) => const [
-                          PopupMenuItem(
-                            value: 'edit',
-                            child: Text('Edit'),
-                          ),
-                          PopupMenuItem(
-                            value: 'delete',
-                            child: Text('Delete'),
-                          ),
-                        ],
-                        onSelected: (value) {
-                          switch (value) {
-                            case 'edit':
-                              _onEditDocument(entry.key, entry.value);
-                              break;
-                            case 'delete':
-                              _onDelete(entry.key, entry.value);
-                              break;
-                          }
-                        },
-                      ),
-                    ),
-                  )
-                  .toList());
+            children: children,
+          );
         },
       ),
     );
   }
+}
+
+class _Item {
+  const _Item({
+    required this.documentId,
+    required this.meta,
+  });
+
+  final String documentId;
+  final DocumentMetadata meta;
 }
