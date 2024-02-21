@@ -49,7 +49,7 @@ class _EditDocumentDialogState extends State<EditDocumentDialog> {
     final color = Theme.of(context).colorScheme;
 
     return AlertDialog(
-      title: const Text('Edit Filename'),
+      title: const Text('Edit Document Title'),
       content: Form(
         key: _formKey,
         child: TextFormField(
