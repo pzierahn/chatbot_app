@@ -190,7 +190,7 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
             action: FilledButton.icon(
               onPressed: () {
                 Navigator.pop(context);
-                IndexPage.open(context, widget.collection);
+                IndexPage.open(context);
               },
               label: const Text('Upload'),
               icon: const Icon(Icons.upload_file),

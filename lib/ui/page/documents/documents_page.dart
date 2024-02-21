@@ -2,8 +2,6 @@ import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/documents/document_edit_dialog.dart';
-import 'package:braingain_app/ui/page/index/index_body.dart';
-import 'package:braingain_app/ui/page/index/index_page.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
@@ -65,8 +63,8 @@ class _CollectionPageState extends State<_CollectionPage> {
   ];
 
   void _onUpload() {
-    IndexPage.openWithDialog(context, widget.collection)
-        .then((_) => setState(() {}));
+    // IndexPage.openWithDialog(context, widget.collection)
+    //     .then((_) => setState(() {}));
   }
 
   void _onIndexWebpage() {
@@ -201,9 +199,9 @@ class _CollectionPageState extends State<_CollectionPage> {
 
           final items = snap.data?.items ?? <String, DocumentMetadata>{};
           if (items.isEmpty) {
-            return IndexBody(
-              collection: widget.collection,
-            );
+            // return IndexBody(
+            //   collection: widget.collection,
+            // );
           }
 
           final children = <Widget>[];

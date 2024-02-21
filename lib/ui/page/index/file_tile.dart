@@ -1,31 +1,14 @@
-import 'package:braingain_app/generated/document_service.pb.dart';
+import 'package:braingain_app/service/index.dart';
 import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
-
-class DocumentStatus {
-  DocumentStatus({
-    this.error,
-    this.uploaded = false,
-    this.progress,
-  });
-
-  final Object? error;
-  final bool uploaded;
-  final IndexProgress? progress;
-
-  bool get hasError => error != null;
-}
 
 class FileUploadProgress extends StatelessWidget {
   const FileUploadProgress({
     super.key,
-    required this.filename,
     required this.status,
   });
 
-  final String filename;
-
-  final DocumentStatus status;
+  final IndexStatus status;
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +17,13 @@ class FileUploadProgress extends StatelessWidget {
           color: color.outline,
         ));
 
-    final progress = status.progress?.progress ?? 0.0;
-
     Widget leading;
     if (status.hasError) {
       leading = Icon(
         Icons.error,
         color: color.error,
       );
-    } else if (progress == 1) {
+    } else if (status.success) {
       leading = Icon(
         Icons.check_circle,
         color: color.primary,
@@ -63,21 +44,16 @@ class FileUploadProgress extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       );
-    } else if (!status.uploaded) {
-      body = Text(
-        'Uploading...',
-        style: style,
-      );
     } else {
       body = Text(
-        status.progress?.status ?? '',
+        status.status,
         style: style,
       );
     }
 
     return ListTile(
       leading: leading,
-      title: Text(filename),
+      title: Text(status.title),
       subtitle: body,
       minLeadingWidth: 32,
     );

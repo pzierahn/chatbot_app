@@ -1,69 +1,68 @@
-import 'package:braingain_app/generated/collection_service.pb.dart';
-import 'package:braingain_app/ui/page/index/index_body.dart';
-import 'package:braingain_app/ui/page/index/index_dialog.dart';
-import 'package:braingain_app/ui/widget/error_bar.dart';
-import 'package:braingain_app/ui/widget/simple_scaffold.dart';
-import 'package:file_picker/file_picker.dart';
+import 'package:braingain_app/service/index.dart';
+import 'package:braingain_app/ui/page/index/file_tile.dart';
+import 'package:braingain_app/ui/widget/constrained_list_view.dart';
+import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:flutter/material.dart';
+import 'package:undraw/undraw.dart';
 
-class _IndexArguments {
-  const _IndexArguments(this.collection, [this.files]);
-
-  final Collection collection;
-  final List<PlatformFile>? files;
-}
-
-class IndexPage extends StatelessWidget {
+class IndexPage extends StatefulWidget {
   const IndexPage({super.key});
 
   static const route = 'index';
 
-  static Future<Object?> open(
-    BuildContext context,
-    Collection collection,
-  ) =>
-      Navigator.of(context).pushNamed(
-        route,
-        arguments: _IndexArguments(collection),
-      );
+  static Future<Object?> open(BuildContext context) =>
+      Navigator.of(context).pushNamed(route);
 
-  static Future<Object?> openWithDialog(
-    BuildContext context,
-    Collection collection,
-  ) async {
-    try {
-      final files = await showUploadDialog();
-      if (files.isEmpty) {
-        return null;
-      }
+  @override
+  State<IndexPage> createState() => _IndexPageState();
+}
 
-      final args = _IndexArguments(collection, files);
-      return Navigator.of(context).pushNamed(route, arguments: args);
-    } catch (error) {
-      ErrorSnackBar.show(context, error);
-    }
+class _IndexPageState extends State<IndexPage> implements IndexListener {
+  List<IndexStatus> _status = <IndexStatus>[];
 
-    return null;
+  @override
+  void initState() {
+    super.initState();
+    IndexService.addListener(this);
+  }
+
+  @override
+  void dispose() {
+    IndexService.removeListener(this);
+    super.dispose();
+  }
+
+  @override
+  void onStatusUpdate(List<IndexStatus> list) {
+    setState(() {
+      _status = list;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)?.settings.arguments as _IndexArguments?;
-
-    if (args == null) {
-      return const ErrorScaffold(
-        title: 'Upload',
-        error: 'Missing arguments...',
+    if (_status.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Index'),
+        ),
+        body: const Center(
+          child: TextIllustration(
+            text: 'Index your documents to extract knowledge',
+            illustration: UnDrawIllustration.art_lover,
+          ),
+        ),
       );
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Upload'),
+        title: const Text('Index'),
       ),
-      body: IndexBody(
-        collection: args.collection,
-        files: args.files,
+      body: ConstrainedListView(
+        children: _status
+            .map((status) => FileUploadProgress(status: status))
+            .toList(),
       ),
     );
   }
