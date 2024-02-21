@@ -212,14 +212,22 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
         final docId = doc.key;
         final meta = doc.value;
 
+        Widget leading;
+
+        if (widget.selected.contains(docId)) {
+          leading = Icon(
+            Icons.check_circle,
+            size: 16,
+            color: color.primary,
+          );
+        } else if (meta.hasFile()) {
+          leading = const Icon(Icons.description_outlined, size: 16);
+        } else {
+          leading = const Icon(Icons.public_outlined, size: 16);
+        }
+
         return ListTile(
-          leading: widget.selected.contains(docId)
-              ? Icon(
-                  Icons.task_outlined,
-                  size: 16,
-                  color: color.primary,
-                )
-              : const Icon(Icons.description_outlined, size: 16),
+          leading: leading,
           title: Text(
             DocumentUtils.getTitle(meta),
             maxLines: 1,
