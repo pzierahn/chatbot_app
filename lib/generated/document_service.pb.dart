@@ -15,6 +15,83 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'google/protobuf/timestamp.pb.dart' as $5;
 
+enum RenameDocument_RenameTo {
+  fileName, 
+  webpageTitle, 
+  notSet
+}
+
+class RenameDocument extends $pb.GeneratedMessage {
+  factory RenameDocument() => create();
+  RenameDocument._() : super();
+  factory RenameDocument.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory RenameDocument.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static const $core.Map<$core.int, RenameDocument_RenameTo> _RenameDocument_RenameToByTag = {
+    2 : RenameDocument_RenameTo.fileName,
+    3 : RenameDocument_RenameTo.webpageTitle,
+    0 : RenameDocument_RenameTo.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'RenameDocument', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+    ..oo(0, [2, 3])
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'fileName')
+    ..aOS(3, _omitFieldNames ? '' : 'webpageTitle')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  RenameDocument clone() => RenameDocument()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  RenameDocument copyWith(void Function(RenameDocument) updates) => super.copyWith((message) => updates(message as RenameDocument)) as RenameDocument;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static RenameDocument create() => RenameDocument._();
+  RenameDocument createEmptyInstance() => create();
+  static $pb.PbList<RenameDocument> createRepeated() => $pb.PbList<RenameDocument>();
+  @$core.pragma('dart2js:noInline')
+  static RenameDocument getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RenameDocument>(create);
+  static RenameDocument? _defaultInstance;
+
+  RenameDocument_RenameTo whichRenameTo() => _RenameDocument_RenameToByTag[$_whichOneof(0)]!;
+  void clearRenameTo() => clearField($_whichOneof(0));
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get fileName => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set fileName($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasFileName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearFileName() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get webpageTitle => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set webpageTitle($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasWebpageTitle() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearWebpageTitle() => clearField(3);
+}
+
 class DocumentID extends $pb.GeneratedMessage {
   factory DocumentID() => create();
   DocumentID._() : super();
@@ -64,7 +141,7 @@ class DocumentList extends $pb.GeneratedMessage {
   factory DocumentList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentList', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
-    ..m<$core.String, $core.String>(1, _omitFieldNames ? '' : 'items', entryClassName: 'DocumentList.ItemsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('endpoint.brainboost.documents.v2'))
+    ..m<$core.String, DocumentMetadata>(1, _omitFieldNames ? '' : 'items', entryClassName: 'DocumentList.ItemsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: DocumentMetadata.create, valueDefaultOrMaker: DocumentMetadata.getDefault, packageName: const $pb.PackageName('endpoint.brainboost.documents.v2'))
     ..hasRequiredFields = false
   ;
 
@@ -90,7 +167,7 @@ class DocumentList extends $pb.GeneratedMessage {
   static DocumentList? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.Map<$core.String, $core.String> get items => $_getMap(0);
+  $core.Map<$core.String, DocumentMetadata> get items => $_getMap(0);
 }
 
 class ReferenceIDs extends $pb.GeneratedMessage {
@@ -521,8 +598,8 @@ class File extends $pb.GeneratedMessage {
   factory File.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'File', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'filename')
-    ..aOS(2, _omitFieldNames ? '' : 'path')
+    ..aOS(1, _omitFieldNames ? '' : 'path')
+    ..aOS(2, _omitFieldNames ? '' : 'filename')
     ..hasRequiredFields = false
   ;
 
@@ -548,22 +625,22 @@ class File extends $pb.GeneratedMessage {
   static File? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get filename => $_getSZ(0);
+  $core.String get path => $_getSZ(0);
   @$pb.TagNumber(1)
-  set filename($core.String v) { $_setString(0, v); }
+  set path($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasFilename() => $_has(0);
+  $core.bool hasPath() => $_has(0);
   @$pb.TagNumber(1)
-  void clearFilename() => clearField(1);
+  void clearPath() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get path => $_getSZ(1);
+  $core.String get filename => $_getSZ(1);
   @$pb.TagNumber(2)
-  set path($core.String v) { $_setString(1, v); }
+  set filename($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasPath() => $_has(1);
+  $core.bool hasFilename() => $_has(1);
   @$pb.TagNumber(2)
-  void clearPath() => clearField(2);
+  void clearFilename() => clearField(2);
 }
 
 class Webpage extends $pb.GeneratedMessage {

@@ -13,6 +13,25 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use renameDocumentDescriptor instead')
+const RenameDocument$json = {
+  '1': 'RenameDocument',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'file_name', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'fileName'},
+    {'1': 'webpage_title', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'webpageTitle'},
+  ],
+  '8': [
+    {'1': 'rename_to'},
+  ],
+};
+
+/// Descriptor for `RenameDocument`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List renameDocumentDescriptor = $convert.base64Decode(
+    'Cg5SZW5hbWVEb2N1bWVudBIOCgJpZBgBIAEoCVICaWQSHQoJZmlsZV9uYW1lGAIgASgJSABSCG'
+    'ZpbGVOYW1lEiUKDXdlYnBhZ2VfdGl0bGUYAyABKAlIAFIMd2VicGFnZVRpdGxlQgsKCXJlbmFt'
+    'ZV90bw==');
+
 @$core.Deprecated('Use documentIDDescriptor instead')
 const DocumentID$json = {
   '1': 'DocumentID',
@@ -39,7 +58,7 @@ const DocumentList_ItemsEntry$json = {
   '1': 'ItemsEntry',
   '2': [
     {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+    {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.endpoint.brainboost.documents.v2.DocumentMetadata', '10': 'value'},
   ],
   '7': {'7': true},
 };
@@ -47,8 +66,9 @@ const DocumentList_ItemsEntry$json = {
 /// Descriptor for `DocumentList`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List documentListDescriptor = $convert.base64Decode(
     'CgxEb2N1bWVudExpc3QSTwoFaXRlbXMYASADKAsyOS5lbmRwb2ludC5icmFpbmJvb3N0LmRvY3'
-    'VtZW50cy52Mi5Eb2N1bWVudExpc3QuSXRlbXNFbnRyeVIFaXRlbXMaOAoKSXRlbXNFbnRyeRIQ'
-    'CgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgB');
+    'VtZW50cy52Mi5Eb2N1bWVudExpc3QuSXRlbXNFbnRyeVIFaXRlbXMabAoKSXRlbXNFbnRyeRIQ'
+    'CgNrZXkYASABKAlSA2tleRJICgV2YWx1ZRgCIAEoCzIyLmVuZHBvaW50LmJyYWluYm9vc3QuZG'
+    '9jdW1lbnRzLnYyLkRvY3VtZW50TWV0YWRhdGFSBXZhbHVlOgI4AQ==');
 
 @$core.Deprecated('Use referenceIDsDescriptor instead')
 const ReferenceIDs$json = {
@@ -185,14 +205,14 @@ final $typed_data.Uint8List documentMetadataDescriptor = $convert.base64Decode(
 const File$json = {
   '1': 'File',
   '2': [
-    {'1': 'filename', '3': 1, '4': 1, '5': 9, '10': 'filename'},
-    {'1': 'path', '3': 2, '4': 1, '5': 9, '10': 'path'},
+    {'1': 'path', '3': 1, '4': 1, '5': 9, '10': 'path'},
+    {'1': 'filename', '3': 2, '4': 1, '5': 9, '10': 'filename'},
   ],
 };
 
 /// Descriptor for `File`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List fileDescriptor = $convert.base64Decode(
-    'CgRGaWxlEhoKCGZpbGVuYW1lGAEgASgJUghmaWxlbmFtZRISCgRwYXRoGAIgASgJUgRwYXRo');
+    'CgRGaWxlEhIKBHBhdGgYASABKAlSBHBhdGgSGgoIZmlsZW5hbWUYAiABKAlSCGZpbGVuYW1l');
 
 @$core.Deprecated('Use webpageDescriptor instead')
 const Webpage$json = {
