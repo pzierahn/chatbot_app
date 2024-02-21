@@ -15,18 +15,25 @@ class IndexService {
   static final Map<String, IndexStatus> _status = {};
 
   static final _listeners = <IndexListener>[];
+  static final _filters = <IndexListener, String?>{};
 
-  static void addListener(IndexListener listener) {
+  static void addListener(IndexListener listener, [String? collectionId]) {
     _listeners.add(listener);
-    listener.onStatusUpdate(_sortedList());
+    _filters[listener] = collectionId;
+
+    listener.onStatusUpdate(_filteredList(collectionId));
   }
 
   static void removeListener(IndexListener listener) {
     _listeners.remove(listener);
+    _filters.remove(listener);
   }
 
-  static List<IndexStatus> _sortedList() {
-    final list = _status.values.toList();
+  static List<IndexStatus> _filteredList([String? collectionId]) {
+    final list = _status.values
+        .where((element) =>
+            collectionId == null || element.collectionId == collectionId)
+        .toList();
     list.sort((a, b) => a.title.compareTo(b.title));
     return list;
   }
@@ -40,8 +47,8 @@ class IndexService {
 
     _status[status.documentId] = status;
 
-    final list = _sortedList();
     for (final listener in _listeners) {
+      final list = _filteredList(_filters[listener]);
       listener.onStatusUpdate(list);
     }
   }

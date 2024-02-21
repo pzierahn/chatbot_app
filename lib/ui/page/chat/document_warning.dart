@@ -31,9 +31,7 @@ class _DocumentWarningState extends State<DocumentWarning>
   @override
   void onStatusUpdate(List<IndexStatus> list) {
     setState(() {
-      _list = list
-          .where((element) => element.collectionId == widget.collection.id)
-          .toList();
+      _list = list;
     });
   }
 
