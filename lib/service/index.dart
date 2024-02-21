@@ -148,6 +148,13 @@ class IndexService {
 
     _index(job);
   }
+
+  static void clean() {
+    _status.clear();
+    for (final listener in _listeners) {
+      listener.onStatusUpdate([]);
+    }
+  }
 }
 
 class IndexStatus {

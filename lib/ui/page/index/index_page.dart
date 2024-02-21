@@ -58,6 +58,15 @@ class _IndexPageState extends State<IndexPage> implements IndexListener {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Index'),
+        actions: [
+          IconButton(
+            tooltip: 'Clean index',
+            onPressed: () {
+              IndexService.clean();
+            },
+            icon: const Icon(Icons.cleaning_services_outlined),
+          ),
+        ],
       ),
       body: ConstrainedListView(
         children: _status
