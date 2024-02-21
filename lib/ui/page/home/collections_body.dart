@@ -25,7 +25,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
     final text = Theme.of(context).textTheme;
 
     return FutureBuilder<Collections>(
-      future: collections.getAll(Empty()),
+      future: collections.list(Empty()),
       builder: (context, snap) {
         if (snap.hasError) {
           return ErrorBody(

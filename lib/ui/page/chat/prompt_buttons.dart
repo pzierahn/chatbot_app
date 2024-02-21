@@ -32,8 +32,8 @@ class _PromptButtonsState extends State<PromptButtons> {
 
   void _onSelectDocuments(DocumentSelection docs) {
     setState(() {
-      prompt.documents.clear();
-      prompt.documents.addAll(docs.getDocuments());
+      prompt.documentIds.clear();
+      prompt.documentIds.addAll(docs.getDocuments());
       _docs = docs;
     });
 

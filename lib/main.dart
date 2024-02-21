@@ -1,10 +1,10 @@
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
 import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
-import 'package:braingain_app/ui/page/collection/collection_page.dart';
+import 'package:braingain_app/ui/page/documents/documents_page.dart';
 import 'package:braingain_app/ui/page/home/home.dart';
 import 'package:braingain_app/ui/page/login/login_page.dart';
 import 'package:braingain_app/ui/page/settings/settings_page.dart';
-import 'package:braingain_app/ui/page/upload/upload_page.dart';
+import 'package:braingain_app/ui/page/index/index_page.dart';
 import 'package:braingain_app/ui/theme/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -35,18 +35,10 @@ class _AppState extends State<App> {
   void initState() {
     FirebaseAuth.instance.authStateChanges().listen((user) {
       debugPrint("authStateChanges: ${user?.uid}");
-
-      if (user == null) {
-        _navigatorKey.currentState?.pushNamedAndRemoveUntil(
-          LoginPage.route,
-          (route) => false,
-        );
-      } else {
-        _navigatorKey.currentState?.pushNamedAndRemoveUntil(
-          Home.route,
-          (route) => false,
-        );
-      }
+      _navigatorKey.currentState?.pushNamedAndRemoveUntil(
+        (user == null) ? LoginPage.route : Home.route,
+        (route) => false,
+      );
     });
 
     super.initState();
@@ -69,8 +61,8 @@ class _AppState extends State<App> {
         LoginPage.route: (context) => const LoginPage(),
         SettingsPage.route: (context) => const SettingsPage(),
         ChatPage.route: (context) => const ChatPage(),
-        CollectionPage.route: (context) => const CollectionPage(),
-        UploadPage.route: (context) => const UploadPage(),
+        DocumentsPage.route: (context) => const DocumentsPage(),
+        IndexPage.route: (context) => const IndexPage(),
         ChatHistoryPage.route: (context) => const ChatHistoryPage(),
       },
     );

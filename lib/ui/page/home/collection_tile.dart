@@ -2,7 +2,7 @@ import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
-import 'package:braingain_app/ui/page/collection/collection_page.dart';
+import 'package:braingain_app/ui/page/documents/documents_page.dart';
 import 'package:braingain_app/ui/page/home/collection_edit_dialog.dart';
 import 'package:braingain_app/ui/theme/theme.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
@@ -105,7 +105,7 @@ class CollectionsTile extends StatelessWidget {
         trailing: PopupMenuButton(
           onSelected: (item) async {
             if (item == 0) {
-              CollectionPage.open(context, collection);
+              DocumentsPage.open(context, collection);
               return;
             }
 

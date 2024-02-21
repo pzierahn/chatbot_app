@@ -20,26 +20,26 @@ import 'google/protobuf/empty.pb.dart' as $0;
 
 export 'collection_service.pb.dart';
 
-@$pb.GrpcServiceName('endpoint.brainboost.collections.v1.CollectionService')
+@$pb.GrpcServiceName('endpoint.brainboost.collections.v2.CollectionService')
 class CollectionServiceClient extends $grpc.Client {
   static final _$get = $grpc.ClientMethod<$2.CollectionID, $2.Collection>(
-      '/endpoint.brainboost.collections.v1.CollectionService/Get',
+      '/endpoint.brainboost.collections.v2.CollectionService/Get',
       ($2.CollectionID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Collection.fromBuffer(value));
-  static final _$getAll = $grpc.ClientMethod<$0.Empty, $2.Collections>(
-      '/endpoint.brainboost.collections.v1.CollectionService/GetAll',
+  static final _$list = $grpc.ClientMethod<$0.Empty, $2.Collections>(
+      '/endpoint.brainboost.collections.v2.CollectionService/List',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Collections.fromBuffer(value));
   static final _$create = $grpc.ClientMethod<$2.Collection, $2.Collection>(
-      '/endpoint.brainboost.collections.v1.CollectionService/Create',
+      '/endpoint.brainboost.collections.v2.CollectionService/Create',
       ($2.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Collection.fromBuffer(value));
   static final _$update = $grpc.ClientMethod<$2.Collection, $2.Collection>(
-      '/endpoint.brainboost.collections.v1.CollectionService/Update',
+      '/endpoint.brainboost.collections.v2.CollectionService/Update',
       ($2.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Collection.fromBuffer(value));
   static final _$delete = $grpc.ClientMethod<$2.Collection, $0.Empty>(
-      '/endpoint.brainboost.collections.v1.CollectionService/Delete',
+      '/endpoint.brainboost.collections.v2.CollectionService/Delete',
       ($2.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
 
@@ -53,8 +53,8 @@ class CollectionServiceClient extends $grpc.Client {
     return $createUnaryCall(_$get, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.Collections> getAll($0.Empty request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$getAll, request, options: options);
+  $grpc.ResponseFuture<$2.Collections> list($0.Empty request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$list, request, options: options);
   }
 
   $grpc.ResponseFuture<$2.Collection> create($2.Collection request, {$grpc.CallOptions? options}) {
@@ -70,9 +70,9 @@ class CollectionServiceClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('endpoint.brainboost.collections.v1.CollectionService')
+@$pb.GrpcServiceName('endpoint.brainboost.collections.v2.CollectionService')
 abstract class CollectionServiceBase extends $grpc.Service {
-  $core.String get $name => 'endpoint.brainboost.collections.v1.CollectionService';
+  $core.String get $name => 'endpoint.brainboost.collections.v2.CollectionService';
 
   CollectionServiceBase() {
     $addMethod($grpc.ServiceMethod<$2.CollectionID, $2.Collection>(
@@ -83,8 +83,8 @@ abstract class CollectionServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) => $2.CollectionID.fromBuffer(value),
         ($2.Collection value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.Empty, $2.Collections>(
-        'GetAll',
-        getAll_Pre,
+        'List',
+        list_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
@@ -116,8 +116,8 @@ abstract class CollectionServiceBase extends $grpc.Service {
     return get(call, await request);
   }
 
-  $async.Future<$2.Collections> getAll_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
-    return getAll(call, await request);
+  $async.Future<$2.Collections> list_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return list(call, await request);
   }
 
   $async.Future<$2.Collection> create_Pre($grpc.ServiceCall call, $async.Future<$2.Collection> request) async {
@@ -133,7 +133,7 @@ abstract class CollectionServiceBase extends $grpc.Service {
   }
 
   $async.Future<$2.Collection> get($grpc.ServiceCall call, $2.CollectionID request);
-  $async.Future<$2.Collections> getAll($grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$2.Collections> list($grpc.ServiceCall call, $0.Empty request);
   $async.Future<$2.Collection> create($grpc.ServiceCall call, $2.Collection request);
   $async.Future<$2.Collection> update($grpc.ServiceCall call, $2.Collection request);
   $async.Future<$0.Empty> delete($grpc.ServiceCall call, $2.Collection request);

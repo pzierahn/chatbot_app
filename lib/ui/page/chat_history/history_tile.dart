@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 class ChatHistoryTile extends StatelessWidget {
   const ChatHistoryTile({
     super.key,
-    required this.threahId,
+    required this.threadId,
   });
 
-  final String threahId;
+  final String threadId;
 
   void _onViewChat(BuildContext context, Thread thread) {
     Navigator.of(context).push(
@@ -27,7 +27,7 @@ class ChatHistoryTile extends StatelessWidget {
     final text = Theme.of(context).textTheme;
 
     return FutureBuilder<Thread>(
-        future: chat.getThread(ThreadID()..id = threahId),
+        future: chat.getThread(ThreadID()..id = threadId),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return ListTile(
@@ -46,7 +46,7 @@ class ChatHistoryTile extends StatelessWidget {
                 style: text.titleMedium,
               ),
               subtitle: Text(
-                threahId,
+                threadId,
                 style: text.bodySmall?.merge(TextStyle(
                   color: color.outline,
                 )),

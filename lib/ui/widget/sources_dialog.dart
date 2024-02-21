@@ -1,6 +1,7 @@
 import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
+import 'package:braingain_app/utils/document.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/illustrations.g.dart';
 
@@ -8,11 +9,11 @@ class SourcesDialog extends StatefulWidget {
   const SourcesDialog({
     super.key,
     required this.references,
-    this.scores = const [],
+    this.scores = const {},
   });
 
   final List<String> references;
-  final List<double> scores;
+  final Map<String, double> scores;
 
   @override
   State createState() => _SourcesDialogState();
@@ -51,38 +52,16 @@ class _SourcesDialogState extends State<SourcesDialog> {
           }
 
           final references = snap.data!.items;
-          references.sort((a, b) => a.page.compareTo(b.page));
-          references.sort((a, b) => a.filename.compareTo(b.filename));
-
-          final scores = <String, double>{};
-          if (widget.scores.length == widget.references.length) {
-            for (int inx = 0; inx < widget.references.length; inx++) {
-              scores[widget.references[inx]] = widget.scores[inx];
-            }
-          }
-
-          final filePages = <String, List<int>>{};
-          final refIds = <String, List<String>>{};
-          final filenames = <String, String>{};
-
-          for (final ref in references) {
-            final id = ref.documentId;
-            filePages.putIfAbsent(id, () => []);
-            filePages[id]?.add(ref.page);
-            refIds.putIfAbsent(id, () => []);
-            refIds[id]?.add(ref.id);
-            filenames[id] = ref.filename;
-          }
-
-          final fileIDs = filePages.keys.toList();
 
           return ListView.separated(
-            itemCount: fileIDs.length,
+            itemCount: references.length,
             separatorBuilder: (context, index) => const Divider(height: 32),
             itemBuilder: (context, index) {
-              final docId = fileIDs[index];
-              final pages = filePages[docId] ?? [];
-              final ids = refIds[docId] ?? [];
+              final doc = references[index];
+
+              print('doc.metadata: ${doc.metadata}');
+
+              String title = DocumentUtils.getTitle(doc.metadata);
 
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 0),
@@ -90,7 +69,7 @@ class _SourcesDialogState extends State<SourcesDialog> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SelectableText(
-                      filenames[docId] ?? '',
+                      title,
                       style: text.titleMedium,
                       maxLines: 1,
                     ),
@@ -98,17 +77,17 @@ class _SourcesDialogState extends State<SourcesDialog> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        for (int inx = 0; inx < pages.length; inx++)
+                        for (final chunk in doc.chunks)
                           ListTile(
                             contentPadding: EdgeInsets.zero,
                             leading: const Icon(Icons.find_in_page_outlined),
                             title: Text(
-                              'Page ${pages[inx] + 1}',
+                              'Page ${chunk.index + 1}',
                               style: text.bodyMedium,
                             ),
-                            trailing: scores.containsKey(ids[inx])
+                            trailing: widget.scores.containsKey(chunk.id)
                                 ? Text(
-                                    'Score: ${((scores[ids[inx]] ?? 0) * 100).toStringAsFixed(0)}%',
+                                    'Score: ${((widget.scores[chunk.id] ?? 0) * 100).toStringAsFixed(0)}%',
                                     style: text.bodySmall?.copyWith(
                                       color: color.outline,
                                     ))

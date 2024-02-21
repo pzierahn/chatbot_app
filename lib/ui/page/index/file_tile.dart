@@ -1,31 +1,14 @@
-import 'package:braingain_app/generated/document_service.pb.dart';
+import 'package:braingain_app/service/index.dart';
 import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
-
-class DocumentStatus {
-  DocumentStatus({
-    this.error,
-    this.uploaded = false,
-    this.progress,
-  });
-
-  final Object? error;
-  final bool uploaded;
-  final IndexProgress? progress;
-
-  bool get hasError => error != null;
-}
 
 class FileUploadProgress extends StatelessWidget {
   const FileUploadProgress({
     super.key,
-    required this.filename,
     required this.status,
   });
 
-  final String filename;
-
-  final DocumentStatus status;
+  final IndexStatus status;
 
   @override
   Widget build(BuildContext context) {
@@ -34,29 +17,22 @@ class FileUploadProgress extends StatelessWidget {
           color: color.outline,
         ));
 
-    final processed = status.progress?.processedPages ?? 0;
-    final total = status.progress?.totalPages ?? 0;
-    final progress = total != 0 ? (processed / total) : null;
-
     Widget leading;
     if (status.hasError) {
       leading = Icon(
         Icons.error,
         color: color.error,
       );
-    } else if (progress == 1) {
+    } else if (status.success) {
       leading = Icon(
         Icons.check_circle,
         color: color.primary,
       );
     } else {
-      leading = SizedBox(
+      leading = const SizedBox(
         width: 24,
         height: 24,
-        child: CircularProgressIndicator(
-          strokeWidth: 3,
-          value: progress,
-        ),
+        child: CircularProgressIndicator(strokeWidth: 3),
       );
     }
 
@@ -68,21 +44,16 @@ class FileUploadProgress extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       );
-    } else if (!status.uploaded) {
-      body = Text(
-        'Uploading...',
-        style: style,
-      );
     } else {
       body = Text(
-        '$processed / $total',
+        status.status,
         style: style,
       );
     }
 
     return ListTile(
       leading: leading,
-      title: Text(filename),
+      title: Text(status.title),
       subtitle: body,
       minLeadingWidth: 32,
     );

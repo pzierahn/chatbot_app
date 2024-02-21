@@ -20,30 +20,34 @@ import 'google/protobuf/empty.pb.dart' as $0;
 
 export 'document_service.pb.dart';
 
-@$pb.GrpcServiceName('endpoint.brainboost.documents.v1.DocumentService')
+@$pb.GrpcServiceName('endpoint.brainboost.documents.v2.DocumentService')
 class DocumentServiceClient extends $grpc.Client {
-  static final _$list = $grpc.ClientMethod<$4.DocumentFilter, $4.Documents>(
-      '/endpoint.brainboost.documents.v1.DocumentService/List',
+  static final _$list = $grpc.ClientMethod<$4.DocumentFilter, $4.DocumentList>(
+      '/endpoint.brainboost.documents.v2.DocumentService/List',
       ($4.DocumentFilter value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $4.Documents.fromBuffer(value));
-  static final _$index = $grpc.ClientMethod<$4.Document, $4.IndexProgress>(
-      '/endpoint.brainboost.documents.v1.DocumentService/Index',
-      ($4.Document value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.DocumentList.fromBuffer(value));
+  static final _$get = $grpc.ClientMethod<$4.DocumentID, $4.Document>(
+      '/endpoint.brainboost.documents.v2.DocumentService/Get',
+      ($4.DocumentID value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $4.Document.fromBuffer(value));
+  static final _$rename = $grpc.ClientMethod<$4.RenameDocument, $0.Empty>(
+      '/endpoint.brainboost.documents.v2.DocumentService/Rename',
+      ($4.RenameDocument value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$delete = $grpc.ClientMethod<$4.DocumentID, $0.Empty>(
+      '/endpoint.brainboost.documents.v2.DocumentService/Delete',
+      ($4.DocumentID value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$index = $grpc.ClientMethod<$4.IndexJob, $4.IndexProgress>(
+      '/endpoint.brainboost.documents.v2.DocumentService/Index',
+      ($4.IndexJob value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.IndexProgress.fromBuffer(value));
-  static final _$delete = $grpc.ClientMethod<$4.Document, $0.Empty>(
-      '/endpoint.brainboost.documents.v1.DocumentService/Delete',
-      ($4.Document value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
-  static final _$update = $grpc.ClientMethod<$4.Document, $0.Empty>(
-      '/endpoint.brainboost.documents.v1.DocumentService/Update',
-      ($4.Document value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$search = $grpc.ClientMethod<$4.SearchQuery, $4.SearchResults>(
-      '/endpoint.brainboost.documents.v1.DocumentService/Search',
+      '/endpoint.brainboost.documents.v2.DocumentService/Search',
       ($4.SearchQuery value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.SearchResults.fromBuffer(value));
   static final _$getReferences = $grpc.ClientMethod<$4.ReferenceIDs, $4.References>(
-      '/endpoint.brainboost.documents.v1.DocumentService/GetReferences',
+      '/endpoint.brainboost.documents.v2.DocumentService/GetReferences',
       ($4.ReferenceIDs value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $4.References.fromBuffer(value));
 
@@ -53,20 +57,24 @@ class DocumentServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$4.Documents> list($4.DocumentFilter request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$4.DocumentList> list($4.DocumentFilter request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$list, request, options: options);
   }
 
-  $grpc.ResponseStream<$4.IndexProgress> index($4.Document request, {$grpc.CallOptions? options}) {
-    return $createStreamingCall(_$index, $async.Stream.fromIterable([request]), options: options);
+  $grpc.ResponseFuture<$4.Document> get($4.DocumentID request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$get, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.Empty> delete($4.Document request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$0.Empty> rename($4.RenameDocument request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$rename, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.Empty> delete($4.DocumentID request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delete, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.Empty> update($4.Document request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$update, request, options: options);
+  $grpc.ResponseStream<$4.IndexProgress> index($4.IndexJob request, {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$index, $async.Stream.fromIterable([request]), options: options);
   }
 
   $grpc.ResponseFuture<$4.SearchResults> search($4.SearchQuery request, {$grpc.CallOptions? options}) {
@@ -78,39 +86,46 @@ class DocumentServiceClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('endpoint.brainboost.documents.v1.DocumentService')
+@$pb.GrpcServiceName('endpoint.brainboost.documents.v2.DocumentService')
 abstract class DocumentServiceBase extends $grpc.Service {
-  $core.String get $name => 'endpoint.brainboost.documents.v1.DocumentService';
+  $core.String get $name => 'endpoint.brainboost.documents.v2.DocumentService';
 
   DocumentServiceBase() {
-    $addMethod($grpc.ServiceMethod<$4.DocumentFilter, $4.Documents>(
+    $addMethod($grpc.ServiceMethod<$4.DocumentFilter, $4.DocumentList>(
         'List',
         list_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $4.DocumentFilter.fromBuffer(value),
-        ($4.Documents value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.Document, $4.IndexProgress>(
-        'Index',
-        index_Pre,
+        ($4.DocumentList value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.DocumentID, $4.Document>(
+        'Get',
+        get_Pre,
         false,
-        true,
-        ($core.List<$core.int> value) => $4.Document.fromBuffer(value),
-        ($4.IndexProgress value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.Document, $0.Empty>(
+        false,
+        ($core.List<$core.int> value) => $4.DocumentID.fromBuffer(value),
+        ($4.Document value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.RenameDocument, $0.Empty>(
+        'Rename',
+        rename_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $4.RenameDocument.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.DocumentID, $0.Empty>(
         'Delete',
         delete_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $4.Document.fromBuffer(value),
+        ($core.List<$core.int> value) => $4.DocumentID.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.Document, $0.Empty>(
-        'Update',
-        update_Pre,
+    $addMethod($grpc.ServiceMethod<$4.IndexJob, $4.IndexProgress>(
+        'Index',
+        index_Pre,
         false,
-        false,
-        ($core.List<$core.int> value) => $4.Document.fromBuffer(value),
-        ($0.Empty value) => value.writeToBuffer()));
+        true,
+        ($core.List<$core.int> value) => $4.IndexJob.fromBuffer(value),
+        ($4.IndexProgress value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$4.SearchQuery, $4.SearchResults>(
         'Search',
         search_Pre,
@@ -127,20 +142,24 @@ abstract class DocumentServiceBase extends $grpc.Service {
         ($4.References value) => value.writeToBuffer()));
   }
 
-  $async.Future<$4.Documents> list_Pre($grpc.ServiceCall call, $async.Future<$4.DocumentFilter> request) async {
+  $async.Future<$4.DocumentList> list_Pre($grpc.ServiceCall call, $async.Future<$4.DocumentFilter> request) async {
     return list(call, await request);
   }
 
-  $async.Stream<$4.IndexProgress> index_Pre($grpc.ServiceCall call, $async.Future<$4.Document> request) async* {
-    yield* index(call, await request);
+  $async.Future<$4.Document> get_Pre($grpc.ServiceCall call, $async.Future<$4.DocumentID> request) async {
+    return get(call, await request);
   }
 
-  $async.Future<$0.Empty> delete_Pre($grpc.ServiceCall call, $async.Future<$4.Document> request) async {
+  $async.Future<$0.Empty> rename_Pre($grpc.ServiceCall call, $async.Future<$4.RenameDocument> request) async {
+    return rename(call, await request);
+  }
+
+  $async.Future<$0.Empty> delete_Pre($grpc.ServiceCall call, $async.Future<$4.DocumentID> request) async {
     return delete(call, await request);
   }
 
-  $async.Future<$0.Empty> update_Pre($grpc.ServiceCall call, $async.Future<$4.Document> request) async {
-    return update(call, await request);
+  $async.Stream<$4.IndexProgress> index_Pre($grpc.ServiceCall call, $async.Future<$4.IndexJob> request) async* {
+    yield* index(call, await request);
   }
 
   $async.Future<$4.SearchResults> search_Pre($grpc.ServiceCall call, $async.Future<$4.SearchQuery> request) async {
@@ -151,10 +170,11 @@ abstract class DocumentServiceBase extends $grpc.Service {
     return getReferences(call, await request);
   }
 
-  $async.Future<$4.Documents> list($grpc.ServiceCall call, $4.DocumentFilter request);
-  $async.Stream<$4.IndexProgress> index($grpc.ServiceCall call, $4.Document request);
-  $async.Future<$0.Empty> delete($grpc.ServiceCall call, $4.Document request);
-  $async.Future<$0.Empty> update($grpc.ServiceCall call, $4.Document request);
+  $async.Future<$4.DocumentList> list($grpc.ServiceCall call, $4.DocumentFilter request);
+  $async.Future<$4.Document> get($grpc.ServiceCall call, $4.DocumentID request);
+  $async.Future<$0.Empty> rename($grpc.ServiceCall call, $4.RenameDocument request);
+  $async.Future<$0.Empty> delete($grpc.ServiceCall call, $4.DocumentID request);
+  $async.Stream<$4.IndexProgress> index($grpc.ServiceCall call, $4.IndexJob request);
   $async.Future<$4.SearchResults> search($grpc.ServiceCall call, $4.SearchQuery request);
   $async.Future<$4.References> getReferences($grpc.ServiceCall call, $4.ReferenceIDs request);
 }

@@ -64,7 +64,7 @@ class ChatHistoryPage extends StatelessWidget {
               itemCount: snapshot.data!.ids.length,
               itemBuilder: (context, index) {
                 final id = snapshot.data!.ids[index];
-                return ChatHistoryTile(threahId: id);
+                return ChatHistoryTile(threadId: id);
               },
             );
           }),

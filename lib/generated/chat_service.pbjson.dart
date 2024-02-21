@@ -19,7 +19,7 @@ const Prompt$json = {
   '2': [
     {'1': 'threadID', '3': 1, '4': 1, '5': 9, '10': 'threadID'},
     {'1': 'prompt', '3': 2, '4': 1, '5': 9, '10': 'prompt'},
-    {'1': 'model_options', '3': 3, '4': 1, '5': 11, '6': '.endpoint.brainboost.chat.v3.ModelOptions', '10': 'modelOptions'},
+    {'1': 'model_options', '3': 3, '4': 1, '5': 11, '6': '.endpoint.brainboost.chat.v4.ModelOptions', '10': 'modelOptions'},
   ],
 };
 
@@ -27,7 +27,7 @@ const Prompt$json = {
 final $typed_data.Uint8List promptDescriptor = $convert.base64Decode(
     'CgZQcm9tcHQSGgoIdGhyZWFkSUQYASABKAlSCHRocmVhZElEEhYKBnByb21wdBgCIAEoCVIGcH'
     'JvbXB0Ek4KDW1vZGVsX29wdGlvbnMYAyABKAsyKS5lbmRwb2ludC5icmFpbmJvb3N0LmNoYXQu'
-    'djMuTW9kZWxPcHRpb25zUgxtb2RlbE9wdGlvbnM=');
+    'djQuTW9kZWxPcHRpb25zUgxtb2RlbE9wdGlvbnM=');
 
 @$core.Deprecated('Use threadPromptDescriptor instead')
 const ThreadPrompt$json = {
@@ -35,20 +35,10 @@ const ThreadPrompt$json = {
   '2': [
     {'1': 'prompt', '3': 1, '4': 1, '5': 9, '10': 'prompt'},
     {'1': 'collection_id', '3': 2, '4': 1, '5': 9, '10': 'collectionId'},
-    {'1': 'model_options', '3': 3, '4': 1, '5': 11, '6': '.endpoint.brainboost.chat.v3.ModelOptions', '10': 'modelOptions'},
+    {'1': 'model_options', '3': 3, '4': 1, '5': 11, '6': '.endpoint.brainboost.chat.v4.ModelOptions', '10': 'modelOptions'},
     {'1': 'threshold', '3': 4, '4': 1, '5': 2, '10': 'threshold'},
     {'1': 'limit', '3': 5, '4': 1, '5': 13, '10': 'limit'},
-    {'1': 'documents', '3': 6, '4': 3, '5': 11, '6': '.endpoint.brainboost.chat.v3.ThreadPrompt.Document', '10': 'documents'},
-  ],
-  '3': [ThreadPrompt_Document$json],
-};
-
-@$core.Deprecated('Use threadPromptDescriptor instead')
-const ThreadPrompt_Document$json = {
-  '1': 'Document',
-  '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'pages', '3': 2, '4': 3, '5': 13, '10': 'pages'},
+    {'1': 'document_ids', '3': 6, '4': 3, '5': 9, '10': 'documentIds'},
   ],
 };
 
@@ -56,11 +46,9 @@ const ThreadPrompt_Document$json = {
 final $typed_data.Uint8List threadPromptDescriptor = $convert.base64Decode(
     'CgxUaHJlYWRQcm9tcHQSFgoGcHJvbXB0GAEgASgJUgZwcm9tcHQSIwoNY29sbGVjdGlvbl9pZB'
     'gCIAEoCVIMY29sbGVjdGlvbklkEk4KDW1vZGVsX29wdGlvbnMYAyABKAsyKS5lbmRwb2ludC5i'
-    'cmFpbmJvb3N0LmNoYXQudjMuTW9kZWxPcHRpb25zUgxtb2RlbE9wdGlvbnMSHAoJdGhyZXNob2'
-    'xkGAQgASgCUgl0aHJlc2hvbGQSFAoFbGltaXQYBSABKA1SBWxpbWl0ElAKCWRvY3VtZW50cxgG'
-    'IAMoCzIyLmVuZHBvaW50LmJyYWluYm9vc3QuY2hhdC52My5UaHJlYWRQcm9tcHQuRG9jdW1lbn'
-    'RSCWRvY3VtZW50cxowCghEb2N1bWVudBIOCgJpZBgBIAEoCVICaWQSFAoFcGFnZXMYAiADKA1S'
-    'BXBhZ2Vz');
+    'cmFpbmJvb3N0LmNoYXQudjQuTW9kZWxPcHRpb25zUgxtb2RlbE9wdGlvbnMSHAoJdGhyZXNob2'
+    'xkGAQgASgCUgl0aHJlc2hvbGQSFAoFbGltaXQYBSABKA1SBWxpbWl0EiEKDGRvY3VtZW50X2lk'
+    'cxgGIAMoCVILZG9jdW1lbnRJZHM=');
 
 @$core.Deprecated('Use modelOptionsDescriptor instead')
 const ModelOptions$json = {
@@ -99,18 +87,31 @@ const Thread$json = {
   '1': 'Thread',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'messages', '3': 2, '4': 3, '5': 11, '6': '.endpoint.brainboost.chat.v3.Message', '10': 'messages'},
+    {'1': 'messages', '3': 2, '4': 3, '5': 11, '6': '.endpoint.brainboost.chat.v4.Message', '10': 'messages'},
     {'1': 'referenceIDs', '3': 3, '4': 3, '5': 9, '10': 'referenceIDs'},
-    {'1': 'reference_scores', '3': 4, '4': 3, '5': 2, '10': 'referenceScores'},
+    {'1': 'reference_scores', '3': 4, '4': 3, '5': 11, '6': '.endpoint.brainboost.chat.v4.Thread.ReferenceScoresEntry', '10': 'referenceScores'},
   ],
+  '3': [Thread_ReferenceScoresEntry$json],
+};
+
+@$core.Deprecated('Use threadDescriptor instead')
+const Thread_ReferenceScoresEntry$json = {
+  '1': 'ReferenceScoresEntry',
+  '2': [
+    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    {'1': 'value', '3': 2, '4': 1, '5': 2, '10': 'value'},
+  ],
+  '7': {'7': true},
 };
 
 /// Descriptor for `Thread`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List threadDescriptor = $convert.base64Decode(
     'CgZUaHJlYWQSDgoCaWQYASABKAlSAmlkEkAKCG1lc3NhZ2VzGAIgAygLMiQuZW5kcG9pbnQuYn'
-    'JhaW5ib29zdC5jaGF0LnYzLk1lc3NhZ2VSCG1lc3NhZ2VzEiIKDHJlZmVyZW5jZUlEcxgDIAMo'
-    'CVIMcmVmZXJlbmNlSURzEikKEHJlZmVyZW5jZV9zY29yZXMYBCADKAJSD3JlZmVyZW5jZVNjb3'
-    'Jlcw==');
+    'JhaW5ib29zdC5jaGF0LnY0Lk1lc3NhZ2VSCG1lc3NhZ2VzEiIKDHJlZmVyZW5jZUlEcxgDIAMo'
+    'CVIMcmVmZXJlbmNlSURzEmMKEHJlZmVyZW5jZV9zY29yZXMYBCADKAsyOC5lbmRwb2ludC5icm'
+    'FpbmJvb3N0LmNoYXQudjQuVGhyZWFkLlJlZmVyZW5jZVNjb3Jlc0VudHJ5Ug9yZWZlcmVuY2VT'
+    'Y29yZXMaQgoUUmVmZXJlbmNlU2NvcmVzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdW'
+    'UYAiABKAJSBXZhbHVlOgI4AQ==');
 
 @$core.Deprecated('Use threadIDDescriptor instead')
 const ThreadID$json = {

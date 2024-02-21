@@ -1,14 +1,15 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/ui/page/chat/document_warning.dart';
+import 'package:braingain_app/ui/page/chat/index_button.dart';
 import 'package:braingain_app/ui/page/chat/prompt_buttons.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
 import 'package:braingain_app/ui/page/chat/session_handler.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/page/chat/thread_view.dart';
 import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
-import 'package:braingain_app/ui/page/collection/collection_page.dart';
-import 'package:braingain_app/ui/page/upload/upload_page.dart';
+import 'package:braingain_app/ui/page/documents/documents_page.dart';
+import 'package:braingain_app/ui/page/index/index_dialog.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:braingain_app/utils/llm_models.dart';
@@ -61,15 +62,11 @@ class _ChatPageState extends State<ChatPage> {
             icon: const Icon(Icons.description_outlined),
             tooltip: 'Documents',
             onPressed: () {
-              CollectionPage.open(context, collection);
+              DocumentsPage.open(context, collection);
             },
           ),
-          IconButton(
-            icon: const Icon(Icons.upload_file_outlined),
-            tooltip: 'Upload Documents',
-            onPressed: () {
-              UploadPage.openWithDialog(context, collection);
-            },
+          IndexButton(
+            collectionId: collection.id,
           ),
         ],
       ),
@@ -153,7 +150,7 @@ class _ChatBodyState extends State<ChatBody> {
 
                     setState(() {
                       _threads.add(threadState);
-                      _prompt.documents.clear();
+                      _prompt.documentIds.clear();
                     });
                   },
                 ),
