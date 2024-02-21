@@ -1,6 +1,7 @@
 import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
+import 'package:braingain_app/ui/page/documents/document_edit_dialog.dart';
 import 'package:braingain_app/ui/page/upload/upload_body.dart';
 import 'package:braingain_app/ui/page/upload/upload_page.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
@@ -81,27 +82,29 @@ class _CollectionPageState extends State<_CollectionPage> {
   }
 
   Future<void> _onEditDocument(String docId, DocumentMetadata meta) async {
-    // final ref = Document()
-    //   ..collectionId = widget.collection.id
-    //   ..filename = doc.filename
-    //   ..id = doc.id;
-    //
-    // final filename = await EditDocumentDialog.show(context, ref);
-    // if (filename == null || filename.isEmpty) {
-    //   return;
-    // }
-    //
-    // ref.filename = filename;
-    //
-    // documents.update(ref).then((_) {
-    //   SimpleSnackBar.show(
-    //     context,
-    //     'Updated ${doc.filename}',
-    //   );
-    //   setState(() {});
-    // }).catchError((error) {
-    //   ErrorSnackBar.show(context, error);
-    // });
+    final oldTitle = DocumentUtils.getTitle(meta);
+    final title = await EditDocumentDialog.show(context, oldTitle);
+    if (title == null || title.isEmpty || title == oldTitle) {
+      return;
+    }
+
+    final rename = RenameDocument()..id = docId;
+
+    if (meta.hasWeb()) {
+      rename.webpageTitle = title;
+    } else {
+      rename.fileName = title;
+    }
+
+    documents.rename(rename).then((_) {
+      SimpleSnackBar.show(
+        context,
+        'Updated $title',
+      );
+      setState(() {});
+    }).catchError((error) {
+      ErrorSnackBar.show(context, error);
+    });
   }
 
   Future<void> _onDelete(String docId, DocumentMetadata meta) async {
