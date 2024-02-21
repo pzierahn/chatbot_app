@@ -68,7 +68,7 @@ class _CollectionPageState extends State<_CollectionPage> {
         ..collectionId = widget.collection.id
         ..document = meta;
 
-      documents.indexDocument(request).then((_) {
+      documents.index(request).then((_) {
         SimpleSnackBar.show(
           context,
           'Indexed ${page.title}',

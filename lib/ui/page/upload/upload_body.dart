@@ -80,7 +80,7 @@ class _UploadBodyState extends State<UploadBody> {
         ..collectionId = job.collectionId
         ..document = metadata;
 
-      documents.indexDocument(doc).then((stream) {
+      documents.index(doc).then((stream) {
         stream
             .listen(
           (progress) => setState(() {

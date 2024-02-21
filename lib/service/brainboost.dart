@@ -49,9 +49,9 @@ class CollectionServiceClientAuth {
     return _service.get(request, options: options);
   }
 
-  Future<Collections> getAll(Empty request, {CallOptions? options}) async {
+  Future<Collections> list(Empty request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.getAll(request, options: options);
+    return _service.list(request, options: options);
   }
 
   Future<Collection> create(Collection request, {CallOptions? options}) async {
@@ -79,10 +79,10 @@ class DocumentServiceClientAuth {
     return _service.list(request, options: options);
   }
 
-  Future<Stream<IndexProgress>> indexDocument(IndexJob request,
+  Future<Stream<IndexProgress>> index(IndexJob request,
       {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.indexDocument(
+    return _service.index(
       request,
       options: options,
     );
