@@ -1,7 +1,7 @@
 import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
-import 'package:braingain_app/ui/page/index/upload_page.dart';
+import 'package:braingain_app/ui/page/index/index_page.dart';
 import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
 
@@ -102,7 +102,7 @@ class _DocumentWarningState extends State<DocumentWarning> {
               trailing: TextButton(
                 child: const Text('Upload'),
                 onPressed: () {
-                  UploadPage.openWithDialog(context, collection).then((value) {
+                  IndexPage.openWithDialog(context, collection).then((value) {
                     _updateCollection();
                   });
                 },

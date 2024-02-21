@@ -8,7 +8,7 @@ import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/page/chat/thread_view.dart';
 import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
 import 'package:braingain_app/ui/page/documents/documents_page.dart';
-import 'package:braingain_app/ui/page/index/upload_page.dart';
+import 'package:braingain_app/ui/page/index/index_page.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:braingain_app/utils/llm_models.dart';
@@ -68,7 +68,7 @@ class _ChatPageState extends State<ChatPage> {
             icon: const Icon(Icons.upload_file_outlined),
             tooltip: 'Upload Documents',
             onPressed: () {
-              UploadPage.openWithDialog(context, collection);
+              IndexPage.openWithDialog(context, collection);
             },
           ),
         ],

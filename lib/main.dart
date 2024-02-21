@@ -4,7 +4,7 @@ import 'package:braingain_app/ui/page/documents/documents_page.dart';
 import 'package:braingain_app/ui/page/home/home.dart';
 import 'package:braingain_app/ui/page/login/login_page.dart';
 import 'package:braingain_app/ui/page/settings/settings_page.dart';
-import 'package:braingain_app/ui/page/index/upload_page.dart';
+import 'package:braingain_app/ui/page/index/index_page.dart';
 import 'package:braingain_app/ui/theme/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -62,7 +62,7 @@ class _AppState extends State<App> {
         SettingsPage.route: (context) => const SettingsPage(),
         ChatPage.route: (context) => const ChatPage(),
         DocumentsPage.route: (context) => const DocumentsPage(),
-        UploadPage.route: (context) => const UploadPage(),
+        IndexPage.route: (context) => const IndexPage(),
         ChatHistoryPage.route: (context) => const ChatHistoryPage(),
       },
     );

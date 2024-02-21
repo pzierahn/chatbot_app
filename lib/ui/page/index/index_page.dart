@@ -1,22 +1,22 @@
 import 'package:braingain_app/generated/collection_service.pb.dart';
-import 'package:braingain_app/ui/page/index/upload_body.dart';
-import 'package:braingain_app/ui/page/index/upload_dialog.dart';
+import 'package:braingain_app/ui/page/index/index_body.dart';
+import 'package:braingain_app/ui/page/index/index_dialog.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
-class _UploadArguments {
-  const _UploadArguments(this.collection, [this.files]);
+class _IndexArguments {
+  const _IndexArguments(this.collection, [this.files]);
 
   final Collection collection;
   final List<PlatformFile>? files;
 }
 
-class UploadPage extends StatelessWidget {
-  const UploadPage({super.key});
+class IndexPage extends StatelessWidget {
+  const IndexPage({super.key});
 
-  static const route = 'upload';
+  static const route = 'index';
 
   static Future<Object?> open(
     BuildContext context,
@@ -24,7 +24,7 @@ class UploadPage extends StatelessWidget {
   ) =>
       Navigator.of(context).pushNamed(
         route,
-        arguments: _UploadArguments(collection),
+        arguments: _IndexArguments(collection),
       );
 
   static Future<Object?> openWithDialog(
@@ -37,7 +37,7 @@ class UploadPage extends StatelessWidget {
         return null;
       }
 
-      final args = _UploadArguments(collection, files);
+      final args = _IndexArguments(collection, files);
       return Navigator.of(context).pushNamed(route, arguments: args);
     } catch (error) {
       ErrorSnackBar.show(context, error);
@@ -48,8 +48,7 @@ class UploadPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final args =
-        ModalRoute.of(context)?.settings.arguments as _UploadArguments?;
+    final args = ModalRoute.of(context)?.settings.arguments as _IndexArguments?;
 
     if (args == null) {
       return const ErrorScaffold(
@@ -62,7 +61,7 @@ class UploadPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Upload'),
       ),
-      body: UploadBody(
+      body: IndexBody(
         collection: args.collection,
         files: args.files,
       ),

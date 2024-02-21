@@ -1,7 +1,7 @@
 import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
-import 'package:braingain_app/ui/page/index/upload_page.dart';
+import 'package:braingain_app/ui/page/index/index_page.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:braingain_app/utils/document.dart';
 import 'package:flutter/material.dart';
@@ -190,7 +190,7 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
             action: FilledButton.icon(
               onPressed: () {
                 Navigator.pop(context);
-                UploadPage.open(context, widget.collection);
+                IndexPage.open(context, widget.collection);
               },
               label: const Text('Upload'),
               icon: const Icon(Icons.upload_file),

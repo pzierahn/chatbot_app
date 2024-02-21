@@ -3,7 +3,7 @@ import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/service/storage.dart';
 import 'package:braingain_app/ui/page/index/file_tile.dart';
-import 'package:braingain_app/ui/page/index/upload_dialog.dart';
+import 'package:braingain_app/ui/page/index/index_dialog.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
@@ -12,8 +12,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/illustrations.g.dart';
 
-class UploadBody extends StatefulWidget {
-  const UploadBody({
+class IndexBody extends StatefulWidget {
+  const IndexBody({
     super.key,
     required this.collection,
     this.files,
@@ -23,10 +23,10 @@ class UploadBody extends StatefulWidget {
   final List<PlatformFile>? files;
 
   @override
-  State<UploadBody> createState() => _UploadBodyState();
+  State<IndexBody> createState() => _IndexBodyState();
 }
 
-class _UploadBodyState extends State<UploadBody> {
+class _IndexBodyState extends State<IndexBody> {
   final _queue = <UploadJob>[];
   final _status = <String, DocumentStatus>{};
 
