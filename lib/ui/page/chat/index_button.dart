@@ -43,7 +43,7 @@ class _IndexButtonState extends State<IndexButton> implements IndexListener {
 
     if (_list.isEmpty) {
       return IconButton(
-        icon: const Icon(Icons.post_add_outlined),
+        icon: const Icon(Icons.note_add_outlined),
         tooltip: 'Add Knowledge',
         onPressed: () {
           showIndexDialog(context, widget.collectionId);
