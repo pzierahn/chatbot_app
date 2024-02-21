@@ -46,6 +46,7 @@ class _DocumentWarningState extends State<DocumentWarning>
     final colors = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
+    // TODO: Fix this
     if (widget.collection.documentCount == 0 || _list.isEmpty) {
       return ThreadContainer(
         outlineColor: Colors.orange,
