@@ -31,6 +31,7 @@ class WebpageIndexDialog extends StatelessWidget {
               controller: _titleController,
               decoration: const InputDecoration(
                 labelText: 'Title',
+                hintText: 'Type a title',
                 filled: true,
               ),
               validator: (value) {
