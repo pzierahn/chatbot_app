@@ -93,10 +93,10 @@ class DocumentServiceClientAuth {
     return _service.delete(request, options: options);
   }
 
-  // Future<Empty> update(Document request, {CallOptions? options}) async {
-  //   options = await _mergeAuth(options);
-  //   return _service.update(request, options: options);
-  // }
+  Future<Empty> rename(RenameDocument request, {CallOptions? options}) async {
+    options = await _mergeAuth(options);
+    return _service.rename(request, options: options);
+  }
 
   Future<SearchResults> search(SearchQuery request,
       {CallOptions? options}) async {
