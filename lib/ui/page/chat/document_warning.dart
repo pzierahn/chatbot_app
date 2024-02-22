@@ -38,7 +38,7 @@ class _DocumentWarningState extends State<DocumentWarning>
   @override
   void initState() {
     super.initState();
-    IndexService.addListener(this);
+    IndexService.addListener(this, widget.collection.id);
   }
 
   @override
