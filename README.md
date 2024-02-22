@@ -29,11 +29,6 @@ The versatility of our RAG App makes it an indispensable tool across various fie
 - **Professionals**: Extract pivotal information from an array of business documents, including
   reports, proposals, and industry-specific texts.
 
-By leveraging OpenAI's language model, Chatbot enhances the process of extracting useful insights
-from PDF files and the web, facilitating a more straightforward access to information. It represents
-a practical tool for individuals and organizations aiming to streamline their information retrieval
-processes.
-
 ## Demo video
 
 The [demo video](https://youtu.be/e8Glsvh2dHo) shows the basic functionality of the app:
