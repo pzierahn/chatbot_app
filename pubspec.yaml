@@ -28,25 +28,26 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter:
+    sdk: flutter
+
   file_picker: ^6.0.0
   firebase_auth: ^4.15.2
   firebase_core: ^2.24.2
   firebase_storage: ^11.5.5
-  flutter:
-    sdk: flutter
-
   flutter_markdown: ^0.6.17+1
   google_fonts: ^6.0.0
   grpc: ^3.2.3
   markdown: ^7.2.1
+  uuid: ^4.0.0
+  protobuf: ^3.1.0
+
   undraw:
     git:
       url: https://github.com/pzierahn/undraw.git
   flutter_markdown_latex:
     git:
       url: https://github.com/pzierahn/flutter_markdown_latex
-  uuid: ^4.0.0
-  protobuf: ^3.1.0
 
 dev_dependencies:
   flutter_test:
