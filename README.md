@@ -1,47 +1,38 @@
-# Brainboost
+# Chatbot
 
-Brainboost is a cutting-edge chatbot application powered by OpenAI's advanced language model. It's
-designed to revolutionize the way people access and extract knowledge from PDF documents, making
-information more readily available and accessible to everyone. With Brainboost, you can quickly and
-effortlessly retrieve information, no matter how complex, buried within PDFs.
+Brainboost is an application designed to improve the performance of chatbots by employing a method
+known as Retrieval Augmented Generation (RAG). It functions by extracting information from websites
+and PDF files and feeding this information into the chatbot to minimize errors or hallucinations in
+its responses. This allows users to interactively ask questions and receive information directly
+from PDFs and websites, making the chatbot a more reliable source for accurate information.
 
-Key Features:
+## Features
 
-1. **Instant PDF Text Extraction:** Brainboost can swiftly extract text content from PDFs. This
-   feature ensures that you can access the knowledge contained within any PDF document.
+1. **Knowledge Extraction:** Seamlessly extract knowledge from PDFs and websites, making it easier
+   than ever to access the information you need.
+2. **Intelligent Information Retrieval:** Brainboost automatically finds the right information in
+   response to your queries. By ensuring the model has access to relevant data, we significantly
+   reduce the chances of generating inaccurate or irrelevant information.
+3. **Interactive Q&A:** Don’t just stop at your first question; our app supports the asking of
+   follow-up questions, enabling a deeper and more precise exploration of topics.
+4. **Explicit Knowledge Addition:** You have the freedom to add specific knowledge to your prompts,
+   further reducing the likelihood of hallucinations and enhancing the model's accuracy.
+5. **Cross-Platform Compatibility:** Regardless of your device preference, our application ensures a
+   seamless and efficient experience across various platforms.
 
-2. **Natural Language Understanding:** Our chatbot uses OpenAI's state-of-the-art language model to
-   understand natural language queries. Simply ask questions, provide context, or engage in a
-   conversation to extract the information you need.
+## Use Cases
 
-3. **PDF Summarization:** Brainboost can generate concise and coherent summaries of PDF documents.
-   This feature is especially useful when you need a quick overview of lengthy materials.
+The versatility of our RAG App makes it an indispensable tool across various fields:
 
-4. **Search and Retrieval:** Utilize Brainboost to search for specific information within PDFs. It
-   can locate and provide you with the relevant sections of the document containing your requested
-   data.
+- **Students and Researchers**: Summarize academic content from papers, textbooks, and online
+  resources quickly and efficiently.
+- **Professionals**: Extract pivotal information from an array of business documents, including
+  reports, proposals, and industry-specific texts.
 
-5. **Cross-Platform Compatibility:** Use Brainboost on various platforms, including web, mobile, and
-   desktop, allowing you to access your knowledge on the go.
-
-Use Cases:
-
-- **Education:** Students and researchers can use Brainboost to access and summarize academic
-  papers, textbooks, and research materials.
-
-- **Business:** Professionals can quickly retrieve critical information from reports, proposals, and
-  industry documents.
-
-- **Legal:** Legal professionals can efficiently search and reference legal documents and case law.
-
-- **Personal Knowledge Management:** Individuals can organize and access their personal libraries of
-  documents and research materials.
-
-Brainboost empowers individuals and organizations to enhance accessibility to the wealth of
-knowledge contained within PDF documents. By leveraging the capabilities of OpenAI's language model,
-it brings an unprecedented level of ease, efficiency, and inclusivity to the process of extracting
-valuable insights from these files. Start your journey to accessible knowledge with Brainboost
-today!
+By leveraging OpenAI's language model, Chatbot enhances the process of extracting useful insights
+from PDF files and the web, facilitating a more straightforward access to information. It represents
+a practical tool for individuals and organizations aiming to streamline their information retrieval
+processes.
 
 ## Demo video
 
