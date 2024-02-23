@@ -59,8 +59,6 @@ class _SourcesDialogState extends State<SourcesDialog> {
             itemBuilder: (context, index) {
               final doc = references[index];
 
-              print('doc.metadata: ${doc.metadata}');
-
               String title = DocumentUtils.getTitle(doc.metadata);
 
               return Padding(
