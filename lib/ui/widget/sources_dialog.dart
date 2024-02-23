@@ -1,5 +1,6 @@
 import 'package:braingain_app/generated/document_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
+import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:braingain_app/utils/document.dart';
 import 'package:flutter/material.dart';
@@ -28,24 +29,21 @@ class _SourcesDialogState extends State<SourcesDialog> {
           appBar: AppBar(
             title: const Text('Chunk Details'),
           ),
-          body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ListTile(
-                  title: const Text('ID'),
-                  subtitle: Text(chunk.id),
-                ),
-                ListTile(
-                  title: const Text('Index'),
-                  subtitle: Text(chunk.index.toString()),
-                ),
-                ListTile(
-                  title: const Text('Text'),
-                  subtitle: Text(chunk.text),
-                ),
-              ],
-            ),
+          body: ConstrainedListView(
+            children: [
+              ListTile(
+                title: const Text('ID'),
+                subtitle: SelectableText(chunk.id),
+              ),
+              ListTile(
+                title: const Text('Index'),
+                subtitle: SelectableText(chunk.index.toString()),
+              ),
+              ListTile(
+                title: const Text('Text'),
+                subtitle: SelectableText(chunk.text),
+              ),
+            ],
           ),
         ),
       ),
