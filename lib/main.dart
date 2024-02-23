@@ -3,6 +3,7 @@ import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
 import 'package:braingain_app/ui/page/documents/documents_page.dart';
 import 'package:braingain_app/ui/page/home/home.dart';
 import 'package:braingain_app/ui/page/login/login_page.dart';
+import 'package:braingain_app/ui/page/search_documents/search_documents.dart';
 import 'package:braingain_app/ui/page/settings/settings_page.dart';
 import 'package:braingain_app/ui/page/index/index_page.dart';
 import 'package:braingain_app/ui/theme/theme.dart';
@@ -66,6 +67,7 @@ class _AppState extends State<App> {
         DocumentsPage.route: (context) => const DocumentsPage(),
         IndexPage.route: (context) => const IndexPage(),
         ChatHistoryPage.route: (context) => const ChatHistoryPage(),
+        SearchDocumentsPage.route: (context) => const SearchDocumentsPage(),
       },
     );
   }
