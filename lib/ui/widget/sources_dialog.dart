@@ -20,6 +20,38 @@ class SourcesDialog extends StatefulWidget {
 }
 
 class _SourcesDialogState extends State<SourcesDialog> {
+  void _showChunkDetails(Chunk chunk) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Scaffold(
+          appBar: AppBar(
+            title: const Text('Chunk Details'),
+          ),
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ListTile(
+                  title: const Text('ID'),
+                  subtitle: Text(chunk.id),
+                ),
+                ListTile(
+                  title: const Text('Index'),
+                  subtitle: Text(chunk.index.toString()),
+                ),
+                ListTile(
+                  title: const Text('Text'),
+                  subtitle: Text(chunk.text),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
@@ -88,8 +120,10 @@ class _SourcesDialogState extends State<SourcesDialog> {
                                     'Score: ${((widget.scores[chunk.id] ?? 0) * 100).toStringAsFixed(0)}%',
                                     style: text.bodySmall?.copyWith(
                                       color: color.outline,
-                                    ))
+                                    ),
+                                  )
                                 : null,
+                            onTap: () => _showChunkDetails(chunk),
                           ),
                       ],
                     ),
