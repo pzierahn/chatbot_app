@@ -117,7 +117,7 @@ Prepare a new release by following these steps:
 1. Update flutter version to the newest version: `flutter upgrade`
 2. Update the changelog in `CHANGELOG.md`
 3. Update the version and build number in `pubspec.yaml`
-4. Update version in `lib/ui/pages/settings/settings_page.dart`
+4. Update version in `lib/main.dart`
 5. Update dependencies
     1. Update flutter dependencies:`flutter pub upgrade`
     2. Update iOS dependencies: `cd ios && pod update && cd ..`
