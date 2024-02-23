@@ -643,7 +643,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "4bc7647ca6dcbba2a7e2fa1356b140a015386a80"
+      resolved-ref: "4cc3f923213a338c379d319ebdd3dbf6192170f0"
       url: "https://github.com/pzierahn/undraw.git"
     source: git
     version: "1.0.0"
