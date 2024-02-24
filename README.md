@@ -31,9 +31,9 @@ The versatility of our RAG App makes it an indispensable tool across various fie
 
 ## Demo video
 
-The [demo video](https://youtu.be/e8Glsvh2dHo) shows the basic functionality of the app:
+The [demo video](https://youtu.be/Whr3nZ6-82c) shows the basic functionality of the app:
 
-[![Chatbot Demo](https://img.youtube.com/vi/e8Glsvh2dHo/0.jpg)](https://youtu.be/e8Glsvh2dHo)
+[![Chatbot Demo](https://img.youtube.com/vi/Whr3nZ6-82c/0.jpg)](https://youtu.be/Whr3nZ6-82c)
 
 ## Additional Details and Setup Instructions
 
