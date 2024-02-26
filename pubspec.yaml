@@ -48,7 +48,6 @@ dependencies:
   flutter_markdown_latex:
     git:
       url: https://github.com/pzierahn/flutter_markdown_latex
-  firebase_crashlytics: ^3.4.9
 
 dev_dependencies:
   flutter_test:
