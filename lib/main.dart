@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
 
-const appVersion = 'v3.9.1';
+const appVersion = 'v3.9.2';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
