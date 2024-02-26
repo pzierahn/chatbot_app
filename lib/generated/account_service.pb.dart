@@ -24,7 +24,7 @@ class BalanceSheet extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BalanceSheet', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.account.v1'), createEmptyInstance: create)
     ..pc<Payment>(1, _omitFieldNames ? '' : 'payments', $pb.PbFieldType.PM, subBuilder: Payment.create)
     ..pc<ModelCosts>(2, _omitFieldNames ? '' : 'costs', $pb.PbFieldType.PM, subBuilder: ModelCosts.create)
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'balance', $pb.PbFieldType.OU3)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'balance', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -58,7 +58,7 @@ class BalanceSheet extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.int get balance => $_getIZ(2);
   @$pb.TagNumber(3)
-  set balance($core.int v) { $_setUnsignedInt32(2, v); }
+  set balance($core.int v) { $_setSignedInt32(2, v); }
   @$pb.TagNumber(3)
   $core.bool hasBalance() => $_has(2);
   @$pb.TagNumber(3)

@@ -19,7 +19,7 @@ const BalanceSheet$json = {
   '2': [
     {'1': 'payments', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.account.v1.Payment', '10': 'payments'},
     {'1': 'costs', '3': 2, '4': 3, '5': 11, '6': '.endpoint.brainboost.account.v1.ModelCosts', '10': 'costs'},
-    {'1': 'balance', '3': 3, '4': 1, '5': 13, '10': 'balance'},
+    {'1': 'balance', '3': 3, '4': 1, '5': 5, '10': 'balance'},
   ],
 };
 
@@ -27,7 +27,7 @@ const BalanceSheet$json = {
 final $typed_data.Uint8List balanceSheetDescriptor = $convert.base64Decode(
     'CgxCYWxhbmNlU2hlZXQSQwoIcGF5bWVudHMYASADKAsyJy5lbmRwb2ludC5icmFpbmJvb3N0Lm'
     'FjY291bnQudjEuUGF5bWVudFIIcGF5bWVudHMSQAoFY29zdHMYAiADKAsyKi5lbmRwb2ludC5i'
-    'cmFpbmJvb3N0LmFjY291bnQudjEuTW9kZWxDb3N0c1IFY29zdHMSGAoHYmFsYW5jZRgDIAEoDV'
+    'cmFpbmJvb3N0LmFjY291bnQudjEuTW9kZWxDb3N0c1IFY29zdHMSGAoHYmFsYW5jZRgDIAEoBV'
     'IHYmFsYW5jZQ==');
 
 @$core.Deprecated('Use modelCostsDescriptor instead')
