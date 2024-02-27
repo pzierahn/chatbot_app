@@ -41,12 +41,19 @@ class LLMModels {
     provider: 'Amazon',
   );
 
+  static const LLMModel mistral = LLMModel(
+    title: 'Le Chat',
+    model: 'mistral.mistral-large-latest',
+    provider: 'Mistral',
+  );
+
   static const List<LLMModel> all = [
     gpt4,
     gpt3,
     geminiPro,
     claudeV2,
     // titanExpress,
+    mistral,
   ];
 
   static LLMModel fromModel(String model) {
