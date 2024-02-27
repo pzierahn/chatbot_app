@@ -35,7 +35,6 @@ dependencies:
   firebase_auth: ^4.15.2
   firebase_core: ^2.24.2
   firebase_storage: ^11.5.5
-  flutter_markdown: ^0.6.17+1
   google_fonts: ^6.0.0
   grpc: ^3.2.3
   markdown: ^7.2.1
@@ -48,6 +47,10 @@ dependencies:
   flutter_markdown_latex:
     git:
       url: https://github.com/pzierahn/flutter_markdown_latex
+  flutter_markdown:
+    git:
+      url: https://github.com/pzierahn/flutter_packages.git
+      path: packages/flutter_markdown
 
 dev_dependencies:
   flutter_test:
