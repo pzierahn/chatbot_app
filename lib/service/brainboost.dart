@@ -1,6 +1,7 @@
 import 'package:braingain_app/generated/account_service.pbgrpc.dart';
 import 'package:braingain_app/generated/chat_service.pbgrpc.dart';
 import 'package:braingain_app/generated/collection_service.pbgrpc.dart';
+import 'package:braingain_app/generated/crashlytics.pbgrpc.dart';
 import 'package:braingain_app/generated/document_service.pbgrpc.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -30,6 +31,8 @@ final documents = DocumentServiceClientAuth();
 final account = AccountServiceClientAuth();
 
 final chat = ChatServiceClientAuth();
+
+final crashlytics = CrashlyticsServiceClientAuth();
 
 Future<CallOptions> _mergeAuth(CallOptions? options) async {
   final token = await FirebaseAuth.instance.currentUser?.getIdToken();
@@ -180,5 +183,14 @@ class ChatServiceClientAuth {
   }) async {
     options = await _mergeAuth(options);
     return _service.deleteMessageFromThread(request, options: options);
+  }
+}
+
+class CrashlyticsServiceClientAuth {
+  final _service = CrashlyticsServiceClient(_channel);
+
+  Future<Empty> recordError(Error request, {CallOptions? options}) async {
+    options = await _mergeAuth(options);
+    return _service.recordError(request, options: options);
   }
 }
