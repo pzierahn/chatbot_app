@@ -19,11 +19,12 @@ const Error$json = {
   '2': [
     {'1': 'exception', '3': 1, '4': 1, '5': 9, '10': 'exception'},
     {'1': 'stack_trace', '3': 2, '4': 1, '5': 9, '10': 'stackTrace'},
+    {'1': 'app_version', '3': 3, '4': 1, '5': 9, '10': 'appVersion'},
   ],
 };
 
 /// Descriptor for `Error`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List errorDescriptor = $convert.base64Decode(
     'CgVFcnJvchIcCglleGNlcHRpb24YASABKAlSCWV4Y2VwdGlvbhIfCgtzdGFja190cmFjZRgCIA'
-    'EoCVIKc3RhY2tUcmFjZQ==');
+    'EoCVIKc3RhY2tUcmFjZRIfCgthcHBfdmVyc2lvbhgDIAEoCVIKYXBwVmVyc2lvbg==');
 

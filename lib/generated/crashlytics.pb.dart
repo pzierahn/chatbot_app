@@ -22,6 +22,7 @@ class Error extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Error', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.crashlytics.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'exception')
     ..aOS(2, _omitFieldNames ? '' : 'stackTrace')
+    ..aOS(3, _omitFieldNames ? '' : 'appVersion')
     ..hasRequiredFields = false
   ;
 
@@ -63,6 +64,15 @@ class Error extends $pb.GeneratedMessage {
   $core.bool hasStackTrace() => $_has(1);
   @$pb.TagNumber(2)
   void clearStackTrace() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get appVersion => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set appVersion($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasAppVersion() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearAppVersion() => clearField(3);
 }
 
 
