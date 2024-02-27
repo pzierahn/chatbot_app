@@ -54,16 +54,18 @@ final $typed_data.Uint8List threadPromptDescriptor = $convert.base64Decode(
 const ModelOptions$json = {
   '1': 'ModelOptions',
   '2': [
-    {'1': 'model', '3': 4, '4': 1, '5': 9, '10': 'model'},
-    {'1': 'temperature', '3': 5, '4': 1, '5': 2, '10': 'temperature'},
-    {'1': 'max_tokens', '3': 6, '4': 1, '5': 13, '10': 'maxTokens'},
+    {'1': 'model', '3': 1, '4': 1, '5': 9, '10': 'model'},
+    {'1': 'temperature', '3': 2, '4': 1, '5': 2, '10': 'temperature'},
+    {'1': 'max_tokens', '3': 3, '4': 1, '5': 13, '10': 'maxTokens'},
+    {'1': 'top_p', '3': 4, '4': 1, '5': 2, '10': 'topP'},
   ],
 };
 
 /// Descriptor for `ModelOptions`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List modelOptionsDescriptor = $convert.base64Decode(
-    'CgxNb2RlbE9wdGlvbnMSFAoFbW9kZWwYBCABKAlSBW1vZGVsEiAKC3RlbXBlcmF0dXJlGAUgAS'
-    'gCUgt0ZW1wZXJhdHVyZRIdCgptYXhfdG9rZW5zGAYgASgNUgltYXhUb2tlbnM=');
+    'CgxNb2RlbE9wdGlvbnMSFAoFbW9kZWwYASABKAlSBW1vZGVsEiAKC3RlbXBlcmF0dXJlGAIgAS'
+    'gCUgt0ZW1wZXJhdHVyZRIdCgptYXhfdG9rZW5zGAMgASgNUgltYXhUb2tlbnMSEwoFdG9wX3AY'
+    'BCABKAJSBHRvcFA=');
 
 @$core.Deprecated('Use messageDescriptor instead')
 const Message$json = {

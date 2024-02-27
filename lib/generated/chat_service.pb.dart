@@ -174,9 +174,10 @@ class ModelOptions extends $pb.GeneratedMessage {
   factory ModelOptions.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ModelOptions', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.chat.v4'), createEmptyInstance: create)
-    ..aOS(4, _omitFieldNames ? '' : 'model')
-    ..a<$core.double>(5, _omitFieldNames ? '' : 'temperature', $pb.PbFieldType.OF)
-    ..a<$core.int>(6, _omitFieldNames ? '' : 'maxTokens', $pb.PbFieldType.OU3)
+    ..aOS(1, _omitFieldNames ? '' : 'model')
+    ..a<$core.double>(2, _omitFieldNames ? '' : 'temperature', $pb.PbFieldType.OF)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'maxTokens', $pb.PbFieldType.OU3)
+    ..a<$core.double>(4, _omitFieldNames ? '' : 'topP', $pb.PbFieldType.OF)
     ..hasRequiredFields = false
   ;
 
@@ -201,32 +202,41 @@ class ModelOptions extends $pb.GeneratedMessage {
   static ModelOptions getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ModelOptions>(create);
   static ModelOptions? _defaultInstance;
 
-  @$pb.TagNumber(4)
+  @$pb.TagNumber(1)
   $core.String get model => $_getSZ(0);
-  @$pb.TagNumber(4)
+  @$pb.TagNumber(1)
   set model($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(4)
+  @$pb.TagNumber(1)
   $core.bool hasModel() => $_has(0);
-  @$pb.TagNumber(4)
-  void clearModel() => clearField(4);
+  @$pb.TagNumber(1)
+  void clearModel() => clearField(1);
 
-  @$pb.TagNumber(5)
+  @$pb.TagNumber(2)
   $core.double get temperature => $_getN(1);
-  @$pb.TagNumber(5)
+  @$pb.TagNumber(2)
   set temperature($core.double v) { $_setFloat(1, v); }
-  @$pb.TagNumber(5)
+  @$pb.TagNumber(2)
   $core.bool hasTemperature() => $_has(1);
-  @$pb.TagNumber(5)
-  void clearTemperature() => clearField(5);
+  @$pb.TagNumber(2)
+  void clearTemperature() => clearField(2);
 
-  @$pb.TagNumber(6)
+  @$pb.TagNumber(3)
   $core.int get maxTokens => $_getIZ(2);
-  @$pb.TagNumber(6)
+  @$pb.TagNumber(3)
   set maxTokens($core.int v) { $_setUnsignedInt32(2, v); }
-  @$pb.TagNumber(6)
+  @$pb.TagNumber(3)
   $core.bool hasMaxTokens() => $_has(2);
-  @$pb.TagNumber(6)
-  void clearMaxTokens() => clearField(6);
+  @$pb.TagNumber(3)
+  void clearMaxTokens() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.double get topP => $_getN(3);
+  @$pb.TagNumber(4)
+  set topP($core.double v) { $_setFloat(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasTopP() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTopP() => clearField(4);
 }
 
 class Message extends $pb.GeneratedMessage {
