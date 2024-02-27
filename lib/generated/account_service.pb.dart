@@ -13,7 +13,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/timestamp.pb.dart' as $5;
+import 'google/protobuf/timestamp.pb.dart' as $6;
 
 class BalanceSheet extends $pb.GeneratedMessage {
   factory BalanceSheet() => create();
@@ -191,7 +191,7 @@ class Payment extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Payment', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.account.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOM<$5.Timestamp>(2, _omitFieldNames ? '' : 'date', subBuilder: $5.Timestamp.create)
+    ..aOM<$6.Timestamp>(2, _omitFieldNames ? '' : 'date', subBuilder: $6.Timestamp.create)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
@@ -227,15 +227,15 @@ class Payment extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $5.Timestamp get date => $_getN(1);
+  $6.Timestamp get date => $_getN(1);
   @$pb.TagNumber(2)
-  set date($5.Timestamp v) { setField(2, v); }
+  set date($6.Timestamp v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasDate() => $_has(1);
   @$pb.TagNumber(2)
   void clearDate() => clearField(2);
   @$pb.TagNumber(2)
-  $5.Timestamp ensureDate() => $_ensure(1);
+  $6.Timestamp ensureDate() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.int get amount => $_getIZ(2);

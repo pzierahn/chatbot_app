@@ -13,7 +13,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/timestamp.pb.dart' as $5;
+import 'google/protobuf/timestamp.pb.dart' as $6;
 
 class Prompt extends $pb.GeneratedMessage {
   factory Prompt() => create();
@@ -239,7 +239,7 @@ class Message extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'prompt')
     ..aOS(3, _omitFieldNames ? '' : 'completion')
-    ..aOM<$5.Timestamp>(4, _omitFieldNames ? '' : 'timestamp', subBuilder: $5.Timestamp.create)
+    ..aOM<$6.Timestamp>(4, _omitFieldNames ? '' : 'timestamp', subBuilder: $6.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -292,15 +292,15 @@ class Message extends $pb.GeneratedMessage {
   void clearCompletion() => clearField(3);
 
   @$pb.TagNumber(4)
-  $5.Timestamp get timestamp => $_getN(3);
+  $6.Timestamp get timestamp => $_getN(3);
   @$pb.TagNumber(4)
-  set timestamp($5.Timestamp v) { setField(4, v); }
+  set timestamp($6.Timestamp v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasTimestamp() => $_has(3);
   @$pb.TagNumber(4)
   void clearTimestamp() => clearField(4);
   @$pb.TagNumber(4)
-  $5.Timestamp ensureTimestamp() => $_ensure(3);
+  $6.Timestamp ensureTimestamp() => $_ensure(3);
 }
 
 class Thread extends $pb.GeneratedMessage {
