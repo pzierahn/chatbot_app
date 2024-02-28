@@ -219,8 +219,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: HEAD
-      resolved-ref: f5fe3c5823608993c89986c5479407dcfe41dd67
+      ref: fix_markdown_line_breaks
+      resolved-ref: fca4b2431c45304dc6987d033d1b3d4012844253
       url: "https://github.com/pzierahn/flutter_markdown_latex"
     source: git
     version: "0.2.0"
