@@ -18,8 +18,14 @@ class LLMModels {
   );
 
   static const LLMModel claudeV3 = LLMModel(
-    title: 'Claude 3 Sonnet',
+    title: 'Claude 3',
     model: 'anthropic.claude-3-sonnet-20240229-v1:0',
+    provider: 'Anthropic',
+  );
+
+  static const LLMModel claudeV2 = LLMModel(
+    title: 'Claude 2',
+    model: 'anthropic.claude-v2:1',
     provider: 'Anthropic',
   );
 
@@ -38,6 +44,7 @@ class LLMModels {
   static const List<LLMModel> all = [
     gpt4,
     claudeV3,
+    claudeV2,
     mistral,
     geminiPro,
   ];
