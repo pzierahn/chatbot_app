@@ -109,10 +109,10 @@ packages:
     dependency: "direct main"
     description:
       name: file_picker
-      sha256: "4e42aacde3b993c5947467ab640882c56947d9d27342a5b6f2895b23956954a6"
+      sha256: caa6bc229eab3e32eb2f37b53a5f9d22a6981474afd210c512a7546c1e1a04f6
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.1"
+    version: "6.2.0"
   firebase_auth:
     dependency: "direct main"
     description:
@@ -209,18 +209,17 @@ packages:
   flutter_markdown:
     dependency: "direct main"
     description:
-      path: "packages/flutter_markdown"
-      ref: HEAD
-      resolved-ref: "3ad85bfd077228eafb7a290d20a11d5ab3c510c4"
-      url: "https://github.com/pzierahn/flutter_packages.git"
-    source: git
-    version: "0.6.20+1"
+      name: flutter_markdown
+      sha256: cb44f7831b23a6bdd0f501718b0d2e8045cbc625a15f668af37ddb80314821db
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.21"
   flutter_markdown_latex:
     dependency: "direct main"
     description:
       path: "."
       ref: fix_markdown_line_breaks
-      resolved-ref: fca4b2431c45304dc6987d033d1b3d4012844253
+      resolved-ref: "9bdedc7611aeb2e3babcb2fe8214415bda6df41b"
       url: "https://github.com/pzierahn/flutter_markdown_latex"
     source: git
     version: "0.2.0"
@@ -262,10 +261,10 @@ packages:
     dependency: "direct main"
     description:
       name: google_fonts
-      sha256: f0b8d115a13ecf827013ec9fc883390ccc0e87a96ed5347a3114cac177ef18e8
+      sha256: b1ac0fe2832c9cc95e5e88b57d627c5e68c223b9657f4b96e1487aa9098c7b82
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.0"
+    version: "6.2.1"
   google_identity_services_web:
     dependency: transitive
     description:
@@ -278,10 +277,10 @@ packages:
     dependency: transitive
     description:
       name: googleapis_auth
-      sha256: "772779fe28a8b70939eab9c390a5f8f46cbb59bda9f1f10ea60dd894eff59ff0"
+      sha256: cafc46446574fd42826aa4cd4d623c94482598fda0a5a5649bf2781bcbc09258
       url: "https://pub.dev"
     source: hosted
-    version: "1.4.2"
+    version: "1.5.0"
   grpc:
     dependency: "direct main"
     description:
@@ -502,10 +501,10 @@ packages:
     dependency: transitive
     description:
       name: provider
-      sha256: "9a96a0a19b594dbc5bf0f1f27d2bc67d5f95957359b461cd9feb44ed6ae75096"
+      sha256: c8a055ee5ce3fd98d6fc872478b03823ffdb448699c6ebdbbc71d59b596fd48c
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.1"
+    version: "6.1.2"
   shared_preferences:
     dependency: transitive
     description:
@@ -730,4 +729,4 @@ packages:
     version: "6.5.0"
 sdks:
   dart: ">=3.3.0 <4.0.0"
-  flutter: ">=3.19.0"
+  flutter: ">=3.19.2"
