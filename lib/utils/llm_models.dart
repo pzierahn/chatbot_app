@@ -11,34 +11,16 @@ class LLMModel {
 }
 
 class LLMModels {
-  static const LLMModel gpt3 = LLMModel(
-    title: 'GPT 3.5',
-    model: 'openai.gpt-3.5-turbo-16k',
-    provider: 'OpenAI',
-  );
-
   static const LLMModel gpt4 = LLMModel(
     title: 'GPT 4 Turbo',
     model: 'openai.gpt-4-turbo-preview',
     provider: 'OpenAI',
   );
 
-  static const LLMModel geminiPro = LLMModel(
-    title: 'Genmini Pro',
-    model: 'google.gemini-pro',
-    provider: 'Google',
-  );
-
-  static const LLMModel claudeV2 = LLMModel(
-    title: 'Claude',
-    model: 'anthropic.claude-v2:1',
+  static const LLMModel claudeV3 = LLMModel(
+    title: 'Claude 3 Sonnet',
+    model: 'anthropic.claude-3-sonnet-20240229-v1:0',
     provider: 'Anthropic',
-  );
-
-  static const LLMModel titanExpress = LLMModel(
-    title: 'Amazon Titan',
-    model: 'amazon.titan-text-express-v1',
-    provider: 'Amazon',
   );
 
   static const LLMModel mistral = LLMModel(
@@ -47,19 +29,23 @@ class LLMModels {
     provider: 'Mistral',
   );
 
+  static const LLMModel geminiPro = LLMModel(
+    title: 'Genmini Pro',
+    model: 'google.gemini-pro',
+    provider: 'Google',
+  );
+
   static const List<LLMModel> all = [
     gpt4,
-    gpt3,
-    geminiPro,
-    claudeV2,
-    // titanExpress,
+    claudeV3,
     mistral,
+    geminiPro,
   ];
 
   static LLMModel fromModel(String model) {
     return all.firstWhere(
       (element) => element.model == model,
-      orElse: () => gpt3,
+      orElse: () => gpt4,
     );
   }
 }
