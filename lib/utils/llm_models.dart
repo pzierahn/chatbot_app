@@ -29,6 +29,12 @@ class LLMModels {
     provider: 'Anthropic',
   );
 
+  static const LLMModel claudeOpus = LLMModel(
+    title: 'Claude Opus',
+    model: 'anthropic.claude-3-opus-20240229',
+    provider: 'Anthropic',
+  );
+
   static const LLMModel mistral = LLMModel(
     title: 'Le Chat',
     model: 'mistral.mistral-large-latest',
@@ -43,6 +49,7 @@ class LLMModels {
 
   static const List<LLMModel> all = [
     gpt4,
+    claudeOpus,
     claudeV3,
     claudeV2,
     mistral,
