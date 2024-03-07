@@ -219,7 +219,7 @@ packages:
     description:
       path: "."
       ref: fix_markdown_line_breaks
-      resolved-ref: "06311a6b615dcd13f02ceaa6d80d2dacfd695ad1"
+      resolved-ref: "90adf6e7c7340d5e5e475b1a648d60cf2908f26c"
       url: "https://github.com/pzierahn/flutter_markdown_latex"
     source: git
     version: "0.2.0"
