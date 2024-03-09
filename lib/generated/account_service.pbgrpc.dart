@@ -20,18 +20,18 @@ import 'google/protobuf/empty.pb.dart' as $0;
 
 export 'account_service.pb.dart';
 
-@$pb.GrpcServiceName('endpoint.brainboost.account.v1.AccountService')
+@$pb.GrpcServiceName('chatbot.account.v1.AccountService')
 class AccountServiceClient extends $grpc.Client {
   static final _$getCosts = $grpc.ClientMethod<$0.Empty, $1.Costs>(
-      '/endpoint.brainboost.account.v1.AccountService/GetCosts',
+      '/chatbot.account.v1.AccountService/GetCosts',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Costs.fromBuffer(value));
   static final _$getPayments = $grpc.ClientMethod<$0.Empty, $1.Payments>(
-      '/endpoint.brainboost.account.v1.AccountService/GetPayments',
+      '/chatbot.account.v1.AccountService/GetPayments',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Payments.fromBuffer(value));
   static final _$getBalanceSheet = $grpc.ClientMethod<$0.Empty, $1.BalanceSheet>(
-      '/endpoint.brainboost.account.v1.AccountService/GetBalanceSheet',
+      '/chatbot.account.v1.AccountService/GetBalanceSheet',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.BalanceSheet.fromBuffer(value));
 
@@ -54,9 +54,9 @@ class AccountServiceClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('endpoint.brainboost.account.v1.AccountService')
+@$pb.GrpcServiceName('chatbot.account.v1.AccountService')
 abstract class AccountServiceBase extends $grpc.Service {
-  $core.String get $name => 'endpoint.brainboost.account.v1.AccountService';
+  $core.String get $name => 'chatbot.account.v1.AccountService';
 
   AccountServiceBase() {
     $addMethod($grpc.ServiceMethod<$0.Empty, $1.Costs>(

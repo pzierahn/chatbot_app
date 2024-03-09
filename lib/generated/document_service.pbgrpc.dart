@@ -20,34 +20,34 @@ import 'google/protobuf/empty.pb.dart' as $0;
 
 export 'document_service.pb.dart';
 
-@$pb.GrpcServiceName('endpoint.brainboost.documents.v2.DocumentService')
+@$pb.GrpcServiceName('chatbot.documents.v2.DocumentService')
 class DocumentServiceClient extends $grpc.Client {
   static final _$list = $grpc.ClientMethod<$5.DocumentFilter, $5.DocumentList>(
-      '/endpoint.brainboost.documents.v2.DocumentService/List',
+      '/chatbot.documents.v2.DocumentService/List',
       ($5.DocumentFilter value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $5.DocumentList.fromBuffer(value));
   static final _$get = $grpc.ClientMethod<$5.DocumentID, $5.Document>(
-      '/endpoint.brainboost.documents.v2.DocumentService/Get',
+      '/chatbot.documents.v2.DocumentService/Get',
       ($5.DocumentID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $5.Document.fromBuffer(value));
   static final _$rename = $grpc.ClientMethod<$5.RenameDocument, $0.Empty>(
-      '/endpoint.brainboost.documents.v2.DocumentService/Rename',
+      '/chatbot.documents.v2.DocumentService/Rename',
       ($5.RenameDocument value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$delete = $grpc.ClientMethod<$5.DocumentID, $0.Empty>(
-      '/endpoint.brainboost.documents.v2.DocumentService/Delete',
+      '/chatbot.documents.v2.DocumentService/Delete',
       ($5.DocumentID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$index = $grpc.ClientMethod<$5.IndexJob, $5.IndexProgress>(
-      '/endpoint.brainboost.documents.v2.DocumentService/Index',
+      '/chatbot.documents.v2.DocumentService/Index',
       ($5.IndexJob value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $5.IndexProgress.fromBuffer(value));
   static final _$search = $grpc.ClientMethod<$5.SearchQuery, $5.SearchResults>(
-      '/endpoint.brainboost.documents.v2.DocumentService/Search',
+      '/chatbot.documents.v2.DocumentService/Search',
       ($5.SearchQuery value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $5.SearchResults.fromBuffer(value));
   static final _$getReferences = $grpc.ClientMethod<$5.ReferenceIDs, $5.References>(
-      '/endpoint.brainboost.documents.v2.DocumentService/GetReferences',
+      '/chatbot.documents.v2.DocumentService/GetReferences',
       ($5.ReferenceIDs value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $5.References.fromBuffer(value));
 
@@ -86,9 +86,9 @@ class DocumentServiceClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('endpoint.brainboost.documents.v2.DocumentService')
+@$pb.GrpcServiceName('chatbot.documents.v2.DocumentService')
 abstract class DocumentServiceBase extends $grpc.Service {
-  $core.String get $name => 'endpoint.brainboost.documents.v2.DocumentService';
+  $core.String get $name => 'chatbot.documents.v2.DocumentService';
 
   DocumentServiceBase() {
     $addMethod($grpc.ServiceMethod<$5.DocumentFilter, $5.DocumentList>(

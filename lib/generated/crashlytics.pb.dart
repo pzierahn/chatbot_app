@@ -19,7 +19,7 @@ class Error extends $pb.GeneratedMessage {
   factory Error.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Error.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Error', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.crashlytics.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Error', package: const $pb.PackageName(_omitMessageNames ? '' : 'crashlytics.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'exception')
     ..aOS(2, _omitFieldNames ? '' : 'stackTrace')
     ..aOS(3, _omitFieldNames ? '' : 'appVersion')

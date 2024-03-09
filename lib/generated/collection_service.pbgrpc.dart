@@ -20,26 +20,26 @@ import 'google/protobuf/empty.pb.dart' as $0;
 
 export 'collection_service.pb.dart';
 
-@$pb.GrpcServiceName('endpoint.brainboost.collections.v2.CollectionService')
+@$pb.GrpcServiceName('chatbot.collections.v2.CollectionService')
 class CollectionServiceClient extends $grpc.Client {
   static final _$get = $grpc.ClientMethod<$2.CollectionID, $2.Collection>(
-      '/endpoint.brainboost.collections.v2.CollectionService/Get',
+      '/chatbot.collections.v2.CollectionService/Get',
       ($2.CollectionID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Collection.fromBuffer(value));
   static final _$list = $grpc.ClientMethod<$0.Empty, $2.Collections>(
-      '/endpoint.brainboost.collections.v2.CollectionService/List',
+      '/chatbot.collections.v2.CollectionService/List',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Collections.fromBuffer(value));
   static final _$create = $grpc.ClientMethod<$2.Collection, $2.Collection>(
-      '/endpoint.brainboost.collections.v2.CollectionService/Create',
+      '/chatbot.collections.v2.CollectionService/Create',
       ($2.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Collection.fromBuffer(value));
   static final _$update = $grpc.ClientMethod<$2.Collection, $2.Collection>(
-      '/endpoint.brainboost.collections.v2.CollectionService/Update',
+      '/chatbot.collections.v2.CollectionService/Update',
       ($2.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Collection.fromBuffer(value));
   static final _$delete = $grpc.ClientMethod<$2.Collection, $0.Empty>(
-      '/endpoint.brainboost.collections.v2.CollectionService/Delete',
+      '/chatbot.collections.v2.CollectionService/Delete',
       ($2.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
 
@@ -70,9 +70,9 @@ class CollectionServiceClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('endpoint.brainboost.collections.v2.CollectionService')
+@$pb.GrpcServiceName('chatbot.collections.v2.CollectionService')
 abstract class CollectionServiceBase extends $grpc.Service {
-  $core.String get $name => 'endpoint.brainboost.collections.v2.CollectionService';
+  $core.String get $name => 'chatbot.collections.v2.CollectionService';
 
   CollectionServiceBase() {
     $addMethod($grpc.ServiceMethod<$2.CollectionID, $2.Collection>(

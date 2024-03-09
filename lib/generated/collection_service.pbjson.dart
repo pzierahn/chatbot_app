@@ -44,12 +44,12 @@ final $typed_data.Uint8List collectionDescriptor = $convert.base64Decode(
 const Collections$json = {
   '1': 'Collections',
   '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.endpoint.brainboost.collections.v2.Collection', '10': 'items'},
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.chatbot.collections.v2.Collection', '10': 'items'},
   ],
 };
 
 /// Descriptor for `Collections`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List collectionsDescriptor = $convert.base64Decode(
-    'CgtDb2xsZWN0aW9ucxJECgVpdGVtcxgBIAMoCzIuLmVuZHBvaW50LmJyYWluYm9vc3QuY29sbG'
-    'VjdGlvbnMudjIuQ29sbGVjdGlvblIFaXRlbXM=');
+    'CgtDb2xsZWN0aW9ucxI4CgVpdGVtcxgBIAMoCzIiLmNoYXRib3QuY29sbGVjdGlvbnMudjIuQ2'
+    '9sbGVjdGlvblIFaXRlbXM=');
 

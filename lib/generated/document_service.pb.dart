@@ -13,7 +13,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/timestamp.pb.dart' as $6;
+import 'google/protobuf/timestamp.pb.dart' as $7;
 
 enum RenameDocument_RenameTo {
   fileName, 
@@ -32,7 +32,7 @@ class RenameDocument extends $pb.GeneratedMessage {
     3 : RenameDocument_RenameTo.webpageTitle,
     0 : RenameDocument_RenameTo.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'RenameDocument', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'RenameDocument', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..oo(0, [2, 3])
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'fileName')
@@ -98,7 +98,7 @@ class DocumentID extends $pb.GeneratedMessage {
   factory DocumentID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DocumentID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentID', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentID', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..hasRequiredFields = false
   ;
@@ -140,8 +140,8 @@ class DocumentList extends $pb.GeneratedMessage {
   factory DocumentList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DocumentList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentList', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
-    ..m<$core.String, DocumentMetadata>(1, _omitFieldNames ? '' : 'items', entryClassName: 'DocumentList.ItemsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: DocumentMetadata.create, valueDefaultOrMaker: DocumentMetadata.getDefault, packageName: const $pb.PackageName('endpoint.brainboost.documents.v2'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentList', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
+    ..m<$core.String, DocumentMetadata>(1, _omitFieldNames ? '' : 'items', entryClassName: 'DocumentList.ItemsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: DocumentMetadata.create, valueDefaultOrMaker: DocumentMetadata.getDefault, packageName: const $pb.PackageName('chatbot.documents.v2'))
     ..hasRequiredFields = false
   ;
 
@@ -176,7 +176,7 @@ class ReferenceIDs extends $pb.GeneratedMessage {
   factory ReferenceIDs.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ReferenceIDs.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ReferenceIDs', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ReferenceIDs', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..pPS(1, _omitFieldNames ? '' : 'items')
     ..hasRequiredFields = false
   ;
@@ -212,7 +212,7 @@ class Chunk extends $pb.GeneratedMessage {
   factory Chunk.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Chunk.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Chunk', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Chunk', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'text')
     ..a<$core.int>(3, _omitFieldNames ? '' : 'index', $pb.PbFieldType.OU3)
@@ -274,7 +274,7 @@ class References extends $pb.GeneratedMessage {
   factory References.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory References.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'References', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'References', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..pc<Document>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Document.create)
     ..hasRequiredFields = false
   ;
@@ -310,7 +310,7 @@ class SearchQuery extends $pb.GeneratedMessage {
   factory SearchQuery.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SearchQuery.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SearchQuery', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SearchQuery', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'query')
     ..aOS(2, _omitFieldNames ? '' : 'collectionId')
     ..a<$core.double>(3, _omitFieldNames ? '' : 'threshold', $pb.PbFieldType.OF)
@@ -382,9 +382,9 @@ class SearchResults extends $pb.GeneratedMessage {
   factory SearchResults.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SearchResults.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SearchResults', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SearchResults', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..pc<Document>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Document.create)
-    ..m<$core.String, $core.double>(2, _omitFieldNames ? '' : 'scores', entryClassName: 'SearchResults.ScoresEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OF, packageName: const $pb.PackageName('endpoint.brainboost.documents.v2'))
+    ..m<$core.String, $core.double>(2, _omitFieldNames ? '' : 'scores', entryClassName: 'SearchResults.ScoresEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OF, packageName: const $pb.PackageName('chatbot.documents.v2'))
     ..hasRequiredFields = false
   ;
 
@@ -422,7 +422,7 @@ class IndexProgress extends $pb.GeneratedMessage {
   factory IndexProgress.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory IndexProgress.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'IndexProgress', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'IndexProgress', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'status')
     ..a<$core.double>(2, _omitFieldNames ? '' : 'progress', $pb.PbFieldType.OF)
     ..hasRequiredFields = false
@@ -474,7 +474,7 @@ class DocumentFilter extends $pb.GeneratedMessage {
   factory DocumentFilter.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DocumentFilter.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentFilter', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentFilter', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'query')
     ..aOS(2, _omitFieldNames ? '' : 'collectionId')
     ..hasRequiredFields = false
@@ -537,7 +537,7 @@ class DocumentMetadata extends $pb.GeneratedMessage {
     2 : DocumentMetadata_Data.web,
     0 : DocumentMetadata_Data.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentMetadata', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentMetadata', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..oo(0, [1, 2])
     ..aOM<File>(1, _omitFieldNames ? '' : 'file', subBuilder: File.create)
     ..aOM<Webpage>(2, _omitFieldNames ? '' : 'web', subBuilder: Webpage.create)
@@ -597,7 +597,7 @@ class File extends $pb.GeneratedMessage {
   factory File.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory File.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'File', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'File', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'path')
     ..aOS(2, _omitFieldNames ? '' : 'filename')
     ..hasRequiredFields = false
@@ -649,7 +649,7 @@ class Webpage extends $pb.GeneratedMessage {
   factory Webpage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Webpage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Webpage', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Webpage', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'url')
     ..aOS(2, _omitFieldNames ? '' : 'title')
     ..hasRequiredFields = false
@@ -701,10 +701,10 @@ class Document extends $pb.GeneratedMessage {
   factory Document.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Document.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'collectionId')
-    ..aOM<$6.Timestamp>(3, _omitFieldNames ? '' : 'createdAt', subBuilder: $6.Timestamp.create)
+    ..aOM<$7.Timestamp>(3, _omitFieldNames ? '' : 'createdAt', subBuilder: $7.Timestamp.create)
     ..aOM<DocumentMetadata>(4, _omitFieldNames ? '' : 'metadata', subBuilder: DocumentMetadata.create)
     ..pc<Chunk>(5, _omitFieldNames ? '' : 'chunks', $pb.PbFieldType.PM, subBuilder: Chunk.create)
     ..hasRequiredFields = false
@@ -750,15 +750,15 @@ class Document extends $pb.GeneratedMessage {
   void clearCollectionId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $6.Timestamp get createdAt => $_getN(2);
+  $7.Timestamp get createdAt => $_getN(2);
   @$pb.TagNumber(3)
-  set createdAt($6.Timestamp v) { setField(3, v); }
+  set createdAt($7.Timestamp v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasCreatedAt() => $_has(2);
   @$pb.TagNumber(3)
   void clearCreatedAt() => clearField(3);
   @$pb.TagNumber(3)
-  $6.Timestamp ensureCreatedAt() => $_ensure(2);
+  $7.Timestamp ensureCreatedAt() => $_ensure(2);
 
   @$pb.TagNumber(4)
   DocumentMetadata get metadata => $_getN(3);
@@ -781,7 +781,7 @@ class IndexJob extends $pb.GeneratedMessage {
   factory IndexJob.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory IndexJob.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'IndexJob', package: const $pb.PackageName(_omitMessageNames ? '' : 'endpoint.brainboost.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'IndexJob', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'collectionId')
     ..aOM<DocumentMetadata>(3, _omitFieldNames ? '' : 'document', subBuilder: DocumentMetadata.create)

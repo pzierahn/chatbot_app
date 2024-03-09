@@ -20,10 +20,10 @@ import 'google/protobuf/empty.pb.dart' as $0;
 
 export 'crashlytics.pb.dart';
 
-@$pb.GrpcServiceName('endpoint.brainboost.crashlytics.v1.CrashlyticsService')
+@$pb.GrpcServiceName('crashlytics.v1.CrashlyticsService')
 class CrashlyticsServiceClient extends $grpc.Client {
   static final _$recordError = $grpc.ClientMethod<$4.Error, $0.Empty>(
-      '/endpoint.brainboost.crashlytics.v1.CrashlyticsService/RecordError',
+      '/crashlytics.v1.CrashlyticsService/RecordError',
       ($4.Error value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
 
@@ -38,9 +38,9 @@ class CrashlyticsServiceClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('endpoint.brainboost.crashlytics.v1.CrashlyticsService')
+@$pb.GrpcServiceName('crashlytics.v1.CrashlyticsService')
 abstract class CrashlyticsServiceBase extends $grpc.Service {
-  $core.String get $name => 'endpoint.brainboost.crashlytics.v1.CrashlyticsService';
+  $core.String get $name => 'crashlytics.v1.CrashlyticsService';
 
   CrashlyticsServiceBase() {
     $addMethod($grpc.ServiceMethod<$4.Error, $0.Empty>(
