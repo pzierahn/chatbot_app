@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -13,10 +13,26 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/timestamp.pb.dart' as $7;
+import 'google/protobuf/timestamp.pb.dart' as $6;
 
 class Prompt extends $pb.GeneratedMessage {
-  factory Prompt() => create();
+  factory Prompt({
+    $core.String? threadID,
+    $core.String? prompt,
+    ModelOptions? modelOptions,
+  }) {
+    final $result = create();
+    if (threadID != null) {
+      $result.threadID = threadID;
+    }
+    if (prompt != null) {
+      $result.prompt = prompt;
+    }
+    if (modelOptions != null) {
+      $result.modelOptions = modelOptions;
+    }
+    return $result;
+  }
   Prompt._() : super();
   factory Prompt.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Prompt.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -80,7 +96,35 @@ class Prompt extends $pb.GeneratedMessage {
 }
 
 class ThreadPrompt extends $pb.GeneratedMessage {
-  factory ThreadPrompt() => create();
+  factory ThreadPrompt({
+    $core.String? prompt,
+    $core.String? collectionId,
+    ModelOptions? modelOptions,
+    $core.double? threshold,
+    $core.int? limit,
+    $core.Iterable<$core.String>? documentIds,
+  }) {
+    final $result = create();
+    if (prompt != null) {
+      $result.prompt = prompt;
+    }
+    if (collectionId != null) {
+      $result.collectionId = collectionId;
+    }
+    if (modelOptions != null) {
+      $result.modelOptions = modelOptions;
+    }
+    if (threshold != null) {
+      $result.threshold = threshold;
+    }
+    if (limit != null) {
+      $result.limit = limit;
+    }
+    if (documentIds != null) {
+      $result.documentIds.addAll(documentIds);
+    }
+    return $result;
+  }
   ThreadPrompt._() : super();
   factory ThreadPrompt.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ThreadPrompt.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -145,6 +189,7 @@ class ThreadPrompt extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   ModelOptions ensureModelOptions() => $_ensure(2);
 
+  /// Search options
   @$pb.TagNumber(4)
   $core.double get threshold => $_getN(3);
   @$pb.TagNumber(4)
@@ -168,7 +213,27 @@ class ThreadPrompt extends $pb.GeneratedMessage {
 }
 
 class ModelOptions extends $pb.GeneratedMessage {
-  factory ModelOptions() => create();
+  factory ModelOptions({
+    $core.String? model,
+    $core.double? temperature,
+    $core.int? maxTokens,
+    $core.double? topP,
+  }) {
+    final $result = create();
+    if (model != null) {
+      $result.model = model;
+    }
+    if (temperature != null) {
+      $result.temperature = temperature;
+    }
+    if (maxTokens != null) {
+      $result.maxTokens = maxTokens;
+    }
+    if (topP != null) {
+      $result.topP = topP;
+    }
+    return $result;
+  }
   ModelOptions._() : super();
   factory ModelOptions.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ModelOptions.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -240,7 +305,27 @@ class ModelOptions extends $pb.GeneratedMessage {
 }
 
 class Message extends $pb.GeneratedMessage {
-  factory Message() => create();
+  factory Message({
+    $core.String? id,
+    $core.String? prompt,
+    $core.String? completion,
+    $6.Timestamp? timestamp,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (prompt != null) {
+      $result.prompt = prompt;
+    }
+    if (completion != null) {
+      $result.completion = completion;
+    }
+    if (timestamp != null) {
+      $result.timestamp = timestamp;
+    }
+    return $result;
+  }
   Message._() : super();
   factory Message.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Message.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -249,7 +334,7 @@ class Message extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'prompt')
     ..aOS(3, _omitFieldNames ? '' : 'completion')
-    ..aOM<$7.Timestamp>(4, _omitFieldNames ? '' : 'timestamp', subBuilder: $7.Timestamp.create)
+    ..aOM<$6.Timestamp>(4, _omitFieldNames ? '' : 'timestamp', subBuilder: $6.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -302,19 +387,39 @@ class Message extends $pb.GeneratedMessage {
   void clearCompletion() => clearField(3);
 
   @$pb.TagNumber(4)
-  $7.Timestamp get timestamp => $_getN(3);
+  $6.Timestamp get timestamp => $_getN(3);
   @$pb.TagNumber(4)
-  set timestamp($7.Timestamp v) { setField(4, v); }
+  set timestamp($6.Timestamp v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasTimestamp() => $_has(3);
   @$pb.TagNumber(4)
   void clearTimestamp() => clearField(4);
   @$pb.TagNumber(4)
-  $7.Timestamp ensureTimestamp() => $_ensure(3);
+  $6.Timestamp ensureTimestamp() => $_ensure(3);
 }
 
 class Thread extends $pb.GeneratedMessage {
-  factory Thread() => create();
+  factory Thread({
+    $core.String? id,
+    $core.Iterable<Message>? messages,
+    $core.Iterable<$core.String>? referenceIDs,
+    $core.Map<$core.String, $core.double>? referenceScores,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (messages != null) {
+      $result.messages.addAll(messages);
+    }
+    if (referenceIDs != null) {
+      $result.referenceIDs.addAll(referenceIDs);
+    }
+    if (referenceScores != null) {
+      $result.referenceScores.addAll(referenceScores);
+    }
+    return $result;
+  }
   Thread._() : super();
   factory Thread.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Thread.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -368,7 +473,15 @@ class Thread extends $pb.GeneratedMessage {
 }
 
 class ThreadID extends $pb.GeneratedMessage {
-  factory ThreadID() => create();
+  factory ThreadID({
+    $core.String? id,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
   ThreadID._() : super();
   factory ThreadID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ThreadID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -410,7 +523,19 @@ class ThreadID extends $pb.GeneratedMessage {
 }
 
 class MessageID extends $pb.GeneratedMessage {
-  factory MessageID() => create();
+  factory MessageID({
+    $core.String? id,
+    $core.String? threadId,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (threadId != null) {
+      $result.threadId = threadId;
+    }
+    return $result;
+  }
   MessageID._() : super();
   factory MessageID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory MessageID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -462,7 +587,15 @@ class MessageID extends $pb.GeneratedMessage {
 }
 
 class ThreadIDs extends $pb.GeneratedMessage {
-  factory ThreadIDs() => create();
+  factory ThreadIDs({
+    $core.Iterable<$core.String>? ids,
+  }) {
+    final $result = create();
+    if (ids != null) {
+      $result.ids.addAll(ids);
+    }
+    return $result;
+  }
   ThreadIDs._() : super();
   factory ThreadIDs.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ThreadIDs.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);

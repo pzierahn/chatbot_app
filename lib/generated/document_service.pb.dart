@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -13,7 +13,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/timestamp.pb.dart' as $7;
+import 'google/protobuf/timestamp.pb.dart' as $6;
 
 enum RenameDocument_RenameTo {
   fileName, 
@@ -22,7 +22,23 @@ enum RenameDocument_RenameTo {
 }
 
 class RenameDocument extends $pb.GeneratedMessage {
-  factory RenameDocument() => create();
+  factory RenameDocument({
+    $core.String? id,
+    $core.String? fileName,
+    $core.String? webpageTitle,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (fileName != null) {
+      $result.fileName = fileName;
+    }
+    if (webpageTitle != null) {
+      $result.webpageTitle = webpageTitle;
+    }
+    return $result;
+  }
   RenameDocument._() : super();
   factory RenameDocument.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory RenameDocument.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -93,7 +109,15 @@ class RenameDocument extends $pb.GeneratedMessage {
 }
 
 class DocumentID extends $pb.GeneratedMessage {
-  factory DocumentID() => create();
+  factory DocumentID({
+    $core.String? id,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
   DocumentID._() : super();
   factory DocumentID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DocumentID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -135,7 +159,15 @@ class DocumentID extends $pb.GeneratedMessage {
 }
 
 class DocumentList extends $pb.GeneratedMessage {
-  factory DocumentList() => create();
+  factory DocumentList({
+    $core.Map<$core.String, DocumentMetadata>? items,
+  }) {
+    final $result = create();
+    if (items != null) {
+      $result.items.addAll(items);
+    }
+    return $result;
+  }
   DocumentList._() : super();
   factory DocumentList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DocumentList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -166,12 +198,21 @@ class DocumentList extends $pb.GeneratedMessage {
   static DocumentList getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DocumentList>(create);
   static DocumentList? _defaultInstance;
 
+  /// Id to filename
   @$pb.TagNumber(1)
   $core.Map<$core.String, DocumentMetadata> get items => $_getMap(0);
 }
 
 class ReferenceIDs extends $pb.GeneratedMessage {
-  factory ReferenceIDs() => create();
+  factory ReferenceIDs({
+    $core.Iterable<$core.String>? items,
+  }) {
+    final $result = create();
+    if (items != null) {
+      $result.items.addAll(items);
+    }
+    return $result;
+  }
   ReferenceIDs._() : super();
   factory ReferenceIDs.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ReferenceIDs.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -207,7 +248,23 @@ class ReferenceIDs extends $pb.GeneratedMessage {
 }
 
 class Chunk extends $pb.GeneratedMessage {
-  factory Chunk() => create();
+  factory Chunk({
+    $core.String? id,
+    $core.String? text,
+    $core.int? index,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (text != null) {
+      $result.text = text;
+    }
+    if (index != null) {
+      $result.index = index;
+    }
+    return $result;
+  }
   Chunk._() : super();
   factory Chunk.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Chunk.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -269,7 +326,15 @@ class Chunk extends $pb.GeneratedMessage {
 }
 
 class References extends $pb.GeneratedMessage {
-  factory References() => create();
+  factory References({
+    $core.Iterable<Document>? items,
+  }) {
+    final $result = create();
+    if (items != null) {
+      $result.items.addAll(items);
+    }
+    return $result;
+  }
   References._() : super();
   factory References.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory References.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -305,7 +370,27 @@ class References extends $pb.GeneratedMessage {
 }
 
 class SearchQuery extends $pb.GeneratedMessage {
-  factory SearchQuery() => create();
+  factory SearchQuery({
+    $core.String? query,
+    $core.String? collectionId,
+    $core.double? threshold,
+    $core.int? limit,
+  }) {
+    final $result = create();
+    if (query != null) {
+      $result.query = query;
+    }
+    if (collectionId != null) {
+      $result.collectionId = collectionId;
+    }
+    if (threshold != null) {
+      $result.threshold = threshold;
+    }
+    if (limit != null) {
+      $result.limit = limit;
+    }
+    return $result;
+  }
   SearchQuery._() : super();
   factory SearchQuery.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SearchQuery.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -377,7 +462,19 @@ class SearchQuery extends $pb.GeneratedMessage {
 }
 
 class SearchResults extends $pb.GeneratedMessage {
-  factory SearchResults() => create();
+  factory SearchResults({
+    $core.Iterable<Document>? items,
+    $core.Map<$core.String, $core.double>? scores,
+  }) {
+    final $result = create();
+    if (items != null) {
+      $result.items.addAll(items);
+    }
+    if (scores != null) {
+      $result.scores.addAll(scores);
+    }
+    return $result;
+  }
   SearchResults._() : super();
   factory SearchResults.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SearchResults.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -417,7 +514,19 @@ class SearchResults extends $pb.GeneratedMessage {
 }
 
 class IndexProgress extends $pb.GeneratedMessage {
-  factory IndexProgress() => create();
+  factory IndexProgress({
+    $core.String? status,
+    $core.double? progress,
+  }) {
+    final $result = create();
+    if (status != null) {
+      $result.status = status;
+    }
+    if (progress != null) {
+      $result.progress = progress;
+    }
+    return $result;
+  }
   IndexProgress._() : super();
   factory IndexProgress.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory IndexProgress.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -469,7 +578,19 @@ class IndexProgress extends $pb.GeneratedMessage {
 }
 
 class DocumentFilter extends $pb.GeneratedMessage {
-  factory DocumentFilter() => create();
+  factory DocumentFilter({
+    $core.String? query,
+    $core.String? collectionId,
+  }) {
+    final $result = create();
+    if (query != null) {
+      $result.query = query;
+    }
+    if (collectionId != null) {
+      $result.collectionId = collectionId;
+    }
+    return $result;
+  }
   DocumentFilter._() : super();
   factory DocumentFilter.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DocumentFilter.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -527,7 +648,19 @@ enum DocumentMetadata_Data {
 }
 
 class DocumentMetadata extends $pb.GeneratedMessage {
-  factory DocumentMetadata() => create();
+  factory DocumentMetadata({
+    File? file,
+    Webpage? web,
+  }) {
+    final $result = create();
+    if (file != null) {
+      $result.file = file;
+    }
+    if (web != null) {
+      $result.web = web;
+    }
+    return $result;
+  }
   DocumentMetadata._() : super();
   factory DocumentMetadata.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DocumentMetadata.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -592,7 +725,19 @@ class DocumentMetadata extends $pb.GeneratedMessage {
 }
 
 class File extends $pb.GeneratedMessage {
-  factory File() => create();
+  factory File({
+    $core.String? path,
+    $core.String? filename,
+  }) {
+    final $result = create();
+    if (path != null) {
+      $result.path = path;
+    }
+    if (filename != null) {
+      $result.filename = filename;
+    }
+    return $result;
+  }
   File._() : super();
   factory File.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory File.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -644,7 +789,19 @@ class File extends $pb.GeneratedMessage {
 }
 
 class Webpage extends $pb.GeneratedMessage {
-  factory Webpage() => create();
+  factory Webpage({
+    $core.String? url,
+    $core.String? title,
+  }) {
+    final $result = create();
+    if (url != null) {
+      $result.url = url;
+    }
+    if (title != null) {
+      $result.title = title;
+    }
+    return $result;
+  }
   Webpage._() : super();
   factory Webpage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Webpage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -696,7 +853,31 @@ class Webpage extends $pb.GeneratedMessage {
 }
 
 class Document extends $pb.GeneratedMessage {
-  factory Document() => create();
+  factory Document({
+    $core.String? id,
+    $core.String? collectionId,
+    $6.Timestamp? createdAt,
+    DocumentMetadata? metadata,
+    $core.Iterable<Chunk>? chunks,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (collectionId != null) {
+      $result.collectionId = collectionId;
+    }
+    if (createdAt != null) {
+      $result.createdAt = createdAt;
+    }
+    if (metadata != null) {
+      $result.metadata = metadata;
+    }
+    if (chunks != null) {
+      $result.chunks.addAll(chunks);
+    }
+    return $result;
+  }
   Document._() : super();
   factory Document.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Document.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -704,7 +885,7 @@ class Document extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'collectionId')
-    ..aOM<$7.Timestamp>(3, _omitFieldNames ? '' : 'createdAt', subBuilder: $7.Timestamp.create)
+    ..aOM<$6.Timestamp>(3, _omitFieldNames ? '' : 'createdAt', subBuilder: $6.Timestamp.create)
     ..aOM<DocumentMetadata>(4, _omitFieldNames ? '' : 'metadata', subBuilder: DocumentMetadata.create)
     ..pc<Chunk>(5, _omitFieldNames ? '' : 'chunks', $pb.PbFieldType.PM, subBuilder: Chunk.create)
     ..hasRequiredFields = false
@@ -750,15 +931,15 @@ class Document extends $pb.GeneratedMessage {
   void clearCollectionId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $7.Timestamp get createdAt => $_getN(2);
+  $6.Timestamp get createdAt => $_getN(2);
   @$pb.TagNumber(3)
-  set createdAt($7.Timestamp v) { setField(3, v); }
+  set createdAt($6.Timestamp v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasCreatedAt() => $_has(2);
   @$pb.TagNumber(3)
   void clearCreatedAt() => clearField(3);
   @$pb.TagNumber(3)
-  $7.Timestamp ensureCreatedAt() => $_ensure(2);
+  $6.Timestamp ensureCreatedAt() => $_ensure(2);
 
   @$pb.TagNumber(4)
   DocumentMetadata get metadata => $_getN(3);
@@ -776,7 +957,23 @@ class Document extends $pb.GeneratedMessage {
 }
 
 class IndexJob extends $pb.GeneratedMessage {
-  factory IndexJob() => create();
+  factory IndexJob({
+    $core.String? id,
+    $core.String? collectionId,
+    DocumentMetadata? document,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (collectionId != null) {
+      $result.collectionId = collectionId;
+    }
+    if (document != null) {
+      $result.document = document;
+    }
+    return $result;
+  }
   IndexJob._() : super();
   factory IndexJob.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory IndexJob.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);

@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -13,6 +13,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+/// The syntax in which a protocol buffer element is defined.
 class Syntax extends $pb.ProtobufEnum {
   static const Syntax SYNTAX_PROTO2 = Syntax._(0, _omitEnumNames ? '' : 'SYNTAX_PROTO2');
   static const Syntax SYNTAX_PROTO3 = Syntax._(1, _omitEnumNames ? '' : 'SYNTAX_PROTO3');
@@ -30,6 +31,7 @@ class Syntax extends $pb.ProtobufEnum {
   const Syntax._($core.int v, $core.String n) : super(v, n);
 }
 
+/// Basic field types.
 class Field_Kind extends $pb.ProtobufEnum {
   static const Field_Kind TYPE_UNKNOWN = Field_Kind._(0, _omitEnumNames ? '' : 'TYPE_UNKNOWN');
   static const Field_Kind TYPE_DOUBLE = Field_Kind._(1, _omitEnumNames ? '' : 'TYPE_DOUBLE');
@@ -79,6 +81,7 @@ class Field_Kind extends $pb.ProtobufEnum {
   const Field_Kind._($core.int v, $core.String n) : super(v, n);
 }
 
+/// Whether a field is optional, required, or repeated.
 class Field_Cardinality extends $pb.ProtobufEnum {
   static const Field_Cardinality CARDINALITY_UNKNOWN = Field_Cardinality._(0, _omitEnumNames ? '' : 'CARDINALITY_UNKNOWN');
   static const Field_Cardinality CARDINALITY_OPTIONAL = Field_Cardinality._(1, _omitEnumNames ? '' : 'CARDINALITY_OPTIONAL');

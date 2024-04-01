@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -13,6 +13,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+/// The full set of known editions.
 class Edition extends $pb.ProtobufEnum {
   static const Edition EDITION_UNKNOWN = Edition._(0, _omitEnumNames ? '' : 'EDITION_UNKNOWN');
   static const Edition EDITION_PROTO2 = Edition._(998, _omitEnumNames ? '' : 'EDITION_PROTO2');
@@ -42,6 +43,7 @@ class Edition extends $pb.ProtobufEnum {
   const Edition._($core.int v, $core.String n) : super(v, n);
 }
 
+/// The verification state of the extension range.
 class ExtensionRangeOptions_VerificationState extends $pb.ProtobufEnum {
   static const ExtensionRangeOptions_VerificationState DECLARATION = ExtensionRangeOptions_VerificationState._(0, _omitEnumNames ? '' : 'DECLARATION');
   static const ExtensionRangeOptions_VerificationState UNVERIFIED = ExtensionRangeOptions_VerificationState._(1, _omitEnumNames ? '' : 'UNVERIFIED');
@@ -121,6 +123,7 @@ class FieldDescriptorProto_Label extends $pb.ProtobufEnum {
   const FieldDescriptorProto_Label._($core.int v, $core.String n) : super(v, n);
 }
 
+/// Generated classes can be optimized for speed or code size.
 class FileOptions_OptimizeMode extends $pb.ProtobufEnum {
   static const FileOptions_OptimizeMode SPEED = FileOptions_OptimizeMode._(1, _omitEnumNames ? '' : 'SPEED');
   static const FileOptions_OptimizeMode CODE_SIZE = FileOptions_OptimizeMode._(2, _omitEnumNames ? '' : 'CODE_SIZE');
@@ -172,6 +175,9 @@ class FieldOptions_JSType extends $pb.ProtobufEnum {
   const FieldOptions_JSType._($core.int v, $core.String n) : super(v, n);
 }
 
+/// If set to RETENTION_SOURCE, the option will be omitted from the binary.
+/// Note: as of January 2023, support for this is in progress and does not yet
+/// have an effect (b/264593489).
 class FieldOptions_OptionRetention extends $pb.ProtobufEnum {
   static const FieldOptions_OptionRetention RETENTION_UNKNOWN = FieldOptions_OptionRetention._(0, _omitEnumNames ? '' : 'RETENTION_UNKNOWN');
   static const FieldOptions_OptionRetention RETENTION_RUNTIME = FieldOptions_OptionRetention._(1, _omitEnumNames ? '' : 'RETENTION_RUNTIME');
@@ -189,6 +195,10 @@ class FieldOptions_OptionRetention extends $pb.ProtobufEnum {
   const FieldOptions_OptionRetention._($core.int v, $core.String n) : super(v, n);
 }
 
+/// This indicates the types of entities that the field may apply to when used
+/// as an option. If it is unset, then the field may be freely used as an
+/// option on any kind of entity. Note: as of January 2023, support for this is
+/// in progress and does not yet have an effect (b/264593489).
 class FieldOptions_OptionTargetType extends $pb.ProtobufEnum {
   static const FieldOptions_OptionTargetType TARGET_TYPE_UNKNOWN = FieldOptions_OptionTargetType._(0, _omitEnumNames ? '' : 'TARGET_TYPE_UNKNOWN');
   static const FieldOptions_OptionTargetType TARGET_TYPE_FILE = FieldOptions_OptionTargetType._(1, _omitEnumNames ? '' : 'TARGET_TYPE_FILE');
@@ -220,6 +230,9 @@ class FieldOptions_OptionTargetType extends $pb.ProtobufEnum {
   const FieldOptions_OptionTargetType._($core.int v, $core.String n) : super(v, n);
 }
 
+/// Is this method side-effect-free (or safe in HTTP parlance), or idempotent,
+/// or neither? HTTP based RPC implementation may choose GET verb for safe
+/// methods, and PUT verb for idempotent methods instead of the default POST.
 class MethodOptions_IdempotencyLevel extends $pb.ProtobufEnum {
   static const MethodOptions_IdempotencyLevel IDEMPOTENCY_UNKNOWN = MethodOptions_IdempotencyLevel._(0, _omitEnumNames ? '' : 'IDEMPOTENCY_UNKNOWN');
   static const MethodOptions_IdempotencyLevel NO_SIDE_EFFECTS = MethodOptions_IdempotencyLevel._(1, _omitEnumNames ? '' : 'NO_SIDE_EFFECTS');
@@ -341,6 +354,8 @@ class FeatureSet_JsonFormat extends $pb.ProtobufEnum {
   const FeatureSet_JsonFormat._($core.int v, $core.String n) : super(v, n);
 }
 
+/// Represents the identified object's effect on the element in the original
+/// .proto file.
 class GeneratedCodeInfo_Annotation_Semantic extends $pb.ProtobufEnum {
   static const GeneratedCodeInfo_Annotation_Semantic NONE = GeneratedCodeInfo_Annotation_Semantic._(0, _omitEnumNames ? '' : 'NONE');
   static const GeneratedCodeInfo_Annotation_Semantic SET = GeneratedCodeInfo_Annotation_Semantic._(1, _omitEnumNames ? '' : 'SET');

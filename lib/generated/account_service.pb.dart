@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -13,10 +13,26 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/timestamp.pb.dart' as $7;
+import 'google/protobuf/timestamp.pb.dart' as $6;
 
 class BalanceSheet extends $pb.GeneratedMessage {
-  factory BalanceSheet() => create();
+  factory BalanceSheet({
+    $core.Iterable<Payment>? payments,
+    $core.Iterable<ModelCosts>? costs,
+    $core.int? balance,
+  }) {
+    final $result = create();
+    if (payments != null) {
+      $result.payments.addAll(payments);
+    }
+    if (costs != null) {
+      $result.costs.addAll(costs);
+    }
+    if (balance != null) {
+      $result.balance = balance;
+    }
+    return $result;
+  }
   BalanceSheet._() : super();
   factory BalanceSheet.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory BalanceSheet.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -66,7 +82,31 @@ class BalanceSheet extends $pb.GeneratedMessage {
 }
 
 class ModelCosts extends $pb.GeneratedMessage {
-  factory ModelCosts() => create();
+  factory ModelCosts({
+    $core.String? model,
+    $core.int? input,
+    $core.int? output,
+    $core.int? costs,
+    $core.int? requests,
+  }) {
+    final $result = create();
+    if (model != null) {
+      $result.model = model;
+    }
+    if (input != null) {
+      $result.input = input;
+    }
+    if (output != null) {
+      $result.output = output;
+    }
+    if (costs != null) {
+      $result.costs = costs;
+    }
+    if (requests != null) {
+      $result.requests = requests;
+    }
+    return $result;
+  }
   ModelCosts._() : super();
   factory ModelCosts.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ModelCosts.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -148,7 +188,15 @@ class ModelCosts extends $pb.GeneratedMessage {
 }
 
 class Costs extends $pb.GeneratedMessage {
-  factory Costs() => create();
+  factory Costs({
+    $core.Iterable<ModelCosts>? models,
+  }) {
+    final $result = create();
+    if (models != null) {
+      $result.models.addAll(models);
+    }
+    return $result;
+  }
   Costs._() : super();
   factory Costs.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Costs.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -184,14 +232,30 @@ class Costs extends $pb.GeneratedMessage {
 }
 
 class Payment extends $pb.GeneratedMessage {
-  factory Payment() => create();
+  factory Payment({
+    $core.String? id,
+    $6.Timestamp? date,
+    $core.int? amount,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (date != null) {
+      $result.date = date;
+    }
+    if (amount != null) {
+      $result.amount = amount;
+    }
+    return $result;
+  }
   Payment._() : super();
   factory Payment.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Payment.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Payment', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.account.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOM<$7.Timestamp>(2, _omitFieldNames ? '' : 'date', subBuilder: $7.Timestamp.create)
+    ..aOM<$6.Timestamp>(2, _omitFieldNames ? '' : 'date', subBuilder: $6.Timestamp.create)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
@@ -227,15 +291,15 @@ class Payment extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $7.Timestamp get date => $_getN(1);
+  $6.Timestamp get date => $_getN(1);
   @$pb.TagNumber(2)
-  set date($7.Timestamp v) { setField(2, v); }
+  set date($6.Timestamp v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasDate() => $_has(1);
   @$pb.TagNumber(2)
   void clearDate() => clearField(2);
   @$pb.TagNumber(2)
-  $7.Timestamp ensureDate() => $_ensure(1);
+  $6.Timestamp ensureDate() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.int get amount => $_getIZ(2);
@@ -248,7 +312,15 @@ class Payment extends $pb.GeneratedMessage {
 }
 
 class Payments extends $pb.GeneratedMessage {
-  factory Payments() => create();
+  factory Payments({
+    $core.Iterable<Payment>? items,
+  }) {
+    final $result = create();
+    if (items != null) {
+      $result.items.addAll(items);
+    }
+    return $result;
+  }
   Payments._() : super();
   factory Payments.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Payments.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);

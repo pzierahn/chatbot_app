@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -13,8 +13,18 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+/// `SourceContext` represents information about the source of a
+/// protobuf element, like the file in which it is defined.
 class SourceContext extends $pb.GeneratedMessage {
-  factory SourceContext() => create();
+  factory SourceContext({
+    $core.String? fileName,
+  }) {
+    final $result = create();
+    if (fileName != null) {
+      $result.fileName = fileName;
+    }
+    return $result;
+  }
   SourceContext._() : super();
   factory SourceContext.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SourceContext.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -45,6 +55,8 @@ class SourceContext extends $pb.GeneratedMessage {
   static SourceContext getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SourceContext>(create);
   static SourceContext? _defaultInstance;
 
+  /// The path-qualified name of the .proto file that contained the associated
+  /// protobuf element.  For example: `"google/protobuf/source_context.proto"`.
   @$pb.TagNumber(1)
   $core.String get fileName => $_getSZ(0);
   @$pb.TagNumber(1)

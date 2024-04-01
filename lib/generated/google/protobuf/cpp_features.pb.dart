@@ -4,7 +4,7 @@
 //
 // @dart = 2.12
 
-// ignore_for_file: annotate_overrides, camel_case_types
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_final_fields
 // ignore_for_file: unnecessary_import, unnecessary_this, unused_import
@@ -14,7 +14,15 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class CppFeatures extends $pb.GeneratedMessage {
-  factory CppFeatures() => create();
+  factory CppFeatures({
+    $core.bool? legacyClosedEnum,
+  }) {
+    final $result = create();
+    if (legacyClosedEnum != null) {
+      $result.legacyClosedEnum = legacyClosedEnum;
+    }
+    return $result;
+  }
   CppFeatures._() : super();
   factory CppFeatures.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CppFeatures.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
@@ -45,6 +53,10 @@ class CppFeatures extends $pb.GeneratedMessage {
   static CppFeatures getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CppFeatures>(create);
   static CppFeatures? _defaultInstance;
 
+  /// Whether or not to treat an enum field as closed.  This option is only
+  /// applicable to enum fields, and will be removed in the future.  It is
+  /// consistent with the legacy behavior of using proto3 enum types for proto2
+  /// fields.
   @$pb.TagNumber(1)
   $core.bool get legacyClosedEnum => $_getBF(0);
   @$pb.TagNumber(1)
