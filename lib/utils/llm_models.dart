@@ -17,21 +17,21 @@ class LLMModels {
     provider: 'OpenAI',
   );
 
-  static const LLMModel claudeV3 = LLMModel(
+  static const LLMModel claudeOpus = LLMModel(
+    title: 'Claude Opus',
+    model: 'anthropic.claude-3-opus-20240229',
+    provider: 'Anthropic',
+  );
+
+  static const LLMModel claudeSonnet = LLMModel(
     title: 'Claude 3 Sonnet',
     model: 'anthropic.claude-3-sonnet-20240229-v1:0',
     provider: 'Anthropic',
   );
 
-  static const LLMModel claudeV2 = LLMModel(
-    title: 'Claude 2',
-    model: 'anthropic.claude-v2:1',
-    provider: 'Anthropic',
-  );
-
-  static const LLMModel claudeOpus = LLMModel(
-    title: 'Claude Opus',
-    model: 'anthropic.claude-3-opus-20240229',
+  static const LLMModel claudeHaiku = LLMModel(
+    title: 'Claude 3 Haiku',
+    model: 'anthropic.claude-3-haiku-20240307-v1:0',
     provider: 'Anthropic',
   );
 
@@ -50,8 +50,8 @@ class LLMModels {
   static const List<LLMModel> all = [
     gpt4,
     claudeOpus,
-    claudeV3,
-    claudeV2,
+    claudeSonnet,
+    claudeHaiku,
     mistral,
     geminiPro,
   ];
