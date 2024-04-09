@@ -35,12 +35,6 @@ class LLMModels {
     provider: 'Anthropic',
   );
 
-  static const LLMModel mistral = LLMModel(
-    title: 'Le Chat',
-    model: 'mistral.mistral-large-latest',
-    provider: 'Mistral',
-  );
-
   static const LLMModel geminiPro = LLMModel(
     title: 'Genmini Pro',
     model: 'google.gemini-pro',
@@ -52,7 +46,6 @@ class LLMModels {
     claudeOpus,
     claudeSonnet,
     claudeHaiku,
-    mistral,
     geminiPro,
   ];
 
