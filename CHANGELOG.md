@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.11.4] - 2024-04-09
 
+### Added
+
+- Added Gemini 1.5 model
+
 ### Removed
 
 - Remove Mistral AI models
