@@ -36,8 +36,14 @@ class LLMModels {
   );
 
   static const LLMModel geminiPro = LLMModel(
-    title: 'Genmini Pro',
-    model: 'google.gemini-pro',
+    title: 'Genmini Pro 1.0',
+    model: 'google.gemini-1.0-pro',
+    provider: 'Google',
+  );
+
+  static const LLMModel geminiPro15 = LLMModel(
+    title: 'Genmini Pro 1.5 Preview',
+    model: 'google.gemini-1.5-pro-preview-0409',
     provider: 'Google',
   );
 
@@ -47,6 +53,7 @@ class LLMModels {
     claudeSonnet,
     claudeHaiku,
     geminiPro,
+    geminiPro15,
   ];
 
   static LLMModel fromModel(String model) {
