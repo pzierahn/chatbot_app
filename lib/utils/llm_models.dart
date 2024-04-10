@@ -13,7 +13,7 @@ class LLMModel {
 class LLMModels {
   static const LLMModel gpt4 = LLMModel(
     title: 'GPT 4 Turbo',
-    model: 'openai.gpt-4-turbo-preview',
+    model: 'openai.gpt-4-turbo',
     provider: 'OpenAI',
   );
 
@@ -42,7 +42,7 @@ class LLMModels {
   );
 
   static const LLMModel geminiPro15 = LLMModel(
-    title: 'Genmini Pro 1.5 Preview',
+    title: 'Genmini Pro 1.5',
     model: 'google.gemini-1.5-pro-preview-0409',
     provider: 'Google',
   );
