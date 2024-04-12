@@ -229,8 +229,15 @@ class _ChatFragment extends StatelessWidget {
                     ),
                   },
                   extensionSet: md.ExtensionSet(
-                    [LatexBlockSyntax()],
-                    [LatexInlineSyntax()],
+                    [
+                      LatexBlockSyntax(),
+                      ...md.ExtensionSet.gitHubFlavored.blockSyntaxes
+                    ],
+                    [
+                      md.EmojiSyntax(),
+                      LatexInlineSyntax(),
+                      ...md.ExtensionSet.gitHubFlavored.inlineSyntaxes
+                    ],
                   ),
                 ),
               ),
