@@ -1,11 +1,8 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
+import 'package:braingain_app/ui/widget/markdown.dart';
 import 'package:braingain_app/ui/widget/sources_dialog.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:flutter_markdown_latex/flutter_markdown_latex.dart';
-import 'package:markdown/markdown.dart' as md;
 
 class ThreadDetails extends StatelessWidget {
   const ThreadDetails({
@@ -33,25 +30,8 @@ class ThreadDetails extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(vertical: 16),
           width: double.infinity,
-          child: MarkdownBody(
+          child: StyledMarkdown(
             data: message.completion,
-            selectable: true,
-            builders: {
-              'latex': LatexElementBuilder(
-                textStyle: textTheme.bodyMedium,
-              ),
-            },
-            extensionSet: md.ExtensionSet(
-              [
-                LatexBlockSyntax(),
-                ...md.ExtensionSet.gitHubFlavored.blockSyntaxes
-              ],
-              [
-                md.EmojiSyntax(),
-                LatexInlineSyntax(),
-                ...md.ExtensionSet.gitHubFlavored.inlineSyntaxes
-              ],
-            ),
           ),
         ),
       ]);
