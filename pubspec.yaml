@@ -50,6 +50,7 @@ dependencies:
       url: https://github.com/pzierahn/flutter_markdown_latex
       ref: fix_markdown_line_breaks
   flutter_highlighter: ^0.1.1
+  highlighter: ^0.1.1
 
 dev_dependencies:
   flutter_test:
