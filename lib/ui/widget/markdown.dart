@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:flutter_highlighter/themes/atom-one-dark.dart';
 import 'package:flutter_highlighter/themes/atom-one-light.dart';
-import 'package:highlighter/highlighter.dart' show highlight, Node;
 
 class CodeElementBuilder extends MarkdownElementBuilder {
   CodeElementBuilder(this.brightness);
