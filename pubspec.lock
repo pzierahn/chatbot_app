@@ -209,10 +209,11 @@ packages:
   flutter_highlighter:
     dependency: "direct main"
     description:
-      name: flutter_highlighter
-      sha256: "93173afd47a9ada53f3176371755e7ea4a1065362763976d06d6adfb4d946e10"
-      url: "https://pub.dev"
-    source: hosted
+      path: flutter_highlighter
+      ref: HEAD
+      resolved-ref: "9a2b566f0a59fcd414ff5031ccbf0ff1d101f962"
+      url: "https://github.com/predatorx7/highlight"
+    source: git
     version: "0.1.1"
   flutter_lints:
     dependency: "direct dev"
