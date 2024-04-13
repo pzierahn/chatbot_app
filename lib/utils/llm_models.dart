@@ -36,13 +36,13 @@ class LLMModels {
   );
 
   static const LLMModel geminiPro = LLMModel(
-    title: 'Genmini Pro 1.0',
+    title: 'Gemini Pro 1.0',
     model: 'google.gemini-1.0-pro',
     provider: 'Google',
   );
 
   static const LLMModel geminiPro15 = LLMModel(
-    title: 'Genmini Pro 1.5',
+    title: 'Gemini Pro 1.5',
     model: 'google.gemini-1.5-pro-preview-0409',
     provider: 'Google',
   );
