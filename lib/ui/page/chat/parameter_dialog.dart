@@ -83,36 +83,6 @@ class _PromptOptionsState extends State<ParameterDialog> {
           contentPadding: contentPadding,
           title: Row(
             children: [
-              const Text('Creativity'),
-              const Spacer(),
-              SizedBox(
-                width: 50,
-                child: TextField(
-                  controller: _textTemp,
-                  textAlign: TextAlign.end,
-                  onSubmitted: (val) {
-                    setState(() => options.temperature = double.parse(val));
-                  },
-                  decoration: const InputDecoration.collapsed(
-                    hintText: '0.00',
-                  ),
-                ),
-              ),
-            ],
-          ),
-          subtitle: Slider(
-            value: options.temperature,
-            divisions: 20,
-            onChanged: (val) {
-              _textTemp.text = val.toStringAsFixed(2);
-              setState(() => options.temperature = val);
-            },
-          ),
-        ),
-        ListTile(
-          contentPadding: contentPadding,
-          title: Row(
-            children: [
               const Text('Input Pages'),
               const Spacer(),
               SizedBox(
