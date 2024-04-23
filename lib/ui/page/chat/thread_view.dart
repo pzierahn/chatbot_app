@@ -1,4 +1,5 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
+import 'package:braingain_app/ui/page/chat/generating_text.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
 import 'package:braingain_app/ui/page/chat/session_handler.dart';
 import 'package:braingain_app/ui/widget/markdown.dart';
@@ -33,8 +34,8 @@ class _ThreadViewState extends State<ThreadView> {
     final colors = Theme.of(context).colorScheme;
 
     final textTheme = Theme.of(context).textTheme;
-    final titleStyle = textTheme.headlineSmall?.copyWith(
-      fontWeight: FontWeight.bold,
+    final titleStyle = textTheme.titleMedium?.copyWith(
+      fontWeight: FontWeight.w500,
     );
 
     final children = <Widget>[];
@@ -99,12 +100,11 @@ class _ThreadViewState extends State<ThreadView> {
         ),
         child: ListTile(
           contentPadding: const EdgeInsets.all(0),
-          trailing: const CircularProgressIndicator(),
           title: Text(
             widget.thread.pendingPrompt!,
             style: titleStyle,
           ),
-          subtitle: const Text('Generating...'),
+          subtitle: const GeneratingText(),
         ),
       );
       children.add(loading);
