@@ -212,22 +212,11 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
         final docId = doc.key;
         final meta = doc.value;
 
-        Widget leading;
-
-        if (widget.selected.contains(docId)) {
-          leading = Icon(
-            Icons.check_circle,
-            size: 16,
-            color: color.primary,
-          );
-        } else if (meta.hasFile()) {
-          leading = const Icon(Icons.description_outlined, size: 16);
-        } else {
-          leading = const Icon(Icons.public_outlined, size: 16);
-        }
-
-        return ListTile(
-          leading: leading,
+        return CheckboxListTile(
+          value: widget.selected.contains(docId),
+          onChanged: (val) {
+            _onSelect(docId, DocumentUtils.getTitle(meta));
+          },
           title: Text(
             DocumentUtils.getTitle(meta),
             maxLines: 1,
@@ -238,7 +227,6 @@ class _DocumentsBodyState extends State<_DocumentsBody> {
                   : color.onSurface,
             )),
           ),
-          onTap: () => _onSelect(docId, DocumentUtils.getTitle(meta)),
         );
       },
     );
