@@ -22,34 +22,46 @@ class CodeElementBuilder extends MarkdownElementBuilder {
       language = lg.substring(9);
     }
 
-    return SizedBox(
-      width: double.infinity,
-      child: HighlightView(
-        // The original code to be highlighted
-        element.textContent,
+    final codeView = HighlightView(
+      // The original code to be highlighted
+      element.textContent,
 
-        // Specify language
-        // It is recommended to give it a value for performance
-        language: language,
+      // Specify language
+      // It is recommended to give it a value for performance
+      language: language,
 
-        tabSize: 4,
+      tabSize: 4,
 
-        // Specify highlight theme
-        // All available themes are listed in `themes` folder
-        theme: brightness == Brightness.light
-            ? atomOneLightTheme
-            : atomOneDarkTheme,
+      // Specify highlight theme
+      // All available themes are listed in `themes` folder
+      theme:
+          brightness == Brightness.light ? atomOneLightTheme : atomOneDarkTheme,
 
-        // Specify padding
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8,
-          vertical: 4,
-        ),
-
-        // Specify text style
-        textStyle: GoogleFonts.robotoMono(),
+      // Specify padding
+      padding: const EdgeInsets.symmetric(
+        horizontal: 8,
+        vertical: 4,
       ),
+
+      // Specify text style
+      textStyle: GoogleFonts.robotoMono(),
     );
+
+    if (element.textContent.contains('\n')) {
+      // Multi-line code block
+      return SizedBox(
+        width: double.infinity,
+        child: codeView,
+      );
+    } else {
+      // Inline code block
+      return Text.rich(
+        WidgetSpan(
+          alignment: PlaceholderAlignment.middle,
+          child: codeView,
+        ),
+      );
+    }
   }
 }
 
@@ -78,12 +90,12 @@ class StyledMarkdown extends StatelessWidget {
       extensionSet: md.ExtensionSet(
         [
           LatexBlockSyntax(),
-          ...md.ExtensionSet.gitHubFlavored.blockSyntaxes,
+          ...md.ExtensionSet.gitHubWeb.blockSyntaxes,
         ],
         [
           md.EmojiSyntax(),
           LatexInlineSyntax(),
-          ...md.ExtensionSet.gitHubFlavored.inlineSyntaxes
+          ...md.ExtensionSet.gitHubWeb.inlineSyntaxes,
         ],
       ),
     );
