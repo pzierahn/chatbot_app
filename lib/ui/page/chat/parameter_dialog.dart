@@ -53,7 +53,6 @@ class _PromptOptionsState extends State<ParameterDialog> {
 
   ModelOptions get options => prompt.modelOptions;
 
-  late TextEditingController _textTemp;
   late TextEditingController _textLimit;
   late TextEditingController _textThreshold;
 
@@ -61,9 +60,6 @@ class _PromptOptionsState extends State<ParameterDialog> {
   void initState() {
     super.initState();
 
-    _textTemp = TextEditingController(
-      text: prompt.modelOptions.temperature.toStringAsFixed(2),
-    );
     _textLimit = TextEditingController(
       text: prompt.limit.toString(),
     );

@@ -36,12 +36,12 @@ class _GeneratingTextState extends State<GeneratingText> {
 
   @override
   Widget build(BuildContext context) {
-    String _text = 'Generating';
+    String text = 'Generating';
 
     for (int inx = 0; inx < _points; inx++) {
-      _text += '.';
+      text += '.';
     }
 
-    return Text(_text);
+    return Text(text);
   }
 }
