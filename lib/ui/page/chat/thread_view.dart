@@ -35,7 +35,7 @@ class _ThreadViewState extends State<ThreadView> {
 
     final textTheme = Theme.of(context).textTheme;
     final titleStyle = textTheme.titleMedium?.copyWith(
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.bold,
     );
 
     final children = <Widget>[];

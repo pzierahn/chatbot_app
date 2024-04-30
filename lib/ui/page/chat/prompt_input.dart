@@ -41,7 +41,7 @@ class _PromptInputState extends State<PromptInput> {
 
     final textStyle = widget.style ??
         text.titleMedium?.merge(TextStyle(
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.bold,
           color: onPromptSubmit != null ? color.onSurface : color.outline,
         ));
 
