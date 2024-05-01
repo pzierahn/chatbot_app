@@ -12,7 +12,7 @@ class GeneratingText extends StatefulWidget {
 class _GeneratingTextState extends State<GeneratingText> {
   late Timer _timer;
 
-  int _points = 4;
+  int _points = 8;
 
   @override
   void initState() {
