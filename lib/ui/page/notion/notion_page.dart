@@ -4,6 +4,7 @@ import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
+import 'package:braingain_app/ui/widget/generating_text.dart';
 import 'package:braingain_app/utils/llm_models.dart';
 import 'package:flutter/material.dart';
 
@@ -95,10 +96,12 @@ class _NotionPageState extends State<NotionPage> {
             _prompts[idx],
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          subtitle: Text(
-            status.isEmpty ? 'Processing' : status.join(', '),
-            style: TextStyle(color: color.outline),
-          ),
+          subtitle: status.isEmpty
+              ? const GeneratingText()
+              : Text(
+                  status.join(', '),
+                  style: TextStyle(color: color.outline),
+                ),
         ),
       ));
     }
