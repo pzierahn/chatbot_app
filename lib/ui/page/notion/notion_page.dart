@@ -110,6 +110,8 @@ class _NotionPageState extends State<NotionPage> {
         title: TextField(
           controller: _controller,
           style: textStyle,
+          keyboardType: TextInputType.text,
+          maxLines: null,
           decoration: const InputDecoration.collapsed(
             hintText: 'Type a question or prompt...',
           ),
