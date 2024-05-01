@@ -15,6 +15,56 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'chat_service.pb.dart' as $3;
 
+class NotionApiKey extends $pb.GeneratedMessage {
+  factory NotionApiKey({
+    $core.String? key,
+  }) {
+    final $result = create();
+    if (key != null) {
+      $result.key = key;
+    }
+    return $result;
+  }
+  NotionApiKey._() : super();
+  factory NotionApiKey.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory NotionApiKey.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'NotionApiKey', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.notion.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'key')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  NotionApiKey clone() => NotionApiKey()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  NotionApiKey copyWith(void Function(NotionApiKey) updates) => super.copyWith((message) => updates(message as NotionApiKey)) as NotionApiKey;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static NotionApiKey create() => NotionApiKey._();
+  NotionApiKey createEmptyInstance() => create();
+  static $pb.PbList<NotionApiKey> createRepeated() => $pb.PbList<NotionApiKey>();
+  @$core.pragma('dart2js:noInline')
+  static NotionApiKey getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<NotionApiKey>(create);
+  static NotionApiKey? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get key => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set key($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasKey() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearKey() => clearField(1);
+}
+
 class NotionPrompt extends $pb.GeneratedMessage {
   factory NotionPrompt({
     $core.String? databaseID,

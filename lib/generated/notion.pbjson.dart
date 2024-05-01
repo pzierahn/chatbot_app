@@ -13,6 +13,18 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use notionApiKeyDescriptor instead')
+const NotionApiKey$json = {
+  '1': 'NotionApiKey',
+  '2': [
+    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+  ],
+};
+
+/// Descriptor for `NotionApiKey`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List notionApiKeyDescriptor = $convert.base64Decode(
+    'CgxOb3Rpb25BcGlLZXkSEAoDa2V5GAEgASgJUgNrZXk=');
+
 @$core.Deprecated('Use notionPromptDescriptor instead')
 const NotionPrompt$json = {
   '1': 'NotionPrompt',
