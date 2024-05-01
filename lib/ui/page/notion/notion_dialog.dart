@@ -47,18 +47,29 @@ class _StartNotionDialogState extends State<StartNotionDialog> {
         mainAxisSize: MainAxisSize.min,
         children: [
           const ListTile(
-            leading: CircleAvatar(
-              child: Text('1'),
+            title: Text(
+              '1. Connect Brainboost to Notion',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            title: Text('Connect Brainboost to Notion'),
+            subtitle: Text(
+                'Navigate to your Database > Style, export and more > Connect to > Search for "Brainboost"'),
           ),
+          const ListTile(
+              title: Text(
+                '2. Copy the Database ID',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle:
+                  Text('notion.so/DATABASE-ID?v=your-version-number')),
           ListTile(
-            leading: const CircleAvatar(
-              child: Text('2'),
-            ),
             title: TextField(
-              decoration: const InputDecoration.collapsed(
-                hintText: 'Enter your database ID',
+              decoration: const InputDecoration(
+                hintText: 'Enter your DATABASE-ID',
+                border: OutlineInputBorder(),
               ),
               onChanged: (value) {
                 setState(() => _databaseId = value);
@@ -76,7 +87,7 @@ class _StartNotionDialogState extends State<StartNotionDialog> {
         ),
         FilledButton(
           onPressed: _databaseId.isNotEmpty ? _openNotion : null,
-          child: const Text('Proceed'),
+          child: const Text('Connect'),
         ),
       ],
     );
