@@ -71,7 +71,20 @@ class _NotionPageState extends State<NotionPage> {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
-    final children = <Widget>[];
+    final children = <Widget>[
+      ThreadContainer(
+        outlineColor: Colors.transparent,
+        child: ListTile(
+          title: const Text('How this works:'),
+          subtitle: Text(
+            '1. Create a column named "ID" in your Notion database\n'
+            '2. Insert your Brainboost document names in the "ID" column. For example "Vorlesung-1.pdf"\n'
+            '3. Type a question or prompt in the text field below. Brainboost will execute your prompt in parallel on all documents and store the results in your Notion database\n',
+            style: TextStyle(color: color.outline),
+          ),
+        ),
+      ),
+    ];
 
     for (var idx = 0; idx < _prompts.length; idx++) {
       final status = _status[idx];
