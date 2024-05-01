@@ -9,10 +9,12 @@ import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/page/chat/thread_view.dart';
 import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
 import 'package:braingain_app/ui/page/documents/documents_page.dart';
+import 'package:braingain_app/ui/page/notion/notion_dialog.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:braingain_app/utils/llm_models.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
 class ChatPage extends StatefulWidget {
@@ -50,6 +52,16 @@ class _ChatPageState extends State<ChatPage> {
       appBar: AppBar(
         title: Text(collection.name),
         actions: [
+          TextButton(
+            onPressed: () {
+              StartNotionDialog.show(context, collection.id);
+            },
+            child: SvgPicture.asset(
+              'assets/Notion-logo.svg',
+              width: 24,
+              height: 24,
+            ),
+          ),
           IconButton(
             icon: const Icon(Icons.history_outlined),
             tooltip: 'Chat History',

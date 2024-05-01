@@ -4,6 +4,7 @@ import 'package:braingain_app/generated/collection_service.pbgrpc.dart';
 import 'package:braingain_app/generated/crashlytics.pbgrpc.dart';
 import 'package:braingain_app/generated/document_service.pbgrpc.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
+import 'package:braingain_app/generated/notion.pbgrpc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
 
@@ -33,6 +34,8 @@ final account = AccountServiceClientAuth();
 final chat = ChatServiceClientAuth();
 
 final crashlytics = CrashlyticsServiceClientAuth();
+
+final notion = NotionClientAuth();
 
 Future<CallOptions> _mergeAuth(CallOptions? options) async {
   final token = await FirebaseAuth.instance.currentUser?.getIdToken();
@@ -192,5 +195,15 @@ class CrashlyticsServiceClientAuth {
   Future<Empty> recordError(Error request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
     return _service.recordError(request, options: options);
+  }
+}
+
+class NotionClientAuth {
+  final _service = NotionClient(_channel);
+
+  Future<ResponseStream<ExecutionResult>> executePrompt(NotionPrompt request,
+      {CallOptions? options}) async {
+    options = await _mergeAuth(options);
+    return _service.executePrompt(request, options: options);
   }
 }
