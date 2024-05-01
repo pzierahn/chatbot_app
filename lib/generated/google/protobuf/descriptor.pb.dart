@@ -946,12 +946,12 @@ class FieldDescriptorProto extends $pb.GeneratedMessage {
   ///  If true, this is a proto3 "optional". When a proto3 field is optional, it
   ///  tracks presence regardless of field type.
   ///
-  ///  When proto3_optional is true, this field must be belong to a oneof to
-  ///  signal to old proto3 clients that presence is tracked for this field. This
-  ///  oneof is known as a "synthetic" oneof, and this field must be its sole
-  ///  member (each proto3 optional field gets its own synthetic oneof). Synthetic
-  ///  oneofs exist in the descriptor only, and do not generate any API. Synthetic
-  ///  oneofs must be ordered after all "real" oneofs.
+  ///  When proto3_optional is true, this field must belong to a oneof to signal
+  ///  to old proto3 clients that presence is tracked for this field. This oneof
+  ///  is known as a "synthetic" oneof, and this field must be its sole member
+  ///  (each proto3 optional field gets its own synthetic oneof). Synthetic oneofs
+  ///  exist in the descriptor only, and do not generate any API. Synthetic oneofs
+  ///  must be ordered after all "real" oneofs.
   ///
   ///  For message fields, proto3_optional doesn't create any semantic change,
   ///  since non-repeated message fields always track presence. However it still
@@ -1505,7 +1505,6 @@ class FileOptions extends $pb.GeneratedMessage {
     $core.String? swiftPrefix,
     $core.String? phpClassPrefix,
     $core.String? phpNamespace,
-    $core.bool? phpGenericServices,
     $core.String? phpMetadataNamespace,
     $core.String? rubyPackage,
     FeatureSet? features,
@@ -1564,9 +1563,6 @@ class FileOptions extends $pb.GeneratedMessage {
     if (phpNamespace != null) {
       $result.phpNamespace = phpNamespace;
     }
-    if (phpGenericServices != null) {
-      $result.phpGenericServices = phpGenericServices;
-    }
     if (phpMetadataNamespace != null) {
       $result.phpMetadataNamespace = phpMetadataNamespace;
     }
@@ -1603,7 +1599,6 @@ class FileOptions extends $pb.GeneratedMessage {
     ..aOS(39, _omitFieldNames ? '' : 'swiftPrefix')
     ..aOS(40, _omitFieldNames ? '' : 'phpClassPrefix')
     ..aOS(41, _omitFieldNames ? '' : 'phpNamespace')
-    ..aOB(42, _omitFieldNames ? '' : 'phpGenericServices')
     ..aOS(44, _omitFieldNames ? '' : 'phpMetadataNamespace')
     ..aOS(45, _omitFieldNames ? '' : 'rubyPackage')
     ..aOM<FeatureSet>(50, _omitFieldNames ? '' : 'features', subBuilder: FeatureSet.create)
@@ -1844,24 +1839,15 @@ class FileOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(41)
   void clearPhpNamespace() => clearField(41);
 
-  @$pb.TagNumber(42)
-  $core.bool get phpGenericServices => $_getBF(17);
-  @$pb.TagNumber(42)
-  set phpGenericServices($core.bool v) { $_setBool(17, v); }
-  @$pb.TagNumber(42)
-  $core.bool hasPhpGenericServices() => $_has(17);
-  @$pb.TagNumber(42)
-  void clearPhpGenericServices() => clearField(42);
-
   /// Use this option to change the namespace of php generated metadata classes.
   /// Default is empty. When this option is empty, the proto file name will be
   /// used for determining the namespace.
   @$pb.TagNumber(44)
-  $core.String get phpMetadataNamespace => $_getSZ(18);
+  $core.String get phpMetadataNamespace => $_getSZ(17);
   @$pb.TagNumber(44)
-  set phpMetadataNamespace($core.String v) { $_setString(18, v); }
+  set phpMetadataNamespace($core.String v) { $_setString(17, v); }
   @$pb.TagNumber(44)
-  $core.bool hasPhpMetadataNamespace() => $_has(18);
+  $core.bool hasPhpMetadataNamespace() => $_has(17);
   @$pb.TagNumber(44)
   void clearPhpMetadataNamespace() => clearField(44);
 
@@ -1869,30 +1855,30 @@ class FileOptions extends $pb.GeneratedMessage {
   /// is empty. When this option is not set, the package name will be used for
   /// determining the ruby package.
   @$pb.TagNumber(45)
-  $core.String get rubyPackage => $_getSZ(19);
+  $core.String get rubyPackage => $_getSZ(18);
   @$pb.TagNumber(45)
-  set rubyPackage($core.String v) { $_setString(19, v); }
+  set rubyPackage($core.String v) { $_setString(18, v); }
   @$pb.TagNumber(45)
-  $core.bool hasRubyPackage() => $_has(19);
+  $core.bool hasRubyPackage() => $_has(18);
   @$pb.TagNumber(45)
   void clearRubyPackage() => clearField(45);
 
   /// Any features defined in the specific edition.
   @$pb.TagNumber(50)
-  FeatureSet get features => $_getN(20);
+  FeatureSet get features => $_getN(19);
   @$pb.TagNumber(50)
   set features(FeatureSet v) { setField(50, v); }
   @$pb.TagNumber(50)
-  $core.bool hasFeatures() => $_has(20);
+  $core.bool hasFeatures() => $_has(19);
   @$pb.TagNumber(50)
   void clearFeatures() => clearField(50);
   @$pb.TagNumber(50)
-  FeatureSet ensureFeatures() => $_ensure(20);
+  FeatureSet ensureFeatures() => $_ensure(19);
 
   /// The parser stores options it doesn't recognize here.
   /// See the documentation for the "Options" section above.
   @$pb.TagNumber(999)
-  $core.List<UninterpretedOption> get uninterpretedOption => $_getList(21);
+  $core.List<UninterpretedOption> get uninterpretedOption => $_getList(20);
 }
 
 class MessageOptions extends $pb.GeneratedMessage {
@@ -2019,10 +2005,6 @@ class MessageOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearDeprecated() => clearField(3);
 
-  ///  NOTE: Do not set the option in .proto files. Always use the maps syntax
-  ///  instead. The option should only be implicitly set by the proto compiler
-  ///  parser.
-  ///
   ///  Whether the message is an automatically generated map entry type for the
   ///  maps field.
   ///
@@ -2040,6 +2022,10 @@ class MessageOptions extends $pb.GeneratedMessage {
   ///  use a native map in the target language to hold the keys and values.
   ///  The reflection APIs in such implementations still need to work as
   ///  if the field is a repeated message field.
+  ///
+  ///  NOTE: Do not set the option in .proto files. Always use the maps syntax
+  ///  instead. The option should only be implicitly set by the proto compiler
+  ///  parser.
   @$pb.TagNumber(7)
   $core.bool get mapEntry => $_getBF(3);
   @$pb.TagNumber(7)
@@ -2314,19 +2300,11 @@ class FieldOptions extends $pb.GeneratedMessage {
   ///  call from multiple threads concurrently, while non-const methods continue
   ///  to require exclusive access.
   ///
-  ///  Note that implementations may choose not to check required fields within
-  ///  a lazy sub-message.  That is, calling IsInitialized() on the outer message
-  ///  may return true even if the inner message has missing required fields.
-  ///  This is necessary because otherwise the inner message would have to be
-  ///  parsed in order to perform the check, defeating the purpose of lazy
-  ///  parsing.  An implementation which chooses not to check required fields
-  ///  must be consistent about it.  That is, for any particular sub-message, the
-  ///  implementation must either *always* check its required fields, or *never*
-  ///  check its required fields, regardless of whether or not the message has
-  ///  been parsed.
-  ///
-  ///  As of May 2022, lazy verifies the contents of the byte stream during
-  ///  parsing.  An invalid byte stream will cause the overall parsing to fail.
+  ///  Note that lazy message fields are still eagerly verified to check
+  ///  ill-formed wireformat or missing required fields. Calling IsInitialized()
+  ///  on the outer message would fail if the inner message has missing required
+  ///  fields. Failed verification would result in parsing failure (except when
+  ///  uninitialized messages are acceptable).
   @$pb.TagNumber(5)
   $core.bool get lazy => $_getBF(3);
   @$pb.TagNumber(5)
@@ -3417,7 +3395,7 @@ class SourceCodeInfo_Location extends $pb.GeneratedMessage {
   ///  location.
   ///
   ///  Each element is a field number or an index.  They form a path from
-  ///  the root FileDescriptorProto to the place where the definition occurs.
+  ///  the root FileDescriptorProto to the place where the definition appears.
   ///  For example, this path:
   ///    [ 4, 3, 2, 7, 1 ]
   ///  refers to:

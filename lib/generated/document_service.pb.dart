@@ -13,7 +13,51 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/timestamp.pb.dart' as $6;
+import 'google/protobuf/timestamp.pb.dart' as $7;
+
+class DocumentNames extends $pb.GeneratedMessage {
+  factory DocumentNames({
+    $core.Map<$core.String, $core.String>? items,
+  }) {
+    final $result = create();
+    if (items != null) {
+      $result.items.addAll(items);
+    }
+    return $result;
+  }
+  DocumentNames._() : super();
+  factory DocumentNames.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DocumentNames.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentNames', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
+    ..m<$core.String, $core.String>(1, _omitFieldNames ? '' : 'items', entryClassName: 'DocumentNames.ItemsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('chatbot.documents.v2'))
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DocumentNames clone() => DocumentNames()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DocumentNames copyWith(void Function(DocumentNames) updates) => super.copyWith((message) => updates(message as DocumentNames)) as DocumentNames;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static DocumentNames create() => DocumentNames._();
+  DocumentNames createEmptyInstance() => create();
+  static $pb.PbList<DocumentNames> createRepeated() => $pb.PbList<DocumentNames>();
+  @$core.pragma('dart2js:noInline')
+  static DocumentNames getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DocumentNames>(create);
+  static DocumentNames? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.Map<$core.String, $core.String> get items => $_getMap(0);
+}
 
 enum RenameDocument_RenameTo {
   fileName, 
@@ -856,7 +900,7 @@ class Document extends $pb.GeneratedMessage {
   factory Document({
     $core.String? id,
     $core.String? collectionId,
-    $6.Timestamp? createdAt,
+    $7.Timestamp? createdAt,
     DocumentMetadata? metadata,
     $core.Iterable<Chunk>? chunks,
   }) {
@@ -885,7 +929,7 @@ class Document extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'collectionId')
-    ..aOM<$6.Timestamp>(3, _omitFieldNames ? '' : 'createdAt', subBuilder: $6.Timestamp.create)
+    ..aOM<$7.Timestamp>(3, _omitFieldNames ? '' : 'createdAt', subBuilder: $7.Timestamp.create)
     ..aOM<DocumentMetadata>(4, _omitFieldNames ? '' : 'metadata', subBuilder: DocumentMetadata.create)
     ..pc<Chunk>(5, _omitFieldNames ? '' : 'chunks', $pb.PbFieldType.PM, subBuilder: Chunk.create)
     ..hasRequiredFields = false
@@ -931,15 +975,15 @@ class Document extends $pb.GeneratedMessage {
   void clearCollectionId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $6.Timestamp get createdAt => $_getN(2);
+  $7.Timestamp get createdAt => $_getN(2);
   @$pb.TagNumber(3)
-  set createdAt($6.Timestamp v) { setField(3, v); }
+  set createdAt($7.Timestamp v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasCreatedAt() => $_has(2);
   @$pb.TagNumber(3)
   void clearCreatedAt() => clearField(3);
   @$pb.TagNumber(3)
-  $6.Timestamp ensureCreatedAt() => $_ensure(2);
+  $7.Timestamp ensureCreatedAt() => $_ensure(2);
 
   @$pb.TagNumber(4)
   DocumentMetadata get metadata => $_getN(3);
@@ -954,6 +998,102 @@ class Document extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(5)
   $core.List<Chunk> get chunks => $_getList(4);
+}
+
+class DocumentHeader extends $pb.GeneratedMessage {
+  factory DocumentHeader({
+    $core.String? id,
+    $core.String? collectionId,
+    $7.Timestamp? createdAt,
+    DocumentMetadata? metadata,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (collectionId != null) {
+      $result.collectionId = collectionId;
+    }
+    if (createdAt != null) {
+      $result.createdAt = createdAt;
+    }
+    if (metadata != null) {
+      $result.metadata = metadata;
+    }
+    return $result;
+  }
+  DocumentHeader._() : super();
+  factory DocumentHeader.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory DocumentHeader.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentHeader', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'collectionId')
+    ..aOM<$7.Timestamp>(3, _omitFieldNames ? '' : 'createdAt', subBuilder: $7.Timestamp.create)
+    ..aOM<DocumentMetadata>(4, _omitFieldNames ? '' : 'metadata', subBuilder: DocumentMetadata.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  DocumentHeader clone() => DocumentHeader()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  DocumentHeader copyWith(void Function(DocumentHeader) updates) => super.copyWith((message) => updates(message as DocumentHeader)) as DocumentHeader;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static DocumentHeader create() => DocumentHeader._();
+  DocumentHeader createEmptyInstance() => create();
+  static $pb.PbList<DocumentHeader> createRepeated() => $pb.PbList<DocumentHeader>();
+  @$core.pragma('dart2js:noInline')
+  static DocumentHeader getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DocumentHeader>(create);
+  static DocumentHeader? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get collectionId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set collectionId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasCollectionId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCollectionId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $7.Timestamp get createdAt => $_getN(2);
+  @$pb.TagNumber(3)
+  set createdAt($7.Timestamp v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasCreatedAt() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearCreatedAt() => clearField(3);
+  @$pb.TagNumber(3)
+  $7.Timestamp ensureCreatedAt() => $_ensure(2);
+
+  @$pb.TagNumber(4)
+  DocumentMetadata get metadata => $_getN(3);
+  @$pb.TagNumber(4)
+  set metadata(DocumentMetadata v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasMetadata() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearMetadata() => clearField(4);
+  @$pb.TagNumber(4)
+  DocumentMetadata ensureMetadata() => $_ensure(3);
 }
 
 class IndexJob extends $pb.GeneratedMessage {

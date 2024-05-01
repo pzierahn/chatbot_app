@@ -13,7 +13,365 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/timestamp.pb.dart' as $6;
+import 'google/protobuf/timestamp.pb.dart' as $7;
+
+class CompletionRequest extends $pb.GeneratedMessage {
+  factory CompletionRequest({
+    $core.String? documentId,
+    $core.String? prompt,
+    ModelOptions? modelOptions,
+  }) {
+    final $result = create();
+    if (documentId != null) {
+      $result.documentId = documentId;
+    }
+    if (prompt != null) {
+      $result.prompt = prompt;
+    }
+    if (modelOptions != null) {
+      $result.modelOptions = modelOptions;
+    }
+    return $result;
+  }
+  CompletionRequest._() : super();
+  factory CompletionRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CompletionRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CompletionRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'documentId')
+    ..aOS(2, _omitFieldNames ? '' : 'prompt')
+    ..aOM<ModelOptions>(3, _omitFieldNames ? '' : 'modelOptions', subBuilder: ModelOptions.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CompletionRequest clone() => CompletionRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CompletionRequest copyWith(void Function(CompletionRequest) updates) => super.copyWith((message) => updates(message as CompletionRequest)) as CompletionRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CompletionRequest create() => CompletionRequest._();
+  CompletionRequest createEmptyInstance() => create();
+  static $pb.PbList<CompletionRequest> createRepeated() => $pb.PbList<CompletionRequest>();
+  @$core.pragma('dart2js:noInline')
+  static CompletionRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CompletionRequest>(create);
+  static CompletionRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get documentId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set documentId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasDocumentId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDocumentId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get prompt => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set prompt($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPrompt() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPrompt() => clearField(2);
+
+  @$pb.TagNumber(3)
+  ModelOptions get modelOptions => $_getN(2);
+  @$pb.TagNumber(3)
+  set modelOptions(ModelOptions v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasModelOptions() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearModelOptions() => clearField(3);
+  @$pb.TagNumber(3)
+  ModelOptions ensureModelOptions() => $_ensure(2);
+}
+
+class CompletionResponse extends $pb.GeneratedMessage {
+  factory CompletionResponse({
+    $core.String? completion,
+  }) {
+    final $result = create();
+    if (completion != null) {
+      $result.completion = completion;
+    }
+    return $result;
+  }
+  CompletionResponse._() : super();
+  factory CompletionResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CompletionResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CompletionResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'completion')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CompletionResponse clone() => CompletionResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CompletionResponse copyWith(void Function(CompletionResponse) updates) => super.copyWith((message) => updates(message as CompletionResponse)) as CompletionResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CompletionResponse create() => CompletionResponse._();
+  CompletionResponse createEmptyInstance() => create();
+  static $pb.PbList<CompletionResponse> createRepeated() => $pb.PbList<CompletionResponse>();
+  @$core.pragma('dart2js:noInline')
+  static CompletionResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CompletionResponse>(create);
+  static CompletionResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get completion => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set completion($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCompletion() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCompletion() => clearField(1);
+}
+
+class BatchRequest extends $pb.GeneratedMessage {
+  factory BatchRequest({
+    $core.Iterable<$core.String>? documentIds,
+    $core.Iterable<$core.String>? prompts,
+    ModelOptions? modelOptions,
+  }) {
+    final $result = create();
+    if (documentIds != null) {
+      $result.documentIds.addAll(documentIds);
+    }
+    if (prompts != null) {
+      $result.prompts.addAll(prompts);
+    }
+    if (modelOptions != null) {
+      $result.modelOptions = modelOptions;
+    }
+    return $result;
+  }
+  BatchRequest._() : super();
+  factory BatchRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BatchRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BatchRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
+    ..pPS(1, _omitFieldNames ? '' : 'documentIds')
+    ..pPS(2, _omitFieldNames ? '' : 'prompts')
+    ..aOM<ModelOptions>(3, _omitFieldNames ? '' : 'modelOptions', subBuilder: ModelOptions.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  BatchRequest clone() => BatchRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  BatchRequest copyWith(void Function(BatchRequest) updates) => super.copyWith((message) => updates(message as BatchRequest)) as BatchRequest;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static BatchRequest create() => BatchRequest._();
+  BatchRequest createEmptyInstance() => create();
+  static $pb.PbList<BatchRequest> createRepeated() => $pb.PbList<BatchRequest>();
+  @$core.pragma('dart2js:noInline')
+  static BatchRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BatchRequest>(create);
+  static BatchRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.String> get documentIds => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get prompts => $_getList(1);
+
+  @$pb.TagNumber(3)
+  ModelOptions get modelOptions => $_getN(2);
+  @$pb.TagNumber(3)
+  set modelOptions(ModelOptions v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasModelOptions() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearModelOptions() => clearField(3);
+  @$pb.TagNumber(3)
+  ModelOptions ensureModelOptions() => $_ensure(2);
+}
+
+class BatchResponse_Completion extends $pb.GeneratedMessage {
+  factory BatchResponse_Completion({
+    $core.int? documentId,
+    $core.String? documentTitle,
+    $core.int? prompt,
+    $core.String? completion,
+  }) {
+    final $result = create();
+    if (documentId != null) {
+      $result.documentId = documentId;
+    }
+    if (documentTitle != null) {
+      $result.documentTitle = documentTitle;
+    }
+    if (prompt != null) {
+      $result.prompt = prompt;
+    }
+    if (completion != null) {
+      $result.completion = completion;
+    }
+    return $result;
+  }
+  BatchResponse_Completion._() : super();
+  factory BatchResponse_Completion.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BatchResponse_Completion.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BatchResponse.Completion', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'documentId', $pb.PbFieldType.OU3)
+    ..aOS(2, _omitFieldNames ? '' : 'documentTitle')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'prompt', $pb.PbFieldType.OU3)
+    ..aOS(4, _omitFieldNames ? '' : 'completion')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  BatchResponse_Completion clone() => BatchResponse_Completion()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  BatchResponse_Completion copyWith(void Function(BatchResponse_Completion) updates) => super.copyWith((message) => updates(message as BatchResponse_Completion)) as BatchResponse_Completion;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static BatchResponse_Completion create() => BatchResponse_Completion._();
+  BatchResponse_Completion createEmptyInstance() => create();
+  static $pb.PbList<BatchResponse_Completion> createRepeated() => $pb.PbList<BatchResponse_Completion>();
+  @$core.pragma('dart2js:noInline')
+  static BatchResponse_Completion getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BatchResponse_Completion>(create);
+  static BatchResponse_Completion? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get documentId => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set documentId($core.int v) { $_setUnsignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasDocumentId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDocumentId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get documentTitle => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set documentTitle($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasDocumentTitle() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDocumentTitle() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get prompt => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set prompt($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasPrompt() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearPrompt() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get completion => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set completion($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasCompletion() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearCompletion() => clearField(4);
+}
+
+class BatchResponse extends $pb.GeneratedMessage {
+  factory BatchResponse({
+    $core.Iterable<$core.String>? documentIds,
+    $core.Iterable<$core.String>? prompts,
+    $core.Iterable<$core.String>? promptTitle,
+    $core.Iterable<BatchResponse_Completion>? items,
+  }) {
+    final $result = create();
+    if (documentIds != null) {
+      $result.documentIds.addAll(documentIds);
+    }
+    if (prompts != null) {
+      $result.prompts.addAll(prompts);
+    }
+    if (promptTitle != null) {
+      $result.promptTitle.addAll(promptTitle);
+    }
+    if (items != null) {
+      $result.items.addAll(items);
+    }
+    return $result;
+  }
+  BatchResponse._() : super();
+  factory BatchResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BatchResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BatchResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
+    ..pPS(1, _omitFieldNames ? '' : 'documentIds')
+    ..pPS(2, _omitFieldNames ? '' : 'prompts')
+    ..pPS(3, _omitFieldNames ? '' : 'promptTitle')
+    ..pc<BatchResponse_Completion>(4, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: BatchResponse_Completion.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  BatchResponse clone() => BatchResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  BatchResponse copyWith(void Function(BatchResponse) updates) => super.copyWith((message) => updates(message as BatchResponse)) as BatchResponse;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static BatchResponse create() => BatchResponse._();
+  BatchResponse createEmptyInstance() => create();
+  static $pb.PbList<BatchResponse> createRepeated() => $pb.PbList<BatchResponse>();
+  @$core.pragma('dart2js:noInline')
+  static BatchResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BatchResponse>(create);
+  static BatchResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.String> get documentIds => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get prompts => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.String> get promptTitle => $_getList(2);
+
+  @$pb.TagNumber(4)
+  $core.List<BatchResponse_Completion> get items => $_getList(3);
+}
 
 class Prompt extends $pb.GeneratedMessage {
   factory Prompt({
@@ -309,7 +667,7 @@ class Message extends $pb.GeneratedMessage {
     $core.String? id,
     $core.String? prompt,
     $core.String? completion,
-    $6.Timestamp? timestamp,
+    $7.Timestamp? timestamp,
   }) {
     final $result = create();
     if (id != null) {
@@ -334,7 +692,7 @@ class Message extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'prompt')
     ..aOS(3, _omitFieldNames ? '' : 'completion')
-    ..aOM<$6.Timestamp>(4, _omitFieldNames ? '' : 'timestamp', subBuilder: $6.Timestamp.create)
+    ..aOM<$7.Timestamp>(4, _omitFieldNames ? '' : 'timestamp', subBuilder: $7.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -387,15 +745,15 @@ class Message extends $pb.GeneratedMessage {
   void clearCompletion() => clearField(3);
 
   @$pb.TagNumber(4)
-  $6.Timestamp get timestamp => $_getN(3);
+  $7.Timestamp get timestamp => $_getN(3);
   @$pb.TagNumber(4)
-  set timestamp($6.Timestamp v) { setField(4, v); }
+  set timestamp($7.Timestamp v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasTimestamp() => $_has(3);
   @$pb.TagNumber(4)
   void clearTimestamp() => clearField(4);
   @$pb.TagNumber(4)
-  $6.Timestamp ensureTimestamp() => $_ensure(3);
+  $7.Timestamp ensureTimestamp() => $_ensure(3);
 }
 
 class Thread extends $pb.GeneratedMessage {

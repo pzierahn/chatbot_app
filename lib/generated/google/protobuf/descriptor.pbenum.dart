@@ -19,22 +19,26 @@ class Edition extends $pb.ProtobufEnum {
   static const Edition EDITION_PROTO2 = Edition._(998, _omitEnumNames ? '' : 'EDITION_PROTO2');
   static const Edition EDITION_PROTO3 = Edition._(999, _omitEnumNames ? '' : 'EDITION_PROTO3');
   static const Edition EDITION_2023 = Edition._(1000, _omitEnumNames ? '' : 'EDITION_2023');
+  static const Edition EDITION_2024 = Edition._(1001, _omitEnumNames ? '' : 'EDITION_2024');
   static const Edition EDITION_1_TEST_ONLY = Edition._(1, _omitEnumNames ? '' : 'EDITION_1_TEST_ONLY');
   static const Edition EDITION_2_TEST_ONLY = Edition._(2, _omitEnumNames ? '' : 'EDITION_2_TEST_ONLY');
   static const Edition EDITION_99997_TEST_ONLY = Edition._(99997, _omitEnumNames ? '' : 'EDITION_99997_TEST_ONLY');
   static const Edition EDITION_99998_TEST_ONLY = Edition._(99998, _omitEnumNames ? '' : 'EDITION_99998_TEST_ONLY');
   static const Edition EDITION_99999_TEST_ONLY = Edition._(99999, _omitEnumNames ? '' : 'EDITION_99999_TEST_ONLY');
+  static const Edition EDITION_MAX = Edition._(2147483647, _omitEnumNames ? '' : 'EDITION_MAX');
 
   static const $core.List<Edition> values = <Edition> [
     EDITION_UNKNOWN,
     EDITION_PROTO2,
     EDITION_PROTO3,
     EDITION_2023,
+    EDITION_2024,
     EDITION_1_TEST_ONLY,
     EDITION_2_TEST_ONLY,
     EDITION_99997_TEST_ONLY,
     EDITION_99998_TEST_ONLY,
     EDITION_99999_TEST_ONLY,
+    EDITION_MAX,
   ];
 
   static final $core.Map<$core.int, Edition> _byValue = $pb.ProtobufEnum.initByValue(values);
@@ -305,13 +309,13 @@ class FeatureSet_RepeatedFieldEncoding extends $pb.ProtobufEnum {
 
 class FeatureSet_Utf8Validation extends $pb.ProtobufEnum {
   static const FeatureSet_Utf8Validation UTF8_VALIDATION_UNKNOWN = FeatureSet_Utf8Validation._(0, _omitEnumNames ? '' : 'UTF8_VALIDATION_UNKNOWN');
-  static const FeatureSet_Utf8Validation NONE = FeatureSet_Utf8Validation._(1, _omitEnumNames ? '' : 'NONE');
   static const FeatureSet_Utf8Validation VERIFY = FeatureSet_Utf8Validation._(2, _omitEnumNames ? '' : 'VERIFY');
+  static const FeatureSet_Utf8Validation NONE = FeatureSet_Utf8Validation._(3, _omitEnumNames ? '' : 'NONE');
 
   static const $core.List<FeatureSet_Utf8Validation> values = <FeatureSet_Utf8Validation> [
     UTF8_VALIDATION_UNKNOWN,
-    NONE,
     VERIFY,
+    NONE,
   ];
 
   static final $core.Map<$core.int, FeatureSet_Utf8Validation> _byValue = $pb.ProtobufEnum.initByValue(values);

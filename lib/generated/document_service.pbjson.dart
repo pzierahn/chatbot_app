@@ -13,6 +13,31 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use documentNamesDescriptor instead')
+const DocumentNames$json = {
+  '1': 'DocumentNames',
+  '2': [
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.chatbot.documents.v2.DocumentNames.ItemsEntry', '10': 'items'},
+  ],
+  '3': [DocumentNames_ItemsEntry$json],
+};
+
+@$core.Deprecated('Use documentNamesDescriptor instead')
+const DocumentNames_ItemsEntry$json = {
+  '1': 'ItemsEntry',
+  '2': [
+    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': {'7': true},
+};
+
+/// Descriptor for `DocumentNames`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List documentNamesDescriptor = $convert.base64Decode(
+    'Cg1Eb2N1bWVudE5hbWVzEkQKBWl0ZW1zGAEgAygLMi4uY2hhdGJvdC5kb2N1bWVudHMudjIuRG'
+    '9jdW1lbnROYW1lcy5JdGVtc0VudHJ5UgVpdGVtcxo4CgpJdGVtc0VudHJ5EhAKA2tleRgBIAEo'
+    'CVIDa2V5EhQKBXZhbHVlGAIgASgJUgV2YWx1ZToCOAE=');
+
 @$core.Deprecated('Use renameDocumentDescriptor instead')
 const RenameDocument$json = {
   '1': 'RenameDocument',
@@ -245,6 +270,24 @@ final $typed_data.Uint8List documentDescriptor = $convert.base64Decode(
     'UgljcmVhdGVkQXQSQgoIbWV0YWRhdGEYBCABKAsyJi5jaGF0Ym90LmRvY3VtZW50cy52Mi5Eb2'
     'N1bWVudE1ldGFkYXRhUghtZXRhZGF0YRIzCgZjaHVua3MYBSADKAsyGy5jaGF0Ym90LmRvY3Vt'
     'ZW50cy52Mi5DaHVua1IGY2h1bmtz');
+
+@$core.Deprecated('Use documentHeaderDescriptor instead')
+const DocumentHeader$json = {
+  '1': 'DocumentHeader',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'collection_id', '3': 2, '4': 1, '5': 9, '10': 'collectionId'},
+    {'1': 'created_at', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'createdAt'},
+    {'1': 'metadata', '3': 4, '4': 1, '5': 11, '6': '.chatbot.documents.v2.DocumentMetadata', '10': 'metadata'},
+  ],
+};
+
+/// Descriptor for `DocumentHeader`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List documentHeaderDescriptor = $convert.base64Decode(
+    'Cg5Eb2N1bWVudEhlYWRlchIOCgJpZBgBIAEoCVICaWQSIwoNY29sbGVjdGlvbl9pZBgCIAEoCV'
+    'IMY29sbGVjdGlvbklkEjkKCmNyZWF0ZWRfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGlt'
+    'ZXN0YW1wUgljcmVhdGVkQXQSQgoIbWV0YWRhdGEYBCABKAsyJi5jaGF0Ym90LmRvY3VtZW50cy'
+    '52Mi5Eb2N1bWVudE1ldGFkYXRhUghtZXRhZGF0YQ==');
 
 @$core.Deprecated('Use indexJobDescriptor instead')
 const IndexJob$json = {
