@@ -1,3 +1,6 @@
+import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
+import 'package:braingain_app/generated/notion.pb.dart';
+import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/notion/notion_page.dart';
 import 'package:flutter/material.dart';
 
@@ -23,20 +26,33 @@ class StartNotionDialog extends StatefulWidget {
 }
 
 class _StartNotionDialogState extends State<StartNotionDialog> {
-  String _databaseId = '';
+  late Future<Databases> _databaseFuture;
 
-  void _openNotion() {
+  void _openNotion(Databases_Item database) {
     Navigator.of(context).pop();
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (BuildContext context) {
           return NotionPage(
-            databaseID: _databaseId,
+            title: database.name,
+            databaseID: database.id,
             collectionID: widget.collectionID,
           );
         },
       ),
     );
+  }
+
+  void _onUpdate() {
+    setState(() {
+      _databaseFuture = notion.listDatabases(Empty());
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _databaseFuture = notion.listDatabases(Empty());
   }
 
   @override
@@ -78,39 +94,54 @@ class _StartNotionDialogState extends State<StartNotionDialog> {
           ),
           ListTile(
             title: Text(
-              '3. Copy the Database ID',
+              '3. Select a Database',
               style: titleStyle,
             ),
-            subtitle: Text(
-              'notion.so/DATABASE-ID?v=your-version-number',
-              style: subtitleStyle,
+            trailing: TextButton(
+              onPressed: _onUpdate,
+              child: const Text('Refresh'),
             ),
           ),
-          ListTile(
-            title: TextField(
-              decoration: const InputDecoration(
-                hintText: 'Enter your DATABASE-ID',
-                border: OutlineInputBorder(),
-              ),
-              onChanged: (value) {
-                setState(() => _databaseId = value);
-              },
-            ),
+          FutureBuilder<Databases>(
+            future: _databaseFuture,
+            builder: (context, snap) {
+              if (snap.connectionState == ConnectionState.waiting) {
+                return const ListTile(
+                  title: Text('Loading databases...'),
+                  trailing: CircularProgressIndicator(),
+                );
+              }
+
+              if (snap.hasError) {
+                return Text('Error: ${snap.error}');
+              }
+
+              final databases = snap.data!.items;
+              if (databases.isEmpty) {
+                return const Text('No databases found');
+              }
+
+              return ListTile(
+                title: Wrap(
+                  spacing: 8.0,
+                  runSpacing: 8.0,
+                  alignment: WrapAlignment.start,
+                  children: databases
+                      .map(
+                        (database) => ActionChip(
+                          label: Text(database.name),
+                          onPressed: () {
+                            _openNotion(database);
+                          },
+                        ),
+                      )
+                      .toList(),
+                ),
+              );
+            },
           ),
         ],
       ),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: const Text('Close'),
-        ),
-        FilledButton(
-          onPressed: _databaseId.isNotEmpty ? _openNotion : null,
-          child: const Text('Connect'),
-        ),
-      ],
     );
   }
 }

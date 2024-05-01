@@ -11,10 +11,12 @@ import 'package:flutter/material.dart';
 class NotionPage extends StatefulWidget {
   const NotionPage({
     super.key,
+    required this.title,
     required this.databaseID,
     required this.collectionID,
   });
 
+  final String title;
   final String databaseID;
   final String collectionID;
 
@@ -131,7 +133,7 @@ class _NotionPageState extends State<NotionPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notion Database'),
+        title: Text(widget.title),
       ),
       body: ConstrainedListViewStable(
         children: children,

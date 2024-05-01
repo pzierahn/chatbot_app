@@ -207,6 +207,11 @@ class NotionClientAuth {
     return _service.executePrompt(request, options: options);
   }
 
+  Future<Databases> listDatabases(Empty request, {CallOptions? options}) async {
+    options = await _mergeAuth(options);
+    return _service.listDatabases(request, options: options);
+  }
+
   Future<NotionApiKey> getApiKey(Empty request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
     return _service.getApiKey(request, options: options);
