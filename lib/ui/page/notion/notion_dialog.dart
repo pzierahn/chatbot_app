@@ -41,30 +41,51 @@ class _StartNotionDialogState extends State<StartNotionDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+    final titleStyle = textTheme.titleMedium?.copyWith(
+      fontWeight: FontWeight.bold,
+    );
+
+    final subtitleStyle = textTheme.bodyMedium?.copyWith(
+      color: color.outline,
+    );
+
     return AlertDialog(
       title: const Text('Connect to Notion Database'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const ListTile(
+          ListTile(
             title: Text(
-              '1. Connect Brainboost to Notion',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+              '1. Create Notion API key (once)',
+              style: titleStyle,
             ),
             subtitle: Text(
-                'Navigate to your Database > Style, export and more > Connect to > Search for "Brainboost"'),
+              'Go to settings > Notion Integrations > Add your Notion API key',
+              style: subtitleStyle,
+            ),
           ),
-          const ListTile(
-              title: Text(
-                '2. Copy the Database ID',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              subtitle:
-                  Text('notion.so/DATABASE-ID?v=your-version-number')),
+          ListTile(
+            title: Text(
+              '2. Connect Brainboost to Notion',
+              style: titleStyle,
+            ),
+            subtitle: Text(
+              'Go to notion.so > Navigate to your Database > Style, export and more > Connect to > Search for "Brainboost"',
+              style: subtitleStyle,
+            ),
+          ),
+          ListTile(
+            title: Text(
+              '3. Copy the Database ID',
+              style: titleStyle,
+            ),
+            subtitle: Text(
+              'notion.so/DATABASE-ID?v=your-version-number',
+              style: subtitleStyle,
+            ),
+          ),
           ListTile(
             title: TextField(
               decoration: const InputDecoration(
