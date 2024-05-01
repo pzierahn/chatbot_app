@@ -22,7 +22,7 @@ class _GeneratingTextState extends State<GeneratingText> {
       const Duration(milliseconds: 200),
       (Timer timer) {
         setState(() {
-          _points = (_points + 1) % 4;
+          _points = (_points + 1) % 8;
         });
       },
     );
