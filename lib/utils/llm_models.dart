@@ -19,7 +19,7 @@ class LLMModels {
 
   static const LLMModel claudeOpus = LLMModel(
     title: 'Claude Opus',
-    model: 'anthropic.claude-3-opus-20240229',
+    model: 'anthropic.claude-3-opus-20240229-v1:0',
     provider: 'Anthropic',
   );
 
