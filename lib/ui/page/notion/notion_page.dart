@@ -91,7 +91,7 @@ class _NotionPageState extends State<NotionPage> {
 
       children.add(ThreadContainer(
         child: ListTile(
-          title: Text(
+          title: SelectableText(
             _prompts[idx],
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
