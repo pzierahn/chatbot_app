@@ -108,7 +108,10 @@ class _NotionSectionState extends State<NotionSection> {
                   );
                 } else if (snap.hasError) {
                   return ListTile(
-                    title: Text('Error: ${snap.error}', style: titleStyle),
+                    title: SelectableText('Error: ${snap.error}',
+                        style: titleStyle?.copyWith(
+                          color: color.error,
+                        )),
                   );
                 } else {
                   return ListTile(
