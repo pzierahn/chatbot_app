@@ -1,6 +1,7 @@
 import 'package:braingain_app/ui/page/settings/account_settings.dart';
 import 'package:braingain_app/ui/page/settings/app_information.dart';
 import 'package:braingain_app/ui/page/settings/balance.dart';
+import 'package:braingain_app/ui/page/settings/notion_api_key.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
 
@@ -29,6 +30,7 @@ class _SettingsPageState extends State<SettingsPage> {
       body: const ConstrainedListView(
         children: [
           AccountSettings(),
+          NotionSection(),
           AppInformation(),
           BalanceView(),
         ],
