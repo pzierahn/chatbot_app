@@ -206,4 +206,19 @@ class NotionClientAuth {
     options = await _mergeAuth(options);
     return _service.executePrompt(request, options: options);
   }
+
+  Future<NotionApiKey> getApiKey(Empty request, {CallOptions? options}) async {
+    options = await _mergeAuth(options);
+    return _service.getApiKey(request, options: options);
+  }
+
+  Future<Empty> setApiKey(NotionApiKey request, {CallOptions? options}) async {
+    options = await _mergeAuth(options);
+    return _service.setApiKey(request, options: options);
+  }
+
+  Future<Empty> removeApiKey(Empty request, {CallOptions? options}) async {
+    options = await _mergeAuth(options);
+    return _service.removeApiKey(request, options: options);
+  }
 }
