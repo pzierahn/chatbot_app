@@ -22,9 +22,11 @@ class CodeElementBuilder extends MarkdownElementBuilder {
       language = lg.substring(9);
     }
 
+    final textContent = element.textContent.trim();
+
     final codeView = HighlightView(
       // The original code to be highlighted
-      element.textContent,
+      textContent,
 
       // Specify language
       // It is recommended to give it a value for performance
@@ -47,7 +49,7 @@ class CodeElementBuilder extends MarkdownElementBuilder {
       textStyle: GoogleFonts.robotoMono(),
     );
 
-    if (element.textContent.contains('\n')) {
+    if (textContent.contains('\n')) {
       // Multi-line code block
       return SizedBox(
         width: double.infinity,
