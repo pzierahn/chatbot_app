@@ -12,8 +12,8 @@ class LLMModel {
 
 class LLMModels {
   static const LLMModel gpt4 = LLMModel(
-    title: 'GPT 4 Turbo',
-    model: 'openai.gpt-4-turbo',
+    title: 'GPT 4o',
+    model: 'openai.gpt-4o',
     provider: 'OpenAI',
   );
 
