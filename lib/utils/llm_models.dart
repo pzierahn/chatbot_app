@@ -24,13 +24,13 @@ class LLMModels {
   );
 
   static const LLMModel claudeSonnet = LLMModel(
-    title: 'Claude 3 Sonnet',
+    title: 'Claude Sonnet',
     model: 'anthropic.claude-3-sonnet-20240229-v1:0',
     provider: 'Anthropic',
   );
 
   static const LLMModel claudeHaiku = LLMModel(
-    title: 'Claude 3 Haiku',
+    title: 'Claude Haiku',
     model: 'anthropic.claude-3-haiku-20240307-v1:0',
     provider: 'Anthropic',
   );
