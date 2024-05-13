@@ -12,7 +12,7 @@ class LLMModel {
 
 class LLMModels {
   static const LLMModel gpt4 = LLMModel(
-    title: 'GPT 4o',
+    title: 'GPT-4o',
     model: 'openai.gpt-4o',
     provider: 'OpenAI',
   );
