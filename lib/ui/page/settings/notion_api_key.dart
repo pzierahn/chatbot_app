@@ -1,11 +1,9 @@
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:braingain_app/generated/notion.pb.dart';
-import 'package:braingain_app/main.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:braingain_app/ui/widget/outlined_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NotionSection extends StatefulWidget {
