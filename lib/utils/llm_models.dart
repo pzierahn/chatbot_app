@@ -35,15 +35,21 @@ class LLMModels {
     provider: 'Anthropic',
   );
 
-  static const LLMModel geminiPro = LLMModel(
-    title: 'Gemini Pro 1.0',
-    model: 'google.gemini-1.0-pro',
+  static const LLMModel geminiFlash = LLMModel(
+    title: 'Gemini Flash',
+    model: 'google.gemini-1.5-flash-preview-0514',
     provider: 'Google',
   );
 
-  static const LLMModel geminiPro15 = LLMModel(
-    title: 'Gemini Pro 1.5',
-    model: 'google.gemini-1.5-pro-preview-0409',
+  static const LLMModel geminiPro = LLMModel(
+    title: 'Gemini Pro',
+    model: 'google.gemini-1.5-pro-preview-0514',
+    provider: 'Google',
+  );
+
+  static const LLMModel geminiProExperimental = LLMModel(
+    title: 'Gemini Experimental',
+    model: 'google.gemini-experimental',
     provider: 'Google',
   );
 
@@ -52,8 +58,9 @@ class LLMModels {
     claudeOpus,
     claudeSonnet,
     claudeHaiku,
+    geminiFlash,
     geminiPro,
-    geminiPro15,
+    geminiProExperimental,
   ];
 
   static LLMModel fromModel(String model) {
