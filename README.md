@@ -35,6 +35,15 @@ The [demo video](https://youtu.be/Whr3nZ6-82c) shows the basic functionality of 
 
 [![Chatbot Demo](https://img.youtube.com/vi/Whr3nZ6-82c/0.jpg)](https://youtu.be/Whr3nZ6-82c)
 
+## Run with Docker
+
+To run the app with Docker, follow these steps:
+
+```bash
+docker build -t chatbot .
+docker run --rm -p 80:80 chatbot
+```
+
 ## Additional Details and Setup Instructions
 
 ```bash
@@ -53,7 +62,6 @@ The [demo video](https://youtu.be/Whr3nZ6-82c) shows the basic functionality of 
 │   └── utils            # Helper functions that are used across components
 ├── macos                # MacOS specific files
 ├── pubspec.yaml         # Project configuration
-
 ```
 
 ### Project Requirements:
