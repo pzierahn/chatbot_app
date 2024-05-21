@@ -111,7 +111,7 @@ class _ChatBodyState extends State<ChatBody> {
 
     final opts = ModelOptions()
       ..model = LLMModels.gpt4.model
-      ..maxTokens = 1024
+      ..maxTokens = 2048
       ..temperature = 1.0
       ..topP = 1.0;
 
