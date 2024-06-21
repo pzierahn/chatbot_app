@@ -25,7 +25,7 @@ class LLMModels {
 
   static const LLMModel claudeSonnet = LLMModel(
     title: 'Claude Sonnet',
-    model: 'anthropic.claude-3-sonnet-20240229-v1:0',
+    model: 'anthropic.claude-3-5-sonnet-20240620-v1:0',
     provider: 'Anthropic',
   );
 
