@@ -66,7 +66,7 @@ class LLMModels {
   static LLMModel fromModel(String model) {
     return all.firstWhere(
       (element) => element.model == model,
-      orElse: () => gpt4,
+      orElse: () => claudeSonnet,
     );
   }
 }
