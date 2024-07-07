@@ -1,5 +1,7 @@
 import 'package:braingain_app/utils/breakpoint_m3.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class PromptInput extends StatefulWidget {
   const PromptInput({
@@ -22,14 +24,48 @@ class PromptInput extends StatefulWidget {
 }
 
 class _PromptInputState extends State<PromptInput> {
+  /// Callback to the parent widget when the prompt is submitted.
   ValueChanged<String>? get onPromptSubmit => widget.onPromptSubmit;
 
+  /// Controller for the text field.
   final _controller = TextEditingController();
+
+  /// Form key for text field validation.
   final _formKey = GlobalKey<FormState>();
+
+  // Distinguish between shift-Enter and Enter. If shift is pressed, we want to
+  // insert a new line. If not, we want to submit the prompt.
+  late final _focusNode = FocusNode(
+    onKeyEvent: (FocusNode node, KeyEvent event) {
+      final notShiftPressed = HardwareKeyboard.instance.isShiftPressed;
+      final enterPressed = event.logicalKey.keyLabel == 'Enter';
+      final isDownEvent = event is KeyDownEvent;
+
+      if (!notShiftPressed && enterPressed && isDownEvent) {
+        _onPromptSubmit();
+        return KeyEventResult.handled;
+      }
+
+      return KeyEventResult.ignored;
+    },
+  );
+
+  /// Submit the prompt if it is valid.
+  void _onPromptSubmit() {
+    final valid =
+        _formKey.currentState!.validate() && _controller.text.isNotEmpty;
+
+    if (valid) {
+      onPromptSubmit?.call(_controller.text.trim());
+      _controller.clear();
+    }
+  }
 
   @override
   void initState() {
     super.initState();
+
+    // Set the initial value of the text field.
     _controller.text = widget.prompt ?? '';
   }
 
@@ -73,10 +109,25 @@ class _PromptInputState extends State<PromptInput> {
       );
     }
 
+    TextInputType? keyboardType = TextInputType.text;
+    FocusNode? focusNode;
+
+    if (kIsWeb) {
+      //
+      // If the platform is web, we need to use the multiline keyboard to allow
+      // the user to submit the prompt by pressing the enter key.
+      //
+
+      keyboardType = TextInputType.multiline;
+      focusNode = _focusNode;
+    }
+
     return Form(
       key: _formKey,
       child: TextFormField(
         controller: _controller,
+        focusNode: focusNode,
+        keyboardType: keyboardType,
         enabled: onPromptSubmit != null,
         maxLines: null,
         style: textStyle,
@@ -87,7 +138,6 @@ class _PromptInputState extends State<PromptInput> {
           }
           return null;
         },
-        keyboardType: TextInputType.text,
         decoration: InputDecoration(
           prefixIcon: widget.prefixIcon,
           hintText: widget.hintText ?? 'Type a question or prompt...',
@@ -95,16 +145,8 @@ class _PromptInputState extends State<PromptInput> {
           suffix: suffix,
           border: InputBorder.none,
         ),
-        onFieldSubmitted: onPromptSubmit != null
-            ? (value) {
-                final valid = _formKey.currentState!.validate() &&
-                    _controller.text.isNotEmpty;
-                if (valid) {
-                  onPromptSubmit?.call(value.trim());
-                  _controller.clear();
-                }
-              }
-            : null,
+        onFieldSubmitted:
+            onPromptSubmit != null ? (_) => _onPromptSubmit() : null,
       ),
     );
   }
