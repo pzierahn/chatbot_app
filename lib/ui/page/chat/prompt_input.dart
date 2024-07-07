@@ -80,7 +80,6 @@ class _PromptInputState extends State<PromptInput> {
         enabled: onPromptSubmit != null,
         maxLines: null,
         style: textStyle,
-        minLines: 1,
         validator: (value) {
           value = value?.trim();
           if (value == null || value.isEmpty) {
