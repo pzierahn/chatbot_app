@@ -16,6 +16,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 /// The full set of known editions.
 class Edition extends $pb.ProtobufEnum {
   static const Edition EDITION_UNKNOWN = Edition._(0, _omitEnumNames ? '' : 'EDITION_UNKNOWN');
+  static const Edition EDITION_LEGACY = Edition._(900, _omitEnumNames ? '' : 'EDITION_LEGACY');
   static const Edition EDITION_PROTO2 = Edition._(998, _omitEnumNames ? '' : 'EDITION_PROTO2');
   static const Edition EDITION_PROTO3 = Edition._(999, _omitEnumNames ? '' : 'EDITION_PROTO3');
   static const Edition EDITION_2023 = Edition._(1000, _omitEnumNames ? '' : 'EDITION_2023');
@@ -29,6 +30,7 @@ class Edition extends $pb.ProtobufEnum {
 
   static const $core.List<Edition> values = <Edition> [
     EDITION_UNKNOWN,
+    EDITION_LEGACY,
     EDITION_PROTO2,
     EDITION_PROTO3,
     EDITION_2023,

@@ -37,7 +37,7 @@ class CompletionRequest extends $pb.GeneratedMessage {
   factory CompletionRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CompletionRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CompletionRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CompletionRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'documentId')
     ..aOS(2, _omitFieldNames ? '' : 'prompt')
     ..aOM<ModelOptions>(3, _omitFieldNames ? '' : 'modelOptions', subBuilder: ModelOptions.create)
@@ -109,7 +109,7 @@ class CompletionResponse extends $pb.GeneratedMessage {
   factory CompletionResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CompletionResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CompletionResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CompletionResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'completion')
     ..hasRequiredFields = false
   ;
@@ -167,7 +167,7 @@ class BatchRequest extends $pb.GeneratedMessage {
   factory BatchRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory BatchRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BatchRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BatchRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
     ..pPS(1, _omitFieldNames ? '' : 'documentIds')
     ..pPS(2, _omitFieldNames ? '' : 'prompts')
     ..aOM<ModelOptions>(3, _omitFieldNames ? '' : 'modelOptions', subBuilder: ModelOptions.create)
@@ -239,7 +239,7 @@ class BatchResponse_Completion extends $pb.GeneratedMessage {
   factory BatchResponse_Completion.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory BatchResponse_Completion.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BatchResponse.Completion', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BatchResponse.Completion', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'documentId', $pb.PbFieldType.OU3)
     ..aOS(2, _omitFieldNames ? '' : 'documentTitle')
     ..a<$core.int>(3, _omitFieldNames ? '' : 'prompt', $pb.PbFieldType.OU3)
@@ -331,7 +331,7 @@ class BatchResponse extends $pb.GeneratedMessage {
   factory BatchResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory BatchResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BatchResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BatchResponse', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
     ..pPS(1, _omitFieldNames ? '' : 'documentIds')
     ..pPS(2, _omitFieldNames ? '' : 'prompts')
     ..pPS(3, _omitFieldNames ? '' : 'promptTitle')
@@ -375,13 +375,18 @@ class BatchResponse extends $pb.GeneratedMessage {
 
 class Prompt extends $pb.GeneratedMessage {
   factory Prompt({
-    $core.String? threadID,
+    $core.String? threadId,
+    $core.String? collectionId,
     $core.String? prompt,
     ModelOptions? modelOptions,
+    RetrievalOptions? retrievalOptions,
   }) {
     final $result = create();
-    if (threadID != null) {
-      $result.threadID = threadID;
+    if (threadId != null) {
+      $result.threadId = threadId;
+    }
+    if (collectionId != null) {
+      $result.collectionId = collectionId;
     }
     if (prompt != null) {
       $result.prompt = prompt;
@@ -389,16 +394,21 @@ class Prompt extends $pb.GeneratedMessage {
     if (modelOptions != null) {
       $result.modelOptions = modelOptions;
     }
+    if (retrievalOptions != null) {
+      $result.retrievalOptions = retrievalOptions;
+    }
     return $result;
   }
   Prompt._() : super();
   factory Prompt.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Prompt.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Prompt', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'threadID', protoName: 'threadID')
-    ..aOS(2, _omitFieldNames ? '' : 'prompt')
-    ..aOM<ModelOptions>(3, _omitFieldNames ? '' : 'modelOptions', subBuilder: ModelOptions.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Prompt', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'threadId')
+    ..aOS(2, _omitFieldNames ? '' : 'collectionId')
+    ..aOS(3, _omitFieldNames ? '' : 'prompt')
+    ..aOM<ModelOptions>(4, _omitFieldNames ? '' : 'modelOptions', subBuilder: ModelOptions.create)
+    ..aOM<RetrievalOptions>(5, _omitFieldNames ? '' : 'retrievalOptions', subBuilder: RetrievalOptions.create)
     ..hasRequiredFields = false
   ;
 
@@ -423,110 +433,17 @@ class Prompt extends $pb.GeneratedMessage {
   static Prompt getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Prompt>(create);
   static Prompt? _defaultInstance;
 
+  /// Thread ID to post the message to
   @$pb.TagNumber(1)
-  $core.String get threadID => $_getSZ(0);
+  $core.String get threadId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set threadID($core.String v) { $_setString(0, v); }
+  set threadId($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasThreadID() => $_has(0);
+  $core.bool hasThreadId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearThreadID() => clearField(1);
+  void clearThreadId() => clearField(1);
 
-  @$pb.TagNumber(2)
-  $core.String get prompt => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set prompt($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasPrompt() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearPrompt() => clearField(2);
-
-  @$pb.TagNumber(3)
-  ModelOptions get modelOptions => $_getN(2);
-  @$pb.TagNumber(3)
-  set modelOptions(ModelOptions v) { setField(3, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasModelOptions() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearModelOptions() => clearField(3);
-  @$pb.TagNumber(3)
-  ModelOptions ensureModelOptions() => $_ensure(2);
-}
-
-class ThreadPrompt extends $pb.GeneratedMessage {
-  factory ThreadPrompt({
-    $core.String? prompt,
-    $core.String? collectionId,
-    ModelOptions? modelOptions,
-    $core.double? threshold,
-    $core.int? limit,
-    $core.Iterable<$core.String>? documentIds,
-  }) {
-    final $result = create();
-    if (prompt != null) {
-      $result.prompt = prompt;
-    }
-    if (collectionId != null) {
-      $result.collectionId = collectionId;
-    }
-    if (modelOptions != null) {
-      $result.modelOptions = modelOptions;
-    }
-    if (threshold != null) {
-      $result.threshold = threshold;
-    }
-    if (limit != null) {
-      $result.limit = limit;
-    }
-    if (documentIds != null) {
-      $result.documentIds.addAll(documentIds);
-    }
-    return $result;
-  }
-  ThreadPrompt._() : super();
-  factory ThreadPrompt.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ThreadPrompt.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ThreadPrompt', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'prompt')
-    ..aOS(2, _omitFieldNames ? '' : 'collectionId')
-    ..aOM<ModelOptions>(3, _omitFieldNames ? '' : 'modelOptions', subBuilder: ModelOptions.create)
-    ..a<$core.double>(4, _omitFieldNames ? '' : 'threshold', $pb.PbFieldType.OF)
-    ..a<$core.int>(5, _omitFieldNames ? '' : 'limit', $pb.PbFieldType.OU3)
-    ..pPS(6, _omitFieldNames ? '' : 'documentIds')
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  ThreadPrompt clone() => ThreadPrompt()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  ThreadPrompt copyWith(void Function(ThreadPrompt) updates) => super.copyWith((message) => updates(message as ThreadPrompt)) as ThreadPrompt;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static ThreadPrompt create() => ThreadPrompt._();
-  ThreadPrompt createEmptyInstance() => create();
-  static $pb.PbList<ThreadPrompt> createRepeated() => $pb.PbList<ThreadPrompt>();
-  @$core.pragma('dart2js:noInline')
-  static ThreadPrompt getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ThreadPrompt>(create);
-  static ThreadPrompt? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get prompt => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set prompt($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasPrompt() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearPrompt() => clearField(1);
-
+  /// Collection ID to post the message to
   @$pb.TagNumber(2)
   $core.String get collectionId => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -536,50 +453,51 @@ class ThreadPrompt extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearCollectionId() => clearField(2);
 
+  /// Prompt to generate completion
   @$pb.TagNumber(3)
-  ModelOptions get modelOptions => $_getN(2);
+  $core.String get prompt => $_getSZ(2);
   @$pb.TagNumber(3)
-  set modelOptions(ModelOptions v) { setField(3, v); }
+  set prompt($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasModelOptions() => $_has(2);
+  $core.bool hasPrompt() => $_has(2);
   @$pb.TagNumber(3)
-  void clearModelOptions() => clearField(3);
-  @$pb.TagNumber(3)
-  ModelOptions ensureModelOptions() => $_ensure(2);
+  void clearPrompt() => clearField(3);
+
+  /// Model options
+  @$pb.TagNumber(4)
+  ModelOptions get modelOptions => $_getN(3);
+  @$pb.TagNumber(4)
+  set modelOptions(ModelOptions v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasModelOptions() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearModelOptions() => clearField(4);
+  @$pb.TagNumber(4)
+  ModelOptions ensureModelOptions() => $_ensure(3);
 
   /// Search options
-  @$pb.TagNumber(4)
-  $core.double get threshold => $_getN(3);
-  @$pb.TagNumber(4)
-  set threshold($core.double v) { $_setFloat(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasThreshold() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearThreshold() => clearField(4);
-
   @$pb.TagNumber(5)
-  $core.int get limit => $_getIZ(4);
+  RetrievalOptions get retrievalOptions => $_getN(4);
   @$pb.TagNumber(5)
-  set limit($core.int v) { $_setUnsignedInt32(4, v); }
+  set retrievalOptions(RetrievalOptions v) { setField(5, v); }
   @$pb.TagNumber(5)
-  $core.bool hasLimit() => $_has(4);
+  $core.bool hasRetrievalOptions() => $_has(4);
   @$pb.TagNumber(5)
-  void clearLimit() => clearField(5);
-
-  @$pb.TagNumber(6)
-  $core.List<$core.String> get documentIds => $_getList(5);
+  void clearRetrievalOptions() => clearField(5);
+  @$pb.TagNumber(5)
+  RetrievalOptions ensureRetrievalOptions() => $_ensure(4);
 }
 
 class ModelOptions extends $pb.GeneratedMessage {
   factory ModelOptions({
-    $core.String? model,
+    $core.String? modelId,
     $core.double? temperature,
     $core.int? maxTokens,
     $core.double? topP,
   }) {
     final $result = create();
-    if (model != null) {
-      $result.model = model;
+    if (modelId != null) {
+      $result.modelId = modelId;
     }
     if (temperature != null) {
       $result.temperature = temperature;
@@ -596,8 +514,8 @@ class ModelOptions extends $pb.GeneratedMessage {
   factory ModelOptions.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ModelOptions.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ModelOptions', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'model')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ModelOptions', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'modelId')
     ..a<$core.double>(2, _omitFieldNames ? '' : 'temperature', $pb.PbFieldType.OF)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'maxTokens', $pb.PbFieldType.OU3)
     ..a<$core.double>(4, _omitFieldNames ? '' : 'topP', $pb.PbFieldType.OF)
@@ -626,13 +544,13 @@ class ModelOptions extends $pb.GeneratedMessage {
   static ModelOptions? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get model => $_getSZ(0);
+  $core.String get modelId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set model($core.String v) { $_setString(0, v); }
+  set modelId($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasModel() => $_has(0);
+  $core.bool hasModelId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearModel() => clearField(1);
+  void clearModelId() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.double get temperature => $_getN(1);
@@ -662,16 +580,95 @@ class ModelOptions extends $pb.GeneratedMessage {
   void clearTopP() => clearField(4);
 }
 
+class RetrievalOptions extends $pb.GeneratedMessage {
+  factory RetrievalOptions({
+    $core.bool? enabled,
+    $core.double? threshold,
+    $core.int? documents,
+  }) {
+    final $result = create();
+    if (enabled != null) {
+      $result.enabled = enabled;
+    }
+    if (threshold != null) {
+      $result.threshold = threshold;
+    }
+    if (documents != null) {
+      $result.documents = documents;
+    }
+    return $result;
+  }
+  RetrievalOptions._() : super();
+  factory RetrievalOptions.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory RetrievalOptions.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'RetrievalOptions', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'enabled')
+    ..a<$core.double>(2, _omitFieldNames ? '' : 'threshold', $pb.PbFieldType.OF)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'documents', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  RetrievalOptions clone() => RetrievalOptions()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  RetrievalOptions copyWith(void Function(RetrievalOptions) updates) => super.copyWith((message) => updates(message as RetrievalOptions)) as RetrievalOptions;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static RetrievalOptions create() => RetrievalOptions._();
+  RetrievalOptions createEmptyInstance() => create();
+  static $pb.PbList<RetrievalOptions> createRepeated() => $pb.PbList<RetrievalOptions>();
+  @$core.pragma('dart2js:noInline')
+  static RetrievalOptions getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RetrievalOptions>(create);
+  static RetrievalOptions? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get enabled => $_getBF(0);
+  @$pb.TagNumber(1)
+  set enabled($core.bool v) { $_setBool(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasEnabled() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEnabled() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.double get threshold => $_getN(1);
+  @$pb.TagNumber(2)
+  set threshold($core.double v) { $_setFloat(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasThreshold() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearThreshold() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get documents => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set documents($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasDocuments() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDocuments() => clearField(3);
+}
+
 class Message extends $pb.GeneratedMessage {
   factory Message({
-    $core.String? id,
+    $core.String? threadId,
     $core.String? prompt,
     $core.String? completion,
     $7.Timestamp? timestamp,
+    $core.Map<$core.String, $core.double>? references,
   }) {
     final $result = create();
-    if (id != null) {
-      $result.id = id;
+    if (threadId != null) {
+      $result.threadId = threadId;
     }
     if (prompt != null) {
       $result.prompt = prompt;
@@ -682,17 +679,21 @@ class Message extends $pb.GeneratedMessage {
     if (timestamp != null) {
       $result.timestamp = timestamp;
     }
+    if (references != null) {
+      $result.references.addAll(references);
+    }
     return $result;
   }
   Message._() : super();
   factory Message.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Message.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Message', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'id')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Message', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'threadId')
     ..aOS(2, _omitFieldNames ? '' : 'prompt')
     ..aOS(3, _omitFieldNames ? '' : 'completion')
     ..aOM<$7.Timestamp>(4, _omitFieldNames ? '' : 'timestamp', subBuilder: $7.Timestamp.create)
+    ..m<$core.String, $core.double>(5, _omitFieldNames ? '' : 'references', entryClassName: 'Message.ReferencesEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OF, packageName: const $pb.PackageName('chatbot.chat.v5'))
     ..hasRequiredFields = false
   ;
 
@@ -717,15 +718,17 @@ class Message extends $pb.GeneratedMessage {
   static Message getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Message>(create);
   static Message? _defaultInstance;
 
+  /// Unique ID of the message
   @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
+  $core.String get threadId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
+  set threadId($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
+  $core.bool hasThreadId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearId() => clearField(1);
+  void clearThreadId() => clearField(1);
 
+  /// Prompt used to generate the message
   @$pb.TagNumber(2)
   $core.String get prompt => $_getSZ(1);
   @$pb.TagNumber(2)
@@ -735,6 +738,7 @@ class Message extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearPrompt() => clearField(2);
 
+  /// Generated completion
   @$pb.TagNumber(3)
   $core.String get completion => $_getSZ(2);
   @$pb.TagNumber(3)
@@ -744,6 +748,7 @@ class Message extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearCompletion() => clearField(3);
 
+  /// Timestamp of the message
   @$pb.TagNumber(4)
   $7.Timestamp get timestamp => $_getN(3);
   @$pb.TagNumber(4)
@@ -754,14 +759,16 @@ class Message extends $pb.GeneratedMessage {
   void clearTimestamp() => clearField(4);
   @$pb.TagNumber(4)
   $7.Timestamp ensureTimestamp() => $_ensure(3);
+
+  /// ReferenceIDs and their scores
+  @$pb.TagNumber(5)
+  $core.Map<$core.String, $core.double> get references => $_getMap(4);
 }
 
 class Thread extends $pb.GeneratedMessage {
   factory Thread({
     $core.String? id,
     $core.Iterable<Message>? messages,
-    $core.Iterable<$core.String>? referenceIDs,
-    $core.Map<$core.String, $core.double>? referenceScores,
   }) {
     final $result = create();
     if (id != null) {
@@ -770,23 +777,15 @@ class Thread extends $pb.GeneratedMessage {
     if (messages != null) {
       $result.messages.addAll(messages);
     }
-    if (referenceIDs != null) {
-      $result.referenceIDs.addAll(referenceIDs);
-    }
-    if (referenceScores != null) {
-      $result.referenceScores.addAll(referenceScores);
-    }
     return $result;
   }
   Thread._() : super();
   factory Thread.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Thread.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Thread', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Thread', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..pc<Message>(2, _omitFieldNames ? '' : 'messages', $pb.PbFieldType.PM, subBuilder: Message.create)
-    ..pPS(3, _omitFieldNames ? '' : 'referenceIDs', protoName: 'referenceIDs')
-    ..m<$core.String, $core.double>(4, _omitFieldNames ? '' : 'referenceScores', entryClassName: 'Thread.ReferenceScoresEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OF, packageName: const $pb.PackageName('chatbot.chat.v4'))
     ..hasRequiredFields = false
   ;
 
@@ -822,12 +821,6 @@ class Thread extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(2)
   $core.List<Message> get messages => $_getList(1);
-
-  @$pb.TagNumber(3)
-  $core.List<$core.String> get referenceIDs => $_getList(2);
-
-  @$pb.TagNumber(4)
-  $core.Map<$core.String, $core.double> get referenceScores => $_getMap(3);
 }
 
 class ThreadID extends $pb.GeneratedMessage {
@@ -844,7 +837,7 @@ class ThreadID extends $pb.GeneratedMessage {
   factory ThreadID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ThreadID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ThreadID', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ThreadID', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..hasRequiredFields = false
   ;
@@ -898,7 +891,7 @@ class MessageID extends $pb.GeneratedMessage {
   factory MessageID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory MessageID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageID', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageID', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'threadId')
     ..hasRequiredFields = false
@@ -958,7 +951,7 @@ class ThreadIDs extends $pb.GeneratedMessage {
   factory ThreadIDs.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ThreadIDs.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ThreadIDs', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v4'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ThreadIDs', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
     ..pPS(1, _omitFieldNames ? '' : 'ids')
     ..hasRequiredFields = false
   ;

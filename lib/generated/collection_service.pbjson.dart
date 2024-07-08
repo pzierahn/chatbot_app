@@ -31,14 +31,12 @@ const Collection$json = {
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
-    {'1': 'documentCount', '3': 3, '4': 1, '5': 13, '10': 'documentCount'},
   ],
 };
 
 /// Descriptor for `Collection`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List collectionDescriptor = $convert.base64Decode(
-    'CgpDb2xsZWN0aW9uEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEiQKDWRvY3'
-    'VtZW50Q291bnQYAyABKA1SDWRvY3VtZW50Q291bnQ=');
+    'CgpDb2xsZWN0aW9uEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1l');
 
 @$core.Deprecated('Use collectionsDescriptor instead')
 const Collections$json = {

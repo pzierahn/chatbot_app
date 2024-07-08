@@ -18,11 +18,31 @@ const CppFeatures$json = {
   '1': 'CppFeatures',
   '2': [
     {'1': 'legacy_closed_enum', '3': 1, '4': 1, '5': 8, '8': {}, '10': 'legacyClosedEnum'},
+    {'1': 'string_type', '3': 2, '4': 1, '5': 14, '6': '.pb.CppFeatures.StringType', '8': {}, '10': 'stringType'},
+  ],
+  '4': [CppFeatures_StringType$json],
+};
+
+@$core.Deprecated('Use cppFeaturesDescriptor instead')
+const CppFeatures_StringType$json = {
+  '1': 'StringType',
+  '2': [
+    {'1': 'STRING_TYPE_UNKNOWN', '2': 0},
+    {'1': 'VIEW', '2': 1},
+    {'1': 'CORD', '2': 2},
+    {'1': 'STRING', '2': 3},
   ],
 };
 
 /// Descriptor for `CppFeatures`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List cppFeaturesDescriptor = $convert.base64Decode(
-    'CgtDcHBGZWF0dXJlcxJQChJsZWdhY3lfY2xvc2VkX2VudW0YASABKAhCIogBAZgBBJgBAaIBCR'
-    'IEdHJ1ZRjmB6IBChIFZmFsc2UY5wdSEGxlZ2FjeUNsb3NlZEVudW0=');
+    'CgtDcHBGZWF0dXJlcxKNAgoSbGVnYWN5X2Nsb3NlZF9lbnVtGAEgASgIQt4BiAEBmAEEmAEBog'
+    'EJEgR0cnVlGOYHogEKEgVmYWxzZRjnB7IBuAEI6AcQ6AcarwFUaGUgbGVnYWN5IGNsb3NlZCBl'
+    'bnVtIHRyZWF0bWVudCBpbiBDKysgaXMgZGVwcmVjYXRlZCBhbmQgaXMgc2NoZWR1bGVkIHRvIG'
+    'JlIHJlbW92ZWQgaW4gZWRpdGlvbiAyMDI1LiAgTWFyayBlbnVtIHR5cGUgb24gdGhlIGVudW0g'
+    'ZGVmaW5pdGlvbnMgdGhlbXNlbHZlcyByYXRoZXIgdGhhbiBvbiBmaWVsZHMuUhBsZWdhY3lDbG'
+    '9zZWRFbnVtEmYKC3N0cmluZ190eXBlGAIgASgOMhoucGIuQ3BwRmVhdHVyZXMuU3RyaW5nVHlw'
+    'ZUIpiAEBmAEEmAEBogELEgZTVFJJTkcY5geiAQkSBFZJRVcY6QeyAQMI6AdSCnN0cmluZ1R5cG'
+    'UiRQoKU3RyaW5nVHlwZRIXChNTVFJJTkdfVFlQRV9VTktOT1dOEAASCAoEVklFVxABEggKBENP'
+    'UkQQAhIKCgZTVFJJTkcQAw==');
 

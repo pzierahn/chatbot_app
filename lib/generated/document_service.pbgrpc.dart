@@ -15,7 +15,6 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'collection_service.pb.dart' as $2;
 import 'document_service.pb.dart' as $5;
 import 'google/protobuf/empty.pb.dart' as $0;
 
@@ -31,10 +30,6 @@ class DocumentServiceClient extends $grpc.Client {
       '/chatbot.documents.v2.DocumentService/Get',
       ($5.DocumentID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $5.Document.fromBuffer(value));
-  static final _$getHeader = $grpc.ClientMethod<$5.DocumentID, $5.DocumentHeader>(
-      '/chatbot.documents.v2.DocumentService/GetHeader',
-      ($5.DocumentID value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $5.DocumentHeader.fromBuffer(value));
   static final _$rename = $grpc.ClientMethod<$5.RenameDocument, $0.Empty>(
       '/chatbot.documents.v2.DocumentService/Rename',
       ($5.RenameDocument value) => value.writeToBuffer(),
@@ -51,14 +46,6 @@ class DocumentServiceClient extends $grpc.Client {
       '/chatbot.documents.v2.DocumentService/Search',
       ($5.SearchQuery value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $5.SearchResults.fromBuffer(value));
-  static final _$getReferences = $grpc.ClientMethod<$5.ReferenceIDs, $5.References>(
-      '/chatbot.documents.v2.DocumentService/GetReferences',
-      ($5.ReferenceIDs value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $5.References.fromBuffer(value));
-  static final _$mapDocumentNames = $grpc.ClientMethod<$2.CollectionID, $5.DocumentNames>(
-      '/chatbot.documents.v2.DocumentService/MapDocumentNames',
-      ($2.CollectionID value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $5.DocumentNames.fromBuffer(value));
 
   DocumentServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -72,10 +59,6 @@ class DocumentServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$5.Document> get($5.DocumentID request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$get, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$5.DocumentHeader> getHeader($5.DocumentID request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$getHeader, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.Empty> rename($5.RenameDocument request, {$grpc.CallOptions? options}) {
@@ -92,14 +75,6 @@ class DocumentServiceClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$5.SearchResults> search($5.SearchQuery request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$search, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$5.References> getReferences($5.ReferenceIDs request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$getReferences, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$5.DocumentNames> mapDocumentNames($2.CollectionID request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$mapDocumentNames, request, options: options);
   }
 }
 
@@ -122,13 +97,6 @@ abstract class DocumentServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $5.DocumentID.fromBuffer(value),
         ($5.Document value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.DocumentID, $5.DocumentHeader>(
-        'GetHeader',
-        getHeader_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $5.DocumentID.fromBuffer(value),
-        ($5.DocumentHeader value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$5.RenameDocument, $0.Empty>(
         'Rename',
         rename_Pre,
@@ -157,20 +125,6 @@ abstract class DocumentServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $5.SearchQuery.fromBuffer(value),
         ($5.SearchResults value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.ReferenceIDs, $5.References>(
-        'GetReferences',
-        getReferences_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $5.ReferenceIDs.fromBuffer(value),
-        ($5.References value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.CollectionID, $5.DocumentNames>(
-        'MapDocumentNames',
-        mapDocumentNames_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $2.CollectionID.fromBuffer(value),
-        ($5.DocumentNames value) => value.writeToBuffer()));
   }
 
   $async.Future<$5.DocumentList> list_Pre($grpc.ServiceCall call, $async.Future<$5.DocumentFilter> request) async {
@@ -179,10 +133,6 @@ abstract class DocumentServiceBase extends $grpc.Service {
 
   $async.Future<$5.Document> get_Pre($grpc.ServiceCall call, $async.Future<$5.DocumentID> request) async {
     return get(call, await request);
-  }
-
-  $async.Future<$5.DocumentHeader> getHeader_Pre($grpc.ServiceCall call, $async.Future<$5.DocumentID> request) async {
-    return getHeader(call, await request);
   }
 
   $async.Future<$0.Empty> rename_Pre($grpc.ServiceCall call, $async.Future<$5.RenameDocument> request) async {
@@ -201,21 +151,10 @@ abstract class DocumentServiceBase extends $grpc.Service {
     return search(call, await request);
   }
 
-  $async.Future<$5.References> getReferences_Pre($grpc.ServiceCall call, $async.Future<$5.ReferenceIDs> request) async {
-    return getReferences(call, await request);
-  }
-
-  $async.Future<$5.DocumentNames> mapDocumentNames_Pre($grpc.ServiceCall call, $async.Future<$2.CollectionID> request) async {
-    return mapDocumentNames(call, await request);
-  }
-
   $async.Future<$5.DocumentList> list($grpc.ServiceCall call, $5.DocumentFilter request);
   $async.Future<$5.Document> get($grpc.ServiceCall call, $5.DocumentID request);
-  $async.Future<$5.DocumentHeader> getHeader($grpc.ServiceCall call, $5.DocumentID request);
   $async.Future<$0.Empty> rename($grpc.ServiceCall call, $5.RenameDocument request);
   $async.Future<$0.Empty> delete($grpc.ServiceCall call, $5.DocumentID request);
   $async.Stream<$5.IndexProgress> index($grpc.ServiceCall call, $5.IndexJob request);
   $async.Future<$5.SearchResults> search($grpc.ServiceCall call, $5.SearchQuery request);
-  $async.Future<$5.References> getReferences($grpc.ServiceCall call, $5.ReferenceIDs request);
-  $async.Future<$5.DocumentNames> mapDocumentNames($grpc.ServiceCall call, $2.CollectionID request);
 }

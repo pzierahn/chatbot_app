@@ -67,7 +67,6 @@ class Collection extends $pb.GeneratedMessage {
   factory Collection({
     $core.String? id,
     $core.String? name,
-    $core.int? documentCount,
   }) {
     final $result = create();
     if (id != null) {
@@ -75,9 +74,6 @@ class Collection extends $pb.GeneratedMessage {
     }
     if (name != null) {
       $result.name = name;
-    }
-    if (documentCount != null) {
-      $result.documentCount = documentCount;
     }
     return $result;
   }
@@ -88,7 +84,6 @@ class Collection extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Collection', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.collections.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'name')
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'documentCount', $pb.PbFieldType.OU3, protoName: 'documentCount')
     ..hasRequiredFields = false
   ;
 
@@ -130,15 +125,6 @@ class Collection extends $pb.GeneratedMessage {
   $core.bool hasName() => $_has(1);
   @$pb.TagNumber(2)
   void clearName() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.int get documentCount => $_getIZ(2);
-  @$pb.TagNumber(3)
-  set documentCount($core.int v) { $_setUnsignedInt32(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasDocumentCount() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearDocumentCount() => clearField(3);
 }
 
 class Collections extends $pb.GeneratedMessage {

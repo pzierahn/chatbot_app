@@ -21,34 +21,30 @@ import 'google/protobuf/empty.pb.dart' as $0;
 
 export 'chat_service.pb.dart';
 
-@$pb.GrpcServiceName('chatbot.chat.v4.ChatService')
+@$pb.GrpcServiceName('chatbot.chat.v5.ChatService')
 class ChatServiceClient extends $grpc.Client {
-  static final _$startThread = $grpc.ClientMethod<$3.ThreadPrompt, $3.Thread>(
-      '/chatbot.chat.v4.ChatService/StartThread',
-      ($3.ThreadPrompt value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.Thread.fromBuffer(value));
   static final _$postMessage = $grpc.ClientMethod<$3.Prompt, $3.Message>(
-      '/chatbot.chat.v4.ChatService/PostMessage',
+      '/chatbot.chat.v5.ChatService/PostMessage',
       ($3.Prompt value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.Message.fromBuffer(value));
   static final _$getThread = $grpc.ClientMethod<$3.ThreadID, $3.Thread>(
-      '/chatbot.chat.v4.ChatService/GetThread',
+      '/chatbot.chat.v5.ChatService/GetThread',
       ($3.ThreadID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.Thread.fromBuffer(value));
   static final _$listThreadIDs = $grpc.ClientMethod<$2.Collection, $3.ThreadIDs>(
-      '/chatbot.chat.v4.ChatService/ListThreadIDs',
+      '/chatbot.chat.v5.ChatService/ListThreadIDs',
       ($2.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.ThreadIDs.fromBuffer(value));
   static final _$deleteThread = $grpc.ClientMethod<$3.ThreadID, $0.Empty>(
-      '/chatbot.chat.v4.ChatService/DeleteThread',
+      '/chatbot.chat.v5.ChatService/DeleteThread',
       ($3.ThreadID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$deleteMessageFromThread = $grpc.ClientMethod<$3.MessageID, $0.Empty>(
-      '/chatbot.chat.v4.ChatService/DeleteMessageFromThread',
+      '/chatbot.chat.v5.ChatService/DeleteMessageFromThread',
       ($3.MessageID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$completion = $grpc.ClientMethod<$3.CompletionRequest, $3.CompletionResponse>(
-      '/chatbot.chat.v4.ChatService/Completion',
+      '/chatbot.chat.v5.ChatService/Completion',
       ($3.CompletionRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.CompletionResponse.fromBuffer(value));
 
@@ -57,10 +53,6 @@ class ChatServiceClient extends $grpc.Client {
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options,
         interceptors: interceptors);
-
-  $grpc.ResponseFuture<$3.Thread> startThread($3.ThreadPrompt request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$startThread, request, options: options);
-  }
 
   $grpc.ResponseFuture<$3.Message> postMessage($3.Prompt request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$postMessage, request, options: options);
@@ -87,18 +79,11 @@ class ChatServiceClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('chatbot.chat.v4.ChatService')
+@$pb.GrpcServiceName('chatbot.chat.v5.ChatService')
 abstract class ChatServiceBase extends $grpc.Service {
-  $core.String get $name => 'chatbot.chat.v4.ChatService';
+  $core.String get $name => 'chatbot.chat.v5.ChatService';
 
   ChatServiceBase() {
-    $addMethod($grpc.ServiceMethod<$3.ThreadPrompt, $3.Thread>(
-        'StartThread',
-        startThread_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $3.ThreadPrompt.fromBuffer(value),
-        ($3.Thread value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$3.Prompt, $3.Message>(
         'PostMessage',
         postMessage_Pre,
@@ -143,10 +128,6 @@ abstract class ChatServiceBase extends $grpc.Service {
         ($3.CompletionResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$3.Thread> startThread_Pre($grpc.ServiceCall call, $async.Future<$3.ThreadPrompt> request) async {
-    return startThread(call, await request);
-  }
-
   $async.Future<$3.Message> postMessage_Pre($grpc.ServiceCall call, $async.Future<$3.Prompt> request) async {
     return postMessage(call, await request);
   }
@@ -171,7 +152,6 @@ abstract class ChatServiceBase extends $grpc.Service {
     return completion(call, await request);
   }
 
-  $async.Future<$3.Thread> startThread($grpc.ServiceCall call, $3.ThreadPrompt request);
   $async.Future<$3.Message> postMessage($grpc.ServiceCall call, $3.Prompt request);
   $async.Future<$3.Thread> getThread($grpc.ServiceCall call, $3.ThreadID request);
   $async.Future<$3.ThreadIDs> listThreadIDs($grpc.ServiceCall call, $2.Collection request);

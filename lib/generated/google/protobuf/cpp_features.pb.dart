@@ -13,13 +13,21 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'cpp_features.pbenum.dart';
+
+export 'cpp_features.pbenum.dart';
+
 class CppFeatures extends $pb.GeneratedMessage {
   factory CppFeatures({
     $core.bool? legacyClosedEnum,
+    CppFeatures_StringType? stringType,
   }) {
     final $result = create();
     if (legacyClosedEnum != null) {
       $result.legacyClosedEnum = legacyClosedEnum;
+    }
+    if (stringType != null) {
+      $result.stringType = stringType;
     }
     return $result;
   }
@@ -29,6 +37,7 @@ class CppFeatures extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CppFeatures', package: const $pb.PackageName(_omitMessageNames ? '' : 'pb'), createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'legacyClosedEnum')
+    ..e<CppFeatures_StringType>(2, _omitFieldNames ? '' : 'stringType', $pb.PbFieldType.OE, defaultOrMaker: CppFeatures_StringType.STRING_TYPE_UNKNOWN, valueOf: CppFeatures_StringType.valueOf, enumValues: CppFeatures_StringType.values)
     ..hasRequiredFields = false
   ;
 
@@ -65,6 +74,15 @@ class CppFeatures extends $pb.GeneratedMessage {
   $core.bool hasLegacyClosedEnum() => $_has(0);
   @$pb.TagNumber(1)
   void clearLegacyClosedEnum() => clearField(1);
+
+  @$pb.TagNumber(2)
+  CppFeatures_StringType get stringType => $_getN(1);
+  @$pb.TagNumber(2)
+  set stringType(CppFeatures_StringType v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasStringType() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearStringType() => clearField(2);
 }
 
 class Cpp_features {

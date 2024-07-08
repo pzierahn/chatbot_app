@@ -30,14 +30,10 @@ class CollectionServiceClient extends $grpc.Client {
       '/chatbot.collections.v2.CollectionService/List',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Collections.fromBuffer(value));
-  static final _$create = $grpc.ClientMethod<$2.Collection, $2.Collection>(
-      '/chatbot.collections.v2.CollectionService/Create',
+  static final _$store = $grpc.ClientMethod<$2.Collection, $0.Empty>(
+      '/chatbot.collections.v2.CollectionService/Store',
       ($2.Collection value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $2.Collection.fromBuffer(value));
-  static final _$update = $grpc.ClientMethod<$2.Collection, $2.Collection>(
-      '/chatbot.collections.v2.CollectionService/Update',
-      ($2.Collection value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $2.Collection.fromBuffer(value));
+      ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$delete = $grpc.ClientMethod<$2.Collection, $0.Empty>(
       '/chatbot.collections.v2.CollectionService/Delete',
       ($2.Collection value) => value.writeToBuffer(),
@@ -57,12 +53,8 @@ class CollectionServiceClient extends $grpc.Client {
     return $createUnaryCall(_$list, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.Collection> create($2.Collection request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$create, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$2.Collection> update($2.Collection request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$update, request, options: options);
+  $grpc.ResponseFuture<$0.Empty> store($2.Collection request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$store, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.Empty> delete($2.Collection request, {$grpc.CallOptions? options}) {
@@ -89,20 +81,13 @@ abstract class CollectionServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($2.Collections value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.Collection, $2.Collection>(
-        'Create',
-        create_Pre,
+    $addMethod($grpc.ServiceMethod<$2.Collection, $0.Empty>(
+        'Store',
+        store_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $2.Collection.fromBuffer(value),
-        ($2.Collection value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.Collection, $2.Collection>(
-        'Update',
-        update_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $2.Collection.fromBuffer(value),
-        ($2.Collection value) => value.writeToBuffer()));
+        ($0.Empty value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$2.Collection, $0.Empty>(
         'Delete',
         delete_Pre,
@@ -120,12 +105,8 @@ abstract class CollectionServiceBase extends $grpc.Service {
     return list(call, await request);
   }
 
-  $async.Future<$2.Collection> create_Pre($grpc.ServiceCall call, $async.Future<$2.Collection> request) async {
-    return create(call, await request);
-  }
-
-  $async.Future<$2.Collection> update_Pre($grpc.ServiceCall call, $async.Future<$2.Collection> request) async {
-    return update(call, await request);
+  $async.Future<$0.Empty> store_Pre($grpc.ServiceCall call, $async.Future<$2.Collection> request) async {
+    return store(call, await request);
   }
 
   $async.Future<$0.Empty> delete_Pre($grpc.ServiceCall call, $async.Future<$2.Collection> request) async {
@@ -134,7 +115,6 @@ abstract class CollectionServiceBase extends $grpc.Service {
 
   $async.Future<$2.Collection> get($grpc.ServiceCall call, $2.CollectionID request);
   $async.Future<$2.Collections> list($grpc.ServiceCall call, $0.Empty request);
-  $async.Future<$2.Collection> create($grpc.ServiceCall call, $2.Collection request);
-  $async.Future<$2.Collection> update($grpc.ServiceCall call, $2.Collection request);
+  $async.Future<$0.Empty> store($grpc.ServiceCall call, $2.Collection request);
   $async.Future<$0.Empty> delete($grpc.ServiceCall call, $2.Collection request);
 }
