@@ -11,7 +11,7 @@ import 'package:grpc/grpc_or_grpcweb.dart';
 
 final _channel = GrpcOrGrpcWebClientChannel.grpc(
   'localhost',
-  port: 9055,
+  port: 8869,
   options: const ChannelOptions(
     credentials: ChannelCredentials.insecure(),
   ),
