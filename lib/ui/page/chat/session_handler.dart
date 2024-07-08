@@ -9,8 +9,10 @@ import 'package:flutter/rendering.dart';
 class ThreadState {
   Thread? thread;
   ModelOptions? modelOptions;
+  RetrievalOptions? retrievalOptions;
   VoidCallback onUpdate = () {};
 
+  String? collectionId;
   String? pendingPrompt;
   Object? error;
 
@@ -55,9 +57,11 @@ class ThreadState {
     required VoidCallback notifier,
   }) {
     final obj = ThreadState()
+      ..collectionId = prompt.collectionId
       ..setLoading(prompt.prompt)
       ..onUpdate = notifier
-      ..modelOptions = prompt.modelOptions;
+      ..modelOptions = prompt.modelOptions
+      ..retrievalOptions = prompt.retrievalOptions;
 
     chat.postMessage(prompt).then((value) {
       final thread = Thread()
@@ -87,8 +91,10 @@ class ThreadState {
 
     final prompt = Prompt()
       ..threadId = thread!.id
+      ..collectionId = collectionId!
       ..prompt = text
-      ..modelOptions = modelOptions!;
+      ..modelOptions = modelOptions!
+      ..retrievalOptions = retrievalOptions!;
 
     setLoading(text);
 
