@@ -51,8 +51,6 @@ class _ThreadViewState extends State<ThreadView> {
           _ChatFragment(
             titleStyle: titleStyle,
             message: message,
-            referenceIDs: (inx == 0) ? thread?.referenceIDs : null,
-            referenceScores: (inx == 0) ? thread?.referenceScores : null,
             onDelete: () => ConfirmDialog.show(
               context,
               title: (inx == 0) ? 'Delete Thread?' : 'Delete Message?',
@@ -146,30 +144,26 @@ class _ThreadViewState extends State<ThreadView> {
 class _ChatFragment extends StatelessWidget {
   const _ChatFragment({
     required this.message,
-    this.referenceIDs,
-    this.referenceScores,
     this.titleStyle,
     this.onDelete,
   });
 
   final TextStyle? titleStyle;
   final Message message;
-  final List<String>? referenceIDs;
-  final Map<String, double>? referenceScores;
   final VoidCallback? onDelete;
 
   void _showSources(BuildContext context) {
-    if (referenceIDs == null) {
-      return;
-    }
-
-    showDialog(
-      context: context,
-      builder: (context) => SourcesDialog(
-        references: referenceIDs!,
-        scores: referenceScores ?? const {},
-      ),
-    );
+    // if (referenceIDs == null) {
+    //   return;
+    // }
+    //
+    // showDialog(
+    //   context: context,
+    //   builder: (context) => SourcesDialog(
+    //     references: referenceIDs!,
+    //     scores: referenceScores ?? const {},
+    //   ),
+    // );
   }
 
   void _copyToClipboard(BuildContext context) {
@@ -229,13 +223,13 @@ class _ChatFragment extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              if (referenceIDs != null)
-                IconButton(
-                  tooltip: 'References',
-                  icon: const Icon(Icons.attach_file_outlined),
-                  onPressed: () => _showSources(context),
-                  color: colors.outline,
-                ),
+              // if (referenceIDs != null)
+              //   IconButton(
+              //     tooltip: 'References',
+              //     icon: const Icon(Icons.attach_file_outlined),
+              //     onPressed: () => _showSources(context),
+              //     color: colors.outline,
+              //   ),
               IconButton(
                 tooltip: 'Copy',
                 icon: const Icon(Icons.copy_outlined),

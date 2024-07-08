@@ -91,9 +91,12 @@ class _CollectionsBodyState extends State<CollectionsBody> {
               }
 
               collections
-                  .store(Collection()..name = name)
-                  .then((_) => _update())
-                  .catchError((error) => ErrorSnackBar.show(context, error));
+                  .insert(Collection()..name = name)
+                  .then((_) => _update(), onError: (error) {
+                ErrorSnackBar.show(context, error);
+              }).catchError((error) {
+                ErrorSnackBar.show(context, error);
+              });
             },
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),

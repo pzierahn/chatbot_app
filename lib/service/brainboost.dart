@@ -56,9 +56,14 @@ class CollectionServiceClientAuth {
     return _service.list(request, options: options);
   }
 
-  Future<Empty> store(Collection request, {CallOptions? options}) async {
+  Future<Empty> insert(Collection request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.store(request, options: options);
+    return _service.insert(request, options: options);
+  }
+
+  Future<Empty> update(Collection request, {CallOptions? options}) async {
+    options = await _mergeAuth(options);
+    return _service.update(request, options: options);
   }
 
   Future<Empty> delete(Collection request, {CallOptions? options}) async {

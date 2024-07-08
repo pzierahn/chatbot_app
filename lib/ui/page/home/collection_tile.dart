@@ -71,7 +71,7 @@ class CollectionsTile extends StatelessWidget {
     }
 
     collections
-        .store(Collection()
+        .update(Collection()
           ..id = collection.id
           ..name = name)
         .then((_) => onUpdate?.call())

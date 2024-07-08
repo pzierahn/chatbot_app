@@ -45,13 +45,13 @@ class ThreadDetails extends StatelessWidget {
             icon: const Icon(Icons.attach_file),
             tooltip: 'References',
             onPressed: () async {
-              showDialog(
-                context: context,
-                builder: (context) => SourcesDialog(
-                  references: thread.referenceIDs,
-                  scores: thread.referenceScores,
-                ),
-              );
+              // showDialog(
+              //   context: context,
+              //   builder: (context) => SourcesDialog(
+              //     references: thread.referenceIDs,
+              //     scores: thread.referenceScores,
+              //   ),
+              // );
             },
           ),
         ],

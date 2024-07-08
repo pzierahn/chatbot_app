@@ -26,8 +26,12 @@ class CollectionServiceClient extends $grpc.Client {
       '/chatbot.collections.v3.CollectionService/List',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $3.Collections.fromBuffer(value));
-  static final _$store = $grpc.ClientMethod<$3.Collection, $0.Empty>(
-      '/chatbot.collections.v3.CollectionService/Store',
+  static final _$insert = $grpc.ClientMethod<$3.Collection, $0.Empty>(
+      '/chatbot.collections.v3.CollectionService/Insert',
+      ($3.Collection value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$update = $grpc.ClientMethod<$3.Collection, $0.Empty>(
+      '/chatbot.collections.v3.CollectionService/Update',
       ($3.Collection value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$delete = $grpc.ClientMethod<$3.Collection, $0.Empty>(
@@ -45,8 +49,12 @@ class CollectionServiceClient extends $grpc.Client {
     return $createUnaryCall(_$list, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.Empty> store($3.Collection request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$store, request, options: options);
+  $grpc.ResponseFuture<$0.Empty> insert($3.Collection request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$insert, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.Empty> update($3.Collection request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$update, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.Empty> delete($3.Collection request, {$grpc.CallOptions? options}) {
@@ -67,8 +75,15 @@ abstract class CollectionServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($3.Collections value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$3.Collection, $0.Empty>(
-        'Store',
-        store_Pre,
+        'Insert',
+        insert_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $3.Collection.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$3.Collection, $0.Empty>(
+        'Update',
+        update_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $3.Collection.fromBuffer(value),
@@ -86,8 +101,12 @@ abstract class CollectionServiceBase extends $grpc.Service {
     return list(call, await request);
   }
 
-  $async.Future<$0.Empty> store_Pre($grpc.ServiceCall call, $async.Future<$3.Collection> request) async {
-    return store(call, await request);
+  $async.Future<$0.Empty> insert_Pre($grpc.ServiceCall call, $async.Future<$3.Collection> request) async {
+    return insert(call, await request);
+  }
+
+  $async.Future<$0.Empty> update_Pre($grpc.ServiceCall call, $async.Future<$3.Collection> request) async {
+    return update(call, await request);
   }
 
   $async.Future<$0.Empty> delete_Pre($grpc.ServiceCall call, $async.Future<$3.Collection> request) async {
@@ -95,6 +114,7 @@ abstract class CollectionServiceBase extends $grpc.Service {
   }
 
   $async.Future<$3.Collections> list($grpc.ServiceCall call, $0.Empty request);
-  $async.Future<$0.Empty> store($grpc.ServiceCall call, $3.Collection request);
+  $async.Future<$0.Empty> insert($grpc.ServiceCall call, $3.Collection request);
+  $async.Future<$0.Empty> update($grpc.ServiceCall call, $3.Collection request);
   $async.Future<$0.Empty> delete($grpc.ServiceCall call, $3.Collection request);
 }

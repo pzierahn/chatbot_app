@@ -60,7 +60,10 @@ class ThreadState {
       ..modelOptions = prompt.modelOptions;
 
     chat.postMessage(prompt).then((value) {
-      obj.setData(value);
+      final thread = Thread()
+        ..id = value.threadId
+        ..messages.add(value);
+      obj.setData(thread);
     }).catchError((error) {
       debugPrint('Error starting thread: $error');
       obj.setError(error);
