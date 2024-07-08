@@ -15,8 +15,8 @@ class PromptButtons extends StatefulWidget {
     required this.collection,
   });
 
-  final ThreadPrompt prompt;
-  final ValueChanged<ThreadPrompt>? onPromptChanged;
+  final Prompt prompt;
+  final ValueChanged<Prompt>? onPromptChanged;
   final Collection collection;
 
   @override
@@ -24,16 +24,16 @@ class PromptButtons extends StatefulWidget {
 }
 
 class _PromptButtonsState extends State<PromptButtons> {
-  ValueChanged<ThreadPrompt>? get onPromptChanged => widget.onPromptChanged;
+  ValueChanged<Prompt>? get onPromptChanged => widget.onPromptChanged;
 
-  ThreadPrompt get prompt => widget.prompt;
+  Prompt get prompt => widget.prompt;
 
   DocumentSelection _docs = DocumentSelection();
 
   void _onSelectDocuments(DocumentSelection docs) {
     setState(() {
-      prompt.documentIds.clear();
-      prompt.documentIds.addAll(docs.getDocuments());
+      // prompt.documentIds.clear();
+      // prompt.documentIds.addAll(docs.getDocuments());
       _docs = docs;
     });
 
@@ -51,12 +51,12 @@ class _PromptButtonsState extends State<PromptButtons> {
   void _onSelectModel() async {
     final model = await SelectModelDialog.show(
       context: context,
-      model: prompt.modelOptions.model,
+      model: prompt.modelOptions.modelId,
     );
 
     if (model != null) {
       setState(() {
-        prompt.modelOptions.model = model;
+        prompt.modelOptions.modelId = model;
       });
 
       onPromptChanged?.call(prompt);
@@ -90,7 +90,7 @@ class _PromptButtonsState extends State<PromptButtons> {
               )),
             ),
             subtitle: Text(
-              LLMModels.fromModel(prompt.modelOptions.model).title,
+              LLMModels.fromModel(prompt.modelOptions.modelId).title,
               style: text.bodySmall?.merge(TextStyle(
                 color: color.outline,
               )),

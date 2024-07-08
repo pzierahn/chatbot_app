@@ -15,6 +15,56 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'google/protobuf/timestamp.pb.dart' as $7;
 
+class CollectionId extends $pb.GeneratedMessage {
+  factory CollectionId({
+    $core.String? id,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    return $result;
+  }
+  CollectionId._() : super();
+  factory CollectionId.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CollectionId.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CollectionId', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CollectionId clone() => CollectionId()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CollectionId copyWith(void Function(CollectionId) updates) => super.copyWith((message) => updates(message as CollectionId)) as CollectionId;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CollectionId create() => CollectionId._();
+  CollectionId createEmptyInstance() => create();
+  static $pb.PbList<CollectionId> createRepeated() => $pb.PbList<CollectionId>();
+  @$core.pragma('dart2js:noInline')
+  static CollectionId getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CollectionId>(create);
+  static CollectionId? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+}
+
 class CompletionRequest extends $pb.GeneratedMessage {
   factory CompletionRequest({
     $core.String? documentId,

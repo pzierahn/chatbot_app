@@ -71,7 +71,7 @@ class CollectionsTile extends StatelessWidget {
     }
 
     collections
-        .update(Collection()
+        .store(Collection()
           ..id = collection.id
           ..name = name)
         .then((_) => onUpdate?.call())
@@ -134,12 +134,6 @@ class CollectionsTile extends StatelessWidget {
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,
           vertical: 8,
-        ),
-        subtitle: Text(
-          '${collection.documentCount} Document${collection.documentCount == 1 ? '' : 's'}',
-          style: text.bodySmall?.merge(TextStyle(
-            color: color.outline,
-          )),
         ),
         onTap: () {
           ChatPage.open(context, collection).then((_) => onUpdate?.call());

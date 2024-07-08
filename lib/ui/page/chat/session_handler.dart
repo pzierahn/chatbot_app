@@ -51,7 +51,7 @@ class ThreadState {
   }
 
   static ThreadState start({
-    required ThreadPrompt prompt,
+    required Prompt prompt,
     required VoidCallback notifier,
   }) {
     final obj = ThreadState()
@@ -59,7 +59,7 @@ class ThreadState {
       ..onUpdate = notifier
       ..modelOptions = prompt.modelOptions;
 
-    chat.startThread(prompt).then((value) {
+    chat.postMessage(prompt).then((value) {
       obj.setData(value);
     }).catchError((error) {
       debugPrint('Error starting thread: $error');
@@ -83,7 +83,7 @@ class ThreadState {
     }
 
     final prompt = Prompt()
-      ..threadID = thread!.id
+      ..threadId = thread!.id
       ..prompt = text
       ..modelOptions = modelOptions!;
 
@@ -113,21 +113,23 @@ class ThreadState {
     });
   }
 
-  void deleteMessageFromThread(String id) {
+  void deleteMessageFromThread(int index) {
     if (thread == null) {
       throw StateError('Thread not started');
     }
 
-    final messageId = MessageID()
-      ..id = id
-      ..threadId = thread!.id;
+    // TODO: Implement deleteMessageFromThread
 
-    chat.deleteMessageFromThread(messageId).then((_) {
-      thread!.messages.removeWhere((element) => element.id == id);
-      onUpdate();
-    }).catchError((error) {
-      debugPrint('Error deleting message: $error');
-      // TODO: Show snack-bar
-    });
+    // final messageId = MessageID()
+    //   ..id = id
+    //   ..threadId = thread!.id;
+    //
+    // chat.deleteMessageFromThread(messageId).then((_) {
+    //   thread!.messages.removeAt(index);
+    //   onUpdate();
+    // }).catchError((error) {
+    //   debugPrint('Error deleting message: $error');
+    //   // TODO: Show snack-bar
+    // });
   }
 }

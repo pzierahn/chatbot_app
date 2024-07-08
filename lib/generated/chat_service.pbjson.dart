@@ -13,6 +13,18 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
+@$core.Deprecated('Use collectionIdDescriptor instead')
+const CollectionId$json = {
+  '1': 'CollectionId',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+  ],
+};
+
+/// Descriptor for `CollectionId`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List collectionIdDescriptor = $convert.base64Decode(
+    'CgxDb2xsZWN0aW9uSWQSDgoCaWQYASABKAlSAmlk');
+
 @$core.Deprecated('Use completionRequestDescriptor instead')
 const CompletionRequest$json = {
   '1': 'CompletionRequest',

@@ -63,7 +63,7 @@ class _ThreadViewState extends State<ThreadView> {
                 if (inx == 0) {
                   widget.thread.deleteThread();
                 } else {
-                  widget.thread.deleteMessageFromThread(message.id);
+                  widget.thread.deleteMessageFromThread(inx);
                 }
               },
             ),

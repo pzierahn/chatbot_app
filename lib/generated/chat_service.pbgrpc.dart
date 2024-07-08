@@ -15,38 +15,37 @@ import 'dart:core' as $core;
 import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'chat_service.pb.dart' as $3;
-import 'collection_service.pb.dart' as $2;
+import 'chat_service.pb.dart' as $2;
 import 'google/protobuf/empty.pb.dart' as $0;
 
 export 'chat_service.pb.dart';
 
 @$pb.GrpcServiceName('chatbot.chat.v5.ChatService')
 class ChatServiceClient extends $grpc.Client {
-  static final _$postMessage = $grpc.ClientMethod<$3.Prompt, $3.Message>(
+  static final _$postMessage = $grpc.ClientMethod<$2.Prompt, $2.Message>(
       '/chatbot.chat.v5.ChatService/PostMessage',
-      ($3.Prompt value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.Message.fromBuffer(value));
-  static final _$getThread = $grpc.ClientMethod<$3.ThreadID, $3.Thread>(
+      ($2.Prompt value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.Message.fromBuffer(value));
+  static final _$getThread = $grpc.ClientMethod<$2.ThreadID, $2.Thread>(
       '/chatbot.chat.v5.ChatService/GetThread',
-      ($3.ThreadID value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.Thread.fromBuffer(value));
-  static final _$listThreadIDs = $grpc.ClientMethod<$2.Collection, $3.ThreadIDs>(
+      ($2.ThreadID value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.Thread.fromBuffer(value));
+  static final _$listThreadIDs = $grpc.ClientMethod<$2.CollectionId, $2.ThreadIDs>(
       '/chatbot.chat.v5.ChatService/ListThreadIDs',
-      ($2.Collection value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.ThreadIDs.fromBuffer(value));
-  static final _$deleteThread = $grpc.ClientMethod<$3.ThreadID, $0.Empty>(
+      ($2.CollectionId value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.ThreadIDs.fromBuffer(value));
+  static final _$deleteThread = $grpc.ClientMethod<$2.ThreadID, $0.Empty>(
       '/chatbot.chat.v5.ChatService/DeleteThread',
-      ($3.ThreadID value) => value.writeToBuffer(),
+      ($2.ThreadID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
-  static final _$deleteMessageFromThread = $grpc.ClientMethod<$3.MessageID, $0.Empty>(
+  static final _$deleteMessageFromThread = $grpc.ClientMethod<$2.MessageID, $0.Empty>(
       '/chatbot.chat.v5.ChatService/DeleteMessageFromThread',
-      ($3.MessageID value) => value.writeToBuffer(),
+      ($2.MessageID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
-  static final _$completion = $grpc.ClientMethod<$3.CompletionRequest, $3.CompletionResponse>(
+  static final _$completion = $grpc.ClientMethod<$2.CompletionRequest, $2.CompletionResponse>(
       '/chatbot.chat.v5.ChatService/Completion',
-      ($3.CompletionRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $3.CompletionResponse.fromBuffer(value));
+      ($2.CompletionRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $2.CompletionResponse.fromBuffer(value));
 
   ChatServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -54,27 +53,27 @@ class ChatServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$3.Message> postMessage($3.Prompt request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$2.Message> postMessage($2.Prompt request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$postMessage, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.Thread> getThread($3.ThreadID request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$2.Thread> getThread($2.ThreadID request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getThread, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.ThreadIDs> listThreadIDs($2.Collection request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$2.ThreadIDs> listThreadIDs($2.CollectionId request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$listThreadIDs, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.Empty> deleteThread($3.ThreadID request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$0.Empty> deleteThread($2.ThreadID request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deleteThread, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.Empty> deleteMessageFromThread($3.MessageID request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$0.Empty> deleteMessageFromThread($2.MessageID request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deleteMessageFromThread, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.CompletionResponse> completion($3.CompletionRequest request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$2.CompletionResponse> completion($2.CompletionRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$completion, request, options: options);
   }
 }
@@ -84,78 +83,78 @@ abstract class ChatServiceBase extends $grpc.Service {
   $core.String get $name => 'chatbot.chat.v5.ChatService';
 
   ChatServiceBase() {
-    $addMethod($grpc.ServiceMethod<$3.Prompt, $3.Message>(
+    $addMethod($grpc.ServiceMethod<$2.Prompt, $2.Message>(
         'PostMessage',
         postMessage_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.Prompt.fromBuffer(value),
-        ($3.Message value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.ThreadID, $3.Thread>(
+        ($core.List<$core.int> value) => $2.Prompt.fromBuffer(value),
+        ($2.Message value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.ThreadID, $2.Thread>(
         'GetThread',
         getThread_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.ThreadID.fromBuffer(value),
-        ($3.Thread value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.Collection, $3.ThreadIDs>(
+        ($core.List<$core.int> value) => $2.ThreadID.fromBuffer(value),
+        ($2.Thread value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.CollectionId, $2.ThreadIDs>(
         'ListThreadIDs',
         listThreadIDs_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $2.Collection.fromBuffer(value),
-        ($3.ThreadIDs value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.ThreadID, $0.Empty>(
+        ($core.List<$core.int> value) => $2.CollectionId.fromBuffer(value),
+        ($2.ThreadIDs value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.ThreadID, $0.Empty>(
         'DeleteThread',
         deleteThread_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.ThreadID.fromBuffer(value),
+        ($core.List<$core.int> value) => $2.ThreadID.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.MessageID, $0.Empty>(
+    $addMethod($grpc.ServiceMethod<$2.MessageID, $0.Empty>(
         'DeleteMessageFromThread',
         deleteMessageFromThread_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.MessageID.fromBuffer(value),
+        ($core.List<$core.int> value) => $2.MessageID.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.CompletionRequest, $3.CompletionResponse>(
+    $addMethod($grpc.ServiceMethod<$2.CompletionRequest, $2.CompletionResponse>(
         'Completion',
         completion_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $3.CompletionRequest.fromBuffer(value),
-        ($3.CompletionResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $2.CompletionRequest.fromBuffer(value),
+        ($2.CompletionResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$3.Message> postMessage_Pre($grpc.ServiceCall call, $async.Future<$3.Prompt> request) async {
+  $async.Future<$2.Message> postMessage_Pre($grpc.ServiceCall call, $async.Future<$2.Prompt> request) async {
     return postMessage(call, await request);
   }
 
-  $async.Future<$3.Thread> getThread_Pre($grpc.ServiceCall call, $async.Future<$3.ThreadID> request) async {
+  $async.Future<$2.Thread> getThread_Pre($grpc.ServiceCall call, $async.Future<$2.ThreadID> request) async {
     return getThread(call, await request);
   }
 
-  $async.Future<$3.ThreadIDs> listThreadIDs_Pre($grpc.ServiceCall call, $async.Future<$2.Collection> request) async {
+  $async.Future<$2.ThreadIDs> listThreadIDs_Pre($grpc.ServiceCall call, $async.Future<$2.CollectionId> request) async {
     return listThreadIDs(call, await request);
   }
 
-  $async.Future<$0.Empty> deleteThread_Pre($grpc.ServiceCall call, $async.Future<$3.ThreadID> request) async {
+  $async.Future<$0.Empty> deleteThread_Pre($grpc.ServiceCall call, $async.Future<$2.ThreadID> request) async {
     return deleteThread(call, await request);
   }
 
-  $async.Future<$0.Empty> deleteMessageFromThread_Pre($grpc.ServiceCall call, $async.Future<$3.MessageID> request) async {
+  $async.Future<$0.Empty> deleteMessageFromThread_Pre($grpc.ServiceCall call, $async.Future<$2.MessageID> request) async {
     return deleteMessageFromThread(call, await request);
   }
 
-  $async.Future<$3.CompletionResponse> completion_Pre($grpc.ServiceCall call, $async.Future<$3.CompletionRequest> request) async {
+  $async.Future<$2.CompletionResponse> completion_Pre($grpc.ServiceCall call, $async.Future<$2.CompletionRequest> request) async {
     return completion(call, await request);
   }
 
-  $async.Future<$3.Message> postMessage($grpc.ServiceCall call, $3.Prompt request);
-  $async.Future<$3.Thread> getThread($grpc.ServiceCall call, $3.ThreadID request);
-  $async.Future<$3.ThreadIDs> listThreadIDs($grpc.ServiceCall call, $2.Collection request);
-  $async.Future<$0.Empty> deleteThread($grpc.ServiceCall call, $3.ThreadID request);
-  $async.Future<$0.Empty> deleteMessageFromThread($grpc.ServiceCall call, $3.MessageID request);
-  $async.Future<$3.CompletionResponse> completion($grpc.ServiceCall call, $3.CompletionRequest request);
+  $async.Future<$2.Message> postMessage($grpc.ServiceCall call, $2.Prompt request);
+  $async.Future<$2.Thread> getThread($grpc.ServiceCall call, $2.ThreadID request);
+  $async.Future<$2.ThreadIDs> listThreadIDs($grpc.ServiceCall call, $2.CollectionId request);
+  $async.Future<$0.Empty> deleteThread($grpc.ServiceCall call, $2.ThreadID request);
+  $async.Future<$0.Empty> deleteMessageFromThread($grpc.ServiceCall call, $2.MessageID request);
+  $async.Future<$2.CompletionResponse> completion($grpc.ServiceCall call, $2.CompletionRequest request);
 }

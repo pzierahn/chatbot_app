@@ -8,7 +8,6 @@ import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
-import 'package:braingain_app/utils/document.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/illustrations.g.dart';
 
@@ -69,7 +68,7 @@ class _SearchDocumentsPageState extends State<_SearchDocumentsPage> {
     final query = SearchQuery()
       ..collectionId = widget.collection.id
       ..limit = 10
-      ..query = text;
+      ..text = text;
 
     documents.search(query).then((value) {
       setState(() => _results = value);
@@ -119,11 +118,9 @@ class _SearchDocumentsPageState extends State<_SearchDocumentsPage> {
       final docsNames = HashMap<String, String>();
       final chunks = <Chunk>[];
 
-      for (var doc in _results!.items) {
-        for (final chunk in doc.chunks) {
-          docsNames[chunk.id] = DocumentUtils.getTitle(doc.metadata);
-          chunks.add(chunk);
-        }
+      for (final chunk in _results!.chunks) {
+        docsNames[chunk.id] = _results!.documentNames[chunk.id] ?? '';
+        chunks.add(chunk);
       }
 
       chunks.sort((a, b) => _getScore(b.id).compareTo(_getScore(a.id)));
@@ -134,7 +131,7 @@ class _SearchDocumentsPageState extends State<_SearchDocumentsPage> {
             : 0.0;
 
         final title = '${docsNames[chunk.id]} '
-            'p.${chunk.index + 1} '
+            'p.${chunk.postion + 1} '
             '(${(score * 100).toStringAsFixed(0)}%)';
 
         children.add(

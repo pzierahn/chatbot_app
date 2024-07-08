@@ -7,13 +7,13 @@ class ParameterDialog extends StatefulWidget {
     required this.prompt,
   });
 
-  final ThreadPrompt prompt;
+  final Prompt prompt;
 
-  static Future<ThreadPrompt?> show(
+  static Future<Prompt?> show(
     BuildContext context,
-    ThreadPrompt prompt,
+    Prompt prompt,
   ) {
-    return showDialog<ThreadPrompt?>(
+    return showDialog<Prompt?>(
       context: context,
       builder: (context) {
         return AlertDialog(
@@ -49,7 +49,15 @@ class ParameterDialog extends StatefulWidget {
 }
 
 class _PromptOptionsState extends State<ParameterDialog> {
-  ThreadPrompt get prompt => widget.prompt;
+  Prompt get prompt => widget.prompt;
+
+  int get documents => prompt.retrievalOptions.documents;
+
+  set documents(int value) => prompt.retrievalOptions.documents = value;
+
+  double get threshold => prompt.retrievalOptions.threshold;
+
+  set threshold(double value) => prompt.retrievalOptions.threshold = value;
 
   ModelOptions get options => prompt.modelOptions;
 
@@ -61,10 +69,10 @@ class _PromptOptionsState extends State<ParameterDialog> {
     super.initState();
 
     _textLimit = TextEditingController(
-      text: prompt.limit.toString(),
+      text: documents.toString(),
     );
     _textThreshold = TextEditingController(
-      text: (prompt.threshold * 100).toStringAsFixed(0),
+      text: (prompt.retrievalOptions.threshold * 100).toStringAsFixed(0),
     );
   }
 
@@ -87,7 +95,7 @@ class _PromptOptionsState extends State<ParameterDialog> {
                   controller: _textLimit,
                   textAlign: TextAlign.end,
                   onSubmitted: (val) {
-                    setState(() => prompt.limit = int.parse(val));
+                    setState(() => documents = int.parse(val));
                   },
                   decoration: const InputDecoration.collapsed(
                     hintText: '0',
@@ -97,12 +105,12 @@ class _PromptOptionsState extends State<ParameterDialog> {
             ],
           ),
           subtitle: Slider(
-            value: prompt.limit.toDouble(),
+            value: documents.toDouble(),
             min: 0,
             max: 100,
             onChanged: (val) {
               _textLimit.text = val.toInt().toString();
-              setState(() => prompt.limit = val.toInt());
+              setState(() => documents = val.toInt());
             },
           ),
         ),
@@ -118,7 +126,7 @@ class _PromptOptionsState extends State<ParameterDialog> {
                   controller: _textThreshold,
                   textAlign: TextAlign.end,
                   onSubmitted: (val) {
-                    setState(() => prompt.threshold = int.parse(val) / 100.0);
+                    setState(() => threshold = int.parse(val) / 100.0);
                   },
                   decoration: const InputDecoration.collapsed(
                     hintText: '0',
@@ -128,12 +136,12 @@ class _PromptOptionsState extends State<ParameterDialog> {
             ],
           ),
           subtitle: Slider(
-            value: (prompt.threshold * 100),
+            value: (threshold * 100),
             min: 0,
             max: 100,
             onChanged: (val) {
               _textThreshold.text = val.toInt().toString();
-              setState(() => prompt.threshold = (val / 100));
+              setState(() => threshold = (val / 100));
             },
           ),
         ),

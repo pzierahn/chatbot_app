@@ -45,7 +45,7 @@ class _NotionPageState extends State<NotionPage> {
     });
 
     final model = ModelOptions()
-      ..model = LLMModels.claudeHaiku.model
+      ..modelId = LLMModels.claudeHaiku.model
       ..temperature = 1.0
       ..topP = 1.0
       ..maxTokens = 256;

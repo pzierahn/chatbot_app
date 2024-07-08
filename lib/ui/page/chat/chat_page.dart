@@ -103,22 +103,25 @@ class ChatBody extends StatefulWidget {
 class _ChatBodyState extends State<ChatBody> {
   final _threads = <ThreadState>[];
 
-  ThreadPrompt _prompt = ThreadPrompt();
+  Prompt _prompt = Prompt();
 
   @override
   void initState() {
     super.initState();
 
     final opts = ModelOptions()
-      ..model = LLMModels.claudeSonnet.model
+      ..modelId = LLMModels.claudeSonnet.model
       ..maxTokens = 2048
       ..temperature = 1.0
       ..topP = 1.0;
 
-    _prompt = ThreadPrompt()
+    final ragOpts = RetrievalOptions()
+      ..documents = 15
+      ..threshold = 0.25;
+
+    _prompt = Prompt()
       ..collectionId = widget.collection.id
-      ..limit = 15
-      ..threshold = 0.25
+      ..retrievalOptions = ragOpts
       ..modelOptions = opts;
   }
 
@@ -126,9 +129,9 @@ class _ChatBodyState extends State<ChatBody> {
   Widget build(BuildContext context) {
     final children = [];
 
-    if (widget.collection.documentCount == 0) {
-      children.add(DocumentWarning(collection: widget.collection));
-    }
+    // if (widget.collection.documentCount == 0) {
+    //   children.add(DocumentWarning(collection: widget.collection));
+    // }
 
     for (final thread in _threads) {
       children.add(ThreadView(thread: thread));
@@ -163,7 +166,7 @@ class _ChatBodyState extends State<ChatBody> {
 
                     setState(() {
                       _threads.add(threadState);
-                      _prompt.documentIds.clear();
+                      // _prompt.documentIds.clear();
                     });
                   },
                 ),

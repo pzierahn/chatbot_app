@@ -13,7 +13,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'chat_service.pb.dart' as $3;
+import 'chat_service.pb.dart' as $2;
 
 class NotionApiKey extends $pb.GeneratedMessage {
   factory NotionApiKey({
@@ -70,7 +70,7 @@ class NotionPrompt extends $pb.GeneratedMessage {
     $core.String? databaseID,
     $core.String? collectionID,
     $core.String? prompt,
-    $3.ModelOptions? modelOptions,
+    $2.ModelOptions? modelOptions,
   }) {
     final $result = create();
     if (databaseID != null) {
@@ -95,7 +95,7 @@ class NotionPrompt extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'databaseID', protoName: 'databaseID')
     ..aOS(2, _omitFieldNames ? '' : 'collectionID', protoName: 'collectionID')
     ..aOS(3, _omitFieldNames ? '' : 'prompt')
-    ..aOM<$3.ModelOptions>(4, _omitFieldNames ? '' : 'modelOptions', protoName: 'modelOptions', subBuilder: $3.ModelOptions.create)
+    ..aOM<$2.ModelOptions>(4, _omitFieldNames ? '' : 'modelOptions', protoName: 'modelOptions', subBuilder: $2.ModelOptions.create)
     ..hasRequiredFields = false
   ;
 
@@ -148,15 +148,15 @@ class NotionPrompt extends $pb.GeneratedMessage {
   void clearPrompt() => clearField(3);
 
   @$pb.TagNumber(4)
-  $3.ModelOptions get modelOptions => $_getN(3);
+  $2.ModelOptions get modelOptions => $_getN(3);
   @$pb.TagNumber(4)
-  set modelOptions($3.ModelOptions v) { setField(4, v); }
+  set modelOptions($2.ModelOptions v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasModelOptions() => $_has(3);
   @$pb.TagNumber(4)
   void clearModelOptions() => clearField(4);
   @$pb.TagNumber(4)
-  $3.ModelOptions ensureModelOptions() => $_ensure(3);
+  $2.ModelOptions ensureModelOptions() => $_ensure(3);
 }
 
 class ExecutionResult extends $pb.GeneratedMessage {

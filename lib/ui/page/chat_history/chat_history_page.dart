@@ -37,7 +37,7 @@ class ChatHistoryPage extends StatelessWidget {
         title: Text('History: ${collection.name}'),
       ),
       body: FutureBuilder<ThreadIDs>(
-          future: chat.listThreadIDs(Collection()..id = collection.id),
+          future: chat.listThreadIDs(CollectionId()..id = collection.id),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return ErrorBody(

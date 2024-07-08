@@ -6,24 +6,25 @@ import 'package:braingain_app/generated/document_service.pbgrpc.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:braingain_app/generated/notion.pbgrpc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
 
-// final _channel = GrpcOrGrpcWebClientChannel.grpc(
-//   'localhost',
-//   port: 9055,
-//   options: const ChannelOptions(
-//     credentials: ChannelCredentials.insecure(),
-//   ),
-// );
-
-final _channel = GrpcOrGrpcWebClientChannel.toSeparateEndpoints(
-  grpcHost: 'brainboost-services-2qkjmuus4a-ey.a.run.app',
-  grpcPort: 443,
-  grpcTransportSecure: true,
-  grpcWebHost: 'brainboost-gateway-2qkjmuus4a-ey.a.run.app',
-  grpcWebPort: 443,
-  grpcWebTransportSecure: true,
+final _channel = GrpcOrGrpcWebClientChannel.grpc(
+  'localhost',
+  port: 9055,
+  options: const ChannelOptions(
+    credentials: ChannelCredentials.insecure(),
+  ),
 );
+
+// final _channel = GrpcOrGrpcWebClientChannel.toSeparateEndpoints(
+//   grpcHost: 'brainboost-services-2qkjmuus4a-ey.a.run.app',
+//   grpcPort: 443,
+//   grpcTransportSecure: true,
+//   grpcWebHost: 'brainboost-gateway-2qkjmuus4a-ey.a.run.app',
+//   grpcWebPort: 443,
+//   grpcWebTransportSecure: true,
+// );
 
 final collections = CollectionServiceClientAuth();
 
@@ -50,24 +51,14 @@ Future<CallOptions> _mergeAuth(CallOptions? options) async {
 class CollectionServiceClientAuth {
   final _service = CollectionServiceClient(_channel);
 
-  Future<Collection> get(CollectionID request, {CallOptions? options}) async {
-    options = await _mergeAuth(options);
-    return _service.get(request, options: options);
-  }
-
   Future<Collections> list(Empty request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
     return _service.list(request, options: options);
   }
 
-  Future<Collection> create(Collection request, {CallOptions? options}) async {
+  Future<Empty> store(Collection request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.create(request, options: options);
-  }
-
-  Future<Collection> update(Collection request, {CallOptions? options}) async {
-    options = await _mergeAuth(options);
-    return _service.update(request, options: options);
+    return _service.store(request, options: options);
   }
 
   Future<Empty> delete(Collection request, {CallOptions? options}) async {
@@ -109,12 +100,6 @@ class DocumentServiceClientAuth {
     options = await _mergeAuth(options);
     return _service.search(request, options: options);
   }
-
-  Future<References> getReferences(ReferenceIDs request,
-      {CallOptions? options}) async {
-    options = await _mergeAuth(options);
-    return _service.getReferences(request, options: options);
-  }
 }
 
 class AccountServiceClientAuth {
@@ -140,14 +125,6 @@ class AccountServiceClientAuth {
 class ChatServiceClientAuth {
   final _service = ChatServiceClient(_channel);
 
-  Future<Thread> startThread(
-    ThreadPrompt request, {
-    CallOptions? options,
-  }) async {
-    options = await _mergeAuth(options);
-    return _service.startThread(request, options: options);
-  }
-
   Future<Message> postMessage(
     Prompt request, {
     CallOptions? options,
@@ -165,7 +142,7 @@ class ChatServiceClientAuth {
   }
 
   Future<ThreadIDs> listThreadIDs(
-    Collection request, {
+    CollectionId request, {
     CallOptions? options,
   }) async {
     options = await _mergeAuth(options);

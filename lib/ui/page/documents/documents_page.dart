@@ -72,13 +72,9 @@ class _CollectionPageState extends State<_CollectionPage> {
       return;
     }
 
-    final rename = RenameDocument()..id = docId;
-
-    if (meta.hasWeb()) {
-      rename.webpageTitle = title;
-    } else {
-      rename.fileName = title;
-    }
+    final rename = RenameDocument()
+      ..id = docId
+      ..name = title;
 
     documents.rename(rename).then((_) {
       SimpleSnackBar.show(

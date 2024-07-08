@@ -13,18 +13,6 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
-@$core.Deprecated('Use collectionIDDescriptor instead')
-const CollectionID$json = {
-  '1': 'CollectionID',
-  '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-  ],
-};
-
-/// Descriptor for `CollectionID`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List collectionIDDescriptor = $convert.base64Decode(
-    'CgxDb2xsZWN0aW9uSUQSDgoCaWQYASABKAlSAmlk');
-
 @$core.Deprecated('Use collectionDescriptor instead')
 const Collection$json = {
   '1': 'Collection',
@@ -42,12 +30,12 @@ final $typed_data.Uint8List collectionDescriptor = $convert.base64Decode(
 const Collections$json = {
   '1': 'Collections',
   '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.chatbot.collections.v2.Collection', '10': 'items'},
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.chatbot.collections.v3.Collection', '10': 'items'},
   ],
 };
 
 /// Descriptor for `Collections`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List collectionsDescriptor = $convert.base64Decode(
-    'CgtDb2xsZWN0aW9ucxI4CgVpdGVtcxgBIAMoCzIiLmNoYXRib3QuY29sbGVjdGlvbnMudjIuQ2'
+    'CgtDb2xsZWN0aW9ucxI4CgVpdGVtcxgBIAMoCzIiLmNoYXRib3QuY29sbGVjdGlvbnMudjMuQ2'
     '9sbGVjdGlvblIFaXRlbXM=');
 
