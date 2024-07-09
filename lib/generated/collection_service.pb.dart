@@ -31,7 +31,7 @@ class Collection extends $pb.GeneratedMessage {
   factory Collection.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Collection.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Collection', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.collections.v3'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Collection', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.collections.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'name')
     ..hasRequiredFields = false
@@ -77,8 +77,8 @@ class Collection extends $pb.GeneratedMessage {
   void clearName() => clearField(2);
 }
 
-class Collections extends $pb.GeneratedMessage {
-  factory Collections({
+class CollectionList extends $pb.GeneratedMessage {
+  factory CollectionList({
     $core.Iterable<Collection>? items,
   }) {
     final $result = create();
@@ -87,11 +87,11 @@ class Collections extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  Collections._() : super();
-  factory Collections.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Collections.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  CollectionList._() : super();
+  factory CollectionList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CollectionList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Collections', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.collections.v3'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CollectionList', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.collections.v1'), createEmptyInstance: create)
     ..pc<Collection>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Collection.create)
     ..hasRequiredFields = false
   ;
@@ -100,22 +100,22 @@ class Collections extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  Collections clone() => Collections()..mergeFromMessage(this);
+  CollectionList clone() => CollectionList()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Collections copyWith(void Function(Collections) updates) => super.copyWith((message) => updates(message as Collections)) as Collections;
+  CollectionList copyWith(void Function(CollectionList) updates) => super.copyWith((message) => updates(message as CollectionList)) as CollectionList;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static Collections create() => Collections._();
-  Collections createEmptyInstance() => create();
-  static $pb.PbList<Collections> createRepeated() => $pb.PbList<Collections>();
+  static CollectionList create() => CollectionList._();
+  CollectionList createEmptyInstance() => create();
+  static $pb.PbList<CollectionList> createRepeated() => $pb.PbList<CollectionList>();
   @$core.pragma('dart2js:noInline')
-  static Collections getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Collections>(create);
-  static Collections? _defaultInstance;
+  static CollectionList getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CollectionList>(create);
+  static CollectionList? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.List<Collection> get items => $_getList(0);

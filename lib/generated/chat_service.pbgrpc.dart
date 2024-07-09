@@ -20,34 +20,34 @@ import 'google/protobuf/empty.pb.dart' as $0;
 
 export 'chat_service.pb.dart';
 
-@$pb.GrpcServiceName('chatbot.chat.v5.ChatService')
-class ChatServiceClient extends $grpc.Client {
+@$pb.GrpcServiceName('chatbot.chat.v1.Chat')
+class ChatClient extends $grpc.Client {
   static final _$postMessage = $grpc.ClientMethod<$2.Prompt, $2.Message>(
-      '/chatbot.chat.v5.ChatService/PostMessage',
+      '/chatbot.chat.v1.Chat/PostMessage',
       ($2.Prompt value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Message.fromBuffer(value));
   static final _$getThread = $grpc.ClientMethod<$2.ThreadID, $2.Thread>(
-      '/chatbot.chat.v5.ChatService/GetThread',
+      '/chatbot.chat.v1.Chat/GetThread',
       ($2.ThreadID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Thread.fromBuffer(value));
   static final _$listThreadIDs = $grpc.ClientMethod<$2.CollectionId, $2.ThreadIDs>(
-      '/chatbot.chat.v5.ChatService/ListThreadIDs',
+      '/chatbot.chat.v1.Chat/ListThreadIDs',
       ($2.CollectionId value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.ThreadIDs.fromBuffer(value));
   static final _$deleteThread = $grpc.ClientMethod<$2.ThreadID, $0.Empty>(
-      '/chatbot.chat.v5.ChatService/DeleteThread',
+      '/chatbot.chat.v1.Chat/DeleteThread',
       ($2.ThreadID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$deleteMessageFromThread = $grpc.ClientMethod<$2.MessageID, $0.Empty>(
-      '/chatbot.chat.v5.ChatService/DeleteMessageFromThread',
+      '/chatbot.chat.v1.Chat/DeleteMessageFromThread',
       ($2.MessageID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$completion = $grpc.ClientMethod<$2.CompletionRequest, $2.CompletionResponse>(
-      '/chatbot.chat.v5.ChatService/Completion',
+      '/chatbot.chat.v1.Chat/Completion',
       ($2.CompletionRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.CompletionResponse.fromBuffer(value));
 
-  ChatServiceClient($grpc.ClientChannel channel,
+  ChatClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options,
@@ -78,9 +78,9 @@ class ChatServiceClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('chatbot.chat.v5.ChatService')
+@$pb.GrpcServiceName('chatbot.chat.v1.Chat')
 abstract class ChatServiceBase extends $grpc.Service {
-  $core.String get $name => 'chatbot.chat.v5.ChatService';
+  $core.String get $name => 'chatbot.chat.v1.Chat';
 
   ChatServiceBase() {
     $addMethod($grpc.ServiceMethod<$2.Prompt, $2.Message>(

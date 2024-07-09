@@ -26,16 +26,16 @@ const Collection$json = {
 final $typed_data.Uint8List collectionDescriptor = $convert.base64Decode(
     'CgpDb2xsZWN0aW9uEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1l');
 
-@$core.Deprecated('Use collectionsDescriptor instead')
-const Collections$json = {
-  '1': 'Collections',
+@$core.Deprecated('Use collectionListDescriptor instead')
+const CollectionList$json = {
+  '1': 'CollectionList',
   '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.chatbot.collections.v3.Collection', '10': 'items'},
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.chatbot.collections.v1.Collection', '10': 'items'},
   ],
 };
 
-/// Descriptor for `Collections`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List collectionsDescriptor = $convert.base64Decode(
-    'CgtDb2xsZWN0aW9ucxI4CgVpdGVtcxgBIAMoCzIiLmNoYXRib3QuY29sbGVjdGlvbnMudjMuQ2'
-    '9sbGVjdGlvblIFaXRlbXM=');
+/// Descriptor for `CollectionList`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List collectionListDescriptor = $convert.base64Decode(
+    'Cg5Db2xsZWN0aW9uTGlzdBI4CgVpdGVtcxgBIAMoCzIiLmNoYXRib3QuY29sbGVjdGlvbnMudj'
+    'EuQ29sbGVjdGlvblIFaXRlbXM=');
 

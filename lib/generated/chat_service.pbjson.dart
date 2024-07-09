@@ -31,7 +31,7 @@ const CompletionRequest$json = {
   '2': [
     {'1': 'document_id', '3': 1, '4': 1, '5': 9, '10': 'documentId'},
     {'1': 'prompt', '3': 2, '4': 1, '5': 9, '10': 'prompt'},
-    {'1': 'model_options', '3': 3, '4': 1, '5': 11, '6': '.chatbot.chat.v5.ModelOptions', '10': 'modelOptions'},
+    {'1': 'model_options', '3': 3, '4': 1, '5': 11, '6': '.chatbot.chat.v1.ModelOptions', '10': 'modelOptions'},
   ],
 };
 
@@ -39,7 +39,7 @@ const CompletionRequest$json = {
 final $typed_data.Uint8List completionRequestDescriptor = $convert.base64Decode(
     'ChFDb21wbGV0aW9uUmVxdWVzdBIfCgtkb2N1bWVudF9pZBgBIAEoCVIKZG9jdW1lbnRJZBIWCg'
     'Zwcm9tcHQYAiABKAlSBnByb21wdBJCCg1tb2RlbF9vcHRpb25zGAMgASgLMh0uY2hhdGJvdC5j'
-    'aGF0LnY1Lk1vZGVsT3B0aW9uc1IMbW9kZWxPcHRpb25z');
+    'aGF0LnYxLk1vZGVsT3B0aW9uc1IMbW9kZWxPcHRpb25z');
 
 @$core.Deprecated('Use completionResponseDescriptor instead')
 const CompletionResponse$json = {
@@ -59,7 +59,7 @@ const BatchRequest$json = {
   '2': [
     {'1': 'document_ids', '3': 1, '4': 3, '5': 9, '10': 'documentIds'},
     {'1': 'prompts', '3': 2, '4': 3, '5': 9, '10': 'prompts'},
-    {'1': 'model_options', '3': 3, '4': 1, '5': 11, '6': '.chatbot.chat.v5.ModelOptions', '10': 'modelOptions'},
+    {'1': 'model_options', '3': 3, '4': 1, '5': 11, '6': '.chatbot.chat.v1.ModelOptions', '10': 'modelOptions'},
   ],
 };
 
@@ -67,7 +67,7 @@ const BatchRequest$json = {
 final $typed_data.Uint8List batchRequestDescriptor = $convert.base64Decode(
     'CgxCYXRjaFJlcXVlc3QSIQoMZG9jdW1lbnRfaWRzGAEgAygJUgtkb2N1bWVudElkcxIYCgdwcm'
     '9tcHRzGAIgAygJUgdwcm9tcHRzEkIKDW1vZGVsX29wdGlvbnMYAyABKAsyHS5jaGF0Ym90LmNo'
-    'YXQudjUuTW9kZWxPcHRpb25zUgxtb2RlbE9wdGlvbnM=');
+    'YXQudjEuTW9kZWxPcHRpb25zUgxtb2RlbE9wdGlvbnM=');
 
 @$core.Deprecated('Use batchResponseDescriptor instead')
 const BatchResponse$json = {
@@ -76,7 +76,7 @@ const BatchResponse$json = {
     {'1': 'document_ids', '3': 1, '4': 3, '5': 9, '10': 'documentIds'},
     {'1': 'prompts', '3': 2, '4': 3, '5': 9, '10': 'prompts'},
     {'1': 'prompt_title', '3': 3, '4': 3, '5': 9, '10': 'promptTitle'},
-    {'1': 'items', '3': 4, '4': 3, '5': 11, '6': '.chatbot.chat.v5.BatchResponse.Completion', '10': 'items'},
+    {'1': 'items', '3': 4, '4': 3, '5': 11, '6': '.chatbot.chat.v1.BatchResponse.Completion', '10': 'items'},
   ],
   '3': [BatchResponse_Completion$json],
 };
@@ -96,7 +96,7 @@ const BatchResponse_Completion$json = {
 final $typed_data.Uint8List batchResponseDescriptor = $convert.base64Decode(
     'Cg1CYXRjaFJlc3BvbnNlEiEKDGRvY3VtZW50X2lkcxgBIAMoCVILZG9jdW1lbnRJZHMSGAoHcH'
     'JvbXB0cxgCIAMoCVIHcHJvbXB0cxIhCgxwcm9tcHRfdGl0bGUYAyADKAlSC3Byb21wdFRpdGxl'
-    'Ej8KBWl0ZW1zGAQgAygLMikuY2hhdGJvdC5jaGF0LnY1LkJhdGNoUmVzcG9uc2UuQ29tcGxldG'
+    'Ej8KBWl0ZW1zGAQgAygLMikuY2hhdGJvdC5jaGF0LnYxLkJhdGNoUmVzcG9uc2UuQ29tcGxldG'
     'lvblIFaXRlbXMajAEKCkNvbXBsZXRpb24SHwoLZG9jdW1lbnRfaWQYASABKA1SCmRvY3VtZW50'
     'SWQSJQoOZG9jdW1lbnRfdGl0bGUYAiABKAlSDWRvY3VtZW50VGl0bGUSFgoGcHJvbXB0GAMgAS'
     'gNUgZwcm9tcHQSHgoKY29tcGxldGlvbhgEIAEoCVIKY29tcGxldGlvbg==');
@@ -108,8 +108,8 @@ const Prompt$json = {
     {'1': 'thread_id', '3': 1, '4': 1, '5': 9, '10': 'threadId'},
     {'1': 'collection_id', '3': 2, '4': 1, '5': 9, '10': 'collectionId'},
     {'1': 'prompt', '3': 3, '4': 1, '5': 9, '10': 'prompt'},
-    {'1': 'model_options', '3': 4, '4': 1, '5': 11, '6': '.chatbot.chat.v5.ModelOptions', '10': 'modelOptions'},
-    {'1': 'retrieval_options', '3': 5, '4': 1, '5': 11, '6': '.chatbot.chat.v5.RetrievalOptions', '10': 'retrievalOptions'},
+    {'1': 'model_options', '3': 4, '4': 1, '5': 11, '6': '.chatbot.chat.v1.ModelOptions', '10': 'modelOptions'},
+    {'1': 'retrieval_options', '3': 5, '4': 1, '5': 11, '6': '.chatbot.chat.v1.RetrievalOptions', '10': 'retrievalOptions'},
   ],
 };
 
@@ -117,8 +117,8 @@ const Prompt$json = {
 final $typed_data.Uint8List promptDescriptor = $convert.base64Decode(
     'CgZQcm9tcHQSGwoJdGhyZWFkX2lkGAEgASgJUgh0aHJlYWRJZBIjCg1jb2xsZWN0aW9uX2lkGA'
     'IgASgJUgxjb2xsZWN0aW9uSWQSFgoGcHJvbXB0GAMgASgJUgZwcm9tcHQSQgoNbW9kZWxfb3B0'
-    'aW9ucxgEIAEoCzIdLmNoYXRib3QuY2hhdC52NS5Nb2RlbE9wdGlvbnNSDG1vZGVsT3B0aW9ucx'
-    'JOChFyZXRyaWV2YWxfb3B0aW9ucxgFIAEoCzIhLmNoYXRib3QuY2hhdC52NS5SZXRyaWV2YWxP'
+    'aW9ucxgEIAEoCzIdLmNoYXRib3QuY2hhdC52MS5Nb2RlbE9wdGlvbnNSDG1vZGVsT3B0aW9ucx'
+    'JOChFyZXRyaWV2YWxfb3B0aW9ucxgFIAEoCzIhLmNoYXRib3QuY2hhdC52MS5SZXRyaWV2YWxP'
     'cHRpb25zUhByZXRyaWV2YWxPcHRpb25z');
 
 @$core.Deprecated('Use modelOptionsDescriptor instead')
@@ -159,7 +159,7 @@ const Source$json = {
   '2': [
     {'1': 'document_id', '3': 1, '4': 1, '5': 9, '10': 'documentId'},
     {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
-    {'1': 'fragments', '3': 3, '4': 3, '5': 11, '6': '.chatbot.chat.v5.Source.Fragment', '10': 'fragments'},
+    {'1': 'fragments', '3': 3, '4': 3, '5': 11, '6': '.chatbot.chat.v1.Source.Fragment', '10': 'fragments'},
   ],
   '3': [Source_Fragment$json],
 };
@@ -178,7 +178,7 @@ const Source_Fragment$json = {
 /// Descriptor for `Source`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sourceDescriptor = $convert.base64Decode(
     'CgZTb3VyY2USHwoLZG9jdW1lbnRfaWQYASABKAlSCmRvY3VtZW50SWQSEgoEbmFtZRgCIAEoCV'
-    'IEbmFtZRI+CglmcmFnbWVudHMYAyADKAsyIC5jaGF0Ym90LmNoYXQudjUuU291cmNlLkZyYWdt'
+    'IEbmFtZRI+CglmcmFnbWVudHMYAyADKAsyIC5jaGF0Ym90LmNoYXQudjEuU291cmNlLkZyYWdt'
     'ZW50UglmcmFnbWVudHMaZgoIRnJhZ21lbnQSDgoCaWQYASABKAlSAmlkEhgKB2NvbnRlbnQYAi'
     'ABKAlSB2NvbnRlbnQSGgoIcG9zaXRpb24YAyABKA1SCHBvc2l0aW9uEhQKBXNjb3JlGAQgASgC'
     'UgVzY29yZQ==');
@@ -190,31 +190,29 @@ const Message$json = {
     {'1': 'thread_id', '3': 1, '4': 1, '5': 9, '10': 'threadId'},
     {'1': 'prompt', '3': 2, '4': 1, '5': 9, '10': 'prompt'},
     {'1': 'completion', '3': 3, '4': 1, '5': 9, '10': 'completion'},
-    {'1': 'timestamp', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'timestamp'},
-    {'1': 'sources', '3': 5, '4': 3, '5': 11, '6': '.chatbot.chat.v5.Source', '10': 'sources'},
+    {'1': 'sources', '3': 4, '4': 3, '5': 11, '6': '.chatbot.chat.v1.Source', '10': 'sources'},
   ],
 };
 
 /// Descriptor for `Message`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List messageDescriptor = $convert.base64Decode(
     'CgdNZXNzYWdlEhsKCXRocmVhZF9pZBgBIAEoCVIIdGhyZWFkSWQSFgoGcHJvbXB0GAIgASgJUg'
-    'Zwcm9tcHQSHgoKY29tcGxldGlvbhgDIAEoCVIKY29tcGxldGlvbhI4Cgl0aW1lc3RhbXAYBCAB'
-    'KAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgl0aW1lc3RhbXASMQoHc291cmNlcxgFIA'
-    'MoCzIXLmNoYXRib3QuY2hhdC52NS5Tb3VyY2VSB3NvdXJjZXM=');
+    'Zwcm9tcHQSHgoKY29tcGxldGlvbhgDIAEoCVIKY29tcGxldGlvbhIxCgdzb3VyY2VzGAQgAygL'
+    'MhcuY2hhdGJvdC5jaGF0LnYxLlNvdXJjZVIHc291cmNlcw==');
 
 @$core.Deprecated('Use threadDescriptor instead')
 const Thread$json = {
   '1': 'Thread',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'messages', '3': 2, '4': 3, '5': 11, '6': '.chatbot.chat.v5.Message', '10': 'messages'},
+    {'1': 'messages', '3': 2, '4': 3, '5': 11, '6': '.chatbot.chat.v1.Message', '10': 'messages'},
   ],
 };
 
 /// Descriptor for `Thread`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List threadDescriptor = $convert.base64Decode(
     'CgZUaHJlYWQSDgoCaWQYASABKAlSAmlkEjQKCG1lc3NhZ2VzGAIgAygLMhguY2hhdGJvdC5jaG'
-    'F0LnY1Lk1lc3NhZ2VSCG1lc3NhZ2Vz');
+    'F0LnYxLk1lc3NhZ2VSCG1lc3NhZ2Vz');
 
 @$core.Deprecated('Use threadIDDescriptor instead')
 const ThreadID$json = {

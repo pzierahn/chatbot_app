@@ -32,7 +32,7 @@ const NotionPrompt$json = {
     {'1': 'database_id', '3': 1, '4': 1, '5': 9, '10': 'databaseId'},
     {'1': 'collection_id', '3': 2, '4': 1, '5': 9, '10': 'collectionId'},
     {'1': 'prompt', '3': 3, '4': 1, '5': 9, '10': 'prompt'},
-    {'1': 'modelOptions', '3': 4, '4': 1, '5': 11, '6': '.chatbot.chat.v5.ModelOptions', '10': 'modelOptions'},
+    {'1': 'modelOptions', '3': 4, '4': 1, '5': 11, '6': '.chatbot.chat.v1.ModelOptions', '10': 'modelOptions'},
   ],
 };
 
@@ -40,7 +40,7 @@ const NotionPrompt$json = {
 final $typed_data.Uint8List notionPromptDescriptor = $convert.base64Decode(
     'CgxOb3Rpb25Qcm9tcHQSHwoLZGF0YWJhc2VfaWQYASABKAlSCmRhdGFiYXNlSWQSIwoNY29sbG'
     'VjdGlvbl9pZBgCIAEoCVIMY29sbGVjdGlvbklkEhYKBnByb21wdBgDIAEoCVIGcHJvbXB0EkEK'
-    'DG1vZGVsT3B0aW9ucxgEIAEoCzIdLmNoYXRib3QuY2hhdC52NS5Nb2RlbE9wdGlvbnNSDG1vZG'
+    'DG1vZGVsT3B0aW9ucxgEIAEoCzIdLmNoYXRib3QuY2hhdC52MS5Nb2RlbE9wdGlvbnNSDG1vZG'
     'VsT3B0aW9ucw==');
 
 @$core.Deprecated('Use executionResultDescriptor instead')
