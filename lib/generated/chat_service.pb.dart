@@ -708,13 +708,177 @@ class RetrievalOptions extends $pb.GeneratedMessage {
   void clearDocuments() => clearField(3);
 }
 
+class Source_Fragment extends $pb.GeneratedMessage {
+  factory Source_Fragment({
+    $core.String? id,
+    $core.String? content,
+    $core.int? position,
+    $core.double? score,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (content != null) {
+      $result.content = content;
+    }
+    if (position != null) {
+      $result.position = position;
+    }
+    if (score != null) {
+      $result.score = score;
+    }
+    return $result;
+  }
+  Source_Fragment._() : super();
+  factory Source_Fragment.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Source_Fragment.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Source.Fragment', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'content')
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'position', $pb.PbFieldType.OU3)
+    ..a<$core.double>(4, _omitFieldNames ? '' : 'score', $pb.PbFieldType.OF)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Source_Fragment clone() => Source_Fragment()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Source_Fragment copyWith(void Function(Source_Fragment) updates) => super.copyWith((message) => updates(message as Source_Fragment)) as Source_Fragment;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Source_Fragment create() => Source_Fragment._();
+  Source_Fragment createEmptyInstance() => create();
+  static $pb.PbList<Source_Fragment> createRepeated() => $pb.PbList<Source_Fragment>();
+  @$core.pragma('dart2js:noInline')
+  static Source_Fragment getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Source_Fragment>(create);
+  static Source_Fragment? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get content => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set content($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasContent() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearContent() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get position => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set position($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasPosition() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearPosition() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.double get score => $_getN(3);
+  @$pb.TagNumber(4)
+  set score($core.double v) { $_setFloat(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasScore() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearScore() => clearField(4);
+}
+
+class Source extends $pb.GeneratedMessage {
+  factory Source({
+    $core.String? documentId,
+    $core.String? name,
+    $core.Iterable<Source_Fragment>? fragments,
+  }) {
+    final $result = create();
+    if (documentId != null) {
+      $result.documentId = documentId;
+    }
+    if (name != null) {
+      $result.name = name;
+    }
+    if (fragments != null) {
+      $result.fragments.addAll(fragments);
+    }
+    return $result;
+  }
+  Source._() : super();
+  factory Source.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Source.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Source', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v5'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'documentId')
+    ..aOS(2, _omitFieldNames ? '' : 'name')
+    ..pc<Source_Fragment>(3, _omitFieldNames ? '' : 'fragments', $pb.PbFieldType.PM, subBuilder: Source_Fragment.create)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Source clone() => Source()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Source copyWith(void Function(Source) updates) => super.copyWith((message) => updates(message as Source)) as Source;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Source create() => Source._();
+  Source createEmptyInstance() => create();
+  static $pb.PbList<Source> createRepeated() => $pb.PbList<Source>();
+  @$core.pragma('dart2js:noInline')
+  static Source getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Source>(create);
+  static Source? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get documentId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set documentId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasDocumentId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDocumentId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get name => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set name($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasName() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearName() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.List<Source_Fragment> get fragments => $_getList(2);
+}
+
 class Message extends $pb.GeneratedMessage {
   factory Message({
     $core.String? threadId,
     $core.String? prompt,
     $core.String? completion,
     $7.Timestamp? timestamp,
-    $core.Map<$core.String, $core.double>? references,
+    $core.Iterable<Source>? sources,
   }) {
     final $result = create();
     if (threadId != null) {
@@ -729,8 +893,8 @@ class Message extends $pb.GeneratedMessage {
     if (timestamp != null) {
       $result.timestamp = timestamp;
     }
-    if (references != null) {
-      $result.references.addAll(references);
+    if (sources != null) {
+      $result.sources.addAll(sources);
     }
     return $result;
   }
@@ -743,7 +907,7 @@ class Message extends $pb.GeneratedMessage {
     ..aOS(2, _omitFieldNames ? '' : 'prompt')
     ..aOS(3, _omitFieldNames ? '' : 'completion')
     ..aOM<$7.Timestamp>(4, _omitFieldNames ? '' : 'timestamp', subBuilder: $7.Timestamp.create)
-    ..m<$core.String, $core.double>(5, _omitFieldNames ? '' : 'references', entryClassName: 'Message.ReferencesEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OF, packageName: const $pb.PackageName('chatbot.chat.v5'))
+    ..pc<Source>(5, _omitFieldNames ? '' : 'sources', $pb.PbFieldType.PM, subBuilder: Source.create)
     ..hasRequiredFields = false
   ;
 
@@ -810,9 +974,9 @@ class Message extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $7.Timestamp ensureTimestamp() => $_ensure(3);
 
-  /// ReferenceIDs and their scores
+  /// Sources used to generate the completion
   @$pb.TagNumber(5)
-  $core.Map<$core.String, $core.double> get references => $_getMap(4);
+  $core.List<Source> get sources => $_getList(4);
 }
 
 class Thread extends $pb.GeneratedMessage {

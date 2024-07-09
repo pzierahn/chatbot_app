@@ -152,18 +152,13 @@ class _ChatFragment extends StatelessWidget {
   final Message message;
   final VoidCallback? onDelete;
 
-  void _showSources(BuildContext context) {
-    // if (referenceIDs == null) {
-    //   return;
-    // }
-    //
-    // showDialog(
-    //   context: context,
-    //   builder: (context) => SourcesDialog(
-    //     references: referenceIDs!,
-    //     scores: referenceScores ?? const {},
-    //   ),
-    // );
+  void _showSources(BuildContext context, List<Source> sources) {
+    showDialog(
+      context: context,
+      builder: (context) => SourcesDialog(
+        sources: sources,
+      ),
+    );
   }
 
   void _copyToClipboard(BuildContext context) {
@@ -223,13 +218,13 @@ class _ChatFragment extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              // if (referenceIDs != null)
-              //   IconButton(
-              //     tooltip: 'References',
-              //     icon: const Icon(Icons.attach_file_outlined),
-              //     onPressed: () => _showSources(context),
-              //     color: colors.outline,
-              //   ),
+              if (message.sources.isNotEmpty)
+                IconButton(
+                  tooltip: 'References',
+                  icon: const Icon(Icons.attach_file_outlined),
+                  onPressed: () => _showSources(context, message.sources),
+                  color: colors.outline,
+                ),
               IconButton(
                 tooltip: 'Copy',
                 icon: const Icon(Icons.copy_outlined),

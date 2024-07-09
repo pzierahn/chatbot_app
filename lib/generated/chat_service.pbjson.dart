@@ -153,6 +153,36 @@ final $typed_data.Uint8List retrievalOptionsDescriptor = $convert.base64Decode(
     'ChBSZXRyaWV2YWxPcHRpb25zEhgKB2VuYWJsZWQYASABKAhSB2VuYWJsZWQSHAoJdGhyZXNob2'
     'xkGAIgASgCUgl0aHJlc2hvbGQSHAoJZG9jdW1lbnRzGAMgASgNUglkb2N1bWVudHM=');
 
+@$core.Deprecated('Use sourceDescriptor instead')
+const Source$json = {
+  '1': 'Source',
+  '2': [
+    {'1': 'document_id', '3': 1, '4': 1, '5': 9, '10': 'documentId'},
+    {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
+    {'1': 'fragments', '3': 3, '4': 3, '5': 11, '6': '.chatbot.chat.v5.Source.Fragment', '10': 'fragments'},
+  ],
+  '3': [Source_Fragment$json],
+};
+
+@$core.Deprecated('Use sourceDescriptor instead')
+const Source_Fragment$json = {
+  '1': 'Fragment',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'content', '3': 2, '4': 1, '5': 9, '10': 'content'},
+    {'1': 'position', '3': 3, '4': 1, '5': 13, '10': 'position'},
+    {'1': 'score', '3': 4, '4': 1, '5': 2, '10': 'score'},
+  ],
+};
+
+/// Descriptor for `Source`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sourceDescriptor = $convert.base64Decode(
+    'CgZTb3VyY2USHwoLZG9jdW1lbnRfaWQYASABKAlSCmRvY3VtZW50SWQSEgoEbmFtZRgCIAEoCV'
+    'IEbmFtZRI+CglmcmFnbWVudHMYAyADKAsyIC5jaGF0Ym90LmNoYXQudjUuU291cmNlLkZyYWdt'
+    'ZW50UglmcmFnbWVudHMaZgoIRnJhZ21lbnQSDgoCaWQYASABKAlSAmlkEhgKB2NvbnRlbnQYAi'
+    'ABKAlSB2NvbnRlbnQSGgoIcG9zaXRpb24YAyABKA1SCHBvc2l0aW9uEhQKBXNjb3JlGAQgASgC'
+    'UgVzY29yZQ==');
+
 @$core.Deprecated('Use messageDescriptor instead')
 const Message$json = {
   '1': 'Message',
@@ -161,29 +191,16 @@ const Message$json = {
     {'1': 'prompt', '3': 2, '4': 1, '5': 9, '10': 'prompt'},
     {'1': 'completion', '3': 3, '4': 1, '5': 9, '10': 'completion'},
     {'1': 'timestamp', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'timestamp'},
-    {'1': 'references', '3': 5, '4': 3, '5': 11, '6': '.chatbot.chat.v5.Message.ReferencesEntry', '10': 'references'},
+    {'1': 'sources', '3': 5, '4': 3, '5': 11, '6': '.chatbot.chat.v5.Source', '10': 'sources'},
   ],
-  '3': [Message_ReferencesEntry$json],
-};
-
-@$core.Deprecated('Use messageDescriptor instead')
-const Message_ReferencesEntry$json = {
-  '1': 'ReferencesEntry',
-  '2': [
-    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    {'1': 'value', '3': 2, '4': 1, '5': 2, '10': 'value'},
-  ],
-  '7': {'7': true},
 };
 
 /// Descriptor for `Message`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List messageDescriptor = $convert.base64Decode(
     'CgdNZXNzYWdlEhsKCXRocmVhZF9pZBgBIAEoCVIIdGhyZWFkSWQSFgoGcHJvbXB0GAIgASgJUg'
     'Zwcm9tcHQSHgoKY29tcGxldGlvbhgDIAEoCVIKY29tcGxldGlvbhI4Cgl0aW1lc3RhbXAYBCAB'
-    'KAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgl0aW1lc3RhbXASSAoKcmVmZXJlbmNlcx'
-    'gFIAMoCzIoLmNoYXRib3QuY2hhdC52NS5NZXNzYWdlLlJlZmVyZW5jZXNFbnRyeVIKcmVmZXJl'
-    'bmNlcxo9Cg9SZWZlcmVuY2VzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKA'
-    'JSBXZhbHVlOgI4AQ==');
+    'KAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgl0aW1lc3RhbXASMQoHc291cmNlcxgFIA'
+    'MoCzIXLmNoYXRib3QuY2hhdC52NS5Tb3VyY2VSB3NvdXJjZXM=');
 
 @$core.Deprecated('Use threadDescriptor instead')
 const Thread$json = {

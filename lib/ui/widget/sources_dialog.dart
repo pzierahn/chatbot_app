@@ -1,27 +1,23 @@
-import 'package:braingain_app/generated/document_service.pb.dart';
-import 'package:braingain_app/service/brainboost.dart';
+import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
-import 'package:braingain_app/utils/document.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/illustrations.g.dart';
 
 class SourcesDialog extends StatefulWidget {
   const SourcesDialog({
     super.key,
-    required this.references,
-    this.scores = const {},
+    this.sources = const [],
   });
 
-  final List<String> references;
-  final Map<String, double> scores;
+  final List<Source> sources;
 
   @override
   State createState() => _SourcesDialogState();
 }
 
 class _SourcesDialogState extends State<SourcesDialog> {
-  void _showChunkDetails(Chunk chunk) {
+  void _showChunkDetails(Source_Fragment chunk) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -37,11 +33,11 @@ class _SourcesDialogState extends State<SourcesDialog> {
               ),
               ListTile(
                 title: const Text('Index'),
-                subtitle: SelectableText(chunk.postion.toString()),
+                subtitle: SelectableText(chunk.position.toString()),
               ),
               ListTile(
                 title: const Text('Text'),
-                subtitle: SelectableText(chunk.text),
+                subtitle: SelectableText(chunk.content),
               ),
             ],
           ),
@@ -55,84 +51,54 @@ class _SourcesDialogState extends State<SourcesDialog> {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
-    final sources = widget.references;
+    final sources = widget.sources;
 
     Widget body;
 
     if (sources.isNotEmpty) {
-      body = Text('Sources: $sources');
-      // body = FutureBuilder<References>(
-      //   future: documents.getReferences(
-      //     ReferenceIDs()..items.addAll(sources),
-      //   ),
-      //   builder: (context, snap) {
-      //     if (snap.hasError) {
-      //       return Center(
-      //         child: TextIllustration(
-      //           illustration: UnDrawIllustration.by_the_road,
-      //           color: color.primary,
-      //           text: 'Failed to load sources',
-      //         ),
-      //       );
-      //     }
-      //
-      //     if (!snap.hasData) {
-      //       return const Center(
-      //         child: CircularProgressIndicator(),
-      //       );
-      //     }
-      //
-      //     final references = snap.data!.items;
-      //
-      //     return ListView.separated(
-      //       itemCount: references.length,
-      //       separatorBuilder: (context, index) => const Divider(height: 32),
-      //       itemBuilder: (context, index) {
-      //         final doc = references[index];
-      //
-      //         String title = DocumentUtils.getTitle(doc.metadata);
-      //
-      //         return Padding(
-      //           padding: const EdgeInsets.symmetric(vertical: 0),
-      //           child: Column(
-      //             crossAxisAlignment: CrossAxisAlignment.start,
-      //             children: [
-      //               SelectableText(
-      //                 title,
-      //                 style: text.titleMedium,
-      //                 maxLines: 1,
-      //               ),
-      //               const SizedBox(height: 8),
-      //               Column(
-      //                 crossAxisAlignment: CrossAxisAlignment.start,
-      //                 children: [
-      //                   for (final chunk in doc.chunks)
-      //                     ListTile(
-      //                       contentPadding: EdgeInsets.zero,
-      //                       leading: const Icon(Icons.find_in_page_outlined),
-      //                       title: Text(
-      //                         'Page ${chunk.index + 1}',
-      //                         style: text.bodyMedium,
-      //                       ),
-      //                       trailing: widget.scores.containsKey(chunk.id)
-      //                           ? Text(
-      //                               'Score: ${((widget.scores[chunk.id] ?? 0) * 100).toStringAsFixed(0)}%',
-      //                               style: text.bodySmall?.copyWith(
-      //                                 color: color.outline,
-      //                               ),
-      //                             )
-      //                           : null,
-      //                       onTap: () => _showChunkDetails(chunk),
-      //                     ),
-      //                 ],
-      //               ),
-      //             ],
-      //           ),
-      //         );
-      //       },
-      //     );
-      //   },
-      // );
+      body = ListView.separated(
+        itemCount: sources.length,
+        separatorBuilder: (context, index) => const Divider(height: 32),
+        itemBuilder: (context, index) {
+          final doc = sources[index];
+
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SelectableText(
+                  doc.name,
+                  style: text.titleMedium,
+                  maxLines: 1,
+                ),
+                const SizedBox(height: 8),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for (final chunk in doc.fragments)
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        leading: const Icon(Icons.find_in_page_outlined),
+                        title: Text(
+                          'Page ${chunk.position + 1}',
+                          style: text.bodyMedium,
+                        ),
+                        trailing: Text(
+                          'Score: ${(chunk.score * 100).toStringAsFixed(0)}%',
+                          style: text.bodySmall?.copyWith(
+                            color: color.outline,
+                          ),
+                        ),
+                        onTap: () => _showChunkDetails(chunk),
+                      ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+      );
     } else {
       body = Center(
         child: TextIllustration(
