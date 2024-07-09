@@ -49,9 +49,9 @@ Future<CallOptions> _mergeAuth(CallOptions? options) async {
 }
 
 class CollectionServiceClientAuth {
-  final _service = CollectionServiceClient(_channel);
+  final _service = CollectionsClient(_channel);
 
-  Future<Collections> list(Empty request, {CallOptions? options}) async {
+  Future<CollectionList> list(Empty request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
     return _service.list(request, options: options);
   }
@@ -73,7 +73,7 @@ class CollectionServiceClientAuth {
 }
 
 class DocumentServiceClientAuth {
-  final _service = DocumentServiceClient(_channel);
+  final _service = DocumentClient(_channel);
 
   Future<DocumentList> list(DocumentFilter request,
       {CallOptions? options}) async {
@@ -108,7 +108,7 @@ class DocumentServiceClientAuth {
 }
 
 class AccountServiceClientAuth {
-  final _service = AccountServiceClient(_channel);
+  final _service = AccountClient(_channel);
 
   Future<Costs> getCosts(Empty request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
@@ -128,7 +128,7 @@ class AccountServiceClientAuth {
 }
 
 class ChatServiceClientAuth {
-  final _service = ChatServiceClient(_channel);
+  final _service = ChatClient(_channel);
 
   Future<Message> postMessage(
     Prompt request, {
@@ -172,7 +172,7 @@ class ChatServiceClientAuth {
 }
 
 class CrashlyticsServiceClientAuth {
-  final _service = CrashlyticsServiceClient(_channel);
+  final _service = CrashlyticsClient(_channel);
 
   Future<Empty> recordError(Error request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
