@@ -51,8 +51,8 @@ class _NotionPageState extends State<NotionPage> {
       ..maxTokens = 256;
 
     final request = NotionPrompt()
-      ..databaseID = widget.databaseID
-      ..collectionID = widget.collectionID
+      ..databaseId = widget.databaseID
+      ..collectionId = widget.collectionID
       ..prompt = prompt
       ..modelOptions = model;
 

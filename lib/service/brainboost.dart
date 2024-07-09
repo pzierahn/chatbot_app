@@ -11,7 +11,7 @@ import 'package:grpc/grpc_or_grpcweb.dart';
 
 final _channel = GrpcOrGrpcWebClientChannel.grpc(
   'localhost',
-  port: 8869,
+  port: 9055,
   options: const ChannelOptions(
     credentials: ChannelCredentials.insecure(),
   ),
@@ -194,18 +194,25 @@ class NotionClientAuth {
     return _service.listDatabases(request, options: options);
   }
 
-  Future<NotionApiKey> getApiKey(Empty request, {CallOptions? options}) async {
+  Future<NotionApiKey> getAPIKey(Empty request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.getApiKey(request, options: options);
+    return _service.getAPIKey(request, options: options);
   }
 
-  Future<Empty> setApiKey(NotionApiKey request, {CallOptions? options}) async {
+  Future<Empty> insertAPIKey(NotionApiKey request,
+      {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.setApiKey(request, options: options);
+    return _service.insertAPIKey(request, options: options);
   }
 
-  Future<Empty> removeApiKey(Empty request, {CallOptions? options}) async {
+  Future<Empty> updateAPIKey(NotionApiKey request,
+      {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.removeApiKey(request, options: options);
+    return _service.updateAPIKey(request, options: options);
+  }
+
+  Future<Empty> deleteAPIKey(Empty request, {CallOptions? options}) async {
+    options = await _mergeAuth(options);
+    return _service.deleteAPIKey(request, options: options);
   }
 }

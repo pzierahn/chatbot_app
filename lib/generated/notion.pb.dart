@@ -29,7 +29,7 @@ class NotionApiKey extends $pb.GeneratedMessage {
   factory NotionApiKey.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory NotionApiKey.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'NotionApiKey', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.notion.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'NotionApiKey', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.notion.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'key')
     ..hasRequiredFields = false
   ;
@@ -67,17 +67,17 @@ class NotionApiKey extends $pb.GeneratedMessage {
 
 class NotionPrompt extends $pb.GeneratedMessage {
   factory NotionPrompt({
-    $core.String? databaseID,
-    $core.String? collectionID,
+    $core.String? databaseId,
+    $core.String? collectionId,
     $core.String? prompt,
     $2.ModelOptions? modelOptions,
   }) {
     final $result = create();
-    if (databaseID != null) {
-      $result.databaseID = databaseID;
+    if (databaseId != null) {
+      $result.databaseId = databaseId;
     }
-    if (collectionID != null) {
-      $result.collectionID = collectionID;
+    if (collectionId != null) {
+      $result.collectionId = collectionId;
     }
     if (prompt != null) {
       $result.prompt = prompt;
@@ -91,9 +91,9 @@ class NotionPrompt extends $pb.GeneratedMessage {
   factory NotionPrompt.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory NotionPrompt.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'NotionPrompt', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.notion.v1'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'databaseID', protoName: 'databaseID')
-    ..aOS(2, _omitFieldNames ? '' : 'collectionID', protoName: 'collectionID')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'NotionPrompt', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.notion.v2'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'databaseId')
+    ..aOS(2, _omitFieldNames ? '' : 'collectionId')
     ..aOS(3, _omitFieldNames ? '' : 'prompt')
     ..aOM<$2.ModelOptions>(4, _omitFieldNames ? '' : 'modelOptions', protoName: 'modelOptions', subBuilder: $2.ModelOptions.create)
     ..hasRequiredFields = false
@@ -121,22 +121,22 @@ class NotionPrompt extends $pb.GeneratedMessage {
   static NotionPrompt? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get databaseID => $_getSZ(0);
+  $core.String get databaseId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set databaseID($core.String v) { $_setString(0, v); }
+  set databaseId($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasDatabaseID() => $_has(0);
+  $core.bool hasDatabaseId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearDatabaseID() => clearField(1);
+  void clearDatabaseId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get collectionID => $_getSZ(1);
+  $core.String get collectionId => $_getSZ(1);
   @$pb.TagNumber(2)
-  set collectionID($core.String v) { $_setString(1, v); }
+  set collectionId($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasCollectionID() => $_has(1);
+  $core.bool hasCollectionId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCollectionID() => clearField(2);
+  void clearCollectionId() => clearField(2);
 
   @$pb.TagNumber(3)
   $core.String get prompt => $_getSZ(2);
@@ -173,7 +173,7 @@ class ExecutionResult extends $pb.GeneratedMessage {
   factory ExecutionResult.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ExecutionResult.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ExecutionResult', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.notion.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ExecutionResult', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.notion.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'document')
     ..hasRequiredFields = false
   ;
@@ -223,7 +223,7 @@ class DatabasesID extends $pb.GeneratedMessage {
   factory DatabasesID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DatabasesID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DatabasesID', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.notion.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DatabasesID', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.notion.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..hasRequiredFields = false
   ;
@@ -277,7 +277,7 @@ class Databases_Item extends $pb.GeneratedMessage {
   factory Databases_Item.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Databases_Item.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Databases.Item', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.notion.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Databases.Item', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.notion.v2'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'name')
     ..hasRequiredFields = false
@@ -337,7 +337,7 @@ class Databases extends $pb.GeneratedMessage {
   factory Databases.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Databases.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Databases', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.notion.v1'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Databases', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.notion.v2'), createEmptyInstance: create)
     ..pc<Databases_Item>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Databases_Item.create)
     ..hasRequiredFields = false
   ;

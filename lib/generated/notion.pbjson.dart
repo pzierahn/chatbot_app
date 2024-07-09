@@ -29,8 +29,8 @@ final $typed_data.Uint8List notionApiKeyDescriptor = $convert.base64Decode(
 const NotionPrompt$json = {
   '1': 'NotionPrompt',
   '2': [
-    {'1': 'databaseID', '3': 1, '4': 1, '5': 9, '10': 'databaseID'},
-    {'1': 'collectionID', '3': 2, '4': 1, '5': 9, '10': 'collectionID'},
+    {'1': 'database_id', '3': 1, '4': 1, '5': 9, '10': 'databaseId'},
+    {'1': 'collection_id', '3': 2, '4': 1, '5': 9, '10': 'collectionId'},
     {'1': 'prompt', '3': 3, '4': 1, '5': 9, '10': 'prompt'},
     {'1': 'modelOptions', '3': 4, '4': 1, '5': 11, '6': '.chatbot.chat.v5.ModelOptions', '10': 'modelOptions'},
   ],
@@ -38,10 +38,10 @@ const NotionPrompt$json = {
 
 /// Descriptor for `NotionPrompt`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List notionPromptDescriptor = $convert.base64Decode(
-    'CgxOb3Rpb25Qcm9tcHQSHgoKZGF0YWJhc2VJRBgBIAEoCVIKZGF0YWJhc2VJRBIiCgxjb2xsZW'
-    'N0aW9uSUQYAiABKAlSDGNvbGxlY3Rpb25JRBIWCgZwcm9tcHQYAyABKAlSBnByb21wdBJBCgxt'
-    'b2RlbE9wdGlvbnMYBCABKAsyHS5jaGF0Ym90LmNoYXQudjUuTW9kZWxPcHRpb25zUgxtb2RlbE'
-    '9wdGlvbnM=');
+    'CgxOb3Rpb25Qcm9tcHQSHwoLZGF0YWJhc2VfaWQYASABKAlSCmRhdGFiYXNlSWQSIwoNY29sbG'
+    'VjdGlvbl9pZBgCIAEoCVIMY29sbGVjdGlvbklkEhYKBnByb21wdBgDIAEoCVIGcHJvbXB0EkEK'
+    'DG1vZGVsT3B0aW9ucxgEIAEoCzIdLmNoYXRib3QuY2hhdC52NS5Nb2RlbE9wdGlvbnNSDG1vZG'
+    'VsT3B0aW9ucw==');
 
 @$core.Deprecated('Use executionResultDescriptor instead')
 const ExecutionResult$json = {
@@ -71,7 +71,7 @@ final $typed_data.Uint8List databasesIDDescriptor = $convert.base64Decode(
 const Databases$json = {
   '1': 'Databases',
   '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.chatbot.notion.v1.Databases.Item', '10': 'items'},
+    {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.chatbot.notion.v2.Databases.Item', '10': 'items'},
   ],
   '3': [Databases_Item$json],
 };
@@ -87,7 +87,7 @@ const Databases_Item$json = {
 
 /// Descriptor for `Databases`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List databasesDescriptor = $convert.base64Decode(
-    'CglEYXRhYmFzZXMSNwoFaXRlbXMYASADKAsyIS5jaGF0Ym90Lm5vdGlvbi52MS5EYXRhYmFzZX'
+    'CglEYXRhYmFzZXMSNwoFaXRlbXMYASADKAsyIS5jaGF0Ym90Lm5vdGlvbi52Mi5EYXRhYmFzZX'
     'MuSXRlbVIFaXRlbXMaKgoESXRlbRIOCgJpZBgBIAEoCVICaWQSEgoEbmFtZRgCIAEoCVIEbmFt'
     'ZQ==');
 

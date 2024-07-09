@@ -20,26 +20,30 @@ import 'notion.pb.dart' as $6;
 
 export 'notion.pb.dart';
 
-@$pb.GrpcServiceName('chatbot.notion.v1.Notion')
+@$pb.GrpcServiceName('chatbot.notion.v2.Notion')
 class NotionClient extends $grpc.Client {
-  static final _$setApiKey = $grpc.ClientMethod<$6.NotionApiKey, $0.Empty>(
-      '/chatbot.notion.v1.Notion/SetApiKey',
+  static final _$insertAPIKey = $grpc.ClientMethod<$6.NotionApiKey, $0.Empty>(
+      '/chatbot.notion.v2.Notion/InsertAPIKey',
       ($6.NotionApiKey value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
-  static final _$removeApiKey = $grpc.ClientMethod<$0.Empty, $0.Empty>(
-      '/chatbot.notion.v1.Notion/RemoveApiKey',
+  static final _$updateAPIKey = $grpc.ClientMethod<$6.NotionApiKey, $0.Empty>(
+      '/chatbot.notion.v2.Notion/UpdateAPIKey',
+      ($6.NotionApiKey value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
+  static final _$deleteAPIKey = $grpc.ClientMethod<$0.Empty, $0.Empty>(
+      '/chatbot.notion.v2.Notion/DeleteAPIKey',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
-  static final _$getApiKey = $grpc.ClientMethod<$0.Empty, $6.NotionApiKey>(
-      '/chatbot.notion.v1.Notion/GetApiKey',
+  static final _$getAPIKey = $grpc.ClientMethod<$0.Empty, $6.NotionApiKey>(
+      '/chatbot.notion.v2.Notion/GetAPIKey',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $6.NotionApiKey.fromBuffer(value));
   static final _$listDatabases = $grpc.ClientMethod<$0.Empty, $6.Databases>(
-      '/chatbot.notion.v1.Notion/ListDatabases',
+      '/chatbot.notion.v2.Notion/ListDatabases',
       ($0.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $6.Databases.fromBuffer(value));
   static final _$executePrompt = $grpc.ClientMethod<$6.NotionPrompt, $6.ExecutionResult>(
-      '/chatbot.notion.v1.Notion/ExecutePrompt',
+      '/chatbot.notion.v2.Notion/ExecutePrompt',
       ($6.NotionPrompt value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $6.ExecutionResult.fromBuffer(value));
 
@@ -49,16 +53,20 @@ class NotionClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$0.Empty> setApiKey($6.NotionApiKey request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$setApiKey, request, options: options);
+  $grpc.ResponseFuture<$0.Empty> insertAPIKey($6.NotionApiKey request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$insertAPIKey, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.Empty> removeApiKey($0.Empty request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$removeApiKey, request, options: options);
+  $grpc.ResponseFuture<$0.Empty> updateAPIKey($6.NotionApiKey request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$updateAPIKey, request, options: options);
   }
 
-  $grpc.ResponseFuture<$6.NotionApiKey> getApiKey($0.Empty request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$getApiKey, request, options: options);
+  $grpc.ResponseFuture<$0.Empty> deleteAPIKey($0.Empty request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$deleteAPIKey, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$6.NotionApiKey> getAPIKey($0.Empty request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getAPIKey, request, options: options);
   }
 
   $grpc.ResponseFuture<$6.Databases> listDatabases($0.Empty request, {$grpc.CallOptions? options}) {
@@ -70,28 +78,35 @@ class NotionClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('chatbot.notion.v1.Notion')
+@$pb.GrpcServiceName('chatbot.notion.v2.Notion')
 abstract class NotionServiceBase extends $grpc.Service {
-  $core.String get $name => 'chatbot.notion.v1.Notion';
+  $core.String get $name => 'chatbot.notion.v2.Notion';
 
   NotionServiceBase() {
     $addMethod($grpc.ServiceMethod<$6.NotionApiKey, $0.Empty>(
-        'SetApiKey',
-        setApiKey_Pre,
+        'InsertAPIKey',
+        insertAPIKey_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $6.NotionApiKey.fromBuffer(value),
+        ($0.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$6.NotionApiKey, $0.Empty>(
+        'UpdateAPIKey',
+        updateAPIKey_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $6.NotionApiKey.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.Empty, $0.Empty>(
-        'RemoveApiKey',
-        removeApiKey_Pre,
+        'DeleteAPIKey',
+        deleteAPIKey_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.Empty, $6.NotionApiKey>(
-        'GetApiKey',
-        getApiKey_Pre,
+        'GetAPIKey',
+        getAPIKey_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.Empty.fromBuffer(value),
@@ -112,16 +127,20 @@ abstract class NotionServiceBase extends $grpc.Service {
         ($6.ExecutionResult value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.Empty> setApiKey_Pre($grpc.ServiceCall call, $async.Future<$6.NotionApiKey> request) async {
-    return setApiKey(call, await request);
+  $async.Future<$0.Empty> insertAPIKey_Pre($grpc.ServiceCall call, $async.Future<$6.NotionApiKey> request) async {
+    return insertAPIKey(call, await request);
   }
 
-  $async.Future<$0.Empty> removeApiKey_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
-    return removeApiKey(call, await request);
+  $async.Future<$0.Empty> updateAPIKey_Pre($grpc.ServiceCall call, $async.Future<$6.NotionApiKey> request) async {
+    return updateAPIKey(call, await request);
   }
 
-  $async.Future<$6.NotionApiKey> getApiKey_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
-    return getApiKey(call, await request);
+  $async.Future<$0.Empty> deleteAPIKey_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return deleteAPIKey(call, await request);
+  }
+
+  $async.Future<$6.NotionApiKey> getAPIKey_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
+    return getAPIKey(call, await request);
   }
 
   $async.Future<$6.Databases> listDatabases_Pre($grpc.ServiceCall call, $async.Future<$0.Empty> request) async {
@@ -132,9 +151,10 @@ abstract class NotionServiceBase extends $grpc.Service {
     yield* executePrompt(call, await request);
   }
 
-  $async.Future<$0.Empty> setApiKey($grpc.ServiceCall call, $6.NotionApiKey request);
-  $async.Future<$0.Empty> removeApiKey($grpc.ServiceCall call, $0.Empty request);
-  $async.Future<$6.NotionApiKey> getApiKey($grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$0.Empty> insertAPIKey($grpc.ServiceCall call, $6.NotionApiKey request);
+  $async.Future<$0.Empty> updateAPIKey($grpc.ServiceCall call, $6.NotionApiKey request);
+  $async.Future<$0.Empty> deleteAPIKey($grpc.ServiceCall call, $0.Empty request);
+  $async.Future<$6.NotionApiKey> getAPIKey($grpc.ServiceCall call, $0.Empty request);
   $async.Future<$6.Databases> listDatabases($grpc.ServiceCall call, $0.Empty request);
   $async.Stream<$6.ExecutionResult> executePrompt($grpc.ServiceCall call, $6.NotionPrompt request);
 }
