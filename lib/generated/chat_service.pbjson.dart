@@ -110,6 +110,7 @@ const Prompt$json = {
     {'1': 'prompt', '3': 3, '4': 1, '5': 9, '10': 'prompt'},
     {'1': 'model_options', '3': 4, '4': 1, '5': 11, '6': '.chatbot.chat.v1.ModelOptions', '10': 'modelOptions'},
     {'1': 'retrieval_options', '3': 5, '4': 1, '5': 11, '6': '.chatbot.chat.v1.RetrievalOptions', '10': 'retrievalOptions'},
+    {'1': 'attachments', '3': 6, '4': 3, '5': 9, '10': 'attachments'},
   ],
 };
 
@@ -119,7 +120,8 @@ final $typed_data.Uint8List promptDescriptor = $convert.base64Decode(
     'IgASgJUgxjb2xsZWN0aW9uSWQSFgoGcHJvbXB0GAMgASgJUgZwcm9tcHQSQgoNbW9kZWxfb3B0'
     'aW9ucxgEIAEoCzIdLmNoYXRib3QuY2hhdC52MS5Nb2RlbE9wdGlvbnNSDG1vZGVsT3B0aW9ucx'
     'JOChFyZXRyaWV2YWxfb3B0aW9ucxgFIAEoCzIhLmNoYXRib3QuY2hhdC52MS5SZXRyaWV2YWxP'
-    'cHRpb25zUhByZXRyaWV2YWxPcHRpb25z');
+    'cHRpb25zUhByZXRyaWV2YWxPcHRpb25zEiAKC2F0dGFjaG1lbnRzGAYgAygJUgthdHRhY2htZW'
+    '50cw==');
 
 @$core.Deprecated('Use modelOptionsDescriptor instead')
 const ModelOptions$json = {

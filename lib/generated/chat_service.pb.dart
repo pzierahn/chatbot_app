@@ -428,6 +428,7 @@ class Prompt extends $pb.GeneratedMessage {
     $core.String? prompt,
     ModelOptions? modelOptions,
     RetrievalOptions? retrievalOptions,
+    $core.Iterable<$core.String>? attachments,
   }) {
     final $result = create();
     if (threadId != null) {
@@ -445,6 +446,9 @@ class Prompt extends $pb.GeneratedMessage {
     if (retrievalOptions != null) {
       $result.retrievalOptions = retrievalOptions;
     }
+    if (attachments != null) {
+      $result.attachments.addAll(attachments);
+    }
     return $result;
   }
   Prompt._() : super();
@@ -457,6 +461,7 @@ class Prompt extends $pb.GeneratedMessage {
     ..aOS(3, _omitFieldNames ? '' : 'prompt')
     ..aOM<ModelOptions>(4, _omitFieldNames ? '' : 'modelOptions', subBuilder: ModelOptions.create)
     ..aOM<RetrievalOptions>(5, _omitFieldNames ? '' : 'retrievalOptions', subBuilder: RetrievalOptions.create)
+    ..pPS(6, _omitFieldNames ? '' : 'attachments')
     ..hasRequiredFields = false
   ;
 
@@ -534,6 +539,10 @@ class Prompt extends $pb.GeneratedMessage {
   void clearRetrievalOptions() => clearField(5);
   @$pb.TagNumber(5)
   RetrievalOptions ensureRetrievalOptions() => $_ensure(4);
+
+  /// Attachments to the prompt
+  @$pb.TagNumber(6)
+  $core.List<$core.String> get attachments => $_getList(5);
 }
 
 class ModelOptions extends $pb.GeneratedMessage {
