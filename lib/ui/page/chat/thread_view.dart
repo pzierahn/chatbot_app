@@ -190,6 +190,11 @@ class _ChatFragment extends StatelessWidget {
 
     const buttonPadding = EdgeInsets.all(16);
 
+    String completion = message.completion;
+    for (var source in message.sources) {
+      completion = completion.replaceAll(source.documentId, source.name);
+    }
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -207,7 +212,7 @@ class _ChatFragment extends StatelessWidget {
               Padding(
                 padding: bodyPadding,
                 child: StyledMarkdown(
-                  data: message.completion,
+                  data: completion,
                 ),
               ),
             ],
