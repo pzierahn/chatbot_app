@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: notion.proto
+//  source: notion_service.proto
 //
 // @dart = 2.12
 
@@ -16,9 +16,9 @@ import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'google/protobuf/empty.pb.dart' as $0;
-import 'notion.pb.dart' as $6;
+import 'notion_service.pb.dart' as $6;
 
-export 'notion.pb.dart';
+export 'notion_service.pb.dart';
 
 @$pb.GrpcServiceName('chatbot.notion.v2.Notion')
 class NotionClient extends $grpc.Client {

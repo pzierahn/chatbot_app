@@ -1,5 +1,5 @@
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
-import 'package:braingain_app/generated/notion.pb.dart';
+import 'package:braingain_app/generated/notion_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:braingain_app/ui/widget/outlined_card.dart';

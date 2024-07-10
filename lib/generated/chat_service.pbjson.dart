@@ -53,54 +53,6 @@ const CompletionResponse$json = {
 final $typed_data.Uint8List completionResponseDescriptor = $convert.base64Decode(
     'ChJDb21wbGV0aW9uUmVzcG9uc2USHgoKY29tcGxldGlvbhgBIAEoCVIKY29tcGxldGlvbg==');
 
-@$core.Deprecated('Use batchRequestDescriptor instead')
-const BatchRequest$json = {
-  '1': 'BatchRequest',
-  '2': [
-    {'1': 'document_ids', '3': 1, '4': 3, '5': 9, '10': 'documentIds'},
-    {'1': 'prompts', '3': 2, '4': 3, '5': 9, '10': 'prompts'},
-    {'1': 'model_options', '3': 3, '4': 1, '5': 11, '6': '.chatbot.chat.v1.ModelOptions', '10': 'modelOptions'},
-  ],
-};
-
-/// Descriptor for `BatchRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List batchRequestDescriptor = $convert.base64Decode(
-    'CgxCYXRjaFJlcXVlc3QSIQoMZG9jdW1lbnRfaWRzGAEgAygJUgtkb2N1bWVudElkcxIYCgdwcm'
-    '9tcHRzGAIgAygJUgdwcm9tcHRzEkIKDW1vZGVsX29wdGlvbnMYAyABKAsyHS5jaGF0Ym90LmNo'
-    'YXQudjEuTW9kZWxPcHRpb25zUgxtb2RlbE9wdGlvbnM=');
-
-@$core.Deprecated('Use batchResponseDescriptor instead')
-const BatchResponse$json = {
-  '1': 'BatchResponse',
-  '2': [
-    {'1': 'document_ids', '3': 1, '4': 3, '5': 9, '10': 'documentIds'},
-    {'1': 'prompts', '3': 2, '4': 3, '5': 9, '10': 'prompts'},
-    {'1': 'prompt_title', '3': 3, '4': 3, '5': 9, '10': 'promptTitle'},
-    {'1': 'items', '3': 4, '4': 3, '5': 11, '6': '.chatbot.chat.v1.BatchResponse.Completion', '10': 'items'},
-  ],
-  '3': [BatchResponse_Completion$json],
-};
-
-@$core.Deprecated('Use batchResponseDescriptor instead')
-const BatchResponse_Completion$json = {
-  '1': 'Completion',
-  '2': [
-    {'1': 'document_id', '3': 1, '4': 1, '5': 13, '10': 'documentId'},
-    {'1': 'document_title', '3': 2, '4': 1, '5': 9, '10': 'documentTitle'},
-    {'1': 'prompt', '3': 3, '4': 1, '5': 13, '10': 'prompt'},
-    {'1': 'completion', '3': 4, '4': 1, '5': 9, '10': 'completion'},
-  ],
-};
-
-/// Descriptor for `BatchResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List batchResponseDescriptor = $convert.base64Decode(
-    'Cg1CYXRjaFJlc3BvbnNlEiEKDGRvY3VtZW50X2lkcxgBIAMoCVILZG9jdW1lbnRJZHMSGAoHcH'
-    'JvbXB0cxgCIAMoCVIHcHJvbXB0cxIhCgxwcm9tcHRfdGl0bGUYAyADKAlSC3Byb21wdFRpdGxl'
-    'Ej8KBWl0ZW1zGAQgAygLMikuY2hhdGJvdC5jaGF0LnYxLkJhdGNoUmVzcG9uc2UuQ29tcGxldG'
-    'lvblIFaXRlbXMajAEKCkNvbXBsZXRpb24SHwoLZG9jdW1lbnRfaWQYASABKA1SCmRvY3VtZW50'
-    'SWQSJQoOZG9jdW1lbnRfdGl0bGUYAiABKAlSDWRvY3VtZW50VGl0bGUSFgoGcHJvbXB0GAMgAS'
-    'gNUgZwcm9tcHQSHgoKY29tcGxldGlvbhgEIAEoCVIKY29tcGxldGlvbg==');
-
 @$core.Deprecated('Use promptDescriptor instead')
 const Prompt$json = {
   '1': 'Prompt',

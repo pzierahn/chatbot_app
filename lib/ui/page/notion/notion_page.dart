@@ -1,5 +1,5 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
-import 'package:braingain_app/generated/notion.pb.dart';
+import 'package:braingain_app/generated/notion_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
