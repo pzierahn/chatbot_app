@@ -1,6 +1,8 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/ui/widget/markdown.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
+import 'package:braingain_app/ui/widget/sources_dialog.dart';
+import 'package:braingain_app/utils/source.dart';
 import 'package:flutter/material.dart';
 
 class ThreadDetails extends StatelessWidget {
@@ -18,6 +20,8 @@ class ThreadDetails extends StatelessWidget {
     final children = <Widget>[];
 
     for (final message in thread.messages) {
+      final content = SourceText(message);
+
       children.addAll([
         SizedBox(
           width: double.infinity,
@@ -30,7 +34,12 @@ class ThreadDetails extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 16),
           width: double.infinity,
           child: StyledMarkdown(
-            data: message.completion,
+            data: content.toMarkdown(),
+            onTapLink: (String text, String? href, String title) {
+              if (content.containsCites(href)) {
+                showChunkDetails(context, content.getFragment(href));
+              }
+            },
           ),
         ),
       ]);
@@ -39,21 +48,6 @@ class ThreadDetails extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Thread'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.attach_file),
-            tooltip: 'References',
-            onPressed: () async {
-              // showDialog(
-              //   context: context,
-              //   builder: (context) => SourcesDialog(
-              //     references: thread.referenceIDs,
-              //     scores: thread.referenceScores,
-              //   ),
-              // );
-            },
-          ),
-        ],
       ),
       body: ConstrainedListView(
         children: children,

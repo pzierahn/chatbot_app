@@ -2,20 +2,31 @@ import 'dart:collection';
 
 import 'package:braingain_app/generated/chat_service.pb.dart';
 
-/// SourcesUtils provides utility functions for working with sources.
-class SourcesUtils {
-  /// Replaces cites in a message with markdown links.
-  static String replaceCites(Message message) {
-    final documentNames = HashMap<String, String>();
-    final fragments = HashMap<String, Source_Fragment>();
-    for (var source in message.sources) {
+class SourceText {
+  final Message _message;
+  final _fragments = HashMap<String, Source_Fragment>();
+  final _documentNames = HashMap<String, String>();
+
+  SourceText(this._message) {
+    for (var source in _message.sources) {
       for (var fragment in source.fragments) {
-        documentNames[fragment.id] = source.name;
-        fragments[fragment.id] = fragment;
+        _documentNames[fragment.id] = source.name;
+        _fragments[fragment.id] = fragment;
       }
     }
+  }
 
-    String completion = message.completion;
+  bool containsCites(String? fragmentId) {
+    return _fragments.containsKey(fragmentId);
+  }
+
+  Source_Fragment getFragment(String? fragmentId) {
+    return _fragments[fragmentId]!;
+  }
+
+  /// Replaces cites in a message with markdown links.
+  String toMarkdown() {
+    String completion = _message.completion;
 
     // Find all cite blocks in the completion.
     final matches = RegExp(r'\\cite\{([^\}]+)\}').allMatches(completion);
@@ -34,12 +45,12 @@ class SourcesUtils {
 
       for (final part in parts) {
         final id = part.trim();
-        final fragment = fragments[id];
+        final fragment = _fragments[id];
         if (fragment == null) {
           continue;
         }
 
-        final name = documentNames[id] ?? 'Unknown';
+        final name = _documentNames[id] ?? 'Unknown';
         final href = '[$name p.${fragment.position + 1}](${fragment.id})';
         hrefs.add(href);
       }

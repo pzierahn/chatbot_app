@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/ui/widget/generating_text.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
@@ -9,7 +7,7 @@ import 'package:braingain_app/ui/widget/sources_dialog.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/utils/error.dart';
-import 'package:braingain_app/utils/sources.dart';
+import 'package:braingain_app/utils/source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -192,16 +190,8 @@ class _ChatFragment extends StatelessWidget {
 
     const buttonPadding = EdgeInsets.all(16);
 
-    final documentNames = HashMap<String, String>();
-    final fragments = HashMap<String, Source_Fragment>();
-    for (var source in message.sources) {
-      for (var fragment in source.fragments) {
-        documentNames[fragment.id] = source.name;
-        fragments[fragment.id] = fragment;
-      }
-    }
-
-    String completion = SourcesUtils.replaceCites(message);
+    final content = SourceText(message);
+    final completion = content.toMarkdown();
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,9 +212,8 @@ class _ChatFragment extends StatelessWidget {
                 child: StyledMarkdown(
                   data: completion,
                   onTapLink: (String text, String? href, String title) {
-                    print('Link: text=$text href=$href title=$title');
-                    if (fragments.containsKey(href)) {
-                      showChunkDetails(context, fragments[href]!);
+                    if (content.containsCites(href)) {
+                      showChunkDetails(context, content.getFragment(href));
                     }
                   },
                 ),
