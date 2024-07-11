@@ -82,30 +82,17 @@ class _SearchDocumentsPageState extends State<_SearchDocumentsPage> {
     final color = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    final children = <Widget>[
-      SearchBar(
-        leading: Container(
-          width: 48,
-          alignment: Alignment.center,
-          child: Icon(
-            Icons.search,
-            color: color.primary,
-          ),
-        ),
-        hintText: 'Search documents',
-        onChanged: _search,
-      ),
-    ];
+    Widget body;
 
     if (_results == null) {
-      children.add(Container(
+      body = Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(vertical: 64),
         child: const TextIllustration(
           illustration: UnDrawIllustration.search_engines,
           text: 'No documents found',
         ),
-      ));
+      );
     } else {
       final docsNames = HashMap<String, String>();
       final chunks = <Chunk>[];
@@ -116,6 +103,8 @@ class _SearchDocumentsPageState extends State<_SearchDocumentsPage> {
       }
 
       chunks.sort((a, b) => b.score.compareTo(a.score));
+
+      final children = <Widget>[];
 
       for (var chunk in chunks) {
         final title = '${docsNames[chunk.id]} '
@@ -137,15 +126,32 @@ class _SearchDocumentsPageState extends State<_SearchDocumentsPage> {
           ),
         );
       }
+
+      body = ConstrainedListView(
+        children: children,
+      );
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.collection.name),
+        title: Container(
+          margin: const EdgeInsets.symmetric(vertical: 8),
+          child: SearchBar(
+            elevation: WidgetStateProperty.all(0),
+            leading: Container(
+              width: 48,
+              alignment: Alignment.center,
+              child: Icon(
+                Icons.search,
+                color: color.primary,
+              ),
+            ),
+            hintText: 'Search for documents in ${widget.collection.name}',
+            onChanged: _search,
+          ),
+        ),
       ),
-      body: ConstrainedListView(
-        children: children,
-      ),
+      body: body,
     );
   }
 }
