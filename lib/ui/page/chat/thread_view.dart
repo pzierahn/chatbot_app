@@ -193,6 +193,13 @@ class _ChatFragment extends StatelessWidget {
     String completion = message.completion;
     for (var source in message.sources) {
       completion = completion.replaceAll(source.documentId, source.name);
+
+      for (var fragment in source.fragments) {
+        completion = completion.replaceAll(
+          fragment.id,
+          '${source.name} p.${fragment.position + 1}',
+        );
+      }
     }
 
     return Row(
