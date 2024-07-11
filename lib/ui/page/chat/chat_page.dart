@@ -173,7 +173,7 @@ class _ChatBodyState extends State<ChatBody> {
 
                     setState(() {
                       _threads.add(threadState);
-                      // _prompt.documentIds.clear();
+                      _prompt.attachments.clear();
                     });
                   },
                 ),
