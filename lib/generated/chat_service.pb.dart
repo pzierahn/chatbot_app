@@ -849,27 +849,27 @@ class ThreadID extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 }
 
-class MessageID extends $pb.GeneratedMessage {
-  factory MessageID({
-    $core.String? id,
+class MessageIndex extends $pb.GeneratedMessage {
+  factory MessageIndex({
     $core.String? threadId,
+    $core.int? index,
   }) {
     final $result = create();
-    if (id != null) {
-      $result.id = id;
-    }
     if (threadId != null) {
       $result.threadId = threadId;
     }
+    if (index != null) {
+      $result.index = index;
+    }
     return $result;
   }
-  MessageID._() : super();
-  factory MessageID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory MessageID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  MessageIndex._() : super();
+  factory MessageIndex.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MessageIndex.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageID', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v1'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'threadId')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'MessageIndex', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.chat.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'threadId')
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'index', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
 
@@ -877,40 +877,40 @@ class MessageID extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  MessageID clone() => MessageID()..mergeFromMessage(this);
+  MessageIndex clone() => MessageIndex()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  MessageID copyWith(void Function(MessageID) updates) => super.copyWith((message) => updates(message as MessageID)) as MessageID;
+  MessageIndex copyWith(void Function(MessageIndex) updates) => super.copyWith((message) => updates(message as MessageIndex)) as MessageIndex;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static MessageID create() => MessageID._();
-  MessageID createEmptyInstance() => create();
-  static $pb.PbList<MessageID> createRepeated() => $pb.PbList<MessageID>();
+  static MessageIndex create() => MessageIndex._();
+  MessageIndex createEmptyInstance() => create();
+  static $pb.PbList<MessageIndex> createRepeated() => $pb.PbList<MessageIndex>();
   @$core.pragma('dart2js:noInline')
-  static MessageID getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MessageID>(create);
-  static MessageID? _defaultInstance;
+  static MessageIndex getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MessageIndex>(create);
+  static MessageIndex? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
+  $core.String get threadId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
+  set threadId($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
+  $core.bool hasThreadId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearId() => clearField(1);
+  void clearThreadId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get threadId => $_getSZ(1);
+  $core.int get index => $_getIZ(1);
   @$pb.TagNumber(2)
-  set threadId($core.String v) { $_setString(1, v); }
+  set index($core.int v) { $_setUnsignedInt32(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasThreadId() => $_has(1);
+  $core.bool hasIndex() => $_has(1);
   @$pb.TagNumber(2)
-  void clearThreadId() => clearField(2);
+  void clearIndex() => clearField(2);
 }
 
 class ThreadIDs extends $pb.GeneratedMessage {

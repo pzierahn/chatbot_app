@@ -110,9 +110,9 @@ class DocumentServiceClientAuth {
 class AccountServiceClientAuth {
   final _service = AccountClient(_channel);
 
-  Future<Costs> getCosts(Empty request, {CallOptions? options}) async {
+  Future<Usage> getUsage(Empty request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.getCosts(request, options: options);
+    return _service.getUsage(request, options: options);
   }
 
   Future<Payments> getPayments(Empty request, {CallOptions? options}) async {
@@ -120,10 +120,9 @@ class AccountServiceClientAuth {
     return _service.getPayments(request, options: options);
   }
 
-  Future<BalanceSheet> getBalanceSheet(Empty request,
-      {CallOptions? options}) async {
+  Future<Overview> getOverview(Empty request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.getBalanceSheet(request, options: options);
+    return _service.getOverview(request, options: options);
   }
 }
 
@@ -163,7 +162,7 @@ class ChatServiceClientAuth {
   }
 
   Future<Empty> deleteMessageFromThread(
-    MessageID request, {
+    MessageIndex request, {
     CallOptions? options,
   }) async {
     options = await _mergeAuth(options);

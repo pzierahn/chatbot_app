@@ -180,19 +180,19 @@ const ThreadID$json = {
 final $typed_data.Uint8List threadIDDescriptor = $convert.base64Decode(
     'CghUaHJlYWRJRBIOCgJpZBgBIAEoCVICaWQ=');
 
-@$core.Deprecated('Use messageIDDescriptor instead')
-const MessageID$json = {
-  '1': 'MessageID',
+@$core.Deprecated('Use messageIndexDescriptor instead')
+const MessageIndex$json = {
+  '1': 'MessageIndex',
   '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'thread_id', '3': 2, '4': 1, '5': 9, '10': 'threadId'},
+    {'1': 'thread_id', '3': 1, '4': 1, '5': 9, '10': 'threadId'},
+    {'1': 'index', '3': 2, '4': 1, '5': 13, '10': 'index'},
   ],
 };
 
-/// Descriptor for `MessageID`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List messageIDDescriptor = $convert.base64Decode(
-    'CglNZXNzYWdlSUQSDgoCaWQYASABKAlSAmlkEhsKCXRocmVhZF9pZBgCIAEoCVIIdGhyZWFkSW'
-    'Q=');
+/// Descriptor for `MessageIndex`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List messageIndexDescriptor = $convert.base64Decode(
+    'CgxNZXNzYWdlSW5kZXgSGwoJdGhyZWFkX2lkGAEgASgJUgh0aHJlYWRJZBIUCgVpbmRleBgCIA'
+    'EoDVIFaW5kZXg=');
 
 @$core.Deprecated('Use threadIDsDescriptor instead')
 const ThreadIDs$json = {

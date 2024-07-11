@@ -38,9 +38,9 @@ class ChatClient extends $grpc.Client {
       '/chatbot.chat.v1.Chat/DeleteThread',
       ($2.ThreadID value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
-  static final _$deleteMessageFromThread = $grpc.ClientMethod<$2.MessageID, $0.Empty>(
+  static final _$deleteMessageFromThread = $grpc.ClientMethod<$2.MessageIndex, $0.Empty>(
       '/chatbot.chat.v1.Chat/DeleteMessageFromThread',
-      ($2.MessageID value) => value.writeToBuffer(),
+      ($2.MessageIndex value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
   static final _$completion = $grpc.ClientMethod<$2.CompletionRequest, $2.CompletionResponse>(
       '/chatbot.chat.v1.Chat/Completion',
@@ -69,7 +69,7 @@ class ChatClient extends $grpc.Client {
     return $createUnaryCall(_$deleteThread, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.Empty> deleteMessageFromThread($2.MessageID request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$0.Empty> deleteMessageFromThread($2.MessageIndex request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deleteMessageFromThread, request, options: options);
   }
 
@@ -111,12 +111,12 @@ abstract class ChatServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $2.ThreadID.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.MessageID, $0.Empty>(
+    $addMethod($grpc.ServiceMethod<$2.MessageIndex, $0.Empty>(
         'DeleteMessageFromThread',
         deleteMessageFromThread_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $2.MessageID.fromBuffer(value),
+        ($core.List<$core.int> value) => $2.MessageIndex.fromBuffer(value),
         ($0.Empty value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$2.CompletionRequest, $2.CompletionResponse>(
         'Completion',
@@ -143,7 +143,7 @@ abstract class ChatServiceBase extends $grpc.Service {
     return deleteThread(call, await request);
   }
 
-  $async.Future<$0.Empty> deleteMessageFromThread_Pre($grpc.ServiceCall call, $async.Future<$2.MessageID> request) async {
+  $async.Future<$0.Empty> deleteMessageFromThread_Pre($grpc.ServiceCall call, $async.Future<$2.MessageIndex> request) async {
     return deleteMessageFromThread(call, await request);
   }
 
@@ -155,6 +155,6 @@ abstract class ChatServiceBase extends $grpc.Service {
   $async.Future<$2.Thread> getThread($grpc.ServiceCall call, $2.ThreadID request);
   $async.Future<$2.ThreadIDs> listThreadIDs($grpc.ServiceCall call, $2.CollectionId request);
   $async.Future<$0.Empty> deleteThread($grpc.ServiceCall call, $2.ThreadID request);
-  $async.Future<$0.Empty> deleteMessageFromThread($grpc.ServiceCall call, $2.MessageID request);
+  $async.Future<$0.Empty> deleteMessageFromThread($grpc.ServiceCall call, $2.MessageIndex request);
   $async.Future<$2.CompletionResponse> completion($grpc.ServiceCall call, $2.CompletionRequest request);
 }
