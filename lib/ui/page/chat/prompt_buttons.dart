@@ -68,6 +68,14 @@ class _PromptButtonsState extends State<PromptButtons> {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
+    final iconColor = color.onSurface;
+    final titleStyle = text.bodyMedium?.copyWith(
+      color: color.onSurface,
+    );
+    final subtitleStyle = text.bodySmall?.copyWith(
+      color: color.outline,
+    );
+
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Column(
@@ -81,45 +89,32 @@ class _PromptButtonsState extends State<PromptButtons> {
           ListTile(
             leading: Icon(
               Icons.psychology_outlined,
-              color: color.onSurface,
+              color: iconColor,
             ),
             title: Text(
               'Select Model',
-              style: text.bodyMedium?.merge(TextStyle(
-                color: color.onSurface,
-              )),
+              style: titleStyle,
             ),
             subtitle: Text(
               LLMModels.fromModel(prompt.modelOptions.modelId).title,
-              style: text.bodySmall?.merge(TextStyle(
-                color: color.outline,
-              )),
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
+              style: subtitleStyle,
             ),
             onTap: _onSelectModel,
             hoverColor: color.primaryContainer,
           ),
           ListTile(
+            enabled: prompt.attachments.isEmpty,
             leading: Icon(
               Icons.manage_search_outlined,
               color: color.onSurface,
             ),
             title: Text(
               'Retrieval Options',
-              style: text.bodyMedium?.merge(TextStyle(
-                color: color.onSurface,
-              )),
+              style: titleStyle,
             ),
             subtitle: Text(
               'Set how many documents to retrieve and other retrieval options',
-              style: text.bodySmall?.merge(TextStyle(
-                color: color.outline,
-              )),
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
+              style: subtitleStyle,
             ),
             onTap: _onShowParameter,
             hoverColor: color.primaryContainer,

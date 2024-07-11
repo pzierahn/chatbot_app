@@ -54,9 +54,6 @@ class SelectDocsTile extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
       onTap: () async {
         final docs = await SelectDocsDialog.show(
           context: context,
