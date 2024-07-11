@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/ui/widget/generating_text.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
@@ -9,6 +11,45 @@ import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/utils/error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+const _exampleText =
+    '''Based on the information provided, I'll write a section for a scientific publication about respiration extraction using Lucas-Kanade and FlowNet methods. 
+
+## Respiration Extraction Methods: Lucas-Kanade and FlowNet
+
+Respiration rate is a crucial vital sign that provides valuable information about an individual's health status. In recent years, contactless methods for respiration extraction have gained significant attention due to their non-invasive nature and potential for continuous monitoring. Two prominent approaches in this domain are the Lucas-Kanade method and the more recent FlowNet-based techniques.
+
+### Lucas-Kanade Method
+
+The Lucas-Kanade method is a classical optical flow technique that has been adapted for respiration extraction. This approach relies on tracking the motion of specific features in video sequences to estimate respiratory movements \cite{7694cd11-f931-477d-821a-286d0ca6e916}. 
+
+Key aspects of the Lucas-Kanade method for respiration extraction include:
+
+1. Feature Selection: The method typically uses a single-step Lucas-Kanade algorithm to obtain velocities of tracked points. To improve reliability, a signal-to-noise ratio (SNR) of pixel blocks is calculated for selecting optimal tracking regions \cite{7694cd11-f931-477d-821a-286d0ca6e916}.
+
+2. Motion Estimation: The algorithm tracks the movement of selected features across video frames, corresponding to the subtle motions of the chest and abdomen during respiration cycles.
+
+3. Respiratory Signal Extraction: The velocity of tracked points is used to generate a respiratory signal, with zero-crossings often employed to detect inspiration and expiration phases \cite{7694cd11-f931-477d-821a-286d0ca6e916}.
+
+While the Lucas-Kanade method has shown promise in respiration extraction, it has some limitations. Most notably, it heavily depends on local brightness gradients for reliable estimation, which can be challenging in areas with low texture or uniform appearance, such as clothing \cite{f14e00b9-3aa1-4ef3-adae-435c51b13f07}.
+
+### FlowNet Method
+
+FlowNet represents a more recent approach to respiration extraction, leveraging the power of convolutional neural networks (CNNs) for optical flow estimation. This method addresses some of the limitations of traditional optical flow techniques and offers several advantages:
+
+1. Dense Prediction: Unlike the Lucas-Kanade method, FlowNet provides dense optical flow predictions for every pixel in the image, offering more comprehensive motion information \cite{f14e00b9-3aa1-4ef3-adae-435c51b13f07}.
+
+2. CNN Architecture: FlowNet employs an encoder-decoder architecture consisting of:
+   - A contraction part that extracts feature representations from input image pairs.
+   - An expansion part that predicts local deformation vectors and recovers spatial resolution \cite{f14e00b9-3aa1-4ef3-adae-435c51b13f07}.
+
+3. Robustness: Due to the strong feature extraction and representation capabilities of CNNs, FlowNet can recover optical flow from real-world videos effectively, even when trained on synthetic datasets \cite{f14e00b9-3aa1-4ef3-adae-435c51b13f07}.
+
+4. Performance: Studies have shown that FlowNet-based approaches can achieve improvements over traditional optical flow methods in terms of Pearson's correlation coefficient and root mean square error for respiration rate estimation \cite{f14e00b9-3aa1-4ef3-adae-435c51b13f07}.
+
+The FlowNet approach demonstrates promising results in respiration extraction, particularly in scenarios where traditional methods might struggle, such as low-texture regions or varying lighting conditions.
+
+Both the Lucas-Kanade and FlowNet methods represent significant advancements in contactless respiration extraction. While Lucas-Kanade offers a well-established approach with lower computational requirements, FlowNet provides more robust and comprehensive motion estimation at the cost of increased computational complexity. The choice between these methods often depends on the specific application requirements, available computational resources, and the need for accuracy in challenging scenarios.''';
 
 class ThreadView extends StatefulWidget {
   const ThreadView({
@@ -161,9 +202,9 @@ class _ChatFragment extends StatelessWidget {
     );
   }
 
-  void _copyToClipboard(BuildContext context) {
+  void _copyToClipboard(BuildContext context, String completion) {
     Clipboard.setData(
-      ClipboardData(text: message.completion),
+      ClipboardData(text: completion),
     );
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -190,16 +231,45 @@ class _ChatFragment extends StatelessWidget {
 
     const buttonPadding = EdgeInsets.all(16);
 
-    String completion = message.completion;
+    final documentNames = HashMap<String, String>();
+    final fragments = HashMap<String, Source_Fragment>();
     for (var source in message.sources) {
-      completion = completion.replaceAll(source.documentId, source.name);
-
       for (var fragment in source.fragments) {
-        completion = completion.replaceAll(
-          fragment.id,
-          '${source.name} p.${fragment.position + 1}',
-        );
+        documentNames[fragment.id] = source.name;
+        fragments[fragment.id] = fragment;
       }
+    }
+
+    String completion = message.completion;
+    // Find all \cite{...} with regex
+    final matches = RegExp(r'\\cite\{([^\}]+)\}').allMatches(completion);
+    for (final match in matches) {
+      final block = match.group(0);
+      final cite = match.group(1);
+
+      if (block == null || cite == null) {
+        continue;
+      }
+
+      print('Cite: block=$block cite=$cite');
+
+      final parts = cite.split(',');
+      final hrefs = <String>[];
+
+      for (final part in parts) {
+        final id = part.trim();
+        final fragment = fragments[id];
+        if (fragment == null) {
+          continue;
+        }
+
+        final name = documentNames[id] ?? 'Unknown';
+        final href = '[$name p.${fragment.position + 1}](${fragment.id})';
+        hrefs.add(href);
+      }
+
+      final replacement = hrefs.join(', ');
+      completion = completion.replaceFirst(block, replacement);
     }
 
     return Row(
@@ -220,6 +290,12 @@ class _ChatFragment extends StatelessWidget {
                 padding: bodyPadding,
                 child: StyledMarkdown(
                   data: completion,
+                  onTapLink: (String text, String? href, String title) {
+                    print('Link: text=$text href=$href title=$title');
+                    if (fragments.containsKey(href)) {
+                      showChunkDetails(context, fragments[href]!);
+                    }
+                  },
                 ),
               ),
             ],
@@ -240,7 +316,7 @@ class _ChatFragment extends StatelessWidget {
               IconButton(
                 tooltip: 'Copy',
                 icon: const Icon(Icons.copy_outlined),
-                onPressed: () => _copyToClipboard(context),
+                onPressed: () => _copyToClipboard(context, completion),
                 color: colors.outline,
               ),
               IconButton(

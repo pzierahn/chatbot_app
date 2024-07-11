@@ -16,36 +16,36 @@ class SourcesDialog extends StatefulWidget {
   State createState() => _SourcesDialogState();
 }
 
-class _SourcesDialogState extends State<SourcesDialog> {
-  void _showChunkDetails(Source_Fragment chunk) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => Scaffold(
-          appBar: AppBar(
-            title: const Text('Chunk Details'),
-          ),
-          body: ConstrainedListView(
-            children: [
-              ListTile(
-                title: const Text('ID'),
-                subtitle: SelectableText(chunk.id),
-              ),
-              ListTile(
-                title: const Text('Index'),
-                subtitle: SelectableText(chunk.position.toString()),
-              ),
-              ListTile(
-                title: const Text('Text'),
-                subtitle: SelectableText(chunk.content),
-              ),
-            ],
-          ),
+void showChunkDetails(BuildContext context, Source_Fragment chunk) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => Scaffold(
+        appBar: AppBar(
+          title: const Text('Chunk Details'),
+        ),
+        body: ConstrainedListView(
+          children: [
+            ListTile(
+              title: const Text('ID'),
+              subtitle: SelectableText(chunk.id),
+            ),
+            ListTile(
+              title: const Text('Index'),
+              subtitle: SelectableText(chunk.position.toString()),
+            ),
+            ListTile(
+              title: const Text('Text'),
+              subtitle: SelectableText(chunk.content),
+            ),
+          ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 
+class _SourcesDialogState extends State<SourcesDialog> {
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
@@ -90,7 +90,7 @@ class _SourcesDialogState extends State<SourcesDialog> {
                             color: color.outline,
                           ),
                         ),
-                        onTap: () => _showChunkDetails(chunk),
+                        onTap: () => showChunkDetails(context, chunk),
                       ),
                   ],
                 ),

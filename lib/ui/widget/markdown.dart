@@ -71,9 +71,13 @@ class StyledMarkdown extends StatelessWidget {
   const StyledMarkdown({
     super.key,
     required this.data,
+    this.onTapLink,
   });
 
   final String data;
+
+  /// Called when the user taps a link.
+  final MarkdownTapLinkCallback? onTapLink;
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +87,7 @@ class StyledMarkdown extends StatelessWidget {
     return MarkdownBody(
       data: data,
       selectable: true,
+      onTapLink: onTapLink,
       builders: {
         'latex': LatexElementBuilder(
           textStyle: textTheme.bodyMedium,
