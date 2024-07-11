@@ -16,15 +16,13 @@ class SelectDocsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final text = Theme.of(context).textTheme;
     final color = Theme.of(context).colorScheme;
 
     String subtitle;
-    Color subtitleColor;
+    Color? subtitleColor;
 
     if (documents.isEmpty()) {
       subtitle = 'Documents are automatically selected based on the prompt';
-      subtitleColor = color.outline;
     } else {
       subtitle = documents.getNames().join(', ');
       subtitleColor = color.primary;
@@ -42,13 +40,13 @@ class SelectDocsTile extends StatelessWidget {
             ),
       title: Text(
         'Attach Documents',
-        style: text.bodyMedium?.merge(TextStyle(
+        style: TextStyle(
           color: color.onSurface,
-        )),
+        ),
       ),
       subtitle: Text(
         subtitle,
-        style: text.bodySmall?.copyWith(
+        style: TextStyle(
           color: subtitleColor,
         ),
         maxLines: 1,
@@ -65,7 +63,6 @@ class SelectDocsTile extends StatelessWidget {
           onChanged(docs);
         }
       },
-      hoverColor: color.primaryContainer,
     );
   }
 }
