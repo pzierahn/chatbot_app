@@ -1,6 +1,5 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/ui/widget/markdown.dart';
-import 'package:braingain_app/ui/widget/sources_dialog.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:flutter/material.dart';
 
