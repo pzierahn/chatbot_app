@@ -138,6 +138,7 @@ class _SearchDocumentsPageState extends State<_SearchDocumentsPage> {
           margin: const EdgeInsets.symmetric(vertical: 8),
           child: SearchBar(
             elevation: WidgetStateProperty.all(0),
+            autoFocus: true,
             leading: Container(
               width: 48,
               alignment: Alignment.center,
