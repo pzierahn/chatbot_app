@@ -9,6 +9,7 @@ import 'package:braingain_app/ui/widget/sources_dialog.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/utils/error.dart';
+import 'package:braingain_app/utils/sources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -200,37 +201,7 @@ class _ChatFragment extends StatelessWidget {
       }
     }
 
-    String completion = message.completion;
-    // Find all \cite{...} with regex
-    final matches = RegExp(r'\\cite\{([^\}]+)\}').allMatches(completion);
-    for (final match in matches) {
-      final block = match.group(0);
-      final cite = match.group(1);
-
-      if (block == null || cite == null) {
-        continue;
-      }
-
-      print('Cite: block=$block cite=$cite');
-
-      final parts = cite.split(',');
-      final hrefs = <String>[];
-
-      for (final part in parts) {
-        final id = part.trim();
-        final fragment = fragments[id];
-        if (fragment == null) {
-          continue;
-        }
-
-        final name = documentNames[id] ?? 'Unknown';
-        final href = '[$name p.${fragment.position + 1}](${fragment.id})';
-        hrefs.add(href);
-      }
-
-      final replacement = hrefs.join(', ');
-      completion = completion.replaceFirst(block, replacement);
-    }
+    String completion = SourcesUtils.replaceCites(message);
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
