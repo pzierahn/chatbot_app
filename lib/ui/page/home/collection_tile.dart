@@ -109,7 +109,6 @@ class CollectionsTile extends StatelessWidget {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        hoverColor: color.primaryContainer,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,
           vertical: 8,
