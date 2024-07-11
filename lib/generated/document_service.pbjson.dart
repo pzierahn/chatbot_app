@@ -64,22 +64,6 @@ final $typed_data.Uint8List documentListDescriptor = $convert.base64Decode(
     'A2tleRI8CgV2YWx1ZRgCIAEoCzImLmNoYXRib3QuZG9jdW1lbnRzLnYxLkRvY3VtZW50TWV0YW'
     'RhdGFSBXZhbHVlOgI4AQ==');
 
-@$core.Deprecated('Use chunkDescriptor instead')
-const Chunk$json = {
-  '1': 'Chunk',
-  '2': [
-    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'documentId', '3': 2, '4': 1, '5': 9, '10': 'documentId'},
-    {'1': 'text', '3': 3, '4': 1, '5': 9, '10': 'text'},
-    {'1': 'postion', '3': 4, '4': 1, '5': 13, '10': 'postion'},
-  ],
-};
-
-/// Descriptor for `Chunk`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List chunkDescriptor = $convert.base64Decode(
-    'CgVDaHVuaxIOCgJpZBgBIAEoCVICaWQSHgoKZG9jdW1lbnRJZBgCIAEoCVIKZG9jdW1lbnRJZB'
-    'ISCgR0ZXh0GAMgASgJUgR0ZXh0EhgKB3Bvc3Rpb24YBCABKA1SB3Bvc3Rpb24=');
-
 @$core.Deprecated('Use searchQueryDescriptor instead')
 const SearchQuery$json = {
   '1': 'SearchQuery',
@@ -97,15 +81,32 @@ final $typed_data.Uint8List searchQueryDescriptor = $convert.base64Decode(
     'lSDGNvbGxlY3Rpb25JZBIcCgl0aHJlc2hvbGQYAyABKAJSCXRocmVzaG9sZBIUCgVsaW1pdBgE'
     'IAEoDVIFbGltaXQ=');
 
+@$core.Deprecated('Use chunkDescriptor instead')
+const Chunk$json = {
+  '1': 'Chunk',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'text', '3': 2, '4': 1, '5': 9, '10': 'text'},
+    {'1': 'score', '3': 3, '4': 1, '5': 2, '10': 'score'},
+    {'1': 'postion', '3': 4, '4': 1, '5': 13, '10': 'postion'},
+    {'1': 'documentId', '3': 5, '4': 1, '5': 9, '10': 'documentId'},
+  ],
+};
+
+/// Descriptor for `Chunk`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List chunkDescriptor = $convert.base64Decode(
+    'CgVDaHVuaxIOCgJpZBgBIAEoCVICaWQSEgoEdGV4dBgCIAEoCVIEdGV4dBIUCgVzY29yZRgDIA'
+    'EoAlIFc2NvcmUSGAoHcG9zdGlvbhgEIAEoDVIHcG9zdGlvbhIeCgpkb2N1bWVudElkGAUgASgJ'
+    'Ugpkb2N1bWVudElk');
+
 @$core.Deprecated('Use searchResultsDescriptor instead')
 const SearchResults$json = {
   '1': 'SearchResults',
   '2': [
     {'1': 'chunks', '3': 1, '4': 3, '5': 11, '6': '.chatbot.documents.v1.Chunk', '10': 'chunks'},
     {'1': 'document_names', '3': 2, '4': 3, '5': 11, '6': '.chatbot.documents.v1.SearchResults.DocumentNamesEntry', '10': 'documentNames'},
-    {'1': 'scores', '3': 3, '4': 3, '5': 11, '6': '.chatbot.documents.v1.SearchResults.ScoresEntry', '10': 'scores'},
   ],
-  '3': [SearchResults_DocumentNamesEntry$json, SearchResults_ScoresEntry$json],
+  '3': [SearchResults_DocumentNamesEntry$json],
 };
 
 @$core.Deprecated('Use searchResultsDescriptor instead')
@@ -118,25 +119,13 @@ const SearchResults_DocumentNamesEntry$json = {
   '7': {'7': true},
 };
 
-@$core.Deprecated('Use searchResultsDescriptor instead')
-const SearchResults_ScoresEntry$json = {
-  '1': 'ScoresEntry',
-  '2': [
-    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    {'1': 'value', '3': 2, '4': 1, '5': 2, '10': 'value'},
-  ],
-  '7': {'7': true},
-};
-
 /// Descriptor for `SearchResults`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List searchResultsDescriptor = $convert.base64Decode(
     'Cg1TZWFyY2hSZXN1bHRzEjMKBmNodW5rcxgBIAMoCzIbLmNoYXRib3QuZG9jdW1lbnRzLnYxLk'
     'NodW5rUgZjaHVua3MSXQoOZG9jdW1lbnRfbmFtZXMYAiADKAsyNi5jaGF0Ym90LmRvY3VtZW50'
-    'cy52MS5TZWFyY2hSZXN1bHRzLkRvY3VtZW50TmFtZXNFbnRyeVINZG9jdW1lbnROYW1lcxJHCg'
-    'ZzY29yZXMYAyADKAsyLy5jaGF0Ym90LmRvY3VtZW50cy52MS5TZWFyY2hSZXN1bHRzLlNjb3Jl'
-    'c0VudHJ5UgZzY29yZXMaQAoSRG9jdW1lbnROYW1lc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5Eh'
-    'QKBXZhbHVlGAIgASgJUgV2YWx1ZToCOAEaOQoLU2NvcmVzRW50cnkSEAoDa2V5GAEgASgJUgNr'
-    'ZXkSFAoFdmFsdWUYAiABKAJSBXZhbHVlOgI4AQ==');
+    'cy52MS5TZWFyY2hSZXN1bHRzLkRvY3VtZW50TmFtZXNFbnRyeVINZG9jdW1lbnROYW1lcxpACh'
+    'JEb2N1bWVudE5hbWVzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZh'
+    'bHVlOgI4AQ==');
 
 @$core.Deprecated('Use indexProgressDescriptor instead')
 const IndexProgress$json = {

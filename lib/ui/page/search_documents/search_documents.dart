@@ -77,14 +77,6 @@ class _SearchDocumentsPageState extends State<_SearchDocumentsPage> {
     });
   }
 
-  double _getScore(String id) {
-    if (_results == null) {
-      return 0.0;
-    }
-
-    return _results!.scores.containsKey(id) ? _results!.scores[id]! : 0.0;
-  }
-
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
@@ -123,20 +115,17 @@ class _SearchDocumentsPageState extends State<_SearchDocumentsPage> {
         chunks.add(chunk);
       }
 
-      chunks.sort((a, b) => _getScore(b.id).compareTo(_getScore(a.id)));
+      chunks.sort((a, b) => b.score.compareTo(a.score));
 
       for (var chunk in chunks) {
-        final score = _results!.scores.containsKey(chunk.id)
-            ? (_results!.scores[chunk.id] ?? 0.0)
-            : 0.0;
-
         final title = '${docsNames[chunk.id]} '
             'p.${chunk.postion + 1} ';
 
         children.add(
           ExpansionTile(
             title: Text(title),
-            leading: Text('(${(score * 100).toStringAsFixed(0)}%)'),
+            leading: Text('(${(chunk.score * 100).toStringAsFixed(0)}%)'),
+            expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SelectableText(
                 chunk.text,

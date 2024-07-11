@@ -174,98 +174,6 @@ class DocumentList extends $pb.GeneratedMessage {
   $core.Map<$core.String, DocumentMetadata> get items => $_getMap(0);
 }
 
-class Chunk extends $pb.GeneratedMessage {
-  factory Chunk({
-    $core.String? id,
-    $core.String? documentId,
-    $core.String? text,
-    $core.int? postion,
-  }) {
-    final $result = create();
-    if (id != null) {
-      $result.id = id;
-    }
-    if (documentId != null) {
-      $result.documentId = documentId;
-    }
-    if (text != null) {
-      $result.text = text;
-    }
-    if (postion != null) {
-      $result.postion = postion;
-    }
-    return $result;
-  }
-  Chunk._() : super();
-  factory Chunk.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Chunk.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Chunk', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'documentId', protoName: 'documentId')
-    ..aOS(3, _omitFieldNames ? '' : 'text')
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'postion', $pb.PbFieldType.OU3)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Chunk clone() => Chunk()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Chunk copyWith(void Function(Chunk) updates) => super.copyWith((message) => updates(message as Chunk)) as Chunk;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static Chunk create() => Chunk._();
-  Chunk createEmptyInstance() => create();
-  static $pb.PbList<Chunk> createRepeated() => $pb.PbList<Chunk>();
-  @$core.pragma('dart2js:noInline')
-  static Chunk getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Chunk>(create);
-  static Chunk? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get documentId => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set documentId($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasDocumentId() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearDocumentId() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get text => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set text($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasText() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearText() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.int get postion => $_getIZ(3);
-  @$pb.TagNumber(4)
-  set postion($core.int v) { $_setUnsignedInt32(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasPostion() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearPostion() => clearField(4);
-}
-
 class SearchQuery extends $pb.GeneratedMessage {
   factory SearchQuery({
     $core.String? text,
@@ -358,11 +266,116 @@ class SearchQuery extends $pb.GeneratedMessage {
   void clearLimit() => clearField(4);
 }
 
+class Chunk extends $pb.GeneratedMessage {
+  factory Chunk({
+    $core.String? id,
+    $core.String? text,
+    $core.double? score,
+    $core.int? postion,
+    $core.String? documentId,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (text != null) {
+      $result.text = text;
+    }
+    if (score != null) {
+      $result.score = score;
+    }
+    if (postion != null) {
+      $result.postion = postion;
+    }
+    if (documentId != null) {
+      $result.documentId = documentId;
+    }
+    return $result;
+  }
+  Chunk._() : super();
+  factory Chunk.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Chunk.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Chunk', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'text')
+    ..a<$core.double>(3, _omitFieldNames ? '' : 'score', $pb.PbFieldType.OF)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'postion', $pb.PbFieldType.OU3)
+    ..aOS(5, _omitFieldNames ? '' : 'documentId', protoName: 'documentId')
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Chunk clone() => Chunk()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Chunk copyWith(void Function(Chunk) updates) => super.copyWith((message) => updates(message as Chunk)) as Chunk;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static Chunk create() => Chunk._();
+  Chunk createEmptyInstance() => create();
+  static $pb.PbList<Chunk> createRepeated() => $pb.PbList<Chunk>();
+  @$core.pragma('dart2js:noInline')
+  static Chunk getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Chunk>(create);
+  static Chunk? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get text => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set text($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasText() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearText() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.double get score => $_getN(2);
+  @$pb.TagNumber(3)
+  set score($core.double v) { $_setFloat(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasScore() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearScore() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.int get postion => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set postion($core.int v) { $_setUnsignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasPostion() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearPostion() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get documentId => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set documentId($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasDocumentId() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearDocumentId() => clearField(5);
+}
+
 class SearchResults extends $pb.GeneratedMessage {
   factory SearchResults({
     $core.Iterable<Chunk>? chunks,
     $core.Map<$core.String, $core.String>? documentNames,
-    $core.Map<$core.String, $core.double>? scores,
   }) {
     final $result = create();
     if (chunks != null) {
@@ -370,9 +383,6 @@ class SearchResults extends $pb.GeneratedMessage {
     }
     if (documentNames != null) {
       $result.documentNames.addAll(documentNames);
-    }
-    if (scores != null) {
-      $result.scores.addAll(scores);
     }
     return $result;
   }
@@ -383,7 +393,6 @@ class SearchResults extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SearchResults', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
     ..pc<Chunk>(1, _omitFieldNames ? '' : 'chunks', $pb.PbFieldType.PM, subBuilder: Chunk.create)
     ..m<$core.String, $core.String>(2, _omitFieldNames ? '' : 'documentNames', entryClassName: 'SearchResults.DocumentNamesEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('chatbot.documents.v1'))
-    ..m<$core.String, $core.double>(3, _omitFieldNames ? '' : 'scores', entryClassName: 'SearchResults.ScoresEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OF, packageName: const $pb.PackageName('chatbot.documents.v1'))
     ..hasRequiredFields = false
   ;
 
@@ -413,9 +422,6 @@ class SearchResults extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(2)
   $core.Map<$core.String, $core.String> get documentNames => $_getMap(1);
-
-  @$pb.TagNumber(3)
-  $core.Map<$core.String, $core.double> get scores => $_getMap(2);
 }
 
 class IndexProgress extends $pb.GeneratedMessage {
