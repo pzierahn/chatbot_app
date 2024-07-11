@@ -138,7 +138,7 @@ class _SearchDocumentsPageState extends State<_SearchDocumentsPage> {
             title: Text(title),
             leading: Text('(${(score * 100).toStringAsFixed(0)}%)'),
             children: [
-              Text(
+              SelectableText(
                 chunk.text,
                 style: textTheme.bodySmall?.copyWith(
                   color: color.outline,
