@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
-class ChatPage extends StatefulWidget {
+class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
 
   static const route = 'chat';
@@ -31,11 +31,6 @@ class ChatPage extends StatefulWidget {
         arguments: collection,
       );
 
-  @override
-  State<StatefulWidget> createState() => _ChatPageState();
-}
-
-class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     final collection =
@@ -134,11 +129,7 @@ class _ChatBodyState extends State<ChatBody> {
 
   @override
   Widget build(BuildContext context) {
-    final children = [];
-
-    // if (widget.collection.documentCount == 0) {
-    //   children.add(DocumentWarning(collection: widget.collection));
-    // }
+    final children = <Widget>[];
 
     for (final thread in _threads) {
       children.add(ThreadView(thread: thread));
