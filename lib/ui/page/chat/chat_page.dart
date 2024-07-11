@@ -123,8 +123,8 @@ class _ChatBodyState extends State<ChatBody> {
       ..topP = 1.0;
 
     final ragOpts = RetrievalOptions()
-      ..documents = 15
-      ..threshold = 0.25;
+      ..documents = 10
+      ..threshold = 0.40;
 
     _prompt = Prompt()
       ..collectionId = widget.collection.id
