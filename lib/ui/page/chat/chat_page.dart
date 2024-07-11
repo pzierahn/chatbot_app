@@ -1,6 +1,5 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/generated/collection_service.pb.dart';
-import 'package:braingain_app/ui/page/chat/document_warning.dart';
 import 'package:braingain_app/ui/page/chat/index_button.dart';
 import 'package:braingain_app/ui/page/chat/prompt_buttons.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
@@ -10,6 +9,7 @@ import 'package:braingain_app/ui/page/chat/thread_view.dart';
 import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
 import 'package:braingain_app/ui/page/documents/documents_page.dart';
 import 'package:braingain_app/ui/page/notion/notion_dialog.dart';
+import 'package:braingain_app/ui/page/search_documents/search_documents.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:braingain_app/utils/llm_models.dart';
@@ -61,6 +61,13 @@ class _ChatPageState extends State<ChatPage> {
               width: 24,
               height: 24,
             ),
+          ),
+          IconButton(
+            icon: const Icon(Icons.search),
+            tooltip: 'Search Documents',
+            onPressed: () {
+              SearchDocumentsPage.open(context, collection);
+            },
           ),
           IconButton(
             icon: const Icon(Icons.history_outlined),
