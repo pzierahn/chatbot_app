@@ -126,9 +126,9 @@ class BalanceView extends StatelessWidget {
               payments,
               const Divider(height: 2),
               ListTile(
-                leading: const Icon(Icons.balance),
+                leading: const Icon(Icons.attach_money),
                 title: Text(
-                  'Budget Left',
+                  'Remaining Funds',
                   style: textTheme.titleSmall,
                 ),
                 trailing: Text(
