@@ -17,7 +17,7 @@ class ParameterDialog extends StatefulWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Parameters'),
+          title: const Text('Retrieval Options'),
           content: SizedBox(
             width: 400,
             // height: 400,

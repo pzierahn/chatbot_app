@@ -103,17 +103,17 @@ class _PromptButtonsState extends State<PromptButtons> {
           ),
           ListTile(
             leading: Icon(
-              Icons.tune_outlined,
+              Icons.manage_search_outlined,
               color: color.onSurface,
             ),
             title: Text(
-              'Parameters',
+              'Retrieval Options',
               style: text.bodyMedium?.merge(TextStyle(
                 color: color.onSurface,
               )),
             ),
             subtitle: Text(
-              'Set creativity and document limits',
+              'Set how many documents to retrieve and other retrieval options',
               style: text.bodySmall?.merge(TextStyle(
                 color: color.outline,
               )),
