@@ -85,8 +85,8 @@ class _ThreadViewState extends State<ThreadView> {
       final thread = widget.thread.thread;
       final messages = thread?.messages ?? [];
 
-      for (var inx = 0; inx < messages.length; inx++) {
-        final message = messages[inx];
+      for (var idx = 0; idx < messages.length; idx++) {
+        final message = messages[idx];
 
         children.add(
           _ChatFragment(
@@ -94,15 +94,15 @@ class _ThreadViewState extends State<ThreadView> {
             message: message,
             onDelete: () => ConfirmDialog.show(
               context,
-              title: (inx == 0) ? 'Delete Thread?' : 'Delete Message?',
-              content: (inx == 0)
+              title: (idx == 0) ? 'Delete Thread?' : 'Delete Message?',
+              content: (idx == 0)
                   ? 'Are you sure you want to delete this entire thread?'
                   : 'Are you sure you want to delete this message?',
               onConfirm: () {
-                if (inx == 0) {
+                if (idx == 0) {
                   widget.thread.deleteThread();
                 } else {
-                  widget.thread.deleteMessageFromThread(inx);
+                  widget.thread.deleteMessageFromThread(idx);
                 }
               },
             ),

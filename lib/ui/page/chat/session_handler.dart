@@ -127,18 +127,18 @@ class ThreadState {
       throw StateError('Thread not started');
     }
 
-    // TODO: Implement deleteMessageFromThread
+    print('Deleting message at index $index');
 
-    // final messageId = MessageID()
-    //   ..id = id
-    //   ..threadId = thread!.id;
-    //
-    // chat.deleteMessageFromThread(messageId).then((_) {
-    //   thread!.messages.removeAt(index);
-    //   onUpdate();
-    // }).catchError((error) {
-    //   debugPrint('Error deleting message: $error');
-    //   // TODO: Show snack-bar
-    // });
+    final messageId = MessageIndex()
+      ..index = index
+      ..threadId = thread!.id;
+
+    chat.deleteMessageFromThread(messageId).then((_) {
+      thread!.messages.removeAt(index);
+      onUpdate();
+    }).catchError((error) {
+      debugPrint('Error deleting message: $error');
+      // TODO: Show snack-bar
+    });
   }
 }
