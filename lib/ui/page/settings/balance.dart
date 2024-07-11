@@ -17,8 +17,8 @@ class BalanceView extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
 
     return OutlinedCard(
-      child: FutureBuilder<BalanceSheet>(
-        future: account.getBalanceSheet(Empty()),
+      child: FutureBuilder<Overview>(
+        future: account.getOverview(Empty()),
         builder: (context, snap) {
           if (snap.hasError) {
             return Center(
@@ -32,11 +32,11 @@ class BalanceView extends StatelessWidget {
             );
           }
 
-          final balance = snap.data!;
+          final overview = snap.data!;
 
-          Widget costs;
-          if (balance.costs.isEmpty) {
-            costs = const Center(
+          Widget usage;
+          if (overview.usage.isEmpty) {
+            usage = const Center(
               child: TextIllustration(
                 height: 150,
                 illustration: UnDrawIllustration.lost,
@@ -44,10 +44,10 @@ class BalanceView extends StatelessWidget {
               ),
             );
           } else {
-            costs = Column(
+            usage = Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                for (var cost in balance.costs)
+                for (var cost in overview.usage)
                   ListTile(
                     leading: const Icon(Icons.local_fire_department),
                     title: Text(
@@ -72,7 +72,7 @@ class BalanceView extends StatelessWidget {
           }
 
           Widget payments;
-          if (balance.payments.isEmpty) {
+          if (overview.payments.isEmpty) {
             payments = const Center(
               child: TextIllustration(
                 height: 150,
@@ -84,7 +84,7 @@ class BalanceView extends StatelessWidget {
             payments = Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                for (var payment in balance.payments)
+                for (var payment in overview.payments)
                   ListTile(
                     title: Text(
                       payment.date.toDateTime().toString(),
@@ -121,7 +121,7 @@ class BalanceView extends StatelessWidget {
                 ),
               ),
               const Divider(height: 2),
-              costs,
+              usage,
               const Divider(height: 2),
               payments,
               const Divider(height: 2),
@@ -132,11 +132,11 @@ class BalanceView extends StatelessWidget {
                   style: textTheme.titleSmall,
                 ),
                 trailing: Text(
-                  MoneyUtils.format(balance.balance),
+                  MoneyUtils.format(overview.balance),
                   style: TextStyle(
-                    color: balance.balance < 0
+                    color: overview.balance < 0
                         ? Colors.red
-                        : balance.balance > 0
+                        : overview.balance > 0
                             ? Colors.green
                             : null,
                   ),
