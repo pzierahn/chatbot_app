@@ -69,15 +69,16 @@ const Chunk$json = {
   '1': 'Chunk',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    {'1': 'text', '3': 2, '4': 1, '5': 9, '10': 'text'},
-    {'1': 'postion', '3': 3, '4': 1, '5': 13, '10': 'postion'},
+    {'1': 'documentId', '3': 2, '4': 1, '5': 9, '10': 'documentId'},
+    {'1': 'text', '3': 3, '4': 1, '5': 9, '10': 'text'},
+    {'1': 'postion', '3': 4, '4': 1, '5': 13, '10': 'postion'},
   ],
 };
 
 /// Descriptor for `Chunk`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List chunkDescriptor = $convert.base64Decode(
-    'CgVDaHVuaxIOCgJpZBgBIAEoCVICaWQSEgoEdGV4dBgCIAEoCVIEdGV4dBIYCgdwb3N0aW9uGA'
-    'MgASgNUgdwb3N0aW9u');
+    'CgVDaHVuaxIOCgJpZBgBIAEoCVICaWQSHgoKZG9jdW1lbnRJZBgCIAEoCVIKZG9jdW1lbnRJZB'
+    'ISCgR0ZXh0GAMgASgJUgR0ZXh0EhgKB3Bvc3Rpb24YBCABKA1SB3Bvc3Rpb24=');
 
 @$core.Deprecated('Use searchQueryDescriptor instead')
 const SearchQuery$json = {

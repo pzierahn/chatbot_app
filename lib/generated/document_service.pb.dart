@@ -177,12 +177,16 @@ class DocumentList extends $pb.GeneratedMessage {
 class Chunk extends $pb.GeneratedMessage {
   factory Chunk({
     $core.String? id,
+    $core.String? documentId,
     $core.String? text,
     $core.int? postion,
   }) {
     final $result = create();
     if (id != null) {
       $result.id = id;
+    }
+    if (documentId != null) {
+      $result.documentId = documentId;
     }
     if (text != null) {
       $result.text = text;
@@ -198,8 +202,9 @@ class Chunk extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Chunk', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'text')
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'postion', $pb.PbFieldType.OU3)
+    ..aOS(2, _omitFieldNames ? '' : 'documentId', protoName: 'documentId')
+    ..aOS(3, _omitFieldNames ? '' : 'text')
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'postion', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
 
@@ -234,22 +239,31 @@ class Chunk extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get text => $_getSZ(1);
+  $core.String get documentId => $_getSZ(1);
   @$pb.TagNumber(2)
-  set text($core.String v) { $_setString(1, v); }
+  set documentId($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasText() => $_has(1);
+  $core.bool hasDocumentId() => $_has(1);
   @$pb.TagNumber(2)
-  void clearText() => clearField(2);
+  void clearDocumentId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.int get postion => $_getIZ(2);
+  $core.String get text => $_getSZ(2);
   @$pb.TagNumber(3)
-  set postion($core.int v) { $_setUnsignedInt32(2, v); }
+  set text($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasPostion() => $_has(2);
+  $core.bool hasText() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPostion() => clearField(3);
+  void clearText() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.int get postion => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set postion($core.int v) { $_setUnsignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasPostion() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearPostion() => clearField(4);
 }
 
 class SearchQuery extends $pb.GeneratedMessage {

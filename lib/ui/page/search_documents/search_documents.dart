@@ -119,7 +119,7 @@ class _SearchDocumentsPageState extends State<_SearchDocumentsPage> {
       final chunks = <Chunk>[];
 
       for (final chunk in _results!.chunks) {
-        docsNames[chunk.id] = _results!.documentNames[chunk.id] ?? '';
+        docsNames[chunk.id] = _results!.documentNames[chunk.documentId] ?? '';
         chunks.add(chunk);
       }
 
@@ -131,21 +131,20 @@ class _SearchDocumentsPageState extends State<_SearchDocumentsPage> {
             : 0.0;
 
         final title = '${docsNames[chunk.id]} '
-            'p.${chunk.postion + 1} '
-            '(${(score * 100).toStringAsFixed(0)}%)';
+            'p.${chunk.postion + 1} ';
 
         children.add(
-          ListTile(
+          ExpansionTile(
             title: Text(title),
-            subtitle: Text(
-              chunk.text,
-              style: textTheme.bodySmall?.copyWith(
-                color: color.outline,
+            leading: Text('(${(score * 100).toStringAsFixed(0)}%)'),
+            children: [
+              Text(
+                chunk.text,
+                style: textTheme.bodySmall?.copyWith(
+                  color: color.outline,
+                ),
               ),
-            ),
-            onTap: () {
-              // DocumentPage.open(context, doc);
-            },
+            ],
           ),
         );
       }
