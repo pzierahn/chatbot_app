@@ -5,9 +5,7 @@ const _colorSeed = Colors.blue;
 final _colorsLight = ColorScheme.fromSeed(
   brightness: Brightness.light,
   seedColor: _colorSeed,
-  background: Colors.white,
   surface: Colors.white,
-  onBackground: Colors.black,
   onSurface: Colors.black,
   surfaceTint: Colors.white,
 );
@@ -49,6 +47,7 @@ final lightTheme = ThemeData(
       shape: WidgetStateProperty.all(_roundedShape),
     ),
   ),
+  scaffoldBackgroundColor: _colorsLight.surface,
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: ButtonStyle(
       shape: WidgetStateProperty.all(_roundedShape),
