@@ -127,8 +127,6 @@ class ThreadState {
       throw StateError('Thread not started');
     }
 
-    print('Deleting message at index $index');
-
     final messageId = MessageIndex()
       ..index = index
       ..threadId = thread!.id;

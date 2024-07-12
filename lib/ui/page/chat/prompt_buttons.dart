@@ -65,9 +65,6 @@ class _PromptButtonsState extends State<PromptButtons> {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme;
-    final text = Theme.of(context).textTheme;
-
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Column(

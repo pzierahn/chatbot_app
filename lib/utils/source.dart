@@ -38,8 +38,6 @@ class SourceText {
         continue;
       }
 
-      print('Cite: block=$block cite=$cite');
-
       final parts = cite.split(',');
       final hrefs = <String>[];
 
