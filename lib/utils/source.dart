@@ -7,8 +7,13 @@ class SourceText {
   final _fragments = HashMap<String, Source_Fragment>();
   final _documentNames = HashMap<String, String>();
 
+  // Map document ids to their names.
+  final _document = HashMap<String, String>();
+
   SourceText(this._message) {
     for (var source in _message.sources) {
+      _document[source.documentId] = source.name;
+
       for (var fragment in source.fragments) {
         _documentNames[fragment.id] = source.name;
         _fragments[fragment.id] = fragment;
@@ -43,21 +48,31 @@ class SourceText {
 
       for (final part in parts) {
         final id = part.trim();
-        final fragment = _fragments[id];
-        if (fragment == null) {
-          continue;
+
+        if (_fragments.containsKey(id)) {
+          final fragment = _fragments[id];
+          if (fragment == null) {
+            continue;
+          }
+
+          final name = _documentNames[id] ?? 'Unknown';
+          final href = '[$name p.${fragment.position + 1}](${fragment.id})';
+          hrefs.add(href);
         }
 
-        final name = _documentNames[id] ?? 'Unknown';
-        final href = '[$name p.${fragment.position + 1}](${fragment.id})';
-        hrefs.add(href);
+        if (_document.containsKey(id)) {
+          final name = _document[id] ?? 'Unknown';
+          final href = '[$name]';
+          hrefs.add(href);
+        }
       }
 
       final replacement = hrefs.join(', ');
       completion = completion.replaceFirst(block, replacement);
     }
 
-    if (!completion.contains("\\cite{")) {
+    // Check if the model has no cites.
+    if (!_message.completion.contains("\\cite{")) {
       // Replace cites outside of cite blocks.
       for (var fragment in _fragments.entries) {
         final id = fragment.key;
@@ -68,7 +83,7 @@ class SourceText {
     }
 
     // Replace all document ids with document names.
-    for (var document in _documentNames.entries) {
+    for (var document in _document.entries) {
       completion = completion.replaceAll(document.key, document.value);
     }
 
