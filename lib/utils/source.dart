@@ -57,6 +57,19 @@ class SourceText {
       completion = completion.replaceFirst(block, replacement);
     }
 
+    // Replace cites outside of cite blocks.
+    for (var fragment in _fragments.entries) {
+      final id = fragment.key;
+      final name = _documentNames[id] ?? 'Unknown';
+      final href = '[$name p.${fragment.value.position + 1}]($id)';
+      completion = completion.replaceAll(id, href);
+    }
+
+    // Replace all document ids with document names.
+    for (var document in _documentNames.entries) {
+      completion = completion.replaceAll(document.key, document.value);
+    }
+
     return completion;
   }
 }
