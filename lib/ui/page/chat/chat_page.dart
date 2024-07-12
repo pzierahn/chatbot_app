@@ -118,7 +118,7 @@ class _ChatBodyState extends State<ChatBody> {
       ..topP = 1.0;
 
     final ragOpts = RetrievalOptions()
-      ..documents = 10
+      ..documents = 16
       ..threshold = 0.30;
 
     _prompt = Prompt()
