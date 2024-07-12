@@ -1,5 +1,5 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
-import 'package:braingain_app/generated/notion.pb.dart';
+import 'package:braingain_app/generated/notion_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
@@ -45,14 +45,14 @@ class _NotionPageState extends State<NotionPage> {
     });
 
     final model = ModelOptions()
-      ..model = LLMModels.claudeHaiku.model
+      ..modelId = LLMModels.claudeHaiku.model
       ..temperature = 1.0
       ..topP = 1.0
       ..maxTokens = 256;
 
     final request = NotionPrompt()
-      ..databaseID = widget.databaseID
-      ..collectionID = widget.collectionID
+      ..databaseId = widget.databaseID
+      ..collectionId = widget.collectionID
       ..prompt = prompt
       ..modelOptions = model;
 

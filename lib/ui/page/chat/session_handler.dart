@@ -9,8 +9,10 @@ import 'package:flutter/rendering.dart';
 class ThreadState {
   Thread? thread;
   ModelOptions? modelOptions;
+  RetrievalOptions? retrievalOptions;
   VoidCallback onUpdate = () {};
 
+  String? collectionId;
   String? pendingPrompt;
   Object? error;
 
@@ -51,16 +53,21 @@ class ThreadState {
   }
 
   static ThreadState start({
-    required ThreadPrompt prompt,
+    required Prompt prompt,
     required VoidCallback notifier,
   }) {
     final obj = ThreadState()
+      ..collectionId = prompt.collectionId
       ..setLoading(prompt.prompt)
       ..onUpdate = notifier
-      ..modelOptions = prompt.modelOptions;
+      ..modelOptions = prompt.modelOptions
+      ..retrievalOptions = prompt.retrievalOptions;
 
-    chat.startThread(prompt).then((value) {
-      obj.setData(value);
+    chat.postMessage(prompt).then((value) {
+      final thread = Thread()
+        ..id = value.threadId
+        ..messages.add(value);
+      obj.setData(thread);
     }).catchError((error) {
       debugPrint('Error starting thread: $error');
       obj.setError(error);
@@ -83,9 +90,11 @@ class ThreadState {
     }
 
     final prompt = Prompt()
-      ..threadID = thread!.id
+      ..threadId = thread!.id
+      ..collectionId = collectionId!
       ..prompt = text
-      ..modelOptions = modelOptions!;
+      ..modelOptions = modelOptions!
+      ..retrievalOptions = retrievalOptions!;
 
     setLoading(text);
 
@@ -113,17 +122,17 @@ class ThreadState {
     });
   }
 
-  void deleteMessageFromThread(String id) {
+  void deleteMessageFromThread(int index) {
     if (thread == null) {
       throw StateError('Thread not started');
     }
 
-    final messageId = MessageID()
-      ..id = id
+    final messageId = MessageIndex()
+      ..index = index
       ..threadId = thread!.id;
 
     chat.deleteMessageFromThread(messageId).then((_) {
-      thread!.messages.removeWhere((element) => element.id == id);
+      thread!.messages.removeAt(index);
       onUpdate();
     }).catchError((error) {
       debugPrint('Error deleting message: $error');

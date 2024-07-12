@@ -21,5 +21,9 @@ RUN flutter precache --web \
     flutter build web --release;
 
 FROM nginx:alpine
-#COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy the nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy the build output to replace the default nginx contents.
 COPY --from=builder /app/build/web /usr/share/nginx/html

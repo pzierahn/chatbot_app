@@ -13,25 +13,25 @@ import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
 
-@$core.Deprecated('Use balanceSheetDescriptor instead')
-const BalanceSheet$json = {
-  '1': 'BalanceSheet',
+@$core.Deprecated('Use overviewDescriptor instead')
+const Overview$json = {
+  '1': 'Overview',
   '2': [
     {'1': 'payments', '3': 1, '4': 3, '5': 11, '6': '.chatbot.account.v1.Payment', '10': 'payments'},
-    {'1': 'costs', '3': 2, '4': 3, '5': 11, '6': '.chatbot.account.v1.ModelCosts', '10': 'costs'},
+    {'1': 'usage', '3': 2, '4': 3, '5': 11, '6': '.chatbot.account.v1.ModelUsage', '10': 'usage'},
     {'1': 'balance', '3': 3, '4': 1, '5': 5, '10': 'balance'},
   ],
 };
 
-/// Descriptor for `BalanceSheet`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List balanceSheetDescriptor = $convert.base64Decode(
-    'CgxCYWxhbmNlU2hlZXQSNwoIcGF5bWVudHMYASADKAsyGy5jaGF0Ym90LmFjY291bnQudjEuUG'
-    'F5bWVudFIIcGF5bWVudHMSNAoFY29zdHMYAiADKAsyHi5jaGF0Ym90LmFjY291bnQudjEuTW9k'
-    'ZWxDb3N0c1IFY29zdHMSGAoHYmFsYW5jZRgDIAEoBVIHYmFsYW5jZQ==');
+/// Descriptor for `Overview`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List overviewDescriptor = $convert.base64Decode(
+    'CghPdmVydmlldxI3CghwYXltZW50cxgBIAMoCzIbLmNoYXRib3QuYWNjb3VudC52MS5QYXltZW'
+    '50UghwYXltZW50cxI0CgV1c2FnZRgCIAMoCzIeLmNoYXRib3QuYWNjb3VudC52MS5Nb2RlbFVz'
+    'YWdlUgV1c2FnZRIYCgdiYWxhbmNlGAMgASgFUgdiYWxhbmNl');
 
-@$core.Deprecated('Use modelCostsDescriptor instead')
-const ModelCosts$json = {
-  '1': 'ModelCosts',
+@$core.Deprecated('Use modelUsageDescriptor instead')
+const ModelUsage$json = {
+  '1': 'ModelUsage',
   '2': [
     {'1': 'model', '3': 1, '4': 1, '5': 9, '10': 'model'},
     {'1': 'input', '3': 2, '4': 1, '5': 13, '10': 'input'},
@@ -41,23 +41,23 @@ const ModelCosts$json = {
   ],
 };
 
-/// Descriptor for `ModelCosts`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List modelCostsDescriptor = $convert.base64Decode(
-    'CgpNb2RlbENvc3RzEhQKBW1vZGVsGAEgASgJUgVtb2RlbBIUCgVpbnB1dBgCIAEoDVIFaW5wdX'
+/// Descriptor for `ModelUsage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List modelUsageDescriptor = $convert.base64Decode(
+    'CgpNb2RlbFVzYWdlEhQKBW1vZGVsGAEgASgJUgVtb2RlbBIUCgVpbnB1dBgCIAEoDVIFaW5wdX'
     'QSFgoGb3V0cHV0GAMgASgNUgZvdXRwdXQSFAoFY29zdHMYBCABKA1SBWNvc3RzEhoKCHJlcXVl'
     'c3RzGAUgASgNUghyZXF1ZXN0cw==');
 
-@$core.Deprecated('Use costsDescriptor instead')
-const Costs$json = {
-  '1': 'Costs',
+@$core.Deprecated('Use usageDescriptor instead')
+const Usage$json = {
+  '1': 'Usage',
   '2': [
-    {'1': 'models', '3': 1, '4': 3, '5': 11, '6': '.chatbot.account.v1.ModelCosts', '10': 'models'},
+    {'1': 'models', '3': 1, '4': 3, '5': 11, '6': '.chatbot.account.v1.ModelUsage', '10': 'models'},
   ],
 };
 
-/// Descriptor for `Costs`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List costsDescriptor = $convert.base64Decode(
-    'CgVDb3N0cxI2CgZtb2RlbHMYASADKAsyHi5jaGF0Ym90LmFjY291bnQudjEuTW9kZWxDb3N0c1'
+/// Descriptor for `Usage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List usageDescriptor = $convert.base64Decode(
+    'CgVVc2FnZRI2CgZtb2RlbHMYASADKAsyHi5jaGF0Ym90LmFjY291bnQudjEuTW9kZWxVc2FnZV'
     'IGbW9kZWxz');
 
 @$core.Deprecated('Use paymentDescriptor instead')

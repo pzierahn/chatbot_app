@@ -15,8 +15,8 @@ class PromptButtons extends StatefulWidget {
     required this.collection,
   });
 
-  final ThreadPrompt prompt;
-  final ValueChanged<ThreadPrompt>? onPromptChanged;
+  final Prompt prompt;
+  final ValueChanged<Prompt>? onPromptChanged;
   final Collection collection;
 
   @override
@@ -24,16 +24,16 @@ class PromptButtons extends StatefulWidget {
 }
 
 class _PromptButtonsState extends State<PromptButtons> {
-  ValueChanged<ThreadPrompt>? get onPromptChanged => widget.onPromptChanged;
+  ValueChanged<Prompt>? get onPromptChanged => widget.onPromptChanged;
 
-  ThreadPrompt get prompt => widget.prompt;
+  Prompt get prompt => widget.prompt;
 
   DocumentSelection _docs = DocumentSelection();
 
   void _onSelectDocuments(DocumentSelection docs) {
     setState(() {
-      prompt.documentIds.clear();
-      prompt.documentIds.addAll(docs.getDocuments());
+      prompt.attachments.clear();
+      prompt.attachments.addAll(docs.getDocuments());
       _docs = docs;
     });
 
@@ -51,12 +51,12 @@ class _PromptButtonsState extends State<PromptButtons> {
   void _onSelectModel() async {
     final model = await SelectModelDialog.show(
       context: context,
-      model: prompt.modelOptions.model,
+      model: prompt.modelOptions.modelId,
     );
 
     if (model != null) {
       setState(() {
-        prompt.modelOptions.model = model;
+        prompt.modelOptions.modelId = model;
       });
 
       onPromptChanged?.call(prompt);
@@ -65,9 +65,6 @@ class _PromptButtonsState extends State<PromptButtons> {
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme;
-    final text = Theme.of(context).textTheme;
-
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Column(
@@ -79,50 +76,20 @@ class _PromptButtonsState extends State<PromptButtons> {
             onChanged: _onSelectDocuments,
           ),
           ListTile(
-            leading: Icon(
-              Icons.psychology_outlined,
-              color: color.onSurface,
-            ),
-            title: Text(
-              'Select Model',
-              style: text.bodyMedium?.merge(TextStyle(
-                color: color.onSurface,
-              )),
-            ),
-            subtitle: Text(
-              LLMModels.fromModel(prompt.modelOptions.model).title,
-              style: text.bodySmall?.merge(TextStyle(
-                color: color.outline,
-              )),
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
+            leading: const Icon(Icons.psychology_outlined),
+            title: const Text('Select Model'),
+            subtitle:
+                Text(LLMModels.fromModel(prompt.modelOptions.modelId).title),
             onTap: _onSelectModel,
-            hoverColor: color.primaryContainer,
           ),
           ListTile(
-            leading: Icon(
-              Icons.tune_outlined,
-              color: color.onSurface,
-            ),
-            title: Text(
-              'Parameters',
-              style: text.bodyMedium?.merge(TextStyle(
-                color: color.onSurface,
-              )),
-            ),
-            subtitle: Text(
-              'Set creativity and document limits',
-              style: text.bodySmall?.merge(TextStyle(
-                color: color.outline,
-              )),
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
+            enabled: prompt.attachments.isEmpty,
+            leading: const Icon(Icons.manage_search_outlined),
+            title: const Text('Retrieval Options'),
+            subtitle: const Text(
+              'Set how many documents to retrieve and other retrieval options',
             ),
             onTap: _onShowParameter,
-            hoverColor: color.primaryContainer,
           ),
         ],
       ),

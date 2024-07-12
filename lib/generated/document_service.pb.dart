@@ -15,71 +15,17 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'google/protobuf/timestamp.pb.dart' as $7;
 
-class DocumentNames extends $pb.GeneratedMessage {
-  factory DocumentNames({
-    $core.Map<$core.String, $core.String>? items,
-  }) {
-    final $result = create();
-    if (items != null) {
-      $result.items.addAll(items);
-    }
-    return $result;
-  }
-  DocumentNames._() : super();
-  factory DocumentNames.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory DocumentNames.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentNames', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
-    ..m<$core.String, $core.String>(1, _omitFieldNames ? '' : 'items', entryClassName: 'DocumentNames.ItemsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('chatbot.documents.v2'))
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  DocumentNames clone() => DocumentNames()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  DocumentNames copyWith(void Function(DocumentNames) updates) => super.copyWith((message) => updates(message as DocumentNames)) as DocumentNames;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static DocumentNames create() => DocumentNames._();
-  DocumentNames createEmptyInstance() => create();
-  static $pb.PbList<DocumentNames> createRepeated() => $pb.PbList<DocumentNames>();
-  @$core.pragma('dart2js:noInline')
-  static DocumentNames getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DocumentNames>(create);
-  static DocumentNames? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.Map<$core.String, $core.String> get items => $_getMap(0);
-}
-
-enum RenameDocument_RenameTo {
-  fileName, 
-  webpageTitle, 
-  notSet
-}
-
 class RenameDocument extends $pb.GeneratedMessage {
   factory RenameDocument({
     $core.String? id,
-    $core.String? fileName,
-    $core.String? webpageTitle,
+    $core.String? name,
   }) {
     final $result = create();
     if (id != null) {
       $result.id = id;
     }
-    if (fileName != null) {
-      $result.fileName = fileName;
-    }
-    if (webpageTitle != null) {
-      $result.webpageTitle = webpageTitle;
+    if (name != null) {
+      $result.name = name;
     }
     return $result;
   }
@@ -87,16 +33,9 @@ class RenameDocument extends $pb.GeneratedMessage {
   factory RenameDocument.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory RenameDocument.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static const $core.Map<$core.int, RenameDocument_RenameTo> _RenameDocument_RenameToByTag = {
-    2 : RenameDocument_RenameTo.fileName,
-    3 : RenameDocument_RenameTo.webpageTitle,
-    0 : RenameDocument_RenameTo.notSet
-  };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'RenameDocument', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
-    ..oo(0, [2, 3])
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'RenameDocument', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'fileName')
-    ..aOS(3, _omitFieldNames ? '' : 'webpageTitle')
+    ..aOS(2, _omitFieldNames ? '' : 'name')
     ..hasRequiredFields = false
   ;
 
@@ -121,9 +60,6 @@ class RenameDocument extends $pb.GeneratedMessage {
   static RenameDocument getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RenameDocument>(create);
   static RenameDocument? _defaultInstance;
 
-  RenameDocument_RenameTo whichRenameTo() => _RenameDocument_RenameToByTag[$_whichOneof(0)]!;
-  void clearRenameTo() => clearField($_whichOneof(0));
-
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
   @$pb.TagNumber(1)
@@ -134,22 +70,13 @@ class RenameDocument extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get fileName => $_getSZ(1);
+  $core.String get name => $_getSZ(1);
   @$pb.TagNumber(2)
-  set fileName($core.String v) { $_setString(1, v); }
+  set name($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasFileName() => $_has(1);
+  $core.bool hasName() => $_has(1);
   @$pb.TagNumber(2)
-  void clearFileName() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get webpageTitle => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set webpageTitle($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasWebpageTitle() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearWebpageTitle() => clearField(3);
+  void clearName() => clearField(2);
 }
 
 class DocumentID extends $pb.GeneratedMessage {
@@ -166,7 +93,7 @@ class DocumentID extends $pb.GeneratedMessage {
   factory DocumentID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DocumentID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentID', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentID', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..hasRequiredFields = false
   ;
@@ -216,8 +143,8 @@ class DocumentList extends $pb.GeneratedMessage {
   factory DocumentList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DocumentList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentList', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
-    ..m<$core.String, DocumentMetadata>(1, _omitFieldNames ? '' : 'items', entryClassName: 'DocumentList.ItemsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: DocumentMetadata.create, valueDefaultOrMaker: DocumentMetadata.getDefault, packageName: const $pb.PackageName('chatbot.documents.v2'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentList', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
+    ..m<$core.String, DocumentMetadata>(1, _omitFieldNames ? '' : 'items', entryClassName: 'DocumentList.ItemsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: DocumentMetadata.create, valueDefaultOrMaker: DocumentMetadata.getDefault, packageName: const $pb.PackageName('chatbot.documents.v1'))
     ..hasRequiredFields = false
   ;
 
@@ -247,22 +174,37 @@ class DocumentList extends $pb.GeneratedMessage {
   $core.Map<$core.String, DocumentMetadata> get items => $_getMap(0);
 }
 
-class ReferenceIDs extends $pb.GeneratedMessage {
-  factory ReferenceIDs({
-    $core.Iterable<$core.String>? items,
+class SearchQuery extends $pb.GeneratedMessage {
+  factory SearchQuery({
+    $core.String? text,
+    $core.String? collectionId,
+    $core.double? threshold,
+    $core.int? limit,
   }) {
     final $result = create();
-    if (items != null) {
-      $result.items.addAll(items);
+    if (text != null) {
+      $result.text = text;
+    }
+    if (collectionId != null) {
+      $result.collectionId = collectionId;
+    }
+    if (threshold != null) {
+      $result.threshold = threshold;
+    }
+    if (limit != null) {
+      $result.limit = limit;
     }
     return $result;
   }
-  ReferenceIDs._() : super();
-  factory ReferenceIDs.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ReferenceIDs.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  SearchQuery._() : super();
+  factory SearchQuery.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SearchQuery.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ReferenceIDs', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
-    ..pPS(1, _omitFieldNames ? '' : 'items')
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SearchQuery', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'text')
+    ..aOS(2, _omitFieldNames ? '' : 'collectionId')
+    ..a<$core.double>(3, _omitFieldNames ? '' : 'threshold', $pb.PbFieldType.OF)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'limit', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
   ;
 
@@ -270,32 +212,67 @@ class ReferenceIDs extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ReferenceIDs clone() => ReferenceIDs()..mergeFromMessage(this);
+  SearchQuery clone() => SearchQuery()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ReferenceIDs copyWith(void Function(ReferenceIDs) updates) => super.copyWith((message) => updates(message as ReferenceIDs)) as ReferenceIDs;
+  SearchQuery copyWith(void Function(SearchQuery) updates) => super.copyWith((message) => updates(message as SearchQuery)) as SearchQuery;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ReferenceIDs create() => ReferenceIDs._();
-  ReferenceIDs createEmptyInstance() => create();
-  static $pb.PbList<ReferenceIDs> createRepeated() => $pb.PbList<ReferenceIDs>();
+  static SearchQuery create() => SearchQuery._();
+  SearchQuery createEmptyInstance() => create();
+  static $pb.PbList<SearchQuery> createRepeated() => $pb.PbList<SearchQuery>();
   @$core.pragma('dart2js:noInline')
-  static ReferenceIDs getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ReferenceIDs>(create);
-  static ReferenceIDs? _defaultInstance;
+  static SearchQuery getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SearchQuery>(create);
+  static SearchQuery? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.String> get items => $_getList(0);
+  $core.String get text => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set text($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasText() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearText() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get collectionId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set collectionId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasCollectionId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCollectionId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.double get threshold => $_getN(2);
+  @$pb.TagNumber(3)
+  set threshold($core.double v) { $_setFloat(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasThreshold() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearThreshold() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.int get limit => $_getIZ(3);
+  @$pb.TagNumber(4)
+  set limit($core.int v) { $_setUnsignedInt32(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasLimit() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearLimit() => clearField(4);
 }
 
 class Chunk extends $pb.GeneratedMessage {
   factory Chunk({
     $core.String? id,
     $core.String? text,
-    $core.int? index,
+    $core.double? score,
+    $core.int? postion,
+    $core.String? documentId,
   }) {
     final $result = create();
     if (id != null) {
@@ -304,8 +281,14 @@ class Chunk extends $pb.GeneratedMessage {
     if (text != null) {
       $result.text = text;
     }
-    if (index != null) {
-      $result.index = index;
+    if (score != null) {
+      $result.score = score;
+    }
+    if (postion != null) {
+      $result.postion = postion;
+    }
+    if (documentId != null) {
+      $result.documentId = documentId;
     }
     return $result;
   }
@@ -313,10 +296,12 @@ class Chunk extends $pb.GeneratedMessage {
   factory Chunk.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Chunk.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Chunk', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Chunk', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'text')
-    ..a<$core.int>(3, _omitFieldNames ? '' : 'index', $pb.PbFieldType.OU3)
+    ..a<$core.double>(3, _omitFieldNames ? '' : 'score', $pb.PbFieldType.OF)
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'postion', $pb.PbFieldType.OU3)
+    ..aOS(5, _omitFieldNames ? '' : 'documentId', protoName: 'documentId')
     ..hasRequiredFields = false
   ;
 
@@ -360,162 +345,44 @@ class Chunk extends $pb.GeneratedMessage {
   void clearText() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.int get index => $_getIZ(2);
+  $core.double get score => $_getN(2);
   @$pb.TagNumber(3)
-  set index($core.int v) { $_setUnsignedInt32(2, v); }
+  set score($core.double v) { $_setFloat(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasIndex() => $_has(2);
+  $core.bool hasScore() => $_has(2);
   @$pb.TagNumber(3)
-  void clearIndex() => clearField(3);
-}
-
-class References extends $pb.GeneratedMessage {
-  factory References({
-    $core.Iterable<Document>? items,
-  }) {
-    final $result = create();
-    if (items != null) {
-      $result.items.addAll(items);
-    }
-    return $result;
-  }
-  References._() : super();
-  factory References.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory References.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'References', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
-    ..pc<Document>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Document.create)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  References clone() => References()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  References copyWith(void Function(References) updates) => super.copyWith((message) => updates(message as References)) as References;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static References create() => References._();
-  References createEmptyInstance() => create();
-  static $pb.PbList<References> createRepeated() => $pb.PbList<References>();
-  @$core.pragma('dart2js:noInline')
-  static References getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<References>(create);
-  static References? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.List<Document> get items => $_getList(0);
-}
-
-class SearchQuery extends $pb.GeneratedMessage {
-  factory SearchQuery({
-    $core.String? query,
-    $core.String? collectionId,
-    $core.double? threshold,
-    $core.int? limit,
-  }) {
-    final $result = create();
-    if (query != null) {
-      $result.query = query;
-    }
-    if (collectionId != null) {
-      $result.collectionId = collectionId;
-    }
-    if (threshold != null) {
-      $result.threshold = threshold;
-    }
-    if (limit != null) {
-      $result.limit = limit;
-    }
-    return $result;
-  }
-  SearchQuery._() : super();
-  factory SearchQuery.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SearchQuery.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SearchQuery', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'query')
-    ..aOS(2, _omitFieldNames ? '' : 'collectionId')
-    ..a<$core.double>(3, _omitFieldNames ? '' : 'threshold', $pb.PbFieldType.OF)
-    ..a<$core.int>(4, _omitFieldNames ? '' : 'limit', $pb.PbFieldType.OU3)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  SearchQuery clone() => SearchQuery()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SearchQuery copyWith(void Function(SearchQuery) updates) => super.copyWith((message) => updates(message as SearchQuery)) as SearchQuery;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static SearchQuery create() => SearchQuery._();
-  SearchQuery createEmptyInstance() => create();
-  static $pb.PbList<SearchQuery> createRepeated() => $pb.PbList<SearchQuery>();
-  @$core.pragma('dart2js:noInline')
-  static SearchQuery getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SearchQuery>(create);
-  static SearchQuery? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get query => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set query($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasQuery() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearQuery() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get collectionId => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set collectionId($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasCollectionId() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearCollectionId() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.double get threshold => $_getN(2);
-  @$pb.TagNumber(3)
-  set threshold($core.double v) { $_setFloat(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasThreshold() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearThreshold() => clearField(3);
+  void clearScore() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.int get limit => $_getIZ(3);
+  $core.int get postion => $_getIZ(3);
   @$pb.TagNumber(4)
-  set limit($core.int v) { $_setUnsignedInt32(3, v); }
+  set postion($core.int v) { $_setUnsignedInt32(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasLimit() => $_has(3);
+  $core.bool hasPostion() => $_has(3);
   @$pb.TagNumber(4)
-  void clearLimit() => clearField(4);
+  void clearPostion() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get documentId => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set documentId($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasDocumentId() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearDocumentId() => clearField(5);
 }
 
 class SearchResults extends $pb.GeneratedMessage {
   factory SearchResults({
-    $core.Iterable<Document>? items,
-    $core.Map<$core.String, $core.double>? scores,
+    $core.Iterable<Chunk>? chunks,
+    $core.Map<$core.String, $core.String>? documentNames,
   }) {
     final $result = create();
-    if (items != null) {
-      $result.items.addAll(items);
+    if (chunks != null) {
+      $result.chunks.addAll(chunks);
     }
-    if (scores != null) {
-      $result.scores.addAll(scores);
+    if (documentNames != null) {
+      $result.documentNames.addAll(documentNames);
     }
     return $result;
   }
@@ -523,9 +390,9 @@ class SearchResults extends $pb.GeneratedMessage {
   factory SearchResults.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory SearchResults.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SearchResults', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
-    ..pc<Document>(1, _omitFieldNames ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Document.create)
-    ..m<$core.String, $core.double>(2, _omitFieldNames ? '' : 'scores', entryClassName: 'SearchResults.ScoresEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OF, packageName: const $pb.PackageName('chatbot.documents.v2'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'SearchResults', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
+    ..pc<Chunk>(1, _omitFieldNames ? '' : 'chunks', $pb.PbFieldType.PM, subBuilder: Chunk.create)
+    ..m<$core.String, $core.String>(2, _omitFieldNames ? '' : 'documentNames', entryClassName: 'SearchResults.DocumentNamesEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('chatbot.documents.v1'))
     ..hasRequiredFields = false
   ;
 
@@ -551,10 +418,10 @@ class SearchResults extends $pb.GeneratedMessage {
   static SearchResults? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<Document> get items => $_getList(0);
+  $core.List<Chunk> get chunks => $_getList(0);
 
   @$pb.TagNumber(2)
-  $core.Map<$core.String, $core.double> get scores => $_getMap(1);
+  $core.Map<$core.String, $core.String> get documentNames => $_getMap(1);
 }
 
 class IndexProgress extends $pb.GeneratedMessage {
@@ -575,7 +442,7 @@ class IndexProgress extends $pb.GeneratedMessage {
   factory IndexProgress.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory IndexProgress.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'IndexProgress', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'IndexProgress', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'status')
     ..a<$core.double>(2, _omitFieldNames ? '' : 'progress', $pb.PbFieldType.OF)
     ..hasRequiredFields = false
@@ -639,7 +506,7 @@ class DocumentFilter extends $pb.GeneratedMessage {
   factory DocumentFilter.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DocumentFilter.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentFilter', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentFilter', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'query')
     ..aOS(2, _omitFieldNames ? '' : 'collectionId')
     ..hasRequiredFields = false
@@ -714,7 +581,7 @@ class DocumentMetadata extends $pb.GeneratedMessage {
     2 : DocumentMetadata_Data.web,
     0 : DocumentMetadata_Data.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentMetadata', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentMetadata', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
     ..oo(0, [1, 2])
     ..aOM<File>(1, _omitFieldNames ? '' : 'file', subBuilder: File.create)
     ..aOM<Webpage>(2, _omitFieldNames ? '' : 'web', subBuilder: Webpage.create)
@@ -786,7 +653,7 @@ class File extends $pb.GeneratedMessage {
   factory File.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory File.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'File', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'File', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'path')
     ..aOS(2, _omitFieldNames ? '' : 'filename')
     ..hasRequiredFields = false
@@ -850,7 +717,7 @@ class Webpage extends $pb.GeneratedMessage {
   factory Webpage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Webpage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Webpage', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Webpage', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'url')
     ..aOS(2, _omitFieldNames ? '' : 'title')
     ..hasRequiredFields = false
@@ -896,110 +763,6 @@ class Webpage extends $pb.GeneratedMessage {
   void clearTitle() => clearField(2);
 }
 
-class Document extends $pb.GeneratedMessage {
-  factory Document({
-    $core.String? id,
-    $core.String? collectionId,
-    $7.Timestamp? createdAt,
-    DocumentMetadata? metadata,
-    $core.Iterable<Chunk>? chunks,
-  }) {
-    final $result = create();
-    if (id != null) {
-      $result.id = id;
-    }
-    if (collectionId != null) {
-      $result.collectionId = collectionId;
-    }
-    if (createdAt != null) {
-      $result.createdAt = createdAt;
-    }
-    if (metadata != null) {
-      $result.metadata = metadata;
-    }
-    if (chunks != null) {
-      $result.chunks.addAll(chunks);
-    }
-    return $result;
-  }
-  Document._() : super();
-  factory Document.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Document.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Document', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'collectionId')
-    ..aOM<$7.Timestamp>(3, _omitFieldNames ? '' : 'createdAt', subBuilder: $7.Timestamp.create)
-    ..aOM<DocumentMetadata>(4, _omitFieldNames ? '' : 'metadata', subBuilder: DocumentMetadata.create)
-    ..pc<Chunk>(5, _omitFieldNames ? '' : 'chunks', $pb.PbFieldType.PM, subBuilder: Chunk.create)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Document clone() => Document()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Document copyWith(void Function(Document) updates) => super.copyWith((message) => updates(message as Document)) as Document;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static Document create() => Document._();
-  Document createEmptyInstance() => create();
-  static $pb.PbList<Document> createRepeated() => $pb.PbList<Document>();
-  @$core.pragma('dart2js:noInline')
-  static Document getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Document>(create);
-  static Document? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get collectionId => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set collectionId($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasCollectionId() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearCollectionId() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $7.Timestamp get createdAt => $_getN(2);
-  @$pb.TagNumber(3)
-  set createdAt($7.Timestamp v) { setField(3, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasCreatedAt() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearCreatedAt() => clearField(3);
-  @$pb.TagNumber(3)
-  $7.Timestamp ensureCreatedAt() => $_ensure(2);
-
-  @$pb.TagNumber(4)
-  DocumentMetadata get metadata => $_getN(3);
-  @$pb.TagNumber(4)
-  set metadata(DocumentMetadata v) { setField(4, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasMetadata() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearMetadata() => clearField(4);
-  @$pb.TagNumber(4)
-  DocumentMetadata ensureMetadata() => $_ensure(3);
-
-  @$pb.TagNumber(5)
-  $core.List<Chunk> get chunks => $_getList(4);
-}
-
 class DocumentHeader extends $pb.GeneratedMessage {
   factory DocumentHeader({
     $core.String? id,
@@ -1026,7 +789,7 @@ class DocumentHeader extends $pb.GeneratedMessage {
   factory DocumentHeader.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DocumentHeader.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentHeader', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentHeader', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'collectionId')
     ..aOM<$7.Timestamp>(3, _omitFieldNames ? '' : 'createdAt', subBuilder: $7.Timestamp.create)
@@ -1118,7 +881,7 @@ class IndexJob extends $pb.GeneratedMessage {
   factory IndexJob.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory IndexJob.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'IndexJob', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v2'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'IndexJob', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'collectionId')
     ..aOM<DocumentMetadata>(3, _omitFieldNames ? '' : 'document', subBuilder: DocumentMetadata.create)

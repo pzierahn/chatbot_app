@@ -1,6 +1,5 @@
 import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/generated/collection_service.pb.dart';
-import 'package:braingain_app/ui/page/chat/document_warning.dart';
 import 'package:braingain_app/ui/page/chat/index_button.dart';
 import 'package:braingain_app/ui/page/chat/prompt_buttons.dart';
 import 'package:braingain_app/ui/page/chat/prompt_input.dart';
@@ -10,6 +9,7 @@ import 'package:braingain_app/ui/page/chat/thread_view.dart';
 import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
 import 'package:braingain_app/ui/page/documents/documents_page.dart';
 import 'package:braingain_app/ui/page/notion/notion_dialog.dart';
+import 'package:braingain_app/ui/page/search_documents/search_documents.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
 import 'package:braingain_app/utils/llm_models.dart';
@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
-class ChatPage extends StatefulWidget {
+class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
 
   static const route = 'chat';
@@ -31,11 +31,6 @@ class ChatPage extends StatefulWidget {
         arguments: collection,
       );
 
-  @override
-  State<StatefulWidget> createState() => _ChatPageState();
-}
-
-class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     final collection =
@@ -61,6 +56,13 @@ class _ChatPageState extends State<ChatPage> {
               width: 24,
               height: 24,
             ),
+          ),
+          IconButton(
+            icon: const Icon(Icons.search),
+            tooltip: 'Search Documents',
+            onPressed: () {
+              SearchDocumentsPage.open(context, collection);
+            },
           ),
           IconButton(
             icon: const Icon(Icons.history_outlined),
@@ -103,32 +105,31 @@ class ChatBody extends StatefulWidget {
 class _ChatBodyState extends State<ChatBody> {
   final _threads = <ThreadState>[];
 
-  ThreadPrompt _prompt = ThreadPrompt();
+  Prompt _prompt = Prompt();
 
   @override
   void initState() {
     super.initState();
 
     final opts = ModelOptions()
-      ..model = LLMModels.claudeSonnet.model
+      ..modelId = LLMModels.claudeSonnet.model
       ..maxTokens = 2048
       ..temperature = 1.0
       ..topP = 1.0;
 
-    _prompt = ThreadPrompt()
+    final ragOpts = RetrievalOptions()
+      ..documents = 10
+      ..threshold = 0.40;
+
+    _prompt = Prompt()
       ..collectionId = widget.collection.id
-      ..limit = 15
-      ..threshold = 0.25
+      ..retrievalOptions = ragOpts
       ..modelOptions = opts;
   }
 
   @override
   Widget build(BuildContext context) {
-    final children = [];
-
-    if (widget.collection.documentCount == 0) {
-      children.add(DocumentWarning(collection: widget.collection));
-    }
+    final children = <Widget>[];
 
     for (final thread in _threads) {
       children.add(ThreadView(thread: thread));
@@ -163,7 +164,7 @@ class _ChatBodyState extends State<ChatBody> {
 
                     setState(() {
                       _threads.add(threadState);
-                      _prompt.documentIds.clear();
+                      _prompt.attachments.clear();
                     });
                   },
                 ),

@@ -20,14 +20,14 @@ import 'google/protobuf/empty.pb.dart' as $0;
 
 export 'crashlytics.pb.dart';
 
-@$pb.GrpcServiceName('crashlytics.v1.CrashlyticsService')
-class CrashlyticsServiceClient extends $grpc.Client {
+@$pb.GrpcServiceName('crashlytics.v1.Crashlytics')
+class CrashlyticsClient extends $grpc.Client {
   static final _$recordError = $grpc.ClientMethod<$4.Error, $0.Empty>(
-      '/crashlytics.v1.CrashlyticsService/RecordError',
+      '/crashlytics.v1.Crashlytics/RecordError',
       ($4.Error value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Empty.fromBuffer(value));
 
-  CrashlyticsServiceClient($grpc.ClientChannel channel,
+  CrashlyticsClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options,
@@ -38,9 +38,9 @@ class CrashlyticsServiceClient extends $grpc.Client {
   }
 }
 
-@$pb.GrpcServiceName('crashlytics.v1.CrashlyticsService')
+@$pb.GrpcServiceName('crashlytics.v1.Crashlytics')
 abstract class CrashlyticsServiceBase extends $grpc.Service {
-  $core.String get $name => 'crashlytics.v1.CrashlyticsService';
+  $core.String get $name => 'crashlytics.v1.Crashlytics';
 
   CrashlyticsServiceBase() {
     $addMethod($grpc.ServiceMethod<$4.Error, $0.Empty>(

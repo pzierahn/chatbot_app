@@ -8,7 +8,6 @@ import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:braingain_app/ui/widget/illustration.dart';
 import 'package:braingain_app/ui/widget/simple_scaffold.dart';
-import 'package:braingain_app/utils/document.dart';
 import 'package:flutter/material.dart';
 import 'package:undraw/illustrations.g.dart';
 
@@ -69,7 +68,7 @@ class _SearchDocumentsPageState extends State<_SearchDocumentsPage> {
     final query = SearchQuery()
       ..collectionId = widget.collection.id
       ..limit = 10
-      ..query = text;
+      ..text = text;
 
     documents.search(query).then((value) {
       setState(() => _results = value);
@@ -78,89 +77,82 @@ class _SearchDocumentsPageState extends State<_SearchDocumentsPage> {
     });
   }
 
-  double _getScore(String id) {
-    if (_results == null) {
-      return 0.0;
-    }
-
-    return _results!.scores.containsKey(id) ? _results!.scores[id]! : 0.0;
-  }
-
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    final children = <Widget>[
-      SearchBar(
-        leading: Container(
-          width: 48,
-          alignment: Alignment.center,
-          child: Icon(
-            Icons.search,
-            color: color.primary,
-          ),
-        ),
-        hintText: 'Search documents',
-        onChanged: _search,
-      ),
-    ];
+    Widget body;
 
     if (_results == null) {
-      children.add(Container(
+      body = Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(vertical: 64),
         child: const TextIllustration(
           illustration: UnDrawIllustration.search_engines,
           text: 'No documents found',
         ),
-      ));
+      );
     } else {
       final docsNames = HashMap<String, String>();
       final chunks = <Chunk>[];
 
-      for (var doc in _results!.items) {
-        for (final chunk in doc.chunks) {
-          docsNames[chunk.id] = DocumentUtils.getTitle(doc.metadata);
-          chunks.add(chunk);
-        }
+      for (final chunk in _results!.chunks) {
+        docsNames[chunk.id] = _results!.documentNames[chunk.documentId] ?? '';
+        chunks.add(chunk);
       }
 
-      chunks.sort((a, b) => _getScore(b.id).compareTo(_getScore(a.id)));
+      chunks.sort((a, b) => b.score.compareTo(a.score));
+
+      final children = <Widget>[];
 
       for (var chunk in chunks) {
-        final score = _results!.scores.containsKey(chunk.id)
-            ? (_results!.scores[chunk.id] ?? 0.0)
-            : 0.0;
-
         final title = '${docsNames[chunk.id]} '
-            'p.${chunk.index + 1} '
-            '(${(score * 100).toStringAsFixed(0)}%)';
+            'p.${chunk.postion + 1} ';
 
         children.add(
-          ListTile(
+          ExpansionTile(
             title: Text(title),
-            subtitle: Text(
-              chunk.text,
-              style: textTheme.bodySmall?.copyWith(
-                color: color.outline,
+            leading: Text('(${(chunk.score * 100).toStringAsFixed(0)}%)'),
+            expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SelectableText(
+                chunk.text,
+                style: textTheme.bodySmall?.copyWith(
+                  color: color.outline,
+                ),
               ),
-            ),
-            onTap: () {
-              // DocumentPage.open(context, doc);
-            },
+            ],
           ),
         );
       }
+
+      body = ConstrainedListView(
+        children: children,
+      );
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.collection.name),
+        title: Container(
+          margin: const EdgeInsets.symmetric(vertical: 8),
+          child: SearchBar(
+            elevation: WidgetStateProperty.all(0),
+            autoFocus: true,
+            leading: Container(
+              width: 48,
+              alignment: Alignment.center,
+              child: Icon(
+                Icons.search,
+                color: color.primary,
+              ),
+            ),
+            hintText: 'Search for documents in ${widget.collection.name}',
+            onChanged: _search,
+          ),
+        ),
       ),
-      body: ConstrainedListView(
-        children: children,
-      ),
+      body: body,
     );
   }
 }

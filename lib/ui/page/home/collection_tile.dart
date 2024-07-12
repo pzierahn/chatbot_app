@@ -2,9 +2,7 @@ import 'package:braingain_app/generated/collection_service.pb.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
-import 'package:braingain_app/ui/page/documents/documents_page.dart';
 import 'package:braingain_app/ui/page/home/collection_edit_dialog.dart';
-import 'package:braingain_app/ui/page/search_documents/search_documents.dart';
 import 'package:braingain_app/ui/theme/theme.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
@@ -23,19 +21,10 @@ class CollectionsTile extends StatelessWidget {
   static const _menuItems = <PopupMenuEntry<int>>[
     PopupMenuItem<int>(
       value: 0,
-      child: Text('Search'),
-    ),
-    PopupMenuItem<int>(
-      value: 1,
-      child: Text('Documents'),
-    ),
-    PopupMenuDivider(),
-    PopupMenuItem<int>(
-      value: 2,
       child: Text('Edit'),
     ),
     PopupMenuItem<int>(
-      value: 3,
+      value: 1,
       child: Text('Delete'),
     ),
   ];
@@ -80,21 +69,11 @@ class CollectionsTile extends StatelessWidget {
 
   void _onAction(BuildContext context, int item) {
     if (item == 0) {
-      SearchDocumentsPage.open(context, collection);
-      return;
-    }
-
-    if (item == 1) {
-      DocumentsPage.open(context, collection);
-      return;
-    }
-
-    if (item == 2) {
       _onEditCollection(context);
       return;
     }
 
-    if (item == 3) {
+    if (item == 1) {
       _onDeleteCollection(context);
       return;
     }
@@ -130,16 +109,9 @@ class CollectionsTile extends StatelessWidget {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        hoverColor: color.primaryContainer,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,
           vertical: 8,
-        ),
-        subtitle: Text(
-          '${collection.documentCount} Document${collection.documentCount == 1 ? '' : 's'}',
-          style: text.bodySmall?.merge(TextStyle(
-            color: color.outline,
-          )),
         ),
         onTap: () {
           ChatPage.open(context, collection).then((_) => onUpdate?.call());

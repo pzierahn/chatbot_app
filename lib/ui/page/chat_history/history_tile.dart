@@ -61,7 +61,6 @@ class ChatHistoryTile extends StatelessWidget {
           }
 
           final message = thread.messages.first;
-          final date = message.timestamp.toDateTime(toLocal: true);
 
           return ListTile(
             title: Text(
@@ -71,12 +70,6 @@ class ChatHistoryTile extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
             // minLeadingWidth: 40,
-            subtitle: Text(
-              date.toString(),
-              style: text.bodySmall?.copyWith(
-                color: color.outline,
-              ),
-            ),
             onTap: () => _onViewChat(context, thread),
           );
         });

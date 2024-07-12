@@ -17,12 +17,6 @@ class LLMModels {
     provider: 'OpenAI',
   );
 
-  static const LLMModel claudeOpus = LLMModel(
-    title: 'Claude Opus',
-    model: 'anthropic.claude-3-opus-20240229-v1:0',
-    provider: 'Anthropic',
-  );
-
   static const LLMModel claudeSonnet = LLMModel(
     title: 'Claude Sonnet',
     model: 'anthropic.claude-3-5-sonnet-20240620-v1:0',
@@ -55,7 +49,6 @@ class LLMModels {
 
   static const List<LLMModel> all = [
     gpt4,
-    claudeOpus,
     claudeSonnet,
     claudeHaiku,
     geminiFlash,

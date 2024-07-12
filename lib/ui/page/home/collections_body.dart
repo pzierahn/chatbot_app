@@ -19,7 +19,7 @@ class CollectionsBody extends StatefulWidget {
 }
 
 class _CollectionsBodyState extends State<CollectionsBody> {
-  late Future<Collections> _collections;
+  late Future<CollectionList> _collections;
 
   @override
   void initState() {
@@ -38,7 +38,7 @@ class _CollectionsBodyState extends State<CollectionsBody> {
     final color = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
 
-    return FutureBuilder<Collections>(
+    return FutureBuilder<CollectionList>(
       future: _collections,
       builder: (context, snap) {
         if (snap.hasError) {
@@ -91,9 +91,12 @@ class _CollectionsBodyState extends State<CollectionsBody> {
               }
 
               collections
-                  .create(Collection()..name = name)
-                  .then((_) => _update())
-                  .catchError((error) => ErrorSnackBar.show(context, error));
+                  .insert(Collection()..name = name)
+                  .then((_) => _update(), onError: (error) {
+                ErrorSnackBar.show(context, error);
+              }).catchError((error) {
+                ErrorSnackBar.show(context, error);
+              });
             },
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),

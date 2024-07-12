@@ -4,26 +4,27 @@ import 'package:braingain_app/generated/collection_service.pbgrpc.dart';
 import 'package:braingain_app/generated/crashlytics.pbgrpc.dart';
 import 'package:braingain_app/generated/document_service.pbgrpc.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
-import 'package:braingain_app/generated/notion.pbgrpc.dart';
+import 'package:braingain_app/generated/notion_service.pbgrpc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
 
-// final _channel = GrpcOrGrpcWebClientChannel.grpc(
-//   'localhost',
-//   port: 9055,
-//   options: const ChannelOptions(
-//     credentials: ChannelCredentials.insecure(),
-//   ),
-// );
-
-final _channel = GrpcOrGrpcWebClientChannel.toSeparateEndpoints(
-  grpcHost: 'brainboost-services-2qkjmuus4a-ey.a.run.app',
-  grpcPort: 443,
-  grpcTransportSecure: true,
-  grpcWebHost: 'brainboost-gateway-2qkjmuus4a-ey.a.run.app',
-  grpcWebPort: 443,
-  grpcWebTransportSecure: true,
+final _channel = GrpcOrGrpcWebClientChannel.grpc(
+  'localhost',
+  port: 9055,
+  options: const ChannelOptions(
+    credentials: ChannelCredentials.insecure(),
+  ),
 );
+
+// final _channel = GrpcOrGrpcWebClientChannel.toSeparateEndpoints(
+//   grpcHost: 'brainboost-services-2qkjmuus4a-ey.a.run.app',
+//   grpcPort: 443,
+//   grpcTransportSecure: true,
+//   grpcWebHost: 'brainboost-gateway-2qkjmuus4a-ey.a.run.app',
+//   grpcWebPort: 443,
+//   grpcWebTransportSecure: true,
+// );
 
 final collections = CollectionServiceClientAuth();
 
@@ -48,24 +49,19 @@ Future<CallOptions> _mergeAuth(CallOptions? options) async {
 }
 
 class CollectionServiceClientAuth {
-  final _service = CollectionServiceClient(_channel);
+  final _service = CollectionsClient(_channel);
 
-  Future<Collection> get(CollectionID request, {CallOptions? options}) async {
-    options = await _mergeAuth(options);
-    return _service.get(request, options: options);
-  }
-
-  Future<Collections> list(Empty request, {CallOptions? options}) async {
+  Future<CollectionList> list(Empty request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
     return _service.list(request, options: options);
   }
 
-  Future<Collection> create(Collection request, {CallOptions? options}) async {
+  Future<Empty> insert(Collection request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.create(request, options: options);
+    return _service.insert(request, options: options);
   }
 
-  Future<Collection> update(Collection request, {CallOptions? options}) async {
+  Future<Empty> update(Collection request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
     return _service.update(request, options: options);
   }
@@ -77,7 +73,7 @@ class CollectionServiceClientAuth {
 }
 
 class DocumentServiceClientAuth {
-  final _service = DocumentServiceClient(_channel);
+  final _service = DocumentClient(_channel);
 
   Future<DocumentList> list(DocumentFilter request,
       {CallOptions? options}) async {
@@ -109,20 +105,14 @@ class DocumentServiceClientAuth {
     options = await _mergeAuth(options);
     return _service.search(request, options: options);
   }
-
-  Future<References> getReferences(ReferenceIDs request,
-      {CallOptions? options}) async {
-    options = await _mergeAuth(options);
-    return _service.getReferences(request, options: options);
-  }
 }
 
 class AccountServiceClientAuth {
-  final _service = AccountServiceClient(_channel);
+  final _service = AccountClient(_channel);
 
-  Future<Costs> getCosts(Empty request, {CallOptions? options}) async {
+  Future<Usage> getUsage(Empty request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.getCosts(request, options: options);
+    return _service.getUsage(request, options: options);
   }
 
   Future<Payments> getPayments(Empty request, {CallOptions? options}) async {
@@ -130,23 +120,14 @@ class AccountServiceClientAuth {
     return _service.getPayments(request, options: options);
   }
 
-  Future<BalanceSheet> getBalanceSheet(Empty request,
-      {CallOptions? options}) async {
+  Future<Overview> getOverview(Empty request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.getBalanceSheet(request, options: options);
+    return _service.getOverview(request, options: options);
   }
 }
 
 class ChatServiceClientAuth {
-  final _service = ChatServiceClient(_channel);
-
-  Future<Thread> startThread(
-    ThreadPrompt request, {
-    CallOptions? options,
-  }) async {
-    options = await _mergeAuth(options);
-    return _service.startThread(request, options: options);
-  }
+  final _service = ChatClient(_channel);
 
   Future<Message> postMessage(
     Prompt request, {
@@ -165,7 +146,7 @@ class ChatServiceClientAuth {
   }
 
   Future<ThreadIDs> listThreadIDs(
-    Collection request, {
+    CollectionId request, {
     CallOptions? options,
   }) async {
     options = await _mergeAuth(options);
@@ -181,7 +162,7 @@ class ChatServiceClientAuth {
   }
 
   Future<Empty> deleteMessageFromThread(
-    MessageID request, {
+    MessageIndex request, {
     CallOptions? options,
   }) async {
     options = await _mergeAuth(options);
@@ -190,7 +171,7 @@ class ChatServiceClientAuth {
 }
 
 class CrashlyticsServiceClientAuth {
-  final _service = CrashlyticsServiceClient(_channel);
+  final _service = CrashlyticsClient(_channel);
 
   Future<Empty> recordError(Error request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
@@ -212,18 +193,25 @@ class NotionClientAuth {
     return _service.listDatabases(request, options: options);
   }
 
-  Future<NotionApiKey> getApiKey(Empty request, {CallOptions? options}) async {
+  Future<NotionApiKey> getAPIKey(Empty request, {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.getApiKey(request, options: options);
+    return _service.getAPIKey(request, options: options);
   }
 
-  Future<Empty> setApiKey(NotionApiKey request, {CallOptions? options}) async {
+  Future<Empty> insertAPIKey(NotionApiKey request,
+      {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.setApiKey(request, options: options);
+    return _service.insertAPIKey(request, options: options);
   }
 
-  Future<Empty> removeApiKey(Empty request, {CallOptions? options}) async {
+  Future<Empty> updateAPIKey(NotionApiKey request,
+      {CallOptions? options}) async {
     options = await _mergeAuth(options);
-    return _service.removeApiKey(request, options: options);
+    return _service.updateAPIKey(request, options: options);
+  }
+
+  Future<Empty> deleteAPIKey(Empty request, {CallOptions? options}) async {
+    options = await _mergeAuth(options);
+    return _service.deleteAPIKey(request, options: options);
   }
 }

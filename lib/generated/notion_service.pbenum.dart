@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: notion.proto
+//  source: notion_service.proto
 //
 // @dart = 2.12
 

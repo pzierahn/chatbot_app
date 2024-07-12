@@ -7,6 +7,7 @@ import 'package:braingain_app/ui/widget/sources_dialog.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/utils/error.dart';
+import 'package:braingain_app/utils/source.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -44,26 +45,24 @@ class _ThreadViewState extends State<ThreadView> {
       final thread = widget.thread.thread;
       final messages = thread?.messages ?? [];
 
-      for (var inx = 0; inx < messages.length; inx++) {
-        final message = messages[inx];
+      for (var idx = 0; idx < messages.length; idx++) {
+        final message = messages[idx];
 
         children.add(
           _ChatFragment(
             titleStyle: titleStyle,
             message: message,
-            referenceIDs: (inx == 0) ? thread?.referenceIDs : null,
-            referenceScores: (inx == 0) ? thread?.referenceScores : null,
             onDelete: () => ConfirmDialog.show(
               context,
-              title: (inx == 0) ? 'Delete Thread?' : 'Delete Message?',
-              content: (inx == 0)
+              title: (idx == 0) ? 'Delete Thread?' : 'Delete Message?',
+              content: (idx == 0)
                   ? 'Are you sure you want to delete this entire thread?'
                   : 'Are you sure you want to delete this message?',
               onConfirm: () {
-                if (inx == 0) {
+                if (idx == 0) {
                   widget.thread.deleteThread();
                 } else {
-                  widget.thread.deleteMessageFromThread(message.id);
+                  widget.thread.deleteMessageFromThread(idx);
                 }
               },
             ),
@@ -124,7 +123,6 @@ class _ThreadViewState extends State<ThreadView> {
               color: colors.outline,
               fontWeight: FontWeight.normal,
             ),
-            // prefixIcon: const Icon(Icons.reply_outlined),
             hintText: 'Type a follow-up question or prompt...',
             onPromptSubmit: (text) {
               widget.thread.postMessage(text);
@@ -146,35 +144,26 @@ class _ThreadViewState extends State<ThreadView> {
 class _ChatFragment extends StatelessWidget {
   const _ChatFragment({
     required this.message,
-    this.referenceIDs,
-    this.referenceScores,
     this.titleStyle,
     this.onDelete,
   });
 
   final TextStyle? titleStyle;
   final Message message;
-  final List<String>? referenceIDs;
-  final Map<String, double>? referenceScores;
   final VoidCallback? onDelete;
 
-  void _showSources(BuildContext context) {
-    if (referenceIDs == null) {
-      return;
-    }
-
+  void _showSources(BuildContext context, List<Source> sources) {
     showDialog(
       context: context,
       builder: (context) => SourcesDialog(
-        references: referenceIDs!,
-        scores: referenceScores ?? const {},
+        sources: sources,
       ),
     );
   }
 
-  void _copyToClipboard(BuildContext context) {
+  void _copyToClipboard(BuildContext context, String completion) {
     Clipboard.setData(
-      ClipboardData(text: message.completion),
+      ClipboardData(text: completion),
     );
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -201,6 +190,9 @@ class _ChatFragment extends StatelessWidget {
 
     const buttonPadding = EdgeInsets.all(16);
 
+    final content = SourceText(message);
+    final completion = content.toMarkdown();
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -218,7 +210,12 @@ class _ChatFragment extends StatelessWidget {
               Padding(
                 padding: bodyPadding,
                 child: StyledMarkdown(
-                  data: message.completion,
+                  data: completion,
+                  onTapLink: (String text, String? href, String title) {
+                    if (content.containsCites(href)) {
+                      showChunkDetails(context, content.getFragment(href));
+                    }
+                  },
                 ),
               ),
             ],
@@ -229,17 +226,17 @@ class _ChatFragment extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              if (referenceIDs != null)
+              if (message.sources.isNotEmpty)
                 IconButton(
                   tooltip: 'References',
                   icon: const Icon(Icons.attach_file_outlined),
-                  onPressed: () => _showSources(context),
+                  onPressed: () => _showSources(context, message.sources),
                   color: colors.outline,
                 ),
               IconButton(
                 tooltip: 'Copy',
                 icon: const Icon(Icons.copy_outlined),
-                onPressed: () => _copyToClipboard(context),
+                onPressed: () => _copyToClipboard(context, completion),
                 color: colors.outline,
               ),
               IconButton(

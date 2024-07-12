@@ -5,9 +5,7 @@ const _colorSeed = Colors.blue;
 final _colorsLight = ColorScheme.fromSeed(
   brightness: Brightness.light,
   seedColor: _colorSeed,
-  background: Colors.white,
   surface: Colors.white,
-  onBackground: Colors.black,
   onSurface: Colors.black,
   surfaceTint: Colors.white,
 );
@@ -22,6 +20,9 @@ final borderRadius = BorderRadius.circular(16);
 final _roundedShape = RoundedRectangleBorder(
   borderRadius: borderRadius,
 );
+
+const _titleFontSize = 14.0;
+const _subtitleFontSize = 12.0;
 
 final lightTheme = ThemeData(
   colorScheme: _colorsLight,
@@ -49,6 +50,7 @@ final lightTheme = ThemeData(
       shape: WidgetStateProperty.all(_roundedShape),
     ),
   ),
+  scaffoldBackgroundColor: _colorsLight.surface,
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: ButtonStyle(
       shape: WidgetStateProperty.all(_roundedShape),
@@ -61,7 +63,17 @@ final lightTheme = ThemeData(
   ),
   listTileTheme: ListTileThemeData(
     shape: _roundedShape,
+    titleTextStyle: TextStyle(
+      color: _colorsLight.onSurface,
+      fontSize: _titleFontSize,
+    ),
+    subtitleTextStyle: TextStyle(
+      color: _colorsLight.outline,
+      fontSize: _subtitleFontSize,
+    ),
+    iconColor: _colorsLight.onSurface,
   ),
+  hoverColor: _colorsLight.primaryContainer,
   iconButtonTheme: IconButtonThemeData(
     style: IconButton.styleFrom(
       hoverColor: _colorsLight.primaryContainer,
@@ -107,7 +119,16 @@ final darkTheme = ThemeData(
   ),
   listTileTheme: ListTileThemeData(
     shape: _roundedShape,
+    titleTextStyle: TextStyle(
+      color: _colorsDark.onSurface,
+      fontSize: _titleFontSize,
+    ),
+    subtitleTextStyle: TextStyle(
+      color: _colorsDark.outline,
+      fontSize: _subtitleFontSize,
+    ),
   ),
+  hoverColor: _colorsDark.primaryContainer,
   iconButtonTheme: IconButtonThemeData(
     style: IconButton.styleFrom(
       hoverColor: _colorsDark.primaryContainer,

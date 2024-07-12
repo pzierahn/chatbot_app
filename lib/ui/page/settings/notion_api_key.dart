@@ -1,5 +1,5 @@
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
-import 'package:braingain_app/generated/notion.pb.dart';
+import 'package:braingain_app/generated/notion_service.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
 import 'package:braingain_app/ui/widget/error_bar.dart';
 import 'package:braingain_app/ui/widget/outlined_card.dart';
@@ -20,18 +20,34 @@ class _NotionSectionState extends State<NotionSection> {
   @override
   void initState() {
     super.initState();
-    _future = notion.getApiKey(Empty());
+    _future = notion.getAPIKey(Empty());
   }
 
-  void _onSave() {
+  void _onUpdate() {
     notion
-        .setApiKey(NotionApiKey(
+        .updateAPIKey(NotionApiKey(
       key: _controller.text.trim(),
     ))
         .then((_) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Saved!'),
+          content: Text('Updated!'),
+        ),
+      );
+    }).catchError((error) {
+      ErrorSnackBar.show(context, error);
+    });
+  }
+
+  void _onInsert() {
+    notion
+        .insertAPIKey(NotionApiKey(
+      key: _controller.text.trim(),
+    ))
+        .then((_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Inserted!'),
         ),
       );
     }).catchError((error) {
@@ -87,6 +103,19 @@ class _NotionSectionState extends State<NotionSection> {
                 if (snap.hasData) {
                   _controller.text = snap.data!.key;
 
+                  Widget button;
+                  if (snap.data!.key.isEmpty) {
+                    button = TextButton(
+                      onPressed: _onInsert,
+                      child: const Text('Insert'),
+                    );
+                  } else {
+                    button = TextButton(
+                      onPressed: _onUpdate,
+                      child: const Text('Update'),
+                    );
+                  }
+
                   return ListTile(
                     title: TextField(
                       controller: _controller,
@@ -97,10 +126,7 @@ class _NotionSectionState extends State<NotionSection> {
                         hintText: 'Enter your Notion API Key',
                         // filled: true,
                         prefixIcon: const Icon(Icons.vpn_key),
-                        suffix: TextButton(
-                          onPressed: _onSave,
-                          child: const Text('Save'),
-                        ),
+                        suffix: button,
                       ),
                     ),
                   );
