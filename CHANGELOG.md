@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix citations outside \cite{} blocks.
+
 ### Changed
 
 - Set retrieval threshold to 0.30
