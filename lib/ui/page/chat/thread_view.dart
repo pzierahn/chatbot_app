@@ -7,7 +7,7 @@ import 'package:braingain_app/ui/widget/sources_dialog.dart';
 import 'package:braingain_app/ui/page/chat/thread_container.dart';
 import 'package:braingain_app/ui/widget/confirm_dialog.dart';
 import 'package:braingain_app/utils/error.dart';
-import 'package:braingain_app/utils/source.dart';
+import 'package:braingain_app/utils/source_tool.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -44,6 +44,7 @@ class _ThreadViewState extends State<ThreadView> {
     if (widget.thread.hasData) {
       final thread = widget.thread.thread;
       final messages = thread?.messages ?? [];
+      final sourceTool = SourceTool(messages);
 
       for (var idx = 0; idx < messages.length; idx++) {
         final message = messages[idx];
@@ -51,6 +52,7 @@ class _ThreadViewState extends State<ThreadView> {
         children.add(
           _ChatFragment(
             titleStyle: titleStyle,
+            sourceTool: sourceTool,
             message: message,
             onDelete: () => ConfirmDialog.show(
               context,
@@ -144,11 +146,13 @@ class _ThreadViewState extends State<ThreadView> {
 class _ChatFragment extends StatelessWidget {
   const _ChatFragment({
     required this.message,
+    required this.sourceTool,
     this.titleStyle,
     this.onDelete,
   });
 
   final TextStyle? titleStyle;
+  final SourceTool sourceTool;
   final Message message;
   final VoidCallback? onDelete;
 
@@ -190,8 +194,7 @@ class _ChatFragment extends StatelessWidget {
 
     const buttonPadding = EdgeInsets.all(16);
 
-    final content = SourceText(message);
-    final completion = content.toMarkdown();
+    final completion = sourceTool.messageToMarkdown(message.completion);
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -212,8 +215,8 @@ class _ChatFragment extends StatelessWidget {
                 child: StyledMarkdown(
                   data: completion,
                   onTapLink: (String text, String? href, String title) {
-                    if (content.containsCites(href)) {
-                      showChunkDetails(context, content.getFragment(href));
+                    if (sourceTool.containsCites(href)) {
+                      showChunkDetails(context, sourceTool.getFragment(href));
                     }
                   },
                 ),

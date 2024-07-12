@@ -2,7 +2,7 @@ import 'package:braingain_app/generated/chat_service.pb.dart';
 import 'package:braingain_app/ui/widget/markdown.dart';
 import 'package:braingain_app/ui/widget/constrained_list_view.dart';
 import 'package:braingain_app/ui/widget/sources_dialog.dart';
-import 'package:braingain_app/utils/source.dart';
+import 'package:braingain_app/utils/source_tool.dart';
 import 'package:flutter/material.dart';
 
 class ThreadDetails extends StatelessWidget {
@@ -16,12 +16,11 @@ class ThreadDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final sourceTool = SourceTool(thread.messages);
 
     final children = <Widget>[];
 
     for (final message in thread.messages) {
-      final content = SourceText(message);
-
       children.addAll([
         SizedBox(
           width: double.infinity,
@@ -34,10 +33,10 @@ class ThreadDetails extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 16),
           width: double.infinity,
           child: StyledMarkdown(
-            data: content.toMarkdown(),
+            data: sourceTool.messageToMarkdown(message.completion),
             onTapLink: (String text, String? href, String title) {
-              if (content.containsCites(href)) {
-                showChunkDetails(context, content.getFragment(href));
+              if (sourceTool.containsCites(href)) {
+                showChunkDetails(context, sourceTool.getFragment(href));
               }
             },
           ),

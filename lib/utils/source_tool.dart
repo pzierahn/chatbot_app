@@ -2,21 +2,26 @@ import 'dart:collection';
 
 import 'package:braingain_app/generated/chat_service.pb.dart';
 
-class SourceText {
-  final Message _message;
+// Tool for handling sources in a message.
+class SourceTool {
+  // Map fragment ids to their fragments.
   final _fragments = HashMap<String, Source_Fragment>();
+
+  // Map fragment ids to their document names.
   final _documentNames = HashMap<String, String>();
 
   // Map document ids to their names.
   final _document = HashMap<String, String>();
 
-  SourceText(this._message) {
-    for (var source in _message.sources) {
-      _document[source.documentId] = source.name;
+  SourceTool(List<Message> messages) {
+    for (var message in messages) {
+      for (var source in message.sources) {
+        _document[source.documentId] = source.name;
 
-      for (var fragment in source.fragments) {
-        _documentNames[fragment.id] = source.name;
-        _fragments[fragment.id] = fragment;
+        for (var fragment in source.fragments) {
+          _documentNames[fragment.id] = source.name;
+          _fragments[fragment.id] = fragment;
+        }
       }
     }
   }
@@ -30,9 +35,7 @@ class SourceText {
   }
 
   /// Replaces cites in a message with markdown links.
-  String toMarkdown() {
-    String completion = _message.completion;
-
+  String messageToMarkdown(String completion) {
     // Find all cite blocks in the completion.
     final matches = RegExp(r'\\cite\{([^\}]+)\}').allMatches(completion);
     for (final match in matches) {
@@ -71,8 +74,7 @@ class SourceText {
       completion = completion.replaceFirst(block, replacement);
     }
 
-    // Check if the model has no cites.
-    if (!_message.completion.contains("\\cite{")) {
+    if (matches.isEmpty) {
       // Replace cites outside of cite blocks.
       for (var fragment in _fragments.entries) {
         final id = fragment.key;
