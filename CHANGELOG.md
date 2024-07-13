@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Set document retrieval to 16
+- Set document retrieval limit to 15 and threshold to 0.35
 
 ## [4.0.4] - 2024-07-12
 
