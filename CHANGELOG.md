@@ -5,11 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [unreleased]
+## [4.0.5] - 2024-07-19
+
+### Added
+
+- Added gpt-4o-mini model
 
 ### Changed
 
 - Set document retrieval limit to 15 and threshold to 0.35
+- Use gpt-4o-mini for notion batch processing
 
 ## [4.0.4] - 2024-07-12
 
