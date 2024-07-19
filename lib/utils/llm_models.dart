@@ -11,9 +11,15 @@ class LLMModel {
 }
 
 class LLMModels {
-  static const LLMModel gpt4 = LLMModel(
+  static const LLMModel gpt4o = LLMModel(
     title: 'GPT-4o',
     model: 'openai.gpt-4o',
+    provider: 'OpenAI',
+  );
+
+  static const LLMModel gpt4Mini = LLMModel(
+    title: 'GPT-4o Mini',
+    model: 'openai.gpt-4o-mini',
     provider: 'OpenAI',
   );
 
@@ -48,7 +54,8 @@ class LLMModels {
   );
 
   static const List<LLMModel> all = [
-    gpt4,
+    gpt4o,
+    gpt4Mini,
     claudeSonnet,
     claudeHaiku,
     geminiFlash,
