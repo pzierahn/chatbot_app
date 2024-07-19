@@ -37,7 +37,7 @@ dependencies:
   firebase_storage: ^12.0.0
   flutter_markdown: ^0.7.0
   google_fonts: ^6.0.0
-  grpc: ^3.2.3
+  grpc: ^4.0.0
   markdown: ^7.2.1
   uuid: ^4.0.0
   protobuf: ^3.1.0
