@@ -112,7 +112,7 @@ class _ChatBodyState extends State<ChatBody> {
     super.initState();
 
     final opts = ModelOptions()
-      ..modelId = LLMModels.claudeSonnet.model
+      ..modelId = LLMModels.defaultModel.model
       ..maxTokens = 2048
       ..temperature = 1.0
       ..topP = 1.0;

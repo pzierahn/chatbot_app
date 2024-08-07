@@ -11,6 +11,8 @@ class LLMModel {
 }
 
 class LLMModels {
+  static const defaultModel = LLMModels.gpt4o;
+
   static const LLMModel gpt4o = LLMModel(
     title: 'GPT-4o',
     model: 'openai.gpt-4o-2024-08-06',
@@ -66,7 +68,7 @@ class LLMModels {
   static LLMModel fromModel(String model) {
     return all.firstWhere(
       (element) => element.model == model,
-      orElse: () => claudeSonnet,
+      orElse: () => defaultModel,
     );
   }
 }
