@@ -31,12 +31,14 @@ const DocumentID$json = {
   '1': 'DocumentID',
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'collection_id', '3': 2, '4': 1, '5': 9, '10': 'collectionId'},
   ],
 };
 
 /// Descriptor for `DocumentID`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List documentIDDescriptor = $convert.base64Decode(
-    'CgpEb2N1bWVudElEEg4KAmlkGAEgASgJUgJpZA==');
+    'CgpEb2N1bWVudElEEg4KAmlkGAEgASgJUgJpZBIjCg1jb2xsZWN0aW9uX2lkGAIgASgJUgxjb2'
+    'xsZWN0aW9uSWQ=');
 
 @$core.Deprecated('Use documentListDescriptor instead')
 const DocumentList$json = {

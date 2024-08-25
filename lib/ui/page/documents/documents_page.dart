@@ -97,7 +97,10 @@ class _CollectionPageState extends State<_CollectionPage> {
       return;
     }
 
-    final ref = DocumentID()..id = docId;
+    final ref = DocumentID(
+      id: docId,
+      collectionId: widget.collection.id,
+    );
     documents.delete(ref).then((_) {
       SimpleSnackBar.show(
         context,

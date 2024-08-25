@@ -82,10 +82,14 @@ class RenameDocument extends $pb.GeneratedMessage {
 class DocumentID extends $pb.GeneratedMessage {
   factory DocumentID({
     $core.String? id,
+    $core.String? collectionId,
   }) {
     final $result = create();
     if (id != null) {
       $result.id = id;
+    }
+    if (collectionId != null) {
+      $result.collectionId = collectionId;
     }
     return $result;
   }
@@ -95,6 +99,7 @@ class DocumentID extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DocumentID', package: const $pb.PackageName(_omitMessageNames ? '' : 'chatbot.documents.v1'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'collectionId')
     ..hasRequiredFields = false
   ;
 
@@ -127,6 +132,15 @@ class DocumentID extends $pb.GeneratedMessage {
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
   void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get collectionId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set collectionId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasCollectionId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCollectionId() => clearField(2);
 }
 
 class DocumentList extends $pb.GeneratedMessage {
