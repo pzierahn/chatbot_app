@@ -51,7 +51,7 @@ class LLMModels {
 
   static const LLMModel geminiProExperimental = LLMModel(
     title: 'Gemini Experimental',
-    model: 'google.gemini-experimental',
+    model: 'google.gemini-pro-experimental',
     provider: 'Google',
   );
 
