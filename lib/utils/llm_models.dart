@@ -39,13 +39,13 @@ class LLMModels {
 
   static const LLMModel geminiFlash = LLMModel(
     title: 'Gemini Flash',
-    model: 'google.gemini-1.5-flash-preview-0514',
+    model: 'google.gemini-1.5-flash-002',
     provider: 'Google',
   );
 
   static const LLMModel geminiPro = LLMModel(
     title: 'Gemini Pro',
-    model: 'google.gemini-1.5-pro-preview-0514',
+    model: 'google.gemini-1.5-pro-002',
     provider: 'Google',
   );
 
