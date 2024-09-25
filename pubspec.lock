@@ -225,12 +225,13 @@ packages:
     source: git
     version: "0.2.0"
   flutter_math_fork:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: flutter_math_fork
-      sha256: "94bee4642892a94939af0748c6a7de0ff8318feee588379dcdfea7dc5cba06c8"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: "fix_hashValues-to-Object.hash"
+      resolved-ref: "2826d0a61bcd2148694b569506c7aaf22d943f99"
+      url: "https://github.com/dessangithub/flutter_math_fork"
+    source: git
     version: "0.7.2"
   flutter_plugin_android_lifecycle:
     dependency: transitive
