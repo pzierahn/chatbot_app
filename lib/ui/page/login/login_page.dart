@@ -87,9 +87,16 @@ class _LoginPageState extends State<LoginPage> {
             onPressed: () async {
               final email = userController.text;
               final password = passwordController.text;
-              await FirebaseAuth.instance.signInWithEmailAndPassword(
+              FirebaseAuth.instance
+                  .signInWithEmailAndPassword(
                 email: email,
                 password: password,
+              )
+                  .then(
+                (_) {},
+                onError: (error) {
+                  debugPrint('Error: $error');
+                },
               );
             },
             child: const Text('Login'),
