@@ -31,6 +31,12 @@ class LLMModels {
     provider: 'Anthropic',
   );
 
+  static const LLMModel claudeSonnetv2 = LLMModel(
+    title: 'Claude Sonnet v2',
+    model: 'anthropic.claude-3-5-sonnet-20241022-v2:0',
+    provider: 'Anthropic',
+  );
+
   static const LLMModel claudeHaiku = LLMModel(
     title: 'Claude Haiku',
     model: 'anthropic.claude-3-haiku-20240307-v1:0',
@@ -59,6 +65,7 @@ class LLMModels {
     gpt4o,
     gpt4Mini,
     claudeSonnet,
+    claudeSonnetv2,
     claudeHaiku,
     geminiFlash,
     geminiPro,
