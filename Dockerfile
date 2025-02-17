@@ -8,7 +8,7 @@ RUN apt-get update; \
     apt-get dist-upgrade -y; \
     apt-get install -y bash curl file git unzip xz-utils zip;
 
-RUN git clone https://github.com/flutter/flutter.git --depth 1 -b beta /root/flutter
+RUN git clone https://github.com/flutter/flutter.git -b beta /root/flutter
 ENV PATH="$PATH:/root/flutter/bin"
 
 RUN flutter precache --web \
