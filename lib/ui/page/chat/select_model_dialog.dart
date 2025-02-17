@@ -31,17 +31,17 @@ class SelectModelDialog extends StatelessWidget {
       title: const Text('Select Model'),
       content: SizedBox(
         width: 400,
-        child: Column(
-            mainAxisSize: MainAxisSize.min,
+        height: 400,
+        child: ListView(
             children: LLMModels.all.map((model) {
-              return RadioListTile<String>(
-                value: model.model,
-                title: Text(model.title),
-                subtitle: Text(model.provider),
-                groupValue: this.model,
-                onChanged: (value) => _onModelChanged(context, value),
-              );
-            }).toList()),
+          return RadioListTile<String>(
+            value: model.model,
+            title: Text(model.title),
+            subtitle: Text(model.provider),
+            groupValue: this.model,
+            onChanged: (value) => _onModelChanged(context, value),
+          );
+        }).toList()),
       ),
     );
   }
