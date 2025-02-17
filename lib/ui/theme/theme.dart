@@ -36,7 +36,8 @@ final lightTheme = ThemeData(
       width: 1.0,
     ),
     shape: _roundedShape,
-    backgroundColor: _colorsLight.surfaceContainerHighest.withOpacity(0.25),
+    backgroundColor:
+        _colorsLight.surfaceContainerHighest.withValues(alpha: 0.25),
     labelStyle: TextStyle(
       color: _colorsLight.onSurfaceVariant,
     ),
@@ -93,7 +94,8 @@ final darkTheme = ThemeData(
       width: 1.0,
     ),
     shape: _roundedShape,
-    backgroundColor: _colorsDark.surfaceContainerHighest.withOpacity(0.25),
+    backgroundColor:
+        _colorsDark.surfaceContainerHighest.withValues(alpha: 0.25),
     labelStyle: TextStyle(
       color: _colorsDark.onSurfaceVariant,
     ),
