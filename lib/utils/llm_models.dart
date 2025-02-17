@@ -19,16 +19,10 @@ class LLMModels {
     provider: 'OpenAI',
   );
 
-  static const LLMModel gpt4Mini = LLMModel(
-    title: 'GPT-4o Mini',
-    model: 'openai.gpt-4o-mini',
+  static const LLMModel gpto3Mini = LLMModel(
+    title: 'GPT o3-mini',
+    model: 'openai.o3-mini',
     provider: 'OpenAI',
-  );
-
-  static const LLMModel claudeSonnet = LLMModel(
-    title: 'Claude Sonnet',
-    model: 'anthropic.claude-3-5-sonnet-20240620-v1:0',
-    provider: 'Anthropic',
   );
 
   static const LLMModel claudeSonnetv2 = LLMModel(
@@ -45,31 +39,23 @@ class LLMModels {
 
   static const LLMModel geminiFlash = LLMModel(
     title: 'Gemini Flash',
-    model: 'google.gemini-1.5-flash-002',
+    model: 'google.gemini-2.0-flash-exp',
     provider: 'Google',
   );
 
   static const LLMModel geminiPro = LLMModel(
     title: 'Gemini Pro',
-    model: 'google.gemini-1.5-pro-002',
-    provider: 'Google',
-  );
-
-  static const LLMModel geminiProExperimental = LLMModel(
-    title: 'Gemini Experimental',
-    model: 'google.gemini-pro-experimental',
+    model: 'google.gemini-2.0-pro-exp-02-05',
     provider: 'Google',
   );
 
   static const List<LLMModel> all = [
     gpt4o,
-    gpt4Mini,
-    claudeSonnet,
+    gpto3Mini,
     claudeSonnetv2,
     claudeHaiku,
     geminiFlash,
     geminiPro,
-    geminiProExperimental,
   ];
 
   static LLMModel fromModel(String model) {
