@@ -1,51 +1,51 @@
 PODS:
   - file_picker (0.0.1):
     - FlutterMacOS
-  - Firebase/Auth (11.7.0):
+  - Firebase/Auth (11.10.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (~> 11.7.0)
-  - Firebase/CoreOnly (11.7.0):
-    - FirebaseCore (~> 11.7.0)
-  - Firebase/Storage (11.7.0):
+    - FirebaseAuth (~> 11.10.0)
+  - Firebase/CoreOnly (11.10.0):
+    - FirebaseCore (~> 11.10.0)
+  - Firebase/Storage (11.10.0):
     - Firebase/CoreOnly
-    - FirebaseStorage (~> 11.7.0)
-  - firebase_auth (5.4.2):
-    - Firebase/Auth (~> 11.7.0)
-    - Firebase/CoreOnly (~> 11.7.0)
+    - FirebaseStorage (~> 11.10.0)
+  - firebase_auth (5.5.2):
+    - Firebase/Auth (~> 11.10.0)
+    - Firebase/CoreOnly (~> 11.10.0)
     - firebase_core
     - FlutterMacOS
-  - firebase_core (3.11.0):
-    - Firebase/CoreOnly (~> 11.7.0)
+  - firebase_core (3.13.0):
+    - Firebase/CoreOnly (~> 11.10.0)
     - FlutterMacOS
-  - firebase_storage (12.4.2):
-    - Firebase/CoreOnly (~> 11.7.0)
-    - Firebase/Storage (~> 11.7.0)
+  - firebase_storage (12.4.5):
+    - Firebase/CoreOnly (~> 11.10.0)
+    - Firebase/Storage (~> 11.10.0)
     - firebase_core
     - FlutterMacOS
-  - FirebaseAppCheckInterop (11.8.0)
-  - FirebaseAuth (11.7.0):
+  - FirebaseAppCheckInterop (11.11.0)
+  - FirebaseAuth (11.10.0):
     - FirebaseAppCheckInterop (~> 11.0)
     - FirebaseAuthInterop (~> 11.0)
-    - FirebaseCore (~> 11.7.0)
-    - FirebaseCoreExtension (~> 11.7.0)
+    - FirebaseCore (~> 11.10.0)
+    - FirebaseCoreExtension (~> 11.10.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 8.0)
     - GoogleUtilities/Environment (~> 8.0)
     - GTMSessionFetcher/Core (< 5.0, >= 3.4)
-    - RecaptchaInterop (~> 100.0)
-  - FirebaseAuthInterop (11.8.0)
-  - FirebaseCore (11.7.0):
-    - FirebaseCoreInternal (~> 11.7.0)
+    - RecaptchaInterop (~> 101.0)
+  - FirebaseAuthInterop (11.11.0)
+  - FirebaseCore (11.10.0):
+    - FirebaseCoreInternal (~> 11.10.0)
     - GoogleUtilities/Environment (~> 8.0)
     - GoogleUtilities/Logger (~> 8.0)
-  - FirebaseCoreExtension (11.7.0):
-    - FirebaseCore (~> 11.7.0)
-  - FirebaseCoreInternal (11.7.0):
+  - FirebaseCoreExtension (11.10.0):
+    - FirebaseCore (~> 11.10.0)
+  - FirebaseCoreInternal (11.10.0):
     - "GoogleUtilities/NSData+zlib (~> 8.0)"
-  - FirebaseStorage (11.7.0):
+  - FirebaseStorage (11.10.0):
     - FirebaseAppCheckInterop (~> 11.0)
     - FirebaseAuthInterop (~> 11.0)
-    - FirebaseCore (~> 11.7.0)
-    - FirebaseCoreExtension (~> 11.7.0)
+    - FirebaseCore (~> 11.10.0)
+    - FirebaseCoreExtension (~> 11.10.0)
     - GoogleUtilities/Environment (~> 8.0)
     - GTMSessionFetcher/Core (< 5.0, >= 3.4)
   - FlutterMacOS (1.0.0)
@@ -70,7 +70,7 @@ PODS:
   - GoogleUtilities/Reachability (8.0.2):
     - GoogleUtilities/Logger
     - GoogleUtilities/Privacy
-  - GTMSessionFetcher/Core (4.3.0)
+  - GTMSessionFetcher/Core (4.4.0)
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -118,20 +118,20 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   file_picker: 7584aae6fa07a041af2b36a2655122d42f578c1a
-  Firebase: a64bf6a8546e6eab54f1c715cd6151f39d2329f4
-  firebase_auth: d52fdbc71a110cab1a6c443e2d4aacb37cbc5f3d
-  firebase_core: 3b0c5df5f37af76c0c7182983a09cc3e4007680c
-  firebase_storage: 52c7811e519135482dd6aac270a9c0c9bdf513a6
-  FirebaseAppCheckInterop: 7bf86d55a2b7e9bd91464120eba3e52e4b63b2e2
-  FirebaseAuth: 77e25aa24f3e1c626c5babd3338551fc1669ee0e
-  FirebaseAuthInterop: 651756e70d9a0b9160db39ead71fd5507dbb6c84
-  FirebaseCore: 3227e35f4197a924206fbcdc0349325baf4f5de4
-  FirebaseCoreExtension: 206c1b399f0d103055207c16f299b28e3dbd1949
-  FirebaseCoreInternal: d6c17dafc8dc33614733a8b52df78fcb4394c881
-  FirebaseStorage: d35da127dd49edcbd07b8c07cf651a70161558b2
+  Firebase: 1fe1c0a7d9aaea32efe01fbea5f0ebd8d70e53a2
+  firebase_auth: 22945027646e71960caae1b9f2b2498d7a52a4c7
+  firebase_core: efd50ad8177dc489af1b9163a560359cf1b30597
+  firebase_storage: ec466c44a880a69f779c5db5838d36de861515b2
+  FirebaseAppCheckInterop: f23709c9ce92d810aa53ff4ce12ad3e666a3c7be
+  FirebaseAuth: c4146bdfdc87329f9962babd24dae89373f49a32
+  FirebaseAuthInterop: ac22ed402c2f4e3a8c63ebd3278af9a06073c1be
+  FirebaseCore: 8344daef5e2661eb004b177488d6f9f0f24251b7
+  FirebaseCoreExtension: 6f357679327f3614e995dc7cf3f2d600bdc774ac
+  FirebaseCoreInternal: ef4505d2afb1d0ebbc33162cb3795382904b5679
+  FirebaseStorage: e83d1b9c8a5318d46ccfb2955f0d98095e0bf598
   FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
   GoogleUtilities: 26a3abef001b6533cf678d3eb38fd3f614b7872d
-  GTMSessionFetcher: 257ead9ba8e15a2d389d79496e02b9cc5dd0c62c
+  GTMSessionFetcher: 75b671f9e551e4c49153d4c4f8659ef4f559b970
   path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
   shared_preferences_foundation: 9e1978ff2562383bd5676f64ec4e9aa8fa06a6f7
 
