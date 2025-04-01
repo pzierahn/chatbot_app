@@ -45,7 +45,7 @@ class _NotionPageState extends State<NotionPage> {
     });
 
     final model = ModelOptions()
-      ..modelId = LLMModels.gpt4o.model
+      ..modelId = LLMModels.geminiFlash.model
       ..temperature = 1.0
       ..topP = 1.0
       ..maxTokens = 256;
