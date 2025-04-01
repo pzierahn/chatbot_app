@@ -68,9 +68,10 @@ class LLMModels {
   );
 
   static const List<LLMModel> all = [
-    gpt4o,
-    gpto3Mini,
     gpto45,
+    gpto3Mini,
+    gpt4o,
+    gpto4mini,
     claudeSonnetv2,
     claudeHaiku,
     geminiPro25,
