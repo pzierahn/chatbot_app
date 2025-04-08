@@ -121,6 +121,9 @@ class _StartNotionDialogState extends State<StartNotionDialog> {
                 return const Text('No databases found');
               }
 
+              // Sort the databases by name
+              databases.sort((a, b) => a.name.compareTo(b.name));
+
               return ListTile(
                 title: Wrap(
                   spacing: 8.0,
