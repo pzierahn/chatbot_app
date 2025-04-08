@@ -30,6 +30,8 @@ class _NotionPageState extends State<NotionPage> {
   final _prompts = <String>[];
   final _status = <Set<String>>[];
 
+  LLMModel _model = LLMModels.geminiFlash;
+
   void _sendPrompt() {
     final prompt = _controller.text;
     _controller.clear();
@@ -45,7 +47,7 @@ class _NotionPageState extends State<NotionPage> {
     });
 
     final model = ModelOptions()
-      ..modelId = LLMModels.geminiFlash.model
+      ..modelId = _model.model
       ..temperature = 1.0
       ..topP = 1.0
       ..maxTokens = 256;
@@ -77,6 +79,7 @@ class _NotionPageState extends State<NotionPage> {
     final children = <Widget>[
       ThreadContainer(
         outlineColor: Colors.transparent,
+        margins: EdgeInsets.symmetric(horizontal: 16),
         child: ListTile(
           title: const Text('How this works:'),
           subtitle: Text(
@@ -84,6 +87,30 @@ class _NotionPageState extends State<NotionPage> {
             '2. Insert your Brainboost document names in the "ID" column. For example "Vorlesung-1.pdf"\n'
             '3. Type a question or prompt in the text field below. Brainboost will execute your prompt in parallel on all documents and store the results in your Notion database\n',
             style: TextStyle(color: color.outline),
+          ),
+        ),
+      ),
+      ThreadContainer(
+        outlineColor: Colors.transparent,
+        margins: EdgeInsets.symmetric(horizontal: 16),
+        child: ListTile(
+          title: const Text('Select model'),
+          subtitle: Wrap(
+            spacing: 12,
+            children: [
+              LLMModels.geminiFlash,
+              LLMModels.gpt4o,
+            ].map((model) {
+              return ChoiceChip(
+                label: Text(model.title),
+                selected: model == _model,
+                onSelected: (_) {
+                  setState(() {
+                    _model = model;
+                  });
+                },
+              );
+            }).toList(),
           ),
         ),
       ),
