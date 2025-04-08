@@ -6,10 +6,12 @@ class ThreadContainer extends StatelessWidget {
     super.key,
     required this.child,
     this.outlineColor,
+    this.margins,
   });
 
   final Widget child;
   final Color? outlineColor;
+  final EdgeInsets? margins;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class ThreadContainer extends StatelessWidget {
           width: 1.0,
         ),
       ),
-      margin: const EdgeInsets.all(16),
+      margin: margins ?? const EdgeInsets.all(16),
       child: child,
     );
   }
