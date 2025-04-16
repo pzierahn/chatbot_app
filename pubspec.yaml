@@ -55,12 +55,6 @@ dependencies:
   highlighter: ^0.1.1
   flutter_svg: ^2.0.10+1
 
-dependency_overrides:
-  flutter_math_fork:
-    git:
-      url: https://github.com/dessangithub/flutter_math_fork
-      ref: fix_hashValues-to-Object.hash
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

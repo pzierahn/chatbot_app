@@ -220,19 +220,19 @@ packages:
     description:
       path: "."
       ref: fix_markdown_line_breaks
-      resolved-ref: "48562ce6d7142cba46bd1d4993c75c315cfca0b6"
+      resolved-ref: c110a5fb590307dbd2f28e732d00c26399ced662
       url: "https://github.com/pzierahn/flutter_markdown_latex"
     source: git
     version: "0.2.0"
   flutter_math_fork:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       path: "."
-      ref: "fix_hashValues-to-Object.hash"
-      resolved-ref: "2826d0a61bcd2148694b569506c7aaf22d943f99"
-      url: "https://github.com/dessangithub/flutter_math_fork"
+      ref: main
+      resolved-ref: c95644b6a7c14635f5d95926140425cce22cd0e5
+      url: "https://github.com/pzierahn/flutter_math"
     source: git
-    version: "0.7.2"
+    version: "0.7.3"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
