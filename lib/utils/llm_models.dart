@@ -11,29 +11,23 @@ class LLMModel {
 }
 
 class LLMModels {
-  static const defaultModel = LLMModels.gpt4o;
+  static const defaultModel = LLMModels.gpt41;
 
-  static const LLMModel gpt4o = LLMModel(
-    title: 'GPT-4o',
-    model: 'openai.gpt-4o',
+  static const LLMModel gpt41 = LLMModel(
+    title: 'GPT 4.1',
+    model: 'openai.gpt-4.1',
     provider: 'OpenAI',
   );
 
-  static const LLMModel gpto3Mini = LLMModel(
-    title: 'GPT o3-mini',
-    model: 'openai.o3-mini',
+  static const LLMModel gpt41mini = LLMModel(
+    title: 'GPT 4.1 mini',
+    model: 'openai.gpt-4.1-mini',
     provider: 'OpenAI',
   );
 
-  static const LLMModel gpto45 = LLMModel(
-    title: 'GPT 4.5',
-    model: 'openai.gpt-4.5-preview',
-    provider: 'OpenAI',
-  );
-
-  static const LLMModel gpto4mini = LLMModel(
-    title: 'GPT 4o Mini',
-    model: 'openai.gpt-4o-mini',
+  static const LLMModel gpt41nano = LLMModel(
+    title: 'GPT 4.1 nano',
+    model: 'openai.gpt-4.1-nano',
     provider: 'OpenAI',
   );
 
@@ -68,10 +62,9 @@ class LLMModels {
   );
 
   static const List<LLMModel> all = [
-    gpto45,
-    gpto3Mini,
-    gpt4o,
-    gpto4mini,
+    gpt41,
+    gpt41mini,
+    gpt41nano,
     claudeSonnetv2,
     claudeHaiku,
     geminiPro25,

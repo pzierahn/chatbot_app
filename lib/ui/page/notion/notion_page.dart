@@ -99,7 +99,8 @@ class _NotionPageState extends State<NotionPage> {
             spacing: 12,
             children: [
               LLMModels.geminiFlash,
-              LLMModels.gpt4o,
+              LLMModels.gpt41mini,
+              LLMModels.gpt41nano,
             ].map((model) {
               return ChoiceChip(
                 label: Text(model.title),
