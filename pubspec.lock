@@ -229,7 +229,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: c95644b6a7c14635f5d95926140425cce22cd0e5
+      resolved-ref: "3bb8af012b4cbf50ab48ee6d5193e6980570ce86"
       url: "https://github.com/pzierahn/flutter_math"
     source: git
     version: "0.7.3"
