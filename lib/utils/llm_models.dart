@@ -31,6 +31,18 @@ class LLMModels {
     provider: 'OpenAI',
   );
 
+  static const LLMModel gpto3 = LLMModel(
+    title: 'GPT o3',
+    model: 'openai.o3',
+    provider: 'OpenAI',
+  );
+
+  static const LLMModel gpto4mini = LLMModel(
+    title: 'GPT o4',
+    model: 'openai.o4-mini',
+    provider: 'OpenAI',
+  );
+
   static const LLMModel claudeSonnetv2 = LLMModel(
     title: 'Claude Sonnet 3.7',
     model: 'anthropic.claude-3-7-sonnet-20250219-v1:0',
@@ -65,6 +77,8 @@ class LLMModels {
     gpt41,
     gpt41mini,
     gpt41nano,
+    gpto3,
+    gpto4mini,
     claudeSonnetv2,
     claudeHaiku,
     geminiPro25,
