@@ -14,31 +14,31 @@ class LLMModels {
   static const defaultModel = LLMModels.gpt41;
 
   static const LLMModel gpt41 = LLMModel(
-    title: 'GPT 4.1',
+    title: 'GPT-4.1',
     model: 'openai.gpt-4.1',
     provider: 'OpenAI',
   );
 
   static const LLMModel gpt41mini = LLMModel(
-    title: 'GPT 4.1 mini',
+    title: 'GPT-4.1 mini',
     model: 'openai.gpt-4.1-mini',
     provider: 'OpenAI',
   );
 
   static const LLMModel gpt41nano = LLMModel(
-    title: 'GPT 4.1 nano',
+    title: 'GPT-4.1 nano',
     model: 'openai.gpt-4.1-nano',
     provider: 'OpenAI',
   );
 
   static const LLMModel gpto3 = LLMModel(
-    title: 'GPT o3',
+    title: 'o3',
     model: 'openai.o3',
     provider: 'OpenAI',
   );
 
   static const LLMModel gpto4mini = LLMModel(
-    title: 'GPT o4',
+    title: 'o4-mini',
     model: 'openai.o4-mini',
     provider: 'OpenAI',
   );
