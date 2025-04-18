@@ -1,14 +1,14 @@
+import 'package:braingain_app/generated/crashlytics.pbgrpc.dart';
 import 'package:braingain_app/generated/google/protobuf/empty.pb.dart';
 import 'package:braingain_app/service/brainboost.dart';
-import 'package:braingain_app/generated/crashlytics.pbgrpc.dart';
 import 'package:braingain_app/ui/page/chat/chat_page.dart';
 import 'package:braingain_app/ui/page/chat_history/chat_history_page.dart';
 import 'package:braingain_app/ui/page/documents/documents_page.dart';
 import 'package:braingain_app/ui/page/home/home.dart';
+import 'package:braingain_app/ui/page/index/index_page.dart';
 import 'package:braingain_app/ui/page/login/login_page.dart';
 import 'package:braingain_app/ui/page/search_documents/search_documents.dart';
 import 'package:braingain_app/ui/page/settings/settings_page.dart';
-import 'package:braingain_app/ui/page/index/index_page.dart';
 import 'package:braingain_app/ui/theme/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
 
-const appVersion = 'v4.4.0';
+const appVersion = 'v4.6.0';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
