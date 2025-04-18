@@ -62,8 +62,8 @@ class LLMModels {
   );
 
   static const LLMModel geminiFlash = LLMModel(
-    title: 'Gemini Flash 2.0',
-    model: 'google.gemini-2.0-flash',
+    title: 'Gemini Flash 2.5',
+    model: 'google.gemini-2.5-flash-preview-04-17',
     provider: 'Google',
   );
 
