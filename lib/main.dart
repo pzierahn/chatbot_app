@@ -17,20 +17,19 @@ import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
 
-const appVersion = 'v4.6.0';
+const appVersion = 'v4.6.1';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   // Non-async exceptions
   FlutterError.onError = (errorDetails) {
-    final err = Error()
-      ..exception = errorDetails.exception.toString()
-      ..stackTrace = errorDetails.stack.toString()
-      ..appVersion = appVersion;
+    final err =
+        Error()
+          ..exception = errorDetails.exception.toString()
+          ..stackTrace = errorDetails.stack.toString()
+          ..appVersion = appVersion;
 
     // Catch error to prevent infinite loop
     crashlytics.recordError(err).catchError((_) => Empty());
@@ -38,10 +37,11 @@ void main() async {
 
   // Async exceptions
   PlatformDispatcher.instance.onError = (error, stack) {
-    final err = Error()
-      ..exception = error.toString()
-      ..stackTrace = stack.toString()
-      ..appVersion = appVersion;
+    final err =
+        Error()
+          ..exception = error.toString()
+          ..stackTrace = stack.toString()
+          ..appVersion = appVersion;
 
     // Catch error to prevent infinite loop
     crashlytics.recordError(err).catchError((_) => Empty());
@@ -83,9 +83,10 @@ class _AppState extends State<App> {
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,
       navigatorKey: _navigatorKey,
-      initialRoute: FirebaseAuth.instance.currentUser == null
-          ? LoginPage.route
-          : Home.route,
+      initialRoute:
+          FirebaseAuth.instance.currentUser == null
+              ? LoginPage.route
+              : Home.route,
       routes: {
         Home.route: (context) => const Home(),
         LoginPage.route: (context) => const LoginPage(),
